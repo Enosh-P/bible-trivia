@@ -22,6 +22,8 @@ const bad = (msg, fix) => {
   console.log(`  ❌ ${msg}${fix ? `\n      → ${fix}` : ''}`);
 };
 const section = (title) => console.log(`\n${title}`);
+/** Still the text copied from .env.example? */
+const placeholder = (v) => typeof v === 'string' && (v.includes('your-project-ref') || v.endsWith('...') || v.trim() === '');
 const local = (path) => JSON.parse(readFileSync(new URL(path, ROOT), 'utf8'));
 
 // ---------- 1. Environment variables ----------
@@ -32,20 +34,25 @@ const pubKey = env.VITE_SUPABASE_PUBLISHABLE_KEY ?? env.VITE_SUPABASE_ANON_KEY;
 const url = env.SUPABASE_URL ?? appUrl;
 const secret = env.SUPABASE_SECRET_KEY ?? env.SUPABASE_SERVICE_ROLE_KEY;
 
+const PLACEHOLDER_FIX = 'open .env.local (not .env.example) and paste the real value from Supabase → Project Settings';
 if (!appUrl) bad('VITE_SUPABASE_URL is missing', 'Supabase → Project Settings → Data API → Project URL');
+else if (placeholder(appUrl)) bad('VITE_SUPABASE_URL is still the example text', PLACEHOLDER_FIX);
 else if (!/^https:\/\/[a-z0-9]+\.supabase\.co\/?$/.test(appUrl)) warn(`VITE_SUPABASE_URL looks unusual: ${appUrl}`, 'it should look like https://abcdefgh.supabase.co');
 else ok('VITE_SUPABASE_URL');
 
 if (!pubKey) bad('VITE_SUPABASE_PUBLISHABLE_KEY is missing', 'Project Settings → API Keys → Publishable key (sb_publishable_...)');
+else if (placeholder(pubKey)) bad('VITE_SUPABASE_PUBLISHABLE_KEY is still the example text', PLACEHOLDER_FIX);
 else if (pubKey.startsWith('sb_secret_')) bad('VITE_SUPABASE_PUBLISHABLE_KEY contains a SECRET key', 'never put sb_secret_ in a VITE_ variable: it would be visible to everyone. Use the publishable key.');
 else if (!pubKey.startsWith('sb_publishable_')) warn('VITE_SUPABASE_PUBLISHABLE_KEY is a legacy anon key', 'works, but the new sb_publishable_ key is recommended');
 else ok('VITE_SUPABASE_PUBLISHABLE_KEY');
 
 if (!env.SUPABASE_URL) warn('SUPABASE_URL is missing (using VITE_SUPABASE_URL for the scripts)');
+else if (placeholder(env.SUPABASE_URL)) bad('SUPABASE_URL is still the example text', PLACEHOLDER_FIX);
 else if (appUrl && env.SUPABASE_URL.replace(/\/$/, '') !== appUrl.replace(/\/$/, '')) bad('SUPABASE_URL and VITE_SUPABASE_URL point to different projects');
 else ok('SUPABASE_URL');
 
 if (!secret) bad('SUPABASE_SECRET_KEY is missing (needed by db:import, db:export and this check)', 'Project Settings → API Keys → Secret key (sb_secret_...)');
+else if (placeholder(secret)) bad('SUPABASE_SECRET_KEY is still the example text', PLACEHOLDER_FIX);
 else if (!secret.startsWith('sb_secret_')) warn('SUPABASE_SECRET_KEY is a legacy service_role key', 'works, but the new sb_secret_ key is recommended');
 else ok('SUPABASE_SECRET_KEY');
 
@@ -54,10 +61,23 @@ for (const [k, v] of Object.entries(env)) {
 }
 if (env.VITE_ADMIN_EMAIL) ok('VITE_ADMIN_EMAIL set (email fallback for reports)');
 
-if (!url || !secret) {
+if (!url || !secret || placeholder(url) || placeholder(secret)) {
   console.log('\nFix the variables above, then run this check again.');
   process.exit(1);
 }
+
+// One connection test first, so a wrong URL gives one clear message instead of many.
+try {
+  const res = await fetch(`${url.replace(/\/$/, '')}/rest/v1/`, { headers: { apikey: secret } });
+  if (res.status === 401 || res.status === 403) {
+    bad(`Supabase rejected the secret key (HTTP ${res.status})`, 'copy the Secret key again from Project Settings → API Keys, and check it belongs to this project');
+    process.exit(1);
+  }
+} catch (e) {
+  bad(`cannot reach ${url} (${e.cause?.code ?? e.message})`, 'check the Project URL in .env.local, your internet connection, and that the project is not paused (Supabase dashboard → Restore)');
+  process.exit(1);
+}
+ok(`connected to ${url}`);
 
 const admin = createClient(url, secret, { auth: { persistSession: false } });
 const anon = pubKey ? createClient(url, pubKey, { auth: { persistSession: false } }) : null;
