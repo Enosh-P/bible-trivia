@@ -16,7 +16,7 @@ describe('picker', () => {
   });
 
   it('only picks the question types a mode allows', () => {
-    for (const mode of Object.values(MODES)) {
+    for (const mode of Object.values(MODES).filter((m) => m.id !== 'recall')) {
       const qs = pickQuestions(ALL_QUESTIONS, mode, { random: rng(1) });
       expect(qs.length).toBeGreaterThan(0);
       for (const q of qs) expect(mode.types).toContain(q.type);
@@ -25,7 +25,7 @@ describe('picker', () => {
   });
 
   it('every finite mode has enough questions for a full round', () => {
-    for (const mode of Object.values(MODES)) {
+    for (const mode of Object.values(MODES).filter((m) => m.id !== 'recall')) {
       if (!Number.isFinite(mode.length)) continue;
       const pool = ALL_QUESTIONS.filter((q) => mode.types.includes(q.type));
       expect(pool.length, mode.id).toBeGreaterThanOrEqual(mode.length);

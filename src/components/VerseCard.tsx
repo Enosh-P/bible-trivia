@@ -7,6 +7,8 @@ import { spring } from '../motion/springs';
 import { IconTile, STROKE } from './icons';
 import { Pressable } from './Pressable';
 import type { Lang } from '../engine/types';
+import { ReportButton } from './Report';
+import { verseTarget } from '../online/reports';
 
 /** Verse text in the player's question language (both, when they chose both). */
 export function VerseText({ verse, size = 'md' }: { verse: Verse; size?: 'md' | 'sm' }) {
@@ -55,6 +57,7 @@ export function VerseOfTheDay() {
         <Pressable className="chip verse-share" onClick={share} aria-label={t.share}>
           <Share2 size={16} strokeWidth={STROKE} />
         </Pressable>
+        <ReportButton target={verseTarget(verse)} />
       </div>
       <VerseText verse={verse} />
     </motion.section>

@@ -1,0 +1,89 @@
+import { db } from '../storage/db';
+import { shuffle } from './picker';
+
+/**
+ * Recall cards: human-written questions with their answers (unfoldingWord
+ * Translation Questions, ~17,000 across every chapter). Loaded one book at a
+ * time from /packs/uw/ and kept offline by the service worker.
+ */
+export interface RecallCard {
+  id: string; // 'uw-GEN-i4zd'
+  book: string;
+  chapter: number;
+  verse: number;
+  verseEnd?: number;
+  q: string;
+  a: string;
+}
+
+export interface RecallIndex {
+  attribution: string;
+  license: string;
+  total: number;
+  books: Record<string, number>;
+}
+
+type Row = [string, number, number, number, string, string];
+
+let indexPromise: Promise<RecallIndex> | null = null;
+const bookCache = new Map<string, Promise<RecallCard[]>>();
+
+export function loadRecallIndex(): Promise<RecallIndex> {
+  indexPromise ??= fetch('/packs/uw/index.json').then((r) => {
+    if (!r.ok) throw new Error(`index ${r.status}`);
+    return r.json();
+  });
+  indexPromise.catch(() => (indexPromise = null)); // allow a retry after going online
+  return indexPromise;
+}
+
+export function loadRecallBook(book: string): Promise<RecallCard[]> {
+  let p = bookCache.get(book);
+  if (!p) {
+    p = fetch(`/packs/uw/${book}.json`)
+      .then((r) => {
+        if (!r.ok) throw new Error(`${book} ${r.status}`);
+        return r.json() as Promise<{ rows: Row[] }>;
+      })
+      .then(({ rows }) =>
+        rows.map(([id, chapter, verse, verseEnd, q, a]) => ({
+          id: `uw-${book}-${id}`,
+          book,
+          chapter,
+          verse,
+          ...(verseEnd ? { verseEnd } : {}),
+          q,
+          a,
+        })),
+      );
+    p.catch(() => bookCache.delete(book));
+    bookCache.set(book, p);
+  }
+  return p;
+}
+
+/**
+ * A practice round: cards you missed come first, cards you knew recently
+ * come last, the rest in random order.
+ */
+export async function recallRound(book: string, chapter: number | null, size = 15): Promise<RecallCard[]> {
+  const all = (await loadRecallBook(book)).filter((c) => chapter === null || c.chapter === chapter);
+  const history = await db.answers.where('book').equals(book).toArray().catch(() => []);
+  const last = new Map<string, { correct: boolean; at: number }>();
+  for (const h of history) {
+    const prev = last.get(h.questionId);
+    if (!prev || h.at > prev.at) last.set(h.questionId, { correct: h.correct, at: h.at });
+  }
+  const weekAgo = Date.now() - 7 * 864e5;
+  const score = (c: RecallCard) => {
+    const h = last.get(c.id);
+    if (!h) return 1; // never seen
+    if (!h.correct) return 2; // missed: practise again
+    return h.at > weekAgo ? 0 : 1; // knew it recently: later
+  };
+  const shuffled = shuffle(all);
+  shuffled.sort((a, b) => score(b) - score(a));
+  const picked = shuffled.slice(0, size);
+  // Within the round, follow the order of the chapter for a natural flow.
+  return chapter === null ? picked : picked.sort((a, b) => a.verse - b.verse);
+}

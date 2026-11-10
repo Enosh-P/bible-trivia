@@ -22,6 +22,8 @@ import { spring } from '../motion/springs';
 import { IconTile, STROKE } from '../components/icons';
 import { VerseText } from '../components/VerseCard';
 import type { Lang } from '../engine/types';
+import { ReportButton } from '../components/Report';
+import { faqTarget } from '../online/reports';
 
 const ICONS: Record<string, LucideIcon> = {
   compass: Compass,
@@ -155,7 +157,10 @@ function FaqItem({ faq, lang, open, onToggle }: { faq: Faq; lang: Lang; open: bo
             transition={spring.calm}
           >
             <div className="faq-a-inner">
-              <p lang={lang}>{faq.a[lang]}</p>
+              <div className="faq-a-head">
+                <p lang={lang}>{faq.a[lang]}</p>
+                <ReportButton target={faqTarget(faq)} compact />
+              </div>
               {faq.verses.map((id) => VERSE_BY_ID[id] && <VerseText key={id} verse={VERSE_BY_ID[id]} size="sm" />)}
               {faq.reading.length > 0 && (
                 <div className="reading">

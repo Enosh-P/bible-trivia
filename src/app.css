@@ -579,3 +579,75 @@
 .faq-a-inner { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 10px; }
 .faq-a-inner p { margin: 0; }
 .reading ul { margin: 6px 0 0; padding-left: 18px; color: var(--text-2); font-size: 0.9rem; }
+
+/* ---------- Recall ---------- */
+.recall-head { display: flex; align-items: center; gap: 12px; }
+.recall-body { display: flex; flex-direction: column; gap: 14px; }
+.note { margin: 0; padding: 0 4px; }
+.recall-books { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; margin-top: 10px; }
+.recall-book { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 12px 14px; border-radius: var(--radius-md); text-align: left; width: 100%; }
+.recall-book-name { font-weight: 600; line-height: 1.3; }
+.recall-book-name:lang(ta) { font-size: 0.92rem; }
+.recall-chapters { display: flex; flex-direction: column; gap: 12px; }
+.chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 8px; }
+.chapter-chip { height: 52px; border-radius: var(--radius-sm); font-weight: 650; font-variant-numeric: tabular-nums; }
+.recall-card-wrap { display: flex; flex-direction: column; gap: 14px; }
+.recall-card { padding: 22px 20px; border-radius: var(--radius-xl); display: flex; flex-direction: column; gap: 14px; min-height: 200px; }
+.recall-answer { overflow: hidden; }
+.recall-answer p {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: var(--pale-wash);
+  font-size: 1.12rem;
+  line-height: 1.5;
+}
+.recall-show { width: 100%; }
+.recall-done { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 28px 18px; border-radius: var(--radius-xl); text-align: center; }
+.recall-done .result-actions { margin-top: 14px; width: 100%; flex-direction: column; }
+
+/* ---------- Report ---------- */
+.report-btn {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  color: var(--text-3);
+  flex: none;
+  margin-left: auto;
+}
+.combo + .report-btn { margin-left: 8px; }
+.report-btn.is-compact { width: 28px; height: 28px; margin-left: 4px; }
+.report-btn:hover { color: var(--red-ink); }
+.recall-meta, .faq-a-head { display: flex; align-items: flex-start; gap: 8px; }
+.faq-a-head p { flex: 1; }
+.verse-share { margin-left: auto; }
+.verse-share + .report-btn { margin-left: 6px; }
+.report-form, .report-done { display: flex; flex-direction: column; gap: 12px; }
+.report-form p { margin: 0; }
+.report-cats { display: flex; flex-wrap: wrap; gap: 8px; }
+.report-cat {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--line);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-2);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+.report-cat.is-on { background: var(--red-wash); color: var(--red-ink); box-shadow: inset 0 0 0 1.5px var(--red-ink); }
+.report-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line-strong);
+  background: var(--bg-3);
+  color: var(--text);
+  font: inherit;
+  resize: vertical;
+}
+.report-done { align-items: center; text-align: center; padding: 8px 0; }
+.report-done p { margin: 0; }
+.report-done-icon { width: 56px; height: 56px; border-radius: 18px; }
+.btn:disabled { opacity: 0.45; }

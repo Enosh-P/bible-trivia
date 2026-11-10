@@ -7,6 +7,8 @@ import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 import type { RoundResult } from './Game';
+import { ReportButton } from '../components/Report';
+import { questionTarget } from '../online/reports';
 
 export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; xp: number; onAgain: () => void; onHome: () => void }) {
   const t = useT();
@@ -86,6 +88,7 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
                 {formatRef(lang, l.q.book, l.q.chapter, l.q.verse, l.q.verseEnd)}
               </span>
             </div>
+            <ReportButton target={questionTarget(l.q)} compact />
           </motion.li>
         ))}
       </ul>

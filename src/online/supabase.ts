@@ -99,10 +99,3 @@ export async function syncQuestions(): Promise<number> {
 
   return total;
 }
-
-/** Lets a player flag a confusing or wrong question. */
-export async function reportQuestion(questionId: string, lang: 'en' | 'ta', reason: string): Promise<boolean> {
-  if (!supabase) return false;
-  const { error } = await supabase.from('question_reports').insert({ question_id: questionId, lang, reason: reason.slice(0, 500) });
-  return !error;
-}

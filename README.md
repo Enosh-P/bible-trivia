@@ -80,6 +80,21 @@ These rules were tested against Postgres 16, including that other people's rows 
 
 **Adding content later:** edit `content/*.json`, run `npm test`, then `npm run db:seed-sql` and re-run `seed.sql`. Or edit rows in the Supabase table editor: the app pulls questions changed since its last sync on startup.
 
+## Human-written questions (main source)
+
+**Recall mode** uses about **17,000 human-written questions with answers, covering every chapter of the Bible**: unfoldingWord® Translation Questions, written by Bible translators to check understanding of each chapter. They're stored one file per book in `public/packs/uw/`, downloaded when a player first opens that book, then kept offline. Refresh them with `npm run content:uw`.
+
+These are English only for now. Tamil versions, and multiple-choice versions with options, are the small "generated" part. Each one is checked by a person before it is published.
+
+Credit: *original work by unfoldingWord, available from unfoldingword.org/utq, CC BY-SA 4.0* (shown in the app).
+
+## Reports from players
+
+Every question, Recall card, FAQ answer and the Verse of the Day has a flag button. Players pick what's wrong (wrong answer, typo, Tamil translation, confusing, other) and can add a comment and contact details.
+- **With Supabase:** reports are stored in `question_reports` and emailed to the admin. Setup is in `supabase/functions/report-email/README.md`. Open reports: `select * from open_reports;`
+- **Offline:** reports wait on the phone and are sent when it's back online.
+- **Without Supabase:** set `VITE_ADMIN_EMAIL` in `.env` and the flag opens the email app with the report already filled in.
+
 ## Growing the question bank (10,000+)
 
 **Supabase is the source of truth.** The app ships about 70 starter questions so it works offline from the first launch, then downloads every published question from the database in the background and keeps them offline.

@@ -1,5 +1,6 @@
 import { AnimatePresence, animate, motion, useMotionValue, useTransform, type PanInfo } from 'motion/react';
 import { useEffect, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { project, spring } from '../motion/springs';
 
 /**
@@ -24,7 +25,9 @@ export function Sheet({ open, onClose, children, label }: { open: boolean; onClo
     else animate(y, 0, { ...spring.sheet, velocity: info.velocity.y });
   }
 
-  return (
+  // Rendered at the top of the page: a moving parent (screen transitions use
+  // transforms) would otherwise carry the fixed-position sheet along with it.
+  return createPortal(
     <AnimatePresence>
       {open && (
         <div className="sheet-root" role="dialog" aria-modal="true" aria-label={label}>
@@ -53,6 +56,7 @@ export function Sheet({ open, onClose, children, label }: { open: boolean; onClo
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   );
 }

@@ -30,6 +30,8 @@ export const db = new Dexie('bible-trivia') as Dexie & {
   remoteQuestions: EntityTable<Question, 'id'>;
   /** Question ids reviewers took out of circulation (also hides bundled ones). */
   withdrawn: EntityTable<{ id: string }, 'id'>;
+  /** Reports made offline, sent when the device is back online. */
+  pendingReports: EntityTable<{ id?: number; report: unknown; at: number }, 'id'>;
 };
 
 db.version(1).stores({
@@ -41,6 +43,9 @@ db.version(2).stores({
 });
 db.version(3).stores({
   withdrawn: 'id',
+});
+db.version(4).stores({
+  pendingReports: '++id, at',
 });
 
 /** Question ids answered wrong (and not answered right since). */

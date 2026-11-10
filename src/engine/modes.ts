@@ -11,7 +11,8 @@ export type ModeId =
   | 'blank'
   | 'study'
   | 'speed'
-  | 'survival';
+  | 'survival'
+  | 'recall';
 
 export interface ModeDef {
   id: ModeId;
@@ -48,6 +49,8 @@ export const MODES: Record<ModeId, ModeDef> = {
   study: { id: 'study', horse: 'pale', types: [...MC, 'tf'], length: 10, perQuestion: 0, study: true },
   speed: { id: 'speed', horse: 'red', types: [...MC, 'tf'], length: Infinity, perQuestion: 0, roundSeconds: 60 },
   survival: { id: 'survival', horse: 'red', types: [...MC, 'tf'], length: Infinity, perQuestion: 15, lives: 3 },
+  // Recall uses its own screen and the human-written question packs, not this engine.
+  recall: { id: 'recall', horse: 'pale', types: [], length: 15, perQuestion: 0, study: true },
 };
 
-export const MODE_ORDER: ModeId[] = ['classic', 'truefalse', 'who', 'book', 'blank', 'speed', 'survival', 'study'];
+export const MODE_ORDER: ModeId[] = ['recall', 'classic', 'truefalse', 'who', 'book', 'blank', 'speed', 'survival', 'study'];

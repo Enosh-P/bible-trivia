@@ -17,6 +17,8 @@ import { TimerRing } from '../components/TimerRing';
 import { ArtSticker } from '../components/ArtSticker';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 import { VerseText } from '../components/VerseCard';
+import { ReportButton } from '../components/Report';
+import { questionTarget } from '../online/reports';
 import { verseForQuestion } from '../engine/verses';
 
 export interface AnswerLog {
@@ -225,6 +227,7 @@ export function Game({ modeId, onExit, onDone }: { modeId: ModeId; onExit: () =>
                   ×{combo}
                 </motion.span>
               )}
+              <ReportButton target={questionTarget(q)} />
             </div>
 
             {q.art && <ArtSticker name={q.art} />}

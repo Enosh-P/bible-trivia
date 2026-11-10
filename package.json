@@ -14,7 +14,8 @@
     "q:submit": "node scripts/generate-questions.mjs submit",
     "q:collect": "node scripts/generate-questions.mjs collect",
     "db:import": "node scripts/import-to-supabase.mjs",
-    "db:export": "node scripts/export-from-supabase.mjs"
+    "db:export": "node scripts/export-from-supabase.mjs",
+    "content:uw": "node scripts/import-unfoldingword.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {

@@ -50,6 +50,9 @@ Follow these so every screen feels like the same app. Motion and material rules 
 - Every UI string lives in `src/i18n/strings.ts` in **both** `en` and `ta`. TypeScript enforces this.
 
 ## Content
+- **Prefer human-written sources.** The main source is unfoldingWord Translation Questions (`public/packs/uw/`, Recall mode). Generated content (Tamil translations, multiple-choice options) is the smaller part and always goes to review first.
+- Every question-like item must show a `ReportButton` (`src/components/Report.tsx`) with a target from `src/online/reports.ts`.
+- Sheets and overlays render through a portal (see `Sheet`). A transformed parent breaks `position: fixed`.
 - **Supabase is the source of truth** for questions. `content/books/*.json` holds new questions waiting to be imported, plus backups (`npm run db:export`). Never overwrite reviewed rows; the importer only inserts new ids.
 - New questions always start as `status: "review"`. Only a human reviewer publishes, because the Tamil needs a native reader.
 - Never copy questions from other apps or websites. Use original or openly licensed content only, and record `attribution` and `license` for imported content.

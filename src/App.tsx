@@ -10,6 +10,7 @@ import { Home } from './screens/Home';
 import { Daily } from './screens/Daily';
 import { Progress } from './screens/Progress';
 import { Gospel } from './screens/Gospel';
+import { Recall } from './screens/Recall';
 import { Settings } from './screens/Settings';
 import { Game, type RoundResult } from './screens/Game';
 import { Results } from './screens/Results';
@@ -17,10 +18,11 @@ import type { ModeId } from './engine/modes';
 import { dayKey } from './engine/picker';
 import { db } from './storage/db';
 import { syncQuestions } from './online/supabase';
+import { flushReports } from './online/reports';
 import { useApp, useT } from './store';
 import { spring } from './motion/springs';
 
-type Route = { kind: 'tab'; tab: Tab } | { kind: 'game'; mode: ModeId; run: number } | { kind: 'result'; result: RoundResult; xp: number };
+type Route = { kind: 'tab'; tab: Tab } | { kind: 'recall' } | { kind: 'game'; mode: ModeId; run: number } | { kind: 'result'; result: RoundResult; xp: number };
 
 /** Applies theme, text size and the Chromium-only refraction flag to <html>. */
 function useDocumentSettings() {
@@ -89,9 +91,13 @@ function MainApp() {
   // Background content sync (no-op until Supabase is configured).
   useEffect(() => {
     void syncQuestions().catch(() => {});
+    void flushReports().catch(() => {});
+    const online = () => void flushReports().catch(() => {});
+    window.addEventListener('online', online);
+    return () => window.removeEventListener('online', online);
   }, []);
 
-  const play = (mode: ModeId) => setRoute({ kind: 'game', mode, run: Date.now() });
+  const play = (mode: ModeId) => setRoute(mode === 'recall' ? { kind: 'recall' } : { kind: 'game', mode, run: Date.now() });
 
   function onDone(result: RoundResult) {
     const xp = result.score + (result.mode === 'daily' ? 25 : 0);
@@ -108,7 +114,7 @@ function MainApp() {
   };
 
   // Spatial consistency: the game slides in from the right and leaves the same way.
-  const key = route.kind === 'tab' ? `tab-${route.tab}` : route.kind === 'game' ? `game-${route.run}` : 'result';
+  const key = route.kind === 'tab' ? `tab-${route.tab}` : route.kind === 'game' ? `game-${route.run}` : route.kind;
   const pushed = route.kind !== 'tab';
 
   return (
@@ -129,6 +135,7 @@ function MainApp() {
             {route.kind === 'tab' && route.tab === 'gospel' && <Gospel />}
             {route.kind === 'tab' && route.tab === 'progress' && <Progress />}
             {route.kind === 'tab' && route.tab === 'settings' && <Settings />}
+            {route.kind === 'recall' && <Recall onExit={() => goTab(lastTab)} />}
             {route.kind === 'game' && <Game modeId={route.mode} onExit={() => goTab(lastTab)} onDone={onDone} />}
             {route.kind === 'result' && (
               <Results result={route.result} xp={route.xp} onAgain={() => play(route.result.mode)} onHome={() => goTab(lastTab)} />

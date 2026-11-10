@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  define: {
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version ?? 'dev'),
+  },
   plugins: [
     react(),
     VitePWA({
@@ -29,6 +32,15 @@ export default defineConfig({
       workbox: {
         // Question packs are bundled JS, so the whole app (fonts included) works offline.
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // Human-written question packs (one file per book) are downloaded when
+        // first used and then kept for offline play.
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.startsWith('/packs/'),
+            handler: 'StaleWhileRevalidate',
+            options: { cacheName: 'question-packs', expiration: { maxEntries: 100 } },
+          },
+        ],
       },
     }),
   ],
