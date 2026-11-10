@@ -69,6 +69,7 @@
 }
 
 /* ---------- Home ---------- */
+.home-top { display: flex; flex-direction: column; gap: 12px; }
 .home-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
 .stat-row { display: grid; grid-template-columns: auto 1fr; gap: 12px; }
 .stat {
@@ -667,13 +668,18 @@
   .app { max-width: none; margin-left: var(--sidebar-w); }
   .app.is-pushed { margin-left: 0; }
   .screen {
-    max-width: 1080px;
+    max-width: 880px;
     margin: 0 auto;
-    padding: 36px 40px 48px;
-    gap: 20px;
+    padding: 32px 32px 48px;
+    gap: 16px;
   }
-  .mode-grid { grid-template-columns: repeat(4, 1fr); }
-  .stat-row { grid-template-columns: repeat(2, minmax(0, 320px)); }
+  .display { font-size: 2rem; }
+  /* Today's challenge and the verse side by side instead of two wide strips */
+  .home-top { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+  .home-top .daily-card { height: 100%; }
+  .mode-grid { grid-template-columns: repeat(3, 1fr); }
+  .mode-card { min-height: 0; padding: 14px; }
+  .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stat-grid { max-width: 720px; }
   .recall-books { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
   .book-grid { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); }
@@ -686,7 +692,7 @@
 }
 
 @media (min-width: 1280px) {
-  .mode-grid { grid-template-columns: repeat(5, 1fr); }
+  .mode-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* ---------- Phone density ----------

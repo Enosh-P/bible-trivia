@@ -47,9 +47,10 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
         </div>
       </div>
 
-      <DailyCard onPlay={() => onPlay('daily')} />
-
-      <VerseOfTheDay />
+      <div className="home-top">
+        <DailyCard onPlay={() => onPlay('daily')} />
+        <VerseOfTheDay />
+      </div>
 
       <h2 className="eyebrow section-title">{t.modes}</h2>
       <div className="mode-grid">
