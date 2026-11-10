@@ -19,6 +19,8 @@ Every report a player sends is stored in `question_reports` and emailed to the a
 
 Test it by tapping the flag on any question in the app.
 
+The function finds the project's secret key by itself (`SUPABASE_SECRET_KEYS`, provided by Supabase), so there's no key to copy for that.
+
 ## Handling reports
 
 - Open reports: SQL editor → `select * from open_reports;`

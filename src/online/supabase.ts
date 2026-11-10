@@ -3,10 +3,12 @@ import type { Question } from '../engine/types';
 import { db } from '../storage/db';
 
 const url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
-const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
+// The publishable key (sb_publishable_...) is meant to be public; row level
+// security decides what it can do. The legacy anon key still works as a fallback.
+const publishableKey = (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? import.meta.env.VITE_SUPABASE_ANON_KEY) as string | undefined;
 
-/** null until VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set. The app works fully without it. */
-export const supabase: SupabaseClient | null = url && anonKey ? createClient(url, anonKey) : null;
+/** null until VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY are set. The app works fully without it. */
+export const supabase: SupabaseClient | null = url && publishableKey ? createClient(url, publishableKey) : null;
 
 const SYNC_KEY = 'bt-questions-synced-at';
 

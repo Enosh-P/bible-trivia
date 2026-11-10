@@ -54,16 +54,18 @@ The app works fully offline from the bundled JSON. Supabase is where content gro
 
 **One-time setup**
 1. Create a project at supabase.com (the free tier is plenty).
-2. **SQL Editor** → run each file in `supabase/migrations/` in order:
-   - `20261110000000_init.sql`: books, questions, profiles, answers, daily results, reports, security rules, `daily_leaderboard()`
-   - `20261110000100_verses_gospel.sql`: verses, gospel steps, FAQ, reading sources
-3. Run `npm run db:seed-sql`, then run the generated `supabase/seed.sql` in the SQL Editor. It is safe to re-run; it updates rows instead of duplicating them.
-4. **Project Settings → API**: copy the Project URL and the `anon` public key into `.env`:
-   ```
-   VITE_SUPABASE_URL=https://xxxx.supabase.co
-   VITE_SUPABASE_ANON_KEY=eyJ...
-   ```
-   The anon key is safe in the app; row-level security decides what it can do. **Never** put the `service_role` key in the app or the repo.
+2. **SQL Editor** → run each file in `supabase/migrations/` in order (init, verses_gospel, content_workflow, reports).
+3. Run the generated `supabase/seed.sql` in the SQL Editor (`npm run db:seed-sql` rebuilds it). It is safe to re-run; it updates rows instead of duplicating them.
+4. **Environment variables:** copy `.env.example` to `.env.local` and fill it in from Supabase → Project Settings → API Keys:
+
+   | Variable | Where it's used | Value |
+   |---|---|---|
+   | `VITE_SUPABASE_URL` | the app | Project URL, `https://<ref>.supabase.co` |
+   | `VITE_SUPABASE_PUBLISHABLE_KEY` | the app | `sb_publishable_...`, safe to be public |
+   | `SUPABASE_URL` | scripts on your computer | same Project URL |
+   | `SUPABASE_SECRET_KEY` | scripts on your computer | `sb_secret_...`. **Never** in the app, the repo, or a `VITE_` variable |
+
+   On a hosting service (Vercel, Netlify, Cloudflare Pages), add the two `VITE_` variables in its environment settings. They're built into the page at build time.
 
 (With the Supabase CLI instead: `supabase link`, then `supabase db push`.)
 
@@ -109,9 +111,9 @@ npm run q:collect                               # once the batch has finished (u
 ```
 Each question is checked automatically: both languages, four distinct options, a valid book, chapter and verse, Tamil script present, and no repeats. New questions are saved to `content/books/<BOOK>.json` as `status: "review"`. Rejected ones go to `.generator/` with the reason. Running `submit` again only asks for what's still missing.
 
-**2. Import into Supabase** (service-role key from Project Settings → API; keep it out of git):
+**2. Import into Supabase** (reads `SUPABASE_URL` and `SUPABASE_SECRET_KEY` from `.env.local`):
 ```bash
-SUPABASE_URL=https://xxxx.supabase.co SUPABASE_SERVICE_ROLE_KEY=... npm run db:import
+npm run db:import
 ```
 Only new questions are added. Questions already in the database are never overwritten, so reviewers' fixes are safe.
 

@@ -7,7 +7,7 @@
 //   REPORT_FROM     optional sender, e.g. "Bible Trivia <reports@yourdomain.com>"
 //                   (defaults to Resend's test sender, which can only mail your own address)
 //   WEBHOOK_SECRET  any long random string; also set as the webhook's x-webhook-secret header
-// SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are provided automatically.
+// SUPABASE_URL and SUPABASE_SECRET_KEYS (or the legacy SUPABASE_SERVICE_ROLE_KEY) are provided automatically.
 
 interface Report {
   id: number;
@@ -51,6 +51,17 @@ function render(r: Report): { subject: string; html: string; text: string } {
   return { subject, html, text };
 }
 
+/** The project's default secret key (new format), or the legacy service_role key. */
+function secretKey(): string | undefined {
+  try {
+    const keys = JSON.parse(Deno.env.get('SUPABASE_SECRET_KEYS') ?? '{}') as Record<string, string>;
+    if (keys.default) return keys.default;
+  } catch {
+    /* not set */
+  }
+  return Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? undefined;
+}
+
 Deno.serve(async (req) => {
   if (req.method !== 'POST') return new Response('method not allowed', { status: 405 });
   const secret = Deno.env.get('WEBHOOK_SECRET');
@@ -83,11 +94,12 @@ Deno.serve(async (req) => {
 
   // Record that the admin was told.
   const url = Deno.env.get('SUPABASE_URL');
-  const service = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-  if (url && service) {
+  const secret = secretKey();
+  if (url && secret) {
     await fetch(`${url}/rest/v1/question_reports?id=eq.${report.id}`, {
       method: 'PATCH',
-      headers: { apikey: service, Authorization: `Bearer ${service}`, 'Content-Type': 'application/json' },
+      // New secret keys are not JWTs: send them in the apikey header only.
+      headers: { apikey: secret, 'Content-Type': 'application/json' },
       body: JSON.stringify({ emailed_at: new Date().toISOString() }),
     }).catch(() => {});
   }

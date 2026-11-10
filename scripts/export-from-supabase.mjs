@@ -3,15 +3,16 @@
 // reviewers' edits and statuses, so git always has a copy and the generator
 // does not repeat questions that exist only in the database.
 //
-//   SUPABASE_URL=… SUPABASE_SERVICE_ROLE_KEY=… node scripts/export-from-supabase.mjs
+//   npm run db:import / db:export reads .env.local, or: SUPABASE_URL=… SUPABASE_SECRET_KEY=… node scripts/export-from-supabase.mjs
 
 import { createClient } from '@supabase/supabase-js';
 import { mkdirSync, writeFileSync } from 'node:fs';
 
 const url = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
-const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+// Secret key (sb_secret_...); the legacy service_role key also works.
+const key = process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !key) {
-  console.error('Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.');
+  console.error('Set SUPABASE_URL and SUPABASE_SECRET_KEY in .env.local (Supabase → Project Settings → API Keys).');
   process.exit(1);
 }
 const db = createClient(url, key, { auth: { persistSession: false } });

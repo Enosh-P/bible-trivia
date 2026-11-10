@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // Imports content/books/*.json into Supabase, plus the per-book targets.
 //
-//   SUPABASE_URL=… SUPABASE_SERVICE_ROLE_KEY=… node scripts/import-to-supabase.mjs [--books GEN,EXO] [--dry-run]
+//   npm run db:import / db:export reads .env.local, or: SUPABASE_URL=… SUPABASE_SECRET_KEY=… node scripts/import-to-supabase.mjs [--books GEN,EXO] [--dry-run]
 //
 // The database is the source of truth: questions that already exist there are
 // left untouched (reviewers may have edited or published them). Only new ids
 // are inserted, always as status 'review'.
-// The service-role key bypasses security rules: keep it in your shell or an
+// The secret key bypasses security rules: keep it in your shell or an
 // untracked .env.local file, never in the app or the repo.
 
 import { createClient } from '@supabase/supabase-js';
@@ -21,9 +21,10 @@ const dryRun = args.includes('--dry-run');
 const only = args.includes('--books') ? args[args.indexOf('--books') + 1].split(',').map((s) => s.toUpperCase()) : null;
 
 const url = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
-const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+// Secret key (sb_secret_...); the legacy service_role key also works.
+const key = process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!dryRun && (!url || !key)) {
-  console.error('Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY (Supabase → Project Settings → API).');
+  console.error('Set SUPABASE_URL and SUPABASE_SECRET_KEY in .env.local (Supabase → Project Settings → API Keys).');
   process.exit(1);
 }
 
