@@ -54,7 +54,7 @@ export function Settings() {
 
       {install !== 'unavailable' && (
         <Pressable
-          className="install-card glass glass-thick liquid"
+          className="install-card glass"
           disabled={install === 'installed'}
           onClick={() => (install === 'native' ? promptInstall() : setIosOpen(true))}
         >
@@ -107,8 +107,8 @@ export function Settings() {
             value={s.theme}
             onChange={(v) => s.set({ theme: v })}
             options={[
-              { v: 'dark', label: t.themeDark },
               { v: 'light', label: t.themeLight },
+              { v: 'dark', label: t.themeDark },
               { v: 'system', label: t.themeSystem },
             ]}
           />

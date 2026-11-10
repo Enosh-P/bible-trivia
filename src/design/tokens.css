@@ -1,103 +1,117 @@
 /*
- * Design tokens — "Four Horsemen" on cold grey (Revelation 6:1–8).
+ * Design tokens. Solid colours only: no gradients on cards or buttons.
  *
- * Base: cool blue-grey steel. Accents: the four horses.
- *   white  — conquest (bow, crown)      → primary, Classic, Daily
- *   red    — war (sword), "fiery red"   → wrong answers, Speed, Survival
- *   black  — famine (scales)            → True/False, Which Book
- *   pale   — Gk. chlōros, pale green    → correct answers, Who Said It, Fill Blank, Study
+ * Base: cold light grey (light, the default) / cold charcoal (dark).
+ * Accent: green, close to Supabase's #3ECF8E, for primary actions, correct
+ * answers, toggles and active states.
+ * Icon accents: the four horsemen of Revelation 6, on small icon tiles only.
+ *   white → Classic, Daily · red → wrong answers, Speed, Survival
+ *   black → True/False, Which Book · pale (green) → Recall, Who Said It, Study
  *
  * Each horse has three tokens:
  *   --{h}       the hue itself (fills, rings, bars)
  *   --{h}-ink   line-icon stroke colour, tuned for legibility on this theme
- *   --{h}-wash  icon tile / tinted surface background
+ *   --{h}-wash  icon tile background (a flat tint)
  */
 
 :root,
-:root[data-theme='dark'] {
-  color-scheme: dark;
-
-  /* Cold grey steel */
-  --bg: #0d1015;
-  --bg-2: #131820;
-  --bg-3: #1a2029;
-  --surface: rgb(30 37 48 / 0.55);
-  --surface-strong: rgb(30 37 48 / 0.78);
-  --line: rgb(190 205 225 / 0.1);
-  --line-strong: rgb(190 205 225 / 0.18);
-  --edge-light: rgb(235 242 250 / 0.14); /* top highlight on glass */
-  --text: #e7ecf2;
-  --text-2: #9ba6b5;
-  --text-3: #687384;
-
-  /* White horse */
-  --white: #eef2f6;
-  --white-ink: #f4f7fa;
-  --white-wash: rgb(238 242 246 / 0.1);
-  /* Red horse */
-  --red: #e0493e;
-  --red-ink: #ff7366;
-  --red-wash: rgb(224 73 62 / 0.16);
-  /* Black horse — a black tile with a silver stroke so it stays visible on grey */
-  --black: #050608;
-  --black-ink: #c9d2de;
-  --black-wash: #050608;
-  /* Pale horse */
-  --pale: #8fbfa3;
-  --pale-ink: #a9d8bc;
-  --pale-wash: rgb(143 191 163 / 0.16);
-
-  --correct: var(--pale);
-  --wrong: var(--red);
-  --focus: var(--pale-ink);
-
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
-  --shadow-md: 0 8px 24px rgb(0 0 0 / 0.35), 0 1px 2px rgb(0 0 0 / 0.3);
-  --shadow-lg: 0 24px 60px rgb(0 0 0 / 0.5), 0 2px 6px rgb(0 0 0 / 0.3);
-  --aurora-opacity: 0.55;
-  --grain-opacity: 0.05;
-}
-
 :root[data-theme='light'] {
   color-scheme: light;
 
-  --bg: #e6eaef;
-  --bg-2: #eef1f5;
-  --bg-3: #f6f8fa;
-  --surface: rgb(255 255 255 / 0.26);
-  --surface-strong: rgb(255 255 255 / 0.38);
-  --line: rgb(40 55 75 / 0.1);
-  --line-strong: rgb(40 55 75 / 0.18);
-  --edge-light: rgb(255 255 255 / 0.85);
-  --text: #121821;
-  --text-2: #4f5a69;
-  --text-3: #7a8494;
+  /* Cold light grey */
+  --bg: #f1f3f5;
+  --bg-2: #e9ecef;
+  --bg-3: #ffffff;
+  --card: #ffffff;
+  --card-hover: #f8f9fa;
+  --surface: #ffffff;
+  --surface-strong: rgb(255 255 255 / 0.92); /* floating bars and sheets only */
+  --line: #e3e7eb;
+  --line-strong: #cfd5db;
+  --text: #11181c;
+  --text-2: #5c656d;
+  --text-3: #889096;
 
+  /* Green accent */
+  --accent: #3ecf8e;
+  --accent-hover: #34b27b;
+  --accent-ink: #1e8a5a; /* green text and icons on light backgrounds */
+  --accent-wash: #e6f8ef;
+  --on-accent: #0b2a1c; /* text on green buttons */
+
+  /* Horses (icon tiles) */
   --white: #ffffff;
-  --white-ink: #6b7686; /* a white icon needs a grey stroke on a white tile */
+  --white-ink: #5c656d;
   --white-wash: #ffffff;
-  --red: #c9362c;
-  --red-ink: #c0352b;
-  --red-wash: rgb(201 54 44 / 0.12);
-  --black: #0b0d11;
-  --black-ink: #dfe5ee;
-  --black-wash: #0b0d11;
-  --pale: #5f9a78;
-  --pale-ink: #3f7d5a;
-  --pale-wash: rgb(95 154 120 / 0.16);
+  --red: #e5484d;
+  --red-ink: #ce2c31;
+  --red-wash: #feeceb;
+  --black: #11181c;
+  --black-ink: #e3e7eb;
+  --black-wash: #11181c;
+  --pale: var(--accent);
+  --pale-ink: var(--accent-ink);
+  --pale-wash: var(--accent-wash);
 
-  --shadow-sm: 0 1px 2px rgb(20 30 45 / 0.08);
-  --shadow-md: 0 8px 24px rgb(20 30 45 / 0.1), 0 1px 2px rgb(20 30 45 / 0.08);
-  --shadow-lg: 0 24px 60px rgb(20 30 45 / 0.16), 0 2px 6px rgb(20 30 45 / 0.08);
-  --aurora-opacity: 0.4;
-  --grain-opacity: 0.04;
+  --correct: var(--accent);
+  --wrong: var(--red);
+  --focus: var(--accent-ink);
+
+  --shadow-sm: 0 1px 2px rgb(17 24 28 / 0.06);
+  --shadow-md: 0 1px 2px rgb(17 24 28 / 0.05), 0 2px 8px rgb(17 24 28 / 0.05);
+  --shadow-lg: 0 8px 28px rgb(17 24 28 / 0.12), 0 1px 3px rgb(17 24 28 / 0.08);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Cold charcoal */
+  --bg: #111417;
+  --bg-2: #171b1f;
+  --bg-3: #1d2226;
+  --card: #1a1e22;
+  --card-hover: #20252a;
+  --surface: #1a1e22;
+  --surface-strong: rgb(26 30 34 / 0.92);
+  --line: #2a3036;
+  --line-strong: #39414a;
+  --text: #ecedee;
+  --text-2: #9ba1a6;
+  --text-3: #6f777e;
+
+  --accent: #3ecf8e;
+  --accent-hover: #4fd99b;
+  --accent-ink: #3ecf8e;
+  --accent-wash: #15301f;
+  --on-accent: #0b2a1c;
+
+  --white: #ecedee;
+  --white-ink: #ecedee;
+  --white-wash: #262b30;
+  --red: #e5484d;
+  --red-ink: #ff6369;
+  --red-wash: #3b1219;
+  --black: #050608;
+  --black-ink: #c9d2de;
+  --black-wash: #050608;
+  --pale: var(--accent);
+  --pale-ink: var(--accent-ink);
+  --pale-wash: var(--accent-wash);
+
+  --correct: var(--accent);
+  --wrong: var(--red);
+  --focus: var(--accent);
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 1px 2px rgb(0 0 0 / 0.3), 0 2px 8px rgb(0 0 0 / 0.2);
+  --shadow-lg: 0 12px 32px rgb(0 0 0 / 0.45), 0 1px 3px rgb(0 0 0 / 0.3);
 }
 
 :root {
-  --radius-sm: 12px;
-  --radius-md: 18px;
-  --radius-lg: 26px;
-  --radius-xl: 34px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
 
   --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Tamil Variable', sans-serif;
   --font-tamil: 'Noto Sans Tamil Variable', system-ui, sans-serif;
@@ -107,4 +121,5 @@
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --tabbar-h: 64px;
+  --sidebar-w: 248px;
 }

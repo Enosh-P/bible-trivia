@@ -24,7 +24,7 @@ import { spring } from './motion/springs';
 
 type Route = { kind: 'tab'; tab: Tab } | { kind: 'recall' } | { kind: 'game'; mode: ModeId; run: number } | { kind: 'result'; result: RoundResult; xp: number };
 
-/** Applies theme, text size and the Chromium-only refraction flag to <html>. */
+/** Applies theme and text size to <html>. */
 function useDocumentSettings() {
   const theme = useApp((s) => s.theme);
   const textScale = useApp((s) => s.textScale);
@@ -35,7 +35,7 @@ function useDocumentSettings() {
     const apply = () => {
       const resolved = theme === 'system' ? (mq.matches ? 'light' : 'dark') : theme;
       document.documentElement.dataset.theme = resolved;
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolved === 'light' ? '#e6eaef' : '#0d1015');
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolved === 'light' ? '#f1f3f5' : '#111417');
     };
     apply();
     mq.addEventListener('change', apply);
@@ -46,11 +46,6 @@ function useDocumentSettings() {
     document.documentElement.style.setProperty('--text-scale', String(textScale));
     document.documentElement.lang = uiLang;
   }, [textScale, uiLang]);
-
-  useEffect(() => {
-    const brands = (navigator as Navigator & { userAgentData?: { brands: { brand: string }[] } }).userAgentData?.brands ?? [];
-    if (brands.some((b) => b.brand === 'Chromium')) document.documentElement.classList.add('liquid-ok');
-  }, []);
 }
 
 export default function App() {

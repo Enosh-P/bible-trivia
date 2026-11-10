@@ -375,7 +375,7 @@ function TrueFalseCard({ q, primary, secondary, answered, onAnswer }: { q: Quest
   return (
     <div className="tf">
       <motion.div
-        className={`tf-card glass glass-thick ${resultClass}`}
+        className={`tf-card glass ${resultClass}`}
         style={{ x, rotate }}
         drag={answered ? false : 'x'}
         dragElastic={0.9}
@@ -419,7 +419,7 @@ function Feedback({ q, answered, primary, last, onNext, lives }: { q: Question; 
   const verse = verseForQuestion(q);
   return (
     <motion.div
-      className={`feedback glass glass-thick ${answered.correct ? 'is-correct' : 'is-wrong'}`}
+      className={`feedback glass ${answered.correct ? 'is-correct' : 'is-wrong'}`}
       initial={{ y: 30, opacity: 0, scale: 0.97 }}
       animate={{ y: 0, opacity: 1, scale: 1 }}
       exit={{ y: 30, opacity: 0 }}

@@ -20,8 +20,8 @@ export default defineConfig({
         scope: '/',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#0d1015',
-        theme_color: '#0d1015',
+        background_color: '#f1f3f5',
+        theme_color: '#f1f3f5',
         categories: ['education', 'games', 'books'],
         icons: [
           { src: 'pwa-192.png', sizes: '192x192', type: 'image/png' },

@@ -61,7 +61,7 @@ export const useApp = create<AppState>()(
     (set) => ({
       uiLang: defaultLang(),
       qLang: defaultLang(),
-      theme: 'dark',
+      theme: 'light',
       sound: true,
       haptics: true,
       textScale: 1,
@@ -86,11 +86,13 @@ export const useApp = create<AppState>()(
     }),
     {
       name: 'bt-app',
-      version: 2,
-      // v1 let the UI and question languages differ; v2 links them.
+      version: 3,
       migrate: (persisted, version) => {
         const s = persisted as Partial<Settings>;
+        // v1 let the UI and question languages differ; v2 links them.
         if (version < 2 && s.qLang && s.qLang !== 'both') s.uiLang = s.qLang;
+        // v3: light is the new default look (dark was the old default, not a choice).
+        if (version < 3) s.theme = 'light';
         return s as AppState;
       },
     },

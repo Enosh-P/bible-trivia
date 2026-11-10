@@ -108,7 +108,7 @@ export function Recall({ onExit }: { onExit: () => void }) {
           )}
 
           {step.kind === 'done' && (
-            <div className="recall-done glass glass-thick">
+            <div className="recall-done glass">
               <IconTile horse="pale" icon={Check} size={52} />
               <h2 className="display">
                 {step.knew}/{step.knew + step.missed.length}
@@ -193,7 +193,7 @@ function Card({ card, n, total, shown, onShow, onMark }: { card: RecallCard; n: 
       <div className="bar">
         <motion.div className="bar-fill horse-pale" animate={{ width: `${((n - 1) / total) * 100}%` }} transition={spring.calm} />
       </div>
-      <motion.article className="recall-card glass glass-thick" layout transition={spring.calm}>
+      <motion.article className="recall-card glass" layout transition={spring.calm}>
         <div className="recall-meta">
           <span className="eyebrow">
             {n}/{total} · {formatRef(uiLang, card.book, card.chapter, card.verse, card.verseEnd)}

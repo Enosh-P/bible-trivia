@@ -78,8 +78,7 @@ export function DailyCard({ onPlay, big }: { onPlay: () => void; big?: boolean }
   const done = useApp((s) => s.dailyDoneOn === dayKey());
   const dailyScore = useApp((s) => s.dailyScore);
   return (
-    <Pressable className={`daily-card glass glass-thick liquid ${big ? 'is-big' : ''}`} onClick={onPlay} disabled={done}>
-      <div className="daily-glow" aria-hidden />
+    <Pressable className={`daily-card glass ${big ? 'is-big' : ''}`} onClick={onPlay} disabled={done}>
       <IconTile horse="white" icon={MODE_ICON.daily} size={big ? 56 : 46} />
       <div className="grow">
         <span className="eyebrow">{new Date().toLocaleDateString(uiLang === 'ta' ? 'ta-IN' : undefined, { weekday: 'long', day: 'numeric', month: 'short' })}</span>

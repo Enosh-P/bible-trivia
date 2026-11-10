@@ -32,7 +32,7 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
   return (
     <div className="screen results" lang={uiLang}>
       <motion.div
-        className="result-hero glass glass-thick liquid"
+        className="result-hero glass"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={spring.flick}

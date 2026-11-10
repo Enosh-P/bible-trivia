@@ -7,15 +7,15 @@ description: Design system and content rules for the Bible Trivia PWA (Tamil & E
 
 Follow these so every screen feels like the same app. Motion and material rules come from Apple's *Designing Fluid Interfaces* (see the `apple-design` skill for the reasoning).
 
-## Colour: cold grey + the Four Horsemen
-- **Never use gold or warm yellow** as a UI colour. The user explicitly rejected it.
-- Base is cold blue-grey steel. Accents are only the four horses (Revelation 6):
-  - `white`: conquest → primary, Classic, Daily
-  - `red`: war → wrong answers, Speed, Survival, streak flame
-  - `black`: the balances → True/False, Which Book (black tile with a **silver** stroke)
-  - `pale` (chlōros, pale green) → correct answers, Who Said It, Fill the Blank, Study
-- Only use tokens from `src/design/tokens.css`. Each horse has `--{h}`, `--{h}-ink`, `--{h}-wash`. Add a `.horse-{h}` class to get `--h`, `--h-ink`, `--h-wash`.
-- Correct = pale, wrong = red, always.
+## Colour: cold light grey + green, solid only
+- **Light mode is the default.** Dark is a choice in Settings.
+- **No gradients, glows or see-through cards.** Cards are solid (`.glass` = solid card, hairline border, soft shadow). Only floating chrome (tab bar, sheets, toasts) uses `.glass-thick`: near-solid with a light blur.
+- Base: cold light grey `--bg #f1f3f5`, white cards. Dark: charcoal `#111417`, cards `#1a1e22`.
+- Accent: green close to Supabase's (`--accent #3ecf8e`, text on it `--on-accent`, green text `--accent-ink`). It's used for primary buttons, correct answers, toggles and the active tab.
+- **Never use gold.** The four horse colours remain as icon-tile accents only (`--{h}`, `--{h}-ink`, `--{h}-wash`); `pale` is the accent green. Wrong = red, correct = green.
+
+## Layout
+- Mobile: bottom tab bar. Desktop (≥960px): left sidebar (`--sidebar-w`), wider grids; game, results and recall stay at a reading width (720px).
 
 ## Icons
 - Lucide line icons, `strokeWidth={STROKE}` (1.6). Never filled icon sets.
@@ -28,14 +28,9 @@ Follow these so every screen feels like the same app. Motion and material rules 
 - Friendly faces where they fit. Keep it respectful: no depictions of God or Jesus' face.
 - Add the key to the `ArtKey` type, register it in `ART`, then check it at `/?art` in dev.
 
-## Light mode
-- **No gradient colours in light mode.** Fills are flat colour. Behind the glass sit flat, solid coloured shapes (`.drops`) instead of the aurora.
-- Light glass is clear "liquid drop" glass: very transparent white (`--surface` ≈ 26%), strong blur and saturation, a bright rim, and an inner curve of light and shade made with inset shadows, not gradients.
-
-## Glass & texture
-- Surfaces use `.glass` (or `.glass-thick` for big or floating ones). Add `.liquid` to hero surfaces for Chromium refraction.
-- **Never put `filter` (including `blur(0px)`) or `opacity` animations that persist on an ancestor of a glass element.** It turns off backdrop blur. Animate `transform` and `opacity` only, and only transiently.
-- The grain and aurora live in `Atmosphere`. Don't add other full-screen moving backgrounds.
+## Surfaces
+- Animate `transform` and `opacity` only. A persisting `filter` on a parent breaks backdrop blur on floating chrome.
+- Overlays (sheets, toasts) render through a portal.
 
 ## Motion
 - Use presets from `src/motion/springs.ts`: `calm` (default, no bounce), `snappy` (press), `sheet`, `flick` (only after a gesture with momentum).

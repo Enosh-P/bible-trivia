@@ -3,7 +3,7 @@ import { BarChart3, BookHeart, Gamepad2, Settings2, Sun, type LucideIcon } from 
 import { spring } from '../motion/springs';
 import { useT } from '../store';
 import type { Horse } from '../engine/modes';
-import { STROKE } from './icons';
+import { HorseHead, IconTile, STROKE } from './icons';
 
 export type Tab = 'play' | 'daily' | 'gospel' | 'progress' | 'settings';
 
@@ -26,7 +26,12 @@ export function TabBar({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void
     settings: t.tabSettings,
   };
   return (
-    <nav className="tabbar glass glass-thick liquid" aria-label="Main">
+    <nav className="tabbar glass glass-thick" aria-label="Main">
+      {/* Shown only in the desktop sidebar */}
+      <div className="tabbar-brand">
+        <IconTile horse="black" icon={HorseHead} size={34} />
+        <span>{t.appName}</span>
+      </div>
       {TABS.map(({ id, icon: Icon, horse }) => {
         const active = tab === id;
         return (
