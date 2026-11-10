@@ -1,0 +1,937 @@
+{
+  "id": "old-testament",
+  "title": {
+    "en": "Old Testament",
+    "ta": "பழைய ஏற்பாடு"
+  },
+  "questions": [
+    {
+      "id": "gen-001",
+      "type": "mcq",
+      "book": "GEN",
+      "chapter": 1,
+      "verse": 3,
+      "verseEnd": 5,
+      "difficulty": 1,
+      "answer": 0,
+      "en": {
+        "q": "On which day did God create light?",
+        "options": [
+          "The first day",
+          "The second day",
+          "The third day",
+          "The fourth day"
+        ],
+        "explain": "God said, \"Let there be light\" — and the evening and the morning were the first day."
+      },
+      "ta": {
+        "q": "தேவன் வெளிச்சத்தை எந்த நாளில் உண்டாக்கினார்?",
+        "options": [
+          "முதலாம் நாள்",
+          "இரண்டாம் நாள்",
+          "மூன்றாம் நாள்",
+          "நான்காம் நாள்"
+        ],
+        "explain": "\"வெளிச்சம் உண்டாகக்கடவது\" என்றார்; சாயங்காலமும் விடியற்காலமுமாகி முதலாம் நாள் ஆயிற்று."
+      }
+    },
+    {
+      "id": "gen-002",
+      "type": "mcq",
+      "book": "GEN",
+      "chapter": 5,
+      "verse": 27,
+      "difficulty": 2,
+      "answer": 1,
+      "en": {
+        "q": "Who lived the longest according to the Bible?",
+        "options": [
+          "Noah",
+          "Methuselah",
+          "Adam",
+          "Enoch"
+        ],
+        "explain": "Methuselah lived 969 years."
+      },
+      "ta": {
+        "q": "வேதாகமத்தின்படி அதிக காலம் வாழ்ந்தவர் யார்?",
+        "options": [
+          "நோவா",
+          "மெத்தூசலா",
+          "ஆதாம்",
+          "ஏனோக்கு"
+        ],
+        "explain": "மெத்தூசலா 969 வருஷம் உயிரோடிருந்தான்."
+      }
+    },
+    {
+      "id": "gen-003",
+      "type": "tf",
+      "book": "GEN",
+      "chapter": 7,
+      "verse": 12,
+      "difficulty": 1,
+      "answer": true,
+      "en": {
+        "q": "During the flood, it rained for forty days and forty nights.",
+        "explain": "Rain fell upon the earth forty days and forty nights."
+      },
+      "ta": {
+        "q": "ஜலப்பிரளயத்தின்போது நாற்பது நாள் இரவும் பகலும் மழை பெய்தது.",
+        "explain": "நாற்பது நாள் இரவும் பகலும் பூமியின்மேல் பெருமழை பெய்தது."
+      }
+    },
+    {
+      "id": "gen-004",
+      "type": "who",
+      "book": "GEN",
+      "chapter": 4,
+      "verse": 9,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "\"Am I my brother's keeper?\"",
+        "options": [
+          "Abel",
+          "Cain",
+          "Seth",
+          "Lamech"
+        ],
+        "explain": "Cain said this when God asked him where Abel was."
+      },
+      "ta": {
+        "q": "\"நான் என் தம்பிக்குக் காவலாளியோ?\"",
+        "options": [
+          "ஆபேல்",
+          "காயீன்",
+          "சேத்",
+          "லாமேக்கு"
+        ],
+        "explain": "ஆபேல் எங்கே என்று தேவன் கேட்டபோது காயீன் இப்படிச் சொன்னான்."
+      }
+    },
+    {
+      "id": "gen-005",
+      "type": "mcq",
+      "book": "GEN",
+      "chapter": 37,
+      "verse": 3,
+      "difficulty": 1,
+      "answer": 2,
+      "en": {
+        "q": "Which son did Jacob give a coat of many colours?",
+        "options": [
+          "Reuben",
+          "Benjamin",
+          "Joseph",
+          "Judah"
+        ],
+        "explain": "Israel loved Joseph more than all his children and made him a coat of many colours."
+      },
+      "ta": {
+        "q": "யாக்கோபு பலவருணமான அங்கியை எந்தக் குமாரனுக்குக் கொடுத்தான்?",
+        "options": [
+          "ரூபன்",
+          "பென்யமீன்",
+          "யோசேப்பு",
+          "யூதா"
+        ],
+        "explain": "இஸ்ரவேல் தன் குமாரர் எல்லாரிலும் யோசேப்பை அதிகமாய் நேசித்து, அவனுக்குப் பலவருணமான அங்கியைச் செய்வித்தான்."
+      }
+    },
+    {
+      "id": "exo-001",
+      "type": "book",
+      "book": "EXO",
+      "chapter": 20,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "In which book are the Ten Commandments first given?",
+        "options": [
+          "Genesis",
+          "Exodus",
+          "Leviticus",
+          "Deuteronomy"
+        ],
+        "explain": "Exodus 20. They are repeated in Deuteronomy 5."
+      },
+      "ta": {
+        "q": "பத்துக் கற்பனைகள் முதன்முதலில் எந்தப் புஸ்தகத்தில் கொடுக்கப்பட்டன?",
+        "options": [
+          "ஆதியாகமம்",
+          "யாத்திராகமம்",
+          "லேவியராகமம்",
+          "உபாகமம்"
+        ],
+        "explain": "யாத்திராகமம் 20. உபாகமம் 5-இல் மறுபடியும் சொல்லப்பட்டுள்ளன."
+      }
+    },
+    {
+      "id": "exo-002",
+      "type": "mcq",
+      "book": "EXO",
+      "chapter": 7,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "How many plagues did God send on Egypt?",
+        "options": [
+          "Seven",
+          "Ten",
+          "Twelve",
+          "Forty"
+        ],
+        "explain": "Ten plagues, from water turned to blood to the death of the firstborn (Exodus 7–12)."
+      },
+      "ta": {
+        "q": "தேவன் எகிப்தின்மேல் எத்தனை வாதைகளை அனுப்பினார்?",
+        "options": [
+          "ஏழு",
+          "பத்து",
+          "பன்னிரண்டு",
+          "நாற்பது"
+        ],
+        "explain": "இரத்தமான தண்ணீர் முதல் தலைப்பிள்ளைகளின் சங்காரம் வரை பத்து வாதைகள் (யாத்திராகமம் 7–12)."
+      }
+    },
+    {
+      "id": "exo-003",
+      "type": "tf",
+      "book": "EXO",
+      "chapter": 3,
+      "verse": 2,
+      "difficulty": 1,
+      "answer": true,
+      "en": {
+        "q": "God spoke to Moses from a burning bush.",
+        "explain": "The bush burned with fire, and the bush was not consumed."
+      },
+      "ta": {
+        "q": "தேவன் எரிகிற முட்செடியிலிருந்து மோசேயோடு பேசினார்.",
+        "explain": "முட்செடி அக்கினியால் எரிந்தும், அது வெந்துபோகவில்லை."
+      },
+      "art": "bush"
+    },
+    {
+      "id": "exo-004",
+      "type": "tf",
+      "book": "EXO",
+      "chapter": 16,
+      "verse": 35,
+      "difficulty": 2,
+      "answer": true,
+      "en": {
+        "q": "The Israelites ate manna in the wilderness for forty years.",
+        "explain": "They ate manna forty years, until they came to the border of Canaan."
+      },
+      "ta": {
+        "q": "இஸ்ரவேலர் வனாந்தரத்தில் நாற்பது வருஷம் மன்னாவைப் புசித்தார்கள்.",
+        "explain": "கானான் தேசத்தின் எல்லைக்கு வருமட்டும் நாற்பது வருஷம் மன்னாவைப் புசித்தார்கள்."
+      }
+    },
+    {
+      "id": "jos-001",
+      "type": "mcq",
+      "book": "JOS",
+      "chapter": 6,
+      "difficulty": 1,
+      "answer": 0,
+      "en": {
+        "q": "Which city's walls fell after the Israelites marched around it?",
+        "options": [
+          "Jericho",
+          "Ai",
+          "Jerusalem",
+          "Nineveh"
+        ],
+        "explain": "They marched around Jericho for seven days, and the wall fell down flat."
+      },
+      "ta": {
+        "q": "இஸ்ரவேலர் சுற்றி நடந்த பின்பு எந்தப் பட்டணத்தின் அலங்கம் விழுந்தது?",
+        "options": [
+          "எரிகோ",
+          "ஆயி",
+          "எருசலேம்",
+          "நினிவே"
+        ],
+        "explain": "ஏழு நாள் எரிகோவைச் சுற்றி நடந்தார்கள்; அலங்கம் இடிந்து விழுந்தது."
+      }
+    },
+    {
+      "id": "jdg-001",
+      "type": "tf",
+      "book": "JDG",
+      "chapter": 16,
+      "verse": 17,
+      "difficulty": 1,
+      "answer": false,
+      "en": {
+        "q": "Samson's strength was in his sword.",
+        "explain": "False. Samson was a Nazarite; his strength was tied to his uncut hair."
+      },
+      "ta": {
+        "q": "சிம்சோனின் பலம் அவனுடைய பட்டயத்தில் இருந்தது.",
+        "explain": "தவறு. சிம்சோன் நசரேயனாயிருந்தான்; அவன் பலம் சிரைக்கப்படாத தலைமயிரோடு இணைந்திருந்தது."
+      }
+    },
+    {
+      "id": "rut-001",
+      "type": "who",
+      "book": "RUT",
+      "chapter": 1,
+      "verse": 16,
+      "difficulty": 2,
+      "answer": 2,
+      "en": {
+        "q": "\"Thy people shall be my people, and thy God my God.\"",
+        "options": [
+          "Naomi",
+          "Orpah",
+          "Ruth",
+          "Boaz"
+        ],
+        "explain": "Ruth said this to her mother-in-law Naomi."
+      },
+      "ta": {
+        "q": "\"உம்முடைய ஜனம் என்னுடைய ஜனம்; உம்முடைய தேவன் என்னுடைய தேவன்.\"",
+        "options": [
+          "நகோமி",
+          "ஒர்பாள்",
+          "ரூத்",
+          "போவாஸ்"
+        ],
+        "explain": "ரூத் தன் மாமியாகிய நகோமியிடம் இப்படிச் சொன்னாள்."
+      }
+    },
+    {
+      "id": "1sa-001",
+      "type": "who",
+      "book": "1SA",
+      "chapter": 3,
+      "verse": 10,
+      "difficulty": 2,
+      "answer": 1,
+      "en": {
+        "q": "\"Speak; for thy servant heareth.\"",
+        "options": [
+          "Eli",
+          "Samuel",
+          "Saul",
+          "David"
+        ],
+        "explain": "The boy Samuel answered when the LORD called him in the night."
+      },
+      "ta": {
+        "q": "\"சொல்லும், அடியேன் கேட்கிறேன்.\"",
+        "options": [
+          "ஏலி",
+          "சாமுவேல்",
+          "சவுல்",
+          "தாவீது"
+        ],
+        "explain": "இரவில் கர்த்தர் கூப்பிட்டபோது சிறுவனாகிய சாமுவேல் இப்படிப் பதில் சொன்னான்."
+      }
+    },
+    {
+      "id": "1sa-002",
+      "type": "tf",
+      "book": "1SA",
+      "chapter": 16,
+      "verse": 11,
+      "difficulty": 1,
+      "answer": false,
+      "en": {
+        "q": "David was the oldest son of Jesse.",
+        "explain": "False. David was the youngest, keeping the sheep."
+      },
+      "ta": {
+        "q": "தாவீது ஈசாயின் மூத்த குமாரன்.",
+        "explain": "தவறு. தாவீது இளையவன்; ஆடுகளை மேய்த்துக்கொண்டிருந்தான்."
+      }
+    },
+    {
+      "id": "1sa-003",
+      "type": "mcq",
+      "book": "1SA",
+      "chapter": 17,
+      "verse": 49,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "With what did David defeat Goliath?",
+        "options": [
+          "A sword",
+          "A sling and a stone",
+          "A spear",
+          "A bow"
+        ],
+        "explain": "David slung a stone and struck the Philistine in his forehead."
+      },
+      "ta": {
+        "q": "தாவீது கோலியாத்தை எதைக்கொண்டு வீழ்த்தினான்?",
+        "options": [
+          "பட்டயம்",
+          "கவணும் கல்லும்",
+          "ஈட்டி",
+          "வில்"
+        ],
+        "explain": "தாவீது கவணால் கல்லை எறிந்து, பெலிஸ்தனுடைய நெற்றியில் அடித்தான்."
+      },
+      "art": "sling"
+    },
+    {
+      "id": "1sa-004",
+      "type": "mcq",
+      "book": "1SA",
+      "chapter": 17,
+      "verse": 40,
+      "difficulty": 2,
+      "answer": 1,
+      "en": {
+        "q": "How many smooth stones did David choose from the brook?",
+        "options": [
+          "Three",
+          "Five",
+          "Seven",
+          "Twelve"
+        ],
+        "explain": "He chose five smooth stones and put them in his shepherd's bag."
+      },
+      "ta": {
+        "q": "தாவீது ஆற்றிலிருந்து எத்தனை கூழாங்கற்களைத் தெரிந்துகொண்டான்?",
+        "options": [
+          "மூன்று",
+          "ஐந்து",
+          "ஏழு",
+          "பன்னிரண்டு"
+        ],
+        "explain": "ஐந்து கூழாங்கற்களைத் தெரிந்துகொண்டு, தன் மேய்ப்பனின் பையிலே போட்டான்."
+      }
+    },
+    {
+      "id": "1ki-001",
+      "type": "mcq",
+      "book": "1KI",
+      "chapter": 3,
+      "verse": 9,
+      "difficulty": 1,
+      "answer": 2,
+      "en": {
+        "q": "What did Solomon ask God for?",
+        "options": [
+          "Riches",
+          "A long life",
+          "An understanding heart",
+          "Victory over enemies"
+        ],
+        "explain": "Solomon asked for an understanding heart to judge the people."
+      },
+      "ta": {
+        "q": "சாலொமோன் தேவனிடத்தில் எதைக் கேட்டான்?",
+        "options": [
+          "ஐசுவரியம்",
+          "நீடிய ஆயுள்",
+          "ஞானமுள்ள இருதயம்",
+          "சத்துருக்களின்மேல் ஜெயம்"
+        ],
+        "explain": "ஜனங்களை நியாயம் விசாரிக்கும்படி ஞானமுள்ள இருதயத்தைக் கேட்டான்."
+      }
+    },
+    {
+      "id": "2ki-001",
+      "type": "mcq",
+      "book": "2KI",
+      "chapter": 2,
+      "verse": 11,
+      "difficulty": 2,
+      "answer": 0,
+      "en": {
+        "q": "How was Elijah taken up to heaven?",
+        "options": [
+          "By a whirlwind, with a chariot of fire",
+          "In a dream",
+          "On a cloud",
+          "By a ladder"
+        ],
+        "explain": "A chariot of fire appeared, and Elijah went up by a whirlwind into heaven."
+      },
+      "ta": {
+        "q": "எலியா எப்படி வானத்துக்கு எடுத்துக்கொள்ளப்பட்டான்?",
+        "options": [
+          "அக்கினி இரதத்தோடு சுழல்காற்றில்",
+          "சொப்பனத்தில்",
+          "மேகத்தின்மேல்",
+          "ஏணியின் வழியாய்"
+        ],
+        "explain": "அக்கினி இரதம் தோன்றியது; எலியா சுழல்காற்றிலே பரலோகத்துக்கு ஏறிப்போனான்."
+      }
+    },
+    {
+      "id": "est-001",
+      "type": "book",
+      "book": "EST",
+      "chapter": 4,
+      "verse": 16,
+      "difficulty": 2,
+      "answer": 1,
+      "en": {
+        "q": "Which book tells of a queen who said, \"If I perish, I perish\"?",
+        "options": [
+          "Ruth",
+          "Esther",
+          "Judges",
+          "Daniel"
+        ],
+        "explain": "Queen Esther, before going to the king to save her people."
+      },
+      "ta": {
+        "q": "\"நான் செத்தாலும் சாகிறேன்\" என்று சொன்ன ராஜஸ்திரீயைப் பற்றிச் சொல்லும் புஸ்தகம் எது?",
+        "options": [
+          "ரூத்",
+          "எஸ்தர்",
+          "நியாயாதிபதிகள்",
+          "தானியேல்"
+        ],
+        "explain": "தன் ஜனத்தைக் காப்பாற்ற ராஜாவினிடத்தில் போகுமுன் எஸ்தர் ராணி இப்படிச் சொன்னாள்."
+      }
+    },
+    {
+      "id": "job-001",
+      "type": "mcq",
+      "book": "JOB",
+      "chapter": 1,
+      "difficulty": 1,
+      "answer": 0,
+      "en": {
+        "q": "Who lost nearly everything but stayed faithful to God?",
+        "options": [
+          "Job",
+          "Jonah",
+          "Jeremiah",
+          "Joel"
+        ],
+        "explain": "\"The LORD gave, and the LORD hath taken away; blessed be the name of the LORD.\""
+      },
+      "ta": {
+        "q": "எல்லாவற்றையும் இழந்தும் தேவனுக்கு உண்மையாயிருந்தவர் யார்?",
+        "options": [
+          "யோபு",
+          "யோனா",
+          "எரேமியா",
+          "யோவேல்"
+        ],
+        "explain": "\"கர்த்தர் கொடுத்தார், கர்த்தர் எடுத்தார்; கர்த்தருடைய நாமத்துக்கு ஸ்தோத்திரம்.\""
+      }
+    },
+    {
+      "id": "psa-001",
+      "type": "blank",
+      "book": "PSA",
+      "chapter": 23,
+      "verse": 1,
+      "difficulty": 1,
+      "answer": 0,
+      "en": {
+        "q": "The LORD is my ____; I shall not want.",
+        "options": [
+          "shepherd",
+          "king",
+          "rock",
+          "light"
+        ]
+      },
+      "ta": {
+        "q": "கர்த்தர் என் ____; நான் தாழ்ச்சியடையேன்.",
+        "options": [
+          "மேய்ப்பராயிருக்கிறார்",
+          "ராஜாவாயிருக்கிறார்",
+          "கன்மலையாயிருக்கிறார்",
+          "வெளிச்சமாயிருக்கிறார்"
+        ]
+      }
+    },
+    {
+      "id": "psa-002",
+      "type": "blank",
+      "book": "PSA",
+      "chapter": 119,
+      "verse": 105,
+      "difficulty": 1,
+      "answer": 2,
+      "en": {
+        "q": "Thy word is a ____ unto my feet, and a light unto my path.",
+        "options": [
+          "sword",
+          "bread",
+          "lamp",
+          "shield"
+        ]
+      },
+      "ta": {
+        "q": "உம்முடைய வசனம் என் கால்களுக்குத் ____, என் பாதைக்கு வெளிச்சமுமாயிருக்கிறது.",
+        "options": [
+          "பட்டயமும்",
+          "அப்பமும்",
+          "தீபமும்",
+          "கேடகமும்"
+        ]
+      }
+    },
+    {
+      "id": "gen-006",
+      "type": "blank",
+      "book": "GEN",
+      "chapter": 1,
+      "verse": 1,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "In the beginning God created the heaven and the ____.",
+        "options": [
+          "sea",
+          "earth",
+          "stars",
+          "light"
+        ]
+      },
+      "ta": {
+        "q": "ஆதியிலே தேவன் வானத்தையும் ____ சிருஷ்டித்தார்.",
+        "options": [
+          "சமுத்திரத்தையும்",
+          "பூமியையும்",
+          "நட்சத்திரங்களையும்",
+          "வெளிச்சத்தையும்"
+        ]
+      }
+    },
+    {
+      "id": "dan-001",
+      "type": "mcq",
+      "book": "DAN",
+      "chapter": 6,
+      "verse": 16,
+      "difficulty": 1,
+      "answer": 0,
+      "en": {
+        "q": "Daniel was thrown into a den of what?",
+        "options": [
+          "Lions",
+          "Bears",
+          "Serpents",
+          "Wolves"
+        ],
+        "explain": "God sent his angel and shut the lions' mouths."
+      },
+      "ta": {
+        "q": "தானியேல் எதின் கெபியிலே போடப்பட்டான்?",
+        "options": [
+          "சிங்கங்களின்",
+          "கரடிகளின்",
+          "சர்ப்பங்களின்",
+          "ஓநாய்களின்"
+        ],
+        "explain": "தேவன் தம்முடைய தூதனை அனுப்பி, சிங்கங்களின் வாயைக் கட்டிப்போட்டார்."
+      },
+      "art": "lion"
+    },
+    {
+      "id": "dan-002",
+      "type": "mcq",
+      "book": "DAN",
+      "chapter": 3,
+      "verse": 23,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "How many men were thrown into the fiery furnace?",
+        "options": [
+          "Two",
+          "Three",
+          "Four",
+          "Seven"
+        ],
+        "explain": "Shadrach, Meshach and Abednego — yet the king saw four men walking in the fire."
+      },
+      "ta": {
+        "q": "எரிகிற அக்கினிச்சூளையிலே எத்தனை பேர் போடப்பட்டார்கள்?",
+        "options": [
+          "இரண்டு",
+          "மூன்று",
+          "நான்கு",
+          "ஏழு"
+        ],
+        "explain": "சாத்ராக், மேஷாக், ஆபேத்நேகோ — ஆனால் ராஜா அக்கினியில் நாலு பேர் உலாவுகிறதைக் கண்டான்."
+      }
+    },
+    {
+      "id": "jon-001",
+      "type": "mcq",
+      "book": "JON",
+      "chapter": 1,
+      "verse": 17,
+      "difficulty": 1,
+      "answer": 0,
+      "en": {
+        "q": "What swallowed Jonah?",
+        "options": [
+          "A great fish",
+          "A lion",
+          "A bear",
+          "A serpent"
+        ],
+        "explain": "Jonah was in the belly of the fish three days and three nights."
+      },
+      "ta": {
+        "q": "யோனாவை விழுங்கியது எது?",
+        "options": [
+          "ஒரு பெரிய மீன்",
+          "ஒரு சிங்கம்",
+          "ஒரு கரடி",
+          "ஒரு சர்ப்பம்"
+        ],
+        "explain": "யோனா மூன்று நாள் இரவும் பகலும் மீனின் வயிற்றில் இருந்தான்."
+      },
+      "art": "fish"
+    },
+    {
+      "id": "jon-002",
+      "type": "mcq",
+      "book": "JON",
+      "chapter": 1,
+      "verse": 3,
+      "difficulty": 1,
+      "answer": 3,
+      "en": {
+        "q": "Which prophet fled toward Tarshish instead of going to Nineveh?",
+        "options": [
+          "Elijah",
+          "Amos",
+          "Micah",
+          "Jonah"
+        ],
+        "explain": "Jonah rose up to flee unto Tarshish from the presence of the LORD."
+      },
+      "ta": {
+        "q": "நினிவேக்குப் போகாமல் தர்ஷீசுக்கு ஓடிப்போன தீர்க்கதரிசி யார்?",
+        "options": [
+          "எலியா",
+          "ஆமோஸ்",
+          "மீகா",
+          "யோனா"
+        ],
+        "explain": "யோனா கர்த்தருடைய சந்நிதியிலிருந்து தர்ஷீசுக்கு ஓடிப்போக எழுந்தான்."
+      }
+    },
+    {
+      "id": "gen-007",
+      "type": "tf",
+      "book": "GEN",
+      "chapter": 2,
+      "verse": 22,
+      "difficulty": 1,
+      "answer": true,
+      "en": {
+        "q": "Eve was made from one of Adam's ribs.",
+        "explain": "The LORD God made a woman from the rib he had taken from the man."
+      },
+      "ta": {
+        "q": "ஏவாள் ஆதாமின் விலா எலும்புகளில் ஒன்றிலிருந்து உருவாக்கப்பட்டாள்.",
+        "explain": "தேவனாகிய கர்த்தர் மனுஷனில் எடுத்த விலா எலும்பை மனுஷியாக உருவாக்கினார்."
+      }
+    },
+    {
+      "id": "pro-001",
+      "type": "book",
+      "book": "PRO",
+      "chapter": 1,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "Which book is mostly short sayings of wisdom, many from Solomon?",
+        "options": [
+          "Psalms",
+          "Proverbs",
+          "Ecclesiastes",
+          "Job"
+        ]
+      },
+      "ta": {
+        "q": "பெரும்பாலும் சாலொமோனின் ஞானமொழிகள் அடங்கிய புஸ்தகம் எது?",
+        "options": [
+          "சங்கீதம்",
+          "நீதிமொழிகள்",
+          "பிரசங்கி",
+          "யோபு"
+        ]
+      }
+    },
+    {
+      "id": "gen-008",
+      "type": "mcq",
+      "book": "GEN",
+      "chapter": 9,
+      "verse": 13,
+      "difficulty": 1,
+      "answer": 2,
+      "en": {
+        "q": "What sign of the covenant did God give Noah?",
+        "options": [
+          "A dove",
+          "A star",
+          "A rainbow",
+          "An olive leaf"
+        ],
+        "explain": "\"I do set my bow in the cloud, and it shall be for a token of a covenant.\""
+      },
+      "ta": {
+        "q": "தேவன் நோவாவுக்குக் கொடுத்த உடன்படிக்கையின் அடையாளம் எது?",
+        "options": [
+          "புறா",
+          "நட்சத்திரம்",
+          "மேகத்தில் வானவில்",
+          "ஒலிவ இலை"
+        ],
+        "explain": "\"என் வில்லை மேகத்தில் வைத்தேன்; அது உடன்படிக்கைக்கு அடையாளமாயிருக்கும்.\""
+      },
+      "art": "ark"
+    },
+    {
+      "id": "gen-009",
+      "type": "book",
+      "book": "GEN",
+      "chapter": 6,
+      "difficulty": 1,
+      "answer": 0,
+      "art": "ark",
+      "en": {
+        "q": "Which book tells the story of Noah's ark?",
+        "options": [
+          "Genesis",
+          "Exodus",
+          "Numbers",
+          "Joshua"
+        ]
+      },
+      "ta": {
+        "q": "நோவாவின் பேழையின் சரித்திரம் எந்தப் புஸ்தகத்தில் உள்ளது?",
+        "options": [
+          "ஆதியாகமம்",
+          "யாத்திராகமம்",
+          "எண்ணாகமம்",
+          "யோசுவா"
+        ]
+      }
+    },
+    {
+      "id": "dan-003",
+      "type": "book",
+      "book": "DAN",
+      "chapter": 6,
+      "difficulty": 1,
+      "answer": 3,
+      "art": "lion",
+      "en": {
+        "q": "Which book tells of a man thrown into a den of lions?",
+        "options": [
+          "Ezekiel",
+          "Jeremiah",
+          "Esther",
+          "Daniel"
+        ]
+      },
+      "ta": {
+        "q": "சிங்கங்களின் கெபியிலே போடப்பட்ட ஒருவனைப் பற்றிச் சொல்லும் புஸ்தகம் எது?",
+        "options": [
+          "எசேக்கியேல்",
+          "எரேமியா",
+          "எஸ்தர்",
+          "தானியேல்"
+        ]
+      }
+    },
+    {
+      "id": "psa-003",
+      "type": "book",
+      "book": "PSA",
+      "chapter": 23,
+      "verse": 1,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "Which book contains \"The LORD is my shepherd\"?",
+        "options": [
+          "Proverbs",
+          "Psalms",
+          "Isaiah",
+          "John"
+        ]
+      },
+      "ta": {
+        "q": "\"கர்த்தர் என் மேய்ப்பராயிருக்கிறார்\" என்ற வசனம் எந்தப் புஸ்தகத்தில் உள்ளது?",
+        "options": [
+          "நீதிமொழிகள்",
+          "சங்கீதம்",
+          "ஏசாயா",
+          "யோவான்"
+        ]
+      }
+    },
+    {
+      "id": "jos-002",
+      "type": "who",
+      "book": "JOS",
+      "chapter": 24,
+      "verse": 15,
+      "difficulty": 2,
+      "answer": 1,
+      "en": {
+        "q": "\"As for me and my house, we will serve the LORD.\"",
+        "options": [
+          "Moses",
+          "Joshua",
+          "Caleb",
+          "Gideon"
+        ],
+        "explain": "Joshua, speaking to all the tribes of Israel at Shechem."
+      },
+      "ta": {
+        "q": "\"நானும் என் வீட்டாருமோவென்றால், கர்த்தரையே சேவிப்போம்.\"",
+        "options": [
+          "மோசே",
+          "யோசுவா",
+          "காலேப்",
+          "கிதியோன்"
+        ],
+        "explain": "சீகேமில் இஸ்ரவேலின் கோத்திரங்களிடம் யோசுவா சொன்னது."
+      }
+    },
+    {
+      "id": "gen-010",
+      "type": "blank",
+      "book": "GEN",
+      "chapter": 1,
+      "verse": 3,
+      "difficulty": 1,
+      "answer": 2,
+      "en": {
+        "q": "And God said, Let there be ____: and there was light.",
+        "options": [
+          "water",
+          "life",
+          "light",
+          "land"
+        ]
+      },
+      "ta": {
+        "q": "தேவன் ____ உண்டாகக்கடவது என்றார், வெளிச்சம் உண்டாயிற்று.",
+        "options": [
+          "தண்ணீர்",
+          "ஜீவன்",
+          "வெளிச்சம்",
+          "பூமி"
+        ]
+      }
+    }
+  ]
+}

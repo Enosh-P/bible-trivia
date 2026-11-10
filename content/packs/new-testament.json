@@ -1,0 +1,910 @@
+{
+  "id": "new-testament",
+  "title": {
+    "en": "New Testament",
+    "ta": "புதிய ஏற்பாடு"
+  },
+  "questions": [
+    {
+      "id": "mat-001",
+      "type": "mcq",
+      "book": "MAT",
+      "chapter": 2,
+      "verse": 1,
+      "difficulty": 1,
+      "answer": 1,
+      "art": "star",
+      "en": {
+        "q": "In which town was Jesus born?",
+        "options": [
+          "Nazareth",
+          "Bethlehem",
+          "Jerusalem",
+          "Capernaum"
+        ],
+        "explain": "Jesus was born in Bethlehem of Judaea, in the days of Herod the king."
+      },
+      "ta": {
+        "q": "இயேசு எந்த ஊரில் பிறந்தார்?",
+        "options": [
+          "நாசரேத்",
+          "பெத்லகேம்",
+          "எருசலேம்",
+          "கப்பர்நகூம்"
+        ],
+        "explain": "ஏரோது ராஜாவின் நாட்களில் யூதேயாவிலுள்ள பெத்லகேமிலே இயேசு பிறந்தார்."
+      }
+    },
+    {
+      "id": "mat-002",
+      "type": "mcq",
+      "book": "MAT",
+      "chapter": 4,
+      "verse": 2,
+      "difficulty": 1,
+      "answer": 3,
+      "en": {
+        "q": "How many days did Jesus fast in the wilderness?",
+        "options": [
+          "Seven",
+          "Twelve",
+          "Thirty",
+          "Forty"
+        ],
+        "explain": "He fasted forty days and forty nights, and was afterward hungry."
+      },
+      "ta": {
+        "q": "இயேசு வனாந்தரத்தில் எத்தனை நாள் உபவாசித்தார்?",
+        "options": [
+          "ஏழு",
+          "பன்னிரண்டு",
+          "முப்பது",
+          "நாற்பது"
+        ],
+        "explain": "இரவும் பகலும் நாற்பது நாள் உபவாசமாயிருந்த பின்பு அவருக்குப் பசியுண்டாயிற்று."
+      }
+    },
+    {
+      "id": "mat-003",
+      "type": "mcq",
+      "book": "MAT",
+      "chapter": 10,
+      "verse": 2,
+      "difficulty": 1,
+      "answer": 2,
+      "en": {
+        "q": "How many apostles did Jesus choose?",
+        "options": [
+          "Seven",
+          "Ten",
+          "Twelve",
+          "Seventy"
+        ]
+      },
+      "ta": {
+        "q": "இயேசு எத்தனை அப்போஸ்தலரைத் தெரிந்துகொண்டார்?",
+        "options": [
+          "ஏழு",
+          "பத்து",
+          "பன்னிரண்டு",
+          "எழுபது"
+        ]
+      }
+    },
+    {
+      "id": "mat-004",
+      "type": "who",
+      "book": "MAT",
+      "chapter": 16,
+      "verse": 16,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "\"Thou art the Christ, the Son of the living God.\"",
+        "options": [
+          "John",
+          "Peter",
+          "Thomas",
+          "Andrew"
+        ],
+        "explain": "Simon Peter answered when Jesus asked, \"Whom say ye that I am?\""
+      },
+      "ta": {
+        "q": "\"நீர் ஜீவனுள்ள தேவனுடைய குமாரனாகிய கிறிஸ்து.\"",
+        "options": [
+          "யோவான்",
+          "பேதுரு",
+          "தோமா",
+          "அந்திரேயா"
+        ],
+        "explain": "\"நான் யார் என்று சொல்லுகிறீர்கள்?\" என்று இயேசு கேட்டபோது சீமோன் பேதுரு இப்படிப் பதில் சொன்னான்."
+      }
+    },
+    {
+      "id": "mat-005",
+      "type": "mcq",
+      "book": "MAT",
+      "chapter": 3,
+      "verse": 13,
+      "difficulty": 1,
+      "answer": 0,
+      "en": {
+        "q": "Who baptized Jesus in the Jordan?",
+        "options": [
+          "John the Baptist",
+          "Peter",
+          "Andrew",
+          "James"
+        ]
+      },
+      "ta": {
+        "q": "யோர்தானில் இயேசுவுக்கு ஞானஸ்நானம் கொடுத்தவர் யார்?",
+        "options": [
+          "யோவான்ஸ்நானன்",
+          "பேதுரு",
+          "அந்திரேயா",
+          "யாக்கோபு"
+        ]
+      }
+    },
+    {
+      "id": "mat-006",
+      "type": "mcq",
+      "book": "MAT",
+      "chapter": 14,
+      "verse": 29,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "Which disciple walked on the water toward Jesus?",
+        "options": [
+          "John",
+          "Peter",
+          "James",
+          "Matthew"
+        ],
+        "explain": "Peter walked on the water, but when he saw the wind he was afraid and began to sink."
+      },
+      "ta": {
+        "q": "இயேசுவினிடத்திற்குப் போக ஜலத்தின்மேல் நடந்த சீஷன் யார்?",
+        "options": [
+          "யோவான்",
+          "பேதுரு",
+          "யாக்கோபு",
+          "மத்தேயு"
+        ],
+        "explain": "பேதுரு ஜலத்தின்மேல் நடந்தான்; காற்று பலமாயிருக்கிறதைக் கண்டு பயந்து அமிழ்ந்துபோகத் தொடங்கினான்."
+      }
+    },
+    {
+      "id": "mat-007",
+      "type": "tf",
+      "book": "MAT",
+      "chapter": 14,
+      "verse": 17,
+      "difficulty": 2,
+      "answer": false,
+      "art": "loaves",
+      "en": {
+        "q": "Jesus fed the five thousand with seven loaves and two fish.",
+        "explain": "False. It was five loaves and two fish."
+      },
+      "ta": {
+        "q": "இயேசு ஏழு அப்பங்களாலும் இரண்டு மீன்களாலும் ஐயாயிரம் பேரைப் போஷித்தார்.",
+        "explain": "தவறு. ஐந்து அப்பங்களும் இரண்டு மீன்களும்."
+      }
+    },
+    {
+      "id": "mat-008",
+      "type": "tf",
+      "book": "MAT",
+      "chapter": 26,
+      "verse": 15,
+      "difficulty": 1,
+      "answer": true,
+      "en": {
+        "q": "Judas betrayed Jesus for thirty pieces of silver.",
+        "explain": "They covenanted with him for thirty pieces of silver."
+      },
+      "ta": {
+        "q": "யூதாஸ் முப்பது வெள்ளிக்காசுக்கு இயேசுவைக் காட்டிக்கொடுத்தான்.",
+        "explain": "அவர்கள் அவனுக்கு முப்பது வெள்ளிக்காசைக் கொடுக்கச் சம்மதித்தார்கள்."
+      }
+    },
+    {
+      "id": "luk-001",
+      "type": "tf",
+      "book": "LUK",
+      "chapter": 19,
+      "verse": 4,
+      "difficulty": 1,
+      "answer": true,
+      "art": "tree",
+      "en": {
+        "q": "Zacchaeus climbed a sycomore tree to see Jesus.",
+        "explain": "He was little of stature, so he ran ahead and climbed up into a sycomore tree."
+      },
+      "ta": {
+        "q": "இயேசுவைப் பார்க்கும்படி சகேயு ஒரு காட்டத்திமரத்தில் ஏறினான்.",
+        "explain": "அவன் குள்ளனாயிருந்தபடியால் முன்னாக ஓடி ஒரு காட்டத்திமரத்தில் ஏறினான்."
+      }
+    },
+    {
+      "id": "luk-002",
+      "type": "mcq",
+      "book": "LUK",
+      "chapter": 15,
+      "verse": 13,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "In the parable, what did the younger son do with his inheritance?",
+        "options": [
+          "Saved it",
+          "Wasted it in riotous living",
+          "Gave it to the poor",
+          "Buried it in a field"
+        ]
+      },
+      "ta": {
+        "q": "உவமையில் இளைய குமாரன் தன் ஆஸ்தியை என்ன செய்தான்?",
+        "options": [
+          "சேமித்து வைத்தான்",
+          "துன்மார்க்கமாய் ஜீவனம்பண்ணி அழித்தான்",
+          "ஏழைகளுக்குக் கொடுத்தான்",
+          "நிலத்தில் புதைத்து வைத்தான்"
+        ]
+      }
+    },
+    {
+      "id": "luk-003",
+      "type": "book",
+      "book": "LUK",
+      "chapter": 10,
+      "verse": 33,
+      "difficulty": 2,
+      "answer": 2,
+      "en": {
+        "q": "Which Gospel contains the parable of the Good Samaritan?",
+        "options": [
+          "Matthew",
+          "Mark",
+          "Luke",
+          "John"
+        ]
+      },
+      "ta": {
+        "q": "நல்ல சமாரியனின் உவமை எந்தச் சுவிசேஷத்தில் உள்ளது?",
+        "options": [
+          "மத்தேயு",
+          "மாற்கு",
+          "லூக்கா",
+          "யோவான்"
+        ]
+      }
+    },
+    {
+      "id": "jhn-001",
+      "type": "mcq",
+      "book": "JHN",
+      "chapter": 2,
+      "verse": 11,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "What was the first miracle Jesus did, at Cana?",
+        "options": [
+          "Walking on water",
+          "Turning water into wine",
+          "Feeding the five thousand",
+          "Healing a blind man"
+        ]
+      },
+      "ta": {
+        "q": "இயேசு கானாவில் செய்த முதலாம் அற்புதம் எது?",
+        "options": [
+          "ஜலத்தின்மேல் நடந்தது",
+          "தண்ணீரைத் திராட்சரசமாக்கியது",
+          "ஐயாயிரம் பேரைப் போஷித்தது",
+          "குருடனுக்குப் பார்வை கொடுத்தது"
+        ]
+      }
+    },
+    {
+      "id": "jhn-002",
+      "type": "tf",
+      "book": "JHN",
+      "chapter": 11,
+      "verse": 39,
+      "difficulty": 2,
+      "answer": true,
+      "en": {
+        "q": "Jesus raised Lazarus after he had been dead four days.",
+        "explain": "Martha said, \"by this time he stinketh: for he hath been dead four days.\""
+      },
+      "ta": {
+        "q": "லாசரு மரித்து நான்கு நாளான பின்பு இயேசு அவனை எழுப்பினார்.",
+        "explain": "\"அவன் மரித்து நாலுநாளாயிற்றே\" என்று மார்த்தாள் சொன்னாள்."
+      }
+    },
+    {
+      "id": "jhn-003",
+      "type": "who",
+      "book": "JHN",
+      "chapter": 20,
+      "verse": 28,
+      "difficulty": 2,
+      "answer": 2,
+      "en": {
+        "q": "\"My Lord and my God.\"",
+        "options": [
+          "Peter",
+          "Philip",
+          "Thomas",
+          "Mary Magdalene"
+        ],
+        "explain": "Thomas said this when he saw the risen Jesus."
+      },
+      "ta": {
+        "q": "\"என் ஆண்டவரே! என் தேவனே!\"",
+        "options": [
+          "பேதுரு",
+          "பிலிப்பு",
+          "தோமா",
+          "மகதலேனா மரியாள்"
+        ],
+        "explain": "உயிர்த்தெழுந்த இயேசுவைக் கண்டபோது தோமா இப்படிச் சொன்னான்."
+      }
+    },
+    {
+      "id": "jhn-004",
+      "type": "who",
+      "book": "JHN",
+      "chapter": 18,
+      "verse": 38,
+      "difficulty": 2,
+      "answer": 2,
+      "en": {
+        "q": "\"What is truth?\"",
+        "options": [
+          "Herod",
+          "Caiaphas",
+          "Pilate",
+          "Judas"
+        ]
+      },
+      "ta": {
+        "q": "\"சத்தியமாவது என்ன?\"",
+        "options": [
+          "ஏரோது",
+          "காய்பா",
+          "பிலாத்து",
+          "யூதாஸ்"
+        ]
+      }
+    },
+    {
+      "id": "jhn-005",
+      "type": "who",
+      "book": "JHN",
+      "chapter": 3,
+      "verse": 4,
+      "difficulty": 2,
+      "answer": 0,
+      "en": {
+        "q": "\"How can a man be born when he is old?\"",
+        "options": [
+          "Nicodemus",
+          "Zacchaeus",
+          "Joseph of Arimathaea",
+          "Lazarus"
+        ]
+      },
+      "ta": {
+        "q": "\"ஒரு மனுஷன் முதிர்வயதாயிருக்கையில் எப்படிப் பிறப்பான்?\"",
+        "options": [
+          "நிக்கொதேமு",
+          "சகேயு",
+          "அரிமத்தியா யோசேப்பு",
+          "லாசரு"
+        ]
+      }
+    },
+    {
+      "id": "jhn-006",
+      "type": "blank",
+      "book": "JHN",
+      "chapter": 11,
+      "verse": 35,
+      "difficulty": 1,
+      "answer": 0,
+      "en": {
+        "q": "Jesus ____.",
+        "options": [
+          "wept",
+          "prayed",
+          "smiled",
+          "slept"
+        ]
+      },
+      "ta": {
+        "q": "இயேசு ____.",
+        "options": [
+          "கண்ணீர்விட்டார்",
+          "ஜெபம்பண்ணினார்",
+          "புன்னகைத்தார்",
+          "நித்திரைபண்ணினார்"
+        ]
+      }
+    },
+    {
+      "id": "jhn-007",
+      "type": "blank",
+      "book": "JHN",
+      "chapter": 14,
+      "verse": 6,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "I am the way, the ____, and the life.",
+        "options": [
+          "grace",
+          "truth",
+          "light",
+          "peace"
+        ]
+      },
+      "ta": {
+        "q": "நானே வழியும் ____ ஜீவனுமாயிருக்கிறேன்.",
+        "options": [
+          "கிருபையும்",
+          "சத்தியமும்",
+          "ஒளியும்",
+          "சமாதானமும்"
+        ]
+      }
+    },
+    {
+      "id": "jhn-008",
+      "type": "blank",
+      "book": "JHN",
+      "chapter": 3,
+      "verse": 16,
+      "difficulty": 1,
+      "answer": 2,
+      "en": {
+        "q": "…that whosoever believeth in him should not perish, but have everlasting ____.",
+        "options": [
+          "joy",
+          "glory",
+          "life",
+          "peace"
+        ]
+      },
+      "ta": {
+        "q": "…அவரை விசுவாசிக்கிறவன் எவனோ அவன் கெட்டுப்போகாமல் ____ அடையும்படிக்கு…",
+        "options": [
+          "நித்திய சந்தோஷத்தை",
+          "மகிமையை",
+          "நித்தியஜீவனை",
+          "சமாதானத்தை"
+        ]
+      }
+    },
+    {
+      "id": "act-001",
+      "type": "book",
+      "book": "ACT",
+      "chapter": 2,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "Which book describes the Holy Spirit coming at Pentecost?",
+        "options": [
+          "John",
+          "Acts",
+          "Romans",
+          "Hebrews"
+        ]
+      },
+      "ta": {
+        "q": "பெந்தெகொஸ்தே நாளில் பரிசுத்த ஆவி இறங்கினதைச் சொல்லும் புஸ்தகம் எது?",
+        "options": [
+          "யோவான்",
+          "அப்போஸ்தலருடைய நடபடிகள்",
+          "ரோமர்",
+          "எபிரெயர்"
+        ]
+      }
+    },
+    {
+      "id": "act-002",
+      "type": "mcq",
+      "book": "ACT",
+      "chapter": 9,
+      "verse": 3,
+      "difficulty": 1,
+      "answer": 1,
+      "en": {
+        "q": "On the road to which city did Saul meet the risen Jesus?",
+        "options": [
+          "Jerusalem",
+          "Damascus",
+          "Antioch",
+          "Rome"
+        ]
+      },
+      "ta": {
+        "q": "சவுல் எந்தப் பட்டணத்துக்குப் போகும் வழியில் உயிர்த்தெழுந்த இயேசுவைச் சந்தித்தான்?",
+        "options": [
+          "எருசலேம்",
+          "தமஸ்கு",
+          "அந்தியோகியா",
+          "ரோமாபுரி"
+        ]
+      }
+    },
+    {
+      "id": "act-003",
+      "type": "mcq",
+      "book": "ACT",
+      "chapter": 7,
+      "verse": 59,
+      "difficulty": 2,
+      "answer": 0,
+      "en": {
+        "q": "Who was the first Christian martyr?",
+        "options": [
+          "Stephen",
+          "James",
+          "Peter",
+          "Paul"
+        ]
+      },
+      "ta": {
+        "q": "முதல் இரத்தசாட்சி யார்?",
+        "options": [
+          "ஸ்தேவான்",
+          "யாக்கோபு",
+          "பேதுரு",
+          "பவுல்"
+        ]
+      }
+    },
+    {
+      "id": "1co-001",
+      "type": "book",
+      "book": "1CO",
+      "chapter": 13,
+      "difficulty": 2,
+      "answer": 1,
+      "en": {
+        "q": "Which letter contains the famous \"love chapter\"?",
+        "options": [
+          "Romans",
+          "1 Corinthians",
+          "Galatians",
+          "Ephesians"
+        ]
+      },
+      "ta": {
+        "q": "\"அன்பு அதிகாரம்\" எந்த நிருபத்தில் உள்ளது?",
+        "options": [
+          "ரோமர்",
+          "1 கொரிந்தியர்",
+          "கலாத்தியர்",
+          "எபேசியர்"
+        ]
+      }
+    },
+    {
+      "id": "gal-001",
+      "type": "mcq",
+      "book": "GAL",
+      "chapter": 5,
+      "verse": 22,
+      "difficulty": 2,
+      "answer": 1,
+      "en": {
+        "q": "How many qualities are listed as the fruit of the Spirit in Galatians 5?",
+        "options": [
+          "Seven",
+          "Nine",
+          "Ten",
+          "Twelve"
+        ],
+        "explain": "Love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance."
+      },
+      "ta": {
+        "q": "கலாத்தியர் 5-இல் ஆவியின் கனியாக எத்தனை குணங்கள் சொல்லப்பட்டுள்ளன?",
+        "options": [
+          "ஏழு",
+          "ஒன்பது",
+          "பத்து",
+          "பன்னிரண்டு"
+        ],
+        "explain": "அன்பு, சந்தோஷம், சமாதானம், நீடியபொறுமை, தயவு, நற்குணம், விசுவாசம், சாந்தம், இச்சையடக்கம்."
+      }
+    },
+    {
+      "id": "heb-001",
+      "type": "mcq",
+      "book": "HEB",
+      "chapter": 11,
+      "difficulty": 2,
+      "answer": 0,
+      "en": {
+        "q": "Which chapter is known as the \"faith chapter\"?",
+        "options": [
+          "Hebrews 11",
+          "Romans 8",
+          "John 3",
+          "James 2"
+        ]
+      },
+      "ta": {
+        "q": "\"விசுவாச அதிகாரம்\" என்று அழைக்கப்படுவது எது?",
+        "options": [
+          "எபிரெயர் 11",
+          "ரோமர் 8",
+          "யோவான் 3",
+          "யாக்கோபு 2"
+        ]
+      }
+    },
+    {
+      "id": "rev-001",
+      "type": "mcq",
+      "book": "REV",
+      "chapter": 6,
+      "verse": 5,
+      "difficulty": 2,
+      "answer": 2,
+      "art": "horse",
+      "en": {
+        "q": "In Revelation 6, what colour was the horse whose rider held a pair of balances?",
+        "options": [
+          "White",
+          "Red",
+          "Black",
+          "Pale"
+        ]
+      },
+      "ta": {
+        "q": "வெளிப்படுத்தின விசேஷம் 6-இல், தராசைப் பிடித்திருந்தவன் ஏறியிருந்த குதிரையின் நிறம் என்ன?",
+        "options": [
+          "வெள்ளை",
+          "சிவப்பு",
+          "கறுப்பு",
+          "மங்கின நிறம்"
+        ]
+      }
+    },
+    {
+      "id": "rev-002",
+      "type": "mcq",
+      "book": "REV",
+      "chapter": 6,
+      "verse": 4,
+      "difficulty": 3,
+      "answer": 1,
+      "en": {
+        "q": "What was given to the rider of the red horse?",
+        "options": [
+          "A crown",
+          "A great sword",
+          "A pair of balances",
+          "A bow"
+        ]
+      },
+      "ta": {
+        "q": "சிவப்புக் குதிரையின்மேல் ஏறியிருந்தவனுக்குக் கொடுக்கப்பட்டது என்ன?",
+        "options": [
+          "ஒரு கிரீடம்",
+          "ஒரு பெரிய பட்டயம்",
+          "ஒரு தராசு",
+          "ஒரு வில்"
+        ]
+      }
+    },
+    {
+      "id": "rev-003",
+      "type": "mcq",
+      "book": "REV",
+      "chapter": 6,
+      "verse": 8,
+      "difficulty": 2,
+      "answer": 2,
+      "en": {
+        "q": "What was the name of the rider on the pale horse?",
+        "options": [
+          "War",
+          "Famine",
+          "Death",
+          "Conquest"
+        ]
+      },
+      "ta": {
+        "q": "மங்கின நிறமுள்ள குதிரையின்மேல் ஏறியிருந்தவனுக்குப் பேர் என்ன?",
+        "options": [
+          "யுத்தம்",
+          "பஞ்சம்",
+          "மரணம்",
+          "ஜெயம்"
+        ]
+      }
+    },
+    {
+      "id": "rev-004",
+      "type": "tf",
+      "book": "REV",
+      "chapter": 6,
+      "verse": 2,
+      "difficulty": 3,
+      "answer": true,
+      "en": {
+        "q": "The rider of the white horse had a bow and was given a crown.",
+        "explain": "He went forth conquering, and to conquer."
+      },
+      "ta": {
+        "q": "வெள்ளைக் குதிரையின்மேல் ஏறியிருந்தவன் வில்லைப் பிடித்திருந்தான்; அவனுக்கு ஒரு கிரீடம் கொடுக்கப்பட்டது.",
+        "explain": "அவன் ஜெயிக்கிறவனாகவும் ஜெயிப்பவனாகவும் புறப்பட்டான்."
+      }
+    },
+    {
+      "id": "rev-005",
+      "type": "tf",
+      "book": "REV",
+      "chapter": 21,
+      "verse": 21,
+      "difficulty": 2,
+      "answer": true,
+      "en": {
+        "q": "Each gate of the New Jerusalem is made of a single pearl.",
+        "explain": "Every several gate was of one pearl."
+      },
+      "ta": {
+        "q": "புதிய எருசலேமின் ஒவ்வொரு வாசலும் ஒரே முத்தினால் ஆனது.",
+        "explain": "ஒவ்வொரு வாசலும் ஒவ்வொரு முத்தாயிருந்தது."
+      }
+    },
+    {
+      "id": "rev-006",
+      "type": "book",
+      "book": "REV",
+      "chapter": 21,
+      "verse": 2,
+      "difficulty": 2,
+      "answer": 2,
+      "en": {
+        "q": "Which book describes the New Jerusalem coming down out of heaven?",
+        "options": [
+          "Ezekiel",
+          "Hebrews",
+          "Revelation",
+          "Daniel"
+        ]
+      },
+      "ta": {
+        "q": "பரலோகத்திலிருந்து இறங்கிவரும் புதிய எருசலேமை விவரிக்கும் புஸ்தகம் எது?",
+        "options": [
+          "எசேக்கியேல்",
+          "எபிரெயர்",
+          "வெளிப்படுத்தின விசேஷம்",
+          "தானியேல்"
+        ]
+      }
+    },
+    {
+      "id": "luk-004",
+      "type": "who",
+      "book": "LUK",
+      "chapter": 1,
+      "verse": 38,
+      "difficulty": 2,
+      "answer": 1,
+      "en": {
+        "q": "\"Behold the handmaid of the Lord; be it unto me according to thy word.\"",
+        "options": [
+          "Elisabeth",
+          "Mary",
+          "Anna",
+          "Martha"
+        ],
+        "explain": "Mary, answering the angel Gabriel."
+      },
+      "ta": {
+        "q": "\"இதோ, நான் ஆண்டவருக்கு அடிமை, உம்முடைய வார்த்தையின்படி எனக்கு ஆகக்கடவது.\"",
+        "options": [
+          "எலிசபெத்",
+          "மரியாள்",
+          "அன்னாள்",
+          "மார்த்தாள்"
+        ],
+        "explain": "காபிரியேல் தூதனுக்கு மரியாள் சொன்ன பதில்."
+      }
+    },
+    {
+      "id": "jhn-009",
+      "type": "who",
+      "book": "JHN",
+      "chapter": 1,
+      "verse": 29,
+      "difficulty": 1,
+      "answer": 2,
+      "en": {
+        "q": "\"Behold the Lamb of God, which taketh away the sin of the world.\"",
+        "options": [
+          "Peter",
+          "Andrew",
+          "John the Baptist",
+          "Simeon"
+        ]
+      },
+      "ta": {
+        "q": "\"இதோ, உலகத்தின் பாவத்தைச் சுமந்து தீர்க்கிற தேவ ஆட்டுக்குட்டி.\"",
+        "options": [
+          "பேதுரு",
+          "அந்திரேயா",
+          "யோவான்ஸ்நானன்",
+          "சிமியோன்"
+        ]
+      }
+    },
+    {
+      "id": "mat-009",
+      "type": "blank",
+      "book": "MAT",
+      "chapter": 6,
+      "verse": 11,
+      "difficulty": 1,
+      "answer": 3,
+      "art": "loaves",
+      "en": {
+        "q": "Give us this day our daily ____.",
+        "options": [
+          "light",
+          "water",
+          "peace",
+          "bread"
+        ]
+      },
+      "ta": {
+        "q": "அன்றன்றுள்ள ____ இன்று எங்களுக்குத் தாரும்.",
+        "options": [
+          "வெளிச்சத்தை",
+          "தண்ணீரை",
+          "சமாதானத்தை",
+          "ஆகாரத்தை"
+        ]
+      }
+    },
+    {
+      "id": "1jn-001",
+      "type": "blank",
+      "book": "1JN",
+      "chapter": 4,
+      "verse": 8,
+      "difficulty": 1,
+      "answer": 0,
+      "en": {
+        "q": "He that loveth not knoweth not God; for God is ____.",
+        "options": [
+          "love",
+          "light",
+          "spirit",
+          "holy"
+        ]
+      },
+      "ta": {
+        "q": "அன்பில்லாதவன் தேவனை அறியான்; தேவன் ____ இருக்கிறார்.",
+        "options": [
+          "அன்பாகவே",
+          "ஒளியாகவே",
+          "ஆவியாகவே",
+          "பரிசுத்தராகவே"
+        ]
+      }
+    }
+  ]
+}

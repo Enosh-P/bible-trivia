@@ -1,0 +1,110 @@
+/*
+ * Design tokens — "Four Horsemen" on cold grey (Revelation 6:1–8).
+ *
+ * Base: cool blue-grey steel. Accents: the four horses.
+ *   white  — conquest (bow, crown)      → primary, Classic, Daily
+ *   red    — war (sword), "fiery red"   → wrong answers, Speed, Survival
+ *   black  — famine (scales)            → True/False, Which Book
+ *   pale   — Gk. chlōros, pale green    → correct answers, Who Said It, Fill Blank, Study
+ *
+ * Each horse has three tokens:
+ *   --{h}       the hue itself (fills, rings, bars)
+ *   --{h}-ink   line-icon stroke colour, tuned for legibility on this theme
+ *   --{h}-wash  icon tile / tinted surface background
+ */
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Cold grey steel */
+  --bg: #0d1015;
+  --bg-2: #131820;
+  --bg-3: #1a2029;
+  --surface: rgb(30 37 48 / 0.55);
+  --surface-strong: rgb(30 37 48 / 0.78);
+  --line: rgb(190 205 225 / 0.1);
+  --line-strong: rgb(190 205 225 / 0.18);
+  --edge-light: rgb(235 242 250 / 0.14); /* top highlight on glass */
+  --text: #e7ecf2;
+  --text-2: #9ba6b5;
+  --text-3: #687384;
+
+  /* White horse */
+  --white: #eef2f6;
+  --white-ink: #f4f7fa;
+  --white-wash: rgb(238 242 246 / 0.1);
+  /* Red horse */
+  --red: #e0493e;
+  --red-ink: #ff7366;
+  --red-wash: rgb(224 73 62 / 0.16);
+  /* Black horse — a black tile with a silver stroke so it stays visible on grey */
+  --black: #050608;
+  --black-ink: #c9d2de;
+  --black-wash: #050608;
+  /* Pale horse */
+  --pale: #8fbfa3;
+  --pale-ink: #a9d8bc;
+  --pale-wash: rgb(143 191 163 / 0.16);
+
+  --correct: var(--pale);
+  --wrong: var(--red);
+  --focus: var(--pale-ink);
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.35);
+  --shadow-md: 0 8px 24px rgb(0 0 0 / 0.35), 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 24px 60px rgb(0 0 0 / 0.5), 0 2px 6px rgb(0 0 0 / 0.3);
+  --aurora-opacity: 0.55;
+  --grain-opacity: 0.05;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #e6eaef;
+  --bg-2: #eef1f5;
+  --bg-3: #f6f8fa;
+  --surface: rgb(255 255 255 / 0.26);
+  --surface-strong: rgb(255 255 255 / 0.38);
+  --line: rgb(40 55 75 / 0.1);
+  --line-strong: rgb(40 55 75 / 0.18);
+  --edge-light: rgb(255 255 255 / 0.85);
+  --text: #121821;
+  --text-2: #4f5a69;
+  --text-3: #7a8494;
+
+  --white: #ffffff;
+  --white-ink: #6b7686; /* a white icon needs a grey stroke on a white tile */
+  --white-wash: #ffffff;
+  --red: #c9362c;
+  --red-ink: #c0352b;
+  --red-wash: rgb(201 54 44 / 0.12);
+  --black: #0b0d11;
+  --black-ink: #dfe5ee;
+  --black-wash: #0b0d11;
+  --pale: #5f9a78;
+  --pale-ink: #3f7d5a;
+  --pale-wash: rgb(95 154 120 / 0.16);
+
+  --shadow-sm: 0 1px 2px rgb(20 30 45 / 0.08);
+  --shadow-md: 0 8px 24px rgb(20 30 45 / 0.1), 0 1px 2px rgb(20 30 45 / 0.08);
+  --shadow-lg: 0 24px 60px rgb(20 30 45 / 0.16), 0 2px 6px rgb(20 30 45 / 0.08);
+  --aurora-opacity: 0.4;
+  --grain-opacity: 0.04;
+}
+
+:root {
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-xl: 34px;
+
+  --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans Tamil Variable', sans-serif;
+  --font-tamil: 'Noto Sans Tamil Variable', system-ui, sans-serif;
+  --font-verse: 'Fraunces Variable', Georgia, serif;
+  --font-verse-tamil: 'Noto Serif Tamil', 'Noto Sans Tamil Variable', serif;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --tabbar-h: 64px;
+}

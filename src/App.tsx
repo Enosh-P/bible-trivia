@@ -1,0 +1,166 @@
+import { AnimatePresence, MotionConfig, motion } from 'motion/react';
+import { useEffect, useState } from 'react';
+import { useRegisterSW } from 'virtual:pwa-register/react';
+import { Atmosphere } from './components/Atmosphere';
+import { ArtSticker } from './components/ArtSticker';
+import { ART_KEYS } from './art/Illustrations';
+import { TabBar, type Tab } from './components/TabBar';
+import { Pressable } from './components/Pressable';
+import { Home } from './screens/Home';
+import { Daily } from './screens/Daily';
+import { Progress } from './screens/Progress';
+import { Gospel } from './screens/Gospel';
+import { Settings } from './screens/Settings';
+import { Game, type RoundResult } from './screens/Game';
+import { Results } from './screens/Results';
+import type { ModeId } from './engine/modes';
+import { dayKey } from './engine/picker';
+import { db } from './storage/db';
+import { syncQuestions } from './online/supabase';
+import { useApp, useT } from './store';
+import { spring } from './motion/springs';
+
+type Route = { kind: 'tab'; tab: Tab } | { kind: 'game'; mode: ModeId; run: number } | { kind: 'result'; result: RoundResult; xp: number };
+
+/** Applies theme, text size and the Chromium-only refraction flag to <html>. */
+function useDocumentSettings() {
+  const theme = useApp((s) => s.theme);
+  const textScale = useApp((s) => s.textScale);
+  const uiLang = useApp((s) => s.uiLang);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-color-scheme: light)');
+    const apply = () => {
+      const resolved = theme === 'system' ? (mq.matches ? 'light' : 'dark') : theme;
+      document.documentElement.dataset.theme = resolved;
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', resolved === 'light' ? '#e6eaef' : '#0d1015');
+    };
+    apply();
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, [theme]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--text-scale', String(textScale));
+    document.documentElement.lang = uiLang;
+  }, [textScale, uiLang]);
+
+  useEffect(() => {
+    const brands = (navigator as Navigator & { userAgentData?: { brands: { brand: string }[] } }).userAgentData?.brands ?? [];
+    if (brands.some((b) => b.brand === 'Chromium')) document.documentElement.classList.add('liquid-ok');
+  }, []);
+}
+
+export default function App() {
+  useDocumentSettings();
+  if (import.meta.env.DEV && new URLSearchParams(location.search).has('art')) return <ArtGallery />;
+  return <MainApp />;
+}
+
+/** Dev-only: every cartoon illustration on one page (open /?art). */
+function ArtGallery() {
+  return (
+    <div className="screen">
+      <Atmosphere />
+      <h1 className="display">Art</h1>
+      <div className="mode-grid">
+        {ART_KEYS.map((k) => (
+          <div key={k}>
+            <ArtSticker name={k} />
+            <p className="caption" style={{ textAlign: 'center' }}>{k}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MainApp() {
+  const t = useT();
+  const finishRound = useApp((s) => s.finishRound);
+  const [route, setRoute] = useState<Route>({ kind: 'tab', tab: 'play' });
+  const [lastTab, setLastTab] = useState<Tab>('play');
+
+  const {
+    needRefresh: [needRefresh],
+    updateServiceWorker,
+  } = useRegisterSW();
+
+  // Background content sync (no-op until Supabase is configured).
+  useEffect(() => {
+    void syncQuestions().catch(() => {});
+  }, []);
+
+  const play = (mode: ModeId) => setRoute({ kind: 'game', mode, run: Date.now() });
+
+  function onDone(result: RoundResult) {
+    const xp = result.score + (result.mode === 'daily' ? 25 : 0);
+    finishRound({ xp, correct: result.correct, total: result.total, score: result.score, daily: result.mode === 'daily' });
+    void db.rounds
+      .add({ mode: result.mode, day: dayKey(), score: result.score, correct: result.correct, total: result.total, xp, at: Date.now() })
+      .catch(() => {});
+    setRoute({ kind: 'result', result, xp });
+  }
+
+  const goTab = (tab: Tab) => {
+    setLastTab(tab);
+    setRoute({ kind: 'tab', tab });
+  };
+
+  // Spatial consistency: the game slides in from the right and leaves the same way.
+  const key = route.kind === 'tab' ? `tab-${route.tab}` : route.kind === 'game' ? `game-${route.run}` : 'result';
+  const pushed = route.kind !== 'tab';
+
+  return (
+    <MotionConfig reducedMotion="user">
+      <Atmosphere />
+      <main className={`app ${pushed ? 'is-pushed' : ''}`}>
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.div
+            key={key}
+            className="route"
+            initial={pushed ? { x: '100%', opacity: 1 } : { opacity: 0, scale: 0.985 }}
+            animate={{ x: 0, opacity: 1, scale: 1 }}
+            exit={pushed ? { x: '30%', opacity: 0 } : { opacity: 0, scale: 0.985 }}
+            transition={spring.calm}
+          >
+            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} />}
+            {route.kind === 'tab' && route.tab === 'daily' && <Daily onPlay={() => play('daily')} />}
+            {route.kind === 'tab' && route.tab === 'gospel' && <Gospel />}
+            {route.kind === 'tab' && route.tab === 'progress' && <Progress />}
+            {route.kind === 'tab' && route.tab === 'settings' && <Settings />}
+            {route.kind === 'game' && <Game modeId={route.mode} onExit={() => goTab(lastTab)} onDone={onDone} />}
+            {route.kind === 'result' && (
+              <Results result={route.result} xp={route.xp} onAgain={() => play(route.result.mode)} onHome={() => goTab(lastTab)} />
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </main>
+
+      <AnimatePresence>
+        {route.kind === 'tab' && (
+          <motion.div
+            className="tabbar-wrap"
+            initial={{ y: 120 }}
+            animate={{ y: 0 }}
+            exit={{ y: 120 }}
+            transition={spring.sheet}
+          >
+            <TabBar tab={route.tab} onChange={goTab} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {needRefresh && (
+          <motion.div className="toast glass glass-thick" initial={{ y: -80 }} animate={{ y: 0 }} exit={{ y: -80 }} transition={spring.sheet} role="status">
+            <span>{t.updateReady}</span>
+            <Pressable className="btn btn-primary small" onClick={() => updateServiceWorker(true)}>
+              {t.reload}
+            </Pressable>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </MotionConfig>
+  );
+}

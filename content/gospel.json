@@ -1,0 +1,166 @@
+{
+  "_note": "Original text written for this app. The outline follows themes from the gospel ministry of Watchman Nee and Witness Lee (e.g. 'The Mystery of Human Life'); it does not quote their books. Official excerpts may only be added with written permission from Living Stream Ministry. Every Tamil line should be reviewed by a Tamil reader.",
+  "sources": [
+    { "id": "mystery", "author": { "en": "Witness Lee", "ta": "விட்னஸ் லீ" }, "title": "The Mystery of Human Life" },
+    { "id": "economy", "author": { "en": "Witness Lee", "ta": "விட்னஸ் லீ" }, "title": "The Economy of God" },
+    { "id": "gospel-of-god", "author": { "en": "Watchman Nee", "ta": "வாட்ச்மேன் நீ" }, "title": "The Gospel of God" },
+    { "id": "normal", "author": { "en": "Watchman Nee", "ta": "வாட்ச்மேன் நீ" }, "title": "The Normal Christian Life" },
+    { "id": "new-believers", "author": { "en": "Watchman Nee", "ta": "வாட்ச்மேன் நீ" }, "title": "Messages for Building Up New Believers" }
+  ],
+  "steps": [
+    {
+      "id": "purpose", "icon": "compass", "horse": "white", "verses": ["ECC.3.11"],
+      "title": { "en": "Human life has a purpose", "ta": "மனித வாழ்க்கைக்கு ஒரு நோக்கம் உண்டு" },
+      "body": {
+        "en": "Everyone asks, “Why am I here?” The universe is not an accident, and neither are you. The Bible says God has placed something in the human heart that this world can never fill.",
+        "ta": "“நான் ஏன் இங்கே இருக்கிறேன்?” என்று ஒவ்வொருவரும் கேட்கிறோம். இந்த அண்டமும் நீங்களும் தற்செயலாக உண்டானவர்கள் அல்ல. இந்த உலகத்தால் ஒருபோதும் நிரப்ப முடியாத ஒன்றை தேவன் மனித இருதயத்தில் வைத்திருக்கிறார் என்று வேதம் சொல்லுகிறது."
+      }
+    },
+    {
+      "id": "god", "icon": "globe", "horse": "white", "verses": ["ROM.1.20"],
+      "title": { "en": "There is a God", "ta": "தேவன் இருக்கிறார்" },
+      "body": {
+        "en": "A watch points to a watchmaker. In the same way, the order of the heavens, the earth and life itself point to a Creator — to God's eternal power and divine nature.",
+        "ta": "ஒரு கடிகாரம் அதைச் செய்தவரைக் காட்டுகிறது. அதுபோலவே, வானம், பூமி, ஜீவன் இவைகளின் ஒழுங்கு ஒரு படைப்பாளரைக் காட்டுகிறது — தேவனுடைய நித்திய வல்லமையையும் தேவத்துவத்தையும் காட்டுகிறது."
+      }
+    },
+    {
+      "id": "spirit", "icon": "hand", "horse": "pale", "verses": ["GEN.1.26", "ZEC.12.1", "PRO.20.27", "JHN.4.24"],
+      "title": { "en": "You were made to contain God", "ta": "தேவனைக் கொள்ளும்படி நீங்கள் உண்டாக்கப்பட்டீர்கள்" },
+      "body": {
+        "en": "God made man in His image with three parts: a body to contact the world, a soul to be himself, and a deep human spirit to contact and receive God. Like a glove made for a hand, we were made to hold God. Without Him there is an empty place inside that nothing else fits.",
+        "ta": "தேவன் மனுஷனைத் தம்முடைய சாயலாக மூன்று பகுதிகளோடு உண்டாக்கினார்: உலகத்தைத் தொடர்புகொள்ள ஒரு சரீரம், தானாக இருக்க ஒரு ஆத்துமா, தேவனைத் தொடர்புகொண்டு ஏற்றுக்கொள்ள ஒரு ஆழமான மனித ஆவி. கைக்காகச் செய்யப்பட்ட கையுறையைப்போல, தேவனைக் கொள்ளும்படியே நாம் உண்டாக்கப்பட்டோம். அவர் இல்லாமல், வேறெதுவும் பொருந்தாத ஒரு வெறுமை நமக்குள் இருக்கிறது."
+      }
+    },
+    {
+      "id": "fall", "icon": "unlink", "horse": "red", "verses": ["ROM.3.23", "ROM.6.23"],
+      "title": { "en": "Sin came in", "ta": "பாவம் உள்ளே வந்தது" },
+      "body": {
+        "en": "Instead of receiving God, man listened to Satan, and sin entered. Sin separated us from God, deadened our spirit and brought death. Every one of us has sinned and falls short of the glory of God.",
+        "ta": "தேவனை ஏற்றுக்கொள்வதற்குப் பதிலாக, மனுஷன் சாத்தானுக்குச் செவிகொடுத்தான்; பாவம் உள்ளே வந்தது. பாவம் நம்மை தேவனிடமிருந்து பிரித்து, நம்முடைய ஆவியைச் செத்ததாக்கி, மரணத்தைக் கொண்டுவந்தது. நாம் ஒவ்வொருவரும் பாவஞ்செய்து தேவமகிமையற்றவர்களானோம்."
+      }
+    },
+    {
+      "id": "incarnation", "icon": "baby", "horse": "white", "verses": ["JHN.1.14"],
+      "title": { "en": "God became a man", "ta": "தேவன் மனுஷனானார்" },
+      "body": {
+        "en": "God did not give up on us. He Himself became a man — Jesus Christ — and lived among us a perfect human life, full of grace and truth.",
+        "ta": "தேவன் நம்மைக் கைவிடவில்லை. அவரே ஒரு மனுஷனானார் — இயேசு கிறிஸ்து — கிருபையினாலும் சத்தியத்தினாலும் நிறைந்தவராய் நம் நடுவே பரிபூரணமான மனித வாழ்க்கை வாழ்ந்தார்."
+      }
+    },
+    {
+      "id": "cross", "icon": "cross", "horse": "red", "verses": ["JHN.3.16", "1CO.15.45"],
+      "title": { "en": "He died for us and rose again", "ta": "அவர் நமக்காக மரித்து உயிர்த்தெழுந்தார்" },
+      "body": {
+        "en": "On the cross Jesus died in our place, bearing the penalty of our sins. On the third day He rose, and in resurrection He became the life-giving Spirit — so now He can come into everyone who receives Him.",
+        "ta": "சிலுவையில் இயேசு நமக்குப் பதிலாக மரித்து, நம்முடைய பாவங்களின் தண்டனையைச் சுமந்தார். மூன்றாம் நாளில் அவர் உயிர்த்தெழுந்தார்; உயிர்த்தெழுதலில் உயிர்ப்பிக்கிற ஆவியானார் — ஆகையால் இப்பொழுது அவரை ஏற்றுக்கொள்ளுகிற ஒவ்வொருவருக்குள்ளும் அவர் வர முடியும்."
+      }
+    },
+    {
+      "id": "receive", "icon": "door", "horse": "pale", "verses": ["ROM.10.13", "JHN.1.12", "REV.3.20"],
+      "title": { "en": "Receive Him by calling on His name", "ta": "அவருடைய நாமத்தைத் தொழுதுகொண்டு அவரை ஏற்றுக்கொள்ளுங்கள்" },
+      "body": {
+        "en": "Salvation is a free gift, not a reward for good works. Turn your heart to Him, believe that He died and rose for you, and call on His name: “O Lord Jesus!” Whoever calls on the name of the Lord shall be saved.",
+        "ta": "இரட்சிப்பு இலவசமான ஈவு; நற்கிரியைகளுக்கான கூலி அல்ல. உங்கள் இருதயத்தை அவரிடம் திருப்புங்கள்; அவர் உங்களுக்காக மரித்து உயிர்த்தெழுந்தார் என்று விசுவாசியுங்கள்; “ஓ கர்த்தராகிய இயேசுவே!” என்று அவருடைய நாமத்தைத் தொழுதுகொள்ளுங்கள். கர்த்தருடைய நாமத்தைத் தொழுதுகொள்ளுகிறவன் எவனோ அவன் இரட்சிக்கப்படுவான்."
+      }
+    },
+    {
+      "id": "pray", "icon": "heart-handshake", "horse": "pale", "verses": ["EPH.2.8"],
+      "title": { "en": "A simple prayer", "ta": "ஒரு எளிய ஜெபம்" },
+      "body": {
+        "en": "You can pray simply, in your own words. For example:",
+        "ta": "உங்கள் சொந்த வார்த்தைகளில் எளிமையாக ஜெபிக்கலாம். உதாரணமாக:"
+      },
+      "prayer": {
+        "en": "Lord Jesus, I need You. I am a sinner. Thank You for dying on the cross for me and rising again. I open my heart and receive You as my Saviour and my life. Come into me now. O Lord Jesus! Amen.",
+        "ta": "கர்த்தராகிய இயேசுவே, எனக்கு நீர் தேவை. நான் ஒரு பாவி. எனக்காகச் சிலுவையில் மரித்து உயிர்த்தெழுந்ததற்காக உமக்கு நன்றி. என் இருதயத்தைத் திறந்து, உம்மை என் இரட்சகராகவும் என் ஜீவனாகவும் ஏற்றுக்கொள்ளுகிறேன். இப்பொழுதே எனக்குள் வாரும். ஓ கர்த்தராகிய இயேசுவே! ஆமென்."
+      },
+      "next": {
+        "en": "Tell a Christian friend, read the Gospel of John, and keep calling on His name every day.",
+        "ta": "ஒரு கிறிஸ்தவ நண்பரிடம் சொல்லுங்கள், யோவான் சுவிசேஷத்தை வாசியுங்கள், ஒவ்வொரு நாளும் அவருடைய நாமத்தைத் தொழுதுகொள்ளுங்கள்."
+      }
+    }
+  ],
+  "faqs": [
+    {
+      "id": "exists", "verses": ["ROM.1.20"], "reading": ["gospel-of-god", "mystery"],
+      "q": { "en": "Does God really exist?", "ta": "தேவன் உண்மையிலேயே இருக்கிறாரா?" },
+      "a": {
+        "en": "Look at the universe, at your own body, at your conscience. Things this ordered and purposeful do not come from nothing. The Bible says God's invisible power and divine nature are clearly seen through what He has made — and your human spirit, deep within, already senses that He is there.",
+        "ta": "அண்டத்தையும், உங்கள் சொந்த சரீரத்தையும், உங்கள் மனசாட்சியையும் பாருங்கள். இவ்வளவு ஒழுங்கும் நோக்கமும் உள்ளவை ஒன்றுமில்லாமையிலிருந்து வருவதில்லை. தேவனுடைய காணப்படாத வல்லமையும் தேவத்துவமும் அவர் உண்டாக்கினவைகளினாலே தெளிவாய்க் காணப்படும் என்று வேதம் சொல்லுகிறது — உங்களுக்குள் ஆழத்திலுள்ள மனித ஆவியும் அவர் இருக்கிறார் என்று ஏற்கனவே உணருகிறது."
+      }
+    },
+    {
+      "id": "meaning", "verses": ["GEN.1.26", "ZEC.12.1", "JHN.4.24"], "reading": ["mystery", "economy"],
+      "q": { "en": "What is the meaning of my life?", "ta": "என் வாழ்க்கையின் அர்த்தம் என்ன?" },
+      "a": {
+        "en": "You were made by God and for God. Money, study, career and family are good, but none of them can fill the deepest part of you — your spirit — because it was made to hold God Himself. Life finds its meaning when God comes into you as your life.",
+        "ta": "நீங்கள் தேவனால், தேவனுக்காகவே உண்டாக்கப்பட்டீர்கள். பணம், படிப்பு, வேலை, குடும்பம் இவை நல்லவை; ஆனால் இவற்றில் எதுவும் உங்கள் உள்ளத்தின் ஆழமான பகுதியாகிய ஆவியை நிரப்ப முடியாது, ஏனெனில் அது தேவனையே கொள்ளும்படி உண்டாக்கப்பட்டது. தேவன் உங்களுக்குள் ஜீவனாக வரும்போது வாழ்க்கை அதன் அர்த்தத்தைக் கண்டடைகிறது."
+      }
+    },
+    {
+      "id": "suffering", "verses": ["ROM.8.28", "REV.21.4"], "reading": ["gospel-of-god"],
+      "q": { "en": "If God is good, why is there so much suffering?", "ta": "தேவன் நல்லவரானால், ஏன் இவ்வளவு துன்பம்?" },
+      "a": {
+        "en": "Suffering came into the world through sin, not from God's heart. God did not stay distant from our pain: in Christ He entered it and suffered on the cross. For those who love Him He works all things together for good, and He promises a day with no more death, sorrow or pain.",
+        "ta": "துன்பம் பாவத்தின் மூலமாக உலகத்தில் வந்தது; தேவனுடைய இருதயத்திலிருந்து அல்ல. தேவன் நம்முடைய வேதனைக்குத் தூரமாக நிற்கவில்லை; கிறிஸ்துவில் அவர் அதற்குள் வந்து சிலுவையில் பாடுபட்டார். அவரில் அன்புகூருகிறவர்களுக்குச் சகலமும் நன்மைக்கு ஏதுவாக நடக்கும்படி செய்கிறார்; மரணமும் துக்கமும் வருத்தமும் இல்லாத ஒரு நாளையும் வாக்குப்பண்ணியிருக்கிறார்."
+      }
+    },
+    {
+      "id": "good-person", "verses": ["ROM.3.23", "ROM.6.23"], "reading": ["gospel-of-god"],
+      "q": { "en": "I am a good person. Why do I need to be saved?", "ta": "நான் நல்லவன்தான். எனக்கு ஏன் இரட்சிப்பு தேவை?" },
+      "a": {
+        "en": "Compared with others we may look good, but God's standard is His own glory. Our conscience tells us we have fallen short in thought, word and deed. The problem is not only the sins we do but the sinful nature within us. Good behaviour today cannot cancel yesterday's debt — and good works cannot pay for sin.",
+        "ta": "மற்றவர்களோடு ஒப்பிடும்போது நாம் நல்லவர்களாகத் தோன்றலாம்; ஆனால் தேவனுடைய அளவுகோல் அவருடைய மகிமையே. எண்ணங்களிலும் வார்த்தைகளிலும் செயல்களிலும் நாம் குறைவுபட்டிருக்கிறோம் என்று நம் மனசாட்சியே சொல்லுகிறது. நாம் செய்யும் பாவங்கள் மட்டுமல்ல, நமக்குள் இருக்கும் பாவ சுபாவமும் பிரச்சனை. இன்றைய நல்ல நடத்தை நேற்றைய கடனை ரத்துசெய்யாது — நற்கிரியைகள் பாவத்திற்கு ஈடுசெய்ய முடியாது."
+      }
+    },
+    {
+      "id": "why-cross", "verses": ["ROM.6.23", "JHN.3.16"], "reading": ["normal", "gospel-of-god"],
+      "q": { "en": "Why did Jesus have to die?", "ta": "இயேசு ஏன் மரிக்க வேண்டியிருந்தது?" },
+      "a": {
+        "en": "God is love, and He is also righteous. The wages of sin is death, so sin's penalty had to be paid. Jesus, who had no sin, died in our place to pay it in full. Because God's righteousness is satisfied, He can now forgive us justly and give us His life freely.",
+        "ta": "தேவன் அன்பாயிருக்கிறார்; அவர் நீதியுள்ளவருமாயிருக்கிறார். பாவத்தின் சம்பளம் மரணம்; ஆகையால் பாவத்தின் தண்டனை செலுத்தப்பட வேண்டியிருந்தது. பாவமில்லாத இயேசு அதை முழுமையாகச் செலுத்தும்படி நமக்குப் பதிலாக மரித்தார். தேவனுடைய நீதி திருப்தியானதால், இப்பொழுது அவர் நீதியாக நம்மை மன்னித்து, தம்முடைய ஜீவனை இலவசமாகக் கொடுக்க முடியும்."
+      }
+    },
+    {
+      "id": "religions", "verses": ["JHN.14.6"], "reading": ["mystery"],
+      "q": { "en": "Aren't all religions the same?", "ta": "எல்லா மதங்களும் ஒன்றுதானே?" },
+      "a": {
+        "en": "Most religions teach people to improve themselves and climb up to God. The gospel is the opposite: God came down to man. Christ does not only give a teaching; He gives Himself as life. That is why He could say, “I am the way, the truth, and the life.”",
+        "ta": "பெரும்பாலான மதங்கள் மனிதன் தன்னைத் திருத்திக்கொண்டு தேவனிடம் ஏறிச்செல்லப் போதிக்கின்றன. சுவிசேஷம் அதற்கு எதிரானது: தேவன் மனிதனிடம் இறங்கி வந்தார். கிறிஸ்து ஒரு போதனையை மட்டும் கொடுக்கவில்லை; தம்மையே ஜீவனாகக் கொடுக்கிறார். ஆகையால்தான் “நானே வழியும் சத்தியமும் ஜீவனுமாயிருக்கிறேன்” என்று அவர் சொல்ல முடிந்தது."
+      }
+    },
+    {
+      "id": "how-saved", "verses": ["ROM.10.13", "JHN.1.12", "EPH.2.8"], "reading": ["gospel-of-god"],
+      "q": { "en": "What must I do to be saved?", "ta": "இரட்சிக்கப்பட நான் என்ன செய்ய வேண்டும்?" },
+      "a": {
+        "en": "Nothing to earn it — only receive it. Repent, turning your heart to God; believe that Jesus died for your sins and rose again; and call on His name from your spirit. Everyone who receives Him is given the right to become a child of God.",
+        "ta": "அதைச் சம்பாதிக்க ஒன்றும் செய்ய வேண்டியதில்லை; ஏற்றுக்கொண்டால் போதும். மனந்திரும்பி உங்கள் இருதயத்தை தேவனிடம் திருப்புங்கள்; இயேசு உங்கள் பாவங்களுக்காக மரித்து உயிர்த்தெழுந்தார் என்று விசுவாசியுங்கள்; உங்கள் ஆவியிலிருந்து அவருடைய நாமத்தைத் தொழுதுகொள்ளுங்கள். அவரை ஏற்றுக்கொள்ளுகிற ஒவ்வொருவருக்கும் தேவனுடைய பிள்ளைகளாகும்படி அதிகாரம் கொடுக்கப்படுகிறது."
+      }
+    },
+    {
+      "id": "too-sinful", "verses": ["MAT.11.28", "1JN.1.9"], "reading": ["normal"],
+      "q": { "en": "What if I have sinned too much to be forgiven?", "ta": "என் பாவங்கள் மன்னிக்க முடியாத அளவுக்கு அதிகமானால்?" },
+      "a": {
+        "en": "No sin is greater than the blood of Jesus. The Lord invites all who are weary and heavy laden to come to Him. If we confess our sins, He is faithful and righteous to forgive us and cleanse us — not because we deserve it, but because of what He has done.",
+        "ta": "இயேசுவின் இரத்தத்தைவிடப் பெரிய பாவம் ஒன்றுமில்லை. வருத்தப்பட்டுப் பாரஞ்சுமக்கிற யாவரையும் கர்த்தர் தம்மிடம் வரும்படி அழைக்கிறார். நம்முடைய பாவங்களை நாம் அறிக்கையிட்டால், அவர் நம்மை மன்னித்துச் சுத்திகரிக்க உண்மையும் நீதியும் உள்ளவராயிருக்கிறார் — நாம் தகுதியானவர்கள் என்பதால் அல்ல, அவர் செய்து முடித்ததினால்."
+      }
+    },
+    {
+      "id": "family", "verses": ["ACT.16.31"], "reading": ["new-believers"],
+      "q": { "en": "My family follows another faith. Can I still believe?", "ta": "என் குடும்பத்தினர் வேறொரு மார்க்கத்தைப் பின்பற்றுகிறார்கள். நான் விசுவாசிக்கலாமா?" },
+      "a": {
+        "en": "Yes. Believing in Christ is a personal matter between you and God, and it does not mean rejecting or dishonouring your family. Keep loving and respecting them. God's heart is for whole households, and your changed life may be the way they meet Him too.",
+        "ta": "ஆம். கிறிஸ்துவை விசுவாசிப்பது உங்களுக்கும் தேவனுக்கும் இடையிலான தனிப்பட்ட காரியம்; அது உங்கள் குடும்பத்தைப் புறக்கணிப்பதோ அவமதிப்பதோ அல்ல. அவர்களைத் தொடர்ந்து நேசித்து மதியுங்கள். தேவனுடைய இருதயம் முழு குடும்பங்களுக்காகவும் இருக்கிறது; உங்கள் மாறின வாழ்க்கை அவர்களும் அவரைச் சந்திக்கும் வழியாகலாம்."
+      }
+    },
+    {
+      "id": "assurance", "verses": ["ROM.10.13", "JHN.1.12"], "reading": ["new-believers"],
+      "q": { "en": "How can I know I am saved?", "ta": "நான் இரட்சிக்கப்பட்டேன் என்று எப்படி அறிவேன்?" },
+      "a": {
+        "en": "Not by feelings, which change, but by God's word, which does not. He says that whoever calls on His name shall be saved, and that to all who receive Him He gives the right to become God's children. Inwardly, His Spirit also bears witness with your spirit (Romans 8:16).",
+        "ta": "மாறும் உணர்ச்சிகளால் அல்ல; மாறாத தேவனுடைய வார்த்தையினாலே. தம்முடைய நாமத்தைத் தொழுதுகொள்ளுகிற எவனும் இரட்சிக்கப்படுவான் என்றும், தம்மை ஏற்றுக்கொள்ளுகிற யாவருக்கும் தேவனுடைய பிள்ளைகளாகும் அதிகாரம் கொடுக்கிறார் என்றும் அவர் சொல்லுகிறார். உள்ளே, அவருடைய ஆவியும் உங்கள் ஆவியோடேகூடச் சாட்சிகொடுக்கிறார் (ரோமர் 8:16)."
+      }
+    }
+  ]
+}

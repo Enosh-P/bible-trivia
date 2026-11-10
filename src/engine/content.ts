@@ -1,0 +1,28 @@
+import ot from '../../content/packs/old-testament.json';
+import nt from '../../content/packs/new-testament.json';
+import type { Question, QuestionPack } from './types';
+import { db } from '../storage/db';
+
+export const PACKS = [ot, nt] as unknown as QuestionPack[];
+
+export const ALL_QUESTIONS: Question[] = PACKS.flatMap((p) => p.questions);
+
+export const QUESTION_BY_ID: Record<string, Question> = Object.fromEntries(
+  ALL_QUESTIONS.map((q) => [q.id, q]),
+);
+
+/**
+ * Bundled questions plus any downloaded from the database.
+ * A downloaded question with the same id replaces the bundled one (it is newer).
+ */
+export async function questionPool(): Promise<Question[]> {
+  try {
+    const remote = await db.remoteQuestions.toArray();
+    if (!remote.length) return ALL_QUESTIONS;
+    const byId = new Map(ALL_QUESTIONS.map((q) => [q.id, q]));
+    for (const q of remote) byId.set(q.id, q);
+    return [...byId.values()];
+  } catch {
+    return ALL_QUESTIONS;
+  }
+}
