@@ -14,6 +14,7 @@
 // untracked .env.local file, never in the app or the repo.
 
 import { createClient } from '@supabase/supabase-js';
+import { projectUrl } from './lib/supabase-url.mjs';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { PRIORITY, bookTarget, chapterCount } from './lib/targets.mjs';
 import { problems } from './lib/validate.mjs';
@@ -25,7 +26,7 @@ const dryRun = args.includes('--dry-run');
 const withRecall = !args.includes('--no-recall');
 const only = args.includes('--books') ? args[args.indexOf('--books') + 1].split(',').map((s) => s.toUpperCase()) : null;
 
-const url = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
+const url = projectUrl(process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL);
 // Secret key (sb_secret_...); the legacy service_role key also works.
 const key = process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!dryRun && (!url || !key)) {

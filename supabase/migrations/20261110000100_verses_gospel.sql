@@ -54,9 +54,13 @@ alter table reading_sources enable row level security;
 alter table gospel_steps    enable row level security;
 alter table faqs            enable row level security;
 
+drop policy if exists "verses are public" on verses;
 create policy "verses are public" on verses for select using (true);
+drop policy if exists "sources are public" on reading_sources;
 create policy "sources are public" on reading_sources for select using (true);
+drop policy if exists "gospel is public" on gospel_steps;
 create policy "gospel is public" on gospel_steps for select using (true);
+drop policy if exists "published faqs are public" on faqs;
 create policy "published faqs are public" on faqs for select using (status = 'published');
 
 grant select on verses, reading_sources, gospel_steps, faqs to anon, authenticated;

@@ -23,6 +23,7 @@ alter table question_reports alter column reason drop not null;
 alter table question_reports drop constraint if exists question_reports_reason_check;
 alter table question_reports add constraint question_reports_reason_check
   check (reason is null or char_length(reason) <= 1000);
+alter table question_reports drop constraint if exists question_reports_snapshot_size;
 alter table question_reports add constraint question_reports_snapshot_size
   check (snapshot is null or pg_column_size(snapshot) < 8000);
 

@@ -108,24 +108,36 @@ alter table answers          enable row level security;
 alter table daily_results    enable row level security;
 alter table question_reports enable row level security;
 
+drop policy if exists "books are public" on books;
 create policy "books are public" on books for select using (true);
+drop policy if exists "published questions are public" on questions;
 create policy "published questions are public" on questions for select using (status = 'published');
 
+drop policy if exists "read own profile" on profiles;
 create policy "read own profile" on profiles for select using (auth.uid() = id);
+drop policy if exists "create own profile" on profiles;
 create policy "create own profile" on profiles for insert with check (auth.uid() = id);
+drop policy if exists "update own profile" on profiles;
 create policy "update own profile" on profiles for update using (auth.uid() = id);
 
+drop policy if exists "read own answers" on answers;
 create policy "read own answers" on answers for select using (auth.uid() = user_id);
+drop policy if exists "add own answers" on answers;
 create policy "add own answers" on answers for insert with check (auth.uid() = user_id);
 
+drop policy if exists "daily board is public" on daily_results;
 create policy "daily board is public" on daily_results for select using (true);
+drop policy if exists "add own daily result" on daily_results;
 create policy "add own daily result" on daily_results for insert with check (auth.uid() = user_id);
 
+drop policy if exists "anyone can report" on question_reports;
 create policy "anyone can report" on question_reports for insert
   with check (user_id is null or auth.uid() = user_id);
 
 -- Public daily leaderboard: only names and scores leave the database.
 -- security definer lets it read display names without making profiles public.
+-- An early version of this file made daily_leaderboard a view; replace it.
+drop view if exists daily_leaderboard;
 create or replace function daily_leaderboard(p_day date default current_date, p_limit int default 50)
 returns table (rank bigint, display_name text, score integer, correct smallint, total smallint)
 language sql stable security definer set search_path = public as $$

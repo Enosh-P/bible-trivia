@@ -54,9 +54,8 @@ The app works fully offline from the bundled JSON. Supabase is where content gro
 
 **One-time setup**
 1. Create a project at supabase.com (the free tier is plenty).
-2. **SQL Editor** → run each file in `supabase/migrations/` in order (all 5: init, verses_gospel, content_workflow, reports, recall_questions).
-3. Run the generated `supabase/seed.sql` in the SQL Editor (`npm run db:seed-sql` rebuilds it). It is safe to re-run; it updates rows instead of duplicating them.
-4. **Environment variables:** copy `.env.example` to `.env.local` and fill it in from Supabase → Project Settings → API Keys:
+2. **SQL Editor** → New query → paste the whole of **`supabase/setup.sql`** → Run. It contains every migration plus the starter content, and it's safe to run again any time (after pulling updates, or if a run stopped halfway). `npm run db:setup-sql` rebuilds it.
+3. **Environment variables:** copy `.env.example` to `.env.local` and fill it in from Supabase → Project Settings → API Keys:
 
    | Variable | Where it's used | Value |
    |---|---|---|
@@ -67,11 +66,11 @@ The app works fully offline from the bundled JSON. Supabase is where content gro
 
    On a hosting service (Vercel, Netlify, Cloudflare Pages), add the two `VITE_` variables in its environment settings. They're built into the page at build time.
 
-5. **Load the Recall questions** (about 17,000 rows; too big to paste into the SQL Editor):
+4. **Load the Recall questions** (about 17,000 rows; too big to paste into the SQL Editor):
    ```bash
    npm run db:import
    ```
-6. **Check everything:**
+5. **Check everything:**
    ```bash
    npm run db:check
    ```

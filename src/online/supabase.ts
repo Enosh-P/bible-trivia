@@ -2,7 +2,8 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { Question } from '../engine/types';
 import { db } from '../storage/db';
 
-const url = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+// The Project URL; a trailing /rest/v1/ (as copied from some Supabase pages) is removed.
+const url = (import.meta.env.VITE_SUPABASE_URL as string | undefined)?.trim().replace(/\/+$/, '').replace(/\/rest\/v1$/, '');
 // The publishable key (sb_publishable_...) is meant to be public; row level
 // security decides what it can do. The legacy anon key still works as a fallback.
 const publishableKey = (import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? import.meta.env.VITE_SUPABASE_ANON_KEY) as string | undefined;

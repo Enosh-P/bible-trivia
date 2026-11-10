@@ -6,6 +6,7 @@
 // Read-only: it never changes data.
 
 import { createClient } from '@supabase/supabase-js';
+import { projectUrl } from './lib/supabase-url.mjs';
 import { existsSync, readFileSync } from 'node:fs';
 
 const env = process.env;
@@ -31,12 +32,13 @@ section('1. Environment variables (.env.local)');
 if (!existsSync(new URL('.env.local', ROOT))) bad('.env.local not found', 'copy .env.example to .env.local and fill it in');
 const appUrl = env.VITE_SUPABASE_URL;
 const pubKey = env.VITE_SUPABASE_PUBLISHABLE_KEY ?? env.VITE_SUPABASE_ANON_KEY;
-const url = env.SUPABASE_URL ?? appUrl;
+const url = projectUrl(env.SUPABASE_URL ?? appUrl);
 const secret = env.SUPABASE_SECRET_KEY ?? env.SUPABASE_SERVICE_ROLE_KEY;
 
 const PLACEHOLDER_FIX = 'open .env.local (not .env.example) and paste the real value from Supabase → Project Settings';
 if (!appUrl) bad('VITE_SUPABASE_URL is missing', 'Supabase → Project Settings → Data API → Project URL');
 else if (placeholder(appUrl)) bad('VITE_SUPABASE_URL is still the example text', PLACEHOLDER_FIX);
+else if (/\/rest\/v1\/?$/.test(appUrl)) warn('VITE_SUPABASE_URL ends with /rest/v1/', `use just ${projectUrl(appUrl)} (it works either way, but this is cleaner)`);
 else if (!/^https:\/\/[a-z0-9]+\.supabase\.co\/?$/.test(appUrl)) warn(`VITE_SUPABASE_URL looks unusual: ${appUrl}`, 'it should look like https://abcdefgh.supabase.co');
 else ok('VITE_SUPABASE_URL');
 
@@ -48,7 +50,7 @@ else ok('VITE_SUPABASE_PUBLISHABLE_KEY');
 
 if (!env.SUPABASE_URL) warn('SUPABASE_URL is missing (using VITE_SUPABASE_URL for the scripts)');
 else if (placeholder(env.SUPABASE_URL)) bad('SUPABASE_URL is still the example text', PLACEHOLDER_FIX);
-else if (appUrl && env.SUPABASE_URL.replace(/\/$/, '') !== appUrl.replace(/\/$/, '')) bad('SUPABASE_URL and VITE_SUPABASE_URL point to different projects');
+else if (appUrl && projectUrl(env.SUPABASE_URL) !== projectUrl(appUrl)) bad('SUPABASE_URL and VITE_SUPABASE_URL point to different projects', 'use the same Project URL for both');
 else ok('SUPABASE_URL');
 
 if (!secret) bad('SUPABASE_SECRET_KEY is missing (needed by db:import, db:export and this check)', 'Project Settings → API Keys → Secret key (sb_secret_...)');
@@ -119,14 +121,14 @@ for (const [t, file] of tables) {
     ok(t);
   } catch (e) {
     tablesOk = false;
-    if (missingTable(e)) bad(`table ${t} is missing`, `run supabase/migrations/${file} in the SQL Editor`);
+    if (missingTable(e)) bad(`table ${t} is missing`, `run supabase/setup.sql in the SQL Editor (all steps; safe to re-run)`);
     else bad(`table ${t}: ${e.message}`);
   }
 }
 // Columns added by later migrations
 const columnCheck = async (table, column, file) => {
   const { error } = await admin.from(table).select(column).limit(1);
-  if (error) bad(`${table}.${column} is missing`, `run supabase/migrations/${file} in the SQL Editor`);
+  if (error) bad(`${table}.${column} is missing`, `run supabase/setup.sql in the SQL Editor (all steps; safe to re-run)`);
   else ok(`${table}.${column} (${file.slice(15, -4)})`);
 };
 await columnCheck('questions', 'source', MIGRATION.workflow);
@@ -135,7 +137,7 @@ await columnCheck('question_reports', 'category', MIGRATION.reports);
 // Migration 5 allows recall rows (ta can be empty)
 {
   const { error } = await admin.rpc('withdrawn_question_ids', { p_since: new Date().toISOString() });
-  if (error) bad('function withdrawn_question_ids is missing', `run supabase/migrations/${MIGRATION.workflow}`);
+  if (error) bad('function withdrawn_question_ids is missing', 'run supabase/setup.sql in the SQL Editor (all steps; safe to re-run)');
   else ok('function withdrawn_question_ids');
 }
 
@@ -147,7 +149,7 @@ const expect = async (label, n, want, fix) => {
   else warn(`${label}: ${n} (expected ${want})`, fix);
 };
 if (tablesOk) {
-  const seedFix = 'run supabase/seed.sql in the SQL Editor (npm run db:seed-sql rebuilds it)';
+  const seedFix = 'run supabase/setup.sql in the SQL Editor (all steps; safe to re-run)';
   await expect('books', await count('books'), 66, seedFix);
   const starter = local('content/packs/old-testament.json').questions.length + local('content/packs/new-testament.json').questions.length;
   await expect('starter quiz questions', await count('questions', (q) => q.neq('type', 'recall').like('id', '___-___')), starter, seedFix);
@@ -165,7 +167,7 @@ if (tablesOk) {
     /* packs not imported */
   }
   const recall = await count('questions', (q) => q.eq('type', 'recall'));
-  await expect('Recall questions', recall, recallLocal, `run supabase/migrations/${MIGRATION.recall}, then npm run db:import`);
+  await expect('Recall questions', recall, recallLocal, 'run supabase/setup.sql, then npm run db:import');
 
   const review = await count('questions', (q) => q.eq('status', 'review'));
   if (review) warn(`${review} questions waiting for review`, 'Table editor → questions → filter status = review');
@@ -179,19 +181,19 @@ if (!anon) {
   bad('skipped: no publishable key');
 } else {
   const { count: pub, error: e1 } = await anon.from('questions').select('*', { count: 'exact', head: true });
-  if (e1) bad(`players cannot read questions: ${e1.message}`, `re-run supabase/migrations/${MIGRATION.init}`);
-  else ok(`players can read published questions (${pub})`);
+  if (e1) bad(`players cannot read questions: ${e1.message}`, 'run supabase/setup.sql in the SQL Editor (safe to re-run)');
+  else ok(`players can read published questions (${pub ?? 0})`);
 
   const { data: profs, error: e2 } = await anon.from('profiles').select('id').limit(1);
-  if (!e2 && profs?.length) bad('players can read other people\'s profiles', 'row level security is off on profiles: re-run the init migration');
+  if (!e2 && profs?.length) bad('players can read other people\'s profiles', 'row level security is off on profiles: run supabase/setup.sql again');
   else ok('profiles are private');
 
   const { error: e3 } = await anon.rpc('daily_leaderboard', {});
-  if (e3) bad(`daily_leaderboard not callable: ${e3.message}`, `re-run supabase/migrations/${MIGRATION.init}`);
+  if (e3) bad(`daily_leaderboard not callable: ${e3.message}`, 'run supabase/setup.sql in the SQL Editor (safe to re-run)');
   else ok('daily leaderboard function');
 
   const { error: e4 } = await anon.from('book_progress').select('code').limit(1);
-  if (!e4) bad('players can read the team-only book_progress view', `re-run supabase/migrations/${MIGRATION.workflow}`);
+  if (!e4) bad('players can read the team-only book_progress view', 'run supabase/setup.sql again');
   else ok('team-only views are hidden from players');
 }
 

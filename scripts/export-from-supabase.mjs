@@ -6,9 +6,10 @@
 //   npm run db:import / db:export reads .env.local, or: SUPABASE_URL=… SUPABASE_SECRET_KEY=… node scripts/export-from-supabase.mjs
 
 import { createClient } from '@supabase/supabase-js';
+import { projectUrl } from './lib/supabase-url.mjs';
 import { mkdirSync, writeFileSync } from 'node:fs';
 
-const url = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
+const url = projectUrl(process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL);
 // Secret key (sb_secret_...); the legacy service_role key also works.
 const key = process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
 if (!url || !key) {
