@@ -38,7 +38,7 @@ export function Daily({ onPlay }: { onPlay: () => void }) {
       <VerseOfTheDay />
       <div className="glass week">
         <div className="week-head">
-          <IconTile horse="red" icon={Flame} size={34} />
+          <IconTile horse="red" icon={Flame} size={30} />
           <strong>
             {streak} {t.streak}
           </strong>

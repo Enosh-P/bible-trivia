@@ -35,7 +35,7 @@ function Toggle({ on, onChange, label }: { on: boolean; onChange: (v: boolean) =
 function Row({ horse, icon, label, children }: { horse: Horse; icon: LucideIcon; label: string; children: React.ReactNode }) {
   return (
     <div className="row">
-      <IconTile horse={horse} icon={icon} size={34} />
+      <IconTile horse={horse} icon={icon} size={30} />
       <span className="row-label">{label}</span>
       <div className="row-control">{children}</div>
     </div>
@@ -58,7 +58,7 @@ export function Settings() {
           disabled={install === 'installed'}
           onClick={() => (install === 'native' ? promptInstall() : setIosOpen(true))}
         >
-          <IconTile horse="pale" icon={install === 'installed' ? Smartphone : Download} size={46} />
+          <IconTile horse="pale" icon={install === 'installed' ? Smartphone : Download} size={38} />
           <div className="grow">
             <strong>{install === 'installed' ? t.installed : t.install}</strong>
             <span className="caption">{t.installSub}</span>

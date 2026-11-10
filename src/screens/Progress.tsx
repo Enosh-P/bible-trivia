@@ -30,17 +30,17 @@ export function Progress() {
       <h1 className="display">{t.progressTitle}</h1>
       <div className="stat-grid">
         <div className="stat glass col">
-          <IconTile horse="white" icon={CheckCircle2} size={34} />
+          <IconTile horse="white" icon={CheckCircle2} size={30} />
           <strong>{totalAnswered}</strong>
           <span className="caption">{t.answered}</span>
         </div>
         <div className="stat glass col">
-          <IconTile horse="pale" icon={Target} size={34} />
+          <IconTile horse="pale" icon={Target} size={30} />
           <strong>{acc}%</strong>
           <span className="caption">{t.accuracy}</span>
         </div>
         <div className="stat glass col">
-          <IconTile horse="black" icon={BookOpen} size={34} />
+          <IconTile horse="black" icon={BookOpen} size={30} />
           <strong>
             {touched}/66
           </strong>

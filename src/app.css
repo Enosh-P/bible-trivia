@@ -688,3 +688,65 @@
 @media (min-width: 1280px) {
   .mode-grid { grid-template-columns: repeat(5, 1fr); }
 }
+
+/* ---------- Phone density ----------
+   Native-app sizing on phones: 15px base text, smaller titles and icons,
+   tighter cards, so more fits on the first screen. Desktop is unchanged. */
+@media (max-width: 959px) {
+  html { font-size: calc(93.75% * var(--text-scale, 1)); } /* 15px */
+  /* iOS Safari zooms into inputs under 16px: keep form fields at 16px. */
+  input, textarea, select { font-size: 16px; }
+
+  :root { --tabbar-h: 58px; }
+  .screen { padding: calc(var(--safe-top) + 14px) 14px calc(var(--tabbar-h) + var(--safe-bottom) + 32px); gap: 12px; }
+  .display { font-size: clamp(1.45rem, 6.2vw, 1.8rem); }
+  .title { font-size: 1.05rem; }
+  .section-title { margin: 6px 2px -2px; }
+
+  .home-head .caption { margin: 0 0 2px; }
+  .stat { padding: 9px 12px 9px 9px; gap: 10px; border-radius: var(--radius-md); }
+  .stat strong { font-size: 1rem; }
+  .stat.col { padding: 12px; }
+
+  .daily-card { padding: 14px; gap: 12px; border-radius: var(--radius-md); }
+  .daily-card.is-big { padding: 18px; }
+  .daily-go { margin-top: 8px; padding: 6px 8px 6px 12px; font-size: 0.85rem; }
+
+  .verse-card { padding: 12px 14px 14px; gap: 8px; border-radius: var(--radius-md); }
+  .verse-quote .verse { font-size: 1.02rem; line-height: 1.45; }
+  .verse-quote .verse:lang(ta) { font-size: 0.95rem; line-height: 1.7; }
+
+  .mode-grid { gap: 10px; }
+  .mode-card { padding: 12px; min-height: 104px; gap: 2px; border-radius: var(--radius-md); }
+  .mode-card .icon-tile { margin-bottom: 6px; }
+  .mode-name { font-size: 0.95rem; }
+
+  .tabbar-wrap { bottom: calc(var(--safe-bottom) + 10px); padding: 0 12px; }
+  .tabbar { padding: 4px; }
+  .tab-label { font-size: 0.62rem; }
+  .tab-label:lang(ta) { font-size: 0.56rem; }
+  .tab-icon { width: 20px; height: 20px; }
+
+  .game { padding: calc(var(--safe-top) + 10px) 14px calc(var(--safe-bottom) + 18px); gap: 12px; }
+  .question-wrap { gap: 12px; }
+  .q-main { font-size: clamp(1.1rem, 4.8vw, 1.35rem); }
+  .q-quote { font-size: clamp(1.15rem, 5vw, 1.45rem); }
+  .q-main:lang(ta), .q-quote:lang(ta) { font-size: clamp(1rem, 4.2vw, 1.2rem); }
+  .answer { min-height: 50px; padding: 10px 14px; }
+  .options { gap: 8px; }
+  .tf-card { min-height: 180px; padding: 22px 18px 18px; border-radius: var(--radius-lg); }
+  .tf-btn { min-height: 50px; }
+  .btn { min-height: 44px; }
+  .art-sticker { width: min(52%, 200px); }
+
+  .recall-card { padding: 16px; min-height: 160px; border-radius: var(--radius-lg); }
+  .recall-answer p { font-size: 1rem; padding: 12px 14px; }
+  .recall-book { padding: 10px 12px; }
+  .result-hero { padding: 22px 16px 16px; border-radius: var(--radius-lg); }
+  .result-hero .display { font-size: 2.6rem; }
+  .step, .faq-q, .group { border-radius: var(--radius-md); }
+  .row { min-height: 50px; }
+  .chip { width: 36px; height: 36px; }
+  .score-chip { height: 32px; min-width: 44px; padding: 0 10px; }
+  .report-btn { width: 32px; height: 32px; }
+}

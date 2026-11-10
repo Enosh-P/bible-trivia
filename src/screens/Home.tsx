@@ -23,19 +23,19 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
           <p className="caption">{t.greeting}</p>
           <h1 className="display">{t.appName}</h1>
         </div>
-        <IconTile horse="black" icon={HorseHead} size={48} />
+        <IconTile horse="black" icon={HorseHead} size={40} />
       </header>
 
       <div className="stat-row">
         <div className="stat glass">
-          <IconTile horse="red" icon={Flame} size={34} />
+          <IconTile horse="red" icon={Flame} size={30} />
           <div>
             <strong>{streak}</strong>
             <span className="caption">{t.streak}</span>
           </div>
         </div>
         <div className="stat glass">
-          <IconTile horse="pale" icon={Trophy} size={34} />
+          <IconTile horse="pale" icon={Trophy} size={30} />
           <div className="grow">
             <strong>
               {t.level} {level}
@@ -61,7 +61,7 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
             transition={{ ...spring.calm, delay: 0.03 * i }}
           >
             <Pressable className={`mode-card glass horse-${MODES[id].horse}`} onClick={() => onPlay(id)}>
-              <IconTile horse={MODES[id].horse} icon={MODE_ICON[id]} size={42} />
+              <IconTile horse={MODES[id].horse} icon={MODE_ICON[id]} size={34} />
               <span className="mode-name">{t.modeName[id]}</span>
               <span className="caption">{t.modeSub[id]}</span>
             </Pressable>
@@ -79,7 +79,7 @@ export function DailyCard({ onPlay, big }: { onPlay: () => void; big?: boolean }
   const dailyScore = useApp((s) => s.dailyScore);
   return (
     <Pressable className={`daily-card glass ${big ? 'is-big' : ''}`} onClick={onPlay} disabled={done}>
-      <IconTile horse="white" icon={MODE_ICON.daily} size={big ? 56 : 46} />
+      <IconTile horse="white" icon={MODE_ICON.daily} size={big ? 48 : 38} />
       <div className="grow">
         <span className="eyebrow">{new Date().toLocaleDateString(uiLang === 'ta' ? 'ta-IN' : undefined, { weekday: 'long', day: 'numeric', month: 'short' })}</span>
         <h2 className="title">{t.dailyTitle}</h2>
