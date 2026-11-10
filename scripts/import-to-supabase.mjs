@@ -1,11 +1,15 @@
 #!/usr/bin/env node
-// Imports content/books/*.json into Supabase, plus the per-book targets.
+// Imports into Supabase:
+//   - content/books/*.json   new quiz questions, as status 'review'
+//   - public/packs/uw/*.json the ~17,000 human-written Recall questions, as 'published'
+//   - per-book targets
 //
-//   npm run db:import / db:export reads .env.local, or: SUPABASE_URL=… SUPABASE_SECRET_KEY=… node scripts/import-to-supabase.mjs [--books GEN,EXO] [--dry-run]
+//   npm run db:import [-- --books GEN,EXO] [-- --no-recall] [-- --dry-run]
+//   (reads SUPABASE_URL and SUPABASE_SECRET_KEY from .env.local)
 //
 // The database is the source of truth: questions that already exist there are
 // left untouched (reviewers may have edited or published them). Only new ids
-// are inserted, always as status 'review'.
+// are inserted, so running it again is safe.
 // The secret key bypasses security rules: keep it in your shell or an
 // untracked .env.local file, never in the app or the repo.
 
@@ -18,6 +22,7 @@ const ROOT = new URL('..', import.meta.url);
 const DIR = new URL('content/books/', ROOT);
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
+const withRecall = !args.includes('--no-recall');
 const only = args.includes('--books') ? args[args.indexOf('--books') + 1].split(',').map((s) => s.toUpperCase()) : null;
 
 const url = process.env.SUPABASE_URL ?? process.env.VITE_SUPABASE_URL;
@@ -63,8 +68,40 @@ for (const f of files) {
   }
 }
 
+// Recall questions: human-written, already reviewed by their publisher.
+const UW = new URL('public/packs/uw/', ROOT);
+let recallCount = 0;
+if (withRecall && existsSync(new URL('index.json', UW))) {
+  const { attribution, license } = JSON.parse(readFileSync(new URL('index.json', UW), 'utf8'));
+  for (const f of readdirSync(UW).filter((n) => /^[0-9A-Z]{3}\.json$/.test(n))) {
+    const { book, rows: packRows } = JSON.parse(readFileSync(new URL(f, UW), 'utf8'));
+    if (only && !only.includes(book)) continue;
+    for (const [id, chapter, verse, verseEnd, q, a] of packRows) {
+      rows.push({
+        id: `uw-${book}-${id}`,
+        type: 'recall',
+        book_code: book,
+        chapter,
+        verse: verse || null,
+        verse_end: verseEnd || null,
+        difficulty: 2,
+        answer: null,
+        en: { q, a },
+        ta: null,
+        art: null,
+        tags: [],
+        status: 'published',
+        source: 'imported',
+        attribution,
+        license,
+      });
+      recallCount++;
+    }
+  }
+}
+
 const targets = PRIORITY.map((code, i) => ({ book_code: code, target: bookTarget(code), priority: i + 1 }));
-console.log(`${rows.length} questions from ${files.length} book files (${invalid} invalid skipped); ${targets.length} book targets.`);
+console.log(`${rows.length - recallCount} quiz questions from ${files.length} book files (${invalid} invalid skipped), ${recallCount} Recall questions, ${targets.length} book targets.`);
 if (dryRun) process.exit(0);
 
 const db = createClient(url, key, { auth: { persistSession: false } });
@@ -83,5 +120,5 @@ for (let i = 0; i < rows.length; i += 500) {
   inserted += data?.length ?? 0;
   process.stdout.write(`\r${Math.min(i + 500, rows.length)}/${rows.length}`);
 }
-console.log(`\nInserted ${inserted} new questions as 'review'; ${rows.length - inserted} already existed and were left as they are.`);
-console.log('Review them in Supabase → Table editor → questions (filter status = review), set status to published when approved.');
+console.log(`\nInserted ${inserted} new questions; ${rows.length - inserted} already existed and were left as they are.`);
+console.log('New quiz questions wait as status = review: approve them in Supabase → Table editor → questions. Recall questions are published straight away.');

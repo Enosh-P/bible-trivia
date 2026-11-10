@@ -32,6 +32,8 @@ export const db = new Dexie('bible-trivia') as Dexie & {
   withdrawn: EntityTable<{ id: string }, 'id'>;
   /** Reports made offline, sent when the device is back online. */
   pendingReports: EntityTable<{ id?: number; report: unknown; at: number }, 'id'>;
+  /** Recall cards per book, as last downloaded from Supabase (offline copy). */
+  recallBooks: EntityTable<{ book: string; cards: unknown[]; at: number }, 'book'>;
 };
 
 db.version(1).stores({
@@ -46,6 +48,9 @@ db.version(3).stores({
 });
 db.version(4).stores({
   pendingReports: '++id, at',
+});
+db.version(5).stores({
+  recallBooks: 'book',
 });
 
 /** Question ids answered wrong (and not answered right since). */

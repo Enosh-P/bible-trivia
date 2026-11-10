@@ -15,7 +15,8 @@
     "q:collect": "node --env-file-if-exists=.env.local scripts/generate-questions.mjs collect",
     "db:import": "node --env-file-if-exists=.env.local scripts/import-to-supabase.mjs",
     "db:export": "node --env-file-if-exists=.env.local scripts/export-from-supabase.mjs",
-    "content:uw": "node scripts/import-unfoldingword.mjs"
+    "content:uw": "node scripts/import-unfoldingword.mjs",
+    "db:check": "node --env-file-if-exists=.env.local scripts/check-supabase.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {

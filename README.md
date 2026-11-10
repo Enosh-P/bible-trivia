@@ -54,7 +54,7 @@ The app works fully offline from the bundled JSON. Supabase is where content gro
 
 **One-time setup**
 1. Create a project at supabase.com (the free tier is plenty).
-2. **SQL Editor** → run each file in `supabase/migrations/` in order (init, verses_gospel, content_workflow, reports).
+2. **SQL Editor** → run each file in `supabase/migrations/` in order (all 5: init, verses_gospel, content_workflow, reports, recall_questions).
 3. Run the generated `supabase/seed.sql` in the SQL Editor (`npm run db:seed-sql` rebuilds it). It is safe to re-run; it updates rows instead of duplicating them.
 4. **Environment variables:** copy `.env.example` to `.env.local` and fill it in from Supabase → Project Settings → API Keys:
 
@@ -66,6 +66,16 @@ The app works fully offline from the bundled JSON. Supabase is where content gro
    | `SUPABASE_SECRET_KEY` | scripts on your computer | `sb_secret_...`. **Never** in the app, the repo, or a `VITE_` variable |
 
    On a hosting service (Vercel, Netlify, Cloudflare Pages), add the two `VITE_` variables in its environment settings. They're built into the page at build time.
+
+5. **Load the Recall questions** (about 17,000 rows; too big to paste into the SQL Editor):
+   ```bash
+   npm run db:import
+   ```
+6. **Check everything:**
+   ```bash
+   npm run db:check
+   ```
+   It tests the keys, every table, the content counts, what players can and can't see, and the report-email function, and prints the fix for anything missing. It only reads; it never changes data.
 
 (With the Supabase CLI instead: `supabase link`, then `supabase db push`.)
 

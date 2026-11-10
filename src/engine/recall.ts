@@ -1,10 +1,11 @@
 import { db } from '../storage/db';
+import { supabase } from '../online/supabase';
 import { shuffle } from './picker';
 
 /**
  * Recall cards: human-written questions with their answers (unfoldingWord
  * Translation Questions, ~17,000 across every chapter). Loaded one book at a
- * time from /packs/uw/ and kept offline by the service worker.
+ * time from Supabase, or from the bundled /packs/uw/ files, and kept offline.
  */
 export interface RecallCard {
   id: string; // 'uw-GEN-i4zd'
@@ -37,10 +38,62 @@ export function loadRecallIndex(): Promise<RecallIndex> {
   return indexPromise;
 }
 
+/**
+ * Cards for one book. With Supabase connected, the database is the source
+ * (so fixes made there reach players) and a copy is kept for offline use;
+ * otherwise, or if that fails, the files bundled with the app.
+ */
 export function loadRecallBook(book: string): Promise<RecallCard[]> {
   let p = bookCache.get(book);
   if (!p) {
-    p = fetch(`/packs/uw/${book}.json`)
+    p = loadFromDatabase(book)
+      .catch(() => loadOfflineCopy(book))
+      .catch(() => loadBundled(book));
+    p.catch(() => bookCache.delete(book));
+    bookCache.set(book, p);
+  }
+  return p;
+}
+
+interface RecallRow {
+  id: string;
+  chapter: number;
+  verse: number | null;
+  verse_end: number | null;
+  en: { q: string; a: string };
+}
+
+async function loadFromDatabase(book: string): Promise<RecallCard[]> {
+  if (!supabase || !navigator.onLine) throw new Error('offline');
+  const cards: RecallCard[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await supabase
+      .from('questions')
+      .select('id, chapter, verse, verse_end, en')
+      .eq('type', 'recall')
+      .eq('book_code', book)
+      .order('chapter')
+      .order('verse')
+      .range(from, from + 999);
+    if (error) throw error;
+    for (const r of data as RecallRow[]) {
+      cards.push({ id: r.id, book, chapter: r.chapter, verse: r.verse ?? 1, ...(r.verse_end ? { verseEnd: r.verse_end } : {}), q: r.en.q, a: r.en.a });
+    }
+    if (data.length < 1000) break;
+  }
+  if (!cards.length) throw new Error('not in database yet');
+  void db.recallBooks.put({ book, cards, at: Date.now() }).catch(() => {});
+  return cards;
+}
+
+async function loadOfflineCopy(book: string): Promise<RecallCard[]> {
+  const saved = await db.recallBooks.get(book);
+  if (!saved?.cards.length) throw new Error('no offline copy');
+  return saved.cards as RecallCard[];
+}
+
+function loadBundled(book: string): Promise<RecallCard[]> {
+  return fetch(`/packs/uw/${book}.json`)
       .then((r) => {
         if (!r.ok) throw new Error(`${book} ${r.status}`);
         return r.json() as Promise<{ rows: Row[] }>;
@@ -56,10 +109,6 @@ export function loadRecallBook(book: string): Promise<RecallCard[]> {
           a,
         })),
       );
-    p.catch(() => bookCache.delete(book));
-    bookCache.set(book, p);
-  }
-  return p;
 }
 
 /**

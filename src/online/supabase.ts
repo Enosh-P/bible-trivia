@@ -69,7 +69,8 @@ export async function syncQuestions(): Promise<number> {
   // Keyset paging on (updated_at, id) so rows sharing a timestamp are never skipped.
   let lastId = '';
   for (;;) {
-    let query = supabase.from('questions').select('*').order('updated_at').order('id').limit(PAGE);
+    // Recall cards are loaded per book when opened (src/engine/recall.ts), not here.
+    let query = supabase.from('questions').select('*').neq('type', 'recall').order('updated_at').order('id').limit(PAGE);
     query = lastId
       ? query.or(`updated_at.gt.${since},and(updated_at.eq.${since},id.gt.${lastId})`)
       : query.gt('updated_at', since);
