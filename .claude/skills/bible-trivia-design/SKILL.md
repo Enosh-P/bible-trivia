@@ -50,6 +50,10 @@ Follow these so every screen feels like the same app. Motion and material rules 
 - Every UI string lives in `src/i18n/strings.ts` in **both** `en` and `ta`. TypeScript enforces this.
 
 ## Content
+- **Supabase is the source of truth** for questions. `content/books/*.json` holds new questions waiting to be imported, plus backups (`npm run db:export`). Never overwrite reviewed rows; the importer only inserts new ids.
+- New questions always start as `status: "review"`. Only a human reviewer publishes, because the Tamil needs a native reader.
+- Never copy questions from other apps or websites. Use original or openly licensed content only, and record `attribution` and `license` for imported content.
+- All checks go through `scripts/lib/validate.mjs` (the generator, the importer and the tests share it).
 - Questions live in `content/packs/*.json`, bilingual, with options in the same order. `npm test` validates them.
 - Each mode needs at least `length` questions of its types; the tests check this.
 - English quotes are KJV. Tamil quotes are BSI O.V., kept short. Prefer paraphrase plus a reference.

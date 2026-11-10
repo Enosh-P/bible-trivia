@@ -17,10 +17,11 @@ export const QUESTION_BY_ID: Record<string, Question> = Object.fromEntries(
  */
 export async function questionPool(): Promise<Question[]> {
   try {
-    const remote = await db.remoteQuestions.toArray();
-    if (!remote.length) return ALL_QUESTIONS;
+    const [remote, withdrawn] = await Promise.all([db.remoteQuestions.toArray(), db.withdrawn.toCollection().primaryKeys()]);
+    if (!remote.length && !withdrawn.length) return ALL_QUESTIONS;
     const byId = new Map(ALL_QUESTIONS.map((q) => [q.id, q]));
     for (const q of remote) byId.set(q.id, q);
+    for (const id of withdrawn) byId.delete(id as string);
     return [...byId.values()];
   } catch {
     return ALL_QUESTIONS;

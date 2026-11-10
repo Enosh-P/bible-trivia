@@ -94,3 +94,29 @@ describe('gospel & FAQ', () => {
     for (const f of FAQS) for (const r of f.reading) expect(SOURCE_BY_ID[r], `${f.id} → ${r}`).toBeTruthy();
   });
 });
+
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { problems, fingerprint } from '../scripts/lib/validate.mjs';
+import { chapterCount, totalTarget, PRIORITY } from '../scripts/lib/targets.mjs';
+
+describe('book files (content/books)', () => {
+  const dir = new URL('../content/books/', import.meta.url);
+  const files = existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith('.json')) : [];
+  const CH = Object.fromEntries(PRIORITY.map((b: string) => [b, chapterCount(b)]));
+  it('targets add up to at least 10,000 questions', () => {
+    expect(totalTarget()).toBeGreaterThanOrEqual(10000);
+  });
+  it('every question passes validation and none repeat', () => {
+    const seenIds = new Set<string>(ALL_QUESTIONS.map((q) => q.id));
+    const seenText = new Set<string>(ALL_QUESTIONS.map(fingerprint));
+    for (const f of files) {
+      for (const q of JSON.parse(readFileSync(new URL(f, dir), 'utf8')).questions) {
+        expect(problems(q, CH), q.id).toEqual([]);
+        expect(seenIds.has(q.id), `duplicate id ${q.id}`).toBe(false);
+        expect(seenText.has(fingerprint(q)), `duplicate question ${q.id}`).toBe(false);
+        seenIds.add(q.id);
+        seenText.add(fingerprint(q));
+      }
+    }
+  });
+});

@@ -80,6 +80,32 @@ These rules were tested against Postgres 16, including that other people's rows 
 
 **Adding content later:** edit `content/*.json`, run `npm test`, then `npm run db:seed-sql` and re-run `seed.sql`. Or edit rows in the Supabase table editor: the app pulls questions changed since its last sync on startup.
 
+## Growing the question bank (10,000+)
+
+**Supabase is the source of truth.** The app ships about 70 starter questions so it works offline from the first launch, then downloads every published question from the database in the background and keeps them offline.
+
+Targets live in `content/targets.json`: 20 per chapter, +10 for important chapters, 4 per psalm, 12 per Proverbs chapter, popular books first. That's about 22,000 in total. Run `npm run q:plan` to see what's still missing.
+
+**1. Write questions** with Claude (needs `ANTHROPIC_API_KEY`):
+```bash
+npm run q:try -- --book GEN --chapter 1        # one chapter right away, to check quality
+npm run q:submit -- --top 11                    # the 11 popular books as one batch (half price)
+npm run q:collect                               # once the batch has finished (usually under an hour)
+```
+Each question is checked automatically: both languages, four distinct options, a valid book, chapter and verse, Tamil script present, and no repeats. New questions are saved to `content/books/<BOOK>.json` as `status: "review"`. Rejected ones go to `.generator/` with the reason. Running `submit` again only asks for what's still missing.
+
+**2. Import into Supabase** (service-role key from Project Settings → API; keep it out of git):
+```bash
+SUPABASE_URL=https://xxxx.supabase.co SUPABASE_SERVICE_ROLE_KEY=... npm run db:import
+```
+Only new questions are added. Questions already in the database are never overwritten, so reviewers' fixes are safe.
+
+**3. Review in Supabase**: Table editor → `questions`, filter `status = review`. Fix the wording, then set `status` to `published` (or `retired`), and optionally add `review_note` and `reviewed_by`. Published questions reach players on their next app start. Run `select * from book_progress` in the SQL editor for per-book progress.
+
+**4. Back up** reviewers' work into git now and then: `npm run db:export`.
+
+**Questions from other apps or websites:** don't copy them. Their wording is copyrighted, even though Bible facts are not. Import a collection only when it is openly licensed or you have written permission, and fill in `attribution` and `license` for those rows.
+
 ## Scripture text & licensing
 
 - English quotations: KJV (public domain).

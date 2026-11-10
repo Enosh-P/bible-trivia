@@ -1,0 +1,19 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node",
+      "vite/client",
+      "vite-plugin-pwa/client"
+    ],
+    "noImplicitAny": false,
+    "allowJs": true,
+    "checkJs": false
+  },
+  "include": [
+    ".",
+    "../src",
+    "../content",
+    "../scripts"
+  ]
+}

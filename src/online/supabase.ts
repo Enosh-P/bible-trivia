@@ -44,10 +44,14 @@ function toQuestion(r: QuestionRow): Question {
   };
 }
 
+const PAGE = 1000;
+
 /**
  * Pulls questions published or edited since the last sync and keeps them in
  * IndexedDB, so new content reaches players without an app update and still
- * works offline. Safe to call on every start; failures are silent.
+ * works offline. Pages through the whole bank (10,000+ questions) and drops
+ * questions that reviewers have withdrawn. Safe to call on every start;
+ * failures are silent and the next start resumes from the last saved point.
  */
 export async function syncQuestions(): Promise<number> {
   if (!supabase || !navigator.onLine) return 0;
@@ -57,21 +61,43 @@ export async function syncQuestions(): Promise<number> {
   } catch {
     /* storage blocked */
   }
-  const { data, error } = await supabase
-    .from('questions')
-    .select('*')
-    .gt('updated_at', since)
-    .order('updated_at')
-    .limit(1000);
-  if (error || !data?.length) return 0;
-  const rows = data as QuestionRow[];
-  await db.remoteQuestions.bulkPut(rows.map(toQuestion));
-  try {
-    localStorage.setItem(SYNC_KEY, rows[rows.length - 1].updated_at);
-  } catch {
-    /* storage blocked */
+  const startedFrom = since;
+  let total = 0;
+
+  // Keyset paging on (updated_at, id) so rows sharing a timestamp are never skipped.
+  let lastId = '';
+  for (;;) {
+    let query = supabase.from('questions').select('*').order('updated_at').order('id').limit(PAGE);
+    query = lastId
+      ? query.or(`updated_at.gt.${since},and(updated_at.eq.${since},id.gt.${lastId})`)
+      : query.gt('updated_at', since);
+    const { data, error } = await query;
+    if (error || !data?.length) break;
+    const rows = data as QuestionRow[];
+    await db.remoteQuestions.bulkPut(rows.map(toQuestion));
+    total += rows.length;
+    const last = rows[rows.length - 1];
+    since = last.updated_at;
+    lastId = last.id;
+    try {
+      localStorage.setItem(SYNC_KEY, since);
+    } catch {
+      /* storage blocked */
+    }
+    if (rows.length < PAGE) break;
   }
-  return rows.length;
+
+  // Questions taken out of circulation since the last sync.
+  const { data: withdrawn } = await supabase.rpc('withdrawn_question_ids', { p_since: startedFrom });
+  if (withdrawn?.length) {
+    const ids = (withdrawn as { id: string }[]).map((r) => r.id);
+    await db.remoteQuestions.bulkDelete(ids);
+    await db.withdrawn.bulkPut(ids.map((id) => ({ id })));
+  }
+  // A question published again comes back.
+  if (total) await db.withdrawn.bulkDelete((await db.remoteQuestions.toCollection().primaryKeys()) as string[]);
+
+  return total;
 }
 
 /** Lets a player flag a confusing or wrong question. */

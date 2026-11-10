@@ -231,6 +231,7 @@ There is no ready-made "liquid glass" or "PWA" skill in your list, so the projec
 - ✅ Tamil UI follows Tamil questions; Tamil-language phones start in Tamil.
 - ✅ Light mode: clear liquid-drop glass, flat colours (no gradients). No sparkle icons anywhere.
 - ✅ Supabase: 2 migrations, row-level security tested, leaderboard function, seed generator, background question sync.
+- ✅ Question bank at scale: Supabase is the source of truth; targets total about 22,000 (20/chapter, more for key chapters, fewer for Psalms); Claude batch generator with automatic checks; importer that never overwrites reviewed rows; review workflow and `book_progress` view; paged offline sync in the app.
 - ⏳ Next: grow the question bank, more art, Build the Verse, Timeline, Match Pairs, Pass & Play.
 
 ## 9. Decisions (original list)

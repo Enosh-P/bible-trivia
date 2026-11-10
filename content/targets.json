@@ -1,0 +1,455 @@
+{
+  "_note": "A guide, not a rule. Each chapter gets perChapter questions (default 20); focus chapters get focusBonus more. Psalms and Proverbs get fewer per chapter. Books are written in priority order.",
+  "defaults": {
+    "perChapter": 20,
+    "focusBonus": 10,
+    "minPerBook": 20
+  },
+  "priority": [
+    "GEN",
+    "EXO",
+    "PSA",
+    "PRO",
+    "DAN",
+    "MAT",
+    "MRK",
+    "LUK",
+    "JHN",
+    "ACT",
+    "REV",
+    "LEV",
+    "NUM",
+    "DEU",
+    "JOS",
+    "JDG",
+    "RUT",
+    "1SA",
+    "2SA",
+    "1KI",
+    "2KI",
+    "1CH",
+    "2CH",
+    "EZR",
+    "NEH",
+    "EST",
+    "JOB",
+    "ECC",
+    "SNG",
+    "ISA",
+    "JER",
+    "LAM",
+    "EZK",
+    "HOS",
+    "JOL",
+    "AMO",
+    "OBA",
+    "JON",
+    "MIC",
+    "NAM",
+    "HAB",
+    "ZEP",
+    "HAG",
+    "ZEC",
+    "MAL",
+    "ROM",
+    "1CO",
+    "2CO",
+    "GAL",
+    "EPH",
+    "PHP",
+    "COL",
+    "1TH",
+    "2TH",
+    "1TI",
+    "2TI",
+    "TIT",
+    "PHM",
+    "HEB",
+    "JAS",
+    "1PE",
+    "2PE",
+    "1JN",
+    "2JN",
+    "3JN",
+    "JUD"
+  ],
+  "books": {
+    "GEN": {
+      "chapters": 50,
+      "focus": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        12,
+        22,
+        37,
+        39,
+        41,
+        50
+      ]
+    },
+    "EXO": {
+      "chapters": 40,
+      "focus": [
+        3,
+        12,
+        14,
+        16,
+        20
+      ]
+    },
+    "LEV": {
+      "chapters": 27
+    },
+    "NUM": {
+      "chapters": 36,
+      "focus": [
+        13,
+        14,
+        22
+      ]
+    },
+    "DEU": {
+      "chapters": 34,
+      "focus": [
+        6
+      ]
+    },
+    "JOS": {
+      "chapters": 24,
+      "focus": [
+        1,
+        2,
+        6
+      ]
+    },
+    "JDG": {
+      "chapters": 21,
+      "focus": [
+        6,
+        7,
+        16
+      ]
+    },
+    "RUT": {
+      "chapters": 4,
+      "focus": [
+        1,
+        4
+      ]
+    },
+    "1SA": {
+      "chapters": 31,
+      "focus": [
+        3,
+        16,
+        17
+      ]
+    },
+    "2SA": {
+      "chapters": 24
+    },
+    "1KI": {
+      "chapters": 22,
+      "focus": [
+        3,
+        17,
+        18,
+        19
+      ]
+    },
+    "2KI": {
+      "chapters": 25,
+      "focus": [
+        2,
+        5
+      ]
+    },
+    "1CH": {
+      "chapters": 29
+    },
+    "2CH": {
+      "chapters": 36
+    },
+    "EZR": {
+      "chapters": 10
+    },
+    "NEH": {
+      "chapters": 13
+    },
+    "EST": {
+      "chapters": 10,
+      "focus": [
+        4
+      ]
+    },
+    "JOB": {
+      "chapters": 42,
+      "focus": [
+        1,
+        2,
+        42
+      ]
+    },
+    "PSA": {
+      "chapters": 150,
+      "perChapter": 4,
+      "focus": [
+        1,
+        23,
+        51,
+        91,
+        119,
+        139
+      ]
+    },
+    "PRO": {
+      "chapters": 31,
+      "perChapter": 12,
+      "focus": [
+        3,
+        31
+      ]
+    },
+    "ECC": {
+      "chapters": 12
+    },
+    "SNG": {
+      "chapters": 8
+    },
+    "ISA": {
+      "chapters": 66,
+      "focus": [
+        6,
+        9,
+        40,
+        53
+      ]
+    },
+    "JER": {
+      "chapters": 52
+    },
+    "LAM": {
+      "chapters": 5
+    },
+    "EZK": {
+      "chapters": 48
+    },
+    "DAN": {
+      "chapters": 12,
+      "focus": [
+        1,
+        2,
+        3,
+        5,
+        6
+      ]
+    },
+    "HOS": {
+      "chapters": 14
+    },
+    "JOL": {
+      "chapters": 3
+    },
+    "AMO": {
+      "chapters": 9
+    },
+    "OBA": {
+      "chapters": 1
+    },
+    "JON": {
+      "chapters": 4,
+      "focus": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "MIC": {
+      "chapters": 7
+    },
+    "NAM": {
+      "chapters": 3
+    },
+    "HAB": {
+      "chapters": 3
+    },
+    "ZEP": {
+      "chapters": 3
+    },
+    "HAG": {
+      "chapters": 2
+    },
+    "ZEC": {
+      "chapters": 14
+    },
+    "MAL": {
+      "chapters": 4
+    },
+    "MAT": {
+      "chapters": 28,
+      "focus": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        14,
+        26,
+        27,
+        28
+      ]
+    },
+    "MRK": {
+      "chapters": 16,
+      "focus": [
+        4,
+        16
+      ]
+    },
+    "LUK": {
+      "chapters": 24,
+      "focus": [
+        1,
+        2,
+        10,
+        15,
+        19,
+        24
+      ]
+    },
+    "JHN": {
+      "chapters": 21,
+      "focus": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        11,
+        14,
+        19,
+        20,
+        21
+      ]
+    },
+    "ACT": {
+      "chapters": 28,
+      "focus": [
+        1,
+        2,
+        9,
+        16,
+        27
+      ]
+    },
+    "ROM": {
+      "chapters": 16,
+      "focus": [
+        3,
+        6,
+        8,
+        10,
+        12
+      ]
+    },
+    "1CO": {
+      "chapters": 16,
+      "focus": [
+        13,
+        15
+      ]
+    },
+    "2CO": {
+      "chapters": 13
+    },
+    "GAL": {
+      "chapters": 6,
+      "focus": [
+        5
+      ]
+    },
+    "EPH": {
+      "chapters": 6,
+      "focus": [
+        2,
+        6
+      ]
+    },
+    "PHP": {
+      "chapters": 4,
+      "focus": [
+        4
+      ]
+    },
+    "COL": {
+      "chapters": 4
+    },
+    "1TH": {
+      "chapters": 5
+    },
+    "2TH": {
+      "chapters": 3
+    },
+    "1TI": {
+      "chapters": 6
+    },
+    "2TI": {
+      "chapters": 4
+    },
+    "TIT": {
+      "chapters": 3
+    },
+    "PHM": {
+      "chapters": 1
+    },
+    "HEB": {
+      "chapters": 13,
+      "focus": [
+        11
+      ]
+    },
+    "JAS": {
+      "chapters": 5,
+      "focus": [
+        1
+      ]
+    },
+    "1PE": {
+      "chapters": 5
+    },
+    "2PE": {
+      "chapters": 3
+    },
+    "1JN": {
+      "chapters": 5,
+      "focus": [
+        1,
+        4
+      ]
+    },
+    "2JN": {
+      "chapters": 1
+    },
+    "3JN": {
+      "chapters": 1
+    },
+    "JUD": {
+      "chapters": 1
+    },
+    "REV": {
+      "chapters": 22,
+      "focus": [
+        1,
+        4,
+        5,
+        6,
+        21,
+        22
+      ]
+    }
+  }
+}

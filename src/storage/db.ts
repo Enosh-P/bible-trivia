@@ -28,6 +28,8 @@ export const db = new Dexie('bible-trivia') as Dexie & {
   rounds: EntityTable<RoundRecord, 'id'>;
   /** Questions downloaded from Supabase (newer than the bundled packs). */
   remoteQuestions: EntityTable<Question, 'id'>;
+  /** Question ids reviewers took out of circulation (also hides bundled ones). */
+  withdrawn: EntityTable<{ id: string }, 'id'>;
 };
 
 db.version(1).stores({
@@ -36,6 +38,9 @@ db.version(1).stores({
 });
 db.version(2).stores({
   remoteQuestions: 'id, book, type',
+});
+db.version(3).stores({
+  withdrawn: 'id',
 });
 
 /** Question ids answered wrong (and not answered right since). */

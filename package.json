@@ -8,7 +8,13 @@
     "preview": "vite preview",
     "test": "vitest run",
     "icons": "node scripts/make-icons.mjs",
-    "db:seed-sql": "node scripts/export-seed-sql.mjs"
+    "db:seed-sql": "node scripts/export-seed-sql.mjs",
+    "q:plan": "node scripts/generate-questions.mjs plan",
+    "q:try": "node scripts/generate-questions.mjs try",
+    "q:submit": "node scripts/generate-questions.mjs submit",
+    "q:collect": "node scripts/generate-questions.mjs collect",
+    "db:import": "node scripts/import-to-supabase.mjs",
+    "db:export": "node scripts/export-from-supabase.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {
@@ -24,6 +30,8 @@
     "zustand": "^5.1.0"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^1.7.0",
+    "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.3.0",
