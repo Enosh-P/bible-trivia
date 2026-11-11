@@ -11,7 +11,7 @@
 // WEBHOOK_SECRET. SUPABASE_URL and the secret key are provided automatically.
 
 import webpush from 'npm:web-push@3.6.7';
-import { createClient } from 'npm:@supabase/supabase-js@2';
+import { createClient, type SupabaseClient } from 'npm:@supabase/supabase-js@2';
 
 type Lang = 'en' | 'ta';
 interface QueueRow { id: number; user_id: string; kind: string; payload: Record<string, unknown>; attempts: number }
@@ -27,8 +27,8 @@ function secretKey(): string {
 }
 
 // Created on first use, so the helpers above can be tested without a database.
-let _db: ReturnType<typeof createClient> | null = null;
-const db = new Proxy({} as ReturnType<typeof createClient>, {
+let _db: SupabaseClient | null = null;
+const db = new Proxy({} as SupabaseClient, {
   get: (_t, k) => {
     _db ??= createClient(Deno.env.get('SUPABASE_URL')!, secretKey(), { auth: { persistSession: false } });
     return (_db as unknown as Record<string | symbol, unknown>)[k];
