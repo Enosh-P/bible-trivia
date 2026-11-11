@@ -1,0 +1,7 @@
+# For scripts/indictrans2/translate.py (run on a GPU machine, e.g. a Lightning AI Studio)
+torch
+transformers>=4.40,<5
+sentencepiece
+sacremoses
+IndicTransToolkit
+huggingface_hub

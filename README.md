@@ -99,7 +99,11 @@ These are English only for now. Tamil versions, and multiple-choice versions wit
 
 Credit: *original work by unfoldingWord, available from unfoldingword.org/utq, CC BY-SA 4.0* (shown in the app).
 
-## Tamil for Recall (Google Translate)
+## Tamil for Recall
+
+**Free option (recommended if you have a GPU):** IndicTrans2 by AI4Bharat. See `scripts/indictrans2/README.md` (works well on Lightning AI).
+
+### Or: Google Translate (paid after 500,000 characters a month)
 
 The Recall questions are written in English. `npm run translate:recall` translates them with Google Cloud Translation. Before translating, it swaps Bible names and terms for their Tamil Bible spelling (`content/glossary/names-ta.json`: David → தாவீது, God → தேவன், Moses → மோசே …), so Google keeps them and the result reads like the Tamil Bible.
 

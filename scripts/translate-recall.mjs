@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 // Translates the Recall questions and answers into Tamil with Google Cloud
 // Translation, keeping Bible names in their Tamil Bible spelling.
+// (Free alternative on a GPU: scripts/indictrans2/translate.py, then run this
+// script with --merge-only.)
 //
 //   npm run translate:recall -- --books GEN,EXO     (specific books)
 //   npm run translate:recall -- --top 11            (the popular books first)
@@ -30,6 +32,9 @@ const POPULAR = ['GEN', 'EXO', 'PSA', 'PRO', 'DAN', 'MAT', 'MRK', 'LUK', 'JHN', 
 const args = process.argv.slice(2);
 const flag = (name) => (args.includes(`--${name}`) ? args[args.indexOf(`--${name}`) + 1] : undefined);
 const dryRun = args.includes('--dry-run');
+// --merge-only: no translating; copy finished translations (e.g. from the IndicTrans2
+// script, scripts/indictrans2/translate.py) into the app's packs.
+const mergeOnly = args.includes('--merge-only');
 
 const allBooks = readdirSync(PACKS).filter((f) => /^[0-9A-Z]{3}\.json$/.test(f)).map((f) => f.slice(0, 3));
 let books = allBooks;
@@ -37,7 +42,7 @@ if (flag('books')) books = flag('books').split(',').map((b) => b.trim().toUpperC
 else if (flag('top')) books = [...POPULAR, ...allBooks.filter((b) => !POPULAR.includes(b))].slice(0, Number(flag('top')));
 
 const key = process.env.GOOGLE_TRANSLATE_API_KEY;
-if (!dryRun && !key) {
+if (!dryRun && !mergeOnly && !key) {
   console.error('Set GOOGLE_TRANSLATE_API_KEY in .env.local (or run with --dry-run).');
   process.exit(1);
 }
@@ -103,7 +108,10 @@ for (const book of books) {
   const strings = todo.flatMap(([, , , , q, a]) => [protectNames(q), protectNames(a)]);
   const chars = strings.reduce((n, s) => n + s.length, 0);
   totalChars += chars;
-  if (!todo.length) {
+  if (mergeOnly) {
+    if (!Object.keys(done).length) continue;
+    console.log(`${book}: ${Object.keys(done).length} Tamil translations merged`);
+  } else if (!todo.length) {
     console.log(`${book}: already translated (${pack.rows.length})`);
   } else if (dryRun) {
     console.log(`${book}: ${todo.length} questions to translate, ${chars} characters`);
@@ -129,11 +137,15 @@ for (const book of books) {
     const t = done[r[0]];
     return t ? [...r.slice(0, 6), t.q, t.a] : r.slice(0, 6);
   });
-  pack.ta = 'machine'; // Google translation with Tamil Bible names; not yet reviewed
+  pack.ta = 'machine'; // machine translation with Tamil Bible names; not yet reviewed
   writeFileSync(packFile, JSON.stringify(pack));
 }
 
 const cost = Math.max(0, totalChars - 500000) * PRICE_PER_CHAR;
+if (mergeOnly) {
+  console.log('\nMerged. Next: npm run db:import to put the Tamil into Supabase.');
+  process.exit(0);
+}
 console.log(
   dryRun
     ? `\n${totalChars} characters to translate. Estimated cost: $${cost.toFixed(2)} (the first 500,000 characters each month are free).`
