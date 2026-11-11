@@ -72,12 +72,16 @@ for (const f of files) {
 // Recall questions: human-written, already reviewed by their publisher.
 const UW = new URL('public/packs/uw/', ROOT);
 let recallCount = 0;
+// Tamil machine translations (npm run translate:recall), applied where Tamil is still empty.
+const tamil = [];
 if (withRecall && existsSync(new URL('index.json', UW))) {
   const { attribution, license } = JSON.parse(readFileSync(new URL('index.json', UW), 'utf8'));
   for (const f of readdirSync(UW).filter((n) => /^[0-9A-Z]{3}\.json$/.test(n))) {
     const { book, rows: packRows } = JSON.parse(readFileSync(new URL(f, UW), 'utf8'));
     if (only && !only.includes(book)) continue;
-    for (const [id, chapter, verse, verseEnd, q, a] of packRows) {
+    for (const [id, chapter, verse, verseEnd, q, a, qTa, aTa] of packRows) {
+      const ta = qTa && aTa ? { q: qTa, a: aTa } : null;
+      if (ta) tamil.push({ id: `uw-${book}-${id}`, ta });
       rows.push({
         id: `uw-${book}-${id}`,
         type: 'recall',
@@ -88,7 +92,8 @@ if (withRecall && existsSync(new URL('index.json', UW))) {
         difficulty: 2,
         answer: null,
         en: { q, a },
-        ta: null,
+        ta,
+        ta_status: ta ? 'machine' : null,
         art: null,
         tags: [],
         status: 'published',
@@ -102,7 +107,7 @@ if (withRecall && existsSync(new URL('index.json', UW))) {
 }
 
 const targets = PRIORITY.map((code, i) => ({ book_code: code, target: bookTarget(code), priority: i + 1 }));
-console.log(`${rows.length - recallCount} quiz questions from ${files.length} book files (${invalid} invalid skipped), ${recallCount} Recall questions, ${targets.length} book targets.`);
+console.log(`${rows.length - recallCount} quiz questions from ${files.length} book files (${invalid} invalid skipped), ${recallCount} Recall questions (${tamil.length} with Tamil), ${targets.length} book targets.`);
 if (dryRun) process.exit(0);
 
 const db = createClient(url, key, { auth: { persistSession: false } });
@@ -122,4 +127,13 @@ for (let i = 0; i < rows.length; i += 500) {
   process.stdout.write(`\r${Math.min(i + 500, rows.length)}/${rows.length}`);
 }
 console.log(`\nInserted ${inserted} new questions; ${rows.length - inserted} already existed and were left as they are.`);
+
+// Tamil for questions that already existed without it. A reviewer's Tamil is never replaced.
+let tamilFilled = 0;
+for (let i = 0; i < tamil.length; i += 1000) {
+  const { data, error } = await db.rpc('apply_machine_tamil', { p: tamil.slice(i, i + 1000) });
+  if (error) throw new Error(`Tamil ${i}: ${error.message} (run supabase/setup.sql again to add the Tamil migration)`);
+  tamilFilled += data ?? 0;
+}
+if (tamil.length) console.log(`Tamil added to ${tamilFilled} existing questions (questions that already had Tamil were left as they are).`);
 console.log('New quiz questions wait as status = review: approve them in Supabase → Table editor → questions. Recall questions are published straight away.');

@@ -76,7 +76,6 @@ export function Recall({ onExit }: { onExit: () => void }) {
         <IconTile horse="pale" icon={BookOpenCheck} size={40} />
       </header>
 
-      {uiLang === 'ta' && <p className="caption note">{t.recallEnglishOnly}</p>}
       {error && <p className="caption note">{t.offlineNotLoaded}</p>}
 
       <AnimatePresence mode="wait" initial={false}>
@@ -188,6 +187,15 @@ function ChapterPicker({ book, onPick }: { book: string; onPick: (ch: number | n
 function Card({ card, n, total, shown, onShow, onMark }: { card: RecallCard; n: number; total: number; shown: boolean; onShow: () => void; onMark: (knew: boolean) => void }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
+  const qLang = useApp((s) => s.qLang);
+  // Tamil when chosen and available; English always as the fallback.
+  const hasTamil = Boolean(card.qTa && card.aTa);
+  const wantsTamil = qLang !== 'en';
+  const en = { lang: 'en' as const, q: card.q, a: card.a };
+  const ta = hasTamil ? { lang: 'ta' as const, q: card.qTa!, a: card.aTa! } : null;
+  const main = ta && (qLang === 'ta' || (qLang === 'both' && uiLang === 'ta')) ? ta : en;
+  const second = qLang === 'both' && ta ? (main === ta ? en : ta) : null;
+  const showsTamil = Boolean(ta) && wantsTamil;
   return (
     <div className="recall-card-wrap">
       <div className="bar">
@@ -200,9 +208,16 @@ function Card({ card, n, total, shown, onShow, onMark }: { card: RecallCard; n: 
           </span>
           <ReportButton target={recallTarget(card)} />
         </div>
-        <h2 className="q-main" lang="en">
-          {card.q}
+        {showsTamil && !card.taReviewed && <span className="caption mt-note">{t.machineTamil}</span>}
+        {wantsTamil && !hasTamil && <span className="caption mt-note">{t.recallEnglishOnly}</span>}
+        <h2 className="q-main" lang={main.lang}>
+          {main.q}
         </h2>
+        {second && (
+          <p className="q-secondary" lang={second.lang}>
+            {second.q}
+          </p>
+        )}
         <AnimatePresence initial={false}>
           {shown && (
             <motion.div
@@ -211,9 +226,16 @@ function Card({ card, n, total, shown, onShow, onMark }: { card: RecallCard; n: 
               animate={{ height: 'auto', opacity: 1 }}
               transition={spring.calm}
             >
-              <p className="verse" lang="en">
-                {card.a}
-              </p>
+              <div className="recall-answer-box">
+                <p className="verse" lang={main.lang}>
+                  {main.a}
+                </p>
+                {second && (
+                  <p className="verse recall-answer-second" lang={second.lang}>
+                    {second.a}
+                  </p>
+                )}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

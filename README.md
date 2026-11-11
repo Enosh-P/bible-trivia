@@ -99,6 +99,21 @@ These are English only for now. Tamil versions, and multiple-choice versions wit
 
 Credit: *original work by unfoldingWord, available from unfoldingword.org/utq, CC BY-SA 4.0* (shown in the app).
 
+## Tamil for Recall (Google Translate)
+
+The Recall questions are written in English. `npm run translate:recall` translates them with Google Cloud Translation. Before translating, it swaps Bible names and terms for their Tamil Bible spelling (`content/glossary/names-ta.json`: David → தாவீது, God → தேவன், Moses → மோசே …), so Google keeps them and the result reads like the Tamil Bible.
+
+```bash
+npm run translate:recall -- --top 11 --dry-run   # what it would cost (popular books ≈ $6)
+npm run translate:recall -- --top 11             # the 11 popular books first
+npm run translate:recall                         # everything (≈ $40; first 500,000 characters a month are free)
+npm run db:import                                # put the Tamil into Supabase
+```
+- Progress is saved per book in `content/translations/ta/recall/`. A stopped run continues where it left off and never pays twice.
+- In Supabase, Tamil is only filled in where it is empty (`ta_status = machine`). When a reviewer edits the Tamil in the table editor, it becomes `reviewed` automatically and is never overwritten.
+- The app shows Tamil in Tamil mode and both languages in Both mode, with a small "Google Translate, tap the flag for mistakes" note until a question is reviewed.
+- Add names to the glossary any time; it applies to the next translation run.
+
 ## Reports from players
 
 Every question, Recall card, FAQ answer and the Verse of the Day has a flag button. Players pick what's wrong (wrong answer, typo, Tamil translation, confusing, other) and can add a comment and contact details.

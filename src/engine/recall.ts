@@ -15,6 +15,10 @@ export interface RecallCard {
   verseEnd?: number;
   q: string;
   a: string;
+  /** Tamil (machine-translated with Tamil Bible names until reviewed). */
+  qTa?: string;
+  aTa?: string;
+  taReviewed?: boolean;
 }
 
 export interface RecallIndex {
@@ -24,7 +28,7 @@ export interface RecallIndex {
   books: Record<string, number>;
 }
 
-type Row = [string, number, number, number, string, string];
+type Row = [string, number, number, number, string, string, string?, string?];
 
 let indexPromise: Promise<RecallIndex> | null = null;
 const bookCache = new Map<string, Promise<RecallCard[]>>();
@@ -61,6 +65,8 @@ interface RecallRow {
   verse: number | null;
   verse_end: number | null;
   en: { q: string; a: string };
+  ta: { q: string; a: string } | null;
+  ta_status: 'machine' | 'reviewed' | null;
 }
 
 async function loadFromDatabase(book: string): Promise<RecallCard[]> {
@@ -69,7 +75,7 @@ async function loadFromDatabase(book: string): Promise<RecallCard[]> {
   for (let from = 0; ; from += 1000) {
     const { data, error } = await supabase
       .from('questions')
-      .select('id, chapter, verse, verse_end, en')
+      .select('id, chapter, verse, verse_end, en, ta, ta_status')
       .eq('type', 'recall')
       .eq('book_code', book)
       .order('chapter')
@@ -77,7 +83,16 @@ async function loadFromDatabase(book: string): Promise<RecallCard[]> {
       .range(from, from + 999);
     if (error) throw error;
     for (const r of data as RecallRow[]) {
-      cards.push({ id: r.id, book, chapter: r.chapter, verse: r.verse ?? 1, ...(r.verse_end ? { verseEnd: r.verse_end } : {}), q: r.en.q, a: r.en.a });
+      cards.push({
+        id: r.id,
+        book,
+        chapter: r.chapter,
+        verse: r.verse ?? 1,
+        ...(r.verse_end ? { verseEnd: r.verse_end } : {}),
+        q: r.en.q,
+        a: r.en.a,
+        ...(r.ta?.q && r.ta?.a ? { qTa: r.ta.q, aTa: r.ta.a, taReviewed: r.ta_status === 'reviewed' } : {}),
+      });
     }
     if (data.length < 1000) break;
   }
@@ -99,7 +114,7 @@ function loadBundled(book: string): Promise<RecallCard[]> {
         return r.json() as Promise<{ rows: Row[] }>;
       })
       .then(({ rows }) =>
-        rows.map(([id, chapter, verse, verseEnd, q, a]) => ({
+        rows.map(([id, chapter, verse, verseEnd, q, a, qTa, aTa]) => ({
           id: `uw-${book}-${id}`,
           book,
           chapter,
@@ -107,6 +122,7 @@ function loadBundled(book: string): Promise<RecallCard[]> {
           ...(verseEnd ? { verseEnd } : {}),
           q,
           a,
+          ...(qTa && aTa ? { qTa, aTa } : {}),
         })),
       );
 }

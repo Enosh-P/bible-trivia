@@ -108,7 +108,12 @@ export function recallTarget(c: RecallCard): ReportTarget {
   return {
     kind: 'recall',
     id: c.id,
-    snapshot: { reference: formatRef('en', c.book, c.chapter, c.verse, c.verseEnd), question: c.q, answer: c.a },
+    snapshot: {
+      reference: formatRef('en', c.book, c.chapter, c.verse, c.verseEnd),
+      question: c.q,
+      answer: c.a,
+      ...(c.qTa ? { question_ta: c.qTa, answer_ta: c.aTa ?? '' } : {}),
+    },
   };
 }
 

@@ -756,3 +756,8 @@
   .score-chip { height: 32px; min-width: 44px; padding: 0 10px; }
   .report-btn { width: 32px; height: 32px; }
 }
+
+.recall-answer-box { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border-radius: var(--radius-md); background: var(--pale-wash); }
+.recall-answer-box p { margin: 0; padding: 0; background: none; }
+.recall-answer-second { color: var(--text-2); font-size: 0.95rem !important; }
+.mt-note { margin-top: -6px; }
