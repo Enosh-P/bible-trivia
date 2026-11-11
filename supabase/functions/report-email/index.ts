@@ -94,12 +94,12 @@ Deno.serve(async (req) => {
 
   // Record that the admin was told.
   const url = Deno.env.get('SUPABASE_URL');
-  const secret = secretKey();
-  if (url && secret) {
+  const serviceKey = secretKey();
+  if (url && serviceKey) {
     await fetch(`${url}/rest/v1/question_reports?id=eq.${report.id}`, {
       method: 'PATCH',
       // New secret keys are not JWTs: send them in the apikey header only.
-      headers: { apikey: secret, 'Content-Type': 'application/json' },
+      headers: { apikey: serviceKey, 'Content-Type': 'application/json' },
       body: JSON.stringify({ emailed_at: new Date().toISOString() }),
     }).catch(() => {});
   }

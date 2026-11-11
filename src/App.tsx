@@ -12,6 +12,7 @@ import { Progress } from './screens/Progress';
 import { Gospel } from './screens/Gospel';
 import { Recall } from './screens/Recall';
 import { NewPasswordSheet } from './components/NewPasswordSheet';
+import { syncPushLanguage } from './online/push';
 import { Settings } from './screens/Settings';
 import { Game, type RoundResult } from './screens/Game';
 import { Results } from './screens/Results';
@@ -100,6 +101,22 @@ function MainApp() {
     window.addEventListener('online', online);
     return () => window.removeEventListener('online', online);
   }, []);
+
+  // Tapped a notification: /?open=friends | daily | home
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const open = params.get('open');
+    if (!open) return;
+    history.replaceState(null, '', location.pathname);
+    if (open === 'friends') goTab('friends');
+    else if (open === 'daily') setRoute({ kind: 'game', mode: 'daily', run: Date.now() });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const uiLang = useApp((s) => s.uiLang);
+  useEffect(() => {
+    void syncPushLanguage(uiLang).catch(() => {});
+  }, [uiLang]);
 
   const play = (mode: ModeId) => setRoute(mode === 'recall' ? { kind: 'recall' } : { kind: 'game', mode, run: Date.now() });
 

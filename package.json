@@ -19,7 +19,8 @@
     "db:check": "node --env-file-if-exists=.env.local scripts/check-supabase.mjs",
     "db:setup-sql": "node scripts/export-seed-sql.mjs && node scripts/build-setup-sql.mjs",
     "translate:recall": "node --env-file-if-exists=.env.local scripts/translate-recall.mjs",
-    "emails": "node scripts/build-email-templates.mjs"
+    "emails": "node scripts/build-email-templates.mjs",
+    "push:keys": "web-push generate-vapid-keys"
   },
   "license": "UNLICENSED",
   "dependencies": {
@@ -43,7 +44,8 @@
     "typescript": "^7.0.2",
     "vite": "^8.3.7",
     "vite-plugin-pwa": "^2.0.0",
-    "vitest": "^5.1.0"
+    "vitest": "^5.1.0",
+    "web-push": "^4.0.0"
   },
   "private": true,
   "type": "module"

@@ -146,6 +146,10 @@ The friends and challenge rules are in `supabase/migrations/20261111000600_socia
 
 Bilingual email templates for every Supabase Auth email are in `supabase/templates/`, with subjects and where to paste them in `supabase/templates/README.md` (`npm run emails` rebuilds them). **Connect your own email sender (free with Gmail) before sharing the app.** Supabase's built-in sender only reaches your own team's addresses.
 
+## Notifications
+
+Daily verse, Daily Challenge reminder, streak warning, and friend and challenge alerts as phone notifications (web push), each switchable in Settings. They're scheduled by **Supabase Cron**, so no other server is needed. Setup: `supabase/functions/push/README.md`.
+
 ## Reports from players
 
 Every question, Recall card, FAQ answer and the Verse of the Day has a flag button. Players pick what's wrong (wrong answer, typo, Tamil translation, confusing, other) and can add a comment and contact details.

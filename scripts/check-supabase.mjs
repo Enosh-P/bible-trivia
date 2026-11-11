@@ -116,6 +116,9 @@ const tables = [
   ['friendships', '20261111000600_social.sql'],
   ['challenges', '20261111000600_social.sql'],
   ['challenge_players', '20261111000600_social.sql'],
+  ['push_subscriptions', '20261111000800_notifications.sql'],
+  ['notification_prefs', '20261111000800_notifications.sql'],
+  ['notification_queue', '20261111000800_notifications.sql'],
 ];
 let tablesOk = true;
 for (const [t, file] of tables) {
@@ -211,6 +214,10 @@ try {
   else if (res.status === 500) warn('report-email is deployed but its secrets are missing', 'Edge Functions → Secrets: ADMIN_EMAIL, RESEND_API_KEY, WEBHOOK_SECRET');
   else ok(`report-email answered (HTTP ${res.status})`);
   console.log('     Also check: Database → Webhooks has an INSERT webhook on question_reports → report-email with header x-webhook-secret.');
+  const push = await fetch(`${url.replace(/\/$/, '')}/functions/v1/push`, { method: 'POST', body: '{}' });
+  if (push.status === 404) warn('Edge Function push (notifications) is not deployed yet', 'see supabase/functions/push/README.md');
+  else ok('push function is deployed');
+  if (!env.VITE_VAPID_PUBLIC_KEY) warn('VITE_VAPID_PUBLIC_KEY is not set, so the app hides the notification settings', 'npm run push:keys, then add the public key to .env.local');
 } catch (e) {
   warn(`could not reach the functions endpoint: ${e.message}`);
 }

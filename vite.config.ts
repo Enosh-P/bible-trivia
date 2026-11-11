@@ -32,6 +32,8 @@ export default defineConfig({
       workbox: {
         // Question packs are bundled JS, so the whole app (fonts included) works offline.
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // Push notifications: shows them and opens the right screen on tap.
+        importScripts: ['push-handler.js'],
         // Human-written question packs (one file per book) are downloaded when
         // first used and then kept for offline play.
         runtimeCaching: [

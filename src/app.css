@@ -867,3 +867,8 @@
 .google-btn:not(:disabled):hover { background: var(--bg-2); }
 .or-line { display: flex; align-items: center; gap: 10px; color: var(--text-3); font-size: 0.8rem; }
 .or-line::before, .or-line::after { content: ''; flex: 1; height: 1px; background: var(--line-strong); }
+
+.notif-control { display: flex; align-items: center; gap: 10px; }
+.hour-pick { width: auto; min-height: 36px; padding: 4px 10px; font-size: 15px; }
+.notif-note { margin: 0 0 10px; }
+.notif-test { align-self: flex-start; margin: 4px 0 10px; }
