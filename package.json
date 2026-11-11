@@ -18,7 +18,8 @@
     "content:uw": "node scripts/import-unfoldingword.mjs",
     "db:check": "node --env-file-if-exists=.env.local scripts/check-supabase.mjs",
     "db:setup-sql": "node scripts/export-seed-sql.mjs && node scripts/build-setup-sql.mjs",
-    "translate:recall": "node --env-file-if-exists=.env.local scripts/translate-recall.mjs"
+    "translate:recall": "node --env-file-if-exists=.env.local scripts/translate-recall.mjs",
+    "emails": "node scripts/build-email-templates.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {

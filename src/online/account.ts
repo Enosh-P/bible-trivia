@@ -69,6 +69,8 @@ interface AccountState {
   profile: Profile | null;
   friends: Friend[];
   challenges: Challenge[];
+  /** True after opening a password-reset link: the app asks for a new password. */
+  recovering: boolean;
   setSession: (s: Session | null) => void;
   refresh: () => Promise<void>;
 }
@@ -79,6 +81,7 @@ export const useAccount = create<AccountState>((set, get) => ({
   profile: null,
   friends: [],
   challenges: [],
+  recovering: false,
   setSession: (session) => set({ session, ready: true, ...(session ? {} : { profile: null, friends: [], challenges: [] }) }),
   refresh: async () => {
     if (!supabase || !get().session) return;
@@ -122,7 +125,8 @@ export function initAccount() {
     useAccount.getState().setSession(data.session);
     void useAccount.getState().refresh();
   });
-  supabase.auth.onAuthStateChange((_event, session) => {
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'PASSWORD_RECOVERY') useAccount.setState({ recovering: true });
     useAccount.getState().setSession(session);
     void useAccount.getState().refresh();
   });
@@ -162,6 +166,14 @@ export async function resetPassword(email: string) {
   if (!supabase) throw new Error('offline');
   const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: location.origin });
   if (error) throw error;
+}
+
+/** Finish a password reset (the user arrived from the reset email). */
+export async function setNewPassword(password: string) {
+  if (!supabase) throw new Error('offline');
+  const { error } = await supabase.auth.updateUser({ password });
+  if (error) throw error;
+  useAccount.setState({ recovering: false });
 }
 
 export async function signOut() {

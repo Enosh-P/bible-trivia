@@ -11,6 +11,7 @@ import { Friends } from './screens/Friends';
 import { Progress } from './screens/Progress';
 import { Gospel } from './screens/Gospel';
 import { Recall } from './screens/Recall';
+import { NewPasswordSheet } from './components/NewPasswordSheet';
 import { Settings } from './screens/Settings';
 import { Game, type RoundResult } from './screens/Game';
 import { Results } from './screens/Results';
@@ -187,6 +188,8 @@ function MainApp() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <NewPasswordSheet />
 
       <AnimatePresence>
         {needRefresh && (
