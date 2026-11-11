@@ -118,6 +118,20 @@ npm run db:import                                # put the Tamil into Supabase
 - The app shows Tamil in Tamil mode and both languages in Both mode, with a small "Google Translate, tap the flag for mistakes" note until a question is reviewed.
 - Add names to the glossary any time; it applies to the next translation run.
 
+## Accounts, friends and challenges
+
+Players can sign up with email and password (Friends tab, or Settings). Everyone gets a 6-character **friend code** to share. Friends can:
+- **Challenge** each other: the same questions for everyone, played whenever it suits, then scores are compared. Start one from a friend's row, or from any results screen ("Challenge friends with these questions").
+- See **today's family board** for the Daily Challenge.
+
+XP and streak are saved to the account, so progress follows you to another phone.
+
+**Supabase settings (one time):** Authentication → Sign In / Providers → **Email** enabled.
+- For a family app, turn **off "Confirm email"**. Supabase's built-in email sender only sends a few emails per hour, so confirmation emails can get stuck. With it on, people must click the emailed link before they can sign in.
+- Authentication → URL Configuration → **Site URL**: your app's address, such as `http://localhost:5173` now, or the hosted address later. Password-reset links open there.
+
+The friends and challenge rules are in `supabase/migrations/20261111000600_social.sql`: people only see their own friends, challenges and scores, and can only challenge friends.
+
 ## Reports from players
 
 Every question, Recall card, FAQ answer and the Verse of the Day has a flag button. Players pick what's wrong (wrong answer, typo, Tamil translation, confusing, other) and can add a comment and contact details.

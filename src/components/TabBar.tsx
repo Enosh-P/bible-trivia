@@ -1,15 +1,17 @@
 import { motion } from 'motion/react';
-import { BarChart3, BookHeart, Gamepad2, Settings2, Sun, type LucideIcon } from 'lucide-react';
+import { BarChart3, BookHeart, Gamepad2, Settings2, Users, type LucideIcon } from 'lucide-react';
+import { myTurn, useAccount } from '../online/account';
 import { spring } from '../motion/springs';
 import { useT } from '../store';
 import type { Horse } from '../engine/modes';
 import { HorseHead, IconTile, STROKE } from './icons';
+import { ThemeToggle } from './ThemeToggle';
 
-export type Tab = 'play' | 'daily' | 'gospel' | 'progress' | 'settings';
+export type Tab = 'play' | 'friends' | 'gospel' | 'progress' | 'settings';
 
 const TABS: { id: Tab; icon: LucideIcon; horse: Horse }[] = [
   { id: 'play', icon: Gamepad2, horse: 'white' },
-  { id: 'daily', icon: Sun, horse: 'red' },
+  { id: 'friends', icon: Users, horse: 'red' },
   { id: 'gospel', icon: BookHeart, horse: 'pale' },
   { id: 'progress', icon: BarChart3, horse: 'white' },
   { id: 'settings', icon: Settings2, horse: 'black' },
@@ -18,9 +20,11 @@ const TABS: { id: Tab; icon: LucideIcon; horse: Horse }[] = [
 /** Floating glass tab bar. The active pill glides between tabs on a spring. */
 export function TabBar({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void }) {
   const t = useT();
+  // A dot on Friends when a request or a challenge is waiting for you.
+  const needsYou = useAccount((s) => s.friends.some((f) => f.status === 'pending' && f.incoming) || s.challenges.some(myTurn));
   const label: Record<Tab, string> = {
     play: t.tabPlay,
-    daily: t.tabDaily,
+    friends: t.tabFriends,
     gospel: t.tabGospel,
     progress: t.tabProgress,
     settings: t.tabSettings,
@@ -44,10 +48,12 @@ export function TabBar({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void
           >
             {active && <motion.span layoutId="tab-pill" className="tab-pill" transition={spring.calm} />}
             <Icon size={22} strokeWidth={STROKE} className="tab-icon" />
+            {id === 'friends' && needsYou && <span className="tab-dot" aria-hidden />}
             <span className="tab-label">{label[id]}</span>
           </button>
         );
       })}
+      <ThemeToggle id="sidebar" className="sidebar-theme" />
     </nav>
   );
 }

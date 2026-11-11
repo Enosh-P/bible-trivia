@@ -113,6 +113,9 @@ const tables = [
   ['faqs', MIGRATION.verses],
   ['reading_sources', MIGRATION.verses],
   ['book_targets', MIGRATION.workflow],
+  ['friendships', '20261111000600_social.sql'],
+  ['challenges', '20261111000600_social.sql'],
+  ['challenge_players', '20261111000600_social.sql'],
 ];
 let tablesOk = true;
 for (const [t, file] of tables) {
@@ -133,6 +136,8 @@ const columnCheck = async (table, column, file) => {
 };
 await columnCheck('questions', 'source', MIGRATION.workflow);
 await columnCheck('question_reports', 'category', MIGRATION.reports);
+await columnCheck('questions', 'ta_status', '20261111000500_tamil_translations.sql');
+await columnCheck('profiles', 'friend_code', '20261111000600_social.sql');
 
 // Migration 5 allows recall rows (ta can be empty)
 {

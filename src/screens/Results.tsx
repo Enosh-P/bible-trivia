@@ -8,6 +8,7 @@ import { Pressable } from '../components/Pressable';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 import type { RoundResult } from './Game';
 import { ReportButton } from '../components/Report';
+import { ChallengeFromResult } from '../components/ChallengeFromResult';
 import { questionTarget } from '../online/reports';
 
 export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; xp: number; onAgain: () => void; onHome: () => void }) {
@@ -69,6 +70,7 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
             <RotateCcw size={18} strokeWidth={STROKE} /> {t.playAgain}
           </Pressable>
         )}
+        <ChallengeFromResult result={result} />
       </div>
 
       <h2 className="eyebrow section-title">{t.review}</h2>

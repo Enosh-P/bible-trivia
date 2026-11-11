@@ -7,6 +7,7 @@ import { levelFromXp } from '../engine/scoring';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { IconTile } from '../components/icons';
+import { WeekStrip } from './Daily';
 
 /** Correct answers needed to fully light up a book. */
 const MASTERY = 5;
@@ -28,6 +29,7 @@ export function Progress() {
   return (
     <div className="screen" lang={uiLang}>
       <h1 className="display">{t.progressTitle}</h1>
+      <WeekStrip />
       <div className="stat-grid">
         <div className="stat glass col">
           <IconTile horse="white" icon={CheckCircle2} size={30} />

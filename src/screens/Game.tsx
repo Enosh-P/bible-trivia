@@ -29,6 +29,8 @@ export interface AnswerLog {
 
 export interface RoundResult {
   mode: ModeId;
+  /** Set when this round was a friend challenge. */
+  challengeId?: string;
   score: number;
   correct: number;
   total: number;
@@ -38,7 +40,18 @@ export interface RoundResult {
 
 type Answered = { choice: number | boolean | null; correct: boolean } | null;
 
-export function Game({ modeId, onExit, onDone }: { modeId: ModeId; onExit: () => void; onDone: (r: RoundResult) => void }) {
+export function Game({
+  modeId,
+  questionIds,
+  onExit,
+  onDone,
+}: {
+  modeId: ModeId;
+  /** Play exactly these questions, in this order (friend challenges). */
+  questionIds?: string[];
+  onExit: () => void;
+  onDone: (r: RoundResult) => void;
+}) {
   const mode = MODES[modeId];
   const t = useT();
   const qLang = useApp((s) => s.qLang);
@@ -63,8 +76,10 @@ export function Game({ modeId, onExit, onDone }: { modeId: ModeId; onExit: () =>
     let alive = true;
     (async () => {
       const pool = await questionPool();
-      const qs =
-        modeId === 'daily'
+      const byId = new Map(pool.map((x) => [x.id, x]));
+      const qs = questionIds
+        ? questionIds.map((id) => byId.get(id)).filter((x): x is Question => Boolean(x))
+        : modeId === 'daily'
           ? pickDaily(pool, mode)
           : pickQuestions(pool, mode, {
               weak: await weakQuestionIds().catch(() => undefined),
@@ -75,6 +90,8 @@ export function Game({ modeId, onExit, onDone }: { modeId: ModeId; onExit: () =>
     return () => {
       alive = false;
     };
+    // questionIds is fixed for the life of a challenge game
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modeId, mode]);
 
   const q = questions?.[index];

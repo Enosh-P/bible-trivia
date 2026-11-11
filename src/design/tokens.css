@@ -22,10 +22,18 @@
   --bg: #f1f3f5;
   --bg-2: #e9ecef;
   --bg-3: #ffffff;
-  --card: #ffffff;
-  --card-hover: #f8f9fa;
-  --surface: #ffffff;
-  --surface-strong: rgb(255 255 255 / 0.92); /* floating bars and sheets only */
+  /* Liquid glass: see-through tint + blur over the coloured shapes behind */
+  --card: rgb(255 255 255 / 0.5);
+  --card-hover: rgb(255 255 255 / 0.66);
+  --card-solid: #ffffff; /* inputs, and when transparency is reduced */
+  --glass-edge: rgb(255 255 255 / 0.85);
+  --glass-shine: rgb(255 255 255 / 0.7);
+  --surface: rgb(255 255 255 / 0.5);
+  --surface-strong: rgb(255 255 255 / 0.62); /* floating bars and sheets */
+  /* Solid-colour shapes behind the glass */
+  --blob-1: rgb(62 207 142 / 0.42);
+  --blob-2: rgb(140 160 185 / 0.45);
+  --blob-3: rgb(229 72 77 / 0.2);
   --line: #e3e7eb;
   --line-strong: #cfd5db;
   --text: #11181c;
@@ -69,10 +77,16 @@
   --bg: #111417;
   --bg-2: #171b1f;
   --bg-3: #1d2226;
-  --card: #1a1e22;
-  --card-hover: #20252a;
-  --surface: #1a1e22;
-  --surface-strong: rgb(26 30 34 / 0.92);
+  --card: rgb(32 38 44 / 0.5);
+  --card-hover: rgb(40 47 54 / 0.62);
+  --card-solid: #1a1e22;
+  --glass-edge: rgb(255 255 255 / 0.1);
+  --glass-shine: rgb(255 255 255 / 0.08);
+  --surface: rgb(32 38 44 / 0.5);
+  --surface-strong: rgb(26 30 34 / 0.66);
+  --blob-1: rgb(62 207 142 / 0.28);
+  --blob-2: rgb(90 110 135 / 0.38);
+  --blob-3: rgb(229 72 77 / 0.16);
   --line: #2a3036;
   --line-strong: #39414a;
   --text: #ecedee;

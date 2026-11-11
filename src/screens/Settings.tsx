@@ -7,6 +7,7 @@ import { Pressable } from '../components/Pressable';
 import { Sheet } from '../components/Sheet';
 import { IconTile, STROKE } from '../components/icons';
 import { useInstall } from '../pwa/install';
+import { AccountCard } from '../components/AccountCard';
 import type { Horse } from '../engine/modes';
 import type { LucideIcon } from 'lucide-react';
 
@@ -51,6 +52,8 @@ export function Settings() {
   return (
     <div className="screen" lang={s.uiLang}>
       <h1 className="display">{t.settingsTitle}</h1>
+
+      <AccountCard />
 
       {install !== 'unavailable' && (
         <Pressable

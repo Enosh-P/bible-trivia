@@ -1,16 +1,20 @@
 /*
- * Surfaces. Solid colours, no gradients.
- *   .glass       a card: solid background, hairline border, soft shadow
- *   .glass-thick a floating bar or sheet: near-solid with a light blur, so
- *                content scrolling underneath stays readable
- * (Class names kept from the first version so components didn't change.)
+ * Liquid glass, solid colours only (no gradients).
+ *   .glass       a card: see-through tint, strong blur, bright glass edge
+ *   .glass-thick floating chrome (tab bar, sheets, toasts): a little more opaque
+ * Behind everything sit a few flat, solid-colour shapes (.atmosphere); the
+ * glass blurs them, which is what makes it read as glass and not white paper.
  */
 
 .glass {
   position: relative;
   background: var(--card);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-edge);
+  box-shadow:
+    inset 0 1px 0 var(--glass-shine),
+    var(--shadow-md);
 }
 
 button.glass:not(:disabled):hover {
@@ -19,31 +23,54 @@ button.glass:not(:disabled):hover {
 
 .glass-thick {
   background: var(--surface-strong);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  backdrop-filter: blur(16px) saturate(140%);
-  box-shadow: var(--shadow-lg);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  backdrop-filter: blur(30px) saturate(190%);
+  box-shadow:
+    inset 0 1px 0 var(--glass-shine),
+    var(--shadow-lg);
 }
 
-/* Plain background behind everything. */
+/* Background: plain cold grey with three flat colour shapes for the glass to blur. */
 .atmosphere {
   position: fixed;
   inset: 0;
   z-index: -1;
+  overflow: hidden;
   background: var(--bg);
   pointer-events: none;
 }
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  animation: blob-drift 80s ease-in-out infinite alternate;
+}
+.blob-1 { width: 55vmax; height: 55vmax; left: -18vmax; top: -20vmax; background: var(--blob-1); }
+.blob-2 { width: 48vmax; height: 48vmax; right: -16vmax; bottom: -18vmax; background: var(--blob-2); animation-delay: -20s; }
+.blob-3 { width: 22vmax; height: 22vmax; right: 12vw; top: 18vh; background: var(--blob-3); animation-delay: -40s; }
+
+@keyframes blob-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(3vw, 4vh, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none; }
+}
 
 @media (prefers-reduced-transparency: reduce) {
+  .glass,
   .glass-thick {
-    background: var(--card);
+    background: var(--card-solid);
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }
+  .blob { display: none; }
 }
 
 @media (prefers-contrast: more) {
   .glass,
   .glass-thick {
+    background: var(--card-solid);
     border-color: var(--text-2);
   }
 }

@@ -9,7 +9,8 @@ Follow these so every screen feels like the same app. Motion and material rules 
 
 ## Colour: cold light grey + green, solid only
 - **Light mode is the default.** Dark is a choice in Settings.
-- **No gradients, glows or see-through cards.** Cards are solid (`.glass` = solid card, hairline border, soft shadow). Only floating chrome (tab bar, sheets, toasts) uses `.glass-thick`: near-solid with a light blur.
+- **Liquid glass, solid colours, no gradients.** Cards are see-through glass (`.glass`: ~50% tint, 24px blur, bright 1px edge, inner top highlight). Floating chrome uses `.glass-thick`. Behind everything are three flat, solid-colour shapes (`.atmosphere .blob`, green, blue-grey and a touch of red) that the glass blurs. Never use gradient fills on cards or buttons.
+- Light / Dark / System is switchable from the sidebar (desktop), the Home header (phone) and Settings (`ThemeToggle`).
 - Base: cold light grey `--bg #f1f3f5`, white cards. Dark: charcoal `#111417`, cards `#1a1e22`.
 - Accent: green close to Supabase's (`--accent #3ecf8e`, text on it `--on-accent`, green text `--accent-ink`). It's used for primary buttons, correct answers, toggles and the active tab.
 - **Never use gold.** The four horse colours remain as icon-tile accents only (`--{h}`, `--{h}-ink`, `--{h}-wash`); `pale` is the accent green. Wrong = red, correct = green.

@@ -7,7 +7,8 @@ import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
 import { VerseOfTheDay } from '../components/VerseCard';
-import { HorseHead, IconTile, MODE_ICON, STROKE } from '../components/icons';
+import { ThemeToggle } from '../components/ThemeToggle';
+import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 
 export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
   const t = useT();
@@ -23,7 +24,7 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
           <p className="caption">{t.greeting}</p>
           <h1 className="display">{t.appName}</h1>
         </div>
-        <IconTile horse="black" icon={HorseHead} size={40} />
+        <ThemeToggle id="home" className="home-theme" />
       </header>
 
       <div className="stat-row">
