@@ -857,3 +857,13 @@
 .pick-friend { width: 100%; text-align: left; padding: 6px 4px; border-radius: var(--radius-md); }
 .pick-box { width: 24px; height: 24px; border-radius: 7px; border: 2px solid var(--line-strong); display: grid; place-items: center; color: var(--on-accent); }
 .pick-friend.is-on .pick-box { background: var(--accent); border-color: var(--accent); }
+
+.google-btn {
+  background: var(--card-solid);
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+.google-btn:not(:disabled):hover { background: var(--bg-2); }
+.or-line { display: flex; align-items: center; gap: 10px; color: var(--text-3); font-size: 0.8rem; }
+.or-line::before, .or-line::after { content: ''; flex: 1; height: 1px; background: var(--line-strong); }

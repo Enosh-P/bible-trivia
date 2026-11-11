@@ -147,6 +147,17 @@ export async function signIn(email: string, password: string) {
   if (error) throw error;
 }
 
+/** Google sign-in (set up in Supabase → Authentication → Providers → Google). */
+export async function signInWithGoogle() {
+  if (!supabase) throw new Error('offline');
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    // Come back to this same page; Supabase finishes the sign-in on load.
+    options: { redirectTo: location.origin + location.pathname, queryParams: { prompt: 'select_account' } },
+  });
+  if (error) throw error;
+}
+
 export async function resetPassword(email: string) {
   if (!supabase) throw new Error('offline');
   const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: location.origin });

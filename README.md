@@ -127,6 +127,16 @@ Players can sign up with email and password (Friends tab, or Settings). Everyone
 XP and streak are saved to the account, so progress follows you to another phone.
 
 **Supabase settings (one time):** Authentication → Sign In / Providers → **Email** enabled.
+
+**Google sign-in (optional):**
+1. [Google Cloud Console](https://console.cloud.google.com) → APIs & Services → **OAuth consent screen**: app name "Bible Trivia", your email; audience **External**; publish it (or add family emails as test users).
+2. APIs & Services → **Credentials → Create credentials → OAuth client ID** → type **Web application**:
+   - Authorized JavaScript origins: `http://localhost:5173` (and your hosted address later)
+   - Authorized redirect URI: `https://<your-project-ref>.supabase.co/auth/v1/callback`
+3. Supabase → Authentication → Sign In / Providers → **Google** → enable, paste the Client ID and Client secret.
+4. Supabase → Authentication → URL Configuration → **Redirect URLs**: add `http://localhost:5173/**` (and the hosted address later).
+
+Google accounts get their Google name as their profile name (changeable in Settings).
 - For a family app, turn **off "Confirm email"**. Supabase's built-in email sender only sends a few emails per hour, so confirmation emails can get stuck. With it on, people must click the emailed link before they can sign in.
 - Authentication → URL Configuration → **Site URL**: your app's address, such as `http://localhost:5173` now, or the hosted address later. Password-reset links open there.
 
