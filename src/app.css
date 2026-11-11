@@ -872,3 +872,42 @@
 .hour-pick { width: auto; min-height: 36px; padding: 4px 10px; font-size: 15px; }
 .notif-note { margin: 0 0 10px; }
 .notif-test { align-self: flex-start; margin: 4px 0 10px; }
+
+/* ---------- Head-to-head ---------- */
+.person-open { flex: 1; display: flex; align-items: center; gap: 10px; text-align: left; min-width: 0; border-radius: var(--radius-md); }
+.person-open .grow { display: flex; flex-direction: column; min-width: 0; }
+.record-chip {
+  flex: none;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  background: var(--line);
+  color: var(--text-2);
+}
+.record-chip.is-ahead { background: var(--accent-wash); color: var(--accent-ink); }
+.record-chip.is-behind { background: var(--red-wash); color: var(--red-ink); }
+.record-card { align-items: center; text-align: center; }
+.record-big { font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.record-big .w { color: var(--accent-ink); }
+.record-big .l { color: var(--red-ink); }
+.record-big .t { color: var(--text-2); }
+.standing { padding: 4px 12px; border-radius: 999px; font-weight: 600; font-size: 0.9rem; background: var(--line); color: var(--text-2); }
+.standing.is-ahead { background: var(--accent-wash); color: var(--accent-ink); }
+.standing.is-behind { background: var(--red-wash); color: var(--red-ink); }
+.record-card .btn { margin-top: 6px; }
+.best-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.best-row > div { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.best-row strong { font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+.history-score { font-weight: 700; font-variant-numeric: tabular-nums; display: flex; align-items: center; }
+.history-score .is-win { color: var(--accent-ink); }
+.history-score .is-loss { color: var(--red-ink); }
+.board-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.segmented.small button { min-height: 28px; padding: 0 10px; font-size: 0.8rem; }
+
+.code-input::placeholder { letter-spacing: 0; text-transform: none; font-weight: 400; }
+@media (max-width: 480px) {
+  .person .btn-label { display: none; }
+  .person .btn.small { padding: 0 12px; }
+}

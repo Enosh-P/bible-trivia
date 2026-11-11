@@ -122,7 +122,8 @@ npm run db:import                                # put the Tamil into Supabase
 
 Players can sign up with email and password (Friends tab, or Settings). Everyone gets a 6-character **friend code** to share. Friends can:
 - **Challenge** each other: the same questions for everyone, played whenever it suits, then scores are compared. Start one from a friend's row, or from any results screen ("Challenge friends with these questions").
-- See **today's family board** for the Daily Challenge.
+- See the **family board**: today's Daily Challenge scores, or all-time challenge wins.
+- Track **head-to-head records**: each friend shows your all-time record against them (wins–losses–ties). Tap a friend for best scores and your full shared challenge history.
 
 XP and streak are saved to the account, so progress follows you to another phone.
 

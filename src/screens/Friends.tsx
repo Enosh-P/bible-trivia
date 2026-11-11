@@ -3,7 +3,10 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Check, Clock, Copy, Share2, Swords, Trash2, UserPlus, Users, X } from 'lucide-react';
 import {
   addFriend,
+  allTimeBoard,
   friendsDailyBoard,
+  standing,
+  type AllTimeRow,
   myTurn,
   removeFriend,
   respondToFriend,
@@ -20,6 +23,7 @@ import { Pressable } from '../components/Pressable';
 import { Sheet } from '../components/Sheet';
 import { AuthForm } from '../components/AuthForm';
 import { HorseHead, IconTile, MODE_ICON, STROKE } from '../components/icons';
+import { FriendPage } from './FriendPage';
 
 /** Modes that make a fair, fixed-length challenge. */
 export const CHALLENGE_MODES: ModeId[] = ['classic', 'truefalse', 'who', 'book', 'blank'];
@@ -37,8 +41,9 @@ export function Friends({
 }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
-  const { session, profile, friends, challenges, refresh } = useAccount();
+  const { session, profile, friends, challenges, records, refresh } = useAccount();
   const [picking, setPicking] = useState<Friend | null>(null);
+  const [viewing, setViewing] = useState<Friend | null>(null);
 
   useEffect(() => {
     void refresh();
@@ -64,6 +69,58 @@ export function Friends({
   const turn = challenges.filter(myTurn);
   const waiting = challenges.filter((c) => !myTurn(c) && c.players.some((p) => !p.finished_at) && new Date(c.expires_at) > new Date());
   const done = challenges.filter((c) => c.players.every((p) => p.finished_at)).slice(0, 8);
+
+  const modeSheet = (
+    <Sheet open={!!picking} onClose={() => setPicking(null)} label={t.chooseMode}>
+        <h2 className="title">
+          {t.challenge}: {picking?.display_name}
+        </h2>
+        <p className="caption">{t.chooseMode}</p>
+        <div className="mode-pick">
+          {CHALLENGE_MODES.map((m) => (
+            <Pressable
+              key={m}
+              className={`mode-pick-item glass horse-${MODES[m].horse}`}
+              onClick={() => {
+                const f = picking!;
+                setPicking(null);
+                onStartChallenge(m, [f.user_id]);
+              }}
+            >
+              <IconTile horse={MODES[m].horse} icon={MODE_ICON[m]} size={32} />
+              <span>{t.modeName[m]}</span>
+            </Pressable>
+          ))}
+        </div>
+        {picking && (
+          <button
+            className="link danger"
+            onClick={() => {
+              void removeFriend(picking.user_id);
+              setPicking(null);
+            }}
+          >
+            <Trash2 size={14} strokeWidth={STROKE} /> {t.removeFriend}
+          </button>
+        )}
+      </Sheet>
+  );
+
+  if (viewing) {
+    return (
+      <>
+        <FriendPage
+          friend={viewing}
+          onBack={() => setViewing(null)}
+          onChallenge={() => setPicking(viewing)}
+          onPlay={(h) =>
+            onPlayChallenge({ id: h.challenge_id, mode: h.mode, question_ids: h.question_ids, created_at: h.created_at, expires_at: h.expires_at, created_by: h.created_by, players: [] })
+          }
+        />
+        {modeSheet}
+      </>
+    );
+  }
 
   return (
     <div className="screen" lang={uiLang}>
@@ -106,16 +163,18 @@ export function Friends({
         {accepted.length === 0 && <p className="caption">{t.noFriends}</p>}
         {accepted.map((f) => (
           <div className="person" key={f.user_id}>
-            <Avatar horse={f.avatar} />
-            <div className="grow">
-              <strong>{f.display_name}</strong>
-              <span className="caption">
-                {' '}
-                · {f.xp ?? 0} XP · {f.streak ?? 0} {t.streak}
-              </span>
-            </div>
-            <Pressable className="btn btn-primary small" onClick={() => setPicking(f)}>
-              <Swords size={16} strokeWidth={STROKE} /> {t.challenge}
+            <button className="person-open" onClick={() => setViewing(f)} aria-label={f.display_name}>
+              <Avatar horse={f.avatar} />
+              <div className="grow">
+                <strong>{f.display_name}</strong>
+                <span className="caption">
+                  {f.xp ?? 0} XP · {f.streak ?? 0} {t.streak}
+                </span>
+              </div>
+              <RecordChip record={records[f.user_id]} />
+            </button>
+            <Pressable className="btn btn-primary small" onClick={() => setPicking(f)} aria-label={`${t.challenge}: ${f.display_name}`}>
+              <Swords size={16} strokeWidth={STROKE} /> <span className="btn-label">{t.challenge}</span>
             </Pressable>
           </div>
         ))}
@@ -145,39 +204,7 @@ export function Friends({
         </section>
       )}
 
-      <Sheet open={!!picking} onClose={() => setPicking(null)} label={t.chooseMode}>
-        <h2 className="title">
-          {t.challenge}: {picking?.display_name}
-        </h2>
-        <p className="caption">{t.chooseMode}</p>
-        <div className="mode-pick">
-          {CHALLENGE_MODES.map((m) => (
-            <Pressable
-              key={m}
-              className={`mode-pick-item glass horse-${MODES[m].horse}`}
-              onClick={() => {
-                const f = picking!;
-                setPicking(null);
-                onStartChallenge(m, [f.user_id]);
-              }}
-            >
-              <IconTile horse={MODES[m].horse} icon={MODE_ICON[m]} size={32} />
-              <span>{t.modeName[m]}</span>
-            </Pressable>
-          ))}
-        </div>
-        {picking && (
-          <button
-            className="link danger"
-            onClick={() => {
-              void removeFriend(picking.user_id);
-              setPicking(null);
-            }}
-          >
-            <Trash2 size={14} strokeWidth={STROKE} /> {t.removeFriend}
-          </button>
-        )}
-      </Sheet>
+      {modeSheet}
     </div>
   );
 }
@@ -303,26 +330,75 @@ function ChallengeRow({ c, action }: { c: Challenge; action?: () => void }) {
   );
 }
 
+/** "7–4–1" with a small marker: green when you're ahead, red when they are. */
+function RecordChip({ record }: { record?: { wins: number; losses: number; ties: number } }) {
+  const t = useT();
+  const s = standing(record);
+  if (s === 'new' || !record) return null;
+  const label = s === 'ahead' ? t.ahead : s === 'behind' ? t.behind : t.even;
+  return (
+    <span className={`record-chip is-${s}`} title={`${t.recordWLT} · ${label}`} aria-label={`${record.wins}–${record.losses}–${record.ties}, ${label}`}>
+      {record.wins}–{record.losses}–{record.ties}
+    </span>
+  );
+}
+
 function FamilyBoard() {
   const t = useT();
+  const [view, setView] = useState<'today' | 'all'>('today');
   const [rows, setRows] = useState<BoardRow[] | null>(null);
+  const [allRows, setAllRows] = useState<AllTimeRow[] | null>(null);
   const dailyDone = useApp((s) => s.dailyDoneOn);
+  const challenges = useAccount((s) => s.challenges);
   useEffect(() => {
     friendsDailyBoard().then(setRows).catch(() => setRows([]));
   }, [dailyDone]);
+  useEffect(() => {
+    if (view === 'all') allTimeBoard().then(setAllRows).catch(() => setAllRows([]));
+  }, [view, challenges]);
   if (!rows) return null;
   return (
     <section className="glass card-pad">
-      <h2 className="eyebrow">{t.familyBoard}</h2>
-      {rows.length === 0 && <p className="caption">{t.familyBoardEmpty}</p>}
-      {rows.map((r) => (
-        <div className={`person board-row ${r.is_me ? 'is-me' : ''}`} key={r.user_id}>
-          <span className="board-rank">{r.rank}</span>
-          <Avatar horse={r.avatar} size={30} />
-          <strong className="grow">{r.display_name}</strong>
-          <span className="board-score">{r.score}</span>
+      <div className="board-head">
+        <h2 className="eyebrow">{t.familyBoard}</h2>
+        <div className="segmented small" role="tablist">
+          {(['today', 'all'] as const).map((v) => (
+            <button key={v} role="tab" aria-selected={view === v} className={view === v ? 'is-on' : ''} onClick={() => setView(v)}>
+              {view === v && <motion.span layoutId="seg-board" className="segmented-thumb" transition={spring.calm} />}
+              <span>{v === 'today' ? t.today : t.allTime}</span>
+            </button>
+          ))}
         </div>
-      ))}
+      </div>
+      {view === 'today' && (
+        <>
+          {rows.length === 0 && <p className="caption">{t.familyBoardEmpty}</p>}
+          {rows.map((r) => (
+            <div className={`person board-row ${r.is_me ? 'is-me' : ''}`} key={r.user_id}>
+              <span className="board-rank">{r.rank}</span>
+              <Avatar horse={r.avatar} size={30} />
+              <strong className="grow">{r.display_name}</strong>
+              <span className="board-score">{r.score}</span>
+            </div>
+          ))}
+        </>
+      )}
+      {view === 'all' &&
+        (allRows ?? []).map((r) => (
+          <div className={`person board-row ${r.is_me ? 'is-me' : ''}`} key={r.user_id}>
+            <span className="board-rank">{r.rank}</span>
+            <Avatar horse={r.avatar} size={30} />
+            <div className="grow">
+              <strong>{r.display_name}</strong>
+              <span className="caption">
+                {r.played} {t.playedShort} · {r.xp} XP
+              </span>
+            </div>
+            <span className="board-score">
+              {r.wins} <span className="caption">{t.winsShort}</span>
+            </span>
+          </div>
+        ))}
     </section>
   );
 }

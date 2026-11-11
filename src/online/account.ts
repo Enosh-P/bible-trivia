@@ -63,12 +63,49 @@ export interface BoardRow {
   is_me: boolean;
 }
 
+export interface FriendRecord {
+  wins: number;
+  losses: number;
+  ties: number;
+}
+
+export interface HistoryRow {
+  challenge_id: string;
+  mode: ModeId;
+  created_at: string;
+  expires_at: string;
+  created_by: string;
+  question_ids: string[];
+  my_score: number | null;
+  my_correct: number | null;
+  my_total: number | null;
+  my_finished_at: string | null;
+  their_score: number | null;
+  their_correct: number | null;
+  their_total: number | null;
+  their_finished_at: string | null;
+  players: number;
+}
+
+export interface AllTimeRow {
+  rank: number;
+  user_id: string;
+  display_name: string;
+  avatar: Horse;
+  wins: number;
+  played: number;
+  xp: number;
+  is_me: boolean;
+}
+
 interface AccountState {
   ready: boolean;
   session: Session | null;
   profile: Profile | null;
   friends: Friend[];
   challenges: Challenge[];
+  /** Your all-time record against each friend, by user id. */
+  records: Record<string, FriendRecord>;
   /** True after opening a password-reset link: the app asks for a new password. */
   recovering: boolean;
   setSession: (s: Session | null) => void;
@@ -81,15 +118,17 @@ export const useAccount = create<AccountState>((set, get) => ({
   profile: null,
   friends: [],
   challenges: [],
+  records: {},
   recovering: false,
-  setSession: (session) => set({ session, ready: true, ...(session ? {} : { profile: null, friends: [], challenges: [] }) }),
+  setSession: (session) => set({ session, ready: true, ...(session ? {} : { profile: null, friends: [], challenges: [], records: {} }) }),
   refresh: async () => {
     if (!supabase || !get().session) return;
     const uid = get().session!.user.id;
-    const [p, f, c] = await Promise.all([
+    const [p, f, c, r] = await Promise.all([
       supabase.from('profiles').select('id, display_name, avatar, friend_code, xp, streak, last_day').eq('id', uid).maybeSingle(),
       supabase.rpc('my_friends'),
       supabase.rpc('my_challenges'),
+      supabase.rpc('friend_records'),
     ]);
     if (p.data) {
       set({ profile: p.data as Profile });
@@ -97,6 +136,11 @@ export const useAccount = create<AccountState>((set, get) => ({
     }
     if (f.data) set({ friends: f.data as Friend[] });
     if (c.data) set({ challenges: c.data as Challenge[] });
+    if (r.data) {
+      const records: Record<string, FriendRecord> = {};
+      for (const row of r.data as (FriendRecord & { user_id: string })[]) records[row.user_id] = { wins: row.wins, losses: row.losses, ties: row.ties };
+      set({ records });
+    }
   },
 }));
 
@@ -248,4 +292,26 @@ export async function submitChallenge(challengeId: string, score: number, correc
 /** The current player's state in a challenge. */
 export function myTurn(c: Challenge): boolean {
   return Boolean(c.players.find((p) => p.me && !p.finished_at)) && new Date(c.expires_at) > new Date();
+}
+
+// ---------- Head-to-head ----------
+/** Every challenge you shared with one friend, newest first. */
+export async function friendHistory(friendId: string): Promise<HistoryRow[]> {
+  if (!supabase) return [];
+  const { data, error } = await supabase.rpc('friend_history', { p_friend: friendId });
+  if (error) throw error;
+  return (data as HistoryRow[]) ?? [];
+}
+
+/** You and your friends by challenges won. */
+export async function allTimeBoard(): Promise<AllTimeRow[]> {
+  if (!supabase || !useAccount.getState().session) return [];
+  const { data } = await supabase.rpc('all_time_board');
+  return (data as AllTimeRow[]) ?? [];
+}
+
+/** 'ahead' | 'behind' | 'level' | 'new' for a record. */
+export function standing(r?: FriendRecord): 'ahead' | 'behind' | 'level' | 'new' {
+  if (!r || r.wins + r.losses + r.ties === 0) return 'new';
+  return r.wins > r.losses ? 'ahead' : r.wins < r.losses ? 'behind' : 'level';
 }
