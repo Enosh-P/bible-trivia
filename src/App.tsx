@@ -16,12 +16,13 @@ import { syncPushLanguage } from './online/push';
 import { Settings } from './screens/Settings';
 import { Game, type RoundResult } from './screens/Game';
 import { Results } from './screens/Results';
+import { Splash, Welcome } from './screens/Welcome';
 import type { ModeId } from './engine/modes';
 import { dayKey } from './engine/picker';
 import { db } from './storage/db';
-import { syncQuestions } from './online/supabase';
+import { supabase, syncQuestions } from './online/supabase';
 import { flushReports } from './online/reports';
-import { createChallenge, initAccount, pushProgress, saveDailyResult, submitChallenge, type Challenge } from './online/account';
+import { createChallenge, initAccount, useAccount, pushProgress, saveDailyResult, submitChallenge, type Challenge } from './online/account';
 import { MODES } from './engine/modes';
 import { pickQuestions } from './engine/picker';
 import { questionPool } from './engine/content';
@@ -60,7 +61,29 @@ function useDocumentSettings() {
 export default function App() {
   useDocumentSettings();
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('art')) return <ArtGallery />;
-  return <MainApp />;
+  return <Gate />;
+}
+
+/** Everything needs an account: show sign-in until there is one. */
+function Gate() {
+  const ready = useAccount((s) => s.ready);
+  const signedIn = useAccount((s) => Boolean(s.session));
+  useEffect(() => initAccount(), []);
+  // Without Supabase configured (local development) the app runs without accounts.
+  if (!supabase) return <MainApp />;
+  return (
+    <MotionConfig reducedMotion="user">
+      {!ready ? <Splash /> : signedIn ? <MainApp /> : (
+        <>
+          <Atmosphere />
+          <main className="app">
+            <Welcome />
+          </main>
+        </>
+      )}
+      <NewPasswordSheet />
+    </MotionConfig>
+  );
 }
 
 /** Dev-only: every cartoon illustration on one page (open /?art). */
@@ -96,7 +119,6 @@ function MainApp() {
   useEffect(() => {
     void syncQuestions().catch(() => {});
     void flushReports().catch(() => {});
-    initAccount();
     const online = () => void flushReports().catch(() => {});
     window.addEventListener('online', online);
     return () => window.removeEventListener('online', online);
@@ -205,8 +227,6 @@ function MainApp() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <NewPasswordSheet />
 
       <AnimatePresence>
         {needRefresh && (

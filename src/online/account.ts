@@ -163,8 +163,10 @@ export async function pushProgress() {
 }
 
 /** Starts listening for sign-in changes. Call once at app start. */
+let started = false;
 export function initAccount() {
-  if (!supabase) return;
+  if (!supabase || started) return;
+  started = true;
   supabase.auth.getSession().then(({ data }) => {
     useAccount.getState().setSession(data.session);
     void useAccount.getState().refresh();

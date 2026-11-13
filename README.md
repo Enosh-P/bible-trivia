@@ -15,6 +15,10 @@ npm run build      # type-check + production build (dist/)
 npm run preview    # serve the production build (needed to test install/offline)
 ```
 
+## App icon
+
+The cartoon icon (a happy open Bible with a question bubble) is `public/favicon.svg`. After changing it, run `npm run icons` to redraw the PNG icons for phones.
+
 ## Project layout
 
 | Path | What |
@@ -24,7 +28,7 @@ npm run preview    # serve the production build (needed to test install/offline)
 | `src/motion/springs.ts` | Spring presets, momentum projection, rubber-banding |
 | `src/art/Illustrations.tsx` | Cartoon SVG stickers for questions |
 | `src/engine/` | Question types, modes, picker (daily seed, weak-question weighting), scoring |
-| `src/screens/` | Home, Daily, Game (all modes), Results, Progress, Settings |
+| `src/screens/` | Welcome (sign-in), Home, Daily, Game (all modes), Results, Progress, Settings |
 | `src/i18n/` | UI strings (EN/TA) and the 66 book names |
 | `src/storage/db.ts` | IndexedDB (Dexie): answer history, rounds |
 | `supabase/` | Database migrations + generated seed |
@@ -120,7 +124,9 @@ npm run db:import                                # put the Tamil into Supabase
 
 ## Accounts, friends and challenges
 
-Players can sign up with email and password (Friends tab, or Settings). Everyone gets a 6-character **friend code** to share. Friends can:
+**Everyone signs in first.** When Supabase is set up, the app opens on a sign-in screen (Google, or email and password), and games, friends and progress appear after signing in. Once signed in, the app also works offline. Without Supabase settings (local development) the app runs without accounts.
+
+Players can sign up with email and password, or with Google. Everyone gets a 6-character **friend code** to share. Friends can:
 - **Challenge** each other: the same questions for everyone, played whenever it suits, then scores are compared. Start one from a friend's row, or from any results screen ("Challenge friends with these questions").
 - See the **family board**: today's Daily Challenge scores, or all-time challenge wins.
 - Track **head-to-head records**: each friend shows your all-time record against them (wins–losses–ties). Tap a friend for best scores and your full shared challenge history.

@@ -4,6 +4,8 @@ import type { ModeId } from '../engine/modes';
 const en = {
   appName: 'Bible Trivia',
   tagline: 'Know the Word, one question at a time',
+  welcomeTitle: 'Sign in to play',
+  welcomeLead: 'Your account keeps your XP, streak, friends and challenges safe on every device.',
   tabPlay: 'Play',
   tabDaily: 'Daily',
   tabProgress: 'Progress',
@@ -226,6 +228,8 @@ type Strings = typeof en;
 const ta: Strings = {
   appName: 'வேத வினாடி வினா',
   tagline: 'ஒவ்வொரு கேள்வியாய் வசனத்தை அறியுங்கள்',
+  welcomeTitle: 'விளையாட உள்நுழையுங்கள்',
+  welcomeLead: 'உங்கள் XP, தொடர் நாட்கள், நண்பர்கள், சவால்கள் எல்லாம் எந்தச் சாதனத்திலும் பாதுகாப்பாக இருக்கும்.',
   tabPlay: 'விளையாடு',
   tabDaily: 'இன்று',
   tabProgress: 'சாதனை',
@@ -334,7 +338,7 @@ const ta: Strings = {
   passwordUpdated: 'கடவுச்சொல் மாற்றப்பட்டது. நீங்கள் உள்நுழைந்துள்ளீர்கள்.',
   orEmail: 'அல்லது மின்னஞ்சல் மூலம்',
   email: 'மின்னஞ்சல்',
-  password: 'கடவுச்சொல் (குறைந்தது 6 எழுத்துகள்)',
+  password: 'கடவுச்சொல் (6+ எழுத்துகள்)',
   yourName: 'உங்கள் பெயர்',
   haveAccount: 'ஏற்கனவே கணக்கு உள்ளதா? உள்நுழையுங்கள்',
   noAccount: 'புதியவரா? கணக்கை உருவாக்குங்கள்',

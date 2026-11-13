@@ -1,21 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <defs>
-    <radialGradient id="bg" cx="30%" cy="20%" r="90%">
-      <stop offset="0" stop-color="#2a3240"/>
-      <stop offset="1" stop-color="#0d1015"/>
-    </radialGradient>
-  </defs>
-  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
-  <!-- Four horse colours as a quartered ring -->
-  <g fill="none" stroke-width="18" stroke-linecap="round">
-    <path d="M256 96a160 160 0 0 1 160 160" stroke="#eef2f6"/>
-    <path d="M416 256a160 160 0 0 1-160 160" stroke="#e0493e"/>
-    <path d="M256 416a160 160 0 0 1-160-160" stroke="#050608"/>
-    <path d="M96 256a160 160 0 0 1 160-160" stroke="#8fbfa3"/>
+  <!-- Cartoon app icon: a happy open Bible with a question bubble. Flat colours, ink outlines, no gradients. -->
+  <rect width="512" height="512" rx="112" fill="#3ecf8e"/>
+  <g stroke="#1d2430" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <!-- shadow -->
+    <ellipse cx="256" cy="418" rx="150" ry="20" fill="#2bb578" stroke="none"/>
+    <!-- cover -->
+    <path d="M86 214 Q86 200 100 200 L256 222 L412 200 Q426 200 426 214 L426 392 Q426 404 414 404 L256 416 L98 404 Q86 404 86 392 Z" fill="#e0493e"/>
+    <!-- pages -->
+    <path d="M256 228 C214 198 156 192 108 206 L108 384 C156 372 214 376 256 404 Z" fill="#ffffff"/>
+    <path d="M256 228 C298 198 356 192 404 206 L404 384 C356 372 298 376 256 404 Z" fill="#ffffff"/>
+    <path d="M256 228 V404" fill="none"/>
+    <!-- page lines -->
+    <path d="M140 240 C170 234 200 236 226 246 M140 340 C170 334 200 336 226 346 M286 240 C312 234 342 234 372 240 M286 340 C312 336 342 334 372 340" fill="none" stroke-width="7" opacity="0.35"/>
+    <!-- ribbon -->
+    <path d="M300 396 L300 452 L316 440 L332 452 L332 390" fill="#7fa6c9"/>
   </g>
-  <g transform="translate(136 128) scale(10)" fill="none" stroke="#e7ecf2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M6 21c-.6-3-.4-6 .8-8.6C8 9.6 10.4 7 13.4 6.6l.9-2.6 1.6 2.4c2.4.9 4 3 4.6 5.6.3 1.3-.6 2.4-1.9 2.4-1.2 0-2-.6-3-.6-.8 1.6-.6 4.4.4 7.2"/>
-    <path d="M8.6 10.2 6.4 9.6M7.6 13l-2.4-.2M7 15.8l-2.2.4"/>
-    <circle cx="15.4" cy="9.8" r=".6" fill="#e7ecf2"/>
+  <!-- face -->
+  <circle cx="190" cy="292" r="15" fill="#1d2430"/><circle cx="196" cy="286" r="5" fill="#fff"/>
+  <circle cx="322" cy="292" r="15" fill="#1d2430"/><circle cx="328" cy="286" r="5" fill="#fff"/>
+  <ellipse cx="160" cy="322" rx="16" ry="10" fill="#f08a6e" opacity="0.8"/>
+  <ellipse cx="352" cy="322" rx="16" ry="10" fill="#f08a6e" opacity="0.8"/>
+  <path d="M228 320 Q256 350 284 320" fill="none" stroke="#1d2430" stroke-width="11" stroke-linecap="round"/>
+  <!-- question bubble -->
+  <g stroke="#1d2430" stroke-width="12" stroke-linejoin="round">
+    <path d="M364 62 C410 62 444 92 444 132 C444 172 410 200 364 200 C352 200 341 198 331 194 L300 212 L308 180 C292 166 284 150 284 132 C284 92 318 62 364 62 Z" fill="#ffffff"/>
   </g>
+  <path d="M342 112 C342 96 354 88 366 88 C380 88 390 98 390 110 C390 124 376 128 370 138 L368 148" fill="none" stroke="#1e8a5a" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="367" cy="174" r="9" fill="#1e8a5a"/>
 </svg>
