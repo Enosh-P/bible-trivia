@@ -45,7 +45,9 @@ export function Practice({ onAction }: { onAction: (a: PracticeAction) => void }
     })();
   }, []);
 
-  const learned = VERSES.filter((v) => (memory[v.id] ?? 0) >= LEARNED).length;
+  const myVerses = useApp((s) => s.myVerses?.length ?? 0);
+  const myLearned = useApp((s) => (s.myVerses ?? []).filter((v) => (s.memory?.[v.id] ?? 0) >= LEARNED).length);
+  const learned = VERSES.filter((v) => (memory[v.id] ?? 0) >= LEARNED).length + myLearned;
   const cards: { key: string; icon: LucideIcon; horse: Horse; title: string; sub: string; count?: number; onClick?: () => void }[] = [
     {
       key: 'fix',
@@ -74,7 +76,7 @@ export function Practice({ onAction }: { onAction: (a: PracticeAction) => void }
       count: saved.length,
       onClick: saved.length ? () => onAction({ kind: 'ids', ids: saved.slice(0, PRACTICE_ROUND) }) : undefined,
     },
-    { key: 'memory', icon: PenLine, horse: 'pale', title: t.memoryTitle, sub: t.memoryLearned(learned, VERSES.length), onClick: () => onAction({ kind: 'memory' }) },
+    { key: 'memory', icon: PenLine, horse: 'pale', title: t.memoryTitle, sub: t.memoryLearned(learned, VERSES.length + myVerses), onClick: () => onAction({ kind: 'memory' }) },
     { key: 'drill', icon: Library, horse: 'black', title: t.modeName.drill, sub: t.modeSub.drill, onClick: () => onAction({ kind: 'drill' }) },
     { key: 'notebook', icon: NotebookPen, horse: 'white', title: t.notebook, sub: t.nNotebook(wrongEver, saved.length), onClick: () => onAction({ kind: 'notebook' }) },
   ];

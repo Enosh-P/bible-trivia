@@ -1,6 +1,6 @@
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { Check, ChevronLeft, PenLine, RotateCcw } from 'lucide-react';
+import { Check, ChevronLeft, Plus, RotateCcw, Trash2 } from 'lucide-react';
 import { VERSES, type Verse } from '../engine/verses';
 import { LEARNED, makeRound, sameWord } from '../engine/memory';
 import { formatRef, BOOKS } from '../i18n/books';
@@ -8,14 +8,27 @@ import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { cue } from '../feedback';
 import { Pressable } from '../components/Pressable';
-import { IconTile, STROKE } from '../components/icons';
+import { STROKE } from '../components/icons';
+import { Sheet } from '../components/Sheet';
 import { LangToggle } from '../components/LangToggle';
 
 /** One shared empty object, so the store selector doesn't change on every read. */
 const NO_MEMORY: Record<string, number> = {};
 
+const NO_VERSES: Verse[] = [];
+
 const ORDER = BOOKS.map((b) => b.code);
-const SORTED = [...VERSES].sort((a, b) => ORDER.indexOf(a.book) - ORDER.indexOf(b.book) || a.chapter - b.chapter || a.verse - b.verse);
+const byRef = (a: Verse, b: Verse) => ORDER.indexOf(a.book) - ORDER.indexOf(b.book) || a.chapter - b.chapter || a.verse - b.verse;
+const SORTED = [...VERSES].sort(byRef);
+
+/** A verse's words in the chosen language, or the other one if only that was added. */
+export function verseText(v: Verse, lang: 'en' | 'ta'): { text: string; lang: 'en' | 'ta' } {
+  if (v[lang]?.trim()) return { text: v[lang], lang };
+  const other = lang === 'en' ? 'ta' : 'en';
+  return { text: v[other], lang: other };
+}
+
+const ref = (v: Verse, lang: 'en' | 'ta') => formatRef(lang, v.book, v.chapter, v.verse, (v as Verse & { verseEnd?: number }).verseEnd);
 
 /** Learn verses by heart: each round hides more words. */
 export function MemoryVerses({ onExit }: { onExit: () => void }) {
@@ -24,8 +37,12 @@ export function MemoryVerses({ onExit }: { onExit: () => void }) {
   const qLang = useApp((s) => s.qLang);
   const memory = useApp((s) => s.memory ?? NO_MEMORY);
   const lang = qLang === 'both' ? uiLang : qLang;
+  const mine = useApp((s) => (s.myVerses as Verse[] | undefined) ?? NO_VERSES);
   const [verse, setVerse] = useState<Verse | null>(null);
-  const learned = SORTED.filter((v) => (memory[v.id] ?? 0) >= LEARNED).length;
+  const [adding, setAdding] = useState(false);
+  const all = [...mine, ...SORTED];
+  const learned = all.filter((v) => (memory[v.id] ?? 0) >= LEARNED).length;
+  const isMine = (v: Verse) => v.id.startsWith('my-');
 
   return (
     <div className="screen recall" lang={uiLang}>
@@ -35,28 +52,47 @@ export function MemoryVerses({ onExit }: { onExit: () => void }) {
         </Pressable>
         <div className="grow">
           <p className="eyebrow">{t.memoryTitle}</p>
-          <h1 className="title">{verse ? formatRef(lang, verse.book, verse.chapter, verse.verse) : t.memoryLearned(learned, SORTED.length)}</h1>
+          <h1 className="title">{verse ? ref(verse, lang) : t.memoryLearned(learned, all.length)}</h1>
         </div>
         <LangToggle compact />
-        <IconTile horse="pale" icon={PenLine} size={40} />
       </header>
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div key={verse?.id ?? 'list'} initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -24 }} transition={spring.calm} className="recall-body">
           {verse ? (
-            <MemoryRound verse={verse} lang={lang} />
+            <>
+              <MemoryRound verse={verse} lang={verseText(verse, lang).lang} />
+              {isMine(verse) && (
+                <button
+                  className="link danger memory-remove"
+                  onClick={() => {
+                    useApp.setState((s) => ({ myVerses: (s.myVerses ?? []).filter((v) => v.id !== verse.id) }));
+                    setVerse(null);
+                  }}
+                >
+                  <Trash2 size={14} strokeWidth={STROKE} /> {t.removeVerse}
+                </button>
+              )}
+            </>
           ) : (
             <>
               <p className="caption">{t.memoryHelp}</p>
+              <Pressable className="btn btn-primary" onClick={() => setAdding(true)}>
+                <Plus size={18} strokeWidth={STROKE} /> {t.addVerse}
+              </Pressable>
+              {mine.length > 0 && <h2 className="eyebrow section-title">{t.myVerses}</h2>}
               <div className="memory-list">
-                {SORTED.map((v) => {
+                {all.map((v, i) => {
+                  const shown = verseText(v, lang);
                   const level = memory[v.id] ?? 0;
                   return (
-                    <Pressable key={v.id} className="memory-item glass" onClick={() => setVerse(v)}>
+                    <Fragment key={v.id}>
+                    {i === mine.length && mine.length > 0 && <h2 className="eyebrow section-title">{t.versesOfTheDay}</h2>}
+                    <Pressable className="memory-item glass" onClick={() => setVerse(v)}>
                       <div className="grow">
-                        <strong>{formatRef(lang, v.book, v.chapter, v.verse)}</strong>
-                        <span className="caption memory-preview" lang={lang}>
-                          {v[lang]}
+                        <strong>{ref(v, lang)}</strong>
+                        <span className="caption memory-preview" lang={shown.lang}>
+                          {shown.text}
                         </span>
                       </div>
                       {level >= LEARNED ? (
@@ -71,6 +107,7 @@ export function MemoryVerses({ onExit }: { onExit: () => void }) {
                         </span>
                       )}
                     </Pressable>
+                    </Fragment>
                   );
                 })}
               </div>
@@ -78,7 +115,69 @@ export function MemoryVerses({ onExit }: { onExit: () => void }) {
           )}
         </motion.div>
       </AnimatePresence>
+
+      <AddVerse
+        open={adding}
+        onClose={() => setAdding(false)}
+        onAdded={(v) => {
+          setAdding(false);
+          setVerse(v);
+        }}
+      />
     </div>
+  );
+}
+
+/** Add your own verse: the reference, then its words in English, Tamil or both. */
+function AddVerse({ open, onClose, onAdded }: { open: boolean; onClose: () => void; onAdded: (v: Verse) => void }) {
+  const t = useT();
+  const uiLang = useApp((s) => s.uiLang);
+  const [book, setBook] = useState('JHN');
+  const [chapter, setChapter] = useState('');
+  const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
+  const [en, setEn] = useState('');
+  const [ta, setTa] = useState('');
+  const ok = Number(chapter) > 0 && Number(from) > 0 && (en.trim().length > 3 || ta.trim().length > 3);
+
+  function save(e: React.FormEvent) {
+    e.preventDefault();
+    if (!ok) return;
+    const verseEnd = Number(to) > Number(from) ? Number(to) : undefined;
+    const v = { id: `my-${Date.now().toString(36)}`, book, chapter: Number(chapter), verse: Number(from), ...(verseEnd ? { verseEnd } : {}), en: en.trim(), ta: ta.trim() };
+    useApp.setState((s) => ({ myVerses: [v, ...(s.myVerses ?? [])] }));
+    setChapter('');
+    setFrom('');
+    setTo('');
+    setEn('');
+    setTa('');
+    onAdded(v as Verse);
+  }
+
+  return (
+    <Sheet open={open} onClose={onClose} label={t.addVerse}>
+      <form className="add-verse" onSubmit={save} lang={uiLang}>
+        <h2 className="title">{t.addVerse}</h2>
+        <p className="caption">{t.addVerseHelp}</p>
+        <select className="field" value={book} onChange={(e) => setBook(e.target.value)} aria-label={t.chooseBook}>
+          {BOOKS.map((b) => (
+            <option key={b.code} value={b.code}>
+              {b[uiLang]}
+            </option>
+          ))}
+        </select>
+        <div className="add-verse-ref">
+          <input className="field" inputMode="numeric" placeholder={t.chapterLabel} value={chapter} onChange={(e) => setChapter(e.target.value.replace(/\D/g, ''))} aria-label={t.chapterLabel} />
+          <input className="field" inputMode="numeric" placeholder={t.verseLabel} value={from} onChange={(e) => setFrom(e.target.value.replace(/\D/g, ''))} aria-label={t.verseLabel} />
+          <input className="field" inputMode="numeric" placeholder={t.toVerseLabel} value={to} onChange={(e) => setTo(e.target.value.replace(/\D/g, ''))} aria-label={t.toVerseLabel} />
+        </div>
+        <textarea className="field" rows={3} lang="en" placeholder={t.verseEnglish} value={en} onChange={(e) => setEn(e.target.value)} />
+        <textarea className="field" rows={3} lang="ta" placeholder={t.verseTamil} value={ta} onChange={(e) => setTa(e.target.value)} />
+        <Pressable className="btn btn-primary" type="submit" disabled={!ok}>
+          <Plus size={18} strokeWidth={STROKE} /> {t.addVerse}
+        </Pressable>
+      </form>
+    </Sheet>
   );
 }
 
@@ -89,7 +188,7 @@ function MemoryRound({ verse, lang }: { verse: Verse; lang: 'en' | 'ta' }) {
   const [attempt, setAttempt] = useState(0);
   // The level this round was started at (the stored level moves up when it's finished).
   const [roundLevel, setRoundLevel] = useState(level);
-  const round = useMemo(() => makeRound(verse[lang], roundLevel, `${verse.id}:${lang}:${roundLevel}:${attempt}`), [verse, lang, roundLevel, attempt]);
+  const round = useMemo(() => makeRound(verseText(verse, lang).text, roundLevel, `${verse.id}:${lang}:${roundLevel}:${attempt}`), [verse, lang, roundLevel, attempt]);
   const [filled, setFilled] = useState(0);
   const [used, setUsed] = useState<boolean[]>([]);
   const [mistakes, setMistakes] = useState(0);
@@ -189,7 +288,7 @@ function MemoryRound({ verse, lang }: { verse: Verse; lang: 'en' | 'ta' }) {
           </Pressable>
         </motion.div>
       )}
-      <p className="caption credit">{lang === 'ta' ? 'BSI – Tamil – O.V.' : 'KJV'}</p>
+      {!verse.id.startsWith('my-') && <p className="caption credit">{lang === 'ta' ? 'BSI – Tamil – O.V.' : 'KJV'}</p>}
     </div>
   );
 }

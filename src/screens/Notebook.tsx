@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { CheckCircle2, ChevronLeft, NotebookPen, Star } from 'lucide-react';
+import { CheckCircle2, ChevronLeft, Star } from 'lucide-react';
 import { db } from '../storage/db';
 import { roundPool } from '../engine/content';
 import { counts, summarize } from '../engine/practice';
@@ -7,7 +7,7 @@ import type { Question } from '../engine/types';
 import { BOOKS, BOOK_BY_CODE } from '../i18n/books';
 import { useApp, useT } from '../store';
 import { Pressable } from '../components/Pressable';
-import { IconTile, STROKE } from '../components/icons';
+import { STROKE } from '../components/icons';
 import { LangToggle } from '../components/LangToggle';
 import { ReportButton } from '../components/Report';
 import { questionTarget } from '../online/reports';
@@ -70,7 +70,6 @@ export function Notebook({ onExit }: { onExit: () => void }) {
           <h1 className="title">{t.notebook}</h1>
         </div>
         <LangToggle compact />
-        <IconTile horse="white" icon={NotebookPen} size={40} />
       </header>
 
       <div className="notebook-filters">
