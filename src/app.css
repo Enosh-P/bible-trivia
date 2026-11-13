@@ -965,3 +965,9 @@
 .badge-trophy { color: var(--accent-ink); }
 .badge-bar { width: 28px; height: 4px; border-radius: 99px; background: rgb(127 127 127 / 0.2); overflow: hidden; }
 .badge-bar > span { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
+
+/* Language switch: the green thumb glides between options, like the theme switch */
+.lang-switch button { position: relative; transition: color 0.2s ease; }
+.lang-switch button.is-on { background: none; color: var(--on-accent); }
+.lang-thumb { position: absolute; inset: 0; border-radius: 999px; background: var(--accent); }
+.lang-label { position: relative; }
