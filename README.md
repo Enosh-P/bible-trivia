@@ -32,7 +32,7 @@ The cartoon icon (a happy open Bible with a question bubble) is `public/favicon.
 | `src/i18n/` | UI strings (EN/TA) and the 66 book names |
 | `src/storage/db.ts` | IndexedDB (Dexie): answer history, rounds |
 | `supabase/` | Database migrations + generated seed |
-| `content/verses.json` | Verses (KJV + BSI Tamil O.V.) for Verse of the Day, feedback and gospel |
+| `content/verses.json` | 365 verses (KJV + BSI Tamil O.V.) for Verse of the Day, memory verses and the gospel; built from `content/verse-list.txt` by `npm run content:verses` |
 | `content/gospel.json` | Gospel presentation steps + FAQ for seekers |
 | `src/online/supabase.ts` | Optional Supabase client: question sync, reports |
 | `.claude/skills/bible-trivia-design/` | Design rules for Claude sessions working on this repo |
@@ -150,7 +150,7 @@ Built from the answers stored on the phone (`src/engine/practice.ts`):
 - **Saved:** the ☆ on any question during a game keeps it here.
 - **Weak spots:** accuracy per book, weakest first; tap one to practise that book.
 - **Mistakes notebook:** every missed and saved question with its answer, filtered by book.
-- **Memory verses:** learn the 32 verses by heart; each round hides more words (`src/engine/memory.ts`).
+- **Memory verses:** learn the 365 verses (or your own) by heart; each round hides more words (`src/engine/memory.ts`).
 - **Books of the Bible:** which book comes next or before, Old or New Testament, which comes first (`src/engine/drill.ts`).
 
 Practice rounds have no timer and earn half XP; they count towards the daily streak.
