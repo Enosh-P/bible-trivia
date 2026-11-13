@@ -55,6 +55,19 @@ def load(model_name: str):
     state = {"cache": True}
 
     def translate(lines):
+        # Out of GPU memory: free it, then translate each half separately.
+        try:
+            return translate_once(lines)
+        except torch.OutOfMemoryError:
+            torch.cuda.empty_cache()
+            if len(lines) <= 2:
+                raise
+            print("(smaller batch)", end="", file=sys.stderr, flush=True)
+            mid = len(lines) // 2
+            mid += mid % 2  # keep each question with its answer
+            return translate(lines[:mid]) + translate(lines[mid:])
+
+    def translate_once(lines):
         batch = ip.preprocess_batch(lines, src_lang="eng_Latn", tgt_lang="tam_Taml")
         enc = tok(batch, truncation=True, padding="longest", return_tensors="pt").to(device)
         with torch.inference_mode():
@@ -77,7 +90,7 @@ def main():
     ap.add_argument("--books")
     ap.add_argument("--top", type=int)
     ap.add_argument("--model", default="ai4bharat/indictrans2-en-indic-1B")
-    ap.add_argument("--batch", type=int, default=64)
+    ap.add_argument("--batch", type=int, default=32)
     ap.add_argument("--sample", action="store_true", help="translate 20 sample lines both ways and print them")
     ap.add_argument("--no-glossary", action="store_true")
     a = ap.parse_args()
