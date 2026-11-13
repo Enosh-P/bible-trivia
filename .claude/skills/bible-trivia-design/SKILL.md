@@ -24,7 +24,10 @@ Follow these so every screen feels like the same app. Motion and material rules 
 - An icon representing a thing goes on an `IconTile` with its horse colour. Every icon gets its own colour highlight.
 - Custom icons are drawn on Lucide's 24px grid with round caps (see `HorseHead`).
 
-## Cartoon art (`src/art/Illustrations.tsx`)
+## Cartoon art (`src/art/Illustrations.tsx`, `src/art/ModeArt.tsx`)
+
+Game-mode tiles on Home show only a cartoon (`ModeArt`) and the mode name, with no counts or descriptions. Tapping a tile opens a sheet with how to play and a Start game button. A new mode needs a cartoon, `modeHow` lines (EN and TA), and an entry in `MODE_ORDER`.
+
 - viewBox `0 0 160 120`, ink outline `#1d2430` at 3px with round caps and joins, flat fills from the `C` palette, no gradients.
 - Friendly faces where they fit. Keep it respectful: no depictions of God or Jesus' face.
 - Add the key to the `ArtKey` type, register it in `ART`, then check it at `/?art` in dev.

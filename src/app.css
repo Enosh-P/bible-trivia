@@ -937,3 +937,22 @@
   .game-top .lang-switch.is-compact button { padding: 5px 7px; }
 }
 .brand-icon { border-radius: 10px; }
+
+/* Game tiles: a cartoon and the name */
+.mode-card { align-items: center; text-align: center; justify-content: flex-end; gap: 6px; min-height: 0; padding: 12px 12px 14px; }
+.mode-card .mode-art { width: 100%; max-width: 150px; height: auto; aspect-ratio: 4 / 3; }
+.mode-card .mode-name { font-size: 0.95rem; }
+
+/* How-to-play sheet */
+.mode-intro { display: flex; flex-direction: column; gap: 12px; padding: 4px 4px 8px; }
+.mode-intro-art { width: 160px; height: auto; align-self: center; }
+.mode-intro-title { display: flex; align-items: center; gap: 10px; }
+.mode-intro-title .title { margin: 0; }
+.mode-facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip-fact { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; font-size: 0.82rem; font-weight: 600; background: var(--card); border: 1px solid var(--glass-edge); color: var(--text-2); }
+.mode-how { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; color: var(--text); line-height: 1.45; }
+.mode-intro .btn-primary { margin-top: 6px; }
+
+.home-head { flex-direction: column; align-items: stretch; gap: 2px; }
+.home-head-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.home-head-row .caption { margin: 0; }

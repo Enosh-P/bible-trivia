@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ChevronRight, Flame, Trophy } from 'lucide-react';
+import { ChevronRight, Clock, Flame, Heart, ListOrdered, Play, Trophy } from 'lucide-react';
 import { MODES, MODE_ORDER, type ModeId } from '../engine/modes';
 import { levelFromXp } from '../engine/scoring';
 import { dayKey } from '../engine/picker';
@@ -9,6 +10,8 @@ import { Pressable } from '../components/Pressable';
 import { VerseOfTheDay } from '../components/VerseCard';
 import { LangToggle } from '../components/LangToggle';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
+import { Sheet } from '../components/Sheet';
+import { ModeArt } from '../art/ModeArt';
 
 export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
   const t = useT();
@@ -16,15 +19,16 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
   const xp = useApp((s) => s.xp);
   const streak = useApp((s) => s.streak);
   const { level, into, need } = levelFromXp(xp);
+  const [intro, setIntro] = useState<ModeId | null>(null);
 
   return (
     <div className="screen" lang={uiLang}>
       <header className="home-head">
-        <div>
+        <div className="home-head-row">
           <p className="caption">{t.greeting}</p>
-          <h1 className="display">{t.appName}</h1>
+          <LangToggle />
         </div>
-        <LangToggle />
+        <h1 className="display">{t.appName}</h1>
       </header>
 
       <div className="stat-row">
@@ -62,15 +66,70 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...spring.calm, delay: 0.03 * i }}
           >
-            <Pressable className={`mode-card glass horse-${MODES[id].horse}`} onClick={() => onPlay(id)}>
-              <IconTile horse={MODES[id].horse} icon={MODE_ICON[id]} size={34} />
+            <Pressable className={`mode-card glass horse-${MODES[id].horse}`} onClick={() => setIntro(id)}>
+              <ModeArt mode={id} className="mode-art" />
               <span className="mode-name">{t.modeName[id]}</span>
-              <span className="caption">{t.modeSub[id]}</span>
             </Pressable>
           </motion.div>
         ))}
       </div>
+
+      <ModeIntro
+        mode={intro}
+        onClose={() => setIntro(null)}
+        onStart={(m) => {
+          setIntro(null);
+          onPlay(m);
+        }}
+      />
     </div>
+  );
+}
+
+/** Tapping a game tile: what the game is, how to play, and a Start button. */
+function ModeIntro({ mode, onClose, onStart }: { mode: ModeId | null; onClose: () => void; onStart: (m: ModeId) => void }) {
+  const t = useT();
+  const uiLang = useApp((s) => s.uiLang);
+  const m = mode ? MODES[mode] : null;
+  const facts: { icon: typeof Clock; text: string }[] = [];
+  if (m && mode !== 'recall') {
+    if (Number.isFinite(m.length)) facts.push({ icon: ListOrdered, text: t.questionsN(m.length) });
+    else if (!m.lives) facts.push({ icon: ListOrdered, text: t.untilOut });
+    if (m.roundSeconds) facts.push({ icon: Clock, text: t.roundSeconds(m.roundSeconds) });
+    else if (m.perQuestion) facts.push({ icon: Clock, text: t.secondsEach(m.perQuestion) });
+    else facts.push({ icon: Clock, text: t.noTimer });
+    if (m.lives) facts.push({ icon: Heart, text: t.livesN(m.lives) });
+  }
+  return (
+    <Sheet open={mode !== null} onClose={onClose} label={mode ? t.modeName[mode] : ''}>
+      {mode && m && (
+        <div className="mode-intro" lang={uiLang}>
+          <ModeArt mode={mode} className="mode-intro-art" />
+          <div className="mode-intro-title">
+            <IconTile horse={m.horse} icon={MODE_ICON[mode]} size={30} />
+            <h2 className="title">{t.modeName[mode]}</h2>
+          </div>
+          {facts.length > 0 && (
+            <div className="mode-facts">
+              {facts.map((f) => (
+                <span key={f.text} className="chip-fact">
+                  <f.icon size={14} strokeWidth={STROKE} /> {f.text}
+                </span>
+              ))}
+            </div>
+          )}
+          <h3 className="eyebrow">{t.howToPlay}</h3>
+          <ol className="mode-how">
+            {t.modeHow[mode].map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ol>
+          <Pressable className="btn btn-primary" onClick={() => onStart(mode)}>
+            <Play size={18} strokeWidth={STROKE} /> {t.startGame}
+          </Pressable>
+        </div>
+      )}
+    </Sheet>
   );
 }
 
