@@ -8,7 +8,10 @@ import { TabBar, type Tab } from './components/TabBar';
 import { Pressable } from './components/Pressable';
 import { Home } from './screens/Home';
 import { Friends } from './screens/Friends';
-import { Progress } from './screens/Progress';
+import { Practice, type PracticeAction } from './screens/Practice';
+import { MemoryVerses } from './screens/MemoryVerses';
+import { Notebook } from './screens/Notebook';
+import { drillRound } from './engine/drill';
 import { Gospel } from './screens/Gospel';
 import { Recall } from './screens/Recall';
 import { QuizPick } from './screens/QuizPick';
@@ -36,7 +39,9 @@ type Route =
   | { kind: 'tab'; tab: Tab }
   | { kind: 'recall' }
   | { kind: 'quizpick' }
-  | { kind: 'game'; mode: ModeId; run: number; challenge?: { id: string; questionIds: string[] }; scope?: { book: string; chapter: number | null } } | { kind: 'result'; result: RoundResult; xp: number };
+  | { kind: 'memory' }
+  | { kind: 'notebook' }
+  | { kind: 'game'; mode: ModeId; run: number; challenge?: { id: string; questionIds: string[] }; scope?: { book: string; chapter: number | null }; ids?: string[] } | { kind: 'result'; result: RoundResult; xp: number };
 
 /** Applies theme and text size to <html>. */
 function useDocumentSettings() {
@@ -206,6 +211,13 @@ function MainApp() {
             : { kind: 'quizpick' }
           : { kind: 'game', mode, run: Date.now() },
     );
+  // Practice tab: mistakes, reviews and saved questions; the books drill; memory verses; the notebook.
+  const practice = (a: PracticeAction) => {
+    if (a.kind === 'ids') setRoute({ kind: 'game', mode: 'practice', run: Date.now(), ids: a.ids });
+    else if (a.kind === 'drill') setRoute({ kind: 'game', mode: 'drill', run: Date.now(), ids: drillRound(10) });
+    else if (a.kind === 'book') startQuiz(a.book, null);
+    else setRoute({ kind: a.kind });
+  };
   const startQuiz = (book: string, chapter: number | null) => {
     setLastScope({ book, chapter });
     setRoute({ kind: 'game', mode: 'quiz', run: Date.now(), scope: { book, chapter } });
@@ -227,7 +239,8 @@ function MainApp() {
     setRoute({ kind: 'game', mode: c.mode, run: Date.now(), challenge: { id: c.id, questionIds: c.question_ids } });
 
   function onDone(result: RoundResult) {
-    const xp = result.score + (result.mode === 'daily' ? 25 : 0);
+    // Practice has no timer, so it earns half the points as XP.
+    const xp = result.mode === 'practice' ? Math.round(result.score / 2) : result.score + (result.mode === 'daily' ? 25 : 0);
     finishRound({ xp, correct: result.correct, total: result.total, score: result.score, daily: result.mode === 'daily' });
     void db.rounds
       .add({ mode: result.mode, day: dayKey(), score: result.score, correct: result.correct, total: result.total, xp, at: Date.now() })
@@ -266,18 +279,20 @@ function MainApp() {
             {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} />}
             {route.kind === 'tab' && route.tab === 'friends' && <Friends onStartChallenge={startChallenge} onPlayChallenge={playChallenge} />}
             {route.kind === 'tab' && route.tab === 'gospel' && <Gospel />}
-            {route.kind === 'tab' && route.tab === 'progress' && <Progress />}
+            {route.kind === 'tab' && route.tab === 'progress' && <Practice onAction={practice} />}
+            {route.kind === 'memory' && <MemoryVerses onExit={() => goTab('progress')} />}
+            {route.kind === 'notebook' && <Notebook onExit={() => goTab('progress')} />}
             {route.kind === 'tab' && route.tab === 'settings' && <Settings />}
             {route.kind === 'recall' && <Recall onExit={() => goTab(lastTab)} />}
             {route.kind === 'quizpick' && <QuizPick onExit={() => goTab(lastTab)} onStart={startQuiz} />}
             {route.kind === 'game' && (
-              <Game modeId={route.mode} questionIds={route.challenge?.questionIds} scope={route.scope} onExit={() => goTab(lastTab)} onDone={onDone} />
+              <Game modeId={route.mode} questionIds={route.challenge?.questionIds ?? route.ids} scope={route.scope} onExit={() => goTab(lastTab)} onDone={onDone} />
             )}
             {route.kind === 'result' && (
               <Results
                 result={route.result}
                 xp={route.xp}
-                onAgain={() => play(route.result.mode, true)}
+                onAgain={() => (route.result.mode === 'practice' ? goTab('progress') : route.result.mode === 'drill' ? practice({ kind: 'drill' }) : play(route.result.mode, true))}
                 onHome={() => goTab(route.result.challengeId ? 'friends' : lastTab)}
               />
             )}

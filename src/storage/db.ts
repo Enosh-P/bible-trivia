@@ -36,6 +36,8 @@ export const db = new Dexie('bible-trivia') as Dexie & {
   recallBooks: EntityTable<{ book: string; cards: unknown[]; at: number }, 'book'>;
   /** Results played offline (daily challenge, friend challenges), sent when back online. */
   outbox: EntityTable<{ id?: number; job: unknown; at: number }, 'id'>;
+  /** Questions starred during a game, to practise later. */
+  saved: EntityTable<{ id: string; at: number }, 'id'>;
 };
 
 db.version(1).stores({
@@ -56,6 +58,9 @@ db.version(5).stores({
 });
 db.version(6).stores({
   outbox: '++id, at',
+});
+db.version(7).stores({
+  saved: 'id, at',
 });
 
 /** Question ids answered wrong (and not answered right since). */

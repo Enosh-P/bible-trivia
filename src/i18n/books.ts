@@ -94,6 +94,7 @@ export function formatRef(
 ): string {
   const b = BOOK_BY_CODE[book];
   const name = b ? b[lang] : book;
+  if (!chapter) return name;
   if (!verse) return `${name} ${chapter}`;
   return `${name} ${chapter}:${verse}${verseEnd ? `–${verseEnd}` : ''}`;
 }

@@ -142,6 +142,19 @@ npm run db:import                                # put the Tamil into Supabase
 - The app shows Tamil in Tamil mode and both languages in Both mode, with a small "machine-translated, tap the flag for mistakes" note until a question is reviewed.
 - Add names to the glossary any time; it applies to the next translation run.
 
+## Practice (tab)
+
+Built from the answers stored on the phone (`src/engine/practice.ts`):
+- **Fix my mistakes:** wrong answers come back until they're answered right twice in a row.
+- **Review:** questions you know come back after 1, 3, 7, 14, then 30 days (spaced repetition).
+- **Saved:** the ☆ on any question during a game keeps it here.
+- **Weak spots:** accuracy per book, weakest first; tap one to practise that book.
+- **Mistakes notebook:** every missed and saved question with its answer, filtered by book.
+- **Memory verses:** learn the 32 verses by heart; each round hides more words (`src/engine/memory.ts`).
+- **Books of the Bible:** which book comes next or before, Old or New Testament, which comes first (`src/engine/drill.ts`).
+
+Practice rounds have no timer and earn half XP; they count towards the daily streak.
+
 ## Offline play
 
 Once the app has been opened online, it keeps questions on the phone. Once a day, in the background, it downloads:

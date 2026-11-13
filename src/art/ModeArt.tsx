@@ -223,6 +223,8 @@ const ART: Record<ModeId, () => ReactElement> = {
   speed: Speed,
   survival: Survival,
   daily: Daily,
+  practice: Study,
+  drill: Book,
 };
 
 export function ModeArt({ mode, className }: { mode: ModeId; className?: string }) {

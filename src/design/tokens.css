@@ -39,6 +39,8 @@
   --text: #11181c;
   --text-2: #5c656d;
   --text-3: #889096;
+  /* Tamil shown alongside English (Both): bold, in its own colour */
+  --ta-ink: #1f6aa5;
 
   /* Green accent */
   --accent: #3ecf8e;
@@ -92,6 +94,7 @@
   --text: #ecedee;
   --text-2: #9ba1a6;
   --text-3: #6f777e;
+  --ta-ink: #8cc4f2;
 
   --accent: #3ecf8e;
   --accent-hover: #4fd99b;

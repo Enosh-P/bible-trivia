@@ -1,5 +1,7 @@
 import type { CSSProperties } from 'react';
 import {
+  Dumbbell,
+  Library,
   ListChecks,
   BookOpen,
   BookOpenCheck,
@@ -52,6 +54,8 @@ export const MODE_ICON: Record<ModeId, LucideIcon> = {
   survival: Heart,
   recall: BookOpenCheck,
   quiz: ListChecks,
+  practice: Dumbbell,
+  drill: Library,
 };
 
 /** Line icon on a tile tinted with its horse colour. */

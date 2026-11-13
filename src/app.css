@@ -1001,3 +1001,67 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .install-guide .btn { align-self: stretch; }
 .welcome-install { display: flex; justify-content: center; margin-top: 16px; }
 .recall-book:disabled { opacity: 0.35; }
+
+/* Both languages: the second language is not faded. Tamil is bold in its own colour. */
+.q-secondary, .answer-sub, .verse-quote .verse-secondary, .recall-answer-second { color: var(--text); opacity: 1; }
+.q-secondary:lang(ta), .answer-sub:lang(ta), .verse-quote .verse-secondary:lang(ta), .recall-answer-second:lang(ta) { color: var(--ta-ink); font-weight: 650; }
+.answer.is-correct .answer-sub, .answer.is-correct .answer-sub:lang(ta) { color: var(--on-accent); opacity: 1; }
+.answer.is-wrong .answer-sub, .answer.is-wrong .answer-sub:lang(ta) { color: #fff; opacity: 1; }
+.save-btn + .report-btn { margin-left: 2px; }
+.save-btn.is-on { color: #e8a317; }
+.save-btn:hover { color: #e8a317; background: rgb(232 163 23 / 0.12); }
+
+/* Memory verses */
+.memory-list { display: flex; flex-direction: column; gap: 8px; }
+.memory-item { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: var(--radius-md); text-align: left; width: 100%; }
+.memory-item strong { display: block; font-size: 0.92rem; }
+.memory-preview { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.memory-dots, .memory-level { display: inline-flex; gap: 4px; align-items: center; }
+.memory-dots i, .memory-level i { width: 8px; height: 8px; border-radius: 99px; background: rgb(127 127 127 / 0.25); display: block; }
+.memory-dots i.on, .memory-level i.on { background: var(--accent); }
+.memory-level i.now { background: var(--accent); opacity: 0.45; }
+.memory-level .caption { margin-left: 6px; }
+.memory-done { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 99px; background: var(--accent); color: var(--on-accent); }
+.memory-round { display: flex; flex-direction: column; gap: 14px; }
+.memory-verse { font-family: var(--font-serif, Fraunces, serif); font-size: 1.15rem; line-height: 2.1; }
+.memory-verse:lang(ta) { font-family: 'Noto Serif Tamil', serif; font-size: 1.05rem; line-height: 2.2; }
+.memory-blank { display: inline-block; height: 1.1em; vertical-align: -0.2em; border-bottom: 2.5px solid var(--text-3); margin: 0 1px; }
+.memory-blank.is-next { border-bottom-color: var(--accent); background: rgb(62 207 142 / 0.15); border-radius: 4px 4px 0 0; }
+.memory-word { color: var(--accent-ink); font-weight: 650; display: inline-block; }
+.memory-bank { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.memory-chip { font: inherit; font-weight: 600; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--glass-edge); background: var(--card); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); color: var(--text); cursor: pointer; }
+.memory-chip.is-used { opacity: 0.2; }
+.memory-result { display: flex; flex-direction: column; gap: 12px; align-items: stretch; text-align: center; }
+
+/* Practice tab */
+.practice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (min-width: 960px) { .practice-grid { grid-template-columns: repeat(3, 1fr); } }
+.practice-card { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px; width: 100%; border-radius: var(--radius-lg); text-align: left; min-height: 120px; }
+.practice-card strong { font-size: 0.95rem; margin-top: 6px; }
+.practice-card.is-empty { opacity: 0.6; }
+.practice-card-top { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.practice-count { min-width: 26px; height: 26px; padding: 0 8px; border-radius: 99px; background: var(--red); color: #fff; font-weight: 700; font-size: 0.8rem; display: grid; place-items: center; }
+.weak-list { display: flex; flex-direction: column; gap: 4px; margin: 8px 0; }
+.weak-row { display: grid; grid-template-columns: minmax(90px, 32%) 1fr 44px; align-items: center; gap: 10px; padding: 8px 4px; width: 100%; text-align: left; border-radius: 10px; }
+.weak-name { font-weight: 600; font-size: 0.9rem; }
+.weak-bar { height: 8px; border-radius: 99px; background: rgb(127 127 127 / 0.18); overflow: hidden; }
+.weak-bar > span { display: block; height: 100%; border-radius: inherit; }
+.weak-bar .is-low { background: var(--red); }
+.weak-bar .is-mid { background: #e8a317; }
+.weak-bar .is-high { background: var(--accent); }
+.weak-pct { font-weight: 700; font-size: 0.85rem; text-align: right; }
+.progress-embedded { display: flex; flex-direction: column; gap: 14px; }
+
+/* Mistakes notebook */
+.notebook-filters { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.notebook-book { flex: 1; min-width: 140px; height: 38px; padding: 0 12px; }
+.notebook-list { display: flex; flex-direction: column; gap: 10px; }
+.notebook-item { display: flex; flex-direction: column; gap: 6px; }
+.notebook-meta { display: flex; align-items: center; gap: 8px; }
+.notebook-meta .caption { flex: 1; }
+.notebook-fixed { display: inline-flex; align-items: center; gap: 4px; font-size: 0.78rem; font-weight: 700; color: var(--accent-ink); }
+.notebook-q { margin: 0; font-weight: 600; line-height: 1.45; }
+.notebook-a { margin: 0; }
+.notebook-a strong { color: var(--accent-ink); }
+.memory-verse { display: block; }
+.memory-verse > span { display: inline; }

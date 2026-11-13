@@ -19,6 +19,7 @@ import { ArtSticker } from '../components/ArtSticker';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 import { VerseText } from '../components/VerseCard';
 import { ReportButton } from '../components/Report';
+import { SaveButton } from '../components/SaveButton';
 import { questionTarget } from '../online/reports';
 import { verseForQuestion } from '../engine/verses';
 
@@ -101,6 +102,8 @@ export function Game({
   }, [modeId, mode]);
 
   const q = questions?.[index];
+  // Both languages, but a question not translated yet: show it once, not twice.
+  const sec = secondary && q && q[secondary].q !== q[primary].q ? secondary : null;
 
   const finish = useCallback(
     (finalLog: AnswerLog[], finalScore: number, finalBest: number) => {
@@ -251,24 +254,25 @@ export function Game({
                   ×{combo}
                 </motion.span>
               )}
+              {!q.id.startsWith('gen-') && <SaveButton id={q.id} />}
               <ReportButton target={questionTarget(q)} />
             </div>
 
             {q.art && <ArtSticker name={q.art} />}
 
             {q.type === 'tf' ? (
-              <TrueFalseCard q={q} primary={primary} secondary={secondary} answered={answered} onAnswer={answer} />
+              <TrueFalseCard q={q} primary={primary} secondary={sec} answered={answered} onAnswer={answer} />
             ) : (
               <>
-                <QuestionText q={q} primary={primary} secondary={secondary} />
+                <QuestionText q={q} primary={primary} secondary={sec} />
                 <div className="options">
                   {q[primary].options!.map((opt, i) => (
                     <AnswerButton
                       key={i}
                       label={opt}
-                      sub={secondary ? q[secondary].options![i] : undefined}
+                      sub={sec ? q[sec].options![i] : undefined}
                       lang={primary}
-                      subLang={secondary}
+                      subLang={sec}
                       state={
                         !answered
                           ? 'idle'
@@ -436,7 +440,9 @@ function TrueFalseCard({ q, primary, secondary, answered, onAnswer }: { q: Quest
 
 function Feedback({ q, answered, primary, last, onNext, lives }: { q: Question; answered: NonNullable<Answered>; primary: Lang; last: boolean; onNext: () => void; lives?: number }) {
   const t = useT();
-  const explain = q[primary].explain;
+  const ref = formatRef(primary, q.book, q.chapter, q.verse, q.verseEnd);
+  // Book questions use the verse reference as their explanation: don't show it twice.
+  const explain = q[primary].explain === ref ? undefined : q[primary].explain;
   const correctLabel = q.type === 'tf' ? (q.answer ? t.true : t.false) : q[primary].options![q.answer as number];
   const heading = answered.choice === null ? t.timeUp : answered.correct ? t.correct : t.wrong;
   const out = last || lives === 0;
@@ -452,7 +458,7 @@ function Feedback({ q, answered, primary, last, onNext, lives }: { q: Question; 
     >
       <div className="feedback-head">
         <strong>{heading}</strong>
-        <span className="caption">{formatRef(primary, q.book, q.chapter, q.verse, q.verseEnd)}</span>
+        <span className="caption">{ref}</span>
       </div>
       {!answered.correct && (
         <p className="feedback-answer" lang={primary}>

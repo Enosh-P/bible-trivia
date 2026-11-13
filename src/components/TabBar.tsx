@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { BarChart3, BookHeart, Gamepad2, Settings2, Users, type LucideIcon } from 'lucide-react';
+import { Dumbbell, BookHeart, Gamepad2, Settings2, Users, type LucideIcon } from 'lucide-react';
 import { myTurn, useAccount } from '../online/account';
 import { spring } from '../motion/springs';
 import { useT } from '../store';
@@ -15,7 +15,7 @@ const TABS: { id: Tab; icon: LucideIcon; horse: Horse }[] = [
   { id: 'play', icon: Gamepad2, horse: 'white' },
   { id: 'friends', icon: Users, horse: 'red' },
   { id: 'gospel', icon: BookHeart, horse: 'pale' },
-  { id: 'progress', icon: BarChart3, horse: 'white' },
+  { id: 'progress', icon: Dumbbell, horse: 'white' },
   { id: 'settings', icon: Settings2, horse: 'black' },
 ];
 

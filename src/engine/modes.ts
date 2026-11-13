@@ -13,7 +13,9 @@ export type ModeId =
   | 'speed'
   | 'survival'
   | 'recall'
-  | 'quiz';
+  | 'quiz'
+  | 'practice'
+  | 'drill';
 
 export interface ModeDef {
   id: ModeId;
@@ -53,6 +55,10 @@ export const MODES: Record<ModeId, ModeDef> = {
   // Recall uses its own screen and the human-written question packs, not this engine.
   // Quiz by book: multiple choice from one book or chapter (src/engine/mcq.ts).
   quiz: { id: 'quiz', horse: 'pale', types: ['mcq', 'blank', 'who'], length: 10, perQuestion: 25 },
+  // Practice tab: your mistakes, reviews and saved questions; no timer, explanation after each.
+  practice: { id: 'practice', horse: 'pale', types: [...MC, 'tf'], length: 20, perQuestion: 0, study: true },
+  // Books of the Bible drill (questions made in src/engine/drill.ts).
+  drill: { id: 'drill', horse: 'black', types: ['mcq'], length: 10, perQuestion: 15 },
   recall: { id: 'recall', horse: 'pale', types: [], length: 15, perQuestion: 0, study: true },
 };
 

@@ -12,7 +12,8 @@ import { WeekStrip } from './Daily';
 /** Correct answers needed to fully light up a book. */
 const MASTERY = 5;
 
-export function Progress() {
+/** Your stats, week strip and book map. Shown under Practice (`embedded`). */
+export function Progress({ embedded = false }: { embedded?: boolean }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   const { xp, totalAnswered, totalCorrect } = useApp();
@@ -27,8 +28,8 @@ export function Progress() {
   const { level } = levelFromXp(xp);
 
   return (
-    <div className="screen" lang={uiLang}>
-      <h1 className="display">{t.progressTitle}</h1>
+    <div className={embedded ? 'progress-embedded' : 'screen'} lang={uiLang}>
+      {embedded ? <h2 className="eyebrow section-title">{t.progressTitle}</h2> : <h1 className="display">{t.progressTitle}</h1>}
       <WeekStrip />
       <div className="stat-grid">
         <div className="stat glass col">

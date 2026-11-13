@@ -5,6 +5,7 @@ import { db } from '../storage/db';
 import { bookOfId, loadMcqBook, loadMcqBooks, loadWhoSaid, pickBooks } from './mcq';
 import { dayKey, shuffle } from './picker';
 import { cachedBooks } from '../online/stock';
+import { drillQuestion } from './drill';
 
 export const PACKS = [ot, nt] as unknown as QuestionPack[];
 
@@ -53,7 +54,9 @@ export async function roundPool(source: RoundSource): Promise<Question[]> {
     case 'ids': {
       const books = [...new Set(source.ids.map(bookOfId).filter((b): b is string => Boolean(b)))];
       const [base, extra] = await Promise.all([questionPool(), loadMcqBooks(books)]);
-      return [...base, ...extra];
+      // Books-drill questions are made from their id.
+      const drill = source.ids.map(drillQuestion).filter((q): q is Question => Boolean(q));
+      return [...base, ...extra, ...drill];
     }
     case 'who': {
       const [base, who] = await Promise.all([questionPool(), loadWhoSaid().catch(() => [] as Question[])]);

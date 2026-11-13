@@ -31,6 +31,8 @@ interface Progress {
   dailyScore?: number;
   totalAnswered: number;
   totalCorrect: number;
+  /** Memory verses: level per verse id (4 = learned). */
+  memory?: Record<string, number>;
 }
 
 interface AppState extends Settings, Progress {
@@ -60,7 +62,8 @@ export const useApp = create<AppState>()(
   persist(
     (set) => ({
       uiLang: defaultLang(),
-      qLang: defaultLang(),
+      // Questions in both English and Tamil to start with; the app's own words follow the phone.
+      qLang: 'both',
       theme: 'light',
       sound: true,
       haptics: true,
