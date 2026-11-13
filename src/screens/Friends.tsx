@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { Check, Clock, Copy, Share2, Swords, Trash2, UserPlus, Users, X } from 'lucide-react';
+import { Check, Clock, Copy, Share2, Swords, Trash2, UserPlus, Users, X, QrCode, ScanLine } from 'lucide-react';
 import {
   addFriend,
   allTimeBoard,
@@ -19,6 +19,7 @@ import { supabase } from '../online/supabase';
 import { MODES, type ModeId } from '../engine/modes';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
+import { MyQRSheet, ScanSheet } from '../components/FriendQR';
 import { Pressable } from '../components/Pressable';
 import { Sheet } from '../components/Sheet';
 import { AuthForm } from '../components/AuthForm';
@@ -212,6 +213,8 @@ export function Friends({
 function MyCode({ code, name, avatar }: { code: string; name: string; avatar: Friend['avatar'] }) {
   const t = useT();
   const [copied, setCopied] = useState(false);
+  const [showQr, setShowQr] = useState(false);
+  const [scanning, setScanning] = useState(false);
   async function share() {
     const text = `${t.shareCodeText} ${code}\n${location.origin}`;
     try {
@@ -243,6 +246,16 @@ function MyCode({ code, name, avatar }: { code: string; name: string; avatar: Fr
           {t.shareCode}
         </Pressable>
       </div>
+      <div className="qr-actions">
+        <Pressable className="btn btn-primary" onClick={() => setShowQr(true)}>
+          <QrCode size={18} strokeWidth={STROKE} /> {t.showQr}
+        </Pressable>
+        <Pressable className="btn btn-primary" onClick={() => setScanning(true)}>
+          <ScanLine size={18} strokeWidth={STROKE} /> {t.scan}
+        </Pressable>
+      </div>
+      <MyQRSheet open={showQr} onClose={() => setShowQr(false)} name={name} />
+      <ScanSheet open={scanning} onClose={() => setScanning(false)} />
     </section>
   );
 }

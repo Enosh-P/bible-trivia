@@ -23,7 +23,7 @@ import { dayKey } from './engine/picker';
 import { db } from './storage/db';
 import { supabase, syncQuestions } from './online/supabase';
 import { flushReports } from './online/reports';
-import { createChallenge, initAccount, useAccount, pushProgress, saveDailyResult, submitChallenge, type Challenge } from './online/account';
+import { acceptInvite, createChallenge, initAccount, inviteFromText, useAccount, pushProgress, saveDailyResult, submitChallenge, type Challenge } from './online/account';
 import { MODES } from './engine/modes';
 import { pickQuestions } from './engine/picker';
 import { roundPool } from './engine/content';
@@ -64,6 +64,19 @@ export default function App() {
   useDocumentSettings();
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('art')) return <ArtGallery />;
   return <Gate />;
+}
+
+// Opened from a friend's QR code with the phone camera: keep the invite until signed in.
+try {
+  const token = inviteFromText(location.href);
+  if (token) {
+    sessionStorage.setItem('bt-invite', token);
+    const u = new URL(location.href);
+    u.searchParams.delete('invite');
+    history.replaceState(null, '', u.pathname + u.search);
+  }
+} catch {
+  /* storage blocked */
 }
 
 /** Everything needs an account: show sign-in until there is one. */
@@ -141,6 +154,28 @@ function MainApp() {
   useEffect(() => {
     void syncPushLanguage(uiLang).catch(() => {});
   }, [uiLang]);
+
+  // A friend's QR code scanned with the phone camera: become friends now.
+  const [notice, setNotice] = useState<string | null>(null);
+  const signedIn = useAccount((s) => Boolean(s.session));
+  useEffect(() => {
+    let token: string | null = null;
+    try {
+      token = sessionStorage.getItem('bt-invite');
+    } catch {
+      /* storage blocked */
+    }
+    if (!token || !signedIn) return;
+    sessionStorage.removeItem('bt-invite');
+    acceptInvite(token)
+      .then((r) => {
+        const msg = { accepted: t.scanAccepted, already_friends: t.scanAlready, expired: t.scanExpired, self: t.scanSelf, signed_out: t.scanSignIn }[r];
+        setNotice(msg);
+        if (r === 'accepted' || r === 'already_friends') goTab('friends');
+      })
+      .catch(() => setNotice(t.scanExpired));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signedIn]);
 
   // Quiz by Book: "Play again" repeats the same book or chapter.
   const [lastScope, setLastScope] = useState<{ book: string; chapter: number | null } | null>(null);
@@ -242,6 +277,17 @@ function MainApp() {
             transition={spring.sheet}
           >
             <TabBar tab={route.tab} onChange={goTab} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {notice && (
+          <motion.div className="toast glass glass-thick" initial={{ y: -80 }} animate={{ y: 0 }} exit={{ y: -80 }} transition={spring.sheet} role="status">
+            <span>{notice}</span>
+            <Pressable className="btn glass small" onClick={() => setNotice(null)}>
+              {t.close}
+            </Pressable>
           </motion.div>
         )}
       </AnimatePresence>

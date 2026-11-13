@@ -331,3 +331,35 @@ export function standing(r?: FriendRecord): 'ahead' | 'behind' | 'level' | 'new'
   if (!r || r.wins + r.losses + r.ties === 0) return 'new';
   return r.wins > r.losses ? 'ahead' : r.wins < r.losses ? 'behind' : 'level';
 }
+
+// ---------- Friends by QR code ----------
+/** A one-time invite for your QR code (valid 10 minutes). */
+export async function createInvite(): Promise<{ url: string; expiresAt: number }> {
+  if (!supabase) throw new Error('offline');
+  const { data, error } = await supabase.rpc('create_friend_invite');
+  if (error) throw error;
+  const row = (Array.isArray(data) ? data[0] : data) as { token: string; expires_at: string };
+  return { url: `${location.origin}/?invite=${row.token}`, expiresAt: new Date(row.expires_at).getTime() };
+}
+
+export type InviteResult = 'accepted' | 'already_friends' | 'expired' | 'self' | 'signed_out';
+
+/** Scanned someone's QR code: become friends now. */
+export async function acceptInvite(token: string): Promise<InviteResult> {
+  if (!supabase || !useAccount.getState().session) return 'signed_out';
+  const { data, error } = await supabase.rpc('accept_friend_invite', { p_token: token });
+  if (error) throw error;
+  await useAccount.getState().refresh();
+  return data as InviteResult;
+}
+
+/** The invite token in a scanned code or opened link, if it is one of ours. */
+export function inviteFromText(text: string): string | null {
+  try {
+    const u = new URL(text.trim());
+    const token = u.searchParams.get('invite');
+    return token && /^[0-9a-f]{16,64}$/i.test(token) ? token : null;
+  } catch {
+    return null;
+  }
+}

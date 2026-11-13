@@ -83,7 +83,7 @@ export function message(row: QueueRow, lang: Lang, verses: Verse[], books: Recor
     case 'daily_reminder':
       return {
         title: ta ? 'இன்றைய சவால் காத்திருக்கிறது' : "Today's Challenge is waiting",
-        body: ta ? '7 கேள்விகள், சுமார் 2 நிமிடங்கள். உங்கள் குடும்பம் விளையாடிவிட்டதா?' : '7 questions, about 2 minutes. Has your family played yet?',
+        body: ta ? '7 கேள்விகள், சுமார் 2 நிமிடங்கள். உங்கள் நண்பர்கள் விளையாடிவிட்டார்களா?' : '7 questions, about 2 minutes. Have your friends played yet?',
         url: '/?open=daily', tag: 'daily-reminder',
       };
     case 'streak_rescue':
@@ -96,6 +96,8 @@ export function message(row: QueueRow, lang: Lang, verses: Verse[], books: Recor
       return { title: ta ? `${name} உங்கள் நண்பராக விரும்புகிறார்` : `${name} wants to be your friend`, body: ta ? 'ஏற்றுக்கொள்ள நண்பர்கள் பக்கத்தைத் திறங்கள்.' : 'Open Friends to accept.', url: '/?open=friends', tag: `friend-${name}` };
     case 'friend_accepted':
       return { title: ta ? `${name} உங்கள் நண்பர் ஆனார்` : `${name} accepted your friend request`, body: ta ? 'இப்போது ஒரு சவால் அனுப்புங்கள்!' : 'Send them a challenge!', url: '/?open=friends', tag: `friend-${name}` };
+    case 'friend_added':
+      return { title: ta ? `${name} இப்போது உங்கள் நண்பர்` : `${name} is now your friend`, body: ta ? 'இப்போது ஒரு சவால் அனுப்புங்கள்!' : 'Send them a challenge!', url: '/?open=friends', tag: `friend-${name}` };
     case 'challenge_received':
       return { title: ta ? `${name} உங்களுக்குச் சவால் விட்டார்` : `${name} challenged you`, body: ta ? `${mode} · அதே கேள்விகள், எப்போது வேண்டுமானாலும் விளையாடலாம்.` : `${mode} · same questions, play any time.`, url: '/?open=friends', tag: `challenge-${p.challenge_id}` };
     case 'challenge_finished':
