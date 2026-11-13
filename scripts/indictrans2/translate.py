@@ -52,12 +52,21 @@ def load(model_name: str):
         torch_dtype=torch.float16 if device == "cuda" else torch.float32,
     ).to(device).eval()
     ip = IndicProcessor(inference=True)
+    state = {"cache": True}
 
     def translate(lines):
         batch = ip.preprocess_batch(lines, src_lang="eng_Latn", tgt_lang="tam_Taml")
         enc = tok(batch, truncation=True, padding="longest", return_tensors="pt").to(device)
         with torch.inference_mode():
-            out = model.generate(**enc, use_cache=True, min_length=0, max_length=256, num_beams=4, num_return_sequences=1)
+            try:
+                out = model.generate(**enc, use_cache=state["cache"], min_length=0, max_length=256, num_beams=4, num_return_sequences=1)
+            except AttributeError:
+                # Newer transformers versions don't match the model's cache code: run without the cache (slower, same result).
+                if not state["cache"]:
+                    raise
+                print("Note: running without the generation cache (slower). Install transformers==4.46.3 for full speed.", file=sys.stderr)
+                state["cache"] = False
+                out = model.generate(**enc, use_cache=False, min_length=0, max_length=256, num_beams=4, num_return_sequences=1)
         dec = tok.batch_decode(out, skip_special_tokens=True, clean_up_tokenization_spaces=True)
         return [tidy(t) for t in ip.postprocess_batch(dec, lang="tam_Taml")]
 

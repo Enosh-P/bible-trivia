@@ -1,6 +1,7 @@
 # For scripts/indictrans2/translate.py (run on a GPU machine, e.g. a Lightning AI Studio)
 torch
-transformers>=4.40,<5
+# IndicTrans2's model code breaks with newer transformers (cache changes)
+transformers==4.46.3
 sentencepiece
 sacremoses
 IndicTransToolkit
