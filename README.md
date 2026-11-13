@@ -115,7 +115,7 @@ npm run db:import                                # put the Tamil into Supabase
 ```
 - Progress is saved per book in `content/translations/ta/recall/`. A stopped run continues where it left off and never pays twice.
 - In Supabase, Tamil is only filled in where it is empty (`ta_status = machine`). When a reviewer edits the Tamil in the table editor, it becomes `reviewed` automatically and is never overwritten.
-- The app shows Tamil in Tamil mode and both languages in Both mode, with a small "Google Translate, tap the flag for mistakes" note until a question is reviewed.
+- The app shows Tamil in Tamil mode and both languages in Both mode, with a small "machine-translated, tap the flag for mistakes" note until a question is reviewed.
 - Add names to the glossary any time; it applies to the next translation run.
 
 ## Accounts, friends and challenges
