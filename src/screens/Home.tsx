@@ -20,6 +20,7 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
   const streak = useApp((s) => s.streak);
   const { level, into, need } = levelFromXp(xp);
   const [intro, setIntro] = useState<ModeId | null>(null);
+  const dailyDone = useApp((s) => s.dailyDoneOn === dayKey());
 
   return (
     <div className="screen" lang={uiLang}>
@@ -28,34 +29,29 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
           <p className="caption">{t.greeting}</p>
           <LangToggle />
         </div>
-        <h1 className="display">{t.appName}</h1>
+        <div className="home-title-row">
+          <h1 className="display">{t.appName}</h1>
+          <div className="home-badges">
+            <span className="badge" title={t.streak} aria-label={`${streak} ${t.streak}`}>
+              <Flame size={15} strokeWidth={STROKE} className="badge-flame" /> {streak}
+            </span>
+            <span className="badge" title={t.level} aria-label={`${t.level} ${level}`}>
+              <Trophy size={15} strokeWidth={STROKE} className="badge-trophy" /> {level}
+              <span className="badge-bar" aria-hidden>
+                <span style={{ width: `${(into / need) * 100}%` }} />
+              </span>
+            </span>
+          </div>
+        </div>
       </header>
 
-      <div className="stat-row">
-        <div className="stat glass">
-          <IconTile horse="red" icon={Flame} size={30} />
-          <div>
-            <strong>{streak}</strong>
-            <span className="caption">{t.streak}</span>
-          </div>
+      {!dailyDone && (
+        <div className="home-top">
+          <DailyCard onPlay={() => onPlay('daily')} />
+          <VerseOfTheDay />
         </div>
-        <div className="stat glass">
-          <IconTile horse="pale" icon={Trophy} size={30} />
-          <div className="grow">
-            <strong>
-              {t.level} {level}
-            </strong>
-            <div className="bar small">
-              <motion.div className="bar-fill horse-pale" initial={{ width: 0 }} animate={{ width: `${(into / need) * 100}%` }} transition={spring.calm} />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="home-top">
-        <DailyCard onPlay={() => onPlay('daily')} />
-        <VerseOfTheDay />
-      </div>
+      )}
+      {dailyDone && <VerseOfTheDay />}
 
       <h2 className="eyebrow section-title">{t.modes}</h2>
       <div className="mode-grid">
