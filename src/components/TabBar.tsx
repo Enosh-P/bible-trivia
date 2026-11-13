@@ -7,6 +7,7 @@ import type { Horse } from '../engine/modes';
 import { STROKE } from './icons';
 import { ThemeToggle } from './ThemeToggle';
 import { LangToggle } from './LangToggle';
+import { InstallButton } from './Install';
 
 export type Tab = 'play' | 'friends' | 'gospel' | 'progress' | 'settings';
 
@@ -55,6 +56,7 @@ export function TabBar({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void
         );
       })}
       <div className="sidebar-switches">
+        <InstallButton />
         <LangToggle compact />
         <ThemeToggle id="sidebar" />
       </div>

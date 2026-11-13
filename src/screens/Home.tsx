@@ -12,6 +12,7 @@ import { LangToggle } from '../components/LangToggle';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 import { Sheet } from '../components/Sheet';
 import { ModeArt } from '../art/ModeArt';
+import { InstallBanner } from '../components/Install';
 
 export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
   const t = useT();
@@ -49,6 +50,8 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
           </div>
         </div>
       </header>
+
+      <InstallBanner />
 
       {healed > 0 && (
         <motion.div className="glass heal-note" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={spring.calm} role="status">

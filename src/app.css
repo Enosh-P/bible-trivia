@@ -990,3 +990,13 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .scan-frame { position: relative; color: rgb(255 255 255 / 0.85); }
 .scan-wait { position: absolute; opacity: 0.6; }
 .scan-box.is-done { background: var(--accent); color: var(--on-accent); }
+
+/* Install */
+.install-banner { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: var(--radius-lg); }
+.install-banner strong { display: block; font-size: 0.95rem; }
+.install-banner .caption { display: block; }
+.install-guide { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 4px 4px 10px; }
+.install-guide .title { margin: 0; }
+.install-guide .ios-steps { align-self: stretch; }
+.install-guide .btn { align-self: stretch; }
+.welcome-install { display: flex; justify-content: center; margin-top: 16px; }

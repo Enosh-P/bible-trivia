@@ -1,12 +1,10 @@
-import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Download, Languages, MonitorSmartphone, Moon, PlusSquare, Share, Smartphone, Type, Vibrate, Volume2 } from 'lucide-react';
+import { Download, Languages, MonitorSmartphone, Moon, Smartphone, Type, Vibrate, Volume2 } from 'lucide-react';
 import { useApp, useT, type QuestionLang, type ThemePref } from '../store';
 import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
-import { Sheet } from '../components/Sheet';
 import { IconTile, STROKE } from '../components/icons';
-import { useInstall } from '../pwa/install';
+import { useInstallAction } from '../components/Install';
 import { AccountCard } from '../components/AccountCard';
 import { NotificationsCard } from '../components/NotificationsCard';
 import type { Horse } from '../engine/modes';
@@ -47,29 +45,22 @@ function Row({ horse, icon, label, children }: { horse: Horse; icon: LucideIcon;
 export function Settings() {
   const t = useT();
   const s = useApp();
-  const { state: install, promptInstall } = useInstall();
-  const [iosOpen, setIosOpen] = useState(false);
+  const { state: install, install: doInstall, sheet: installSheet } = useInstallAction();
 
   return (
     <div className="screen" lang={s.uiLang}>
       <h1 className="display">{t.settingsTitle}</h1>
 
+      <Pressable className="install-card glass" disabled={install === 'installed'} onClick={doInstall}>
+        <IconTile horse="pale" icon={install === 'installed' ? Smartphone : Download} size={38} />
+        <div className="grow">
+          <strong>{install === 'installed' ? t.installed : t.install}</strong>
+          <span className="caption">{t.installSub}</span>
+        </div>
+      </Pressable>
+
       <AccountCard />
       <NotificationsCard />
-
-      {install !== 'unavailable' && (
-        <Pressable
-          className="install-card glass"
-          disabled={install === 'installed'}
-          onClick={() => (install === 'native' ? promptInstall() : setIosOpen(true))}
-        >
-          <IconTile horse="pale" icon={install === 'installed' ? Smartphone : Download} size={38} />
-          <div className="grow">
-            <strong>{install === 'installed' ? t.installed : t.install}</strong>
-            <span className="caption">{t.installSub}</span>
-          </div>
-        </Pressable>
-      )}
 
       <section className="glass group">
         <div className="row-stack">
@@ -141,23 +132,7 @@ export function Settings() {
         <MonitorSmartphone size={14} strokeWidth={STROKE} /> {t.credit}
       </p>
 
-      <Sheet open={iosOpen} onClose={() => setIosOpen(false)} label={t.iosInstallTitle}>
-        <h2 className="title">{t.iosInstallTitle}</h2>
-        <ol className="ios-steps">
-          <li>
-            <IconTile horse="white" icon={Share} size={36} /> {t.iosStep1}
-          </li>
-          <li>
-            <IconTile horse="pale" icon={PlusSquare} size={36} /> {t.iosStep2}
-          </li>
-          <li>
-            <IconTile horse="black" icon={Smartphone} size={36} /> {t.iosStep3}
-          </li>
-        </ol>
-        <Pressable className="btn btn-primary" onClick={() => setIosOpen(false)}>
-          {t.close}
-        </Pressable>
-      </Sheet>
+      {installSheet}
     </div>
   );
 }

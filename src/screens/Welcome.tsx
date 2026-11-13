@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { AuthForm } from '../components/AuthForm';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { LangToggle } from '../components/LangToggle';
+import { InstallButton } from '../components/Install';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 
@@ -33,6 +34,10 @@ export function Welcome() {
         <p className="caption">{t.welcomeLead}</p>
         <AuthForm />
       </motion.section>
+
+      <div className="welcome-install">
+        <InstallButton />
+      </div>
     </div>
   );
 }
