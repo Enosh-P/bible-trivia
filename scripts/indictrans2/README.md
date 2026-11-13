@@ -48,3 +48,18 @@ Run `supabase/setup.sql` in the SQL Editor first if you haven't since the Tamil 
 ## Notes
 - Default model: `ai4bharat/indictrans2-en-indic-1B` (best quality). On a small GPU, or for speed, add `--model ai4bharat/indictrans2-en-indic-dist-200M`. If the GPU runs out of memory, add `--batch 16`.
 - Every translation is marked "machine" in Supabase until a person edits it. Edits become "reviewed" and are never overwritten.
+
+## Multiple-choice questions (Quiz by Book, Who Said It?)
+
+The same script translates the ~33,000 multiple-choice questions: each question and its options. Names that repeat thousands of times ("David", "Moses") are translated only once. Expect 1–2 hours on a free Colab T4.
+
+```bash
+python scripts/indictrans2/translate.py --set mcq --top 11   # the popular books first
+python scripts/indictrans2/translate.py --set mcq            # the rest (finished books are skipped)
+```
+
+Output: `content/translations/ta/mcq/<BOOK>.json`. Bring it back to your computer, then:
+
+```bash
+npm run content:mcq -- --merge-only
+```

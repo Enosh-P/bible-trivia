@@ -9,6 +9,10 @@ first (content/glossary/names-ta.json), e.g. David -> தாவீது, God ->
   python scripts/indictrans2/translate.py --top 11            # the 11 popular books
   python scripts/indictrans2/translate.py                     # everything
 
+  python scripts/indictrans2/translate.py --set mcq --top 11  # multiple-choice questions (question + options)
+  python scripts/indictrans2/translate.py --set mcq           # all of them
+
+
 Options: --model ai4bharat/indictrans2-en-indic-1B (default; better) or
          ai4bharat/indictrans2-en-indic-dist-200M (smaller, faster)
          --batch 64   --no-glossary
@@ -17,6 +21,9 @@ Output: content/translations/ta/recall/<BOOK>.json  ({id: {q, a}}), the same
 format as the Google script, saved after every batch so a stopped run resumes.
 Afterwards (on any computer): npm run translate:recall -- --merge-only
 then npm run db:import.
+
+With --set mcq: content/translations/ta/mcq/<BOOK>.json ({id: {q, o: [options]}}).
+Afterwards: npm run content:mcq -- --merge-only
 """
 import argparse, json, re, sys, time
 from pathlib import Path
@@ -24,6 +31,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 PACKS = ROOT / "public/packs/uw"
 OUT = ROOT / "content/translations/ta/recall"
+MCQ_PACKS = ROOT / "public/packs/mcq"
+MCQ_OUT = ROOT / "content/translations/ta/mcq"
 POPULAR = ["GEN", "EXO", "PSA", "PRO", "DAN", "MAT", "MRK", "LUK", "JHN", "ACT", "REV"]
 
 # ---------- Bible names glossary (same rules as scripts/lib/glossary.mjs) ----------
@@ -93,7 +102,11 @@ def main():
     ap.add_argument("--batch", type=int, default=32)
     ap.add_argument("--sample", action="store_true", help="translate 20 sample lines both ways and print them")
     ap.add_argument("--no-glossary", action="store_true")
+    ap.add_argument("--set", choices=["recall", "mcq"], default="recall", help="which questions to translate")
     a = ap.parse_args()
+
+    if a.set == "mcq":
+        return translate_mcq(a)
 
     all_books = sorted(p.stem for p in PACKS.glob("*.json") if re.fullmatch(r"[0-9A-Z]{3}", p.stem))
     if a.books:
@@ -147,6 +160,61 @@ def main():
         print(f" done ({total} so far, {time.time() - started:.0f}s)")
     print(f"\nTranslated {total} questions into content/translations/ta/recall/.")
     print("Next: npm run translate:recall -- --merge-only   then   npm run db:import")
+
+def translate_mcq(a):
+    """Multiple-choice packs: the question and every option. Repeated strings
+    (names like "David" appear thousands of times) are translated once."""
+    all_books = sorted(p.stem for p in MCQ_PACKS.glob("*.json") if re.fullmatch(r"[0-9A-Z]{3}", p.stem))
+    if a.books:
+        books = [b.strip().upper() for b in a.books.split(",")]
+    else:
+        books = POPULAR + [b for b in all_books if b not in POPULAR]
+        if a.top:
+            books = books[: a.top]
+
+    translate = load(a.model)
+    prep = (lambda s: s) if a.no_glossary else protect_names
+    memo = {}
+    BLANK = "____"
+
+    def run(strings):
+        todo = [s for s in dict.fromkeys(strings) if s not in memo]
+        for i in range(0, len(todo), a.batch):
+            chunk = todo[i : i + a.batch]
+            # The blank in "Diligent hands will ____" doesn't survive translation: swap it for "…" and back.
+            out = translate([prep(s.replace(BLANK, "…")) for s in chunk])
+            for src, ta in zip(chunk, out):
+                if BLANK in src:
+                    ta = ta.replace("…", BLANK, 1) if "…" in ta else ta.rstrip(" .") + " " + BLANK
+                memo[src] = ta
+
+    MCQ_OUT.mkdir(parents=True, exist_ok=True)
+    started, total = time.time(), 0
+    for book in books:
+        pack = MCQ_PACKS / f"{book}.json"
+        if not pack.exists():
+            print(f"{book}: no pack, skipped", file=sys.stderr)
+            continue
+        rows = json.loads(pack.read_text(encoding="utf-8"))["rows"]
+        out_path = MCQ_OUT / f"{book}.json"
+        done = json.loads(out_path.read_text(encoding="utf-8")) if out_path.exists() else {}
+        todo = [r for r in rows if r[0] not in done]
+        if not todo:
+            print(f"{book}: already translated ({len(rows)})")
+            continue
+        print(f"{book}: {len(todo)} questions…", end="", flush=True)
+        step = 48
+        for i in range(0, len(todo), step):
+            chunk = todo[i : i + step]
+            run([r[4] for r in chunk] + [o for r in chunk for o in r[5]])
+            for r in chunk:
+                done[r[0]] = {"q": memo[r[4]], "o": [memo[o] for o in r[5]]}
+            out_path.write_text(json.dumps(done, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+            print(".", end="", flush=True)
+        total += len(todo)
+        print(f" done ({total} so far, {time.time() - started:.0f}s)")
+    print(f"\nTranslated {total} questions into content/translations/ta/mcq/.")
+    print("Next: npm run content:mcq -- --merge-only")
 
 if __name__ == "__main__":
     main()

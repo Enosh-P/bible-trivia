@@ -4,8 +4,9 @@ import { myTurn, useAccount } from '../online/account';
 import { spring } from '../motion/springs';
 import { useT } from '../store';
 import type { Horse } from '../engine/modes';
-import { HorseHead, IconTile, STROKE } from './icons';
+import { STROKE } from './icons';
 import { ThemeToggle } from './ThemeToggle';
+import { LangToggle } from './LangToggle';
 
 export type Tab = 'play' | 'friends' | 'gospel' | 'progress' | 'settings';
 
@@ -33,7 +34,7 @@ export function TabBar({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void
     <nav className="tabbar glass glass-thick" aria-label="Main">
       {/* Shown only in the desktop sidebar */}
       <div className="tabbar-brand">
-        <IconTile horse="black" icon={HorseHead} size={34} />
+        <img src="/favicon.svg" alt="" width={34} height={34} className="brand-icon" />
         <span>{t.appName}</span>
       </div>
       {TABS.map(({ id, icon: Icon, horse }) => {
@@ -53,7 +54,10 @@ export function TabBar({ tab, onChange }: { tab: Tab; onChange: (t: Tab) => void
           </button>
         );
       })}
-      <ThemeToggle id="sidebar" className="sidebar-theme" />
+      <div className="sidebar-switches">
+        <LangToggle compact />
+        <ThemeToggle id="sidebar" />
+      </div>
     </nav>
   );
 }

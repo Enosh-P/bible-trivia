@@ -12,7 +12,8 @@ export type ModeId =
   | 'study'
   | 'speed'
   | 'survival'
-  | 'recall';
+  | 'recall'
+  | 'quiz';
 
 export interface ModeDef {
   id: ModeId;
@@ -50,7 +51,9 @@ export const MODES: Record<ModeId, ModeDef> = {
   speed: { id: 'speed', horse: 'red', types: [...MC, 'tf'], length: Infinity, perQuestion: 0, roundSeconds: 60 },
   survival: { id: 'survival', horse: 'red', types: [...MC, 'tf'], length: Infinity, perQuestion: 15, lives: 3 },
   // Recall uses its own screen and the human-written question packs, not this engine.
+  // Quiz by book: multiple choice from one book or chapter (src/engine/mcq.ts).
+  quiz: { id: 'quiz', horse: 'pale', types: ['mcq', 'blank', 'who'], length: 10, perQuestion: 25 },
   recall: { id: 'recall', horse: 'pale', types: [], length: 15, perQuestion: 0, study: true },
 };
 
-export const MODE_ORDER: ModeId[] = ['recall', 'classic', 'truefalse', 'who', 'book', 'blank', 'speed', 'survival', 'study'];
+export const MODE_ORDER: ModeId[] = ['quiz', 'classic', 'recall', 'truefalse', 'who', 'book', 'blank', 'speed', 'survival', 'study'];

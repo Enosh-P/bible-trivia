@@ -9,3 +9,4 @@ dev-dist
 .generator
 .env.local
 __pycache__/
+.cache/

@@ -7,6 +7,7 @@ import { db } from '../storage/db';
 import { useApp, useT } from '../store';
 import { cue } from '../feedback';
 import { spring } from '../motion/springs';
+import { LangToggle } from '../components/LangToggle';
 import { Pressable } from '../components/Pressable';
 import { IconTile, STROKE } from '../components/icons';
 import { ReportButton } from '../components/Report';
@@ -56,9 +57,9 @@ export function Recall({ onExit }: { onExit: () => void }) {
   }
 
   const back = () => {
-    if (step.kind === 'books') onExit();
-    else if (step.kind === 'chapters') setStep({ kind: 'books' });
-    else setStep({ kind: 'chapters', book: step.book });
+    // The X during a round closes Recall completely; the arrow steps back through the lists.
+    if (step.kind === 'chapters') setStep({ kind: 'books' });
+    else onExit();
   };
 
   const bookName = (code: string) => BOOKS.find((b) => b.code === code)?.[uiLang] ?? code;
@@ -66,13 +67,14 @@ export function Recall({ onExit }: { onExit: () => void }) {
   return (
     <div className="screen recall" lang={uiLang}>
       <header className="recall-head">
-        <Pressable className="chip glass" onClick={back} aria-label={t.back}>
-          {step.kind === 'cards' ? <X size={18} strokeWidth={STROKE} /> : <ChevronLeft size={20} strokeWidth={STROKE} />}
+        <Pressable className="chip glass" onClick={back} aria-label={step.kind === 'cards' || step.kind === 'done' ? t.quit : t.back}>
+          {step.kind === 'cards' || step.kind === 'done' ? <X size={18} strokeWidth={STROKE} /> : <ChevronLeft size={20} strokeWidth={STROKE} />}
         </Pressable>
         <div className="grow">
           <p className="eyebrow">{t.modeName.recall}</p>
           <h1 className="title">{step.kind === 'books' ? t.chooseBook : bookName(step.book) + (step.kind !== 'chapters' && step.chapter ? ` ${step.chapter}` : '')}</h1>
         </div>
+        <LangToggle compact />
         <IconTile horse="pale" icon={BookOpenCheck} size={40} />
       </header>
 
@@ -88,11 +90,11 @@ export function Recall({ onExit }: { onExit: () => void }) {
           className="recall-body"
         >
           {step.kind === 'books' && index && (
-            <BookGrid index={index} lang={uiLang} onPick={(book) => setStep({ kind: 'chapters', book })} />
+            <BookGrid counts={index.books} lang={uiLang} onPick={(book) => setStep({ kind: 'chapters', book })} />
           )}
 
           {step.kind === 'chapters' && (
-            <ChapterPicker book={step.book} onPick={(ch) => start(step.book, ch)} />
+            <ChapterPicker chapters={() => loadRecallBook(step.book).then((cards) => cards.map((c) => c.chapter))} onPick={(ch) => start(step.book, ch)} />
           )}
 
           {step.kind === 'cards' && (
@@ -136,7 +138,7 @@ export function Recall({ onExit }: { onExit: () => void }) {
   );
 }
 
-function BookGrid({ index, lang, onPick }: { index: RecallIndex; lang: 'en' | 'ta'; onPick: (b: string) => void }) {
+export function BookGrid({ counts, lang, onPick }: { counts: Record<string, number>; lang: 'en' | 'ta'; onPick: (b: string) => void }) {
   const t = useT();
   return (
     <>
@@ -149,7 +151,7 @@ function BookGrid({ index, lang, onPick }: { index: RecallIndex; lang: 'en' | 't
                 <span className="recall-book-name" lang={lang}>
                   {b[lang]}
                 </span>
-                <span className="caption">{index.books[b.code] ?? 0}</span>
+                <span className="caption">{counts[b.code] ?? 0}</span>
               </Pressable>
             ))}
           </div>
@@ -159,14 +161,16 @@ function BookGrid({ index, lang, onPick }: { index: RecallIndex; lang: 'en' | 't
   );
 }
 
-function ChapterPicker({ book, onPick }: { book: string; onPick: (ch: number | null) => void }) {
+export function ChapterPicker({ chapters: load, onPick }: { chapters: () => Promise<number[]>; onPick: (ch: number | null) => void }) {
   const t = useT();
   const [chapters, setChapters] = useState<number[]>([]);
   useEffect(() => {
-    loadRecallBook(book)
-      .then((cards) => setChapters([...new Set(cards.map((c) => c.chapter))].sort((a, b) => a - b)))
+    load()
+      .then((list) => setChapters([...new Set(list)].filter((c) => c > 0).sort((a, b) => a - b)))
       .catch(() => {});
-  }, [book]);
+    // load is recreated on each render; the book is fixed for this picker
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="recall-chapters">
       <Pressable className="btn btn-primary" onClick={() => onPick(null)}>

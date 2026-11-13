@@ -11,6 +11,7 @@ import { Friends } from './screens/Friends';
 import { Progress } from './screens/Progress';
 import { Gospel } from './screens/Gospel';
 import { Recall } from './screens/Recall';
+import { QuizPick } from './screens/QuizPick';
 import { NewPasswordSheet } from './components/NewPasswordSheet';
 import { syncPushLanguage } from './online/push';
 import { Settings } from './screens/Settings';
@@ -25,14 +26,15 @@ import { flushReports } from './online/reports';
 import { createChallenge, initAccount, useAccount, pushProgress, saveDailyResult, submitChallenge, type Challenge } from './online/account';
 import { MODES } from './engine/modes';
 import { pickQuestions } from './engine/picker';
-import { questionPool } from './engine/content';
+import { roundPool } from './engine/content';
 import { useApp, useT } from './store';
 import { spring } from './motion/springs';
 
 type Route =
   | { kind: 'tab'; tab: Tab }
   | { kind: 'recall' }
-  | { kind: 'game'; mode: ModeId; run: number; challenge?: { id: string; questionIds: string[] } } | { kind: 'result'; result: RoundResult; xp: number };
+  | { kind: 'quizpick' }
+  | { kind: 'game'; mode: ModeId; run: number; challenge?: { id: string; questionIds: string[] }; scope?: { book: string; chapter: number | null } } | { kind: 'result'; result: RoundResult; xp: number };
 
 /** Applies theme and text size to <html>. */
 function useDocumentSettings() {
@@ -140,11 +142,26 @@ function MainApp() {
     void syncPushLanguage(uiLang).catch(() => {});
   }, [uiLang]);
 
-  const play = (mode: ModeId) => setRoute(mode === 'recall' ? { kind: 'recall' } : { kind: 'game', mode, run: Date.now() });
+  // Quiz by Book: "Play again" repeats the same book or chapter.
+  const [lastScope, setLastScope] = useState<{ book: string; chapter: number | null } | null>(null);
+  const play = (mode: ModeId, again = false) =>
+    setRoute(
+      mode === 'recall'
+        ? { kind: 'recall' }
+        : mode === 'quiz'
+          ? again && lastScope
+            ? { kind: 'game', mode, run: Date.now(), scope: lastScope }
+            : { kind: 'quizpick' }
+          : { kind: 'game', mode, run: Date.now() },
+    );
+  const startQuiz = (book: string, chapter: number | null) => {
+    setLastScope({ book, chapter });
+    setRoute({ kind: 'game', mode: 'quiz', run: Date.now(), scope: { book, chapter } });
+  };
 
   /** Friend challenge: same questions for everyone; the starter plays first. */
   async function startChallenge(mode: ModeId, friendIds: string[]) {
-    const pool = await questionPool();
+    const pool = await roundPool(mode === 'who' ? { kind: 'who' } : { kind: 'mix' });
     const questionIds = pickQuestions(pool, MODES[mode]).map((q) => q.id);
     try {
       const id = await createChallenge(mode, questionIds, friendIds);
@@ -199,14 +216,15 @@ function MainApp() {
             {route.kind === 'tab' && route.tab === 'progress' && <Progress />}
             {route.kind === 'tab' && route.tab === 'settings' && <Settings />}
             {route.kind === 'recall' && <Recall onExit={() => goTab(lastTab)} />}
+            {route.kind === 'quizpick' && <QuizPick onExit={() => goTab(lastTab)} onStart={startQuiz} />}
             {route.kind === 'game' && (
-              <Game modeId={route.mode} questionIds={route.challenge?.questionIds} onExit={() => goTab(lastTab)} onDone={onDone} />
+              <Game modeId={route.mode} questionIds={route.challenge?.questionIds} scope={route.scope} onExit={() => goTab(lastTab)} onDone={onDone} />
             )}
             {route.kind === 'result' && (
               <Results
                 result={route.result}
                 xp={route.xp}
-                onAgain={() => play(route.result.mode)}
+                onAgain={() => play(route.result.mode, true)}
                 onHome={() => goTab(route.result.challengeId ? 'friends' : lastTab)}
               />
             )}

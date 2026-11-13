@@ -1,7 +1,7 @@
 import { AnimatePresence, animate, motion, useMotionValue, useReducedMotion, useTransform, type PanInfo } from 'motion/react';
 import { useCallback, useEffect, useRef, useState, type PointerEvent as RPointerEvent } from 'react';
 import { Check, Heart, X } from 'lucide-react';
-import { questionPool } from '../engine/content';
+import { roundPool } from '../engine/content';
 import { MODES, type ModeId } from '../engine/modes';
 import { pickDaily, pickQuestions } from '../engine/picker';
 import { isCorrect, pointsFor } from '../engine/scoring';
@@ -12,6 +12,7 @@ import { db, recentQuestionIds, weakQuestionIds } from '../storage/db';
 import { useApp, useT } from '../store';
 import { cue } from '../feedback';
 import { project, spring } from '../motion/springs';
+import { LangToggle } from '../components/LangToggle';
 import { Pressable } from '../components/Pressable';
 import { TimerRing } from '../components/TimerRing';
 import { ArtSticker } from '../components/ArtSticker';
@@ -43,12 +44,15 @@ type Answered = { choice: number | boolean | null; correct: boolean } | null;
 export function Game({
   modeId,
   questionIds,
+  scope,
   onExit,
   onDone,
 }: {
   modeId: ModeId;
   /** Play exactly these questions, in this order (friend challenges). */
   questionIds?: string[];
+  /** Quiz by book: one book, or one chapter of it. */
+  scope?: { book: string; chapter: number | null };
   onExit: () => void;
   onDone: (r: RoundResult) => void;
 }) {
@@ -75,7 +79,9 @@ export function Game({
   useEffect(() => {
     let alive = true;
     (async () => {
-      const pool = await questionPool();
+      const pool = await roundPool(
+        questionIds ? { kind: 'ids', ids: questionIds } : scope ? { kind: 'book', ...scope } : modeId === 'daily' ? { kind: 'daily' } : modeId === 'who' ? { kind: 'who' } : { kind: 'mix' },
+      );
       const byId = new Map(pool.map((x) => [x.id, x]));
       const qs = questionIds
         ? questionIds.map((id) => byId.get(id)).filter((x): x is Question => Boolean(x))
@@ -216,6 +222,7 @@ export function Game({
             </div>
           )}
         </div>
+        <LangToggle compact />
         <motion.div className="score-chip glass" key={score} initial={{ scale: 1.15 }} animate={{ scale: 1 }} transition={spring.flick}>
           {score}
         </motion.div>

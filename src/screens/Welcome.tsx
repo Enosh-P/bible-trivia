@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { AuthForm } from '../components/AuthForm';
 import { ThemeToggle } from '../components/ThemeToggle';
+import { LangToggle } from '../components/LangToggle';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 
@@ -8,18 +9,11 @@ import { spring } from '../motion/springs';
 export function Welcome() {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
-  const set = useApp((s) => s.set);
 
   return (
     <div className="screen welcome" lang={uiLang}>
       <div className="welcome-top">
-        <div className="lang-switch" role="radiogroup" aria-label={t.language}>
-          {(['en', 'ta'] as const).map((l) => (
-            <button key={l} role="radio" aria-checked={uiLang === l} className={uiLang === l ? 'is-on' : ''} onClick={() => set({ qLang: l })} lang={l}>
-              {l === 'en' ? 'English' : 'தமிழ்'}
-            </button>
-          ))}
-        </div>
+        <LangToggle />
         <ThemeToggle />
       </div>
 

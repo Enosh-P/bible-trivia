@@ -208,18 +208,20 @@ const en = {
     speed: 'Speed Round',
     survival: 'Survival',
     recall: 'Recall',
+    quiz: 'Quiz by Book',
   } satisfies Record<ModeId, string>,
   modeSub: {
     classic: '10 mixed questions',
     daily: '7 a day',
     truefalse: 'Swipe to answer',
-    who: 'Name the speaker',
+    who: '3,200 sayings · name the speaker',
     book: 'Find the book',
     blank: 'Complete the verse',
     study: 'No timer · learn as you go',
     speed: '60 seconds, go!',
     survival: '3 lives, how far?',
     recall: '17,000 questions · every chapter',
+    quiz: '33,000 questions · pick a book',
   } satisfies Record<ModeId, string>,
 };
 
@@ -432,18 +434,20 @@ const ta: Strings = {
     speed: 'வேகச் சுற்று',
     survival: 'தாக்குப்பிடி',
     recall: 'நினைவுகூர்',
+    quiz: 'புஸ்தக வினாடி வினா',
   },
   modeSub: {
     classic: '10 கலவைக் கேள்விகள்',
     daily: 'நாளுக்கு 7',
     truefalse: 'தள்ளிப் பதிலளி',
-    who: 'பேசியவரைக் கண்டுபிடி',
+    who: '3,200 வாசகங்கள் · பேசியவர் யார்?',
     book: 'புஸ்தகத்தைக் கண்டுபிடி',
     blank: 'வசனத்தை முடி',
     study: 'நேரமில்லை · கற்றுக்கொள்',
     speed: '60 வினாடி, தொடங்கு!',
     survival: '3 உயிர்கள், எவ்வளவு தூரம்?',
     recall: '17,000 கேள்விகள் · எல்லா அதிகாரங்களும்',
+    quiz: '33,000 கேள்விகள் · புஸ்தகத்தைத் தேர்ந்தெடு',
   },
 };
 

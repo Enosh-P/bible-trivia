@@ -95,7 +95,27 @@ These rules were tested against Postgres 16, including that other people's rows 
 
 **Adding content later:** edit `content/*.json`, run `npm test`, then `npm run db:seed-sql` and re-run `seed.sql`. Or edit rows in the Supabase table editor: the app pulls questions changed since its last sync on startup.
 
-## Human-written questions (main source)
+## Multiple-choice questions (main source)
+
+**Quiz by Book** (the first game mode) has about **33,000 multiple-choice questions across all 66 books**. Pick a book, then the whole book or one chapter. Classic, Speed, Survival, Study and the Daily Challenge mix them in too. Files: `public/packs/mcq/<BOOK>.json`, one per book, downloaded when first used and then kept offline.
+
+- **About 28,500 human-written questions**: Dr. Ted Hildebrandt's chapter quizzes (biblicalelearning.org, Gordon College), from the [BIBLE dataset](https://huggingface.co/datasets/MushroomGecko/BIBLE) (CC BY 4.0). The dataset's machine-generated questions are used only for the 22 books that have no human-written ones (Isaiah, Jeremiah, Hebrews, the letters of Peter and John, and others).
+- **Who Said It?** has **3,200 sayings**:
+  - the "Who said…?" questions above
+  - about 170 well-known sayings written for this app in KJV wording (`content/who/quotes.json`)
+  - speeches from across the Bible: speakers from [Clear Bible's speaker data](https://github.com/Clear-Bible/speaker-quotations) (CC BY 4.0), words from the World English Bible (public domain)
+
+  The wrong options are other speakers from the same book.
+- Clean-up on import: verse references move out of the question and show after answering; options are shuffled (the source put most answers in B or C); long questions are left out.
+
+```bash
+npm run content:mcq                  # rebuild everything (downloads the sources the first time)
+npm run content:mcq -- --merge-only  # just add new Tamil translations
+```
+
+**Tamil:** translate with IndicTrans2 (`--set mcq`, see `scripts/indictrans2/README.md`), then run `--merge-only`. Until a book is translated, Tamil mode shows its questions in English.
+
+## Recall: human-written questions with answers
 
 **Recall mode** uses about **17,000 human-written questions with answers, covering every chapter of the Bible**: unfoldingWord® Translation Questions, written by Bible translators to check understanding of each chapter. They're stored one file per book in `public/packs/uw/`, downloaded when a player first opens that book, then kept offline. Refresh them with `npm run content:uw`.
 
