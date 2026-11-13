@@ -114,15 +114,67 @@ interface AccountState {
   refresh: () => Promise<void>;
 }
 
+/**
+ * The sign-in saved on this device by Supabase (localStorage), read straight
+ * away so the app opens without waiting for the server, even offline.
+ * Supabase checks and refreshes it in the background.
+ */
+export function storedSession(): Session | null {
+  if (!supabase) return null;
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (!key || !/^sb-.+-auth-token$/.test(key)) continue;
+      const s = JSON.parse(localStorage.getItem(key) ?? 'null');
+      if (s?.refresh_token && s?.user?.id) return s as Session;
+    }
+  } catch {
+    /* storage blocked or unreadable */
+  }
+  return null;
+}
+
+const saved = storedSession();
+
+// Last known profile, friends and challenges, shown instantly (and offline) until fresh ones load.
+const CACHE_KEY = 'bt-account-cache';
+type Cached = { userId: string; profile: Profile | null; friends: Friend[]; challenges: Challenge[]; records: Record<string, FriendRecord> };
+function readCache(userId?: string): Partial<Cached> {
+  try {
+    const c = JSON.parse(localStorage.getItem(CACHE_KEY) ?? 'null') as Cached | null;
+    return c && c.userId === userId ? c : {};
+  } catch {
+    return {};
+  }
+}
+function writeCache(c: Cached) {
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify(c));
+  } catch {
+    /* full or blocked */
+  }
+}
+const cached = readCache(saved?.user.id);
+
 export const useAccount = create<AccountState>((set, get) => ({
-  ready: !supabase,
-  session: null,
-  profile: null,
-  friends: [],
-  challenges: [],
-  records: {},
+  // Signed in before on this device: open the app at once, no splash.
+  ready: !supabase || Boolean(saved),
+  session: saved,
+  profile: cached.profile ?? null,
+  friends: cached.friends ?? [],
+  challenges: cached.challenges ?? [],
+  records: cached.records ?? {},
   recovering: false,
-  setSession: (session) => set({ session, ready: true, ...(session ? {} : { profile: null, friends: [], challenges: [], records: {} }) }),
+  setSession: (session) => {
+    if (!session) {
+      try {
+        localStorage.removeItem(CACHE_KEY);
+      } catch {
+        /* fine */
+      }
+    }
+    set({ session, ready: true, ...(session ? {} : { profile: null, friends: [], challenges: [], records: {} }) });
+  },
   refresh: async () => {
     if (!supabase || !get().session) return;
     const uid = get().session!.user.id;
@@ -143,6 +195,8 @@ export const useAccount = create<AccountState>((set, get) => ({
       for (const row of r.data as (FriendRecord & { user_id: string })[]) records[row.user_id] = { wins: row.wins, losses: row.losses, ties: row.ties };
       set({ records });
     }
+    const st = get();
+    if (st.session) writeCache({ userId: uid, profile: st.profile, friends: st.friends, challenges: st.challenges, records: st.records });
   },
 }));
 
@@ -181,14 +235,27 @@ let started = false;
 export function initAccount() {
   if (!supabase || started) return;
   started = true;
-  supabase.auth.getSession().then(({ data }) => {
-    useAccount.getState().setSession(data.session);
-    void useAccount.getState().refresh();
-  });
+  // Keep a saved sign-in when the server can't be reached (offline, or a
+  // network hiccup while refreshing it). Only a real sign-out, or a sign-in the
+  // server has revoked (which removes it from storage), shows the sign-in screen.
+  const keep = (session: Session | null, event?: string) => {
+    if (!session && event !== 'SIGNED_OUT' && storedSession()) return;
+    useAccount.getState().setSession(session);
+    void useAccount.getState().refresh().catch(() => {});
+  };
+  supabase.auth
+    .getSession()
+    .then(({ data }) => keep(data.session))
+    .catch(() => keep(null));
   supabase.auth.onAuthStateChange((event, session) => {
     if (event === 'PASSWORD_RECOVERY') useAccount.setState({ recovering: true });
-    useAccount.getState().setSession(session);
-    void useAccount.getState().refresh();
+    // TOKEN_REFRESHED etc. arrive often; the profile only needs loading on a change of person.
+    const before = useAccount.getState().session?.user.id;
+    if (session && before === session.user.id) {
+      useAccount.setState({ session, ready: true });
+      return;
+    }
+    keep(session, event);
   });
 }
 
@@ -237,7 +304,11 @@ export async function setNewPassword(password: string) {
 }
 
 export async function signOut() {
-  await supabase?.auth.signOut();
+  if (!supabase) return;
+  // Offline, sign out of this device at least (the server forgets it next time).
+  const { error } = await supabase.auth.signOut();
+  if (error) await supabase.auth.signOut({ scope: 'local' });
+  useAccount.getState().setSession(null);
 }
 
 export async function updateProfile(patch: Partial<Pick<Profile, 'display_name' | 'avatar'>>) {
