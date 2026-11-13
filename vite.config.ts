@@ -34,13 +34,16 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
         // Push notifications: shows them and opens the right screen on tap.
         importScripts: ['push-handler.js'],
+        // On the very first visit, start caching straight away (no reload needed),
+        // so question packs downloaded in the background are kept for offline play.
+        clientsClaim: true,
         // Human-written question packs (one file per book) are downloaded when
         // first used and then kept for offline play.
         runtimeCaching: [
           {
             urlPattern: ({ url }) => url.pathname.startsWith('/packs/'),
             handler: 'StaleWhileRevalidate',
-            options: { cacheName: 'question-packs', expiration: { maxEntries: 100 } },
+            options: { cacheName: 'question-packs', expiration: { maxEntries: 250 } },
           },
         ],
       },

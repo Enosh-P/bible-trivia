@@ -23,7 +23,9 @@ import { dayKey } from './engine/picker';
 import { db } from './storage/db';
 import { supabase, syncQuestions } from './online/supabase';
 import { flushReports } from './online/reports';
-import { acceptInvite, createChallenge, initAccount, inviteFromText, useAccount, pushProgress, saveDailyResult, submitChallenge, type Challenge } from './online/account';
+import { acceptInvite, createChallenge, initAccount, inviteFromText, useAccount, pushProgress, type Challenge } from './online/account';
+import { flushOutbox, send } from './online/outbox';
+import { stockUp } from './online/stock';
 import { MODES } from './engine/modes';
 import { pickQuestions } from './engine/picker';
 import { roundPool } from './engine/content';
@@ -134,9 +136,18 @@ function MainApp() {
   useEffect(() => {
     void syncQuestions().catch(() => {});
     void flushReports().catch(() => {});
-    const online = () => void flushReports().catch(() => {});
+    // Keep questions on the phone for offline play (once a day, in the background).
+    const stock = setTimeout(() => void stockUp().catch(() => {}), 4000);
+    const online = () => {
+      void flushReports().catch(() => {});
+      void flushOutbox().catch(() => {});
+      void stockUp().catch(() => {});
+    };
     window.addEventListener('online', online);
-    return () => window.removeEventListener('online', online);
+    return () => {
+      clearTimeout(stock);
+      window.removeEventListener('online', online);
+    };
   }, []);
 
   // Tapped a notification: /?open=friends | daily | home
@@ -154,6 +165,12 @@ function MainApp() {
   useEffect(() => {
     void syncPushLanguage(uiLang).catch(() => {});
   }, [uiLang]);
+
+  // Results played offline last time: send them now that we're signed in.
+  const hasSession = useAccount((s) => Boolean(s.session));
+  useEffect(() => {
+    if (hasSession) void flushOutbox().catch(() => {});
+  }, [hasSession]);
 
   // A friend's QR code scanned with the phone camera: become friends now.
   const [notice, setNotice] = useState<string | null>(null);
@@ -217,9 +234,10 @@ function MainApp() {
       .catch(() => {});
     // Online extras (no-ops when signed out).
     void pushProgress().catch(() => {});
-    if (result.mode === 'daily') void saveDailyResult(dayKey(), result.score, result.correct, result.total).catch(() => {});
+    // Sent now, or kept on the phone and sent when it's back online.
+    if (result.mode === 'daily') void send({ kind: 'daily', day: dayKey(), score: result.score, correct: result.correct, total: result.total });
     const challengeId = route.kind === 'game' ? route.challenge?.id : undefined;
-    if (challengeId) void submitChallenge(challengeId, result.score, result.correct, result.total).catch(() => {});
+    if (challengeId) void send({ kind: 'challenge', id: challengeId, score: result.score, correct: result.correct, total: result.total });
     setRoute({ kind: 'result', result: { ...result, challengeId }, xp });
   }
 

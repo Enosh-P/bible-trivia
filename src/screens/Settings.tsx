@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Download, Languages, MonitorSmartphone, Moon, Smartphone, Type, Vibrate, Volume2 } from 'lucide-react';
 import { useApp, useT, type QuestionLang, type ThemePref } from '../store';
@@ -5,6 +6,7 @@ import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
 import { IconTile, STROKE } from '../components/icons';
 import { useInstallAction } from '../components/Install';
+import { cachedBooks } from '../online/stock';
 import { AccountCard } from '../components/AccountCard';
 import { NotificationsCard } from '../components/NotificationsCard';
 import type { Horse } from '../engine/modes';
@@ -46,6 +48,10 @@ export function Settings() {
   const t = useT();
   const s = useApp();
   const { state: install, install: doInstall, sheet: installSheet } = useInstallAction();
+  const [saved, setSaved] = useState(0);
+  useEffect(() => {
+    void cachedBooks().then((b) => setSaved(b.size));
+  }, []);
 
   return (
     <div className="screen" lang={s.uiLang}>
@@ -56,6 +62,7 @@ export function Settings() {
         <div className="grow">
           <strong>{install === 'installed' ? t.installed : t.install}</strong>
           <span className="caption">{t.installSub}</span>
+          {saved > 0 && <span className="caption">{t.offlineReady(saved)}</span>}
         </div>
       </Pressable>
 

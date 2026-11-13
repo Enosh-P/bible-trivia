@@ -1000,3 +1000,4 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .install-guide .ios-steps { align-self: stretch; }
 .install-guide .btn { align-self: stretch; }
 .welcome-install { display: flex; justify-content: center; margin-top: 16px; }
+.recall-book:disabled { opacity: 0.35; }

@@ -138,7 +138,7 @@ export function Recall({ onExit }: { onExit: () => void }) {
   );
 }
 
-export function BookGrid({ counts, lang, onPick }: { counts: Record<string, number>; lang: 'en' | 'ta'; onPick: (b: string) => void }) {
+export function BookGrid({ counts, lang, onPick, available }: { counts: Record<string, number>; lang: 'en' | 'ta'; onPick: (b: string) => void; available?: Set<string> }) {
   const t = useT();
   return (
     <>
@@ -147,7 +147,7 @@ export function BookGrid({ counts, lang, onPick }: { counts: Record<string, numb
           <h2 className="eyebrow section-title">{tm === 'OT' ? t.ot : t.nt}</h2>
           <div className="recall-books">
             {BOOKS.filter((b) => b.testament === tm).map((b) => (
-              <Pressable key={b.code} className="recall-book glass" onClick={() => onPick(b.code)}>
+              <Pressable key={b.code} className="recall-book glass" onClick={() => onPick(b.code)} disabled={available ? !available.has(b.code) : false}>
                 <span className="recall-book-name" lang={lang}>
                   {b[lang]}
                 </span>

@@ -142,6 +142,15 @@ npm run db:import                                # put the Tamil into Supabase
 - The app shows Tamil in Tamil mode and both languages in Both mode, with a small "machine-translated, tap the flag for mistakes" note until a question is reviewed.
 - Add names to the glossary any time; it applies to the next translation run.
 
+## Offline play
+
+Once the app has been opened online, it keeps questions on the phone. Once a day, in the background, it downloads:
+- the popular books and Who Said It?
+- the books for the next 3 days' Daily Challenge
+- 3 more books each day, until the whole Bible is saved
+
+Offline, games use the saved books, and Quiz by Book dims the others. Daily Challenge and friend challenge results played offline are kept (`outbox` in IndexedDB) and sent when the phone is back online, together with XP and streak. Saved files refresh themselves when used online, so fixes and new Tamil translations arrive on their own. See `src/online/stock.ts` and `src/online/outbox.ts`.
+
 ## Accounts, friends and challenges
 
 **Everyone signs in first.** When Supabase is set up, the app opens on a sign-in screen (Google, or email and password), and games, friends and progress appear after signing in. Once signed in, the app also works offline. Without Supabase settings (local development) the app runs without accounts.

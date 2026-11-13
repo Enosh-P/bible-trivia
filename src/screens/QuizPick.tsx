@@ -9,6 +9,7 @@ import { Pressable } from '../components/Pressable';
 import { IconTile, STROKE } from '../components/icons';
 import { LangToggle } from '../components/LangToggle';
 import { BookGrid, ChapterPicker } from './Recall';
+import { cachedBooks } from '../online/stock';
 
 /** Quiz by Book: choose a book, then the whole book or one chapter. */
 export function QuizPick({ onExit, onStart }: { onExit: () => void; onStart: (book: string, chapter: number | null) => void }) {
@@ -18,8 +19,18 @@ export function QuizPick({ onExit, onStart }: { onExit: () => void; onStart: (bo
   const [error, setError] = useState(false);
   const [book, setBook] = useState<string | null>(null);
 
+  // Offline, only the books already on the phone can be played.
+  const [available, setAvailable] = useState<Set<string> | undefined>(undefined);
   useEffect(() => {
     loadMcqIndex().then(setIndex).catch(() => setError(true));
+    const update = () => (navigator.onLine ? setAvailable(undefined) : void cachedBooks().then(setAvailable));
+    update();
+    window.addEventListener('online', update);
+    window.addEventListener('offline', update);
+    return () => {
+      window.removeEventListener('online', update);
+      window.removeEventListener('offline', update);
+    };
   }, []);
 
   return (
@@ -47,7 +58,12 @@ export function QuizPick({ onExit, onStart }: { onExit: () => void; onStart: (bo
           transition={spring.calm}
           className="recall-body"
         >
-          {!book && index && <BookGrid counts={index.books} lang={uiLang} onPick={setBook} />}
+          {!book && index && (
+            <>
+              {available && <p className="caption note">{t.offlineBooks}</p>}
+              <BookGrid counts={index.books} lang={uiLang} onPick={setBook} available={available} />
+            </>
+          )}
           {book && (
             <ChapterPicker chapters={() => loadMcqBook(book).then((qs) => qs.map((q) => q.chapter))} onPick={(ch) => onStart(book, ch)} />
           )}

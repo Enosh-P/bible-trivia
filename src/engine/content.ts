@@ -3,7 +3,8 @@ import nt from '../../content/packs/new-testament.json';
 import type { Question, QuestionPack } from './types';
 import { db } from '../storage/db';
 import { bookOfId, loadMcqBook, loadMcqBooks, loadWhoSaid, pickBooks } from './mcq';
-import { dayKey } from './picker';
+import { dayKey, shuffle } from './picker';
+import { cachedBooks } from '../online/stock';
 
 export const PACKS = [ot, nt] as unknown as QuestionPack[];
 
@@ -59,7 +60,9 @@ export async function roundPool(source: RoundSource): Promise<Question[]> {
       return [...base, ...who];
     }
     default: {
-      const [base, extra] = await Promise.all([questionPool(), loadMcqBooks(pickBooks(`mix:${Math.random()}`))]);
+      // Offline: mix from the books already on the phone.
+      const books = navigator.onLine ? pickBooks(`mix:${Math.random()}`) : shuffle([...(await cachedBooks())]).slice(0, 5);
+      const [base, extra] = await Promise.all([questionPool(), loadMcqBooks(books)]);
       return [...base, ...extra];
     }
   }

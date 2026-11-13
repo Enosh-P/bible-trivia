@@ -285,8 +285,9 @@ export async function friendsDailyBoard(): Promise<BoardRow[]> {
 export async function saveDailyResult(day: string, score: number, correct: number, total: number) {
   const { session } = useAccount.getState();
   if (!supabase || !session) return;
-  // One per person per day; a repeat is simply ignored by the database.
-  await supabase.from('daily_results').insert({ user_id: session.user.id, day, score, correct, total });
+  // One per person per day; a repeat is refused by the database, which is fine.
+  const { error } = await supabase.from('daily_results').insert({ user_id: session.user.id, day, score, correct, total });
+  if (error && error.code !== '23505') throw error;
 }
 
 // ---------- Challenges ----------
@@ -302,7 +303,7 @@ export async function submitChallenge(challengeId: string, score: number, correc
   if (!supabase) return;
   const { error } = await supabase.rpc('submit_challenge_result', { p_challenge: challengeId, p_score: score, p_correct: correct, p_total: total });
   if (error && !/already played/.test(error.message)) throw error;
-  await useAccount.getState().refresh();
+  void useAccount.getState().refresh().catch(() => {});
 }
 
 /** The current player's state in a challenge. */
