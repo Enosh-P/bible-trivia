@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { ALL_QUESTIONS } from '../src/engine/content';
 import { MODES } from '../src/engine/modes';
 import { pickDaily, pickQuestions, rng } from '../src/engine/picker';
-import { levelFromXp, nextStreak, pointsFor } from '../src/engine/scoring';
+import { daysBetween, levelFromXp, liveStreak, nextStreak, pointsFor } from '../src/engine/scoring';
 import { project, rubberband } from '../src/motion/springs';
 
 describe('picker', () => {
@@ -50,9 +50,31 @@ describe('scoring', () => {
     expect(levelFromXp(100).level).toBe(2);
   });
   it('tracks streaks', () => {
-    expect(nextStreak({ streak: 3, lastDay: '2026-11-09' }, '2026-11-10', '2026-11-09').streak).toBe(4);
-    expect(nextStreak({ streak: 3, lastDay: '2026-11-07' }, '2026-11-10', '2026-11-09').streak).toBe(1);
-    expect(nextStreak({ streak: 3, lastDay: '2026-11-10' }, '2026-11-10', '2026-11-09').streak).toBe(3);
+    expect(nextStreak({ streak: 3, lastDay: '2026-11-09' }, '2026-11-10').streak).toBe(4);
+    expect(nextStreak({ streak: 3, lastDay: '2026-11-07' }, '2026-11-10').streak).toBe(1);
+    expect(nextStreak({ streak: 3, lastDay: '2026-11-10' }, '2026-11-10').streak).toBe(3);
+  });
+
+  it('earns a heart every 5 days, up to 3', () => {
+    expect(nextStreak({ streak: 4, lastDay: '2026-11-09', hearts: 0 }, '2026-11-10')).toMatchObject({ streak: 5, hearts: 1, earned: true });
+    expect(nextStreak({ streak: 5, lastDay: '2026-11-09', hearts: 1 }, '2026-11-10')).toMatchObject({ streak: 6, hearts: 1, earned: false });
+    expect(nextStreak({ streak: 9, lastDay: '2026-11-09', hearts: 3 }, '2026-11-10')).toMatchObject({ streak: 10, hearts: 3, earned: false });
+  });
+
+  it('a heart heals each missed day', () => {
+    // missed the 9th: one heart used, streak carries on
+    expect(nextStreak({ streak: 6, lastDay: '2026-11-08', hearts: 1 }, '2026-11-10')).toMatchObject({ streak: 7, hearts: 0, healed: 1 });
+    // missed two days with one heart: streak starts again, heart kept
+    expect(nextStreak({ streak: 6, lastDay: '2026-11-07', hearts: 1 }, '2026-11-10')).toMatchObject({ streak: 1, hearts: 1, healed: 0 });
+    // missed two days with two hearts, and the healed streak reaches 10
+    expect(nextStreak({ streak: 9, lastDay: '2026-11-07', hearts: 2 }, '2026-11-10')).toMatchObject({ streak: 10, hearts: 1, healed: 2, earned: true });
+    expect(daysBetween('2026-10-31', '2026-11-01')).toBe(1);
+  });
+
+  it('shows a lost streak as 0 before playing', () => {
+    expect(liveStreak({ streak: 6, lastDay: '2026-11-07', hearts: 0 }, '2026-11-10')).toBe(0);
+    expect(liveStreak({ streak: 6, lastDay: '2026-11-08', hearts: 1 }, '2026-11-10')).toBe(6);
+    expect(liveStreak({ streak: 6, lastDay: '2026-11-09' }, '2026-11-10')).toBe(6);
   });
 });
 

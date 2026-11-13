@@ -151,7 +151,7 @@ Players can sign up with email and password, or with Google. Everyone gets a 6-c
 - See the **family board**: today's Daily Challenge scores, or all-time challenge wins.
 - Track **head-to-head records**: each friend shows your all-time record against them (wins–losses–ties). Tap a friend for best scores and your full shared challenge history.
 
-XP and streak are saved to the account, so progress follows you to another phone.
+XP, streak and **streak hearts** are saved to the account, so progress follows you to another phone. Every 5 days in a row earns a heart (up to 3); a heart automatically saves the streak on a missed day.
 
 **Supabase settings (one time):** Authentication → Sign In / Providers → **Email** enabled.
 

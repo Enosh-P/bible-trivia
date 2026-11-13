@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Check, Home as HomeIcon, RotateCcw, Share2, X } from 'lucide-react';
+import { Check, Heart, Home as HomeIcon, RotateCcw, Share2, X } from 'lucide-react';
 import { MODES } from '../engine/modes';
 import { formatRef } from '../i18n/books';
 import { useApp, useT } from '../store';
@@ -7,6 +8,7 @@ import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 import type { RoundResult } from './Game';
+import { dayKey } from '../engine/picker';
 import { ReportButton } from '../components/Report';
 import { ChallengeFromResult } from '../components/ChallengeFromResult';
 import { questionTarget } from '../online/reports';
@@ -18,6 +20,11 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
   const lang = qLang === 'both' ? uiLang : qLang;
   const mode = MODES[result.mode];
   const pct = result.total ? Math.round((result.correct / result.total) * 100) : 0;
+  // A heart earned by this round: shown once, then cleared.
+  const [earnedHeart] = useState(() => useApp.getState().heartEarnedOn === dayKey());
+  useEffect(() => {
+    if (earnedHeart) useApp.setState({ heartEarnedOn: undefined });
+  }, [earnedHeart]);
 
   async function share() {
     const grid = result.log.map((l) => (l.correct ? '🟩' : '🟥')).join('');
@@ -57,6 +64,21 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
           </div>
         </div>
       </motion.div>
+
+      {earnedHeart && (
+        <motion.div
+          className="glass heal-note"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ ...spring.flick, delay: 0.3 }}
+          role="status"
+        >
+          <motion.span animate={{ scale: [1, 1.25, 1] }} transition={{ duration: 0.8, delay: 0.5 }}>
+            <Heart size={22} strokeWidth={STROKE} className="badge-heart" fill="currentColor" />
+          </motion.span>
+          <span className="grow">{t.heartEarned}</span>
+        </motion.div>
+      )}
 
       <div className="result-actions">
         <Pressable className="btn glass" onClick={onHome}>

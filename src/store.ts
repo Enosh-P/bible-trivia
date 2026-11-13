@@ -21,6 +21,12 @@ interface Progress {
   xp: number;
   streak: number;
   lastDay?: string;
+  /** Saves a missed day each; one earned every 5 streak days (max 3). */
+  hearts: number;
+  /** Set when hearts healed missed days, so Home can say so once. */
+  healedNote?: { day: string; count: number };
+  /** Set when a heart was earned, so the results screen can celebrate it. */
+  heartEarnedOn?: string;
   dailyDoneOn?: string;
   dailyScore?: number;
   totalAnswered: number;
@@ -30,12 +36,6 @@ interface Progress {
 interface AppState extends Settings, Progress {
   set: (patch: Partial<Settings>) => void;
   finishRound: (r: { xp: number; correct: number; total: number; daily?: boolean; score: number }) => void;
-}
-
-function yesterdayKey() {
-  const d = new Date();
-  d.setDate(d.getDate() - 1);
-  return dayKey(d);
 }
 
 /** Phones set to Tamil start in Tamil. */
@@ -67,17 +67,21 @@ export const useApp = create<AppState>()(
       textScale: 1,
       xp: 0,
       streak: 0,
+      hearts: 0,
       totalAnswered: 0,
       totalCorrect: 0,
       set: (patch) => set(linkLanguages(patch)),
       finishRound: (r) =>
         set((s) => {
           const today = dayKey();
-          const st = nextStreak({ streak: s.streak, lastDay: s.lastDay }, today, yesterdayKey());
+          const st = nextStreak({ streak: s.streak, lastDay: s.lastDay, hearts: s.hearts }, today);
           return {
             xp: s.xp + r.xp,
             streak: st.streak,
             lastDay: st.lastDay,
+            hearts: st.hearts ?? 0,
+            ...(st.healed ? { healedNote: { day: today, count: st.healed } } : {}),
+            ...(st.earned ? { heartEarnedOn: today } : {}),
             totalAnswered: s.totalAnswered + r.total,
             totalCorrect: s.totalCorrect + r.correct,
             ...(r.daily ? { dailyDoneOn: today, dailyScore: r.score } : {}),

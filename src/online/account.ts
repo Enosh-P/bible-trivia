@@ -18,6 +18,8 @@ export interface Profile {
   xp: number;
   streak: number;
   last_day: string | null;
+  /** Added by migration 11; missing until it has been run. */
+  hearts?: number;
 }
 
 export interface Friend {
@@ -125,7 +127,7 @@ export const useAccount = create<AccountState>((set, get) => ({
     if (!supabase || !get().session) return;
     const uid = get().session!.user.id;
     const [p, f, c, r] = await Promise.all([
-      supabase.from('profiles').select('id, display_name, avatar, friend_code, xp, streak, last_day').eq('id', uid).maybeSingle(),
+      loadProfile(uid),
       supabase.rpc('my_friends'),
       supabase.rpc('my_challenges'),
       supabase.rpc('friend_records'),
@@ -144,11 +146,20 @@ export const useAccount = create<AccountState>((set, get) => ({
   },
 }));
 
+const PROFILE_COLUMNS = 'id, display_name, avatar, friend_code, xp, streak, last_day';
+
+/** The profile, with hearts when the database has them (migration 11). */
+async function loadProfile(uid: string) {
+  const withHearts = await supabase!.from('profiles').select(`${PROFILE_COLUMNS}, hearts`).eq('id', uid).maybeSingle();
+  if (!withHearts.error) return withHearts;
+  return supabase!.from('profiles').select(PROFILE_COLUMNS).eq('id', uid).maybeSingle();
+}
+
 /** Keep the higher of the device's and the account's progress, on both sides. */
 async function mergeProgress(p: Profile) {
   const local = useApp.getState();
   if (p.xp > local.xp) {
-    useApp.setState({ xp: p.xp, streak: p.streak, lastDay: p.last_day ?? undefined });
+    useApp.setState({ xp: p.xp, streak: p.streak, lastDay: p.last_day ?? undefined, hearts: p.hearts ?? 0 });
   } else if (local.xp > p.xp) {
     await pushProgress();
   }
@@ -158,8 +169,11 @@ async function mergeProgress(p: Profile) {
 export async function pushProgress() {
   const { session } = useAccount.getState();
   if (!supabase || !session) return;
-  const { xp, streak, lastDay } = useApp.getState();
-  await supabase.from('profiles').update({ xp, streak, last_day: lastDay ?? null, updated_at: new Date().toISOString() }).eq('id', session.user.id);
+  const { xp, streak, lastDay, hearts } = useApp.getState();
+  const row = { xp, streak, last_day: lastDay ?? null, updated_at: new Date().toISOString() };
+  const { error } = await supabase.from('profiles').update({ ...row, hearts }).eq('id', session.user.id);
+  // Before the hearts migration has been run, save the rest.
+  if (error) await supabase.from('profiles').update(row).eq('id', session.user.id);
 }
 
 /** Starts listening for sign-in changes. Call once at app start. */

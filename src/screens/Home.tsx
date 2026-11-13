@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ChevronRight, Clock, Flame, Heart, ListOrdered, Play, Trophy } from 'lucide-react';
+import { ChevronRight, Clock, Flame, Heart, ListOrdered, Play, Trophy, X } from 'lucide-react';
 import { MODES, MODE_ORDER, type ModeId } from '../engine/modes';
-import { levelFromXp } from '../engine/scoring';
+import { HEART_EVERY, MAX_HEARTS, levelFromXp, liveStreak } from '../engine/scoring';
 import { dayKey } from '../engine/picker';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
@@ -17,7 +17,10 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   const xp = useApp((s) => s.xp);
-  const streak = useApp((s) => s.streak);
+  const streak = useApp((s) => liveStreak(s, dayKey()));
+  const hearts = useApp((s) => s.hearts ?? 0);
+  const healed = useApp((s) => (s.healedNote?.day === dayKey() ? s.healedNote.count : 0));
+  const [heartsOpen, setHeartsOpen] = useState(false);
   const { level, into, need } = levelFromXp(xp);
   const [intro, setIntro] = useState<ModeId | null>(null);
   const dailyDone = useApp((s) => s.dailyDoneOn === dayKey());
@@ -32,9 +35,11 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
         <div className="home-title-row">
           <h1 className="display">{t.appName}</h1>
           <div className="home-badges">
-            <span className="badge" title={t.streak} aria-label={`${streak} ${t.streak}`}>
+            <button className="badge" onClick={() => setHeartsOpen(true)} aria-label={`${streak} ${t.streak}, ${hearts} ${t.heartsTitle}`}>
               <Flame size={15} strokeWidth={STROKE} className="badge-flame" /> {streak}
-            </span>
+              <span className="badge-sep" aria-hidden />
+              <Heart size={14} strokeWidth={STROKE} className="badge-heart" fill={hearts ? 'currentColor' : 'none'} /> {hearts}
+            </button>
             <span className="badge" title={t.level} aria-label={`${t.level} ${level}`}>
               <Trophy size={15} strokeWidth={STROKE} className="badge-trophy" /> {level}
               <span className="badge-bar" aria-hidden>
@@ -44,6 +49,16 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
           </div>
         </div>
       </header>
+
+      {healed > 0 && (
+        <motion.div className="glass heal-note" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={spring.calm} role="status">
+          <Heart size={18} strokeWidth={STROKE} className="badge-heart" fill="currentColor" />
+          <span className="grow">{t.heartSaved(healed)}</span>
+          <button className="icon-btn" aria-label={t.close} onClick={() => useApp.setState({ healedNote: undefined })}>
+            <X size={16} strokeWidth={STROKE} />
+          </button>
+        </motion.div>
+      )}
 
       {!dailyDone && (
         <div className="home-top">
@@ -69,6 +84,31 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
           </motion.div>
         ))}
       </div>
+
+      <Sheet open={heartsOpen} onClose={() => setHeartsOpen(false)} label={t.heartsTitle}>
+        <div className="mode-intro" lang={uiLang}>
+          <div className="hearts-row" aria-label={`${hearts} / ${MAX_HEARTS}`}>
+            {Array.from({ length: MAX_HEARTS }, (_, i) => (
+              <motion.span key={i} initial={{ scale: 0.6 }} animate={{ scale: 1 }} transition={{ ...spring.flick, delay: 0.05 * i }}>
+                <Heart size={40} strokeWidth={1.8} className="badge-heart" fill={i < hearts ? 'currentColor' : 'none'} opacity={i < hearts ? 1 : 0.35} />
+              </motion.span>
+            ))}
+          </div>
+          <div className="mode-intro-title">
+            <IconTile horse="red" icon={Flame} size={30} />
+            <h2 className="title">
+              {streak} {t.streak}
+            </h2>
+          </div>
+          <h3 className="eyebrow">{t.heartsTitle}</h3>
+          <ol className="mode-how">
+            {t.heartsHow.map((l) => (
+              <li key={l}>{l}</li>
+            ))}
+          </ol>
+          <p className="caption">{hearts >= MAX_HEARTS ? t.heartsFull : t.heartsNext(HEART_EVERY - (streak % HEART_EVERY))}</p>
+        </div>
+      </Sheet>
 
       <ModeIntro
         mode={intro}

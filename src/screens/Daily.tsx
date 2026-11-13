@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Flame } from 'lucide-react';
 import { db } from '../storage/db';
 import { dayKey } from '../engine/picker';
+import { liveStreak } from '../engine/scoring';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { IconTile } from '../components/icons';
@@ -11,7 +12,7 @@ import { IconTile } from '../components/icons';
 export function WeekStrip() {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
-  const streak = useApp((s) => s.streak);
+  const streak = useApp((s) => liveStreak(s, dayKey()));
   const [played, setPlayed] = useState<Set<string>>(new Set());
 
   useEffect(() => {
