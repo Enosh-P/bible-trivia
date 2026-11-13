@@ -16,6 +16,7 @@ first (content/glossary/names-ta.json), e.g. David -> தாவீது, God ->
 Options: --model ai4bharat/indictrans2-en-indic-1B (default; better) or
          ai4bharat/indictrans2-en-indic-dist-200M (smaller, faster)
          --batch 64   --no-glossary
+         --beams 2   (about twice as fast, nearly the same quality; default 4)
 
 Output: content/translations/ta/recall/<BOOK>.json  ({id: {q, a}}), the same
 format as the Google script, saved after every batch so a stopped run resumes.
@@ -48,7 +49,7 @@ def tidy(s: str) -> str:
     return re.sub(r"\s{2,}", " ", s).strip()
 
 # ---------- Model ----------
-def load(model_name: str):
+def load(model_name: str, beams: int = 4):
     import torch
     from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
     from IndicTransToolkit.processor import IndicProcessor
@@ -81,14 +82,14 @@ def load(model_name: str):
         enc = tok(batch, truncation=True, padding="longest", return_tensors="pt").to(device)
         with torch.inference_mode():
             try:
-                out = model.generate(**enc, use_cache=state["cache"], min_length=0, max_length=256, num_beams=4, num_return_sequences=1)
+                out = model.generate(**enc, use_cache=state["cache"], min_length=0, max_length=256, num_beams=beams, num_return_sequences=1)
             except AttributeError:
                 # Newer transformers versions don't match the model's cache code: run without the cache (slower, same result).
                 if not state["cache"]:
                     raise
                 print("Note: running without the generation cache (slower). Install transformers==4.46.3 for full speed.", file=sys.stderr)
                 state["cache"] = False
-                out = model.generate(**enc, use_cache=False, min_length=0, max_length=256, num_beams=4, num_return_sequences=1)
+                out = model.generate(**enc, use_cache=False, min_length=0, max_length=256, num_beams=beams, num_return_sequences=1)
         dec = tok.batch_decode(out, skip_special_tokens=True, clean_up_tokenization_spaces=True)
         return [tidy(t) for t in ip.postprocess_batch(dec, lang="tam_Taml")]
 
@@ -100,6 +101,7 @@ def main():
     ap.add_argument("--top", type=int)
     ap.add_argument("--model", default="ai4bharat/indictrans2-en-indic-1B")
     ap.add_argument("--batch", type=int, default=32)
+    ap.add_argument("--beams", type=int, default=4, help="4 = best quality; 2 = about twice as fast; 1 = fastest")
     ap.add_argument("--sample", action="store_true", help="translate 20 sample lines both ways and print them")
     ap.add_argument("--no-glossary", action="store_true")
     ap.add_argument("--set", choices=["recall", "mcq"], default="recall", help="which questions to translate")
@@ -116,7 +118,7 @@ def main():
     else:
         books = POPULAR + [b for b in all_books if b not in POPULAR]
 
-    translate = load(a.model)
+    translate = load(a.model, a.beams)
 
     if a.sample:
         picks = [("GEN", 0), ("GEN", 40), ("1SA", 200), ("MAT", 30), ("JHN", 70), ("ACT", 100), ("EXO", 60), ("DAN", 20), ("LUK", 150), ("REV", 40)]
@@ -172,7 +174,7 @@ def translate_mcq(a):
         if a.top:
             books = books[: a.top]
 
-    translate = load(a.model)
+    translate = load(a.model, a.beams)
     prep = (lambda s: s) if a.no_glossary else protect_names
     memo = {}
     BLANK = "____"
