@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Download, Languages, MonitorSmartphone, Moon, Smartphone, Type, Vibrate, Volume2 } from 'lucide-react';
+import { ChevronRight, Download, Languages, ShieldCheck, MonitorSmartphone, Moon, Smartphone, Type, Vibrate, Volume2 } from 'lucide-react';
 import { useApp, useT, type QuestionLang, type ThemePref } from '../store';
 import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
@@ -11,6 +11,7 @@ import { AccountCard } from '../components/AccountCard';
 import { NotificationsCard } from '../components/NotificationsCard';
 import type { Horse } from '../engine/modes';
 import type { LucideIcon } from 'lucide-react';
+import { useAccount } from '../online/account';
 
 /** iOS-style segmented control with a gliding thumb. */
 function Segmented<T extends string>({ id, value, options, onChange }: { id: string; value: T; options: { v: T; label: string; lang?: string }[]; onChange: (v: T) => void }) {
@@ -44,8 +45,10 @@ function Row({ horse, icon, label, children }: { horse: Horse; icon: LucideIcon;
   );
 }
 
-export function Settings() {
+export function Settings({ onAdmin }: { onAdmin: () => void }) {
   const t = useT();
+  // Shown to admins only; the database checks again on every change they make.
+  const isAdmin = useAccount((a) => Boolean(a.session && a.profile?.is_admin));
   const s = useApp();
   const { state: install, install: doInstall, sheet: installSheet } = useInstallAction();
   const [saved, setSaved] = useState(0);
@@ -67,6 +70,16 @@ export function Settings() {
       </Pressable>
 
       <AccountCard />
+      {isAdmin && (
+        <Pressable className="install-card glass" onClick={onAdmin}>
+          <IconTile horse="black" icon={ShieldCheck} size={38} />
+          <div className="grow">
+            <strong>{t.admin}</strong>
+            <span className="caption">{t.adminSub}</span>
+          </div>
+          <ChevronRight size={18} strokeWidth={STROKE} />
+        </Pressable>
+      )}
       <NotificationsCard />
 
       <section className="glass group">

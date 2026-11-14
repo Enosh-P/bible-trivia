@@ -20,6 +20,10 @@ import { QuizPick } from './screens/QuizPick';
 import { NewPasswordSheet } from './components/NewPasswordSheet';
 import { keepPushAlive, syncPushLanguage } from './online/push';
 import { Settings } from './screens/Settings';
+import { Thought, Thoughts } from './screens/Thoughts';
+import { Admin, AdminThoughts } from './screens/AdminThoughts';
+import { loadCachedPosts, syncPosts } from './online/posts';
+import type { Post } from './engine/posts';
 import { Game, type RoundResult } from './screens/Game';
 import { Results } from './screens/Results';
 import { Splash, Welcome } from './screens/Welcome';
@@ -45,6 +49,10 @@ type Route =
   | { kind: 'memory' }
   | { kind: 'saved' }
   | { kind: 'notebook' }
+  | { kind: 'post'; post: Post; from: 'home' | 'list' }
+  | { kind: 'posts' }
+  | { kind: 'admin' }
+  | { kind: 'adminThoughts' }
   | { kind: 'game'; mode: ModeId; run: number; challenge?: { id: string; questionIds: string[] }; scope?: { book: string; chapter: number | null }; ids?: string[]; resume?: GameSnapshot } | { kind: 'result'; result: RoundResult; xp: number };
 
 /** Applies theme and text size to <html>. */
@@ -153,6 +161,8 @@ function MainApp() {
   useEffect(() => {
     void syncQuestions().catch(() => {});
     void flushReports().catch(() => {});
+    // Daily Thoughts: the copy saved on the phone first, then the newest from the server.
+    void loadCachedPosts().then(syncPosts);
     // Keep questions on the phone for offline play (once a day, in the background).
     const stock = setTimeout(() => void stockUp().catch(() => {}), 4000);
     const online = () => {
@@ -160,6 +170,7 @@ function MainApp() {
       void flushOutbox().catch(() => {});
       void syncPractice().catch(() => {});
       void stockUp().catch(() => {});
+      void syncPosts();
     };
     window.addEventListener('online', online);
     return () => {
@@ -186,6 +197,8 @@ function MainApp() {
 
   // Results played offline last time: send them now that we're signed in.
   const hasSession = useAccount((s) => Boolean(s.session));
+  // Admin screens are for admins only (the database enforces it; this just hides them).
+  const isAdmin = useAccount((s) => Boolean(s.session && s.profile?.is_admin));
   // Notifications you turned on stay on (re-subscribe quietly after updates).
   useEffect(() => {
     if (hasSession) void keepPushAlive();
@@ -195,6 +208,7 @@ function MainApp() {
       void flushOutbox().catch(() => {});
       // Practice from your other devices (and anything played here offline).
       void syncPractice().catch(() => {});
+      void syncPosts();
     }
   }, [hasSession]);
 
@@ -304,7 +318,7 @@ function MainApp() {
   };
 
   // Spatial consistency: the game slides in from the right and leaves the same way.
-  const key = route.kind === 'tab' ? `tab-${route.tab}` : route.kind === 'game' ? `game-${route.run}` : route.kind;
+  const key = route.kind === 'tab' ? `tab-${route.tab}` : route.kind === 'game' ? `game-${route.run}` : route.kind === 'post' ? `post-${route.post.id}` : route.kind;
   const pushed = route.kind !== 'tab';
 
   return (
@@ -320,14 +334,18 @@ function MainApp() {
             exit={pushed ? { x: '30%', opacity: 0 } : { opacity: 0, scale: 0.985 }}
             transition={spring.calm}
           >
-            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} />}
+            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'home' })} onShowPosts={() => setRoute({ kind: 'posts' })} />}
             {route.kind === 'tab' && route.tab === 'friends' && <Friends onStartChallenge={startChallenge} onPlayChallenge={playChallenge} />}
             {route.kind === 'tab' && route.tab === 'gospel' && <Gospel />}
             {route.kind === 'tab' && route.tab === 'progress' && <Practice onAction={practice} />}
             {route.kind === 'saved' && <SavedGames onBack={() => goTab('play')} onResume={resumeGame} />}
             {route.kind === 'memory' && <MemoryVerses onExit={() => goTab('progress')} />}
             {route.kind === 'notebook' && <Notebook onExit={() => goTab('progress')} />}
-            {route.kind === 'tab' && route.tab === 'settings' && <Settings />}
+            {route.kind === 'tab' && route.tab === 'settings' && <Settings onAdmin={() => setRoute({ kind: 'admin' })} />}
+            {route.kind === 'post' && <Thought post={route.post} onExit={() => (route.from === 'list' ? setRoute({ kind: 'posts' }) : goTab('play'))} onShowAll={route.from === 'home' ? () => setRoute({ kind: 'posts' }) : undefined} />}
+            {route.kind === 'posts' && <Thoughts onExit={() => goTab('play')} onOpen={(post) => setRoute({ kind: 'post', post, from: 'list' })} />}
+            {route.kind === 'admin' && isAdmin && <Admin onExit={() => goTab('settings')} onThoughts={() => setRoute({ kind: 'adminThoughts' })} />}
+            {route.kind === 'adminThoughts' && isAdmin && <AdminThoughts onExit={() => setRoute({ kind: 'admin' })} />}
             {route.kind === 'recall' && <Recall onExit={() => goTab(lastTab)} />}
             {route.kind === 'quizpick' && <QuizPick onExit={() => goTab(lastTab)} onStart={startQuiz} />}
             {route.kind === 'game' && (
