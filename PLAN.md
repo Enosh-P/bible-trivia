@@ -341,9 +341,35 @@ Same liquid-glass design, works on the phone, Tamil + English UI.
 
 Each step ships on its own; after each migration: run `supabase/setup.sql` again.
 
-### 10.6 Open decisions
-1. **Admins:** just you, or a few people (e.g. family members who also write)?
-2. **Formatting:** plain text with bold/italic/lists (simple, recommended), or images too?
-3. **Comments / reactions** on thoughts (e.g. 🙏 "Amen" count), or read-only?
-4. **Push** for each new thought: yes / no?
-5. **Gospel "ask a question"** box for readers: now or later?
+### 10.6 Decisions (answered)
+1. **Admins:** only you. `is_admin` is set on your account; no admin management in the app.
+2. **Formatting:** text (paragraphs, bold, italic, lists) + linked verse **+ images**.
+   - Supabase Storage bucket `post-images`: anyone can view, only admins can upload or delete.
+   - The phone shrinks a photo before upload (longest side 1600 px, WebP/JPEG about 300 KB), so the free tier lasts.
+   - A post has an optional cover image plus images inside the text; each image has an alt text for screen readers.
+3. **Comments:** signed-in readers can comment on a thought.
+   - Table `post_comments` (id, post_id, user_id, body, created_at); shown with name + avatar.
+   - You can delete any comment; people can delete their own; the Report button works on comments.
+   - Limits: 1,000 characters, at most 10 comments a minute per person (checked in the database).
+   - Admin sees "new comments" on each post in Admin → Thoughts.
+4. **Push for new thoughts:** yes. When a post is published (or its scheduled date arrives) everyone with
+   notifications on gets "Today's Thought: <title>" at their Verse of the Day time. New switch
+   "Daily Thought" in Settings → Notifications (on by default).
+5. **Ask a question:** yes, in the first version.
+   - Gospel → Questions has "Ask a question": the text goes privately to you (table `gospel_questions`,
+     only you can read it), with an email like reports.
+   - Admin → Gospel Q&A → **Inbox**: answer it privately (the asker gets a notification and sees the
+     answer under "My questions"), and/or turn it into a published FAQ (asker's name never shown).
+6. **Reports in admin:** not now (they keep arriving by email); later.
+
+### 10.7 Build order (updated)
+| Step | What | Database change |
+|---|---|---|
+| 1 | `is_admin` + RLS + Admin entry in Settings | migration |
+| 2 | `posts` + `post-images` storage; Home card, post screen, earlier posts, offline | migration |
+| 3 | Admin → Thoughts editor: EN/TA, images, verse picker, preview, schedule | none |
+| 4 | Comments on thoughts | migration |
+| 5 | Push "Daily Thought" | migration (notification kind + switch) |
+| 6 | `gospel_faqs`, current FAQs moved in, Gospel tab reads from it | migration |
+| 7 | Admin → Gospel Q&A editor | none |
+| 8 | Ask a question + Admin inbox + private answers | migration |
