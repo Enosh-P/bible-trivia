@@ -227,9 +227,15 @@ const REDO_FILE = new URL('redo.json', TA_DIR);
 /** Questions whose translation went wrong: shown in English, listed for translating again. */
 const redo = [];
 
+const CLAUDE_DIR = new URL('../content/translations/ta/mcq-claude/', import.meta.url);
+
 function addTamil(book, rows) {
-  const taFile = new URL(`${book}.json`, TA_DIR);
-  const ta = existsSync(taFile) ? JSON.parse(readFileSync(taFile, 'utf8')) : {};
+  const read = (dir) => {
+    const f = new URL(`${book}.json`, dir);
+    return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : {};
+  };
+  // Claude's translations (made with the verse as context) win over IndicTrans2's.
+  const ta = { ...read(TA_DIR), ...read(CLAUDE_DIR) };
   let tamil = 0;
   for (const row of rows) {
     row.length = 7;
