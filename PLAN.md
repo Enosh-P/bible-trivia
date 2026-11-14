@@ -243,3 +243,107 @@ There is no ready-made "liquid glass" or "PWA" skill in your list, so the projec
 4. **Default theme**: ✅ decided: cold grey + Four Horsemen (dark default, light variant).
 5. **Online features**: is offline-only fine for MVP, with leaderboards/duels later?
 6. **Question writing**: should I generate a first draft of the question bank for you to review, or do you have existing questions?
+
+---
+
+## 10. Plan: Admin page, Daily Thought blog, Gospel Q&A *(proposed)*
+
+Goal: one or more admins can (1) post a short **Daily Thought** every day, like a
+blog post, and (2) add **Gospel questions and answers** little by little, without
+touching code. Everyone else only reads.
+
+### 10.1 Who is an admin
+- New column `profiles.is_admin boolean default false`. You set it once for your own
+  account in Supabase → Table editor → profiles (no admin can make another admin from
+  the app at first; this can come later).
+- Row-level security: only `is_admin` users can insert/update/delete posts and Q&A;
+  everyone signed in can read **published** items. Checked in the database, so a hidden
+  button is never the only protection.
+- The app shows an **Admin** entry in Settings only for admins.
+
+### 10.2 Daily Thought (blog)
+**Database: `posts`**
+
+| column | notes |
+|---|---|
+| `id` | uuid |
+| `author_id` | the admin |
+| `title_en`, `title_ta` | either language may be empty; the app shows the other one |
+| `body_en`, `body_ta` | plain text with simple formatting (paragraphs, **bold**, *italic*, lists) |
+| `verse_ref` | optional, e.g. `JHN 3:16` → the verse is shown from the built-in Bible text (KJV + BSI) |
+| `publish_on` | date it appears (lets you write ahead and schedule) |
+| `status` | `draft` / `published` |
+| `created_at`, `updated_at` | |
+
+**For readers**
+- Home: a small "Today's Thought" card under Verse of the Day (title + first lines),
+  hidden once read, like the Daily card.
+- Tap → full post with the verse, in the chosen language (or both).
+- "Earlier thoughts" list: newest first, simple search by word.
+- Optional push notification "New thought: <title>" at the Verse of the Day time
+  (reuses the notification settings; one more switch).
+- Offline: the last 30 posts are kept on the phone.
+- Report button (existing) works on posts too.
+
+**For the admin (Admin → Thoughts)**
+- List of drafts, scheduled and published posts.
+- Editor: title + body in English and Tamil side by side (tabs on phones), verse
+  picker (the same Book → Chapter → Verse picker as Memory verses), date to publish,
+  **Preview** exactly as readers see it, Save draft / Publish.
+- Autosave of the draft on the phone so nothing is lost if the app closes.
+- "Translate to Tamil" helper button is optional later (Claude, reviewed before publish).
+
+### 10.3 Gospel Q&A, added little by little
+Today the 10 FAQs and 8 "Way of Life" steps live in `src/engine/gospel.ts`.
+
+**Database: `gospel_faqs`**
+
+| column | notes |
+|---|---|
+| `id` | text slug |
+| `question_en`, `question_ta` | |
+| `answer_en`, `answer_ta` | same simple formatting as posts |
+| `verse_refs` | list, e.g. `{ROM 3:23, ROM 6:23}` → shown from the Bible text |
+| `topic` | e.g. God, Sin, Salvation, Church, Christian life (filter chips) |
+| `sort` | order within the topic |
+| `status` | `draft` / `published` |
+| `updated_at` | |
+
+- The current 10 FAQs are copied in as the first rows (a migration), so nothing is lost;
+  the app then reads from the database and keeps an offline copy.
+- **Readers:** Gospel → Questions shows topics + search; new items get a small "New" tag
+  for a week.
+- **Admin → Gospel Q&A:** add / edit / reorder / unpublish; preview; save as draft and
+  publish when both languages are ready (or publish one language first).
+- Optional later: readers can **ask a question** (goes to an admin inbox, private);
+  the admin can answer it and turn it into a published FAQ.
+
+### 10.4 Admin page layout
+Settings → **Admin** (only for admins):
+1. **Thoughts**: drafts, scheduled, published; "+ New thought".
+2. **Gospel Q&A**: by topic; "+ New question".
+3. **Reports**: the existing reports from players, with "mark as fixed" (today they only
+   arrive by email).
+4. Later: **Questions** review (approve machine-made quiz questions, fix Tamil).
+
+Same liquid-glass design, works on the phone, Tamil + English UI.
+
+### 10.5 Build order
+| Step | What | Database change |
+|---|---|---|
+| 1 | `is_admin` + RLS + Admin entry in Settings | migration |
+| 2 | `posts` table, reader card on Home, post screen, earlier-posts list, offline | migration |
+| 3 | Admin → Thoughts editor with preview, scheduling, verse picker | none |
+| 4 | `gospel_faqs` table, move current FAQs in, Gospel tab reads from it | migration |
+| 5 | Admin → Gospel Q&A editor | none |
+| 6 | Admin → Reports list | none (table exists) |
+| 7 | Optional: push for new thoughts, "ask a question", Claude translate helper | small migration |
+
+Each step ships on its own; after each migration: run `supabase/setup.sql` again.
+
+### 10.6 Open decisions
+1. **Admins:** just you, or a few people (e.g. family members who also write)?
+2. **Formatting:** plain text with bold/italic/lists (simple, recommended), or images too?
+3. **Comments / reactions** on thoughts (e.g. 🙏 "Amen" count), or read-only?
+4. **Push** for each new thought: yes / no?
+5. **Gospel "ask a question"** box for readers: now or later?
