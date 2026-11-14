@@ -7,7 +7,7 @@ See **[PLAN.md](PLAN.md)** for the research, feature roadmap and design decision
 
 ## Put it online
 
-Free hosting on Cloudflare Pages, with a custom domain if you want one: **[docs/DEPLOY.md](docs/DEPLOY.md)**.
+Hosted free on Vercel (settings in `vercel.json`); it redeploys on every push to `main`.
 
 ## Run it
 
@@ -63,7 +63,7 @@ The app works fully offline from the bundled JSON. Supabase is where content gro
 **One-time setup**
 1. Create a project at supabase.com (the free tier is plenty).
 2. **SQL Editor** → New query → paste the whole of **`supabase/setup.sql`** → Run. It contains every migration plus the starter content, and it's safe to run again any time (after pulling updates, or if a run stopped halfway). `npm run db:setup-sql` rebuilds it.
-3. **Environment variables:** copy `.env.example` to `.env.local` and fill it in from Supabase → Project Settings → API Keys:
+3. **Environment variables:** create `.env.local` (it stays on your computer) with these values from Supabase → Project Settings → API Keys:
 
    | Variable | Where it's used | Value |
    |---|---|---|

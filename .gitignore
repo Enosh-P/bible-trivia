@@ -3,7 +3,6 @@ dist
 dev-dist
 .env
 .env.*
-!.env.example
 *.log
 .DS_Store
 .generator
@@ -20,9 +19,8 @@ supabase/.temp/
 # TypeScript build cache
 *.tsbuildinfo
 
-# Claude Code: share only the project skills; keep personal settings local
-.claude/*
-!.claude/skills/
+# Claude Code settings and skills (kept local)
+.claude/
 
 # Claude translation script: local progress and preview (the translations are kept)
 content/translations/ta/mcq-claude/_batches.json
@@ -38,3 +36,6 @@ venv/
 Thumbs.db
 coverage/
 supabase/.branches/
+
+# Local notes and templates (kept on your computer, not in the repo)
+docs/

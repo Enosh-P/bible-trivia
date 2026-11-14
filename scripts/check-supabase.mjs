@@ -23,19 +23,19 @@ const bad = (msg, fix) => {
   console.log(`  ❌ ${msg}${fix ? `\n      → ${fix}` : ''}`);
 };
 const section = (title) => console.log(`\n${title}`);
-/** Still the text copied from .env.example? */
+/** Still a placeholder value? */
 const placeholder = (v) => typeof v === 'string' && (v.includes('your-project-ref') || v.endsWith('...') || v.trim() === '');
 const local = (path) => JSON.parse(readFileSync(new URL(path, ROOT), 'utf8'));
 
 // ---------- 1. Environment variables ----------
 section('1. Environment variables (.env.local)');
-if (!existsSync(new URL('.env.local', ROOT))) bad('.env.local not found', 'copy .env.example to .env.local and fill it in');
+if (!existsSync(new URL('.env.local', ROOT))) bad('.env.local not found', 'create .env.local with the values listed in README.md');
 const appUrl = env.VITE_SUPABASE_URL;
 const pubKey = env.VITE_SUPABASE_PUBLISHABLE_KEY ?? env.VITE_SUPABASE_ANON_KEY;
 const url = projectUrl(env.SUPABASE_URL ?? appUrl);
 const secret = env.SUPABASE_SECRET_KEY ?? env.SUPABASE_SERVICE_ROLE_KEY;
 
-const PLACEHOLDER_FIX = 'open .env.local (not .env.example) and paste the real value from Supabase → Project Settings';
+const PLACEHOLDER_FIX = 'open .env.local and paste the real value from Supabase → Project Settings';
 if (!appUrl) bad('VITE_SUPABASE_URL is missing', 'Supabase → Project Settings → Data API → Project URL');
 else if (placeholder(appUrl)) bad('VITE_SUPABASE_URL is still the example text', PLACEHOLDER_FIX);
 else if (/\/rest\/v1\/?$/.test(appUrl)) warn('VITE_SUPABASE_URL ends with /rest/v1/', `use just ${projectUrl(appUrl)} (it works either way, but this is cleaner)`);
