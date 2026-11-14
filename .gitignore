@@ -10,3 +10,6 @@ dev-dist
 .env.local
 __pycache__/
 .cache/
+
+# Supabase CLI cache (created by supabase login / functions deploy)
+supabase/.temp/
