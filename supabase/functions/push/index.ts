@@ -81,6 +81,20 @@ export function message(row: QueueRow, lang: Lang, verses: Verse[], books: Recor
       return { title: ta ? `இன்றைய வசனம் · ${ref}` : `Verse of the Day · ${ref}`, body: clip(ta ? v.ta : v.en), url: '/?open=home', tag: 'daily-verse' };
     }
     case 'daily_reminder':
+      if (p.slot === 'am') {
+        return {
+          title: ta ? 'காலை வணக்கம்! இன்றைய சவால் தயார்' : "Good morning! Today's Challenge is ready",
+          body: ta ? '7 கேள்விகள், சுமார் 2 நிமிடங்கள். உங்கள் தொடரைத் தொடங்குங்கள்.' : '7 questions, about 2 minutes. Keep your streak going.',
+          url: '/?open=daily', tag: 'daily-reminder',
+        };
+      }
+      if (p.slot === 'noon') {
+        return {
+          title: ta ? 'ஒரு சிறிய இடைவேளை?' : 'Got two minutes?',
+          body: ta ? 'இன்றைய சவாலை விளையாடி உங்கள் தொடரைக் காத்துக்கொள்ளுங்கள்.' : "Play today's challenge and keep your streak.",
+          url: '/?open=daily', tag: 'daily-reminder',
+        };
+      }
       return {
         title: ta ? 'இன்றைய சவால் காத்திருக்கிறது' : "Today's Challenge is waiting",
         body: ta ? '7 கேள்விகள், சுமார் 2 நிமிடங்கள். உங்கள் நண்பர்கள் விளையாடிவிட்டார்களா?' : '7 questions, about 2 minutes. Have your friends played yet?',
@@ -89,7 +103,9 @@ export function message(row: QueueRow, lang: Lang, verses: Verse[], books: Recor
     case 'streak_rescue':
       return {
         title: ta ? `உங்கள் ${p.streak} நாள் தொடரைக் காப்பாற்றுங்கள்` : `Keep your ${p.streak}-day streak`,
-        body: ta ? 'நள்ளிரவுக்கு முன் இன்றைய சவாலை விளையாடுங்கள்.' : "Play today's challenge before midnight.",
+        body: p.slot === 'am' || p.slot === 'noon'
+          ? (ta ? 'இன்று ஒரு விளையாட்டு விளையாடி உங்கள் தொடரைத் தொடருங்கள்.' : 'Play a game today to keep it going.')
+          : (ta ? 'நள்ளிரவுக்கு முன் இன்றைய சவாலை விளையாடுங்கள்.' : "Play today's challenge before midnight."),
         url: '/?open=daily', tag: 'streak',
       };
     case 'friend_request':

@@ -14,6 +14,8 @@ export interface NotificationPrefs {
   daily_verse: boolean;
   verse_hour: number;
   daily_reminder: boolean;
+  morning_hour: number;
+  afternoon_hour: number;
   reminder_hour: number;
   streak: boolean;
   friends: boolean;
@@ -23,6 +25,8 @@ export const DEFAULT_PREFS: NotificationPrefs = {
   daily_verse: true,
   verse_hour: 7,
   daily_reminder: true,
+  morning_hour: 9,
+  afternoon_hour: 13,
   reminder_hour: 19,
   streak: true,
   friends: true,
@@ -79,12 +83,9 @@ export async function savePrefs(prefs: NotificationPrefs) {
   if (error) throw error;
 }
 
-/** Ask permission, subscribe this device, and save it. */
-export async function enablePush(prefs: NotificationPrefs): Promise<boolean> {
-  const uid = useAccount.getState().session?.user.id;
-  if (!supabase || !uid || pushSupport() !== 'ok') return false;
-  const permission = await Notification.requestPermission();
-  if (permission !== 'granted') return false;
+/** Subscribe this device (or reuse its subscription) and save it on the server. */
+async function subscribeDevice(uid: string) {
+  if (!supabase) return;
   const reg = await registration();
   const sub =
     (await reg.pushManager.getSubscription()) ??
@@ -94,12 +95,45 @@ export async function enablePush(prefs: NotificationPrefs): Promise<boolean> {
     .from('push_subscriptions')
     .upsert({ user_id: uid, endpoint: json.endpoint, p256dh: json.keys.p256dh, auth: json.keys.auth }, { onConflict: 'endpoint' });
   if (error) throw error;
+}
+
+/** Ask permission, subscribe this device, and save it. */
+export async function enablePush(prefs: NotificationPrefs): Promise<boolean> {
+  const uid = useAccount.getState().session?.user.id;
+  if (!supabase || !uid || pushSupport() !== 'ok') return false;
+  const permission = await Notification.requestPermission();
+  if (permission !== 'granted') return false;
+  await subscribeDevice(uid);
   await savePrefs(prefs);
+  useApp.setState({ pushWanted: true });
   return true;
+}
+
+/** Notifications stay on until you turn them off. */
+export function pushWanted(): boolean {
+  if (pushSupport() !== 'ok' || Notification.permission !== 'granted') return false;
+  return useApp.getState().pushWanted === true;
+}
+
+/**
+ * On every start: if you turned notifications on, make sure this device is still
+ * subscribed and the server knows it. A browser can drop or replace a
+ * subscription (app update, an expired endpoint the server cleaned up), and this
+ * puts it back quietly, without asking again.
+ */
+export async function keepPushAlive() {
+  const uid = useAccount.getState().session?.user.id;
+  if (!uid || !pushWanted()) return;
+  try {
+    await subscribeDevice(uid);
+  } catch {
+    /* offline: try again next start */
+  }
 }
 
 /** Stop notifications on this device. */
 export async function disablePush() {
+  useApp.setState({ pushWanted: false });
   if (pushSupport() !== 'ok') return;
   const sub = await (await registration()).pushManager.getSubscription();
   if (!sub) return;

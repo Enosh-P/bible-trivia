@@ -18,7 +18,7 @@ import { Gospel } from './screens/Gospel';
 import { Recall } from './screens/Recall';
 import { QuizPick } from './screens/QuizPick';
 import { NewPasswordSheet } from './components/NewPasswordSheet';
-import { syncPushLanguage } from './online/push';
+import { keepPushAlive, syncPushLanguage } from './online/push';
 import { Settings } from './screens/Settings';
 import { Game, type RoundResult } from './screens/Game';
 import { Results } from './screens/Results';
@@ -186,6 +186,10 @@ function MainApp() {
 
   // Results played offline last time: send them now that we're signed in.
   const hasSession = useAccount((s) => Boolean(s.session));
+  // Notifications you turned on stay on (re-subscribe quietly after updates).
+  useEffect(() => {
+    if (hasSession) void keepPushAlive();
+  }, [hasSession]);
   useEffect(() => {
     if (hasSession) {
       void flushOutbox().catch(() => {});

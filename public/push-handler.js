@@ -29,3 +29,11 @@ self.addEventListener('notificationclick', (event) => {
     }),
   );
 });
+
+// The browser replaced this device's subscription (it can happen after an update):
+// subscribe again straight away. The app re-registers it with the server on its next start.
+self.addEventListener('pushsubscriptionchange', (event) => {
+  const options = event.oldSubscription?.options;
+  if (!options?.applicationServerKey) return;
+  event.waitUntil(self.registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: options.applicationServerKey }).catch(() => {}));
+});

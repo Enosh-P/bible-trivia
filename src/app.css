@@ -871,6 +871,8 @@
 .notif-control { display: flex; align-items: center; gap: 10px; }
 .hour-pick { width: auto; min-height: 36px; padding: 4px 10px; font-size: 15px; }
 .notif-note { margin: 0 0 10px; }
+.notif-sub { display: block; font-weight: 400; margin-top: 2px; }
+.notif-hours { display: flex; flex-direction: column; gap: 6px; }
 .notif-test { align-self: flex-start; margin: 4px 0 10px; }
 
 /* ---------- Head-to-head ---------- */

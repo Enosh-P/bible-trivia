@@ -17,6 +17,8 @@ interface Settings {
   textScale: number;
   /** Show the verse on the answer card after each question (on by default). */
   showVerses?: boolean;
+  /** Notifications turned on for this device (kept across app updates; re-subscribed on start). */
+  pushWanted?: boolean;
   /** Quiz by Book: seconds per question (20, 40 or 60). */
   quizSeconds?: 20 | 40 | 60;
 }

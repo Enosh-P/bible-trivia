@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Bell, BellOff, Flame, ScrollText, Sun, Users } from 'lucide-react';
-import { DEFAULT_PREFS, disablePush, enablePush, isSubscribed, loadPrefs, pushSupport, savePrefs, type NotificationPrefs } from '../online/push';
+import { Bell, BellOff, Flame, ScrollText, Users } from 'lucide-react';
+import { DEFAULT_PREFS, disablePush, enablePush, isSubscribed, keepPushAlive, loadPrefs, pushSupport, pushWanted, savePrefs, type NotificationPrefs } from '../online/push';
 import { useAccount } from '../online/account';
 import { spring } from '../motion/springs';
 import { useApp, useT } from '../store';
@@ -43,7 +43,16 @@ export function NotificationsCard() {
 
   useEffect(() => {
     if (!session) return;
-    void isSubscribed().then(setOn);
+    // On if you turned it on here (or the device is subscribed from before this was remembered).
+    if (pushWanted()) {
+      setOn(true);
+      void keepPushAlive();
+    } else {
+      void isSubscribed().then((sub) => {
+        if (sub) useApp.setState({ pushWanted: true });
+        setOn(sub);
+      });
+    }
     void loadPrefs().then(setPrefs);
   }, [session]);
 
@@ -95,8 +104,23 @@ export function NotificationsCard() {
       {session && support === 'ok' && on && (
         <>
           {row('pale', ScrollText, t.notifVerse, 'daily_verse', 'verse_hour')}
-          {row('white', Sun, t.notifReminder, 'daily_reminder', 'reminder_hour')}
-          {row('red', Flame, t.notifStreak, 'streak')}
+          <div className="row">
+            <IconTile horse="red" icon={Flame} size={30} />
+            <span className="row-label">
+              {t.notifReminder}
+              <span className="caption notif-sub">{t.notifReminderSub}</span>
+            </span>
+            <div className="row-control notif-control">
+              {prefs.daily_reminder && (
+                <span className="notif-hours">
+                  <HourPicker value={prefs.morning_hour} onChange={(h) => update({ morning_hour: h })} label={t.notifMorning} />
+                  <HourPicker value={prefs.afternoon_hour} onChange={(h) => update({ afternoon_hour: h })} label={t.notifAfternoon} />
+                  <HourPicker value={prefs.reminder_hour} onChange={(h) => update({ reminder_hour: h })} label={t.notifEvening} />
+                </span>
+              )}
+              <Switch on={prefs.daily_reminder} onChange={(v) => update({ daily_reminder: v })} label={t.notifReminder} />
+            </div>
+          </div>
           {row('black', Users, t.notifFriends, 'friends')}
           <Pressable
             className="btn glass small notif-test"
