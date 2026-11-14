@@ -11,6 +11,7 @@ import { Pressable } from '../components/Pressable';
 import { STROKE } from '../components/icons';
 import { Sheet } from '../components/Sheet';
 import { LangToggle } from '../components/LangToggle';
+import { syncSoon } from '../online/practiceSync';
 
 /** One shared empty object, so the store selector doesn't change on every read. */
 const NO_MEMORY: Record<string, number> = {};
@@ -66,7 +67,8 @@ export function MemoryVerses({ onExit }: { onExit: () => void }) {
                 <button
                   className="link danger memory-remove"
                   onClick={() => {
-                    useApp.setState((s) => ({ myVerses: (s.myVerses ?? []).filter((v) => v.id !== verse.id) }));
+                    useApp.setState((s) => ({ myVerses: (s.myVerses ?? []).filter((v) => v.id !== verse.id), practiceUpdatedAt: Date.now() }));
+                    syncSoon();
                     setVerse(null);
                   }}
                 >
@@ -145,7 +147,8 @@ function AddVerse({ open, onClose, onAdded }: { open: boolean; onClose: () => vo
     if (!ok) return;
     const verseEnd = Number(to) > Number(from) ? Number(to) : undefined;
     const v = { id: `my-${Date.now().toString(36)}`, book, chapter: Number(chapter), verse: Number(from), ...(verseEnd ? { verseEnd } : {}), en: en.trim(), ta: ta.trim() };
-    useApp.setState((s) => ({ myVerses: [v, ...(s.myVerses ?? [])] }));
+    useApp.setState((s) => ({ myVerses: [v, ...(s.myVerses ?? [])], practiceUpdatedAt: Date.now() }));
+    syncSoon();
     setChapter('');
     setFrom('');
     setTo('');
@@ -221,7 +224,10 @@ function MemoryRound({ verse, lang }: { verse: Verse; lang: 'en' | 'ta' }) {
         cue(up ? 'correct' : 'complete');
         setResult(up ? 'up' : 'again');
         finishRound({ xp: up ? 10 : 3, correct: done - mistakes, total: done, score: 0 });
-        if (up) useApp.setState((s) => ({ memory: { ...(s.memory ?? {}), [verse.id]: Math.min(LEARNED, roundLevel + 1) } }));
+        if (up) {
+          useApp.setState((s) => ({ memory: { ...(s.memory ?? {}), [verse.id]: Math.min(LEARNED, roundLevel + 1) }, practiceUpdatedAt: Date.now() }));
+          syncSoon();
+        }
       }
     } else {
       cue('wrong');

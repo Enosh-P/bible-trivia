@@ -9,6 +9,10 @@ export interface AnswerRecord {
   correct: boolean;
   mode: string;
   at: number;
+  /** Unique across devices ("<device>-<n>"), so syncing never doubles an answer. */
+  clientKey?: string;
+  /** 0 until sent to the account (Supabase practice_answers). */
+  synced?: 0 | 1;
 }
 
 /** One finished round. */
@@ -21,6 +25,29 @@ export interface RoundRecord {
   total: number;
   xp: number;
   at: number;
+}
+
+/** A starred question. `saved: 0` means un-starred (kept so other devices hear about it). */
+export interface SavedRow {
+  id: string;
+  at: number;
+  saved?: 0 | 1;
+  updatedAt?: number;
+}
+
+/** This device's id, part of every answer's clientKey. */
+export function deviceId(): string {
+  const KEY = 'bt-device';
+  try {
+    let id = localStorage.getItem(KEY);
+    if (!id) {
+      id = Math.random().toString(36).slice(2, 10);
+      localStorage.setItem(KEY, id);
+    }
+    return id;
+  } catch {
+    return 'nostore';
+  }
 }
 
 export const db = new Dexie('bible-trivia') as Dexie & {
@@ -37,7 +64,7 @@ export const db = new Dexie('bible-trivia') as Dexie & {
   /** Results played offline (daily challenge, friend challenges), sent when back online. */
   outbox: EntityTable<{ id?: number; job: unknown; at: number }, 'id'>;
   /** Questions starred during a game, to practise later. */
-  saved: EntityTable<{ id: string; at: number }, 'id'>;
+  saved: EntityTable<SavedRow, 'id'>;
 };
 
 db.version(1).stores({
@@ -62,6 +89,41 @@ db.version(6).stores({
 db.version(7).stores({
   saved: 'id, at',
 });
+// v8: answers and saved questions sync with the account.
+db.version(8)
+  .stores({
+    answers: '++id, questionId, book, at, synced, &clientKey',
+    saved: 'id, at, updatedAt',
+  })
+  .upgrade(async (tx) => {
+    const dev = deviceId();
+    await tx
+      .table('answers')
+      .toCollection()
+      .modify((a: AnswerRecord) => {
+        a.clientKey ??= `${dev}-${a.id}`;
+        a.synced ??= 0;
+      });
+    await tx
+      .table('saved')
+      .toCollection()
+      .modify((r: SavedRow) => {
+        r.saved ??= 1;
+        r.updatedAt ??= r.at;
+      });
+  });
+
+/** Records one answer (it's sent to the account by src/online/practiceSync.ts). */
+export function recordAnswer(a: Omit<AnswerRecord, 'id' | 'clientKey' | 'synced'>) {
+  const clientKey = `${deviceId()}-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
+  return db.answers.add({ ...a, clientKey, synced: 0 });
+}
+
+/** Starred questions, newest first. */
+export async function savedIds(): Promise<string[]> {
+  const rows = await db.saved.orderBy('at').reverse().toArray();
+  return rows.filter((r) => r.saved !== 0).map((r) => r.id);
+}
 
 /** Question ids answered wrong (and not answered right since). */
 export async function weakQuestionIds(): Promise<Set<string>> {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Star } from 'lucide-react';
 import { db } from '../storage/db';
+import { syncSoon } from '../online/practiceSync';
 import { useT } from '../store';
 import { spring } from '../motion/springs';
 import { STROKE } from './icons';
@@ -15,7 +16,7 @@ export function SaveButton({ id }: { id: string }) {
     let alive = true;
     db.saved
       .get(id)
-      .then((r) => alive && setSaved(Boolean(r)))
+      .then((r) => alive && setSaved(Boolean(r) && r!.saved !== 0))
       .catch(() => {});
     return () => {
       alive = false;
@@ -26,8 +27,10 @@ export function SaveButton({ id }: { id: string }) {
     setSaved(next);
     cue('tap');
     try {
-      if (next) await db.saved.put({ id, at: Date.now() });
-      else await db.saved.delete(id);
+      const now = Date.now();
+      // Un-starring keeps a row (saved: 0) so the account and other devices hear about it.
+      await db.saved.put({ id, at: now, saved: next ? 1 : 0, updatedAt: now });
+      void syncSoon();
     } catch {
       setSaved(!next);
     }

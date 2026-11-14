@@ -28,6 +28,7 @@ import { supabase, syncQuestions } from './online/supabase';
 import { flushReports } from './online/reports';
 import { acceptInvite, createChallenge, initAccount, inviteFromText, useAccount, pushProgress, type Challenge } from './online/account';
 import { flushOutbox, send } from './online/outbox';
+import { syncPractice, syncSoon } from './online/practiceSync';
 import { stockUp } from './online/stock';
 import { MODES } from './engine/modes';
 import { pickQuestions } from './engine/picker';
@@ -86,6 +87,13 @@ try {
   /* storage blocked */
 }
 
+/** Tab ↔ address: #friends, #gospel, #practice, #settings (Play has none). */
+const TAB_HASH: Record<Tab, string> = { play: 'play', friends: 'friends', gospel: 'gospel', progress: 'practice', settings: 'settings' };
+function tabFromHash(): Tab {
+  const h = location.hash.replace('#', '');
+  return (Object.keys(TAB_HASH) as Tab[]).find((t) => TAB_HASH[t] === h) ?? 'play';
+}
+
 /** Everything needs an account: show sign-in until there is one. */
 function Gate() {
   const ready = useAccount((s) => s.ready);
@@ -129,8 +137,9 @@ function ArtGallery() {
 function MainApp() {
   const t = useT();
   const finishRound = useApp((s) => s.finishRound);
-  const [route, setRoute] = useState<Route>({ kind: 'tab', tab: 'play' });
-  const [lastTab, setLastTab] = useState<Tab>('play');
+  // The tab is kept in the address (#practice), so a reload opens the same tab.
+  const [route, setRoute] = useState<Route>(() => ({ kind: 'tab', tab: tabFromHash() }));
+  const [lastTab, setLastTab] = useState<Tab>(() => tabFromHash());
 
   const {
     needRefresh: [needRefresh],
@@ -146,6 +155,7 @@ function MainApp() {
     const online = () => {
       void flushReports().catch(() => {});
       void flushOutbox().catch(() => {});
+      void syncPractice().catch(() => {});
       void stockUp().catch(() => {});
     };
     window.addEventListener('online', online);
@@ -174,7 +184,11 @@ function MainApp() {
   // Results played offline last time: send them now that we're signed in.
   const hasSession = useAccount((s) => Boolean(s.session));
   useEffect(() => {
-    if (hasSession) void flushOutbox().catch(() => {});
+    if (hasSession) {
+      void flushOutbox().catch(() => {});
+      // Practice from your other devices (and anything played here offline).
+      void syncPractice().catch(() => {});
+    }
   }, [hasSession]);
 
   // A friend's QR code scanned with the phone camera: become friends now.
@@ -250,6 +264,7 @@ function MainApp() {
       .catch(() => {});
     // Online extras (no-ops when signed out).
     void pushProgress().catch(() => {});
+    syncSoon();
     // Sent now, or kept on the phone and sent when it's back online.
     if (result.mode === 'daily') void send({ kind: 'daily', day: dayKey(), score: result.score, correct: result.correct, total: result.total });
     const challengeId = route.kind === 'game' ? route.challenge?.id : undefined;
@@ -260,6 +275,8 @@ function MainApp() {
   const goTab = (tab: Tab) => {
     setLastTab(tab);
     setRoute({ kind: 'tab', tab });
+    const hash = tab === 'play' ? '' : `#${TAB_HASH[tab]}`;
+    if (location.hash !== hash) history.replaceState(null, '', location.pathname + location.search + hash);
   };
 
   // Spatial consistency: the game slides in from the right and leaves the same way.

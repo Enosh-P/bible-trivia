@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { CheckCircle2, ChevronLeft, Star } from 'lucide-react';
-import { db } from '../storage/db';
+import { db, savedIds } from '../storage/db';
 import { roundPool } from '../engine/content';
 import { counts, summarize } from '../engine/practice';
 import type { Question } from '../engine/types';
@@ -30,7 +30,7 @@ export function Notebook({ onExit }: { onExit: () => void }) {
       const answers = (await db.answers.toArray().catch(() => [])).filter((a) => counts(a.questionId, a.mode));
       const open = new Set(summarize(answers).toFix);
       const wrong = [...new Set(answers.filter((a) => !a.correct).sort((a, b) => b.at - a.at).map((a) => a.questionId))];
-      const saved = (await db.saved.orderBy('at').reverse().toArray().catch(() => [])).map((r) => r.id);
+      const saved = await savedIds().catch(() => []);
       const ids = [...new Set([...wrong, ...saved])];
       const pool = await roundPool({ kind: 'ids', ids }).catch(() => []);
       const byId = new Map(pool.map((q) => [q.id, q]));

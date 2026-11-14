@@ -159,6 +159,8 @@ Built from the answers stored on the phone (`src/engine/practice.ts`):
 
 Practice rounds have no timer and earn half XP; they count towards the daily streak.
 
+**Practice follows the account** (`src/online/practiceSync.ts`, migration 14): answers, saved questions and memory-verse progress sync between a person's devices through `practice_answers`, `saved_questions` and `practice_state`. Each device keeps a copy for offline play; signing out sends what's left and clears the device.
+
 ## Offline play
 
 Once the app has been opened online, it keeps questions on the phone. Once a day, in the background, it downloads:

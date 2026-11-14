@@ -33,6 +33,8 @@ interface Progress {
   totalCorrect: number;
   /** Memory verses: level per verse id (4 = learned). */
   memory?: Record<string, number>;
+  /** When memory verses or your own verses last changed here (for syncing). */
+  practiceUpdatedAt?: number;
   /** Verses the player added to Memory verses (typed or pasted). */
   myVerses?: { id: string; book: string; chapter: number; verse: number; verseEnd?: number; en: string; ta: string }[];
 }

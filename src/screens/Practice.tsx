@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { BookMarked, Dumbbell, History, NotebookPen, PenLine, Star, type LucideIcon } from 'lucide-react';
-import { db } from '../storage/db';
+import { db, savedIds } from '../storage/db';
 import { summarize, type PracticeSummary } from '../engine/practice';
 import { VERSES } from '../engine/verses';
 import { LEARNED } from '../engine/memory';
@@ -12,6 +12,7 @@ import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
 import { IconTile } from '../components/icons';
 import { LangToggle } from '../components/LangToggle';
+import { onPracticeChange, practiceVersion, syncPractice } from '../online/practiceSync';
 import { Progress } from './Progress';
 
 /** One shared empty object, so the store selector doesn't change on every read. */
@@ -36,14 +37,21 @@ export function Practice({ onAction }: { onAction: (a: PracticeAction) => void }
   const [saved, setSaved] = useState<string[]>([]);
   const [wrongEver, setWrongEver] = useState(0);
 
+  // Reload when a sync brings in practice from another device.
+  const [version, setVersion] = useState(practiceVersion);
+  useEffect(() => onPracticeChange(() => setVersion(practiceVersion)), []);
+  useEffect(() => {
+    void syncPractice().catch(() => {});
+  }, []);
+
   useEffect(() => {
     (async () => {
       const answers = await db.answers.toArray().catch(() => []);
       setSum(summarize(answers));
       setWrongEver(new Set(answers.filter((a) => !a.correct && !a.questionId.startsWith('uw-') && !a.questionId.startsWith('gen-')).map((a) => a.questionId)).size);
-      setSaved((await db.saved.orderBy('at').reverse().toArray().catch(() => [])).map((r) => r.id));
+      setSaved(await savedIds().catch(() => []));
     })();
-  }, []);
+  }, [version]);
 
   const myVerses = useApp((s) => s.myVerses?.length ?? 0);
   const myLearned = useApp((s) => (s.myVerses ?? []).filter((v) => (s.memory?.[v.id] ?? 0) >= LEARNED).length);

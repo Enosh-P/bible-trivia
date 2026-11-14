@@ -8,7 +8,7 @@ import { isCorrect, pointsFor } from '../engine/scoring';
 import type { Lang, Question } from '../engine/types';
 import { formatRef } from '../i18n/books';
 import { STRINGS } from '../i18n/strings';
-import { db, recentQuestionIds, weakQuestionIds } from '../storage/db';
+import { recentQuestionIds, weakQuestionIds, recordAnswer } from '../storage/db';
 import { useApp, useT } from '../store';
 import { cue } from '../feedback';
 import { project, spring } from '../motion/springs';
@@ -154,7 +154,7 @@ export function Game({
       setBestCombo((b) => Math.max(b, nextCombo));
       if (!ok && mode.lives !== undefined) setLives((l) => l - 1);
       setLog((l) => [...l, { q, choice, correct: ok }]);
-      void db.answers.add({ questionId: q.id, book: q.book, correct: ok, mode: modeId, at: Date.now() }).catch(() => {});
+      void recordAnswer({ questionId: q.id, book: q.book, correct: ok, mode: modeId, at: Date.now() }).catch(() => {});
     },
     [q, answered, combo, mode, qLeft, modeId],
   );

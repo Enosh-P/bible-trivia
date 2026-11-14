@@ -303,8 +303,12 @@ export async function setNewPassword(password: string) {
   useAccount.setState({ recovering: false });
 }
 
+/** Run before signing out while still signed in (e.g. send practice, then clear the device). */
+export const signOutHooks: (() => Promise<void>)[] = [];
+
 export async function signOut() {
   if (!supabase) return;
+  for (const hook of signOutHooks) await hook().catch(() => {});
   // Offline, sign out of this device at least (the server forgets it next time).
   const { error } = await supabase.auth.signOut();
   if (error) await supabase.auth.signOut({ scope: 'local' });

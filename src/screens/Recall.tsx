@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { BookOpenCheck, Check, ChevronLeft, Eye, RotateCcw, X } from 'lucide-react';
 import { BOOKS, formatRef } from '../i18n/books';
 import { loadRecallBook, loadRecallIndex, recallRound, type RecallCard, type RecallIndex } from '../engine/recall';
-import { db } from '../storage/db';
+import { recordAnswer } from '../storage/db';
 import { useApp, useT } from '../store';
 import { cue } from '../feedback';
 import { spring } from '../motion/springs';
@@ -45,7 +45,7 @@ export function Recall({ onExit }: { onExit: () => void }) {
     if (step.kind !== 'cards') return;
     const card = step.cards[step.i];
     cue(knew ? 'correct' : 'wrong');
-    void db.answers.add({ questionId: card.id, book: card.book, correct: knew, mode: 'recall', at: Date.now() }).catch(() => {});
+    void recordAnswer({ questionId: card.id, book: card.book, correct: knew, mode: 'recall', at: Date.now() }).catch(() => {});
     const next = { ...step, knew: knew ? [...step.knew, card.id] : step.knew, missed: knew ? step.missed : [...step.missed, card] };
     if (step.i + 1 < step.cards.length) {
       setStep({ ...next, i: step.i + 1, shown: false });
