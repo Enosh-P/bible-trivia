@@ -128,12 +128,13 @@ for (let i = 0; i < rows.length; i += 500) {
 }
 console.log(`\nInserted ${inserted} new questions; ${rows.length - inserted} already existed and were left as they are.`);
 
-// Tamil for questions that already existed without it. A reviewer's Tamil is never replaced.
+// Tamil for questions that already existed without it, or whose machine Tamil has been
+// corrected since. A reviewer's Tamil is never replaced.
 let tamilFilled = 0;
 for (let i = 0; i < tamil.length; i += 1000) {
   const { data, error } = await db.rpc('apply_machine_tamil', { p: tamil.slice(i, i + 1000) });
   if (error) throw new Error(`Tamil ${i}: ${error.message} (run supabase/setup.sql again to add the Tamil migration)`);
   tamilFilled += data ?? 0;
 }
-if (tamil.length) console.log(`Tamil added to ${tamilFilled} existing questions (questions that already had Tamil were left as they are).`);
+if (tamil.length) console.log(`Tamil added or corrected on ${tamilFilled} existing questions (Tamil a person has reviewed is left as it is).`);
 console.log('New quiz questions wait as status = review: approve them in Supabase → Table editor → questions. Recall questions are published straight away.');

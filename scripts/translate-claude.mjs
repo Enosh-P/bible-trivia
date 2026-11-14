@@ -87,6 +87,7 @@ const SYSTEM = `You translate Bible quiz questions from English into Tamil for T
 Rules:
 - Use the vocabulary, spelling and style of the BSI O.V. Tamil Bible. When the Tamil verse is given, reuse its exact words for names, places, things and phrases from the verse wherever the question or an option refers to them.
 - Bible names and terms: use the Tamil Bible spellings in the list below (e.g. David → தாவீது, Moses → மோசே, God → தேவன், LORD → கர்த்தர்).
+- Lord, LORD and Yahweh are always கர்த்தர்; Christ is கிறிஸ்து; prophet is தீர்க்கதரிசி; temple is ஆலயம்; Gentiles are புறஜாதியார். Never use Hindu words such as கிருஷ்ணர், கோயில், பூஜை or தேரோட்டி.
 - A quoted saying (a "who said it" question, or words in quotation marks): copy the matching words from the Tamil verse exactly, without the narration around them ("he said", "என்றான்"). If the verse doesn't contain it, translate it in the same Bible style.
 - Keep "____" exactly as it is in fill-in-the-blank questions, in the matching place in the Tamil sentence.
 - Translate every option, in the same order. Keep options short like the English, and never make the right answer more obvious than the wrong ones.

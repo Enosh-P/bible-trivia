@@ -18,6 +18,7 @@
 // Then `npm run db:import` puts the Tamil into Supabase (only where it is still empty).
 
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { fixTamil } from './lib/tamil-fix.mjs';
 import { protectNames } from './lib/glossary.mjs';
 
 const ROOT = new URL('..', import.meta.url);
@@ -135,7 +136,7 @@ for (const book of books) {
   pack.fields = ['id', 'chapter', 'verse', 'verseEnd', 'q', 'a', 'qTa', 'aTa'];
   pack.rows = pack.rows.map((r) => {
     const t = done[r[0]];
-    return t ? [...r.slice(0, 6), t.q, t.a] : r.slice(0, 6);
+    return t ? [...r.slice(0, 6), fixTamil(r[4], t.q), fixTamil(r[5], t.a)] : r.slice(0, 6);
   });
   pack.ta = 'machine'; // machine translation with Tamil Bible names; not yet reviewed
   writeFileSync(packFile, JSON.stringify(pack));

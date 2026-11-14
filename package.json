@@ -16,6 +16,7 @@
     "db:import": "node --env-file-if-exists=.env.local scripts/import-to-supabase.mjs",
     "db:export": "node --env-file-if-exists=.env.local scripts/export-from-supabase.mjs",
     "content:uw": "node scripts/import-unfoldingword.mjs",
+    "content:fix-tamil": "node scripts/fix-tamil.mjs",
     "content:mcq": "node scripts/import-bible-mcq.mjs",
     "translate:claude": "node --env-file-if-exists=.env.local scripts/translate-claude.mjs",
     "content:verses": "node scripts/build-verses.mjs",

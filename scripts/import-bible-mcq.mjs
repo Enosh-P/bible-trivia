@@ -41,6 +41,7 @@ import { pathToFileURL } from 'node:url';
 import { parquetReadObjects } from 'hyparquet';
 import { buildWhoSaid, WHO_ATTRIBUTION } from './lib/who-said.mjs';
 import { looksBroken } from './lib/tamil-check.mjs';
+import { fixTamil } from './lib/tamil-fix.mjs';
 
 const DATASET = 'MushroomGecko/BIBLE';
 const OUT = new URL('../public/packs/mcq/', import.meta.url);
@@ -241,12 +242,12 @@ function addTamil(book, rows) {
     row.length = 7;
     const t = ta[row[0]];
     if (t?.q && Array.isArray(t.o) && t.o.length === row[5].length && t.o.every(Boolean)) {
-      const options = t.o.map((o, i) => tamilOption(row[5][i], o));
+      const options = t.o.map((o, i) => tamilOption(row[5][i], fixTamil(row[5][i], o)));
       if (looksBroken(row[4], t.q) || options.some((o, i) => looksBroken(row[5][i], o))) {
         redo.push({ book, id: row[0] });
         continue;
       }
-      row.push(t.q, options);
+      row.push(fixTamil(row[4], t.q), options);
       tamil++;
     }
   }
