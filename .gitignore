@@ -39,3 +39,6 @@ supabase/.branches/
 
 # Local notes and templates (kept on your computer, not in the repo)
 docs/
+
+# Written by every merge (list for the old IndicTrans2 --redo step)
+content/translations/ta/mcq/redo.json
