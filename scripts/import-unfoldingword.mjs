@@ -16,6 +16,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const URL_ZIP = 'https://git.door43.org/unfoldingWord/en_tq/archive/master.zip';
 const OUT = new URL('../public/packs/uw/', import.meta.url);
@@ -81,7 +82,7 @@ async function main() {
   console.log(`Imported ${total} questions from ${Object.keys(index).length} books into public/packs/uw/.`);
 }
 
-if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split('/').pop())) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main().catch((e) => {
     console.error(e.message);
     process.exit(1);

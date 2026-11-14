@@ -37,6 +37,7 @@ import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { parquetReadObjects } from 'hyparquet';
 import { buildWhoSaid, WHO_ATTRIBUTION } from './lib/who-said.mjs';
 import { looksBroken } from './lib/tamil-check.mjs';
@@ -321,4 +322,5 @@ async function main() {
   console.log(`Wrote ${index.total} questions in ${Object.keys(index.books).length} books (${index.tamil} with Tamil, ${whoRows.length} Who Said It). Left out ${skipped} long or unsuitable ones.`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) await main();
+// Run when started directly (not when tests import it). pathToFileURL handles Windows paths too.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) await main();
