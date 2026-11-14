@@ -1,4 +1,4 @@
-import { Fragment, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Check, ChevronLeft, Plus, RotateCcw, Trash2 } from 'lucide-react';
 import { VERSES, type Verse } from '../engine/verses';
@@ -12,6 +12,7 @@ import { STROKE } from '../components/icons';
 import { Sheet } from '../components/Sheet';
 import { LangToggle } from '../components/LangToggle';
 import { syncSoon } from '../online/practiceSync';
+import { chapterSizes, verseWords } from '../engine/bible';
 
 /** One shared empty object, so the store selector doesn't change on every read. */
 const NO_MEMORY: Record<string, number> = {};
@@ -130,50 +131,145 @@ export function MemoryVerses({ onExit }: { onExit: () => void }) {
   );
 }
 
-/** Add your own verse: the reference, then its words in English, Tamil or both. */
+/** Add your own verse: pick book, chapter and verse(s); the words come from the Bible text (both languages). */
 function AddVerse({ open, onClose, onAdded }: { open: boolean; onClose: () => void; onAdded: (v: Verse) => void }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   const [book, setBook] = useState('JHN');
-  const [chapter, setChapter] = useState('');
-  const [from, setFrom] = useState('');
-  const [to, setTo] = useState('');
+  const [sizes, setSizes] = useState<number[] | null | 'loading'>('loading');
+  const [chapter, setChapter] = useState(1);
+  const [from, setFrom] = useState(1);
+  const [to, setTo] = useState(0); // 0 = just the one verse
   const [en, setEn] = useState('');
   const [ta, setTa] = useState('');
-  const ok = Number(chapter) > 0 && Number(from) > 0 && (en.trim().length > 3 || ta.trim().length > 3);
+  const ok = chapter > 0 && from > 0 && (en.trim().length > 3 || ta.trim().length > 3);
+
+  // The book's chapters and verse counts.
+  useEffect(() => {
+    if (!open) return;
+    let alive = true;
+    setSizes('loading');
+    void chapterSizes(book).then((s) => alive && setSizes(s));
+    return () => {
+      alive = false;
+    };
+  }, [book, open]);
+
+  // The words of the chosen verse(s), filled in by themselves.
+  useEffect(() => {
+    if (!open || !Array.isArray(sizes)) return;
+    let alive = true;
+    void verseWords(book, chapter, from, to > from ? to : undefined)
+      .then((w) => {
+        if (!alive || !w) return;
+        setEn(w.en);
+        setTa(w.ta);
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, [book, chapter, from, to, sizes, open]);
+
+  const chapters = Array.isArray(sizes) ? sizes.length : 0;
+  const verses = Array.isArray(sizes) ? (sizes[chapter - 1] ?? 0) : 0;
+  const range = (n: number, start = 1) => Array.from({ length: Math.max(0, n - start + 1) }, (_, i) => start + i);
 
   function save(e: React.FormEvent) {
     e.preventDefault();
     if (!ok) return;
-    const verseEnd = Number(to) > Number(from) ? Number(to) : undefined;
-    const v = { id: `my-${Date.now().toString(36)}`, book, chapter: Number(chapter), verse: Number(from), ...(verseEnd ? { verseEnd } : {}), en: en.trim(), ta: ta.trim() };
+    const verseEnd = to > from ? to : undefined;
+    const v = { id: `my-${Date.now().toString(36)}`, book, chapter, verse: from, ...(verseEnd ? { verseEnd } : {}), en: en.trim(), ta: ta.trim() };
     useApp.setState((s) => ({ myVerses: [v, ...(s.myVerses ?? [])], practiceUpdatedAt: Date.now() }));
     syncSoon();
-    setChapter('');
-    setFrom('');
-    setTo('');
-    setEn('');
-    setTa('');
     onAdded(v as Verse);
   }
 
+  const offline = sizes === null;
   return (
     <Sheet open={open} onClose={onClose} label={t.addVerse}>
       <form className="add-verse" onSubmit={save} lang={uiLang}>
         <h2 className="title">{t.addVerse}</h2>
         <p className="caption">{t.addVerseHelp}</p>
-        <select className="field" value={book} onChange={(e) => setBook(e.target.value)} aria-label={t.chooseBook}>
+        <select
+          className="field"
+          value={book}
+          onChange={(e) => {
+            setBook(e.target.value);
+            setChapter(1);
+            setFrom(1);
+            setTo(0);
+            setEn('');
+            setTa('');
+          }}
+          aria-label={t.chooseBook}
+        >
           {BOOKS.map((b) => (
             <option key={b.code} value={b.code}>
               {b[uiLang]}
             </option>
           ))}
         </select>
-        <div className="add-verse-ref">
-          <input className="field" inputMode="numeric" placeholder={t.chapterLabel} value={chapter} onChange={(e) => setChapter(e.target.value.replace(/\D/g, ''))} aria-label={t.chapterLabel} />
-          <input className="field" inputMode="numeric" placeholder={t.verseLabel} value={from} onChange={(e) => setFrom(e.target.value.replace(/\D/g, ''))} aria-label={t.verseLabel} />
-          <input className="field" inputMode="numeric" placeholder={t.toVerseLabel} value={to} onChange={(e) => setTo(e.target.value.replace(/\D/g, ''))} aria-label={t.toVerseLabel} />
-        </div>
+        {offline ? (
+          <div className="add-verse-ref">
+            <input className="field" inputMode="numeric" placeholder={t.chapterLabel} value={chapter || ''} onChange={(e) => setChapter(Number(e.target.value.replace(/\D/g, '')))} aria-label={t.chapterLabel} />
+            <input className="field" inputMode="numeric" placeholder={t.verseLabel} value={from || ''} onChange={(e) => setFrom(Number(e.target.value.replace(/\D/g, '')))} aria-label={t.verseLabel} />
+            <input className="field" inputMode="numeric" placeholder={t.toVerseLabel} value={to || ''} onChange={(e) => setTo(Number(e.target.value.replace(/\D/g, '')))} aria-label={t.toVerseLabel} />
+          </div>
+        ) : (
+          <div className="add-verse-ref">
+            <label className="pick">
+              <span className="eyebrow">{t.chapterLabel}</span>
+              <select
+                className="field"
+                value={chapter}
+                disabled={!chapters}
+                onChange={(e) => {
+                  setChapter(Number(e.target.value));
+                  setFrom(1);
+                  setTo(0);
+                }}
+              >
+                {range(chapters || 1).map((n) => (
+                  <option key={n} value={n}>
+                    {n}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="pick">
+              <span className="eyebrow">{t.verseLabel}</span>
+              <select
+                className="field"
+                value={from}
+                disabled={!verses}
+                onChange={(e) => {
+                  const f = Number(e.target.value);
+                  setFrom(f);
+                  if (to && (to <= f || to > f + 4)) setTo(0);
+                }}
+              >
+                {range(verses || 1).map((n) => (
+                  <option key={n} value={n}>
+                    {n}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="pick">
+              <span className="eyebrow">{t.toVerseLabel}</span>
+              <select className="field" value={to} disabled={!verses} onChange={(e) => setTo(Number(e.target.value))}>
+                <option value={0}>–</option>
+                {range(Math.min(verses, from + 4), from + 1).map((n) => (
+                  <option key={n} value={n}>
+                    {n}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+        )}
+        {offline && <p className="caption form-msg is-info">{t.verseOffline}</p>}
         <textarea className="field" rows={3} lang="en" placeholder={t.verseEnglish} value={en} onChange={(e) => setEn(e.target.value)} />
         <textarea className="field" rows={3} lang="ta" placeholder={t.verseTamil} value={ta} onChange={(e) => setTa(e.target.value)} />
         <Pressable className="btn btn-primary" type="submit" disabled={!ok}>

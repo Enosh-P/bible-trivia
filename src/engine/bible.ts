@@ -34,3 +34,13 @@ export async function verseWords(book: string, chapter: number, verse: number, v
   const ta = pick('ta');
   return en || ta ? { en, ta } : null;
 }
+
+/** How many verses each chapter of a book has (for choosing a verse), or null when offline and not saved yet. */
+export async function chapterSizes(book: string): Promise<number[] | null> {
+  try {
+    const text = await loadBook(book);
+    return text.en.map((ch, i) => Math.max(ch.length, text.ta[i]?.length ?? 0));
+  } catch {
+    return null;
+  }
+}
