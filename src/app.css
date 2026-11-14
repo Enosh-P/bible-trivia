@@ -1080,3 +1080,10 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .week.is-compact .week-dot { width: 14px; height: 14px; }
 .stat.col .stat-art { margin-bottom: 2px; }
 .week.is-compact .week-dot.is-today { outline-width: 1.5px; outline-offset: 1px; }
+
+/* Game: what you're playing, always visible */
+.mode-pill { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; border-radius: 999px; background: var(--accent-wash); border: 1px solid var(--glass-edge); min-width: 0; }
+.mode-pill-text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.mode-pill-text strong { font-size: 0.95rem; font-weight: 700; color: var(--accent-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mode-pill-text span { font-size: 0.78rem; font-weight: 600; color: var(--text-2); }
+.q-count { font-size: 0.85rem; font-weight: 700; color: var(--text-2); margin-left: 2px; white-space: nowrap; }

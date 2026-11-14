@@ -6,7 +6,7 @@ import { MODES, type ModeId } from '../engine/modes';
 import { pickDaily, pickQuestions } from '../engine/picker';
 import { isCorrect, pointsFor } from '../engine/scoring';
 import type { Lang, Question } from '../engine/types';
-import { formatRef } from '../i18n/books';
+import { BOOK_BY_CODE, formatRef } from '../i18n/books';
 import { STRINGS } from '../i18n/strings';
 import { recentQuestionIds, weakQuestionIds, recordAnswer } from '../storage/db';
 import { useApp, useT } from '../store';
@@ -244,11 +244,18 @@ export function Game({
             transition={spring.calm}
           >
             <div className="q-meta">
-              <IconTile horse={mode.horse} icon={MODE_ICON[modeId]} size={30} />
-              <span className="eyebrow">
-                {total ? `${t.question} ${index + 1} ${t.of} ${total}` : `#${index + 1}`}
-                {typeLabel ? ` · ${typeLabel}` : ''}
+              {/* What you're playing, always in view: the game, plus the kind of question in mixed games. */}
+              <span className={`mode-pill horse-${mode.horse}`}>
+                <IconTile horse={mode.horse} icon={MODE_ICON[modeId]} size={26} />
+                <span className="mode-pill-text">
+                  <strong>
+                    {t.modeName[modeId]}
+                    {scope ? ` · ${BOOK_BY_CODE[scope.book]?.[uiLang] ?? scope.book}${scope.chapter ? ` ${scope.chapter}` : ''}` : ''}
+                  </strong>
+                  {mode.types.length > 1 && typeLabel && <span>{typeLabel}</span>}
+                </span>
               </span>
+              <span className="q-count">{total ? `${index + 1}/${total}` : `#${index + 1}`}</span>
               {combo >= 2 && (
                 <motion.span className="combo" initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={spring.flick}>
                   ×{combo}
