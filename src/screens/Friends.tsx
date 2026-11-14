@@ -148,6 +148,29 @@ export function Friends({
         </section>
       )}
 
+      {outgoing.length > 0 && (
+        <section className="glass card-pad">
+          <h2 className="eyebrow">
+            {t.sentRequests} ({outgoing.length})
+          </h2>
+          {outgoing.map((f) => (
+            <div className="person" key={f.user_id}>
+              <Avatar horse={f.avatar} />
+              <div className="grow">
+                <strong>{f.display_name}</strong>
+                <span className="caption">
+                  {f.since ? `${t.sentOn} ${new Date(f.since).toLocaleDateString(uiLang === 'ta' ? 'ta-IN' : undefined, { day: 'numeric', month: 'short' })} · ` : ''}
+                  {t.pendingSent}
+                </span>
+              </div>
+              <Pressable className="btn glass small" onClick={() => removeFriend(f.user_id)}>
+                <X size={15} strokeWidth={STROKE} /> {t.cancel}
+              </Pressable>
+            </div>
+          ))}
+        </section>
+      )}
+
       {turn.length > 0 && (
         <section className="glass card-pad">
           <h2 className="eyebrow">{t.yourTurn}</h2>
@@ -176,18 +199,6 @@ export function Friends({
             </button>
             <Pressable className="btn btn-primary small" onClick={() => setPicking(f)} aria-label={`${t.challenge}: ${f.display_name}`}>
               <Swords size={16} strokeWidth={STROKE} /> <span className="btn-label">{t.challenge}</span>
-            </Pressable>
-          </div>
-        ))}
-        {outgoing.map((f) => (
-          <div className="person is-pending" key={f.user_id}>
-            <Avatar horse={f.avatar} />
-            <div className="grow">
-              <strong>{f.display_name}</strong>
-              <span className="caption"> · {t.pendingSent}</span>
-            </div>
-            <Pressable className="chip glass" aria-label={t.cancel} onClick={() => removeFriend(f.user_id)}>
-              <X size={16} strokeWidth={STROKE} />
             </Pressable>
           </div>
         ))}

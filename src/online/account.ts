@@ -31,6 +31,8 @@ export interface Friend {
   streak: number | null;
   status: 'pending' | 'accepted';
   incoming: boolean;
+  /** When the request was sent, or when it was accepted. */
+  since?: string;
 }
 
 export interface ChallengePlayer {
