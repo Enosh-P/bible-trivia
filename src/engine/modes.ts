@@ -45,7 +45,7 @@ const MC: QuestionType[] = ['mcq', 'who', 'book', 'blank'];
 export const MODES: Record<ModeId, ModeDef> = {
   classic: { id: 'classic', horse: 'white', types: [...MC, 'tf'], length: 10, perQuestion: 20 },
   daily: { id: 'daily', horse: 'white', types: [...MC, 'tf'], length: 7, perQuestion: 20 },
-  truefalse: { id: 'truefalse', horse: 'black', types: ['tf'], length: 10, perQuestion: 12 },
+  truefalse: { id: 'truefalse', horse: 'black', types: ['tf'], length: 10, perQuestion: 20 },
   book: { id: 'book', horse: 'black', types: ['book'], length: 8, perQuestion: 20 },
   who: { id: 'who', horse: 'pale', types: ['who'], length: 8, perQuestion: 20 },
   blank: { id: 'blank', horse: 'pale', types: ['blank'], length: 8, perQuestion: 25 },

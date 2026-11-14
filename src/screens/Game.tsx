@@ -99,7 +99,15 @@ export function Game({
     (async () => {
       const ids = resume?.ids ?? questionIds;
       const pool = await roundPool(
-        ids ? { kind: 'ids', ids } : scope ? { kind: 'book', ...scope } : modeId === 'daily' ? { kind: 'daily' } : modeId === 'who' ? { kind: 'who' } : { kind: 'mix' },
+        ids ? { kind: 'ids', ids } : scope ? { kind: 'book', ...scope } : modeId === 'daily'
+            ? { kind: 'daily' }
+            : modeId === 'who'
+              ? { kind: 'who' }
+              : modeId === 'truefalse'
+                ? { kind: 'truefalse' }
+                : modeId === 'book'
+                  ? { kind: 'whichbook' }
+                  : { kind: 'mix' },
       );
       const byId = new Map(pool.map((x) => [x.id, x]));
       const qs = ids

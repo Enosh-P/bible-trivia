@@ -258,7 +258,12 @@ function MainApp() {
   async function startChallenge(mode: ModeId, friendIds: string[]) {
     // The Books of the Bible questions are made from their ids, so the friend gets exactly these.
     const questionIds =
-      mode === 'drill' ? drillRound(10) : pickQuestions(await roundPool(mode === 'who' ? { kind: 'who' } : { kind: 'mix' }), MODES[mode]).map((q) => q.id);
+      mode === 'drill'
+        ? drillRound(10)
+        : pickQuestions(
+            await roundPool(mode === 'who' ? { kind: 'who' } : mode === 'truefalse' ? { kind: 'truefalse' } : mode === 'book' ? { kind: 'whichbook' } : { kind: 'mix' }),
+            MODES[mode],
+          ).map((q) => q.id);
     try {
       const id = await createChallenge(mode, questionIds, friendIds);
       setRoute({ kind: 'game', mode, run: Date.now(), challenge: { id, questionIds } });

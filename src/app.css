@@ -1154,3 +1154,4 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .level-xp strong { font-size: 1.6rem; color: var(--accent-ink); }
 .progress-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
 .progress-head .caption { font-weight: 650; }
+.tf-card { white-space: pre-line; }
