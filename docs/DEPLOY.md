@@ -37,6 +37,20 @@ every `git push` to `main` publishes the new version in about two minutes.
 Changed a variable later? Settings → Environment variables, then **Deployments → ⋯ → Retry deployment**
 (the values are built into the app, so a new build is needed).
 
+### Cloudflare showed "Set up your application" with `npx wrangler deploy`?
+
+That's the newer **Workers** setup, which Cloudflare now offers first. It works the same way
+(the project's `wrangler.jsonc` tells it to serve the built app):
+
+| Setting | Value |
+|---|---|
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` (already filled in) |
+| Advanced settings → **Build variables** | the `VITE_` values from the table above |
+
+The address is then `https://bible-trivia.<your-account>.workers.dev`. A custom domain goes under
+the Worker's **Settings → Domains & Routes → Add → Custom domain**. Use that address in step 2.
+
 ## 2. Tell Supabase and Google about the new address
 
 Sign-in, password reset and Google sign-in only work on addresses they know.

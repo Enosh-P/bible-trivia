@@ -13,3 +13,6 @@ __pycache__/
 
 # Supabase CLI cache (created by supabase login / functions deploy)
 supabase/.temp/
+
+# Cloudflare wrangler cache
+.wrangler/
