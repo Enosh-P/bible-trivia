@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <!-- Cartoon app icon: a happy open Bible with a question bubble. Flat colours, ink outlines, no gradients. -->
-  <rect width="512" height="512" rx="112" fill="#3ecf8e"/>
+  <rect width="512" height="512" rx="112" fill="#1f8fb0"/>
   <g stroke="#1d2430" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
     <!-- shadow -->
-    <ellipse cx="256" cy="418" rx="150" ry="20" fill="#2bb578" stroke="none"/>
+    <ellipse cx="256" cy="418" rx="150" ry="20" fill="#1a7a96" stroke="none"/>
     <!-- cover -->
     <path d="M86 214 Q86 200 100 200 L256 222 L412 200 Q426 200 426 214 L426 392 Q426 404 414 404 L256 416 L98 404 Q86 404 86 392 Z" fill="#e0493e"/>
     <!-- pages -->
@@ -25,6 +25,6 @@
   <g stroke="#1d2430" stroke-width="12" stroke-linejoin="round">
     <path d="M364 62 C410 62 444 92 444 132 C444 172 410 200 364 200 C352 200 341 198 331 194 L300 212 L308 180 C292 166 284 150 284 132 C284 92 318 62 364 62 Z" fill="#ffffff"/>
   </g>
-  <path d="M342 112 C342 96 354 88 366 88 C380 88 390 98 390 110 C390 124 376 128 370 138 L368 148" fill="none" stroke="#1e8a5a" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="367" cy="174" r="9" fill="#1e8a5a"/>
+  <path d="M342 112 C342 96 354 88 366 88 C380 88 390 98 390 110 C390 124 376 128 370 138 L368 148" fill="none" stroke="#137c99" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="367" cy="174" r="9" fill="#137c99"/>
 </svg>

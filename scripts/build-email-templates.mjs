@@ -9,7 +9,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 
 const OUT = new URL('../supabase/templates/', import.meta.url);
-const C = { bg: '#f1f3f5', card: '#ffffff', text: '#11181c', text2: '#5c656d', line: '#e3e7eb', green: '#3ecf8e', onGreen: '#0b2a1c', greenInk: '#1e8a5a', red: '#ce2c31' };
+const C = { bg: '#f1f3f5', card: '#ffffff', text: '#11181c', text2: '#5c656d', line: '#e3e7eb', green: '#137c99', onGreen: '#ffffff', greenInk: '#0e6a84', red: '#ce2c31' };
 const FONT = "-apple-system, 'Segoe UI', Roboto, 'Noto Sans Tamil', 'Latha', Arial, sans-serif";
 
 function button(url, en, ta) {

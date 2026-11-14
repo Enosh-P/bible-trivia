@@ -7,13 +7,13 @@ description: Design system and content rules for the Bible Trivia PWA (Tamil & E
 
 Follow these so every screen feels like the same app. Motion and material rules come from Apple's *Designing Fluid Interfaces* (see the `apple-design` skill for the reasoning).
 
-## Colour: cold light grey + green, solid only
+## Colour: cold light grey + dark sky teal, solid only
 - **Light mode is the default.** Dark is a choice in Settings.
-- **Liquid glass, solid colours, no gradients.** Cards are see-through glass (`.glass`: ~50% tint, 24px blur, bright 1px edge, inner top highlight). Floating chrome uses `.glass-thick`. Behind everything are three flat, solid-colour shapes (`.atmosphere .blob`, green, blue-grey and a touch of red) that the glass blurs. Never use gradient fills on cards or buttons.
+- **Liquid glass, solid colours, no gradients.** Cards are see-through glass (`.glass`: ~50% tint, 24px blur, bright 1px edge, inner top highlight). Floating chrome uses `.glass-thick`. Behind everything are three flat, solid-colour shapes (`.atmosphere .blob`, sky teal, blue-grey and a touch of red) that the glass blurs. Never use gradient fills on cards or buttons.
 - Light / Dark / System is switchable from the sidebar (desktop), the Home header (phone) and Settings (`ThemeToggle`).
 - Base: cold light grey `--bg #f1f3f5`, white cards. Dark: charcoal `#111417`, cards `#1a1e22`.
-- Accent: green close to Supabase's (`--accent #3ecf8e`, text on it `--on-accent`, green text `--accent-ink`). It's used for primary buttons, correct answers, toggles and the active tab.
-- **Never use gold.** The four horse colours remain as icon-tile accents only (`--{h}`, `--{h}-ink`, `--{h}-wash`); `pale` is the accent green. Wrong = red, correct = green.
+- Accent: dark sky teal (`--accent #137c99`, white text on it via `--on-accent`, teal text `--accent-ink #0e6a84`; dark mode `#3fb6d6`). It's used for primary buttons, correct answers, toggles and the active tab. Cartoons use `#2a9fc0` / `#137c99`. In Both mode, Tamil is bold deep purple (`--ta-ink`) so it never reads as a link or the accent.
+- **Never use gold.** The four horse colours remain as icon-tile accents only (`--{h}`, `--{h}-ink`, `--{h}-wash`); `pale` is the accent teal. Wrong = red, correct = teal.
 
 ## Layout
 - Mobile: bottom tab bar. Desktop (≥960px): left sidebar (`--sidebar-w`), wider grids; game, results and recall stay at a reading width (720px).

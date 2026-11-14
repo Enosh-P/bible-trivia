@@ -2,7 +2,7 @@
  * Design tokens. Solid colours only: no gradients on cards or buttons.
  *
  * Base: cold light grey (light, the default) / cold charcoal (dark).
- * Accent: green, close to Supabase's #3ECF8E, for primary actions, correct
+ * Accent: dark sky teal (#137C99), for primary actions, correct
  * answers, toggles and active states.
  * Icon accents: the four horsemen of Revelation 6, on small icon tiles only.
  *   white → Classic, Daily · red → wrong answers, Speed, Survival
@@ -31,7 +31,7 @@
   --surface: rgb(255 255 255 / 0.5);
   --surface-strong: rgb(255 255 255 / 0.62); /* floating bars and sheets */
   /* Solid-colour shapes behind the glass */
-  --blob-1: rgb(62 207 142 / 0.42);
+  --blob-1: rgb(64 176 209 / 0.40);
   --blob-2: rgb(140 160 185 / 0.45);
   --blob-3: rgb(229 72 77 / 0.2);
   --line: #e3e7eb;
@@ -40,14 +40,14 @@
   --text-2: #5c656d;
   --text-3: #889096;
   /* Tamil shown alongside English (Both): bold, in its own colour */
-  --ta-ink: #1f6aa5;
+  --ta-ink: #6b3fa0;
 
   /* Green accent */
-  --accent: #3ecf8e;
-  --accent-hover: #34b27b;
-  --accent-ink: #1e8a5a; /* green text and icons on light backgrounds */
-  --accent-wash: #e6f8ef;
-  --on-accent: #0b2a1c; /* text on green buttons */
+  --accent: #137c99;
+  --accent-hover: #0f6c86;
+  --accent-ink: #0e6a84; /* teal text and icons on light backgrounds */
+  --accent-wash: #e2f2f7;
+  --on-accent: #ffffff; /* text on teal buttons (4.8:1) */
 
   /* Horses (icon tiles) */
   --white: #ffffff;
@@ -86,7 +86,7 @@
   --glass-shine: rgb(255 255 255 / 0.08);
   --surface: rgb(32 38 44 / 0.5);
   --surface-strong: rgb(26 30 34 / 0.66);
-  --blob-1: rgb(62 207 142 / 0.28);
+  --blob-1: rgb(64 176 209 / 0.26);
   --blob-2: rgb(90 110 135 / 0.38);
   --blob-3: rgb(229 72 77 / 0.16);
   --line: #2a3036;
@@ -94,13 +94,13 @@
   --text: #ecedee;
   --text-2: #9ba1a6;
   --text-3: #6f777e;
-  --ta-ink: #8cc4f2;
+  --ta-ink: #c4a6ef;
 
-  --accent: #3ecf8e;
-  --accent-hover: #4fd99b;
-  --accent-ink: #3ecf8e;
-  --accent-wash: #15301f;
-  --on-accent: #0b2a1c;
+  --accent: #3fb6d6;
+  --accent-hover: #5cc6e2;
+  --accent-ink: #5cc6e2;
+  --accent-wash: #0f2a33;
+  --on-accent: #06222b;
 
   --white: #ecedee;
   --white-ink: #ecedee;

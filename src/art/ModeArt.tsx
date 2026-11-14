@@ -8,9 +8,9 @@ import type { ModeId } from '../engine/modes';
 
 const INK = '#1d2430';
 const C = {
-  green: '#3ecf8e',
-  greenDeep: '#1e8a5a',
-  greenSoft: '#bdeed6',
+  green: '#2a9fc0',
+  greenDeep: '#137c99',
+  greenSoft: '#c4e8f2',
   red: '#e0493e',
   redSoft: '#f08a6e',
   steel: '#7fa6c9',
