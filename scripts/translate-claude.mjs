@@ -14,12 +14,19 @@
 //
 // Limit what's sent with --books GEN,JHN, --top 11 (popular books first), or --limit 2000.
 //
+// Or use your Claude subscription instead of API credits (Claude Code must be
+// installed and signed in on this computer):
+//   npm run translate:claude -- --claude-code            40 questions per request, saved as it goes
+//   npm run translate:claude -- --claude-code --top 11   popular books first
+// It stops by itself when your usage limit is reached; run it again after the reset.
+//
 // Safe to stop and run again any time: sent batches keep running at Anthropic
 // (Message Batches, half price) and the next run collects them; nothing is
 // sent twice. Results: content/translations/ta/mcq-claude/<BOOK>.json, then
 //   npm run content:mcq -- --merge-only    (Claude's Tamil replaces IndicTrans2's)
 
 import Anthropic from '@anthropic-ai/sdk';
+import { spawn } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 
 const MODEL = 'claude-haiku-5-5';
@@ -259,7 +266,89 @@ function status(state, done) {
   console.log(`Translated by Claude: ${translated} of ${total}. Waiting in batches: ${pending}.`);
 }
 
+// ---------- Through Claude Code (your subscription) ----------
+const CHUNK = 40;
+
+/** Runs `claude -p` with the prompt on stdin; resolves with what it printed. */
+function claudeCode(prompt) {
+  const bin = process.env.CLAUDE_BIN || 'claude';
+  return new Promise((resolve, reject) => {
+    // Haiku keeps usage low; no tools are needed, just the reply.
+    const child = spawn(bin, ['-p', '--model', 'haiku', '--output-format', 'text'], { shell: process.platform === 'win32' });
+    let out = '';
+    let err = '';
+    child.stdout.on('data', (d) => (out += d));
+    child.stderr.on('data', (d) => (err += d));
+    child.on('error', reject);
+    child.on('close', (code) => (code === 0 ? resolve(out) : reject(new Error((err || out).trim() || `claude exited with ${code}`))));
+    child.stdin.end(prompt);
+  });
+}
+
+function chunkPrompt(items) {
+  return [
+    SYSTEM,
+    '',
+    `Translate each of these ${items.length} questions. Reply with only JSON, no other text, in exactly this shape:`,
+    '{"items": [{"id": "<id>", "q": "<question in Tamil>", "o": ["<option 1 in Tamil>", "…"]}]}',
+    'One item per question, same ids, options in the same order and the same number of options.',
+    '',
+    ...items.map(([book, row]) => `### id: ${keyOf(book, row[0])}\n${userMessage(book, row)}\n`),
+  ].join('\n');
+}
+
+async function viaClaudeCode(state, done) {
+  const qs = remaining({ ...state, batches: [] }, done);
+  console.log(`${qs.length} questions to translate through Claude Code, ${CHUNK} at a time. Stop any time with Ctrl+C; run again to continue.`);
+  const byKey = new Map(qs.map((x) => [keyOf(x[0], x[1][0]), x]));
+  let saved = 0;
+  for (let i = 0; i < qs.length; i += CHUNK) {
+    const items = qs.slice(i, i + CHUNK);
+    let text;
+    try {
+      text = await claudeCode(chunkPrompt(items));
+    } catch (e) {
+      const msg = String(e.message || e);
+      if (/limit|usage|quota|rate/i.test(msg)) {
+        console.log(`\nClaude Code says: ${msg.split('\n')[0]}\nYour usage limit is probably reached. Saved ${saved} this run; run again after it resets.`);
+      } else if (/ENOENT|not recognized|not found/i.test(msg)) {
+        console.log('\nClaude Code isn\'t installed here (the "claude" command). Install it, sign in, then run again.');
+      } else {
+        console.log(`\nClaude Code stopped: ${msg.split('\n')[0]}\nSaved ${saved} this run; run again to continue.`);
+      }
+      return;
+    }
+    const json = text.slice(text.indexOf('{'), text.lastIndexOf('}') + 1);
+    let reply;
+    try {
+      reply = JSON.parse(json);
+    } catch {
+      console.log(`\nA reply wasn't valid JSON; skipping these ${items.length} for now.`);
+      continue;
+    }
+    const touched = new Set();
+    for (const it of reply.items ?? []) {
+      const item = byKey.get(it.id);
+      if (!item) continue;
+      const [book, row] = item;
+      const t = parse(row, { stop_reason: 'end_turn', content: [{ type: 'text', text: JSON.stringify({ q: it.q, o: it.o }) }] });
+      if (!t) continue;
+      (done[book] ??= {})[row[0]] = t;
+      touched.add(book);
+      saved++;
+    }
+    for (const book of touched) saveBook(done, book);
+    process.stdout.write(`\r${saved} translated this run (${Math.min(i + CHUNK, qs.length)} of ${qs.length} sent)…`);
+  }
+  console.log(`\nDone: ${saved} translated. Next: npm run content:mcq -- --merge-only`);
+}
+
 async function main() {
+  if (flag('claude-code')) {
+    const state = loadState();
+    state.failed ??= {};
+    return viaClaudeCode(state, loadDone());
+  }
   if (!process.env.ANTHROPIC_API_KEY && !flag('dry-run') && !flag('status')) {
     console.error('Add ANTHROPIC_API_KEY=sk-ant-... to .env.local (from console.anthropic.com → API keys), then run again.');
     process.exit(1);

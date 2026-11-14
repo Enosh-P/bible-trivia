@@ -121,6 +121,8 @@ npm run content:mcq -- --merge-only  # just add new Tamil translations
 
 **Better Tamil with Claude (recommended):** `npm run translate:claude` translates with Claude Haiku 5.5, giving it each question's verse in KJV and BSI Tamil O.V. plus the Tamil Bible names list, so the wording follows the Tamil Bible. Needs `ANTHROPIC_API_KEY` in `.env.local` (API credits, about $4–5 for everything). Try `-- --sample 30` first (writes `content/translations/ta/claude-sample.md`), `-- --dry-run` for the count and cost. It's safe to stop and run again: sent batches keep running and the next run collects them. Then `npm run content:mcq -- --merge-only`; Claude's Tamil replaces IndicTrans2's.
 
+With a Claude subscription instead of API credits: `npm run translate:claude -- --claude-code` sends 40 questions at a time through Claude Code (`claude -p`, Haiku) on your computer, saving as it goes; it stops when your usage limit is reached, so run it again after the reset.
+
 ## Recall: human-written questions with answers
 
 **Recall mode** uses about **17,000 human-written questions with answers, covering every chapter of the Bible**: unfoldingWord® Translation Questions, written by Bible translators to check understanding of each chapter. They're stored one file per book in `public/packs/uw/`, downloaded when a player first opens that book, then kept offline. Refresh them with `npm run content:uw`.
