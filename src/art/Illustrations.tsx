@@ -443,6 +443,386 @@ const Well = () => (
   </>
 );
 
+/** Little helpers for the scene pictures. */
+const Ground = ({ y = 104 }: { y?: number }) => <path d={`M8 ${y} H152`} {...line} />;
+const Smile = ({ x, y, w = 8 }: { x: number; y: number; w?: number }) => (
+  <path d={`M${x - w / 2} ${y} q${w / 2} ${w * 0.6} ${w} 0`} fill="none" {...line} strokeWidth={2.2} />
+);
+
+/** David's harp: the Psalms. */
+const Harp = () => (
+  <>
+    <ellipse cx={80} cy={110} rx={40} ry={5} fill={INK} opacity={0.12} />
+    <path d="M46 104 Q30 50 58 18 Q74 32 100 30 Q124 30 120 50 L58 104 Z" fill="none" {...line} stroke={C.bread} strokeWidth={9} />
+    <path d="M46 104 Q30 50 58 18 Q74 32 100 30 Q124 30 120 50 L58 104 Z" fill="none" {...line} strokeWidth={2} />
+    {[0, 1, 2, 3, 4, 5].map((i) => (
+      <path key={i} d={`M${54 + i * 10} ${30 + i * 2} L${52 + i * 8} ${100 - i * 8}`} stroke={C.steel} strokeWidth={2} />
+    ))}
+    <path d="M128 30 q8 -2 8 8 v14 M128 56 a4 4 0 1 0 8 -4" fill="none" {...line} strokeWidth={2.4} />
+    <path d="M138 18 q6 -2 6 6 v10 M138 38 a3.5 3.5 0 1 0 6 -4" fill="none" {...line} strokeWidth={2.2} />
+  </>
+);
+
+/** A fishing boat with a net: the twelve disciples. */
+const Boat = () => (
+  <>
+    <Waves y={96} />
+    <path d="M26 78 H134 L118 100 H42 Z" fill={C.wood} {...line} />
+    <path d="M80 78 V22" {...line} strokeWidth={3.4} />
+    <path d="M82 26 L120 70 H82 Z" fill={C.white} {...line} />
+    <path d="M30 80 q-10 14 4 26 M40 92 l-10 6 M44 100 l-12 2" fill="none" {...line} strokeWidth={2} />
+    <path d="M24 98 q10 -8 20 0 q-10 8 -20 0 Z M18 98 l6 -4 v8 Z" fill={C.steel} {...line} strokeWidth={2} />
+    <circle cx={62} cy={66} r={8} fill={C.skin} {...line} strokeWidth={2.2} />
+    <circle cx={59.5} cy={65} r={1.4} fill={INK} />
+    <circle cx={64.5} cy={65} r={1.4} fill={INK} />
+    <circle cx={100} cy={70} r={7} fill={C.skin} {...line} strokeWidth={2.2} />
+    <circle cx={98} cy={69} r={1.3} fill={INK} />
+    <circle cx={102} cy={69} r={1.3} fill={INK} />
+  </>
+);
+
+/** The river out of Eden parting into four. */
+const River = () => (
+  <>
+    <path d="M80 50 Q60 70 20 112 M80 50 Q70 80 56 112 M80 50 Q92 80 104 112 M80 50 Q100 70 140 112" fill="none" stroke={C.water} strokeWidth={10} strokeLinecap="round" />
+    <path d="M80 50 Q60 70 20 112 M80 50 Q70 80 56 112 M80 50 Q92 80 104 112 M80 50 Q100 70 140 112" fill="none" {...line} strokeWidth={1.4} opacity={0.6} />
+    <rect x={64} y={58} width={8} height={18} fill={C.wood} {...line} strokeWidth={2} />
+    <circle cx={68} cy={40} r={22} fill={C.pale} {...line} />
+    <circle cx={60} cy={36} r={4} fill={C.red} {...line} strokeWidth={1.6} />
+    <circle cx={76} cy={44} r={4} fill={C.red} {...line} strokeWidth={1.6} />
+    <path d="M118 30 l8 -8 l8 8 l-8 8 Z" fill={C.bread} {...line} strokeWidth={2.2} />
+    <path d="M124 26 l2 -2" stroke={C.white} strokeWidth={2} strokeLinecap="round" />
+  </>
+);
+
+/** An altar of stones with fire and smoke: offerings. */
+const Altar = () => (
+  <>
+    <Ground />
+    <path d="M60 20 q-8 -8 0 -14 M80 14 q-8 -8 0 -12 M98 22 q-8 -8 0 -14" fill="none" {...line} strokeWidth={2.4} opacity={0.4} />
+    <path d="M64 62 q-6 -20 10 -32 q0 12 8 14 q2 -14 12 -18 q-2 16 6 36 Z" fill={C.red} {...line} />
+    <path d="M74 60 q-2 -12 6 -16 q2 8 6 8 q2 -6 6 -8 q0 10 2 16 Z" fill={C.bread} />
+    <path d="M52 62 H108" stroke={C.wood} strokeWidth={6} strokeLinecap="round" />
+    {[[50, 70], [80, 70], [110, 70], [64, 86], [96, 86], [50, 100], [80, 100], [110, 100]].map(([x, y], i) => (
+      <rect key={i} x={x - 14} y={y - 7} width={28} height={14} rx={5} fill={C.steelSoft} {...line} strokeWidth={2.4} />
+    ))}
+  </>
+);
+
+/** Footprints on a path with God's light: walking with God. */
+const Path = () => (
+  <>
+    <circle cx={128} cy={24} r={12} fill={C.bread} {...line} />
+    <g stroke={C.bread} strokeWidth={3} strokeLinecap="round">
+      <path d="M128 4 V8 M146 24 H150 M110 24 H106 M141 11 l3 -3 M115 11 l-3 -3" />
+    </g>
+    <path d="M10 112 Q60 90 70 70 Q80 50 120 40" fill="none" stroke={C.sand} strokeWidth={18} strokeLinecap="round" />
+    {[[30, 100, -20], [48, 92, -30], [62, 78, -45], [74, 62, -55], [92, 50, -70]].map(([x, y, r], i) => (
+      <g key={i} transform={`rotate(${r} ${x} ${y})`}>
+        <ellipse cx={x} cy={y} rx={4} ry={6.5} fill={C.wood} />
+        <circle cx={x} cy={y - 9} r={1.8} fill={C.wood} />
+      </g>
+    ))}
+  </>
+);
+
+/** An old man with a long white beard: ages and long lives. */
+const Elder = () => (
+  <>
+    <ellipse cx={80} cy={112} rx={40} ry={5} fill={INK} opacity={0.12} />
+    <path d="M44 112 q0 -34 36 -34 q36 0 36 34 Z" fill={C.steel} {...line} />
+    <circle cx={80} cy={50} r={24} fill={C.skin} {...line} />
+    <path d="M58 54 q4 40 22 46 q18 -6 22 -46 q-10 10 -22 10 q-12 0 -22 -10 Z" fill={C.white} {...line} />
+    <path d="M70 62 q10 -6 20 0" fill="none" {...line} strokeWidth={2.2} />
+    <path d="M60 36 q20 -16 40 0" fill="none" {...line} stroke={C.white} strokeWidth={6} />
+    <path d="M66 46 q4 -3 8 0 M86 46 q4 -3 8 0" fill="none" {...line} strokeWidth={2.4} />
+    <circle cx={64} cy={56} r={3} fill={C.redSoft} opacity={0.6} />
+    <circle cx={96} cy={56} r={3} fill={C.redSoft} opacity={0.6} />
+    <path d="M130 30 V110" stroke={C.wood} strokeWidth={5} strokeLinecap="round" />
+    <path d="M130 30 q-12 -2 -10 -14 q10 -4 12 8" fill="none" {...line} stroke={C.wood} strokeWidth={5} />
+  </>
+);
+
+/** The raven Noah sent out first. */
+const Raven = () => (
+  <>
+    <path d="M10 104 q20 -14 44 -6 q24 -16 50 -2 q22 -10 46 4 V120 H10 Z" fill={C.water} {...line} />
+    <path d="M58 60 q-26 -30 -6 -40 q14 10 22 32 Z" fill={C.black} {...line} />
+    <ellipse cx={82} cy={64} rx={30} ry={18} fill={C.black} {...line} />
+    <path d="M52 66 L30 58 L36 72 L30 84 L56 74 Z" fill={C.black} {...line} />
+    <circle cx={108} cy={46} r={12} fill={C.black} {...line} />
+    <circle cx={111} cy={44} r={3.4} fill={C.white} />
+    <circle cx={112} cy={44} r={2} fill={INK} />
+    <path d="M119 46 l12 4 l-12 4 Z" fill={C.steelSoft} {...line} strokeWidth={2} />
+    <path d="M70 82 v12 M86 82 v12" {...line} strokeWidth={2.4} />
+  </>
+);
+
+/** The tower of Babel: Nimrod and the first kingdom. */
+const Tower = () => (
+  <>
+    <Ground y={108} />
+    <path d="M30 108 H130 L122 88 H38 Z" fill={C.sand} {...line} />
+    <path d="M42 88 H118 L110 68 H50 Z" fill={C.bread} {...line} />
+    <path d="M54 68 H106 L98 48 H62 Z" fill={C.sand} {...line} />
+    <path d="M66 48 H94 L88 30 H72 Z" fill={C.bread} {...line} />
+    <path d="M72 30 L78 22 L82 22 L88 30" fill="none" {...line} strokeWidth={2} strokeDasharray="3 4" />
+    <rect x={74} y={94} width={12} height={14} rx={6} fill={C.night} {...line} strokeWidth={2} />
+    <path d="M48 98 h8 M104 98 h8 M60 78 h8 M92 78 h8 M70 58 h6 M84 58 h6" {...line} strokeWidth={2} opacity={0.5} />
+    <circle cx={128} cy={24} r={10} fill={C.bread} {...line} />
+  </>
+);
+
+/** A striped tent with palms: Abraham's journeys and family life. */
+const Tent = () => (
+  <>
+    <Ground />
+    <path d="M20 104 L62 34 L104 104 Z" fill={C.woodSoft} {...line} />
+    <path d="M62 34 L48 104 M62 34 L76 104" {...line} strokeWidth={2} opacity={0.5} />
+    <path d="M62 34 L56 104 H70 Z" fill={C.night} {...line} strokeWidth={2.2} />
+    <path d="M62 34 L62 24 L74 28 L62 32" fill={C.red} {...line} strokeWidth={2} />
+    <path d="M128 104 q-4 -30 2 -56" fill="none" {...line} stroke={C.wood} strokeWidth={5} />
+    <path d="M130 48 q-18 -10 -26 2 M130 48 q16 -12 24 0 M130 48 q-6 -18 -18 -16 M130 48 q8 -18 18 -14" fill="none" {...line} stroke={C.paleDeep} strokeWidth={4} />
+    <circle cx={112} cy={84} r={8} fill={C.skin} {...line} strokeWidth={2.2} />
+    <path d="M104 104 q8 -16 16 0" fill={C.steel} {...line} strokeWidth={2.2} />
+    <circle cx={109.5} cy={83} r={1.3} fill={INK} />
+    <circle cx={114.5} cy={83} r={1.3} fill={INK} />
+  </>
+);
+
+/** A night sky full of stars: "so shall thy seed be". */
+const Stars = () => {
+  const star = (x: number, y: number, r: number, key: number) => {
+    const pts = Array.from({ length: 10 }, (_, i) => {
+      const a = -Math.PI / 2 + (i * Math.PI) / 5;
+      const rr = i % 2 ? r * 0.45 : r;
+      return `${x + Math.cos(a) * rr},${y + Math.sin(a) * rr}`;
+    }).join(' ');
+    return <polygon key={key} points={pts} fill={C.bread} {...line} strokeWidth={1.6} />;
+  };
+  return (
+    <>
+      <rect x={6} y={6} width={148} height={108} rx={20} fill={C.night} />
+      {[[30, 26, 7], [62, 18, 5], [96, 30, 8], [130, 20, 6], [44, 52, 5], [118, 52, 6], [80, 54, 4], [20, 70, 4], [140, 78, 5]].map(([x, y, r], i) =>
+        star(x, y, r, i),
+      )}
+      <path d="M6 96 q40 -14 74 -4 q36 -12 74 2 V114 H6 Z" fill={C.paleDeep} />
+      <circle cx={70} cy={84} r={7} fill={C.skin} {...line} strokeWidth={2.2} />
+      <path d="M62 104 q8 -16 16 0" fill={C.steel} {...line} strokeWidth={2.2} />
+      <path d="M67 80 l-1 -3 M73 80 l1 -3" {...line} strokeWidth={1.6} />
+    </>
+  );
+};
+
+/** A cave in the hillside: Machpelah, burials. */
+const Cave = () => (
+  <>
+    <path d="M8 108 Q20 40 70 30 Q120 22 152 70 V108 Z" fill={C.sand} {...line} />
+    <path d="M52 108 Q54 66 80 64 Q106 66 108 108 Z" fill={C.night} {...line} />
+    <ellipse cx={122} cy={100} rx={18} ry={10} fill={C.steelSoft} {...line} />
+    <path d="M30 60 q6 -6 12 0 M120 52 q6 -6 12 0" fill="none" {...line} strokeWidth={2} opacity={0.5} />
+    <path d="M24 108 q2 -12 8 -16 q4 8 2 16 M138 72 q4 -10 10 -10" fill="none" {...line} stroke={C.paleDeep} strokeWidth={3} />
+    <Ground y={108} />
+  </>
+);
+
+/** A hunter's bow and arrows: Esau. */
+const Bow = () => (
+  <>
+    <Ground y={110} />
+    <path d="M50 16 Q110 60 50 104" fill="none" {...line} stroke={C.wood} strokeWidth={7} />
+    <path d="M50 16 Q110 60 50 104" fill="none" {...line} strokeWidth={1.6} />
+    <path d="M50 16 V104" {...line} strokeWidth={1.6} />
+    <path d="M40 60 H128" {...line} strokeWidth={3} />
+    <path d="M128 60 l-10 -6 v12 Z" fill={C.steel} {...line} strokeWidth={2} />
+    <path d="M40 60 l-8 -6 M40 60 l-8 6 M46 60 l-8 -6 M46 60 l-8 6" {...line} stroke={C.red} strokeWidth={3} />
+    <rect x={112} y={74} width={20} height={34} rx={6} fill={C.woodSoft} {...line} />
+    <path d="M116 74 l-4 -14 M122 74 V58 M128 74 l4 -14" {...line} strokeWidth={2.4} />
+  </>
+);
+
+/** A camel with its saddle: Laban's chase, Rachel's hiding place. */
+const Camel = () => (
+  <>
+    <Ground />
+    <path d="M42 64 q8 -26 24 -6 q12 -24 28 -2 q10 14 0 22 H46 q-10 -2 -4 -14 Z" fill={C.bread} {...line} />
+    <path d="M52 76 V104 M64 78 V104 M82 78 V104 M92 76 V104" {...line} strokeWidth={5} stroke={C.mane} />
+    <path d="M94 64 q16 -4 20 -28 q2 -8 10 -8 q10 0 12 8 q0 6 -8 6 q-6 14 -20 30" fill={C.bread} {...line} />
+    <circle cx={128} cy={32} r={2.2} fill={INK} />
+    <path d="M58 52 q10 -12 22 0 v8 h-22 Z" fill={C.red} {...line} strokeWidth={2.2} />
+    <path d="M60 60 h18" stroke={C.steel} strokeWidth={4} strokeLinecap="round" />
+    <path d="M40 66 q-10 2 -10 14" fill="none" {...line} strokeWidth={2.4} />
+  </>
+);
+
+/** A heap of stones / a pillar: covenants and memorials. */
+const Stones = () => (
+  <>
+    <Ground y={108} />
+    {[[40, 98, 16], [72, 98, 18], [104, 98, 16], [130, 100, 12], [56, 78, 15], [88, 78, 16], [72, 58, 14], [116, 82, 12]].map(([x, y, r], i) => (
+      <ellipse key={i} cx={x} cy={y} rx={r} ry={r * 0.7} fill={i % 2 ? C.steelSoft : C.sand} {...line} strokeWidth={2.6} />
+    ))}
+    <Eye x={66} y={57} r={2.6} />
+    <Eye x={78} y={57} r={2.6} />
+    <Smile x={72} y={63} w={7} />
+    <path d="M18 40 q20 -10 34 2 M108 36 q20 -10 34 2" fill="none" {...line} strokeWidth={2} opacity={0.4} />
+  </>
+);
+
+/** Pieces of silver: buying and selling. */
+const Coins = () => (
+  <>
+    <ellipse cx={80} cy={110} rx={50} ry={5} fill={INK} opacity={0.12} />
+    <path d="M34 104 q-6 -40 20 -54 l-6 -10 h28 l-6 10 q26 14 20 54 Z" fill={C.woodSoft} {...line} />
+    <path d="M50 44 q14 6 24 0" fill="none" {...line} stroke={C.red} strokeWidth={4} />
+    {[[104, 100], [124, 100], [114, 88], [134, 88], [124, 76]].map(([x, y], i) => (
+      <g key={i}>
+        <ellipse cx={x} cy={y} rx={11} ry={6} fill={C.steelSoft} {...line} strokeWidth={2.4} />
+        <ellipse cx={x} cy={y - 1} rx={5} ry={2.4} fill="none" {...line} strokeWidth={1.4} opacity={0.6} />
+      </g>
+    ))}
+    <ellipse cx={60} cy={30} rx={11} ry={6} fill={C.steelSoft} {...line} strokeWidth={2.4} />
+  </>
+);
+
+/** A signet ring: Pharaoh's honour, Judah's pledge. */
+const Ring = () => (
+  <>
+    <ellipse cx={80} cy={110} rx={40} ry={5} fill={INK} opacity={0.12} />
+    <ellipse cx={80} cy={74} rx={34} ry={30} fill="none" stroke={C.bread} strokeWidth={12} />
+    <ellipse cx={80} cy={74} rx={40} ry={36} fill="none" {...line} strokeWidth={2.4} />
+    <ellipse cx={80} cy={74} rx={28} ry={24} fill="none" {...line} strokeWidth={2.4} />
+    <rect x={62} y={22} width={36} height={26} rx={8} fill={C.red} {...line} />
+    <path d="M72 30 l8 10 l8 -10" fill="none" stroke={C.white} strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M122 30 l4 -8 M132 40 l8 -2 M128 20 l2 -2" {...line} strokeWidth={2.4} />
+  </>
+);
+
+/** A silver cup: the butler, and the cup in Benjamin's sack. */
+const Cup = () => (
+  <>
+    <ellipse cx={80} cy={110} rx={40} ry={5} fill={INK} opacity={0.12} />
+    <path d="M46 24 H114 Q114 70 80 74 Q46 70 46 24 Z" fill={C.steelSoft} {...line} />
+    <path d="M80 74 V96" {...line} strokeWidth={5} stroke={C.steelSoft} />
+    <path d="M80 74 V96" fill="none" {...line} strokeWidth={1.4} />
+    <ellipse cx={80} cy={102} rx={24} ry={6} fill={C.steelSoft} {...line} />
+    <ellipse cx={80} cy={24} rx={34} ry={6} fill={C.red} {...line} />
+    <Eye x={70} y={46} r={3.2} />
+    <Eye x={90} y={46} r={3.2} />
+    <Smile x={80} y={56} />
+    <path d="M124 30 l6 -6 M128 44 h8" {...line} strokeWidth={2.4} />
+  </>
+);
+
+/** Fat and lean cows by the river: Pharaoh's dream. */
+const Cows = () => {
+  const cow = (x: number, fat: boolean, key: number) => (
+    <g key={key}>
+      <ellipse cx={x} cy={70} rx={fat ? 26 : 18} ry={fat ? 18 : 9} fill={fat ? C.white : C.sand} {...line} />
+      <path d={`M${x - 12} ${fat ? 84 : 76} V100 M${x + 12} ${fat ? 84 : 76} V100`} {...line} strokeWidth={4} />
+      <ellipse cx={x + (fat ? 28 : 20)} cy={60} rx={10} ry={9} fill={fat ? C.white : C.sand} {...line} />
+      <circle cx={x + (fat ? 30 : 22)} cy={58} r={1.8} fill={INK} />
+      <path d={`M${x + (fat ? 22 : 14)} 52 l-4 -6 M${x + (fat ? 34 : 26)} 52 l4 -6`} {...line} strokeWidth={2.2} />
+      {fat && <ellipse cx={x - 6} cy={66} rx={7} ry={5} fill={C.black} />}
+    </g>
+  );
+  return (
+    <>
+      <path d="M0 106 q20 -6 40 0 t40 0 t40 0 t40 0 V120 H0 Z" fill={C.water} {...line} />
+      {cow(40, true, 1)}
+      {cow(112, false, 2)}
+      <path d="M8 104 q4 -10 8 0 M146 104 q4 -10 8 0" fill="none" {...line} stroke={C.paleDeep} strokeWidth={2.4} />
+    </>
+  );
+};
+
+/** Sacks of grain with the money returned: the brothers in Egypt. */
+const Sacks = () => (
+  <>
+    <Ground y={108} />
+    {[[48, 0], [96, 1]].map(([x, i]) => (
+      <g key={i}>
+        <path d={`M${x - 26} 108 q-4 -46 10 -52 l-4 -10 h36 l-4 10 q14 6 10 52 Z`} fill={C.woodSoft} {...line} />
+        <path d={`M${x - 14} 48 q14 6 28 0`} fill="none" {...line} stroke={C.red} strokeWidth={4} />
+        <path d={`M${x - 8} 40 l2 -10 M${x} 40 v-12 M${x + 8} 40 l-2 -10`} {...line} stroke={C.bread} strokeWidth={4} />
+      </g>
+    ))}
+    <ellipse cx={136} cy={102} rx={10} ry={5} fill={C.steelSoft} {...line} strokeWidth={2.2} />
+    <ellipse cx={134} cy={94} rx={10} ry={5} fill={C.steelSoft} {...line} strokeWidth={2.2} />
+    <Eye x={42} y={80} r={2.6} />
+    <Eye x={54} y={80} r={2.6} />
+    <Smile x={48} y={88} w={7} />
+  </>
+);
+
+/** A wagon from Egypt: bringing Jacob's family down. */
+const Wagon = () => (
+  <>
+    <Ground y={108} />
+    <path d="M28 56 H124 V82 H28 Z" fill={C.woodSoft} {...line} />
+    <path d="M36 56 q20 -30 40 0 q20 -30 40 0" fill={C.sand} {...line} />
+    <path d="M124 70 H148" {...line} strokeWidth={4} />
+    {[48, 104].map((x, i) => (
+      <g key={i}>
+        <circle cx={x} cy={92} r={14} fill={C.wood} {...line} />
+        <path d={`M${x - 10} 92 H${x + 10} M${x} 82 V102`} {...line} strokeWidth={2} />
+        <circle cx={x} cy={92} r={3} fill={INK} />
+      </g>
+    ))}
+    <circle cx={76} cy={44} r={7} fill={C.skin} {...line} strokeWidth={2.2} />
+    <circle cx={73.5} cy={43} r={1.3} fill={INK} />
+    <circle cx={78.5} cy={43} r={1.3} fill={INK} />
+  </>
+);
+
+/** A donkey laden with good things. */
+const Donkey = () => (
+  <>
+    <Ground />
+    <ellipse cx={74} cy={70} rx={34} ry={18} fill={C.steelSoft} {...line} />
+    <path d="M52 84 V104 M66 86 V104 M86 86 V104 M98 84 V104" {...line} strokeWidth={5} stroke={C.steel} />
+    <path d="M102 62 q14 -6 22 -24 q8 -8 16 0 q4 10 -6 14 q-8 4 -20 20" fill={C.steelSoft} {...line} />
+    <path d="M124 34 l-4 -18 l8 12 M134 34 l2 -18 l4 14" fill={C.steelSoft} {...line} strokeWidth={2.4} />
+    <circle cx={132} cy={40} r={2.2} fill={INK} />
+    <path d="M40 66 q-10 4 -8 16" fill="none" {...line} strokeWidth={2.4} />
+    <rect x={56} y={36} width={22} height={18} rx={4} fill={C.woodSoft} {...line} strokeWidth={2.4} />
+    <rect x={76} y={40} width={18} height={14} rx={4} fill={C.red} {...line} strokeWidth={2.4} />
+    <path d="M60 36 l4 -8 M70 36 l-2 -8" {...line} stroke={C.bread} strokeWidth={3} />
+  </>
+);
+
+/** The lamp of God in the temple: Samuel and Joash. */
+const Lamp = () => (
+  <>
+    <rect x={6} y={6} width={148} height={108} rx={20} fill={C.night} />
+    <path d="M30 114 V40 H130 V114" fill="none" {...line} stroke={C.sand} strokeWidth={6} />
+    <path d="M24 40 L80 14 L136 40 Z" fill={C.sand} {...line} />
+    <ellipse cx={80} cy={84} rx={26} ry={10} fill={C.bread} {...line} />
+    <path d="M102 82 q14 -4 14 -12" fill="none" {...line} strokeWidth={2.6} />
+    <path d="M58 82 q-8 -10 -14 -8" fill="none" {...line} strokeWidth={2.6} />
+    <path d="M44 74 q-6 -16 4 -24 q2 10 8 12 q-2 8 -12 12 Z" fill={C.bread} {...line} strokeWidth={2.2} />
+    <path d="M46 70 q-2 -8 2 -12 q2 6 4 6 Z" fill={C.red} />
+    <Eye x={72} y={84} r={2.6} />
+    <Eye x={88} y={84} r={2.6} />
+    <ellipse cx={80} cy={100} rx={16} ry={4} fill={C.bread} {...line} strokeWidth={2.2} />
+  </>
+);
+
+/** A short two-edged sword: Ehud, and Abram's battle. */
+const Sword = () => (
+  <>
+    <ellipse cx={80} cy={110} rx={44} ry={5} fill={INK} opacity={0.12} />
+    <g transform="rotate(-35 80 64)">
+      <path d="M74 98 V24 L80 12 L86 24 V98 Z" fill={C.steelSoft} {...line} />
+      <path d="M80 18 V96" {...line} strokeWidth={1.6} opacity={0.5} />
+      <rect x={60} y={96} width={40} height={8} rx={4} fill={C.bread} {...line} />
+      <rect x={75} y={104} width={10} height={20} rx={4} fill={C.wood} {...line} />
+      <circle cx={80} cy={126} r={5} fill={C.red} {...line} strokeWidth={2.2} />
+    </g>
+    <path d="M120 30 l6 -8 M130 42 l10 -2 M118 18 l2 -6" {...line} strokeWidth={2.4} />
+  </>
+);
+
 const ART: Record<ArtKey, () => ReactElement> = {
   ark: Ark,
   fish: Fish,
@@ -462,6 +842,29 @@ const ART: Record<ArtKey, () => ReactElement> = {
   sun: Sun,
   crown: Crown,
   well: Well,
+  harp: Harp,
+  boat: Boat,
+  river: River,
+  altar: Altar,
+  path: Path,
+  elder: Elder,
+  raven: Raven,
+  tower: Tower,
+  tent: Tent,
+  stars: Stars,
+  cave: Cave,
+  bow: Bow,
+  camel: Camel,
+  stones: Stones,
+  coins: Coins,
+  ring: Ring,
+  cup: Cup,
+  cows: Cows,
+  sacks: Sacks,
+  wagon: Wagon,
+  donkey: Donkey,
+  lamp: Lamp,
+  sword: Sword,
 };
 
 export const ART_KEYS = Object.keys(ART) as ArtKey[];

@@ -46,7 +46,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "altar",
    "en": {
     "q": "Which of these prophets did NOT write a book of the Bible?",
     "options": [
@@ -77,7 +77,7 @@
    "verse": 20,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "harp",
    "en": {
     "q": "By the psalm titles, about how many psalms are of David?",
     "options": [
@@ -110,7 +110,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "harp",
    "en": {
     "q": "How many psalms are of Asaph?",
     "options": [
@@ -143,7 +143,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "harp",
    "en": {
     "q": "How many psalms are of Solomon?",
     "options": [
@@ -306,7 +306,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "harp",
    "en": {
     "q": "Which psalm is \"A Prayer of Moses the man of God\"?",
     "options": [
@@ -562,7 +562,7 @@
    "verse": 2,
    "difficulty": 2,
    "answer": 0,
-   "art": "loaves",
+   "art": "boat",
    "en": {
     "q": "Which of these was NOT one of the twelve disciples of Jesus?",
     "options": [
@@ -595,7 +595,7 @@
    "verse": 26,
    "difficulty": 2,
    "answer": 0,
-   "art": "loaves",
+   "art": "boat",
    "en": {
     "q": "Who was chosen to take the place of Judas among the twelve apostles?",
     "options": [
@@ -847,7 +847,7 @@
    "verse": 10,
    "difficulty": 2,
    "answer": 2,
-   "art": "tree",
+   "art": "river",
    "en": {
     "q": "Into how many rivers did the river from Eden part?",
     "options": [
@@ -878,7 +878,7 @@
    "verse": 14,
    "difficulty": 2,
    "answer": 0,
-   "art": "tree",
+   "art": "river",
    "en": {
     "q": "Which of these was one of the rivers of Eden?",
     "options": [
@@ -911,7 +911,7 @@
    "verse": 11,
    "difficulty": 2,
    "answer": 3,
-   "art": "tree",
+   "art": "river",
    "en": {
     "q": "In which land, compassed by the river Pison, was there gold?",
     "options": [
@@ -942,7 +942,7 @@
    "verse": 13,
    "difficulty": 2,
    "answer": 2,
-   "art": "tree",
+   "art": "river",
    "en": {
     "q": "Which river of Eden compassed the land of Ethiopia?",
     "options": [
@@ -1066,7 +1066,7 @@
    "verse": 8,
    "difficulty": 2,
    "answer": 3,
-   "art": "tree",
+   "art": "altar",
    "en": {
     "q": "Who was the first murderer on the earth?",
     "options": [
@@ -1097,7 +1097,7 @@
    "verse": 23,
    "difficulty": 2,
    "answer": 2,
-   "art": "tree",
+   "art": "sword",
    "en": {
     "q": "After Cain, who was the next man in Genesis to say he had slain a man?",
     "options": [
@@ -1128,7 +1128,7 @@
    "verse": 26,
    "difficulty": 2,
    "answer": 0,
-   "art": "tree",
+   "art": "path",
    "en": {
     "q": "In whose days did men begin to call upon the name of the LORD?",
     "options": [
@@ -1159,7 +1159,7 @@
    "verse": 24,
    "difficulty": 2,
    "answer": 0,
-   "art": "tree",
+   "art": "path",
    "en": {
     "q": "Who walked with God, and was not, for God took him?",
     "options": [
@@ -1190,7 +1190,7 @@
    "verse": 9,
    "difficulty": 2,
    "answer": 0,
-   "art": "ark",
+   "art": "path",
    "en": {
     "q": "After Enoch, who was the next man said to walk with God?",
     "options": [
@@ -1221,7 +1221,7 @@
    "verse": 27,
    "difficulty": 2,
    "answer": 3,
-   "art": "tree",
+   "art": "elder",
    "en": {
     "q": "Who lived the longest of all, and for how many years?",
     "options": [
@@ -1285,7 +1285,7 @@
    "verse": 32,
    "difficulty": 2,
    "answer": 3,
-   "art": "ark",
+   "art": "elder",
    "en": {
     "q": "How old was Noah when he began to have sons?",
     "options": [
@@ -1502,7 +1502,7 @@
    "verse": 7,
    "difficulty": 2,
    "answer": 3,
-   "art": "dove",
+   "art": "raven",
    "en": {
     "q": "Which bird did Noah send out first?",
     "options": [
@@ -1597,7 +1597,7 @@
    "verse": 20,
    "difficulty": 2,
    "answer": 1,
-   "art": "ark",
+   "art": "altar",
    "en": {
     "q": "What did Noah do first after coming out of the ark?",
     "options": [
@@ -1628,7 +1628,7 @@
    "verse": 10,
    "difficulty": 2,
    "answer": 3,
-   "art": "crown",
+   "art": "tower",
    "en": {
     "q": "Who was the mighty one whose kingdom began at Babel?",
     "options": [
@@ -1659,7 +1659,7 @@
    "verse": 10,
    "difficulty": 2,
    "answer": 2,
-   "art": "crown",
+   "art": "tower",
    "en": {
     "q": "Which of these cities was in the beginning of Nimrod's kingdom?",
     "options": [
@@ -1692,7 +1692,7 @@
    "verse": 15,
    "difficulty": 2,
    "answer": 2,
-   "art": "crown",
+   "art": "tent",
    "en": {
     "q": "Who was Canaan's firstborn son?",
     "options": [
@@ -1723,7 +1723,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 3,
-   "art": "star",
+   "art": "tent",
    "en": {
     "q": "What did God tell Abram to leave?",
     "options": [
@@ -1754,7 +1754,7 @@
    "verse": 7,
    "difficulty": 2,
    "answer": 2,
-   "art": "star",
+   "art": "tent",
    "en": {
     "q": "Where did the LORD first say to Abram, \"Unto thy seed will I give this land\"?",
     "options": [
@@ -1816,7 +1816,7 @@
    "verse": 14,
    "difficulty": 2,
    "answer": 0,
-   "art": "star",
+   "art": "sword",
    "en": {
     "q": "With how many trained servants did Abram go to rescue Lot?",
     "options": [
@@ -1847,7 +1847,7 @@
    "verse": 2,
    "difficulty": 2,
    "answer": 3,
-   "art": "star",
+   "art": "tent",
    "en": {
     "q": "Whom did Abram first think would be his heir?",
     "options": [
@@ -1878,7 +1878,7 @@
    "verse": 13,
    "difficulty": 2,
    "answer": 1,
-   "art": "star",
+   "art": "stars",
    "en": {
     "q": "God told Abram his seed would be afflicted in a strange land for how many years?",
     "options": [
@@ -1909,7 +1909,7 @@
    "verse": 16,
    "difficulty": 2,
    "answer": 0,
-   "art": "star",
+   "art": "stars",
    "en": {
     "q": "Why would Abram's seed come back only in the fourth generation?",
     "options": [
@@ -1971,7 +1971,7 @@
    "verse": 16,
    "difficulty": 2,
    "answer": 1,
-   "art": "star",
+   "art": "elder",
    "en": {
     "q": "How old was Abram when Ishmael was born?",
     "options": [
@@ -2002,7 +2002,7 @@
    "verse": 5,
    "difficulty": 2,
    "answer": 2,
-   "art": "star",
+   "art": "stars",
    "en": {
     "q": "How old was Abram when God changed his name to Abraham?",
     "options": [
@@ -2033,7 +2033,7 @@
    "verse": 25,
    "difficulty": 2,
    "answer": 2,
-   "art": "star",
+   "art": "elder",
    "en": {
     "q": "When Abraham was circumcised at 99, how old was Ishmael?",
     "options": [
@@ -2064,7 +2064,7 @@
    "verse": 32,
    "difficulty": 2,
    "answer": 1,
-   "art": "star",
+   "art": "tent",
    "en": {
     "q": "Pleading for Sodom, Abraham asked down from 50 righteous. What was the last number he asked about?",
     "options": [
@@ -2097,7 +2097,7 @@
    "verse": 16,
    "difficulty": 2,
    "answer": 0,
-   "art": "star",
+   "art": "coins",
    "en": {
     "q": "How much did Abraham pay the sons of Heth for the field and the cave?",
     "options": [
@@ -2128,7 +2128,7 @@
    "verse": 19,
    "difficulty": 2,
    "answer": 3,
-   "art": "star",
+   "art": "cave",
    "en": {
     "q": "What was the name of the cave where Abraham buried Sarah?",
     "options": [
@@ -2159,7 +2159,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 1,
-   "art": "star",
+   "art": "elder",
    "en": {
     "q": "How old was Sarah when she died?",
     "options": [
@@ -2190,7 +2190,7 @@
    "verse": 2,
    "difficulty": 2,
    "answer": 1,
-   "art": "star",
+   "art": "cave",
    "en": {
     "q": "Where did Sarah die?",
     "options": [
@@ -2221,7 +2221,7 @@
    "verse": 4,
    "difficulty": 2,
    "answer": 0,
-   "art": "star",
+   "art": "altar",
    "en": {
     "q": "On which day of the journey did Abraham see the place where he would offer Isaac?",
     "options": [
@@ -2252,7 +2252,7 @@
    "verse": 3,
    "difficulty": 2,
    "answer": 1,
-   "art": "star",
+   "art": "altar",
    "en": {
     "q": "How many young men did Abraham take with him and Isaac?",
     "options": [
@@ -2283,7 +2283,7 @@
    "verse": 26,
    "difficulty": 2,
    "answer": 0,
-   "art": "well",
+   "art": "tent",
    "en": {
     "q": "How many years after his marriage did Isaac have children?",
     "options": [
@@ -2347,7 +2347,7 @@
    "verse": 41,
    "difficulty": 2,
    "answer": 2,
-   "art": "coat",
+   "art": "bow",
    "en": {
     "q": "What did Esau say he would do after his father's death?",
     "options": [
@@ -2409,7 +2409,7 @@
    "verse": 22,
    "difficulty": 2,
    "answer": 2,
-   "art": "ladder",
+   "art": "stones",
    "en": {
     "q": "At Bethel, what did Jacob vow to give to God?",
     "options": [
@@ -2597,7 +2597,7 @@
    "verse": 29,
    "difficulty": 2,
    "answer": 2,
-   "art": "well",
+   "art": "tent",
    "en": {
     "q": "Who was Rachel's handmaid?",
     "options": [
@@ -2628,7 +2628,7 @@
    "verse": 24,
    "difficulty": 2,
    "answer": 0,
-   "art": "well",
+   "art": "tent",
    "en": {
     "q": "Who was Leah's handmaid?",
     "options": [
@@ -2659,7 +2659,7 @@
    "verse": 6,
    "difficulty": 2,
    "answer": 1,
-   "art": "well",
+   "art": "tent",
    "en": {
     "q": "Which sons were born to Bilhah?",
     "options": [
@@ -2690,7 +2690,7 @@
    "verse": 11,
    "difficulty": 2,
    "answer": 2,
-   "art": "well",
+   "art": "tent",
    "en": {
     "q": "Which sons were born to Zilpah?",
     "options": [
@@ -2721,7 +2721,7 @@
    "verse": 18,
    "difficulty": 2,
    "answer": 3,
-   "art": "well",
+   "art": "tent",
    "en": {
     "q": "What was the name of Leah's fifth son?",
     "options": [
@@ -2752,7 +2752,7 @@
    "verse": 35,
    "difficulty": 2,
    "answer": 3,
-   "art": "well",
+   "art": "tent",
    "en": {
     "q": "What were Leah's first four sons, in order?",
     "options": [
@@ -2783,7 +2783,7 @@
    "verse": 21,
    "difficulty": 2,
    "answer": 3,
-   "art": "well",
+   "art": "tent",
    "en": {
     "q": "What was the name of the daughter of Jacob and Leah?",
     "options": [
@@ -2814,7 +2814,7 @@
    "verse": 24,
    "difficulty": 2,
    "answer": 1,
-   "art": "well",
+   "art": "tent",
    "en": {
     "q": "Which were the sons of Rachel?",
     "options": [
@@ -2845,7 +2845,7 @@
    "verse": 22,
    "difficulty": 2,
    "answer": 0,
-   "art": "sheep",
+   "art": "camel",
    "en": {
     "q": "On which day was it told Laban that Jacob had fled?",
     "options": [
@@ -2876,7 +2876,7 @@
    "verse": 23,
    "difficulty": 2,
    "answer": 1,
-   "art": "sheep",
+   "art": "camel",
    "en": {
     "q": "After how many days' journey, and where, did Laban overtake Jacob?",
     "options": [
@@ -2907,7 +2907,7 @@
    "verse": 34,
    "difficulty": 2,
    "answer": 0,
-   "art": "sheep",
+   "art": "camel",
    "en": {
     "q": "Who stole Laban's images, and where were they hidden?",
     "options": [
@@ -2938,7 +2938,7 @@
    "verse": 47,
    "difficulty": 2,
    "answer": 3,
-   "art": "sheep",
+   "art": "stones",
    "en": {
     "q": "What did Jacob call the heap of stones?",
     "options": [
@@ -2971,7 +2971,7 @@
    "verse": 47,
    "difficulty": 2,
    "answer": 1,
-   "art": "sheep",
+   "art": "stones",
    "en": {
     "q": "What did Laban call the heap of stones?",
     "options": [
@@ -3002,7 +3002,7 @@
    "verse": 49,
    "difficulty": 2,
    "answer": 3,
-   "art": "sheep",
+   "art": "stones",
    "en": {
     "q": "What did Laban say when the place was called Mizpah?",
     "options": [
@@ -3064,7 +3064,7 @@
    "verse": 6,
    "difficulty": 2,
    "answer": 3,
-   "art": "sheep",
+   "art": "bow",
    "en": {
     "q": "With how many men did Esau come to meet Jacob?",
     "options": [
@@ -3159,7 +3159,7 @@
    "verse": 3,
    "difficulty": 2,
    "answer": 2,
-   "art": "sheep",
+   "art": "tent",
    "en": {
     "q": "How many times did Jacob bow himself to the ground before Esau?",
     "options": [
@@ -3190,7 +3190,7 @@
    "verse": 10,
    "difficulty": 2,
    "answer": 2,
-   "art": "sheep",
+   "art": "tent",
    "en": {
     "q": "Who said, \"I have seen thy face, as though I had seen the face of God\"?",
     "options": [
@@ -3221,7 +3221,7 @@
    "verse": 17,
    "difficulty": 2,
    "answer": 0,
-   "art": "sheep",
+   "art": "tent",
    "en": {
     "q": "After saying he would come to Seir, where did Jacob go and build a house?",
     "options": [
@@ -3252,7 +3252,7 @@
    "verse": 20,
    "difficulty": 2,
    "answer": 2,
-   "art": "ladder",
+   "art": "altar",
    "en": {
     "q": "What did Jacob call the altar he built near Shechem?",
     "options": [
@@ -3283,7 +3283,7 @@
    "verse": 19,
    "difficulty": 2,
    "answer": 0,
-   "art": "sheep",
+   "art": "coins",
    "en": {
     "q": "For how many pieces of money did Jacob buy a field from the children of Hamor?",
     "options": [
@@ -3314,7 +3314,7 @@
    "verse": 2,
    "difficulty": 2,
    "answer": 3,
-   "art": "sheep",
+   "art": "tent",
    "en": {
     "q": "Who defiled Dinah?",
     "options": [
@@ -3345,7 +3345,7 @@
    "verse": 25,
    "difficulty": 2,
    "answer": 3,
-   "art": "sheep",
+   "art": "sword",
    "en": {
     "q": "Which two brothers avenged their sister Dinah?",
     "options": [
@@ -3593,7 +3593,7 @@
    "verse": 28,
    "difficulty": 2,
    "answer": 3,
-   "art": "coat",
+   "art": "coins",
    "en": {
     "q": "For how many pieces of silver was Joseph sold?",
     "options": [
@@ -3686,7 +3686,7 @@
    "verse": 25,
    "difficulty": 2,
    "answer": 3,
-   "art": "coat",
+   "art": "ring",
    "en": {
     "q": "\"Discern, whose are these?\" What did Tamar send to Judah?",
     "options": [
@@ -3719,7 +3719,7 @@
    "verse": 2,
    "difficulty": 2,
    "answer": 0,
-   "art": "coat",
+   "art": "cup",
    "en": {
     "q": "Who were in prison with Joseph?",
     "options": [
@@ -3750,7 +3750,7 @@
    "verse": 3,
    "difficulty": 2,
    "answer": 0,
-   "art": "sheaves",
+   "art": "cows",
    "en": {
     "q": "In Pharaoh's first dream, what came up out of the river?",
     "options": [
@@ -3845,7 +3845,7 @@
    "verse": 42,
    "difficulty": 2,
    "answer": 2,
-   "art": "crown",
+   "art": "ring",
    "en": {
     "q": "How did Pharaoh honour Joseph?",
     "options": [
@@ -4002,7 +4002,7 @@
    "verse": 17,
    "difficulty": 2,
    "answer": 2,
-   "art": "sheaves",
+   "art": "sacks",
    "en": {
     "q": "For how many days did Joseph put his brothers in ward?",
     "options": [
@@ -4033,7 +4033,7 @@
    "verse": 24,
    "difficulty": 2,
    "answer": 1,
-   "art": "sheaves",
+   "art": "sacks",
    "en": {
     "q": "Which brother did Joseph bind and keep in Egypt?",
     "options": [
@@ -4064,7 +4064,7 @@
    "verse": 37,
    "difficulty": 2,
    "answer": 3,
-   "art": "sheaves",
+   "art": "sacks",
    "en": {
     "q": "What did Reuben offer to his father as surety for Benjamin?",
     "options": [
@@ -4095,7 +4095,7 @@
    "verse": 9,
    "difficulty": 2,
    "answer": 1,
-   "art": "sheaves",
+   "art": "sacks",
    "en": {
     "q": "Who became surety for Benjamin the second time?",
     "options": [
@@ -4126,7 +4126,7 @@
    "verse": 11,
    "difficulty": 2,
    "answer": 2,
-   "art": "sheaves",
+   "art": "donkey",
    "en": {
     "q": "What present did Jacob send down to the ruler of Egypt?",
     "options": [
@@ -4157,7 +4157,7 @@
    "verse": 33,
    "difficulty": 2,
    "answer": 2,
-   "art": "sheaves",
+   "art": "loaves",
    "en": {
     "q": "Why did the brothers marvel one at another in Joseph's house?",
     "options": [
@@ -4188,7 +4188,7 @@
    "verse": 34,
    "difficulty": 2,
    "answer": 1,
-   "art": "sheaves",
+   "art": "loaves",
    "en": {
     "q": "How many times more food was Benjamin given than his brothers?",
     "options": [
@@ -4219,7 +4219,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 3,
-   "art": "coat",
+   "art": "cup",
    "en": {
     "q": "When did Joseph make himself known to his brothers?",
     "options": [
@@ -4281,7 +4281,7 @@
    "verse": 6,
    "difficulty": 2,
    "answer": 0,
-   "art": "sheaves",
+   "art": "sacks",
    "en": {
     "q": "How many years of famine were still to come when Joseph revealed himself?",
     "options": [
@@ -4312,7 +4312,7 @@
    "verse": 19,
    "difficulty": 2,
    "answer": 1,
-   "art": "sheaves",
+   "art": "wagon",
    "en": {
     "q": "What did Joseph send to bring his father's household down to Egypt?",
     "options": [
@@ -4345,7 +4345,7 @@
    "verse": 22,
    "difficulty": 2,
    "answer": 1,
-   "art": "coat",
+   "art": "coins",
    "en": {
     "q": "What did Joseph give to Benjamin?",
     "options": [
@@ -4376,7 +4376,7 @@
    "verse": 23,
    "difficulty": 2,
    "answer": 2,
-   "art": "sheaves",
+   "art": "donkey",
    "en": {
     "q": "What did Joseph send to his father?",
     "options": [
@@ -4438,7 +4438,7 @@
    "verse": 27,
    "difficulty": 2,
    "answer": 1,
-   "art": "sheep",
+   "art": "wagon",
    "en": {
     "q": "In all, how many souls of the house of Jacob came into Egypt?",
     "options": [
@@ -4502,7 +4502,7 @@
    "verse": 28,
    "difficulty": 2,
    "answer": 3,
-   "art": "sheep",
+   "art": "elder",
    "en": {
     "q": "For how many years did Jacob live in Egypt?",
     "options": [
@@ -4533,7 +4533,7 @@
    "verse": 7,
    "difficulty": 2,
    "answer": 1,
-   "art": "well",
+   "art": "stones",
    "en": {
     "q": "Where was Rachel buried?",
     "options": [
@@ -4564,7 +4564,7 @@
    "verse": 14,
    "difficulty": 2,
    "answer": 2,
-   "art": "ladder",
+   "art": "elder",
    "en": {
     "q": "On whose head did Jacob lay his right hand to bless him?",
     "options": [
@@ -4595,7 +4595,7 @@
    "verse": 3,
    "difficulty": 2,
    "answer": 0,
-   "art": "sheaves",
+   "art": "elder",
    "en": {
     "q": "For how many days did the Egyptians mourn for Jacob?",
     "options": [
@@ -4657,7 +4657,7 @@
    "verse": 26,
    "difficulty": 2,
    "answer": 0,
-   "art": "coat",
+   "art": "elder",
    "en": {
     "q": "How old was Joseph when he died?",
     "options": [
@@ -4688,7 +4688,7 @@
    "verse": 2,
    "difficulty": 2,
    "answer": 0,
-   "art": "crown",
+   "art": "lamp",
    "en": {
     "q": "What was the name of Hannah's husband?",
     "options": [
@@ -4719,7 +4719,7 @@
    "verse": 3,
    "difficulty": 2,
    "answer": 0,
-   "art": "crown",
+   "art": "lamp",
    "en": {
     "q": "Which two children grew up in the house of the LORD?",
     "options": [
@@ -4752,7 +4752,7 @@
    "verse": 15,
    "difficulty": 2,
    "answer": 1,
-   "art": "crown",
+   "art": "sword",
    "en": {
     "q": "Which judge of Israel was left-handed?",
     "options": [
@@ -4783,7 +4783,7 @@
    "verse": 4,
    "difficulty": 2,
    "answer": 2,
-   "art": "crown",
+   "art": "tree",
    "en": {
     "q": "Who was the woman who judged Israel?",
     "options": [
@@ -4911,7 +4911,7 @@
    "verse": 21,
    "difficulty": 2,
    "answer": 1,
-   "art": "bush",
+   "art": "well",
    "en": {
     "q": "What was the name of Moses' wife?",
     "options": [
@@ -4973,7 +4973,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 0,
-   "art": "crown",
+   "art": "harp",
    "en": {
     "q": "What was the name of David's daughter?",
     "options": [
@@ -5004,7 +5004,7 @@
    "verse": 6,
    "difficulty": 2,
    "answer": 3,
-   "art": "coat",
+   "art": "ring",
    "en": {
     "q": "Who was Judah's daughter-in-law?",
     "options": [

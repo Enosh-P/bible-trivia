@@ -2,7 +2,8 @@ export type Lang = 'en' | 'ta';
 
 export type ArtKey =
   | 'ark' | 'fish' | 'lion' | 'sling' | 'bush' | 'star' | 'loaves' | 'horse' | 'tree'
-  | 'scroll' | 'coat' | 'ladder' | 'dove' | 'sheaves' | 'sheep' | 'sun' | 'crown' | 'well';
+  | 'scroll' | 'coat' | 'ladder' | 'dove' | 'sheaves' | 'sheep' | 'sun' | 'crown' | 'well'
+  | 'harp' | 'boat' | 'river' | 'altar' | 'path' | 'elder' | 'raven' | 'tower' | 'tent' | 'stars' | 'cave' | 'bow' | 'camel' | 'stones' | 'coins' | 'ring' | 'cup' | 'cows' | 'sacks' | 'wagon' | 'donkey' | 'lamp' | 'sword';
 
 /** How a question is asked. Every type renders as multiple choice except `tf`. */
 export type QuestionType =
