@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { Check, Clock, Copy, Share2, Swords, Trash2, UserPlus, Users, X, QrCode, ScanLine } from 'lucide-react';
+import { Check, Clock, Copy, Share2, Swords, Trash2, UserPlus, Users, X, QrCode, ScanLine, Pencil } from 'lucide-react';
 import {
   addFriend,
   allTimeBoard,
@@ -20,6 +20,9 @@ import { MODES, type ModeId } from '../engine/modes';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { MyQRSheet, ScanSheet } from '../components/FriendQR';
+import { NameForm } from '../components/EditName';
+import { AvatarPicker } from '../components/AvatarPicker';
+import { CartoonAvatar, isCartoonAvatar } from '../art/Avatars';
 import { Pressable } from '../components/Pressable';
 import { Sheet } from '../components/Sheet';
 import { AuthForm } from '../components/AuthForm';
@@ -29,8 +32,11 @@ import { FriendPage } from './FriendPage';
 /** Modes that make a fair, fixed-length challenge. */
 export const CHALLENGE_MODES: ModeId[] = ['classic', 'drill', 'truefalse', 'who', 'book', 'blank'];
 
+/** A cartoon avatar, or the original horse-colour tile for older profiles. */
 export function Avatar({ horse, size = 36 }: { horse: Friend['avatar']; size?: number }) {
-  return <IconTile horse={horse} icon={HorseHead} size={size} />;
+  if (isCartoonAvatar(horse)) return <CartoonAvatar id={horse} size={size} />;
+  const colour = (['white', 'red', 'black', 'pale'] as const).find((h) => h === horse) ?? 'pale';
+  return <IconTile horse={colour} icon={HorseHead} size={size} />;
 }
 
 export function Friends({
@@ -225,6 +231,8 @@ function MyCode({ code, name, avatar }: { code: string; name: string; avatar: Fr
   const t = useT();
   const [copied, setCopied] = useState(false);
   const [showQr, setShowQr] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [picking, setPicking] = useState(false);
   const [scanning, setScanning] = useState(false);
   async function share() {
     const text = `${t.shareCodeText} ${code}\n${location.origin}`;
@@ -242,12 +250,25 @@ function MyCode({ code, name, avatar }: { code: string; name: string; avatar: Fr
   return (
     <section className="glass card-pad my-code">
       <div className="person">
-        <Avatar horse={avatar} size={44} />
+        <button className="avatar-edit" onClick={() => setPicking(true)} aria-label={t.chooseAvatar} title={t.chooseAvatar}>
+          <Avatar horse={avatar} size={48} />
+          <span className="avatar-edit-badge" aria-hidden>
+            <Pencil size={11} strokeWidth={2.4} />
+          </span>
+        </button>
         <div className="grow">
           <strong>{name}</strong>
           <span className="caption">{t.yourCode}</span>
         </div>
+        <Pressable className="chip glass" onClick={() => setEditing(true)} aria-label={t.editName} title={t.editName}>
+          <Pencil size={16} strokeWidth={STROKE} />
+        </Pressable>
       </div>
+      <AvatarPicker open={picking} onClose={() => setPicking(false)} />
+      <Sheet open={editing} onClose={() => setEditing(false)} label={t.editName}>
+        <h2 className="title">{t.editName}</h2>
+        <NameForm autoFocus onSaved={() => setTimeout(() => setEditing(false), 700)} />
+      </Sheet>
       <div className="code-row">
         <span className="friend-code" aria-label={t.yourCode}>
           {code}

@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import type { Session } from '@supabase/supabase-js';
 import { supabase } from './supabase';
 import { useApp } from '../store';
-import type { Horse, ModeId } from '../engine/modes';
+import type { ModeId } from '../engine/modes';
 
 /*
  * Accounts, friends and challenges (Supabase Auth + the functions in
@@ -10,10 +10,13 @@ import type { Horse, ModeId } from '../engine/modes';
  * without Supabase or without signing in, the app works as before.
  */
 
+/** A horse colour (original avatars) or a cartoon avatar id (src/art/Avatars.tsx). */
+export type AvatarId = string;
+
 export interface Profile {
   id: string;
   display_name: string;
-  avatar: Horse;
+  avatar: AvatarId;
   friend_code: string;
   xp: number;
   streak: number;
@@ -25,7 +28,7 @@ export interface Profile {
 export interface Friend {
   user_id: string;
   display_name: string;
-  avatar: Horse;
+  avatar: AvatarId;
   friend_code: string | null;
   xp: number | null;
   streak: number | null;
@@ -38,7 +41,7 @@ export interface Friend {
 export interface ChallengePlayer {
   user_id: string;
   name: string;
-  avatar: Horse;
+  avatar: AvatarId;
   me: boolean;
   score: number | null;
   correct: number | null;
@@ -60,7 +63,7 @@ export interface BoardRow {
   rank: number;
   user_id: string;
   display_name: string;
-  avatar: Horse;
+  avatar: AvatarId;
   score: number;
   correct: number;
   total: number;
@@ -95,7 +98,7 @@ export interface AllTimeRow {
   rank: number;
   user_id: string;
   display_name: string;
-  avatar: Horse;
+  avatar: AvatarId;
   wins: number;
   played: number;
   xp: number;
