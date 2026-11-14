@@ -1,0 +1,7 @@
+# Keep Unix line endings in the repository and on every computer, so files the
+# scripts write (question packs, translations) don't show as "modified" on Windows.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.woff2 binary
+*.parquet binary
