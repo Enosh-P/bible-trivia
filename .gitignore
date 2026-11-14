@@ -16,3 +16,25 @@ supabase/.temp/
 
 # Cloudflare wrangler cache
 .wrangler/
+
+# TypeScript build cache
+*.tsbuildinfo
+
+# Claude Code: share only the project skills; keep personal settings local
+.claude/*
+!.claude/skills/
+
+# Claude translation script: local progress and preview (the translations are kept)
+content/translations/ta/mcq-claude/_batches.json
+content/translations/ta/claude-sample.md
+
+# Local tools and editors
+.vercel/
+.venv/
+venv/
+*.pyc
+.vscode/
+.idea/
+Thumbs.db
+coverage/
+supabase/.branches/
