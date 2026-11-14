@@ -12,6 +12,7 @@ import { Practice, type PracticeAction } from './screens/Practice';
 import { MemoryVerses } from './screens/MemoryVerses';
 import { Notebook } from './screens/Notebook';
 import { drillRound } from './engine/drill';
+import type { GameSnapshot } from './engine/resume';
 import { Gospel } from './screens/Gospel';
 import { Recall } from './screens/Recall';
 import { QuizPick } from './screens/QuizPick';
@@ -42,7 +43,7 @@ type Route =
   | { kind: 'quizpick' }
   | { kind: 'memory' }
   | { kind: 'notebook' }
-  | { kind: 'game'; mode: ModeId; run: number; challenge?: { id: string; questionIds: string[] }; scope?: { book: string; chapter: number | null }; ids?: string[] } | { kind: 'result'; result: RoundResult; xp: number };
+  | { kind: 'game'; mode: ModeId; run: number; challenge?: { id: string; questionIds: string[] }; scope?: { book: string; chapter: number | null }; ids?: string[]; resume?: GameSnapshot } | { kind: 'result'; result: RoundResult; xp: number };
 
 /** Applies theme and text size to <html>. */
 function useDocumentSettings() {
@@ -227,6 +228,18 @@ function MainApp() {
             : { kind: 'quizpick' }
           : { kind: 'game', mode, run: Date.now() },
     );
+  /** Continue a game that was closed partway (saved by Game after every question). */
+  const resumeGame = (s: GameSnapshot) =>
+    setRoute({
+      kind: 'game',
+      mode: s.mode,
+      run: Date.now(),
+      ids: s.ids,
+      resume: s,
+      ...(s.scope ? { scope: s.scope } : {}),
+      ...(s.challengeId ? { challenge: { id: s.challengeId, questionIds: s.ids } } : {}),
+    });
+
   // Practice tab: mistakes, reviews and saved questions; the books drill; memory verses; the notebook.
   const practice = (a: PracticeAction) => {
     if (a.kind === 'ids') setRoute({ kind: 'game', mode: 'practice', run: Date.now(), ids: a.ids });
@@ -296,7 +309,7 @@ function MainApp() {
             exit={pushed ? { x: '30%', opacity: 0 } : { opacity: 0, scale: 0.985 }}
             transition={spring.calm}
           >
-            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} />}
+            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onResume={resumeGame} />}
             {route.kind === 'tab' && route.tab === 'friends' && <Friends onStartChallenge={startChallenge} onPlayChallenge={playChallenge} />}
             {route.kind === 'tab' && route.tab === 'gospel' && <Gospel />}
             {route.kind === 'tab' && route.tab === 'progress' && <Practice onAction={practice} />}
@@ -306,7 +319,7 @@ function MainApp() {
             {route.kind === 'recall' && <Recall onExit={() => goTab(lastTab)} />}
             {route.kind === 'quizpick' && <QuizPick onExit={() => goTab(lastTab)} onStart={startQuiz} />}
             {route.kind === 'game' && (
-              <Game modeId={route.mode} questionIds={route.challenge?.questionIds ?? route.ids} scope={route.scope} onExit={() => goTab(lastTab)} onDone={onDone} />
+              <Game modeId={route.mode} questionIds={route.challenge?.questionIds ?? route.ids} scope={route.scope} challengeId={route.challenge?.id} resume={route.resume} onExit={() => goTab(lastTab)} onDone={onDone} />
             )}
             {route.kind === 'result' && (
               <Results

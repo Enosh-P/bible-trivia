@@ -13,8 +13,9 @@ import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 import { Sheet } from '../components/Sheet';
 import { ModeArt } from '../art/ModeArt';
 import { InstallBanner } from '../components/Install';
+import { clearSnapshot, loadSnapshot, type GameSnapshot } from '../engine/resume';
 
-export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
+export function Home({ onPlay, onResume }: { onPlay: (m: ModeId) => void; onResume: (s: GameSnapshot) => void }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   const xp = useApp((s) => s.xp);
@@ -50,6 +51,8 @@ export function Home({ onPlay }: { onPlay: (m: ModeId) => void }) {
           </div>
         </div>
       </header>
+
+      <ResumeCard onResume={onResume} />
 
       <InstallBanner />
 
@@ -130,12 +133,13 @@ function ModeIntro({ mode, onClose, onStart }: { mode: ModeId | null; onClose: (
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   const m = mode ? MODES[mode] : null;
+  const quizSeconds = useApp((s) => s.quizSeconds ?? 20);
   const facts: { icon: typeof Clock; text: string }[] = [];
   if (m && mode !== 'recall') {
     if (Number.isFinite(m.length)) facts.push({ icon: ListOrdered, text: t.questionsN(m.length) });
     else if (!m.lives) facts.push({ icon: ListOrdered, text: t.untilOut });
     if (m.roundSeconds) facts.push({ icon: Clock, text: t.roundSeconds(m.roundSeconds) });
-    else if (m.perQuestion) facts.push({ icon: Clock, text: t.secondsEach(m.perQuestion) });
+    else if (m.perQuestion) facts.push({ icon: Clock, text: t.secondsEach(mode === 'quiz' ? quizSeconds : m.perQuestion) });
     else facts.push({ icon: Clock, text: t.noTimer });
     if (m.lives) facts.push({ icon: Heart, text: t.livesN(m.lives) });
   }
@@ -192,5 +196,39 @@ export function DailyCard({ onPlay, big }: { onPlay: () => void; big?: boolean }
         )}
       </div>
     </Pressable>
+  );
+}
+
+/** "Continue Classic · 4/10": a game that was closed partway. */
+function ResumeCard({ onResume }: { onResume: (s: GameSnapshot) => void }) {
+  const t = useT();
+  const [snap, setSnap] = useState(() => loadSnapshot());
+  if (!snap) return null;
+  const total = Number.isFinite(MODES[snap.mode].length) ? Math.min(MODES[snap.mode].length, snap.ids.length) : null;
+  return (
+    <motion.div className="resume-card glass" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={spring.calm}>
+      <ModeArt mode={snap.mode} className="resume-art" />
+      <div className="grow">
+        <span className="eyebrow">{t.continueGame}</span>
+        <strong>{t.modeName[snap.mode]}</strong>
+        <span className="caption">
+          {total ? `${snap.index + 1}/${total}` : `#${snap.index + 1}`} · {snap.score} {t.points}
+        </span>
+      </div>
+      <Pressable className="btn btn-primary small" onClick={() => onResume(snap)}>
+        <Play size={16} strokeWidth={STROKE} /> {t.resume}
+      </Pressable>
+      <button
+        className="icon-btn"
+        aria-label={t.discardGame}
+        title={t.discardGame}
+        onClick={() => {
+          clearSnapshot();
+          setSnap(null);
+        }}
+      >
+        <X size={16} strokeWidth={STROKE} />
+      </button>
+    </motion.div>
   );
 }

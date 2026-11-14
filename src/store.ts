@@ -15,6 +15,8 @@ interface Settings {
   sound: boolean;
   haptics: boolean;
   textScale: number;
+  /** Quiz by Book: seconds per question (20, 40 or 60). */
+  quizSeconds?: 20 | 40 | 60;
 }
 
 interface Progress {

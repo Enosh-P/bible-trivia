@@ -11,6 +11,7 @@ import type { RoundResult } from './Game';
 import { dayKey } from '../engine/picker';
 import { ReportButton } from '../components/Report';
 import { ChallengeFromResult } from '../components/ChallengeFromResult';
+import { Reveal } from '../components/Reveal';
 import { questionTarget } from '../online/reports';
 
 export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; xp: number; onAgain: () => void; onHome: () => void }) {
@@ -18,6 +19,7 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
   const uiLang = useApp((s) => s.uiLang);
   const qLang = useApp((s) => s.qLang);
   const lang = qLang === 'both' ? uiLang : qLang;
+  const second = qLang === 'both' ? (lang === 'en' ? 'ta' : 'en') : null;
   const mode = MODES[result.mode];
   const pct = result.total ? Math.round((result.correct / result.total) * 100) : 0;
   // A heart earned by this round: shown once, then cleared.
@@ -81,17 +83,19 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
       )}
 
       <div className="result-actions">
-        <Pressable className="btn glass" onClick={onHome}>
-          <HomeIcon size={18} strokeWidth={STROKE} /> {t.home}
-        </Pressable>
-        <Pressable className="btn glass" onClick={share}>
-          <Share2 size={18} strokeWidth={STROKE} /> {t.share}
-        </Pressable>
         {result.mode !== 'daily' && (
-          <Pressable className="btn btn-primary" onClick={onAgain}>
-            <RotateCcw size={18} strokeWidth={STROKE} /> {t.playAgain}
+          <Pressable className="btn btn-primary result-main" onClick={onAgain}>
+            <RotateCcw size={19} strokeWidth={STROKE} /> {t.playAgain}
           </Pressable>
         )}
+        <div className="result-secondary">
+          <Pressable className="btn glass" onClick={onHome}>
+            <HomeIcon size={18} strokeWidth={STROKE} /> {t.home}
+          </Pressable>
+          <Pressable className="btn glass" onClick={share}>
+            <Share2 size={18} strokeWidth={STROKE} /> {t.share}
+          </Pressable>
+        </div>
         <ChallengeFromResult result={result} />
       </div>
 
@@ -111,6 +115,7 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
               <span className="caption" lang={lang}>
                 {formatRef(lang, l.q.book, l.q.chapter, l.q.verse, l.q.verseEnd)}
               </span>
+              <Reveal q={l.q} primary={lang} secondary={second} choice={l.choice} />
             </div>
             <ReportButton target={questionTarget(l.q)} compact />
           </motion.li>

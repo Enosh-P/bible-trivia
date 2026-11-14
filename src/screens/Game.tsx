@@ -18,6 +18,8 @@ import { TimerRing } from '../components/TimerRing';
 import { ArtSticker } from '../components/ArtSticker';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 import { VerseText } from '../components/VerseCard';
+import { RefVerse } from '../components/RefVerse';
+import { clearSnapshot, saveSnapshot, type GameSnapshot } from '../engine/resume';
 import { ReportButton } from '../components/Report';
 import { SaveButton } from '../components/SaveButton';
 import { questionTarget } from '../online/reports';
@@ -46,6 +48,8 @@ export function Game({
   modeId,
   questionIds,
   scope,
+  challengeId,
+  resume,
   onExit,
   onDone,
 }: {
@@ -54,10 +58,17 @@ export function Game({
   questionIds?: string[];
   /** Quiz by book: one book, or one chapter of it. */
   scope?: { book: string; chapter: number | null };
+  /** A friend challenge being played (kept with a saved game). */
+  challengeId?: string;
+  /** Pick up a game that was closed partway. */
+  resume?: GameSnapshot;
   onExit: () => void;
   onDone: (r: RoundResult) => void;
 }) {
   const mode = MODES[modeId];
+  // Quiz by Book lets players choose the time per question.
+  const quizSeconds = useApp((s) => s.quizSeconds ?? 20);
+  const perQuestion: number = modeId === 'quiz' ? quizSeconds : mode.perQuestion;
   const t = useT();
   const qLang = useApp((s) => s.qLang);
   const uiLang = useApp((s) => s.uiLang);
@@ -72,27 +83,41 @@ export function Game({
   const [bestCombo, setBestCombo] = useState(0);
   const [lives, setLives] = useState(mode.lives ?? 0);
   const [log, setLog] = useState<AnswerLog[]>([]);
-  const [qLeft, setQLeft] = useState(mode.perQuestion);
+  const [qLeft, setQLeft] = useState(perQuestion);
   const [roundLeft, setRoundLeft] = useState(mode.roundSeconds ?? 0);
   const finished = useRef(false);
+  /** Set once the round (and any resumed progress) is in place, so saving can start. */
+  const ready = useRef(false);
 
   // Build the round.
   useEffect(() => {
     let alive = true;
     (async () => {
+      const ids = resume?.ids ?? questionIds;
       const pool = await roundPool(
-        questionIds ? { kind: 'ids', ids: questionIds } : scope ? { kind: 'book', ...scope } : modeId === 'daily' ? { kind: 'daily' } : modeId === 'who' ? { kind: 'who' } : { kind: 'mix' },
+        ids ? { kind: 'ids', ids } : scope ? { kind: 'book', ...scope } : modeId === 'daily' ? { kind: 'daily' } : modeId === 'who' ? { kind: 'who' } : { kind: 'mix' },
       );
       const byId = new Map(pool.map((x) => [x.id, x]));
-      const qs = questionIds
-        ? questionIds.map((id) => byId.get(id)).filter((x): x is Question => Boolean(x))
+      const qs = ids
+        ? ids.map((id) => byId.get(id)).filter((x): x is Question => Boolean(x))
         : modeId === 'daily'
           ? pickDaily(pool, mode)
           : pickQuestions(pool, mode, {
               weak: await weakQuestionIds().catch(() => undefined),
               recent: await recentQuestionIds().catch(() => undefined),
             });
-      if (alive) setQuestions(qs);
+      if (!alive) return;
+      if (resume) {
+        setIndex(Math.min(resume.index, Math.max(0, qs.length - 1)));
+        setScore(resume.score);
+        setCombo(resume.combo);
+        setBestCombo(resume.bestCombo);
+        setLives(resume.lives);
+        if (resume.roundLeft) setRoundLeft(resume.roundLeft);
+        setLog(resume.log.map((l) => ({ q: byId.get(l.id)!, choice: l.choice, correct: l.correct })).filter((l) => l.q));
+      }
+      setQuestions(qs);
+      ready.current = true;
     })();
     return () => {
       alive = false;
@@ -102,6 +127,27 @@ export function Game({
   }, [modeId, mode]);
 
   const q = questions?.[index];
+
+  // Save the game at the start of each question, so it can be resumed if closed.
+  useEffect(() => {
+    if (!ready.current || !questions || answered || finished.current || mode.roundSeconds !== undefined) return;
+    saveSnapshot({
+      mode: modeId,
+      // Endless modes have very long lists: keep what's needed for a while.
+      ids: questions.slice(0, index + 150).map((x) => x.id),
+      index,
+      score,
+      combo,
+      bestCombo,
+      lives,
+      roundLeft,
+      log: log.map((l) => ({ id: l.q.id, choice: l.choice, correct: l.correct })),
+      ...(scope ? { scope } : {}),
+      ...(challengeId ? { challengeId } : {}),
+    });
+    // Saved per question; the other values are read at that moment.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [questions, index, answered]);
   // Both languages, but a question not translated yet: show it once, not twice.
   const sec = secondary && q && q[secondary].q !== q[primary].q ? secondary : null;
 
@@ -109,6 +155,7 @@ export function Game({
     (finalLog: AnswerLog[], finalScore: number, finalBest: number) => {
       if (finished.current) return;
       finished.current = true;
+      clearSnapshot();
       cue('complete');
       onDone({
         mode: modeId,
@@ -132,7 +179,7 @@ export function Game({
     }
     setIndex((i) => i + 1);
     setAnswered(null);
-    setQLeft(mode.perQuestion);
+    setQLeft(perQuestion);
   }, [questions, mode, lives, roundLeft, index, log, score, bestCombo, finish]);
 
   const answer = useCallback(
@@ -143,8 +190,8 @@ export function Game({
       const pts = pointsFor({
         correct: ok,
         difficulty: q.difficulty,
-        secondsLeft: mode.perQuestion ? qLeft : undefined,
-        secondsTotal: mode.perQuestion || undefined,
+        secondsLeft: perQuestion ? qLeft : undefined,
+        secondsTotal: perQuestion || undefined,
         combo,
       });
       cue(ok ? 'correct' : 'wrong');
@@ -159,18 +206,18 @@ export function Game({
     [q, answered, combo, mode, qLeft, modeId],
   );
 
-  // Auto-advance: quick after a right answer; wrong answers wait for "Next" so there's time to learn.
+  // Auto-advance only in the Speed Round; otherwise the answer card (with its verse) waits for "Next".
   useEffect(() => {
     if (!answered || mode.study) return;
     const fast = mode.roundSeconds !== undefined;
-    if (!answered.correct && !fast) return;
+    if (!fast) return;
     const id = setTimeout(goNext, fast ? 450 : 900);
     return () => clearTimeout(id);
   }, [answered, mode, goNext]);
 
   // Per-question timer.
   useEffect(() => {
-    if (!q || answered || !mode.perQuestion) return;
+    if (!q || answered || !perQuestion) return;
     if (qLeft <= 0) {
       answer(null);
       return;
@@ -180,7 +227,7 @@ export function Game({
       setQLeft((s) => s - 1);
     }, 1000);
     return () => clearTimeout(id);
-  }, [q, answered, qLeft, mode.perQuestion, answer]);
+  }, [q, answered, qLeft, perQuestion, answer]);
 
   // Whole-round timer (Speed).
   useEffect(() => {
@@ -229,7 +276,7 @@ export function Game({
         <motion.div className="score-chip glass" key={score} initial={{ scale: 1.15 }} animate={{ scale: 1 }} transition={spring.flick}>
           {score}
         </motion.div>
-        {mode.perQuestion > 0 && <TimerRing progress={qLeft / mode.perQuestion} seconds={qLeft} horse={mode.horse} />}
+        {perQuestion > 0 && <TimerRing progress={qLeft / perQuestion} seconds={qLeft} horse={mode.horse} />}
         {mode.roundSeconds && <TimerRing progress={roundLeft / mode.roundSeconds} seconds={roundLeft} horse={mode.horse} />}
       </header>
 
@@ -299,8 +346,8 @@ export function Game({
             )}
 
             <AnimatePresence>
-              {answered && (!answered.correct || mode.study) && mode.roundSeconds === undefined && (
-                <Feedback q={q} answered={answered} primary={primary} last={!!total && index + 1 >= total} onNext={goNext} lives={mode.lives !== undefined ? lives : undefined} />
+              {answered && mode.roundSeconds === undefined && (
+                <Feedback q={q} answered={answered} primary={primary} secondary={sec} last={!!total && index + 1 >= total} onNext={goNext} lives={mode.lives !== undefined ? lives : undefined} />
               )}
             </AnimatePresence>
           </motion.section>
@@ -445,7 +492,7 @@ function TrueFalseCard({ q, primary, secondary, answered, onAnswer }: { q: Quest
   );
 }
 
-function Feedback({ q, answered, primary, last, onNext, lives }: { q: Question; answered: NonNullable<Answered>; primary: Lang; last: boolean; onNext: () => void; lives?: number }) {
+function Feedback({ q, answered, primary, secondary, last, onNext, lives }: { q: Question; answered: NonNullable<Answered>; primary: Lang; secondary: Lang | null; last: boolean; onNext: () => void; lives?: number }) {
   const t = useT();
   const ref = formatRef(primary, q.book, q.chapter, q.verse, q.verseEnd);
   // Book questions use the verse reference as their explanation: don't show it twice.
@@ -477,7 +524,11 @@ function Feedback({ q, answered, primary, last, onNext, lives }: { q: Question; 
           {explain}
         </p>
       )}
-      {verse && <VerseText verse={verse} size="sm" />}
+      {q.verse ? (
+        <RefVerse book={q.book} chapter={q.chapter} verse={q.verse} verseEnd={q.verseEnd} primary={primary} secondary={secondary} />
+      ) : (
+        verse && <VerseText verse={verse} size="sm" />
+      )}
       <Pressable className="btn btn-primary" onClick={onNext} autoFocus>
         {out ? t.finish : t.next}
       </Pressable>

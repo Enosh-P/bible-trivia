@@ -10,6 +10,7 @@ import { Pressable } from '../components/Pressable';
 import { STROKE } from '../components/icons';
 import { LangToggle } from '../components/LangToggle';
 import { ReportButton } from '../components/Report';
+import { Reveal } from '../components/Reveal';
 import { questionTarget } from '../online/reports';
 
 type Entry = { q: Question; wrong: boolean; fixed: boolean; saved: boolean };
@@ -57,7 +58,6 @@ export function Notebook({ onExit }: { onExit: () => void }) {
     return BOOKS.filter((b) => set.has(b.code));
   }, [entries]);
 
-  const answerText = (q: Question, lang: 'en' | 'ta') => (q.type === 'tf' ? (q.answer ? t.true : t.false) : q[lang].options?.[q.answer as number] ?? '');
 
   return (
     <div className="screen recall" lang={uiLang}>
@@ -114,18 +114,7 @@ export function Notebook({ onExit }: { onExit: () => void }) {
                 {q[secondary].q}
               </p>
             )}
-            <p className="notebook-a">
-              <span className="caption">{t.answerLabel}: </span>
-              <strong lang={primary}>{answerText(q, primary)}</strong>
-              {secondary && (
-                <>
-                  {' · '}
-                  <span className="answer-sub" lang={secondary}>
-                    {answerText(q, secondary)}
-                  </span>
-                </>
-              )}
-            </p>
+            <Reveal q={q} primary={primary} secondary={secondary} />
           </article>
           );
         })}

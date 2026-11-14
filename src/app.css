@@ -1087,3 +1087,36 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .mode-pill-text strong { font-size: 0.95rem; font-weight: 700; color: var(--accent-ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mode-pill-text span { font-size: 0.78rem; font-weight: 600; color: var(--text-2); }
 .q-count { font-size: 0.85rem; font-weight: 700; color: var(--text-2); margin-left: 2px; white-space: nowrap; }
+
+/* The verse behind a question: bold and easy to read */
+.ref-verse { margin: 0; padding: 12px 14px; border-radius: var(--radius-md); background: var(--accent-wash); border-left: 4px solid var(--accent); display: flex; flex-direction: column; gap: 6px; }
+.ref-verse p { margin: 0; font-family: var(--font-serif, Fraunces, serif); font-size: 1.05rem; font-weight: 600; line-height: 1.5; color: var(--text); }
+.ref-verse p:lang(ta) { font-family: 'Noto Serif Tamil', serif; font-size: 0.98rem; line-height: 1.7; }
+.ref-verse .ref-verse-second { color: var(--ta-ink); }
+.ref-verse .ref-verse-second:lang(en) { color: var(--text-2); }
+.ref-verse cite { font-style: normal; font-size: 0.8rem; font-weight: 600; color: var(--accent-ink); }
+
+/* Show answer / Show verse */
+.reveal { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.reveal-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+.reveal-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--glass-edge); background: var(--card); color: var(--accent-ink); font: inherit; font-size: 0.82rem; font-weight: 650; cursor: pointer; }
+.reveal-btn.is-on { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+.reveal-answer { overflow: hidden; }
+.reveal-answer p { margin: 0 0 4px; font-size: 0.92rem; }
+.reveal-answer strong { color: var(--accent-ink); }
+.reveal-yours s { color: var(--red-ink); }
+
+/* Continue a game */
+.resume-card { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius-lg); }
+.resume-card .resume-art { width: 64px; height: 48px; flex: none; }
+.resume-card .grow { display: flex; flex-direction: column; min-width: 0; }
+.resume-card strong { font-size: 1rem; }
+
+/* Results buttons: one main action, then two equal ones */
+.results .result-actions { display: flex; flex-direction: column; gap: 10px; }
+.results .result-actions .btn { width: 100%; flex: none; }
+.results .result-main { min-height: 52px; font-size: 1.05rem; }
+.result-secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.result-secondary .btn { min-height: 46px; }
+.reveal-btn { padding: 5px 10px; gap: 5px; font-size: 0.78rem; }
+.quiz-time { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
