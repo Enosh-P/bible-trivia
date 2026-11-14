@@ -1,4 +1,25 @@
-# Putting Bible Trivia online (Cloudflare Pages)
+# Putting Bible Trivia online
+
+Two free options. Both publish every `git push` to `main` automatically.
+
+## Vercel (simplest)
+
+Free on the Hobby plan (personal, non-commercial use). The address is `https://<project-name>.vercel.app`,
+and the project name can be changed any time (Settings → General → Project Name).
+The project's `vercel.json` already holds the build settings and caching rules.
+
+1. Sign in at **vercel.com** with GitHub.
+2. **Add New… → Project → Import** `Enosh-P/bible-trivia`.
+3. **Project Name:** this becomes the address, e.g. `vedaquiz` → `vedaquiz.vercel.app`.
+4. Framework Preset **Vite**, Build Command `npm run build`, Output Directory `dist` (filled in from `vercel.json`).
+5. **Environment Variables:** add `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_VAPID_PUBLIC_KEY`
+   (values from `.env.local`). Never the secret key or the VAPID private key.
+6. **Deploy.** Then do step 2 below (Supabase and Google) with the `vercel.app` address.
+
+Changed a variable later? **Deployments → ⋯ → Redeploy** (values are built into the app).
+Custom domain: **Settings → Domains → Add**; Vercel shows the DNS record to add at your registrar.
+
+# Cloudflare
 
 Free hosting with HTTPS, unlimited visitors and bandwidth, and automatic updates:
 every `git push` to `main` publishes the new version in about two minutes.
