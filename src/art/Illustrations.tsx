@@ -11,44 +11,10 @@ import type { ArtKey } from '../engine/types';
  *   - accents come from the horse palette (red / pale / steel)
  */
 
-const INK = '#1d2430';
-const C = {
-  red: '#e0493e',
-  redSoft: '#f08a6e',
-  pale: '#8fbfa3',
-  paleDeep: '#5f9a78',
-  steel: '#7fa6c9',
-  steelSoft: '#b9cfe2',
-  water: '#9fbad3',
-  wood: '#9c7656',
-  woodSoft: '#c49b78',
-  bread: '#dcb68c',
-  sand: '#dcc6a6',
-  mane: '#a9784f',
-  skin: '#c99a72',
-  white: '#ffffff',
-  night: '#2a3444',
-  black: '#2a2f38',
-};
+import { C, Eye, Ground, INK, Person, Smile, Waves, line } from './kit';
+import { SCENES } from './Scenes';
 
-const line = { stroke: INK, strokeWidth: 3, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
-
-function Eye({ x, y, r = 4 }: { x: number; y: number; r?: number }) {
-  return (
-    <g>
-      <circle cx={x} cy={y} r={r} fill={INK} />
-      <circle cx={x + r * 0.35} cy={y - r * 0.35} r={r * 0.35} fill={C.white} />
-    </g>
-  );
-}
-
-const Waves = ({ y = 96, fill = C.water }: { y?: number; fill?: string }) => (
-  <path
-    d={`M0 ${y} q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 V120 H0 Z`}
-    fill={fill}
-    {...line}
-  />
-);
+export { Person };
 
 const Ark = () => (
   <>
@@ -444,12 +410,6 @@ const Well = () => (
   </>
 );
 
-/** Little helpers for the scene pictures. */
-const Ground = ({ y = 104 }: { y?: number }) => <path d={`M8 ${y} H152`} {...line} />;
-const Smile = ({ x, y, w = 8 }: { x: number; y: number; w?: number }) => (
-  <path d={`M${x - w / 2} ${y} q${w / 2} ${w * 0.6} ${w} 0`} fill="none" {...line} strokeWidth={2.2} />
-);
-
 /** David's harp: the Psalms. */
 const Harp = () => (
   <>
@@ -824,102 +784,6 @@ const Sword = () => (
   </>
 );
 
-/* ---------- People: a small cartoon figure kit for scenes ----------
- * <Person x y /> stands with its feet at (x, y), about 66 units tall at s=1.
- * Poses: stand, raise (arms up), point (arm forward), sit, kneel, bow (kneeling, bent low).
- * Men can have a dark or white beard; women wear a head covering.
- */
-type Pose = 'stand' | 'raise' | 'point' | 'sit' | 'kneel' | 'bow';
-interface PersonProps {
-  x: number;
-  y: number;
-  s?: number;
-  flip?: boolean;
-  robe?: string;
-  beard?: 'dark' | 'white';
-  woman?: boolean;
-  child?: boolean;
-  pose?: Pose;
-  headcloth?: string;
-}
-
-function Head({ beard, woman, headcloth, robe }: Pick<PersonProps, 'beard' | 'woman' | 'headcloth' | 'robe'>) {
-  return (
-    <g>
-      {woman && <path d="M-13 -48 Q-14 -66 0 -66 Q14 -66 13 -48 L15 -30 H-15 Z" fill={headcloth ?? C.steelSoft} {...line} strokeWidth={2.2} />}
-      <circle cx={0} cy={-52} r={10} fill={C.skin} {...line} strokeWidth={2.4} />
-      {beard && <path d="M-9 -50 Q-8 -36 0 -34 Q8 -36 9 -50 Q4 -45 0 -45 Q-4 -45 -9 -50 Z" fill={beard === 'white' ? C.white : C.mane} {...line} strokeWidth={2} />}
-      {!woman && headcloth && <path d="M-11 -54 Q0 -68 11 -54 L12 -46 Q0 -52 -12 -46 Z" fill={headcloth} {...line} strokeWidth={2} />}
-      {!woman && !headcloth && <path d="M-10 -56 Q0 -66 10 -56" fill="none" {...line} stroke={beard === 'white' ? C.steelSoft : C.night} strokeWidth={4} />}
-      <circle cx={-3.5} cy={-53} r={1.4} fill={INK} />
-      <circle cx={3.5} cy={-53} r={1.4} fill={INK} />
-      {!beard && <path d="M-3 -48 q3 2 6 0" fill="none" {...line} strokeWidth={1.6} />}
-      {woman && <path d="M-11 -50 Q-12 -62 0 -63 Q12 -62 11 -50" fill="none" stroke={headcloth ?? C.steelSoft} strokeWidth={3} />}
-      <circle cx={0} cy={0} r={0} fill={robe} />
-    </g>
-  );
-}
-
-export function Person({ x, y, s = 1, flip, robe = C.steel, beard, woman, child, pose = 'stand', headcloth }: PersonProps) {
-  const scale = (child ? 0.7 : 1) * s;
-  const hand = (cx: number, cy: number) => <circle cx={cx} cy={cy} r={3} fill={C.skin} {...line} strokeWidth={1.6} />;
-  const arm = (d: string) => <path d={d} fill="none" {...line} stroke={robe} strokeWidth={6} />;
-  const armLine = (d: string) => <path d={d} fill="none" {...line} strokeWidth={1.4} />;
-  const head = <Head beard={beard} woman={woman} headcloth={headcloth} robe={robe} />;
-  let body;
-  if (pose === 'sit') {
-    body = (
-      <>
-        <rect x={-14} y={-14} width={18} height={14} rx={3} fill={C.wood} {...line} strokeWidth={2} />
-        <path d="M-10 -14 L-8 -40 Q0 -45 8 -40 L10 -18 H22 V-6 H6 Z" fill={robe} {...line} />
-        <path d="M18 -6 V0" {...line} strokeWidth={4} />
-        {head}
-      </>
-    );
-  } else if (pose === 'kneel' || pose === 'bow') {
-    const torso = (
-      <g transform={pose === 'bow' ? 'rotate(70 0 -18)' : undefined}>
-        <path d="M-9 -18 L-8 -40 Q0 -45 8 -40 L9 -18 Z" fill={robe} {...line} />
-        {arm('M6 -36 L16 -22')}
-        {armLine('M6 -36 L16 -22')}
-        {hand(17, -21)}
-        {head}
-      </g>
-    );
-    body = (
-      <>
-        <path d="M-12 0 L-10 -20 H10 L22 -2 L22 0 Z" fill={robe} {...line} />
-        {torso}
-      </>
-    );
-  } else {
-    const arms =
-      pose === 'raise'
-        ? ['M-7 -37 L-16 -56', 'M7 -37 L16 -56']
-        : pose === 'point'
-          ? ['M-7 -37 L-12 -18', 'M7 -37 L26 -40']
-          : ['M-7 -37 L-12 -18', 'M7 -37 L12 -18'];
-    const hands = pose === 'raise' ? [[-16, -58], [16, -58]] : pose === 'point' ? [[-12, -17], [28, -40]] : [[-12, -17], [12, -17]];
-    body = (
-      <>
-        <path d="M-13 0 L-9 -39 Q0 -45 9 -39 L13 0 Z" fill={robe} {...line} />
-        <path d="M-10 -22 H10" {...line} strokeWidth={2} stroke={C.bread} />
-        {arms.map((d, i) => (
-          <g key={i}>
-            {arm(d)}
-            {armLine(d)}
-          </g>
-        ))}
-        {hands.map(([hx, hy], i) => (
-          <g key={i}>{hand(hx, hy)}</g>
-        ))}
-        {head}
-      </>
-    );
-  }
-  return <g transform={`translate(${x} ${y}) scale(${flip ? -scale : scale} ${scale})`}>{body}</g>;
-}
-
 /** A writer of old: a bearded man at a low desk, writing on a scroll with a reed pen by lamplight. */
 const Writer = () => (
   <>
@@ -1038,6 +902,7 @@ const ART: Record<ArtKey, () => ReactElement> = {
   donkey: Donkey,
   lamp: Lamp,
   sword: Sword,
+  ...SCENES,
   writer: Writer,
   bookch: () => <BookCh />,
 };
