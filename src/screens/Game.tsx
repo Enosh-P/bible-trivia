@@ -327,7 +327,7 @@ export function Game({
               <ReportButton target={questionTarget(q)} />
             </div>
 
-            {q.art && <ArtSticker name={q.art} />}
+            {q.art && <ArtSticker name={q.art} label={q.artLabel} />}
 
             {q.type === 'tf' ? (
               <TrueFalseCard q={q} primary={primary} secondary={sec} answered={answered} onAnswer={answer} />

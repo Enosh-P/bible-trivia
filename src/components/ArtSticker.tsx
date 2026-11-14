@@ -4,7 +4,7 @@ import type { ArtKey } from '../engine/types';
 import { spring } from '../motion/springs';
 
 /** Cartoon illustration on a sticker card. Pops in, and wiggles when tapped. */
-export function ArtSticker({ name }: { name: ArtKey }) {
+export function ArtSticker({ name, label }: { name: ArtKey; label?: { en: string; ta: string; n: string } }) {
   const reduce = useReducedMotion();
   return (
     <motion.div
@@ -15,7 +15,7 @@ export function ArtSticker({ name }: { name: ArtKey }) {
       transition={spring.flick}
       whileTap={reduce ? undefined : { rotate: [-1.5, 3, -3, 1.5, -1.5], scale: 1.03 }}
     >
-      <Illustration name={name} />
+      <Illustration name={name} label={label} />
     </motion.div>
   );
 }

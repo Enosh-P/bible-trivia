@@ -3,7 +3,8 @@ export type Lang = 'en' | 'ta';
 export type ArtKey =
   | 'ark' | 'fish' | 'lion' | 'sling' | 'bush' | 'star' | 'loaves' | 'horse' | 'tree'
   | 'scroll' | 'coat' | 'ladder' | 'dove' | 'sheaves' | 'sheep' | 'sun' | 'crown' | 'well'
-  | 'harp' | 'boat' | 'river' | 'altar' | 'path' | 'elder' | 'raven' | 'tower' | 'tent' | 'stars' | 'cave' | 'bow' | 'camel' | 'stones' | 'coins' | 'ring' | 'cup' | 'cows' | 'sacks' | 'wagon' | 'donkey' | 'lamp' | 'sword';
+  | 'harp' | 'boat' | 'river' | 'altar' | 'path' | 'elder' | 'raven' | 'tower' | 'tent' | 'stars' | 'cave' | 'bow' | 'camel' | 'stones' | 'coins' | 'ring' | 'cup' | 'cows' | 'sacks' | 'wagon' | 'donkey' | 'lamp' | 'sword'
+  | 'writer' | 'bookch';
 
 /** How a question is asked. Every type renders as multiple choice except `tf`. */
 export type QuestionType =
@@ -40,6 +41,8 @@ export interface Question {
   tags?: string[];
   /** Optional cartoon illustration key (see src/art). */
   art?: ArtKey;
+  /** Words written on the picture (e.g. a book's name and its chapter count; "?" where that is the answer). */
+  artLabel?: { en: string; ta: string; n: string };
 }
 
 export interface QuestionPack {

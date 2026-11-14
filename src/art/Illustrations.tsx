@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { useApp } from '../store';
 import type { ArtKey } from '../engine/types';
 
 /*
@@ -823,6 +824,178 @@ const Sword = () => (
   </>
 );
 
+/* ---------- People: a small cartoon figure kit for scenes ----------
+ * <Person x y /> stands with its feet at (x, y), about 66 units tall at s=1.
+ * Poses: stand, raise (arms up), point (arm forward), sit, kneel, bow (kneeling, bent low).
+ * Men can have a dark or white beard; women wear a head covering.
+ */
+type Pose = 'stand' | 'raise' | 'point' | 'sit' | 'kneel' | 'bow';
+interface PersonProps {
+  x: number;
+  y: number;
+  s?: number;
+  flip?: boolean;
+  robe?: string;
+  beard?: 'dark' | 'white';
+  woman?: boolean;
+  child?: boolean;
+  pose?: Pose;
+  headcloth?: string;
+}
+
+function Head({ beard, woman, headcloth, robe }: Pick<PersonProps, 'beard' | 'woman' | 'headcloth' | 'robe'>) {
+  return (
+    <g>
+      {woman && <path d="M-13 -48 Q-14 -66 0 -66 Q14 -66 13 -48 L15 -30 H-15 Z" fill={headcloth ?? C.steelSoft} {...line} strokeWidth={2.2} />}
+      <circle cx={0} cy={-52} r={10} fill={C.skin} {...line} strokeWidth={2.4} />
+      {beard && <path d="M-9 -50 Q-8 -36 0 -34 Q8 -36 9 -50 Q4 -45 0 -45 Q-4 -45 -9 -50 Z" fill={beard === 'white' ? C.white : C.mane} {...line} strokeWidth={2} />}
+      {!woman && headcloth && <path d="M-11 -54 Q0 -68 11 -54 L12 -46 Q0 -52 -12 -46 Z" fill={headcloth} {...line} strokeWidth={2} />}
+      {!woman && !headcloth && <path d="M-10 -56 Q0 -66 10 -56" fill="none" {...line} stroke={beard === 'white' ? C.steelSoft : C.night} strokeWidth={4} />}
+      <circle cx={-3.5} cy={-53} r={1.4} fill={INK} />
+      <circle cx={3.5} cy={-53} r={1.4} fill={INK} />
+      {!beard && <path d="M-3 -48 q3 2 6 0" fill="none" {...line} strokeWidth={1.6} />}
+      {woman && <path d="M-11 -50 Q-12 -62 0 -63 Q12 -62 11 -50" fill="none" stroke={headcloth ?? C.steelSoft} strokeWidth={3} />}
+      <circle cx={0} cy={0} r={0} fill={robe} />
+    </g>
+  );
+}
+
+export function Person({ x, y, s = 1, flip, robe = C.steel, beard, woman, child, pose = 'stand', headcloth }: PersonProps) {
+  const scale = (child ? 0.7 : 1) * s;
+  const hand = (cx: number, cy: number) => <circle cx={cx} cy={cy} r={3} fill={C.skin} {...line} strokeWidth={1.6} />;
+  const arm = (d: string) => <path d={d} fill="none" {...line} stroke={robe} strokeWidth={6} />;
+  const armLine = (d: string) => <path d={d} fill="none" {...line} strokeWidth={1.4} />;
+  const head = <Head beard={beard} woman={woman} headcloth={headcloth} robe={robe} />;
+  let body;
+  if (pose === 'sit') {
+    body = (
+      <>
+        <rect x={-14} y={-14} width={18} height={14} rx={3} fill={C.wood} {...line} strokeWidth={2} />
+        <path d="M-10 -14 L-8 -40 Q0 -45 8 -40 L10 -18 H22 V-6 H6 Z" fill={robe} {...line} />
+        <path d="M18 -6 V0" {...line} strokeWidth={4} />
+        {head}
+      </>
+    );
+  } else if (pose === 'kneel' || pose === 'bow') {
+    const torso = (
+      <g transform={pose === 'bow' ? 'rotate(70 0 -18)' : undefined}>
+        <path d="M-9 -18 L-8 -40 Q0 -45 8 -40 L9 -18 Z" fill={robe} {...line} />
+        {arm('M6 -36 L16 -22')}
+        {armLine('M6 -36 L16 -22')}
+        {hand(17, -21)}
+        {head}
+      </g>
+    );
+    body = (
+      <>
+        <path d="M-12 0 L-10 -20 H10 L22 -2 L22 0 Z" fill={robe} {...line} />
+        {torso}
+      </>
+    );
+  } else {
+    const arms =
+      pose === 'raise'
+        ? ['M-7 -37 L-16 -56', 'M7 -37 L16 -56']
+        : pose === 'point'
+          ? ['M-7 -37 L-12 -18', 'M7 -37 L26 -40']
+          : ['M-7 -37 L-12 -18', 'M7 -37 L12 -18'];
+    const hands = pose === 'raise' ? [[-16, -58], [16, -58]] : pose === 'point' ? [[-12, -17], [28, -40]] : [[-12, -17], [12, -17]];
+    body = (
+      <>
+        <path d="M-13 0 L-9 -39 Q0 -45 9 -39 L13 0 Z" fill={robe} {...line} />
+        <path d="M-10 -22 H10" {...line} strokeWidth={2} stroke={C.bread} />
+        {arms.map((d, i) => (
+          <g key={i}>
+            {arm(d)}
+            {armLine(d)}
+          </g>
+        ))}
+        {hands.map(([hx, hy], i) => (
+          <g key={i}>{hand(hx, hy)}</g>
+        ))}
+        {head}
+      </>
+    );
+  }
+  return <g transform={`translate(${x} ${y}) scale(${flip ? -scale : scale} ${scale})`}>{body}</g>;
+}
+
+/** A writer of old: a bearded man at a low desk, writing on a scroll with a reed pen by lamplight. */
+const Writer = () => (
+  <>
+    <rect x={6} y={6} width={148} height={108} rx={20} fill={C.sand} opacity={0.55} />
+    <path d="M8 106 H152" {...line} />
+    {/* Lamp */}
+    <path d="M128 60 q-2 -12 4 -16 q4 8 2 16 Z" fill={C.bread} {...line} strokeWidth={2} />
+    <ellipse cx={130} cy={66} rx={12} ry={5} fill={C.woodSoft} {...line} strokeWidth={2.2} />
+    {/* Desk with an unrolled scroll */}
+    <path d="M78 72 H140 L136 80 H82 Z" fill={C.wood} {...line} />
+    <path d="M86 80 V106 M132 80 V106" {...line} strokeWidth={4} />
+    <rect x={88} y={62} width={34} height={10} rx={2} fill={C.white} {...line} strokeWidth={2} />
+    <circle cx={88} cy={67} r={5} fill={C.woodSoft} {...line} strokeWidth={2} />
+    <circle cx={122} cy={67} r={5} fill={C.woodSoft} {...line} strokeWidth={2} />
+    <path d="M94 66 h10 M94 69 h18" {...line} strokeWidth={1.2} opacity={0.6} />
+    {/* Ink pot */}
+    <path d="M70 102 h14 l-2 -12 h-10 Z" fill={C.night} {...line} strokeWidth={2} />
+    <Person x={56} y={106} s={1.15} pose="sit" robe={C.steel} beard="white" headcloth={C.white} />
+    {/* Writing arm with the reed pen */}
+    <path d="M60 -0" />
+    <path d="M62 64 L92 62" fill="none" {...line} stroke={C.steel} strokeWidth={7} />
+    <path d="M62 64 L92 62" fill="none" {...line} strokeWidth={1.4} />
+    <circle cx={94} cy={62} r={3.4} fill={C.skin} {...line} strokeWidth={1.6} />
+    <path d="M96 64 L108 48" {...line} strokeWidth={2.4} />
+    <path d="M108 48 l3 -4" stroke={C.bread} strokeWidth={3} strokeLinecap="round" />
+  </>
+);
+
+/** SVG text squeezed to fit a width (Tamil words are long). */
+function Fit({ x, y, size, max, weight, text, opacity }: { x: number; y: number; size: number; max: number; weight: number; text: string; opacity?: number }) {
+  const tamil = /[\u0B80-\u0BFF]/.test(text);
+  const est = text.length * size * (tamil ? 0.72 : 0.56);
+  return (
+    <text
+      x={x}
+      y={y}
+      textAnchor="middle"
+      fontSize={size}
+      fontWeight={weight}
+      fill={INK}
+      opacity={opacity}
+      fontFamily="inherit"
+      {...(est > max ? { textLength: max, lengthAdjust: 'spacingAndGlyphs' as const } : {})}
+    >
+      {text}
+    </text>
+  );
+}
+
+/** A big book with its name and chapter count written on it ("?" where that is the answer). */
+function BookCh({ label }: { label?: { en: string; ta: string; n: string } }) {
+  const qLang = useApp((s) => s.qLang);
+  const title = label ? (qLang === 'en' ? label.en : label.ta) : '?';
+  const sub = label && qLang === 'both' && label.en !== label.ta ? label.en : null;
+  const word = qLang === 'en' ? 'chapters' : 'அதிகாரங்கள்';
+  return (
+    <>
+      <ellipse cx={80} cy={112} rx={50} ry={5} fill={INK} opacity={0.12} />
+      <path d="M30 14 H120 Q130 14 130 24 V104 H40 Q30 104 30 94 Z" fill={C.red} {...line} />
+      <path d="M40 104 Q30 104 30 94 Q30 86 40 86 H130" fill={C.white} {...line} />
+      <path d="M40 92 H128 M40 98 H128" {...line} strokeWidth={1.2} opacity={0.4} />
+      <rect x={42} y={24} width={78} height={56} rx={6} fill={C.sand} {...line} strokeWidth={2.4} />
+      <Fit x={81} y={sub ? 39 : 42} size={14} max={70} weight={800} text={title} />
+      {sub && <Fit x={81} y={49} size={8} max={66} weight={600} text={sub} opacity={0.7} />}
+      {label && (
+        <>
+          <text x={81} y={label.n === '?' ? 68 : 67} textAnchor="middle" fontSize={label.n === '?' ? 18 : 17} fontWeight={800} fill={C.red} fontFamily="inherit">
+            {label.n}
+          </text>
+          <Fit x={81} y={76} size={7.5} max={66} weight={700} text={word} />
+        </>
+      )}
+    </>
+  );
+}
+
 const ART: Record<ArtKey, () => ReactElement> = {
   ark: Ark,
   fish: Fish,
@@ -865,15 +1038,17 @@ const ART: Record<ArtKey, () => ReactElement> = {
   donkey: Donkey,
   lamp: Lamp,
   sword: Sword,
+  writer: Writer,
+  bookch: () => <BookCh />,
 };
 
 export const ART_KEYS = Object.keys(ART) as ArtKey[];
 
-export function Illustration({ name, title }: { name: ArtKey; title?: string }) {
+export function Illustration({ name, title, label }: { name: ArtKey; title?: string; label?: { en: string; ta: string; n: string } }) {
   const Art = ART[name];
   return (
     <svg viewBox="0 0 160 120" role={title ? 'img' : 'presentation'} aria-label={title} width="100%" height="100%">
-      <Art />
+      {name === 'bookch' ? <BookCh label={label} /> : <Art />}
     </svg>
   );
 }

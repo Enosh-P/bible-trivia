@@ -87,6 +87,31 @@ for (const b of BOOKS) {
   const same = BOOKS.filter((o) => o.code !== b.code && chapters[o.code] === n);
   const alsoEn = same.length ? ` ${same.map((o) => o.en).join(', ')} also ${same.length > 1 ? 'have' : 'has'} ${n}.` : '';
   const alsoTa = same.length ? ` ${same.map((o) => o.ta).join(', ')} புஸ்தகத்திலும் ${n} அதிகாரங்கள் உள்ளன.` : '';
+  // Every other book asks the other way round, so the picture can show the name or the number
+  // without giving the answer away.
+  const askCount = BOOKS.indexOf(b) % 2 === 1;
+  if (askCount) {
+    const counts = shuffled(
+      [...new Set(Object.values(chapters))].filter((c) => c !== n).sort((x, y) => Math.abs(x - n) - Math.abs(y - n)).slice(0, 6),
+      `cn-${b.code}`,
+    ).slice(0, 3);
+    const opts = shuffled([n, ...counts], `cn-opts-${b.code}`);
+    out.push({
+      id: `kn-cn-${b.code}`,
+      type: 'mcq',
+      book: b.code,
+      chapter: n,
+      difficulty: 2,
+      answer: opts.indexOf(n),
+      art: 'bookch',
+      artLabel: { en: b.en, ta: b.ta, n: '?' },
+      en: { q: `How many chapters does ${b.en} have?`, options: opts.map(String), explain: `${b.en} has ${n} chapter${n === 1 ? '' : 's'}.${alsoEn}` },
+      ta: { q: `${b.ta} புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?`, options: opts.map(String), explain: `${b.ta} புஸ்தகத்தில் ${n === 1 ? 'ஒரே ஒரு அதிகாரம் உள்ளது' : `${n} அதிகாரங்கள் உள்ளன`}.${alsoTa}` },
+      tags: ['knowledge', 'chapters'],
+    });
+    made++;
+    continue;
+  }
   out.push({
     id: `kn-ch-${b.code}`,
     type: 'book',
@@ -94,7 +119,8 @@ for (const b of BOOKS) {
     chapter: n,
     difficulty: 2,
     answer: options.indexOf(b),
-    art: 'scroll',
+    art: 'bookch',
+    artLabel: { en: '?', ta: '?', n: String(n) },
     en: {
       q: n === 1 ? 'Which of these books has only one chapter?' : `Which of these books has ${n} chapters?`,
       options: options.map((o) => o.en),

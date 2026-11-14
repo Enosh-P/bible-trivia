@@ -13,7 +13,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "How many prophets of the Old Testament wrote a book that bears their name?",
     "options": [
@@ -176,7 +176,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "Which of these books did Solomon write?",
     "options": [
@@ -209,7 +209,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "Who wrote most of the book of Proverbs?",
     "options": [
@@ -240,7 +240,7 @@
    "verse": 4,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "Who was Jeremiah's helper who wrote down his words?",
     "options": [
@@ -273,7 +273,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "Which of these books was written by Moses?",
     "options": [
@@ -306,7 +306,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 0,
-   "art": "harp",
+   "art": "writer",
    "en": {
     "q": "Which psalm is \"A Prayer of Moses the man of God\"?",
     "options": [
@@ -337,7 +337,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "Besides the five books of the Law, which book is traditionally said to be written by Moses?",
     "options": [
@@ -368,7 +368,7 @@
    "verse": 29,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "Which books are traditionally said to be written by Samuel?",
     "options": [
@@ -401,7 +401,7 @@
    "verse": 29,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "Together with Samuel, which two prophets wrote down the acts of David?",
     "options": [
@@ -432,7 +432,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "Counting Hebrews, how many letters are traditionally said to be written by Paul?",
     "options": [
@@ -465,7 +465,7 @@
    "verse": 7,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "To churches in how many different places did Paul write (Romans to 2 Thessalonians)?",
     "options": [
@@ -498,7 +498,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "Which of these New Testament letters was written to one person?",
     "options": [
@@ -531,7 +531,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "To whom was the second letter of John written?",
     "options": [
@@ -626,7 +626,7 @@
    "verse": 1,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "writer",
    "en": {
     "q": "Who wrote the book of Revelation?",
     "options": [
@@ -5034,7 +5034,12 @@
    "chapter": 50,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "50"
+   },
    "en": {
     "q": "Which of these books has 50 chapters?",
     "options": [
@@ -5061,30 +5066,35 @@
    ]
   },
   {
-   "id": "kn-ch-EXO",
-   "type": "book",
+   "id": "kn-cn-EXO",
+   "type": "mcq",
    "book": "EXO",
    "chapter": 40,
    "difficulty": 2,
-   "answer": 0,
-   "art": "scroll",
+   "answer": 2,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Exodus",
+    "ta": "யாத்திராகமம்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 40 chapters?",
+    "q": "How many chapters does Exodus have?",
     "options": [
-     "Exodus",
-     "2 Chronicles",
-     "Genesis",
-     "Job"
+     "34",
+     "42",
+     "40",
+     "50"
     ],
     "explain": "Exodus has 40 chapters."
    },
    "ta": {
-    "q": "இவற்றில் 40 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "யாத்திராகமம் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "யாத்திராகமம்",
-     "2 நாளாகமம்",
-     "ஆதியாகமம்",
-     "யோபு"
+     "34",
+     "42",
+     "40",
+     "50"
     ],
     "explain": "யாத்திராகமம் புஸ்தகத்தில் 40 அதிகாரங்கள் உள்ளன."
    },
@@ -5100,7 +5110,12 @@
    "chapter": 27,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "27"
+   },
    "en": {
     "q": "Which of these books has 27 chapters?",
     "options": [
@@ -5127,30 +5142,35 @@
    ]
   },
   {
-   "id": "kn-ch-NUM",
-   "type": "book",
+   "id": "kn-cn-NUM",
+   "type": "mcq",
    "book": "NUM",
    "chapter": 36,
    "difficulty": 2,
-   "answer": 1,
-   "art": "scroll",
+   "answer": 3,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Numbers",
+    "ta": "எண்ணாகமம்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 36 chapters?",
+    "q": "How many chapters does Numbers have?",
     "options": [
-     "1 Samuel",
-     "Numbers",
-     "Leviticus",
-     "1 Chronicles"
+     "28",
+     "34",
+     "29",
+     "36"
     ],
     "explain": "Numbers has 36 chapters. 2 Chronicles also has 36."
    },
    "ta": {
-    "q": "இவற்றில் 36 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "எண்ணாகமம் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "1 சாமுவேல்",
-     "எண்ணாகமம்",
-     "லேவியராகமம்",
-     "1 நாளாகமம்"
+     "28",
+     "34",
+     "29",
+     "36"
     ],
     "explain": "எண்ணாகமம் புஸ்தகத்தில் 36 அதிகாரங்கள் உள்ளன. 2 நாளாகமம் புஸ்தகத்திலும் 36 அதிகாரங்கள் உள்ளன."
    },
@@ -5166,7 +5186,12 @@
    "chapter": 34,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "34"
+   },
    "en": {
     "q": "Which of these books has 34 chapters?",
     "options": [
@@ -5193,30 +5218,35 @@
    ]
   },
   {
-   "id": "kn-ch-JOS",
-   "type": "book",
+   "id": "kn-cn-JOS",
+   "type": "mcq",
    "book": "JOS",
    "chapter": 24,
    "difficulty": 2,
-   "answer": 1,
-   "art": "scroll",
+   "answer": 0,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Joshua",
+    "ta": "யோசுவா",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 24 chapters?",
+    "q": "How many chapters does Joshua have?",
     "options": [
-     "John",
-     "Joshua",
-     "Revelation",
-     "Leviticus"
+     "24",
+     "29",
+     "21",
+     "28"
     ],
     "explain": "Joshua has 24 chapters. 2 Samuel, Luke also have 24."
    },
    "ta": {
-    "q": "இவற்றில் 24 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "யோசுவா புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "யோவான்",
-     "யோசுவா",
-     "வெளிப்படுத்தின விசேஷம்",
-     "லேவியராகமம்"
+     "24",
+     "29",
+     "21",
+     "28"
     ],
     "explain": "யோசுவா புஸ்தகத்தில் 24 அதிகாரங்கள் உள்ளன. 2 சாமுவேல், லூக்கா புஸ்தகத்திலும் 24 அதிகாரங்கள் உள்ளன."
    },
@@ -5232,7 +5262,12 @@
    "chapter": 21,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "21"
+   },
    "en": {
     "q": "Which of these books has 21 chapters?",
     "options": [
@@ -5259,30 +5294,35 @@
    ]
   },
   {
-   "id": "kn-ch-RUT",
-   "type": "book",
+   "id": "kn-cn-RUT",
+   "type": "mcq",
    "book": "RUT",
    "chapter": 4,
    "difficulty": 2,
-   "answer": 2,
-   "art": "scroll",
+   "answer": 3,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Ruth",
+    "ta": "ரூத்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 4 chapters?",
+    "q": "How many chapters does Ruth have?",
     "options": [
-     "1 Thessalonians",
-     "Nahum",
-     "Ruth",
-     "Joel"
+     "3",
+     "2",
+     "1",
+     "4"
     ],
     "explain": "Ruth has 4 chapters. Jonah, Malachi, Philippians, Colossians, 2 Timothy also have 4."
    },
    "ta": {
-    "q": "இவற்றில் 4 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "ரூத் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "1 தெசலோனிக்கேயர்",
-     "நாகூம்",
-     "ரூத்",
-     "யோவேல்"
+     "3",
+     "2",
+     "1",
+     "4"
     ],
     "explain": "ரூத் புஸ்தகத்தில் 4 அதிகாரங்கள் உள்ளன. யோனா, மல்கியா, பிலிப்பியர், கொலோசெயர், 2 தீமோத்தேயு புஸ்தகத்திலும் 4 அதிகாரங்கள் உள்ளன."
    },
@@ -5298,7 +5338,12 @@
    "chapter": 31,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "31"
+   },
    "en": {
     "q": "Which of these books has 31 chapters?",
     "options": [
@@ -5325,30 +5370,35 @@
    ]
   },
   {
-   "id": "kn-ch-2SA",
-   "type": "book",
+   "id": "kn-cn-2SA",
+   "type": "mcq",
    "book": "2SA",
    "chapter": 24,
    "difficulty": 2,
-   "answer": 0,
-   "art": "scroll",
+   "answer": 1,
+   "art": "bookch",
+   "artLabel": {
+    "en": "2 Samuel",
+    "ta": "2 சாமுவேல்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 24 chapters?",
+    "q": "How many chapters does 2 Samuel have?",
     "options": [
-     "2 Samuel",
-     "1 Samuel",
-     "1 Chronicles",
-     "Revelation"
+     "25",
+     "24",
+     "21",
+     "28"
     ],
     "explain": "2 Samuel has 24 chapters. Joshua, Luke also have 24."
    },
    "ta": {
-    "q": "இவற்றில் 24 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "2 சாமுவேல் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "2 சாமுவேல்",
-     "1 சாமுவேல்",
-     "1 நாளாகமம்",
-     "வெளிப்படுத்தின விசேஷம்"
+     "25",
+     "24",
+     "21",
+     "28"
     ],
     "explain": "2 சாமுவேல் புஸ்தகத்தில் 24 அதிகாரங்கள் உள்ளன. யோசுவா, லூக்கா புஸ்தகத்திலும் 24 அதிகாரங்கள் உள்ளன."
    },
@@ -5364,7 +5414,12 @@
    "chapter": 22,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "22"
+   },
    "en": {
     "q": "Which of these books has 22 chapters?",
     "options": [
@@ -5391,30 +5446,35 @@
    ]
   },
   {
-   "id": "kn-ch-2KI",
-   "type": "book",
+   "id": "kn-cn-2KI",
+   "type": "mcq",
    "book": "2KI",
    "chapter": 25,
    "difficulty": 2,
-   "answer": 1,
-   "art": "scroll",
+   "answer": 0,
+   "art": "bookch",
+   "artLabel": {
+    "en": "2 Kings",
+    "ta": "2 இராஜாக்கள்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 25 chapters?",
+    "q": "How many chapters does 2 Kings have?",
     "options": [
-     "1 Chronicles",
-     "2 Kings",
-     "Joshua",
-     "Luke"
+     "25",
+     "29",
+     "21",
+     "27"
     ],
     "explain": "2 Kings has 25 chapters."
    },
    "ta": {
-    "q": "இவற்றில் 25 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "2 இராஜாக்கள் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "1 நாளாகமம்",
-     "2 இராஜாக்கள்",
-     "யோசுவா",
-     "லூக்கா"
+     "25",
+     "29",
+     "21",
+     "27"
     ],
     "explain": "2 இராஜாக்கள் புஸ்தகத்தில் 25 அதிகாரங்கள் உள்ளன."
    },
@@ -5430,7 +5490,12 @@
    "chapter": 29,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "29"
+   },
    "en": {
     "q": "Which of these books has 29 chapters?",
     "options": [
@@ -5457,30 +5522,35 @@
    ]
   },
   {
-   "id": "kn-ch-2CH",
-   "type": "book",
+   "id": "kn-cn-2CH",
+   "type": "mcq",
    "book": "2CH",
    "chapter": 36,
    "difficulty": 2,
-   "answer": 3,
-   "art": "scroll",
+   "answer": 1,
+   "art": "bookch",
+   "artLabel": {
+    "en": "2 Chronicles",
+    "ta": "2 நாளாகமம்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 36 chapters?",
+    "q": "How many chapters does 2 Chronicles have?",
     "options": [
-     "Leviticus",
-     "1 Samuel",
-     "Deuteronomy",
-     "2 Chronicles"
+     "31",
+     "36",
+     "34",
+     "28"
     ],
     "explain": "2 Chronicles has 36 chapters. Numbers also has 36."
    },
    "ta": {
-    "q": "இவற்றில் 36 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "2 நாளாகமம் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "லேவியராகமம்",
-     "1 சாமுவேல்",
-     "உபாகமம்",
-     "2 நாளாகமம்"
+     "31",
+     "36",
+     "34",
+     "28"
     ],
     "explain": "2 நாளாகமம் புஸ்தகத்தில் 36 அதிகாரங்கள் உள்ளன. எண்ணாகமம் புஸ்தகத்திலும் 36 அதிகாரங்கள் உள்ளன."
    },
@@ -5496,7 +5566,12 @@
    "chapter": 10,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "10"
+   },
    "en": {
     "q": "Which of these books has 10 chapters?",
     "options": [
@@ -5523,30 +5598,35 @@
    ]
   },
   {
-   "id": "kn-ch-NEH",
-   "type": "book",
+   "id": "kn-cn-NEH",
+   "type": "mcq",
    "book": "NEH",
    "chapter": 13,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "Nehemiah",
+    "ta": "நெகேமியா",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 13 chapters?",
+    "q": "How many chapters does Nehemiah have?",
     "options": [
-     "Ecclesiastes",
-     "Nehemiah",
-     "Hosea",
-     "Romans"
+     "10",
+     "13",
+     "9",
+     "16"
     ],
     "explain": "Nehemiah has 13 chapters. 2 Corinthians, Hebrews also have 13."
    },
    "ta": {
-    "q": "இவற்றில் 13 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "நெகேமியா புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "பிரசங்கி",
-     "நெகேமியா",
-     "ஓசியா",
-     "ரோமர்"
+     "10",
+     "13",
+     "9",
+     "16"
     ],
     "explain": "நெகேமியா புஸ்தகத்தில் 13 அதிகாரங்கள் உள்ளன. 2 கொரிந்தியர், எபிரெயர் புஸ்தகத்திலும் 13 அதிகாரங்கள் உள்ளன."
    },
@@ -5562,7 +5642,12 @@
    "chapter": 10,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "10"
+   },
    "en": {
     "q": "Which of these books has 10 chapters?",
     "options": [
@@ -5589,30 +5674,35 @@
    ]
   },
   {
-   "id": "kn-ch-JOB",
-   "type": "book",
+   "id": "kn-cn-JOB",
+   "type": "mcq",
    "book": "JOB",
    "chapter": 42,
    "difficulty": 2,
-   "answer": 2,
-   "art": "scroll",
+   "answer": 1,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Job",
+    "ta": "யோபு",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 42 chapters?",
+    "q": "How many chapters does Job have?",
     "options": [
-     "1 Chronicles",
-     "Ezekiel",
-     "Job",
-     "1 Samuel"
+     "50",
+     "42",
+     "48",
+     "34"
     ],
     "explain": "Job has 42 chapters."
    },
    "ta": {
-    "q": "இவற்றில் 42 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "யோபு புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "1 நாளாகமம்",
-     "எசேக்கியேல்",
-     "யோபு",
-     "1 சாமுவேல்"
+     "50",
+     "42",
+     "48",
+     "34"
     ],
     "explain": "யோபு புஸ்தகத்தில் 42 அதிகாரங்கள் உள்ளன."
    },
@@ -5628,7 +5718,12 @@
    "chapter": 150,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "150"
+   },
    "en": {
     "q": "Which of these books has 150 chapters?",
     "options": [
@@ -5655,30 +5750,35 @@
    ]
   },
   {
-   "id": "kn-ch-PRO",
-   "type": "book",
+   "id": "kn-cn-PRO",
+   "type": "mcq",
    "book": "PRO",
    "chapter": 31,
    "difficulty": 2,
-   "answer": 2,
-   "art": "scroll",
+   "answer": 0,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Proverbs",
+    "ta": "நீதிமொழிகள்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 31 chapters?",
+    "q": "How many chapters does Proverbs have?",
     "options": [
-     "Matthew",
-     "Acts",
-     "Proverbs",
-     "Leviticus"
+     "31",
+     "25",
+     "34",
+     "29"
     ],
     "explain": "Proverbs has 31 chapters. 1 Samuel also has 31."
    },
    "ta": {
-    "q": "இவற்றில் 31 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "நீதிமொழிகள் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "மத்தேயு",
-     "அப்போஸ்தலருடைய நடபடிகள்",
-     "நீதிமொழிகள்",
-     "லேவியராகமம்"
+     "31",
+     "25",
+     "34",
+     "29"
     ],
     "explain": "நீதிமொழிகள் புஸ்தகத்தில் 31 அதிகாரங்கள் உள்ளன. 1 சாமுவேல் புஸ்தகத்திலும் 31 அதிகாரங்கள் உள்ளன."
    },
@@ -5694,7 +5794,12 @@
    "chapter": 12,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "12"
+   },
    "en": {
     "q": "Which of these books has 12 chapters?",
     "options": [
@@ -5721,30 +5826,35 @@
    ]
   },
   {
-   "id": "kn-ch-SNG",
-   "type": "book",
+   "id": "kn-cn-SNG",
+   "type": "mcq",
    "book": "SNG",
    "chapter": 8,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "Song of Solomon",
+    "ta": "உன்னதப்பாட்டு",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 8 chapters?",
+    "q": "How many chapters does Song of Solomon have?",
     "options": [
-     "Ephesians",
-     "Song of Solomon",
-     "James",
-     "Micah"
+     "5",
+     "8",
+     "9",
+     "10"
     ],
     "explain": "Song of Solomon has 8 chapters."
    },
    "ta": {
-    "q": "இவற்றில் 8 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "உன்னதப்பாட்டு புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "எபேசியர்",
-     "உன்னதப்பாட்டு",
-     "யாக்கோபு",
-     "மீகா"
+     "5",
+     "8",
+     "9",
+     "10"
     ],
     "explain": "உன்னதப்பாட்டு புஸ்தகத்தில் 8 அதிகாரங்கள் உள்ளன."
    },
@@ -5760,7 +5870,12 @@
    "chapter": 66,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "66"
+   },
    "en": {
     "q": "Which of these books has 66 chapters?",
     "options": [
@@ -5787,30 +5902,35 @@
    ]
   },
   {
-   "id": "kn-ch-JER",
-   "type": "book",
+   "id": "kn-cn-JER",
+   "type": "mcq",
    "book": "JER",
    "chapter": 52,
    "difficulty": 2,
-   "answer": 1,
-   "art": "scroll",
+   "answer": 3,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Jeremiah",
+    "ta": "எரேமியா",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 52 chapters?",
+    "q": "How many chapters does Jeremiah have?",
     "options": [
-     "2 Chronicles",
-     "Jeremiah",
-     "Genesis",
-     "Deuteronomy"
+     "40",
+     "48",
+     "36",
+     "52"
     ],
     "explain": "Jeremiah has 52 chapters."
    },
    "ta": {
-    "q": "இவற்றில் 52 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "எரேமியா புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "2 நாளாகமம்",
-     "எரேமியா",
-     "ஆதியாகமம்",
-     "உபாகமம்"
+     "40",
+     "48",
+     "36",
+     "52"
     ],
     "explain": "எரேமியா புஸ்தகத்தில் 52 அதிகாரங்கள் உள்ளன."
    },
@@ -5826,7 +5946,12 @@
    "chapter": 5,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "5"
+   },
    "en": {
     "q": "Which of these books has 5 chapters?",
     "options": [
@@ -5853,30 +5978,35 @@
    ]
   },
   {
-   "id": "kn-ch-EZK",
-   "type": "book",
+   "id": "kn-cn-EZK",
+   "type": "mcq",
    "book": "EZK",
    "chapter": 48,
    "difficulty": 2,
-   "answer": 2,
-   "art": "scroll",
+   "answer": 1,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Ezekiel",
+    "ta": "எசேக்கியேல்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 48 chapters?",
+    "q": "How many chapters does Ezekiel have?",
     "options": [
-     "Isaiah",
-     "Exodus",
-     "Ezekiel",
-     "Deuteronomy"
+     "36",
+     "48",
+     "52",
+     "42"
     ],
     "explain": "Ezekiel has 48 chapters."
    },
    "ta": {
-    "q": "இவற்றில் 48 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "எசேக்கியேல் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "ஏசாயா",
-     "யாத்திராகமம்",
-     "எசேக்கியேல்",
-     "உபாகமம்"
+     "36",
+     "48",
+     "52",
+     "42"
     ],
     "explain": "எசேக்கியேல் புஸ்தகத்தில் 48 அதிகாரங்கள் உள்ளன."
    },
@@ -5892,7 +6022,12 @@
    "chapter": 12,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "12"
+   },
    "en": {
     "q": "Which of these books has 12 chapters?",
     "options": [
@@ -5919,30 +6054,35 @@
    ]
   },
   {
-   "id": "kn-ch-HOS",
-   "type": "book",
+   "id": "kn-cn-HOS",
+   "type": "mcq",
    "book": "HOS",
    "chapter": 14,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "Hosea",
+    "ta": "ஓசியா",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 14 chapters?",
+    "q": "How many chapters does Hosea have?",
     "options": [
-     "Hosea",
-     "Hebrews",
-     "Romans",
-     "Ecclesiastes"
+     "14",
+     "10",
+     "12",
+     "16"
     ],
     "explain": "Hosea has 14 chapters. Zechariah also has 14."
    },
    "ta": {
-    "q": "இவற்றில் 14 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "ஓசியா புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "ஓசியா",
-     "எபிரெயர்",
-     "ரோமர்",
-     "பிரசங்கி"
+     "14",
+     "10",
+     "12",
+     "16"
     ],
     "explain": "ஓசியா புஸ்தகத்தில் 14 அதிகாரங்கள் உள்ளன. சகரியா புஸ்தகத்திலும் 14 அதிகாரங்கள் உள்ளன."
    },
@@ -5958,7 +6098,12 @@
    "chapter": 3,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "3"
+   },
    "en": {
     "q": "Which of these books has 3 chapters?",
     "options": [
@@ -5985,30 +6130,35 @@
    ]
   },
   {
-   "id": "kn-ch-AMO",
-   "type": "book",
+   "id": "kn-cn-AMO",
+   "type": "mcq",
    "book": "AMO",
    "chapter": 9,
    "difficulty": 2,
-   "answer": 2,
-   "art": "scroll",
+   "answer": 3,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Amos",
+    "ta": "ஆமோஸ்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 9 chapters?",
+    "q": "How many chapters does Amos have?",
     "options": [
-     "Ephesians",
-     "1 Timothy",
-     "Amos",
-     "Galatians"
+     "7",
+     "13",
+     "10",
+     "9"
     ],
     "explain": "Amos has 9 chapters."
    },
    "ta": {
-    "q": "இவற்றில் 9 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "ஆமோஸ் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "எபேசியர்",
-     "1 தீமோத்தேயு",
-     "ஆமோஸ்",
-     "கலாத்தியர்"
+     "7",
+     "13",
+     "10",
+     "9"
     ],
     "explain": "ஆமோஸ் புஸ்தகத்தில் 9 அதிகாரங்கள் உள்ளன."
    },
@@ -6024,7 +6174,12 @@
    "chapter": 1,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "1"
+   },
    "en": {
     "q": "Which of these books has only one chapter?",
     "options": [
@@ -6051,30 +6206,35 @@
    ]
   },
   {
-   "id": "kn-ch-JON",
-   "type": "book",
+   "id": "kn-cn-JON",
+   "type": "mcq",
    "book": "JON",
    "chapter": 4,
    "difficulty": 2,
-   "answer": 1,
-   "art": "scroll",
+   "answer": 2,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Jonah",
+    "ta": "யோனா",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 4 chapters?",
+    "q": "How many chapters does Jonah have?",
     "options": [
-     "Nahum",
-     "Jonah",
-     "Zephaniah",
-     "Lamentations"
+     "5",
+     "2",
+     "4",
+     "7"
     ],
     "explain": "Jonah has 4 chapters. Ruth, Malachi, Philippians, Colossians, 2 Timothy also have 4."
    },
    "ta": {
-    "q": "இவற்றில் 4 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "யோனா புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "நாகூம்",
-     "யோனா",
-     "செப்பனியா",
-     "புலம்பல்"
+     "5",
+     "2",
+     "4",
+     "7"
     ],
     "explain": "யோனா புஸ்தகத்தில் 4 அதிகாரங்கள் உள்ளன. ரூத், மல்கியா, பிலிப்பியர், கொலோசெயர், 2 தீமோத்தேயு புஸ்தகத்திலும் 4 அதிகாரங்கள் உள்ளன."
    },
@@ -6090,7 +6250,12 @@
    "chapter": 7,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "7"
+   },
    "en": {
     "q": "Which of these books has 7 chapters?",
     "options": [
@@ -6117,30 +6282,35 @@
    ]
   },
   {
-   "id": "kn-ch-NAM",
-   "type": "book",
+   "id": "kn-cn-NAM",
+   "type": "mcq",
    "book": "NAM",
    "chapter": 3,
    "difficulty": 2,
-   "answer": 3,
-   "art": "scroll",
+   "answer": 0,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Nahum",
+    "ta": "நாகூம்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 3 chapters?",
+    "q": "How many chapters does Nahum have?",
     "options": [
-     "1 Thessalonians",
-     "Ruth",
-     "Lamentations",
-     "Nahum"
+     "3",
+     "2",
+     "1",
+     "4"
     ],
     "explain": "Nahum has 3 chapters. Joel, Habakkuk, Zephaniah, 2 Thessalonians, Titus, 2 Peter also have 3."
    },
    "ta": {
-    "q": "இவற்றில் 3 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "நாகூம் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "1 தெசலோனிக்கேயர்",
-     "ரூத்",
-     "புலம்பல்",
-     "நாகூம்"
+     "3",
+     "2",
+     "1",
+     "4"
     ],
     "explain": "நாகூம் புஸ்தகத்தில் 3 அதிகாரங்கள் உள்ளன. யோவேல், ஆபகூக், செப்பனியா, 2 தெசலோனிக்கேயர், தீத்து, 2 பேதுரு புஸ்தகத்திலும் 3 அதிகாரங்கள் உள்ளன."
    },
@@ -6156,7 +6326,12 @@
    "chapter": 3,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "3"
+   },
    "en": {
     "q": "Which of these books has 3 chapters?",
     "options": [
@@ -6183,30 +6358,35 @@
    ]
   },
   {
-   "id": "kn-ch-ZEP",
-   "type": "book",
+   "id": "kn-cn-ZEP",
+   "type": "mcq",
    "book": "ZEP",
    "chapter": 3,
    "difficulty": 2,
-   "answer": 3,
-   "art": "scroll",
+   "answer": 0,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Zephaniah",
+    "ta": "செப்பனியா",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 3 chapters?",
+    "q": "How many chapters does Zephaniah have?",
     "options": [
-     "1 Thessalonians",
-     "Lamentations",
-     "Philippians",
-     "Zephaniah"
+     "3",
+     "2",
+     "5",
+     "4"
     ],
     "explain": "Zephaniah has 3 chapters. Joel, Nahum, Habakkuk, 2 Thessalonians, Titus, 2 Peter also have 3."
    },
    "ta": {
-    "q": "இவற்றில் 3 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "செப்பனியா புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "1 தெசலோனிக்கேயர்",
-     "புலம்பல்",
-     "பிலிப்பியர்",
-     "செப்பனியா"
+     "3",
+     "2",
+     "5",
+     "4"
     ],
     "explain": "செப்பனியா புஸ்தகத்தில் 3 அதிகாரங்கள் உள்ளன. யோவேல், நாகூம், ஆபகூக், 2 தெசலோனிக்கேயர், தீத்து, 2 பேதுரு புஸ்தகத்திலும் 3 அதிகாரங்கள் உள்ளன."
    },
@@ -6222,7 +6402,12 @@
    "chapter": 2,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "2"
+   },
    "en": {
     "q": "Which of these books has 2 chapters?",
     "options": [
@@ -6249,30 +6434,35 @@
    ]
   },
   {
-   "id": "kn-ch-ZEC",
-   "type": "book",
+   "id": "kn-cn-ZEC",
+   "type": "mcq",
    "book": "ZEC",
    "chapter": 14,
    "difficulty": 2,
-   "answer": 3,
-   "art": "scroll",
+   "answer": 0,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Zechariah",
+    "ta": "சகரியா",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 14 chapters?",
+    "q": "How many chapters does Zechariah have?",
     "options": [
-     "Esther",
-     "1 Corinthians",
-     "Romans",
-     "Zechariah"
+     "14",
+     "9",
+     "13",
+     "8"
     ],
     "explain": "Zechariah has 14 chapters. Hosea also has 14."
    },
    "ta": {
-    "q": "இவற்றில் 14 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "சகரியா புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "எஸ்தர்",
-     "1 கொரிந்தியர்",
-     "ரோமர்",
-     "சகரியா"
+     "14",
+     "9",
+     "13",
+     "8"
     ],
     "explain": "சகரியா புஸ்தகத்தில் 14 அதிகாரங்கள் உள்ளன. ஓசியா புஸ்தகத்திலும் 14 அதிகாரங்கள் உள்ளன."
    },
@@ -6288,7 +6478,12 @@
    "chapter": 4,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "4"
+   },
    "en": {
     "q": "Which of these books has 4 chapters?",
     "options": [
@@ -6315,30 +6510,35 @@
    ]
   },
   {
-   "id": "kn-ch-MAT",
-   "type": "book",
+   "id": "kn-cn-MAT",
+   "type": "mcq",
    "book": "MAT",
    "chapter": 28,
    "difficulty": 2,
-   "answer": 1,
-   "art": "scroll",
+   "answer": 3,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Matthew",
+    "ta": "மத்தேயு",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 28 chapters?",
+    "q": "How many chapters does Matthew have?",
     "options": [
-     "2 Samuel",
-     "Matthew",
-     "1 Chronicles",
-     "Proverbs"
+     "27",
+     "31",
+     "24",
+     "28"
     ],
     "explain": "Matthew has 28 chapters. Acts also has 28."
    },
    "ta": {
-    "q": "இவற்றில் 28 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "மத்தேயு புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "2 சாமுவேல்",
-     "மத்தேயு",
-     "1 நாளாகமம்",
-     "நீதிமொழிகள்"
+     "27",
+     "31",
+     "24",
+     "28"
     ],
     "explain": "மத்தேயு புஸ்தகத்தில் 28 அதிகாரங்கள் உள்ளன. அப்போஸ்தலருடைய நடபடிகள் புஸ்தகத்திலும் 28 அதிகாரங்கள் உள்ளன."
    },
@@ -6354,7 +6554,12 @@
    "chapter": 16,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "16"
+   },
    "en": {
     "q": "Which of these books has 16 chapters?",
     "options": [
@@ -6381,30 +6586,35 @@
    ]
   },
   {
-   "id": "kn-ch-LUK",
-   "type": "book",
+   "id": "kn-cn-LUK",
+   "type": "mcq",
    "book": "LUK",
    "chapter": 24,
    "difficulty": 2,
-   "answer": 0,
-   "art": "scroll",
+   "answer": 3,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Luke",
+    "ta": "லூக்கா",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 24 chapters?",
+    "q": "How many chapters does Luke have?",
     "options": [
-     "Luke",
-     "1 Samuel",
-     "Revelation",
-     "2 Kings"
+     "22",
+     "27",
+     "28",
+     "24"
     ],
     "explain": "Luke has 24 chapters. Joshua, 2 Samuel also have 24."
    },
    "ta": {
-    "q": "இவற்றில் 24 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "லூக்கா புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "லூக்கா",
-     "1 சாமுவேல்",
-     "வெளிப்படுத்தின விசேஷம்",
-     "2 இராஜாக்கள்"
+     "22",
+     "27",
+     "28",
+     "24"
     ],
     "explain": "லூக்கா புஸ்தகத்தில் 24 அதிகாரங்கள் உள்ளன. யோசுவா, 2 சாமுவேல் புஸ்தகத்திலும் 24 அதிகாரங்கள் உள்ளன."
    },
@@ -6420,7 +6630,12 @@
    "chapter": 21,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "21"
+   },
    "en": {
     "q": "Which of these books has 21 chapters?",
     "options": [
@@ -6447,30 +6662,35 @@
    ]
   },
   {
-   "id": "kn-ch-ACT",
-   "type": "book",
+   "id": "kn-cn-ACT",
+   "type": "mcq",
    "book": "ACT",
    "chapter": 28,
    "difficulty": 2,
-   "answer": 3,
-   "art": "scroll",
+   "answer": 1,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Acts",
+    "ta": "அப்போஸ்தலருடைய நடபடிகள்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 28 chapters?",
+    "q": "How many chapters does Acts have?",
     "options": [
-     "Leviticus",
-     "2 Kings",
-     "1 Chronicles",
-     "Acts"
+     "31",
+     "28",
+     "25",
+     "34"
     ],
     "explain": "Acts has 28 chapters. Matthew also has 28."
    },
    "ta": {
-    "q": "இவற்றில் 28 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "அப்போஸ்தலருடைய நடபடிகள் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "லேவியராகமம்",
-     "2 இராஜாக்கள்",
-     "1 நாளாகமம்",
-     "அப்போஸ்தலருடைய நடபடிகள்"
+     "31",
+     "28",
+     "25",
+     "34"
     ],
     "explain": "அப்போஸ்தலருடைய நடபடிகள் புஸ்தகத்தில் 28 அதிகாரங்கள் உள்ளன. மத்தேயு புஸ்தகத்திலும் 28 அதிகாரங்கள் உள்ளன."
    },
@@ -6486,7 +6706,12 @@
    "chapter": 16,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "16"
+   },
    "en": {
     "q": "Which of these books has 16 chapters?",
     "options": [
@@ -6513,30 +6738,35 @@
    ]
   },
   {
-   "id": "kn-ch-1CO",
-   "type": "book",
+   "id": "kn-cn-1CO",
+   "type": "mcq",
    "book": "1CO",
    "chapter": 16,
    "difficulty": 2,
-   "answer": 3,
-   "art": "scroll",
+   "answer": 2,
+   "art": "bookch",
+   "artLabel": {
+    "en": "1 Corinthians",
+    "ta": "1 கொரிந்தியர்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 16 chapters?",
+    "q": "How many chapters does 1 Corinthians have?",
     "options": [
-     "2 Corinthians",
-     "Zechariah",
-     "Judges",
-     "1 Corinthians"
+     "21",
+     "13",
+     "16",
+     "22"
     ],
     "explain": "1 Corinthians has 16 chapters. Mark, Romans also have 16."
    },
    "ta": {
-    "q": "இவற்றில் 16 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "1 கொரிந்தியர் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "2 கொரிந்தியர்",
-     "சகரியா",
-     "நியாயாதிபதிகள்",
-     "1 கொரிந்தியர்"
+     "21",
+     "13",
+     "16",
+     "22"
     ],
     "explain": "1 கொரிந்தியர் புஸ்தகத்தில் 16 அதிகாரங்கள் உள்ளன. மாற்கு, ரோமர் புஸ்தகத்திலும் 16 அதிகாரங்கள் உள்ளன."
    },
@@ -6552,7 +6782,12 @@
    "chapter": 13,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "13"
+   },
    "en": {
     "q": "Which of these books has 13 chapters?",
     "options": [
@@ -6579,30 +6814,35 @@
    ]
   },
   {
-   "id": "kn-ch-GAL",
-   "type": "book",
+   "id": "kn-cn-GAL",
+   "type": "mcq",
    "book": "GAL",
    "chapter": 6,
    "difficulty": 2,
    "answer": 0,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "Galatians",
+    "ta": "கலாத்தியர்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 6 chapters?",
+    "q": "How many chapters does Galatians have?",
     "options": [
-     "Galatians",
-     "1 John",
-     "1 Thessalonians",
-     "Ruth"
+     "6",
+     "8",
+     "7",
+     "3"
     ],
     "explain": "Galatians has 6 chapters. Ephesians, 1 Timothy also have 6."
    },
    "ta": {
-    "q": "இவற்றில் 6 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "கலாத்தியர் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "கலாத்தியர்",
-     "1 யோவான்",
-     "1 தெசலோனிக்கேயர்",
-     "ரூத்"
+     "6",
+     "8",
+     "7",
+     "3"
     ],
     "explain": "கலாத்தியர் புஸ்தகத்தில் 6 அதிகாரங்கள் உள்ளன. எபேசியர், 1 தீமோத்தேயு புஸ்தகத்திலும் 6 அதிகாரங்கள் உள்ளன."
    },
@@ -6618,7 +6858,12 @@
    "chapter": 6,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "6"
+   },
    "en": {
     "q": "Which of these books has 6 chapters?",
     "options": [
@@ -6645,30 +6890,35 @@
    ]
   },
   {
-   "id": "kn-ch-PHP",
-   "type": "book",
+   "id": "kn-cn-PHP",
+   "type": "mcq",
    "book": "PHP",
    "chapter": 4,
    "difficulty": 2,
-   "answer": 2,
-   "art": "scroll",
+   "answer": 3,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Philippians",
+    "ta": "பிலிப்பியர்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 4 chapters?",
+    "q": "How many chapters does Philippians have?",
     "options": [
-     "James",
-     "Lamentations",
-     "Philippians",
-     "2 Thessalonians"
+     "5",
+     "7",
+     "1",
+     "4"
     ],
     "explain": "Philippians has 4 chapters. Ruth, Jonah, Malachi, Colossians, 2 Timothy also have 4."
    },
    "ta": {
-    "q": "இவற்றில் 4 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "பிலிப்பியர் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "யாக்கோபு",
-     "புலம்பல்",
-     "பிலிப்பியர்",
-     "2 தெசலோனிக்கேயர்"
+     "5",
+     "7",
+     "1",
+     "4"
     ],
     "explain": "பிலிப்பியர் புஸ்தகத்தில் 4 அதிகாரங்கள் உள்ளன. ரூத், யோனா, மல்கியா, கொலோசெயர், 2 தீமோத்தேயு புஸ்தகத்திலும் 4 அதிகாரங்கள் உள்ளன."
    },
@@ -6684,7 +6934,12 @@
    "chapter": 4,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "4"
+   },
    "en": {
     "q": "Which of these books has 4 chapters?",
     "options": [
@@ -6711,30 +6966,35 @@
    ]
   },
   {
-   "id": "kn-ch-1TH",
-   "type": "book",
+   "id": "kn-cn-1TH",
+   "type": "mcq",
    "book": "1TH",
    "chapter": 5,
    "difficulty": 2,
-   "answer": 3,
-   "art": "scroll",
+   "answer": 0,
+   "art": "bookch",
+   "artLabel": {
+    "en": "1 Thessalonians",
+    "ta": "1 தெசலோனிக்கேயர்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 5 chapters?",
+    "q": "How many chapters does 1 Thessalonians have?",
     "options": [
-     "Philippians",
-     "2 Timothy",
-     "Galatians",
-     "1 Thessalonians"
+     "5",
+     "8",
+     "7",
+     "2"
     ],
     "explain": "1 Thessalonians has 5 chapters. Lamentations, James, 1 Peter, 1 John also have 5."
    },
    "ta": {
-    "q": "இவற்றில் 5 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "1 தெசலோனிக்கேயர் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "பிலிப்பியர்",
-     "2 தீமோத்தேயு",
-     "கலாத்தியர்",
-     "1 தெசலோனிக்கேயர்"
+     "5",
+     "8",
+     "7",
+     "2"
     ],
     "explain": "1 தெசலோனிக்கேயர் புஸ்தகத்தில் 5 அதிகாரங்கள் உள்ளன. புலம்பல், யாக்கோபு, 1 பேதுரு, 1 யோவான் புஸ்தகத்திலும் 5 அதிகாரங்கள் உள்ளன."
    },
@@ -6750,7 +7010,12 @@
    "chapter": 3,
    "difficulty": 2,
    "answer": 3,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "3"
+   },
    "en": {
     "q": "Which of these books has 3 chapters?",
     "options": [
@@ -6777,30 +7042,35 @@
    ]
   },
   {
-   "id": "kn-ch-1TI",
-   "type": "book",
+   "id": "kn-cn-1TI",
+   "type": "mcq",
    "book": "1TI",
    "chapter": 6,
    "difficulty": 2,
-   "answer": 0,
-   "art": "scroll",
+   "answer": 2,
+   "art": "bookch",
+   "artLabel": {
+    "en": "1 Timothy",
+    "ta": "1 தீமோத்தேயு",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 6 chapters?",
+    "q": "How many chapters does 1 Timothy have?",
     "options": [
-     "1 Timothy",
-     "Jonah",
-     "1 John",
-     "Malachi"
+     "3",
+     "8",
+     "6",
+     "5"
     ],
     "explain": "1 Timothy has 6 chapters. Galatians, Ephesians also have 6."
    },
    "ta": {
-    "q": "இவற்றில் 6 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "1 தீமோத்தேயு புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "1 தீமோத்தேயு",
-     "யோனா",
-     "1 யோவான்",
-     "மல்கியா"
+     "3",
+     "8",
+     "6",
+     "5"
     ],
     "explain": "1 தீமோத்தேயு புஸ்தகத்தில் 6 அதிகாரங்கள் உள்ளன. கலாத்தியர், எபேசியர் புஸ்தகத்திலும் 6 அதிகாரங்கள் உள்ளன."
    },
@@ -6816,7 +7086,12 @@
    "chapter": 4,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "4"
+   },
    "en": {
     "q": "Which of these books has 4 chapters?",
     "options": [
@@ -6843,30 +7118,35 @@
    ]
   },
   {
-   "id": "kn-ch-TIT",
-   "type": "book",
+   "id": "kn-cn-TIT",
+   "type": "mcq",
    "book": "TIT",
    "chapter": 3,
    "difficulty": 2,
-   "answer": 2,
-   "art": "scroll",
+   "answer": 0,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Titus",
+    "ta": "தீத்து",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 3 chapters?",
+    "q": "How many chapters does Titus have?",
     "options": [
-     "Jonah",
-     "Malachi",
-     "Titus",
-     "Colossians"
+     "3",
+     "2",
+     "4",
+     "6"
     ],
     "explain": "Titus has 3 chapters. Joel, Nahum, Habakkuk, Zephaniah, 2 Thessalonians, 2 Peter also have 3."
    },
    "ta": {
-    "q": "இவற்றில் 3 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "தீத்து புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "யோனா",
-     "மல்கியா",
-     "தீத்து",
-     "கொலோசெயர்"
+     "3",
+     "2",
+     "4",
+     "6"
     ],
     "explain": "தீத்து புஸ்தகத்தில் 3 அதிகாரங்கள் உள்ளன. யோவேல், நாகூம், ஆபகூக், செப்பனியா, 2 தெசலோனிக்கேயர், 2 பேதுரு புஸ்தகத்திலும் 3 அதிகாரங்கள் உள்ளன."
    },
@@ -6882,7 +7162,12 @@
    "chapter": 1,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "1"
+   },
    "en": {
     "q": "Which of these books has only one chapter?",
     "options": [
@@ -6909,30 +7194,35 @@
    ]
   },
   {
-   "id": "kn-ch-HEB",
-   "type": "book",
+   "id": "kn-cn-HEB",
+   "type": "mcq",
    "book": "HEB",
    "chapter": 13,
    "difficulty": 2,
-   "answer": 0,
-   "art": "scroll",
+   "answer": 2,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Hebrews",
+    "ta": "எபிரெயர்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 13 chapters?",
+    "q": "How many chapters does Hebrews have?",
     "options": [
-     "Hebrews",
-     "Hosea",
-     "Amos",
-     "Mark"
+     "8",
+     "12",
+     "13",
+     "14"
     ],
     "explain": "Hebrews has 13 chapters. Nehemiah, 2 Corinthians also have 13."
    },
    "ta": {
-    "q": "இவற்றில் 13 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "எபிரெயர் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "எபிரெயர்",
-     "ஓசியா",
-     "ஆமோஸ்",
-     "மாற்கு"
+     "8",
+     "12",
+     "13",
+     "14"
     ],
     "explain": "எபிரெயர் புஸ்தகத்தில் 13 அதிகாரங்கள் உள்ளன. நெகேமியா, 2 கொரிந்தியர் புஸ்தகத்திலும் 13 அதிகாரங்கள் உள்ளன."
    },
@@ -6948,7 +7238,12 @@
    "chapter": 5,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "5"
+   },
    "en": {
     "q": "Which of these books has 5 chapters?",
     "options": [
@@ -6975,30 +7270,35 @@
    ]
   },
   {
-   "id": "kn-ch-1PE",
-   "type": "book",
+   "id": "kn-cn-1PE",
+   "type": "mcq",
    "book": "1PE",
    "chapter": 5,
    "difficulty": 2,
-   "answer": 0,
-   "art": "scroll",
+   "answer": 3,
+   "art": "bookch",
+   "artLabel": {
+    "en": "1 Peter",
+    "ta": "1 பேதுரு",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 5 chapters?",
+    "q": "How many chapters does 1 Peter have?",
     "options": [
-     "1 Peter",
-     "Galatians",
-     "Jonah",
-     "1 Timothy"
+     "6",
+     "4",
+     "7",
+     "5"
     ],
     "explain": "1 Peter has 5 chapters. Lamentations, 1 Thessalonians, James, 1 John also have 5."
    },
    "ta": {
-    "q": "இவற்றில் 5 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "1 பேதுரு புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "1 பேதுரு",
-     "கலாத்தியர்",
-     "யோனா",
-     "1 தீமோத்தேயு"
+     "6",
+     "4",
+     "7",
+     "5"
     ],
     "explain": "1 பேதுரு புஸ்தகத்தில் 5 அதிகாரங்கள் உள்ளன. புலம்பல், 1 தெசலோனிக்கேயர், யாக்கோபு, 1 யோவான் புஸ்தகத்திலும் 5 அதிகாரங்கள் உள்ளன."
    },
@@ -7014,7 +7314,12 @@
    "chapter": 3,
    "difficulty": 2,
    "answer": 1,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "3"
+   },
    "en": {
     "q": "Which of these books has 3 chapters?",
     "options": [
@@ -7041,30 +7346,35 @@
    ]
   },
   {
-   "id": "kn-ch-1JN",
-   "type": "book",
+   "id": "kn-cn-1JN",
+   "type": "mcq",
    "book": "1JN",
    "chapter": 5,
    "difficulty": 2,
-   "answer": 2,
-   "art": "scroll",
+   "answer": 0,
+   "art": "bookch",
+   "artLabel": {
+    "en": "1 John",
+    "ta": "1 யோவான்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 5 chapters?",
+    "q": "How many chapters does 1 John have?",
     "options": [
-     "2 Timothy",
-     "Colossians",
-     "1 John",
-     "Malachi"
+     "5",
+     "6",
+     "4",
+     "8"
     ],
     "explain": "1 John has 5 chapters. Lamentations, 1 Thessalonians, James, 1 Peter also have 5."
    },
    "ta": {
-    "q": "இவற்றில் 5 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "1 யோவான் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "2 தீமோத்தேயு",
-     "கொலோசெயர்",
-     "1 யோவான்",
-     "மல்கியா"
+     "5",
+     "6",
+     "4",
+     "8"
     ],
     "explain": "1 யோவான் புஸ்தகத்தில் 5 அதிகாரங்கள் உள்ளன. புலம்பல், 1 தெசலோனிக்கேயர், யாக்கோபு, 1 பேதுரு புஸ்தகத்திலும் 5 அதிகாரங்கள் உள்ளன."
    },
@@ -7080,7 +7390,12 @@
    "chapter": 1,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "1"
+   },
    "en": {
     "q": "Which of these books has only one chapter?",
     "options": [
@@ -7107,30 +7422,35 @@
    ]
   },
   {
-   "id": "kn-ch-3JN",
-   "type": "book",
+   "id": "kn-cn-3JN",
+   "type": "mcq",
    "book": "3JN",
    "chapter": 1,
    "difficulty": 2,
-   "answer": 1,
-   "art": "scroll",
+   "answer": 2,
+   "art": "bookch",
+   "artLabel": {
+    "en": "3 John",
+    "ta": "3 யோவான்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has only one chapter?",
+    "q": "How many chapters does 3 John have?",
     "options": [
-     "Ruth",
-     "3 John",
-     "2 Thessalonians",
-     "2 Peter"
+     "3",
+     "6",
+     "1",
+     "4"
     ],
     "explain": "3 John has 1 chapter. Obadiah, Philemon, 2 John, Jude also have 1."
    },
    "ta": {
-    "q": "இவற்றில் ஒரே ஒரு அதிகாரம் உள்ள புஸ்தகம் எது?",
+    "q": "3 யோவான் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "ரூத்",
-     "3 யோவான்",
-     "2 தெசலோனிக்கேயர்",
-     "2 பேதுரு"
+     "3",
+     "6",
+     "1",
+     "4"
     ],
     "explain": "3 யோவான் புஸ்தகத்தில் ஒரே ஒரு அதிகாரம் உள்ளது. ஒபதியா, பிலேமோன், 2 யோவான், யூதா புஸ்தகத்திலும் 1 அதிகாரங்கள் உள்ளன."
    },
@@ -7146,7 +7466,12 @@
    "chapter": 1,
    "difficulty": 2,
    "answer": 2,
-   "art": "scroll",
+   "art": "bookch",
+   "artLabel": {
+    "en": "?",
+    "ta": "?",
+    "n": "1"
+   },
    "en": {
     "q": "Which of these books has only one chapter?",
     "options": [
@@ -7173,30 +7498,35 @@
    ]
   },
   {
-   "id": "kn-ch-REV",
-   "type": "book",
+   "id": "kn-cn-REV",
+   "type": "mcq",
    "book": "REV",
    "chapter": 22,
    "difficulty": 2,
-   "answer": 1,
-   "art": "scroll",
+   "answer": 0,
+   "art": "bookch",
+   "artLabel": {
+    "en": "Revelation",
+    "ta": "வெளிப்படுத்தின விசேஷம்",
+    "n": "?"
+   },
    "en": {
-    "q": "Which of these books has 22 chapters?",
+    "q": "How many chapters does Revelation have?",
     "options": [
-     "Matthew",
-     "Revelation",
-     "Joshua",
-     "2 Kings"
+     "22",
+     "16",
+     "25",
+     "27"
     ],
     "explain": "Revelation has 22 chapters. 1 Kings also has 22."
    },
    "ta": {
-    "q": "இவற்றில் 22 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "q": "வெளிப்படுத்தின விசேஷம் புஸ்தகத்தில் எத்தனை அதிகாரங்கள் உள்ளன?",
     "options": [
-     "மத்தேயு",
-     "வெளிப்படுத்தின விசேஷம்",
-     "யோசுவா",
-     "2 இராஜாக்கள்"
+     "22",
+     "16",
+     "25",
+     "27"
     ],
     "explain": "வெளிப்படுத்தின விசேஷம் புஸ்தகத்தில் 22 அதிகாரங்கள் உள்ளன. 1 இராஜாக்கள் புஸ்தகத்திலும் 22 அதிகாரங்கள் உள்ளன."
    },
