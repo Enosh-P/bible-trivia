@@ -1,5 +1,6 @@
 import ot from '../../content/packs/old-testament.json';
 import nt from '../../content/packs/new-testament.json';
+import knowledge from '../../content/packs/knowledge.json';
 import type { Question, QuestionPack } from './types';
 import { db } from '../storage/db';
 import { bookOfId, loadMcqBook, loadMcqBooks, loadWhoSaid, pickBooks } from './mcq';
@@ -9,7 +10,10 @@ import { drillQuestion } from './drill';
 import { baseIdOf, trueFalseFrom, whichBookFromSaying, whichBookFromVerse } from './derived';
 import { VERSES } from './verses';
 
-export const PACKS = [ot, nt] as unknown as QuestionPack[];
+export const PACKS = [ot, nt, knowledge] as unknown as QuestionPack[];
+
+/** Bible Knowledge: writers, chapters and Genesis (content/knowledge, built by npm run content:knowledge). */
+export const KNOWLEDGE = (knowledge as unknown as QuestionPack).questions;
 
 export const ALL_QUESTIONS: Question[] = PACKS.flatMap((p) => p.questions);
 
@@ -42,7 +46,8 @@ export type RoundSource =
   | { kind: 'book'; book: string; chapter: number | null } // Quiz by book
   | { kind: 'ids'; ids: string[] } //           a friend challenge: exactly these questions
   | { kind: 'truefalse' } //                   True or False: made from book questions
-  | { kind: 'whichbook' }; //                  Which Book?: sayings and well-known verses
+  | { kind: 'whichbook' } //                   Which Book?: sayings and well-known verses
+  | { kind: 'knowledge' }; //                  Bible Knowledge: its own pack
 
 export async function roundPool(source: RoundSource): Promise<Question[]> {
   switch (source.kind) {
@@ -82,6 +87,10 @@ export async function roundPool(source: RoundSource): Promise<Question[]> {
       const books = navigator.onLine ? pickBooks(`tf:${Math.random()}`, 6) : shuffle([...(await cachedBooks())]).slice(0, 6);
       const [base, extra] = await Promise.all([questionPool(), loadMcqBooks(books)]);
       return [...base, ...extra.map(trueFalseFrom).filter((q): q is Question => Boolean(q))];
+    }
+    case 'knowledge': {
+      const pool = await questionPool();
+      return pool.filter((q) => q.id.startsWith('kn-'));
     }
     case 'whichbook': {
       // The 10 written ones, plus sayings and well-known verses: which book are they from?

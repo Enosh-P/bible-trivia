@@ -231,7 +231,23 @@ const Shelf = () => (
   </>
 );
 
+/** Bible Knowledge: a smiling scroll with a lamp of wisdom. */
+const Knowledge = () => (
+  <>
+    <Shadow rx={54} />
+    <rect x={34} y={30} width={82} height={66} rx={4} fill={C.sand} {...line} />
+    <rect x={24} y={22} width={102} height={14} rx={7} fill={C.woodSoft} {...line} />
+    <rect x={24} y={90} width={102} height={14} rx={7} fill={C.woodSoft} {...line} />
+    <path d="M46 48 H104 M46 82 H90" {...line} strokeWidth={2} opacity={0.4} />
+    <Face x={75} y={64} gap={20} smile={9} />
+    <path d="M118 66 q16 -2 22 10 q-8 12 -22 10 Z" fill={C.flameSoft} {...line} strokeWidth={2.4} />
+    <path d="M118 76 h-6" {...line} strokeWidth={2.4} />
+    <path d="M140 66 q-2 -10 6 -14 q2 8 -2 12 Z" fill={C.flame} {...line} strokeWidth={2} />
+  </>
+);
+
 const ART: Record<ModeId, () => ReactElement> = {
+  knowledge: Knowledge,
   quiz: Quiz,
   classic: Classic,
   recall: Recall,

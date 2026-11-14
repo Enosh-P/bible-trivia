@@ -1,0 +1,7209 @@
+{
+ "id": "knowledge",
+ "title": {
+  "en": "Bible Knowledge",
+  "ta": "வேத அறிவு"
+ },
+ "questions": [
+  {
+   "id": "kn-k001",
+   "type": "mcq",
+   "book": "ISA",
+   "chapter": 1,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "How many prophets of the Old Testament wrote a book that bears their name?",
+    "options": [
+     "16",
+     "17",
+     "12",
+     "22"
+    ],
+    "explain": "4 major prophets (Isaiah, Jeremiah, Ezekiel, Daniel) and 12 minor prophets (Hosea to Malachi)."
+   },
+   "ta": {
+    "q": "பழைய ஏற்பாட்டில் தங்கள் பெயரில் புஸ்தகம் எழுதிய தீர்க்கதரிசிகள் எத்தனை பேர்?",
+    "options": [
+     "16",
+     "17",
+     "12",
+     "22"
+    ],
+    "explain": "4 பெரிய தீர்க்கதரிசிகள் (ஏசாயா, எரேமியா, எசேக்கியேல், தானியேல்), 12 சிறிய தீர்க்கதரிசிகள் (ஓசியா முதல் மல்கியா வரை)."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k002",
+   "type": "mcq",
+   "book": "1KI",
+   "chapter": 17,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these prophets did NOT write a book of the Bible?",
+    "options": [
+     "Malachi",
+     "Isaiah",
+     "Jonah",
+     "Elijah"
+    ]
+   },
+   "ta": {
+    "q": "இவர்களில் வேதாகமப் புஸ்தகம் எழுதாத தீர்க்கதரிசி யார்?",
+    "options": [
+     "மல்கியா",
+     "ஏசாயா",
+     "யோனா",
+     "எலியா"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k003",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 72,
+   "verse": 20,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "By the psalm titles, about how many psalms are of David?",
+    "options": [
+     "12",
+     "73",
+     "150",
+     "50"
+    ],
+    "explain": "73 psalms carry David's name in their titles; counting Psalms 2 and 95 (Acts 4:25, Hebrews 4:7) some say 75."
+   },
+   "ta": {
+    "q": "சங்கீதங்களின் தலைப்புகளின்படி தாவீதின் சங்கீதங்கள் ஏறக்குறைய எத்தனை?",
+    "options": [
+     "12",
+     "73",
+     "150",
+     "50"
+    ],
+    "explain": "73 சங்கீதங்களின் தலைப்பில் தாவீதின் பெயர் உள்ளது; 2, 95 ஆம் சங்கீதங்களையும் சேர்த்து (அப். 4:25, எபி. 4:7) சிலர் 75 என்பர்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k004",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 73,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "How many psalms are of Asaph?",
+    "options": [
+     "12",
+     "24",
+     "3",
+     "7"
+    ],
+    "explain": "Psalm 50 and Psalms 73 to 83."
+   },
+   "ta": {
+    "q": "ஆசாபின் சங்கீதங்கள் எத்தனை?",
+    "options": [
+     "12",
+     "24",
+     "3",
+     "7"
+    ],
+    "explain": "50 ஆம் சங்கீதமும், 73 முதல் 83 வரையிலான சங்கீதங்களும்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k005",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 127,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "How many psalms are of Solomon?",
+    "options": [
+     "1",
+     "2",
+     "5",
+     "10"
+    ],
+    "explain": "Psalm 72 and Psalm 127."
+   },
+   "ta": {
+    "q": "சாலொமோனின் சங்கீதங்கள் எத்தனை?",
+    "options": [
+     "1",
+     "2",
+     "5",
+     "10"
+    ],
+    "explain": "72 ஆம் சங்கீதமும் 127 ஆம் சங்கீதமும்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k006",
+   "type": "mcq",
+   "book": "ECC",
+   "chapter": 1,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books did Solomon write?",
+    "options": [
+     "Job",
+     "Ecclesiastes",
+     "Ruth",
+     "Lamentations"
+    ],
+    "explain": "Solomon wrote Proverbs, Ecclesiastes, the Song of Solomon and two psalms."
+   },
+   "ta": {
+    "q": "இவற்றில் சாலொமோன் எழுதிய புஸ்தகம் எது?",
+    "options": [
+     "யோபு",
+     "பிரசங்கி",
+     "ரூத்",
+     "புலம்பல்"
+    ],
+    "explain": "நீதிமொழிகள், பிரசங்கி, உன்னதப்பாட்டு, இரண்டு சங்கீதங்கள் ஆகியவற்றைச் சாலொமோன் எழுதினார்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k007",
+   "type": "mcq",
+   "book": "PRO",
+   "chapter": 1,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Who wrote most of the book of Proverbs?",
+    "options": [
+     "Solomon",
+     "Moses",
+     "David",
+     "Asaph"
+    ]
+   },
+   "ta": {
+    "q": "நீதிமொழிகள் புஸ்தகத்தின் பெரும்பகுதியை எழுதியவர் யார்?",
+    "options": [
+     "சாலொமோன்",
+     "மோசே",
+     "தாவீது",
+     "ஆசாப்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k008",
+   "type": "mcq",
+   "book": "JER",
+   "chapter": 36,
+   "verse": 4,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Who was Jeremiah's helper who wrote down his words?",
+    "options": [
+     "Barak",
+     "Gehazi",
+     "Elisha",
+     "Baruch"
+    ],
+    "explain": "Baruch the son of Neriah wrote from the mouth of Jeremiah. (Barak was a judge with Deborah.)"
+   },
+   "ta": {
+    "q": "எரேமியாவின் வார்த்தைகளை எழுதிய அவருடைய உதவியாளர் யார்?",
+    "options": [
+     "பாராக்",
+     "கேயாசி",
+     "எலிசா",
+     "பாருக்கு"
+    ],
+    "explain": "நேரியாவின் குமாரனாகிய பாருக்கு எரேமியாவின் வாய்மொழியின்படி எழுதினான். (பாராக் தெபொராளுடன் இருந்த நியாயாதிபதி.)"
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k009",
+   "type": "mcq",
+   "book": "LEV",
+   "chapter": 1,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books was written by Moses?",
+    "options": [
+     "Leviticus",
+     "Joshua",
+     "Ruth",
+     "Judges"
+    ],
+    "explain": "Moses wrote Genesis, Exodus, Leviticus, Numbers and Deuteronomy."
+   },
+   "ta": {
+    "q": "இவற்றில் மோசே எழுதிய புஸ்தகம் எது?",
+    "options": [
+     "லேவியராகமம்",
+     "யோசுவா",
+     "ரூத்",
+     "நியாயாதிபதிகள்"
+    ],
+    "explain": "ஆதியாகமம், யாத்திராகமம், லேவியராகமம், எண்ணாகமம், உபாகமம் ஆகியவற்றை மோசே எழுதினார்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k010",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 90,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which psalm is \"A Prayer of Moses the man of God\"?",
+    "options": [
+     "Psalm 90",
+     "Psalm 119",
+     "Psalm 23",
+     "Psalm 51"
+    ]
+   },
+   "ta": {
+    "q": "\"தேவனுடைய மனுஷனாகிய மோசேயின் ஜெபம்\" எந்தச் சங்கீதம்?",
+    "options": [
+     "90 ஆம் சங்கீதம்",
+     "119 ஆம் சங்கீதம்",
+     "23 ஆம் சங்கீதம்",
+     "51 ஆம் சங்கீதம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k011",
+   "type": "mcq",
+   "book": "JOB",
+   "chapter": 1,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Besides the five books of the Law, which book is traditionally said to be written by Moses?",
+    "options": [
+     "Job",
+     "Esther",
+     "Judges",
+     "Joshua"
+    ]
+   },
+   "ta": {
+    "q": "நியாயப்பிரமாணத்தின் ஐந்து புஸ்தகங்களைத் தவிர, மோசே எழுதியதாகப் பாரம்பரியமாகச் சொல்லப்படும் புஸ்தகம் எது?",
+    "options": [
+     "யோபு",
+     "எஸ்தர்",
+     "நியாயாதிபதிகள்",
+     "யோசுவா"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k012",
+   "type": "mcq",
+   "book": "1CH",
+   "chapter": 29,
+   "verse": 29,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which books are traditionally said to be written by Samuel?",
+    "options": [
+     "Ezra and Nehemiah",
+     "1 and 2 Kings",
+     "Judges, Ruth and part of 1 Samuel",
+     "Esther and Job"
+    ],
+    "explain": "The rest of the acts of David were written by Samuel the seer, Nathan the prophet and Gad the seer."
+   },
+   "ta": {
+    "q": "சாமுவேல் எழுதியதாகப் பாரம்பரியமாகச் சொல்லப்படும் புஸ்தகங்கள் எவை?",
+    "options": [
+     "எஸ்றா, நெகேமியா",
+     "1, 2 இராஜாக்கள்",
+     "நியாயாதிபதிகள், ரூத், 1 சாமுவேலின் ஒரு பகுதி",
+     "எஸ்தர், யோபு"
+    ],
+    "explain": "தாவீதின் மற்ற வர்த்தமானங்களை ஞானதிருஷ்டிக்காரனாகிய சாமுவேலும், தீர்க்கதரிசியாகிய நாத்தானும், ஞானதிருஷ்டிக்காரனாகிய காத்தும் எழுதினார்கள்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k013",
+   "type": "mcq",
+   "book": "1CH",
+   "chapter": 29,
+   "verse": 29,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Together with Samuel, which two prophets wrote down the acts of David?",
+    "options": [
+     "Elijah and Elisha",
+     "Nathan and Gad",
+     "Haggai and Zechariah",
+     "Isaiah and Jeremiah"
+    ]
+   },
+   "ta": {
+    "q": "சாமுவேலுடன் சேர்ந்து தாவீதின் வர்த்தமானங்களை எழுதிய இரண்டு தீர்க்கதரிசிகள் யார்?",
+    "options": [
+     "எலியா, எலிசா",
+     "நாத்தான், காத்",
+     "ஆகாய், சகரியா",
+     "ஏசாயா, எரேமியா"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k014",
+   "type": "mcq",
+   "book": "ROM",
+   "chapter": 1,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Counting Hebrews, how many letters are traditionally said to be written by Paul?",
+    "options": [
+     "7",
+     "12",
+     "14",
+     "21"
+    ],
+    "explain": "Romans to Philemon are 13 letters; with Hebrews, 14."
+   },
+   "ta": {
+    "q": "எபிரெயரையும் சேர்த்து, பவுல் எழுதியதாகச் சொல்லப்படும் நிருபங்கள் எத்தனை?",
+    "options": [
+     "7",
+     "12",
+     "14",
+     "21"
+    ],
+    "explain": "ரோமர் முதல் பிலேமோன் வரை 13 நிருபங்கள்; எபிரெயரையும் சேர்த்து 14."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k015",
+   "type": "mcq",
+   "book": "ROM",
+   "chapter": 1,
+   "verse": 7,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "To churches in how many different places did Paul write (Romans to 2 Thessalonians)?",
+    "options": [
+     "9",
+     "3",
+     "7",
+     "12"
+    ],
+    "explain": "Rome, Corinth, Galatia, Ephesus, Philippi, Colosse and Thessalonica."
+   },
+   "ta": {
+    "q": "பவுல் எத்தனை வெவ்வேறு இடங்களிலுள்ள சபைகளுக்கு நிருபம் எழுதினார் (ரோமர் முதல் 2 தெசலோனிக்கேயர் வரை)?",
+    "options": [
+     "9",
+     "3",
+     "7",
+     "12"
+    ],
+    "explain": "ரோமா, கொரிந்து, கலாத்தியா, எபேசு, பிலிப்பி, கொலோசெ, தெசலோனிக்கே."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k016",
+   "type": "mcq",
+   "book": "PHM",
+   "chapter": 1,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these New Testament letters was written to one person?",
+    "options": [
+     "Galatians",
+     "Hebrews",
+     "Philemon",
+     "Ephesians"
+    ],
+    "explain": "1 and 2 Timothy, Titus and Philemon were written to one person; so were 2 John (the elect lady) and 3 John (Gaius)."
+   },
+   "ta": {
+    "q": "இவற்றில் ஒரு தனி நபருக்கு எழுதப்பட்ட புதிய ஏற்பாட்டு நிருபம் எது?",
+    "options": [
+     "கலாத்தியர்",
+     "எபிரெயர்",
+     "பிலேமோன்",
+     "எபேசியர்"
+    ],
+    "explain": "1, 2 தீமோத்தேயு, தீத்து, பிலேமோன் ஆகியவை தனி நபருக்கு எழுதப்பட்டவை; 2 யோவான் (அம்மாள்), 3 யோவான் (காயு) கூட."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k017",
+   "type": "mcq",
+   "book": "2JN",
+   "chapter": 1,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "To whom was the second letter of John written?",
+    "options": [
+     "Timothy",
+     "Gaius",
+     "The church at Rome",
+     "The elect lady and her children"
+    ]
+   },
+   "ta": {
+    "q": "யோவான் எழுதிய இரண்டாம் நிருபம் யாருக்கு எழுதப்பட்டது?",
+    "options": [
+     "தீமோத்தேயுவுக்கு",
+     "காயுவுக்கு",
+     "ரோமாவிலுள்ள சபைக்கு",
+     "தெரிந்துகொள்ளப்பட்ட அம்மாளுக்கும் அவள் பிள்ளைகளுக்கும்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k018",
+   "type": "mcq",
+   "book": "MAT",
+   "chapter": 10,
+   "verse": 2,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "loaves",
+   "en": {
+    "q": "Which of these was NOT one of the twelve disciples of Jesus?",
+    "options": [
+     "Barnabas",
+     "Thaddaeus",
+     "Bartholomew",
+     "Simon the Canaanite"
+    ],
+    "explain": "Peter, Andrew, James, John, Philip, Bartholomew, Thomas, Matthew, James son of Alphaeus, Thaddaeus, Simon the Canaanite and Judas Iscariot."
+   },
+   "ta": {
+    "q": "இவர்களில் இயேசுவின் பன்னிரண்டு சீஷரில் ஒருவர் அல்லாதவர் யார்?",
+    "options": [
+     "பர்னபா",
+     "ததேயு",
+     "பற்தொலொமேயு",
+     "கானானியனாகிய சீமோன்"
+    ],
+    "explain": "பேதுரு, அந்திரேயா, யாக்கோபு, யோவான், பிலிப்பு, பற்தொலொமேயு, தோமா, மத்தேயு, அல்பேயுவின் குமாரனாகிய யாக்கோபு, ததேயு, கானானியனாகிய சீமோன், யூதாஸ்காரியோத்து."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k019",
+   "type": "mcq",
+   "book": "ACT",
+   "chapter": 1,
+   "verse": 26,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "loaves",
+   "en": {
+    "q": "Who was chosen to take the place of Judas among the twelve apostles?",
+    "options": [
+     "Matthias",
+     "Paul",
+     "Barnabas",
+     "Stephen"
+    ]
+   },
+   "ta": {
+    "q": "பன்னிரண்டு அப்போஸ்தலரில் யூதாஸின் இடத்திற்குத் தெரிந்துகொள்ளப்பட்டவர் யார்?",
+    "options": [
+     "மத்தியா",
+     "பவுல்",
+     "பர்னபா",
+     "ஸ்தேவான்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k020",
+   "type": "mcq",
+   "book": "REV",
+   "chapter": 1,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Who wrote the book of Revelation?",
+    "options": [
+     "Peter",
+     "Paul",
+     "Daniel",
+     "John"
+    ]
+   },
+   "ta": {
+    "q": "வெளிப்படுத்தின விசேஷத்தை எழுதியவர் யார்?",
+    "options": [
+     "பேதுரு",
+     "பவுல்",
+     "தானியேல்",
+     "யோவான்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k021",
+   "type": "mcq",
+   "book": "LAM",
+   "chapter": 3,
+   "verse": 22,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "How many verses are in the book of Lamentations?",
+    "options": [
+     "88",
+     "66",
+     "154",
+     "120"
+    ],
+    "explain": "Five chapters: 22 + 22 + 66 + 22 + 22 verses."
+   },
+   "ta": {
+    "q": "புலம்பல் புஸ்தகத்தில் எத்தனை வசனங்கள் உள்ளன?",
+    "options": [
+     "88",
+     "66",
+     "154",
+     "120"
+    ],
+    "explain": "ஐந்து அதிகாரங்கள்: 22 + 22 + 66 + 22 + 22 வசனங்கள்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k022",
+   "type": "mcq",
+   "book": "2TI",
+   "chapter": 3,
+   "verse": 16,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "How many books are in the Bible?",
+    "options": [
+     "73",
+     "39",
+     "27",
+     "66"
+    ],
+    "explain": "39 in the Old Testament and 27 in the New Testament."
+   },
+   "ta": {
+    "q": "வேதாகமத்தில் எத்தனை புஸ்தகங்கள் உள்ளன?",
+    "options": [
+     "73",
+     "39",
+     "27",
+     "66"
+    ],
+    "explain": "பழைய ஏற்பாட்டில் 39, புதிய ஏற்பாட்டில் 27."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k030",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 1,
+   "verse": 26,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sun",
+   "en": {
+    "q": "For what purpose did God make man in His image and give him dominion?",
+    "options": [
+     "Only to name the animals",
+     "Only to keep the garden",
+     "To rest every day",
+     "To express God and to represent Him"
+    ]
+   },
+   "ta": {
+    "q": "தேவன் மனுஷனைத் தம்முடைய சாயலாக உண்டாக்கி ஆளுகை கொடுத்ததின் நோக்கம் என்ன?",
+    "options": [
+     "மிருகங்களுக்குப் பெயரிட மட்டும்",
+     "தோட்டத்தைக் காக்க மட்டும்",
+     "தினமும் ஓய்வெடுக்க",
+     "தேவனை வெளிப்படுத்தவும் அவரைப் பிரதிநிதித்துவப்படுத்தவும்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k031",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 1,
+   "verse": 16,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sun",
+   "en": {
+    "q": "What did God make on the fourth day?",
+    "options": [
+     "Grass and trees",
+     "The sun, the moon and the stars",
+     "Man and woman",
+     "Fish and birds"
+    ]
+   },
+   "ta": {
+    "q": "நான்காம் நாளில் தேவன் எதை உண்டாக்கினார்?",
+    "options": [
+     "புல்லும் மரங்களும்",
+     "சூரியன், சந்திரன், நட்சத்திரங்கள்",
+     "ஆணும் பெண்ணும்",
+     "மீன்களும் பறவைகளும்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k032",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 1,
+   "verse": 14,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sun",
+   "en": {
+    "q": "Why did God set lights in the firmament on the fourth day?",
+    "options": [
+     "To warm the sea",
+     "To guide Noah's ark",
+     "Only for the angels",
+     "For signs, seasons, days and years, and to give light"
+    ]
+   },
+   "ta": {
+    "q": "நான்காம் நாளில் தேவன் ஆகாயவிரிவிலே சுடர்களை எதற்காக வைத்தார்?",
+    "options": [
+     "கடலைச் சூடாக்க",
+     "நோவாவின் பேழைக்கு வழிகாட்ட",
+     "தேவதூதர்களுக்காக மட்டும்",
+     "அடையாளங்களுக்கும், காலங்களுக்கும், நாட்களுக்கும், வருஷங்களுக்கும், வெளிச்சம் கொடுக்கவும்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k033",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 1,
+   "verse": 24,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sun",
+   "en": {
+    "q": "What did God make on the sixth day?",
+    "options": [
+     "The sun, moon and stars",
+     "Cattle, creeping things, beasts of the earth, and man",
+     "Grass, herbs and trees",
+     "Fish and birds"
+    ]
+   },
+   "ta": {
+    "q": "ஆறாம் நாளில் தேவன் எவைகளை உண்டாக்கினார்?",
+    "options": [
+     "சூரியன், சந்திரன், நட்சத்திரங்கள்",
+     "நாட்டுமிருகங்கள், ஊரும் பிராணிகள், காட்டுமிருகங்கள், மனுஷன்",
+     "புல், பூண்டு, மரங்கள்",
+     "மீன்களும் பறவைகளும்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k034",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 2,
+   "verse": 10,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "tree",
+   "en": {
+    "q": "Into how many rivers did the river from Eden part?",
+    "options": [
+     "3",
+     "2",
+     "4",
+     "7"
+    ]
+   },
+   "ta": {
+    "q": "ஏதேனிலிருந்து புறப்பட்ட நதி எத்தனை ஆறுகளாகப் பிரிந்தது?",
+    "options": [
+     "3",
+     "2",
+     "4",
+     "7"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k035",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 2,
+   "verse": 14,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "tree",
+   "en": {
+    "q": "Which of these was one of the rivers of Eden?",
+    "options": [
+     "Hiddekel",
+     "Kishon",
+     "Jordan",
+     "Nile"
+    ],
+    "explain": "The four rivers: Pison, Gihon, Hiddekel and Euphrates."
+   },
+   "ta": {
+    "q": "இவற்றில் ஏதேனின் ஆறுகளில் ஒன்று எது?",
+    "options": [
+     "இதெக்கேல்",
+     "கீசோன்",
+     "யோர்தான்",
+     "நைல்"
+    ],
+    "explain": "நான்கு ஆறுகள்: பைசோன், கீகோன், இதெக்கேல், ஐபிராத்து."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k036",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 2,
+   "verse": 11,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "tree",
+   "en": {
+    "q": "In which land, compassed by the river Pison, was there gold?",
+    "options": [
+     "Egypt",
+     "Assyria",
+     "Ethiopia",
+     "Havilah"
+    ]
+   },
+   "ta": {
+    "q": "பைசோன் நதி சுற்றிப் பாய்ந்த, பொன் விளைந்த தேசம் எது?",
+    "options": [
+     "எகிப்து",
+     "அசீரியா",
+     "எத்தியோப்பியா",
+     "ஆவிலா"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k037",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 2,
+   "verse": 13,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "tree",
+   "en": {
+    "q": "Which river of Eden compassed the land of Ethiopia?",
+    "options": [
+     "Hiddekel",
+     "Pison",
+     "Gihon",
+     "Euphrates"
+    ]
+   },
+   "ta": {
+    "q": "எத்தியோப்பியா தேசத்தைச் சுற்றிப் பாய்ந்த ஏதேனின் நதி எது?",
+    "options": [
+     "இதெக்கேல்",
+     "பைசோன்",
+     "கீகோன்",
+     "ஐபிராத்து"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k038",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 1,
+   "verse": 8,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "sun",
+   "en": {
+    "q": "On which day of creation is it not said that \"it was good\"?",
+    "options": [
+     "The fifth day",
+     "The first day",
+     "The second day",
+     "The third day"
+    ]
+   },
+   "ta": {
+    "q": "சிருஷ்டிப்பின் எந்த நாளில் \"நல்லது\" என்று சொல்லப்படவில்லை?",
+    "options": [
+     "ஐந்தாம் நாள்",
+     "முதலாம் நாள்",
+     "இரண்டாம் நாள்",
+     "மூன்றாம் நாள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k039",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 2,
+   "verse": 18,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "tree",
+   "en": {
+    "q": "What did God say was \"not good\"?",
+    "options": [
+     "The deep waters",
+     "The darkness",
+     "The serpent",
+     "That the man should be alone"
+    ]
+   },
+   "ta": {
+    "q": "\"நல்லதல்ல\" என்று தேவன் சொன்னது எது?",
+    "options": [
+     "ஆழமான தண்ணீர்",
+     "இருள்",
+     "சர்ப்பம்",
+     "மனுஷன் தனிமையாயிருப்பது"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k040",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 3,
+   "verse": 20,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "tree",
+   "en": {
+    "q": "What does the name Eve mean?",
+    "options": [
+     "Bone of my bones",
+     "Taken out of man",
+     "God has heard",
+     "The mother of all living"
+    ]
+   },
+   "ta": {
+    "q": "ஏவாள் என்ற பெயரின் அர்த்தம் என்ன?",
+    "options": [
+     "என் எலும்பின் எலும்பு",
+     "மனுஷனிலிருந்து எடுக்கப்பட்டவள்",
+     "தேவன் கேட்டார்",
+     "ஜீவனுள்ளோருக்கெல்லாம் தாய்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k041",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 4,
+   "verse": 8,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "tree",
+   "en": {
+    "q": "Who was the first murderer on the earth?",
+    "options": [
+     "Esau",
+     "Lamech",
+     "Nimrod",
+     "Cain"
+    ]
+   },
+   "ta": {
+    "q": "பூமியில் முதல் கொலைகாரன் யார்?",
+    "options": [
+     "ஏசா",
+     "லாமேக்கு",
+     "நிம்ரோத்",
+     "காயீன்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k042",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 4,
+   "verse": 23,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "tree",
+   "en": {
+    "q": "After Cain, who was the next man in Genesis to say he had slain a man?",
+    "options": [
+     "Ham",
+     "Enos",
+     "Lamech",
+     "Seth"
+    ]
+   },
+   "ta": {
+    "q": "காயீனுக்குப் பின், ஒரு மனுஷனைக் கொன்றேன் என்று சொன்ன அடுத்த நபர் யார்?",
+    "options": [
+     "காம்",
+     "ஏனோஸ்",
+     "லாமேக்கு",
+     "சேத்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k043",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 4,
+   "verse": 26,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "tree",
+   "en": {
+    "q": "In whose days did men begin to call upon the name of the LORD?",
+    "options": [
+     "Enos",
+     "Adam",
+     "Noah",
+     "Enoch"
+    ]
+   },
+   "ta": {
+    "q": "யாருடைய நாட்களில் மனுஷர் கர்த்தருடைய நாமத்தைத் தொழுதுகொள்ள ஆரம்பித்தார்கள்?",
+    "options": [
+     "ஏனோஸ்",
+     "ஆதாம்",
+     "நோவா",
+     "ஏனோக்கு"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k044",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 5,
+   "verse": 24,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "tree",
+   "en": {
+    "q": "Who walked with God, and was not, for God took him?",
+    "options": [
+     "Enoch",
+     "Noah",
+     "Lamech",
+     "Methuselah"
+    ]
+   },
+   "ta": {
+    "q": "தேவனோடே சஞ்சரித்து, தேவன் அவனை எடுத்துக்கொண்டதினால் காணப்படாமற்போனவன் யார்?",
+    "options": [
+     "ஏனோக்கு",
+     "நோவா",
+     "லாமேக்கு",
+     "மெத்தூசலா"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k045",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 6,
+   "verse": 9,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "ark",
+   "en": {
+    "q": "After Enoch, who was the next man said to walk with God?",
+    "options": [
+     "Noah",
+     "Lamech",
+     "Abraham",
+     "Shem"
+    ]
+   },
+   "ta": {
+    "q": "ஏனோக்குக்குப் பின், தேவனோடே சஞ்சரித்தவன் என்று சொல்லப்பட்ட அடுத்த நபர் யார்?",
+    "options": [
+     "நோவா",
+     "லாமேக்கு",
+     "ஆபிரகாம்",
+     "சேம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k046",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 5,
+   "verse": 27,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "tree",
+   "en": {
+    "q": "Who lived the longest of all, and for how many years?",
+    "options": [
+     "Adam, 930 years",
+     "Jared, 962 years",
+     "Noah, 950 years",
+     "Methuselah, 969 years"
+    ]
+   },
+   "ta": {
+    "q": "எல்லாரிலும் அதிக வருஷம் உயிரோடிருந்தவர் யார், எத்தனை வருஷம்?",
+    "options": [
+     "ஆதாம், 930 வருஷம்",
+     "யாரேத், 962 வருஷம்",
+     "நோவா, 950 வருஷம்",
+     "மெத்தூசலா, 969 வருஷம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k047",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 7,
+   "verse": 4,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "ark",
+   "en": {
+    "q": "When do we first read of rain falling on the earth?",
+    "options": [
+     "In the days of Adam",
+     "In the days of Abraham",
+     "In the days of Moses",
+     "In the days of Noah"
+    ],
+    "explain": "Before that, a mist went up from the earth and watered the ground (Genesis 2:5-6)."
+   },
+   "ta": {
+    "q": "பூமியின்மேல் மழை பெய்ததைப்பற்றி முதன்முதலில் எப்போது வாசிக்கிறோம்?",
+    "options": [
+     "ஆதாமின் நாட்களில்",
+     "ஆபிரகாமின் நாட்களில்",
+     "மோசேயின் நாட்களில்",
+     "நோவாவின் நாட்களில்"
+    ],
+    "explain": "அதற்கு முன் பூமியிலிருந்து மூடுபனி எழும்பி, பூமியை நனைத்தது (ஆதி. 2:5-6)."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k050",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 5,
+   "verse": 32,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "ark",
+   "en": {
+    "q": "How old was Noah when he began to have sons?",
+    "options": [
+     "600 years",
+     "950 years",
+     "120 years",
+     "500 years"
+    ]
+   },
+   "ta": {
+    "q": "நோவா எத்தனை வயதில் குமாரரைப் பெற்றான்?",
+    "options": [
+     "600 வயதில்",
+     "950 வயதில்",
+     "120 வயதில்",
+     "500 வயதில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k051",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 6,
+   "verse": 3,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "ark",
+   "en": {
+    "q": "To how many years did God limit man's days?",
+    "options": [
+     "70 years",
+     "120 years",
+     "969 years",
+     "40 years"
+    ]
+   },
+   "ta": {
+    "q": "மனுஷனுடைய நாட்களை தேவன் எத்தனை வருஷமாகக் குறைத்தார்?",
+    "options": [
+     "70 வருஷம்",
+     "120 வருஷம்",
+     "969 வருஷம்",
+     "40 வருஷம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k052",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 7,
+   "verse": 10,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "ark",
+   "en": {
+    "q": "How many days after Noah entered the ark did the flood come?",
+    "options": [
+     "3 days",
+     "150 days",
+     "7 days",
+     "40 days"
+    ]
+   },
+   "ta": {
+    "q": "நோவா பேழைக்குள் பிரவேசித்து எத்தனை நாள் கழித்து ஜலப்பிரளயம் வந்தது?",
+    "options": [
+     "3 நாள்",
+     "150 நாள்",
+     "7 நாள்",
+     "40 நாள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k053",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 7,
+   "verse": 12,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "ark",
+   "en": {
+    "q": "For how long did the rain fall in the days of Noah?",
+    "options": [
+     "A whole year",
+     "40 days and 40 nights",
+     "7 days",
+     "150 days"
+    ]
+   },
+   "ta": {
+    "q": "நோவாவின் நாட்களில் எவ்வளவு காலம் மழை பெய்தது?",
+    "options": [
+     "ஒரு வருஷம் முழுவதும்",
+     "40 நாள் இரவும் பகலும்",
+     "7 நாள்",
+     "150 நாள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k054",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 7,
+   "verse": 20,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "ark",
+   "en": {
+    "q": "How high did the waters rise above the mountains?",
+    "options": [
+     "100 cubits",
+     "15 cubits (about 22 feet)",
+     "40 cubits",
+     "7 cubits"
+    ]
+   },
+   "ta": {
+    "q": "தண்ணீர் மலைகளுக்கு மேல் எவ்வளவு உயரம் எழும்பியது?",
+    "options": [
+     "100 முழம்",
+     "15 முழம் (ஏறக்குறைய 22 அடி)",
+     "40 முழம்",
+     "7 முழம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k055",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 7,
+   "verse": 24,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "ark",
+   "en": {
+    "q": "For how many days did the waters prevail upon the earth?",
+    "options": [
+     "7 days",
+     "150 days",
+     "300 days",
+     "40 days"
+    ]
+   },
+   "ta": {
+    "q": "ஜலம் பூமியின்மேல் எத்தனை நாள் பிரவாகித்தது?",
+    "options": [
+     "7 நாள்",
+     "150 நாள்",
+     "300 நாள்",
+     "40 நாள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k056",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 8,
+   "verse": 4,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "ark",
+   "en": {
+    "q": "On which mountains did the ark rest?",
+    "options": [
+     "Mount Sinai",
+     "Mount Carmel",
+     "Mount Moriah",
+     "The mountains of Ararat"
+    ]
+   },
+   "ta": {
+    "q": "பேழை எந்த மலைகளின்மேல் தங்கிற்று?",
+    "options": [
+     "சீனாய் மலை",
+     "கர்மேல் மலை",
+     "மோரியா மலை",
+     "அரராத் மலைகள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k057",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 8,
+   "verse": 7,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "dove",
+   "en": {
+    "q": "Which bird did Noah send out first?",
+    "options": [
+     "A dove",
+     "An eagle",
+     "A sparrow",
+     "A raven"
+    ]
+   },
+   "ta": {
+    "q": "நோவா முதலில் வெளியே அனுப்பின பறவை எது?",
+    "options": [
+     "புறா",
+     "கழுகு",
+     "அடைக்கலான் குருவி",
+     "காகம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k058",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 8,
+   "verse": 11,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "dove",
+   "en": {
+    "q": "What did the dove bring back to Noah?",
+    "options": [
+     "A fig leaf",
+     "A small stone",
+     "An olive leaf",
+     "A cedar twig"
+    ]
+   },
+   "ta": {
+    "q": "புறா நோவாவிடம் என்ன கொண்டுவந்தது?",
+    "options": [
+     "அத்தி இலை",
+     "ஒரு சிறு கல்",
+     "ஒலிவ இலை",
+     "கேதுரு கிளை"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k059",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 8,
+   "verse": 14,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "ark",
+   "en": {
+    "q": "About how long were Noah and his family in the ark?",
+    "options": [
+     "Three years",
+     "40 days",
+     "About a year",
+     "7 days"
+    ],
+    "explain": "They went in during the 600th year, 2nd month, 17th day (7:11) and the earth was dry in the 601st year, 2nd month, 27th day."
+   },
+   "ta": {
+    "q": "நோவாவும் அவன் குடும்பமும் ஏறக்குறைய எவ்வளவு காலம் பேழைக்குள் இருந்தார்கள்?",
+    "options": [
+     "மூன்று வருஷம்",
+     "40 நாள்",
+     "ஏறக்குறைய ஒரு வருஷம்",
+     "7 நாள்"
+    ],
+    "explain": "600 ஆம் வருஷம் 2 ஆம் மாதம் 17 ஆம் தேதி உள்ளே சென்றார்கள் (7:11); 601 ஆம் வருஷம் 2 ஆம் மாதம் 27 ஆம் தேதி பூமி காய்ந்தது."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k060",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 8,
+   "verse": 20,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "ark",
+   "en": {
+    "q": "What did Noah do first after coming out of the ark?",
+    "options": [
+     "He sent out the dove",
+     "He built an altar and offered burnt offerings",
+     "He planted a vineyard",
+     "He built a city"
+    ]
+   },
+   "ta": {
+    "q": "பேழையிலிருந்து வெளியே வந்தபின் நோவா முதலில் செய்தது என்ன?",
+    "options": [
+     "புறாவை வெளியே விட்டான்",
+     "பலிபீடம் கட்டி சர்வாங்க தகனபலிகளைச் செலுத்தினான்",
+     "திராட்சத்தோட்டம் நாட்டினான்",
+     "ஒரு பட்டணம் கட்டினான்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k061",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 10,
+   "verse": 10,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "crown",
+   "en": {
+    "q": "Who was the mighty one whose kingdom began at Babel?",
+    "options": [
+     "Ham",
+     "Asshur",
+     "Cush",
+     "Nimrod"
+    ]
+   },
+   "ta": {
+    "q": "பாபேலில் ராஜ்யம் ஆரம்பமான பலவான் யார்?",
+    "options": [
+     "காம்",
+     "அசூர்",
+     "கூஷ்",
+     "நிம்ரோத்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k062",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 10,
+   "verse": 10,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "crown",
+   "en": {
+    "q": "Which of these cities was in the beginning of Nimrod's kingdom?",
+    "options": [
+     "Damascus",
+     "Sodom",
+     "Erech",
+     "Hebron"
+    ],
+    "explain": "Babel, Erech, Accad and Calneh, in the land of Shinar."
+   },
+   "ta": {
+    "q": "இவற்றில் நிம்ரோதின் ராஜ்யத்தின் ஆரம்ப பட்டணம் எது?",
+    "options": [
+     "தமஸ்கு",
+     "சோதோம்",
+     "ஏரேக்",
+     "எபிரோன்"
+    ],
+    "explain": "சிநேயார் தேசத்திலுள்ள பாபேல், ஏரேக், அக்காத், கல்னே."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k063",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 10,
+   "verse": 15,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "crown",
+   "en": {
+    "q": "Who was Canaan's firstborn son?",
+    "options": [
+     "Cush",
+     "Mizraim",
+     "Sidon",
+     "Heth"
+    ]
+   },
+   "ta": {
+    "q": "கானானின் மூத்த குமாரன் யார்?",
+    "options": [
+     "கூஷ்",
+     "மிஸ்ராயீம்",
+     "சீதோன்",
+     "கேத்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k070",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 12,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "star",
+   "en": {
+    "q": "What did God tell Abram to leave?",
+    "options": [
+     "His flocks and herds",
+     "Only his idols",
+     "His wife and his nephew",
+     "His country, his kindred and his father's house"
+    ]
+   },
+   "ta": {
+    "q": "ஆபிராமை எவைகளை விட்டுப் புறப்படும்படி தேவன் சொன்னார்?",
+    "options": [
+     "தன் ஆடுமாடுகளை",
+     "தன் விக்கிரகங்களை மட்டும்",
+     "தன் மனைவியையும் சகோதரன் மகனையும்",
+     "தன் தேசத்தையும், தன் இனத்தையும், தன் தகப்பன் வீட்டையும்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k071",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 12,
+   "verse": 7,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "star",
+   "en": {
+    "q": "Where did the LORD first say to Abram, \"Unto thy seed will I give this land\"?",
+    "options": [
+     "Bethel",
+     "Hebron",
+     "Sichem, at the plain of Moreh",
+     "Ur of the Chaldees"
+    ]
+   },
+   "ta": {
+    "q": "\"உன் சந்ததிக்கு இந்தத் தேசத்தைக் கொடுப்பேன்\" என்று கர்த்தர் ஆபிராமிடம் முதலில் சொன்ன இடம் எது?",
+    "options": [
+     "பெத்தேல்",
+     "எபிரோன்",
+     "சீகேம், மோரே என்னும் சமபூமி",
+     "கல்தேயரின் ஊர்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k072",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 13,
+   "verse": 8,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "sheep",
+   "en": {
+    "q": "What did Abram say to Lot when their herdmen strove?",
+    "options": [
+     "Go back to Haran",
+     "Take all the cattle",
+     "Let there be no strife between me and thee, for we be brethren",
+     "Let us never meet again"
+    ]
+   },
+   "ta": {
+    "q": "மேய்ப்பர்கள் வாக்குவாதம் செய்தபோது ஆபிராம் லோத்திடம் என்ன சொன்னான்?",
+    "options": [
+     "ஆரானுக்குத் திரும்பிப்போ",
+     "எல்லா மிருகஜீவன்களையும் எடுத்துக்கொள்",
+     "எனக்கும் உனக்கும் வாக்குவாதம் வேண்டாம்; நாம் சகோதரர்",
+     "இனி ஒருபோதும் சந்திக்கவேண்டாம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k073",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 14,
+   "verse": 14,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "star",
+   "en": {
+    "q": "With how many trained servants did Abram go to rescue Lot?",
+    "options": [
+     "318",
+     "400",
+     "1000",
+     "300"
+    ]
+   },
+   "ta": {
+    "q": "லோத்தை மீட்க ஆபிராம் எத்தனை பேரோடு யுத்தத்துக்குப் போனான்?",
+    "options": [
+     "318",
+     "400",
+     "1000",
+     "300"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k074",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 15,
+   "verse": 2,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "star",
+   "en": {
+    "q": "Whom did Abram first think would be his heir?",
+    "options": [
+     "Nahor",
+     "Lot",
+     "Ishmael",
+     "Eliezer of Damascus"
+    ]
+   },
+   "ta": {
+    "q": "தன் சுதந்தரவாளியாக ஆபிராம் முதலில் நினைத்தது யாரை?",
+    "options": [
+     "நாகோர்",
+     "லோத்து",
+     "இஸ்மவேல்",
+     "தமஸ்கு ஊரானாகிய எலியேசர்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k075",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 15,
+   "verse": 13,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "star",
+   "en": {
+    "q": "God told Abram his seed would be afflicted in a strange land for how many years?",
+    "options": [
+     "40 years",
+     "400 years",
+     "70 years",
+     "100 years"
+    ]
+   },
+   "ta": {
+    "q": "ஆபிராமின் சந்ததி அந்நிய தேசத்தில் எத்தனை வருஷம் உபத்திரவப்படுவார்கள் என்று தேவன் சொன்னார்?",
+    "options": [
+     "40 வருஷம்",
+     "400 வருஷம்",
+     "70 வருஷம்",
+     "100 வருஷம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k076",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 15,
+   "verse": 16,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "star",
+   "en": {
+    "q": "Why would Abram's seed come back only in the fourth generation?",
+    "options": [
+     "The iniquity of the Amorites was not yet full",
+     "They first had to learn the law",
+     "Pharaoh would not let them go",
+     "The land was too small"
+    ]
+   },
+   "ta": {
+    "q": "ஆபிராமின் சந்ததி நான்காம் தலைமுறையில்தான் திரும்பி வருவார்கள்; ஏன்?",
+    "options": [
+     "எமோரியருடைய அக்கிரமம் இன்னும் நிறைவாகவில்லை",
+     "முதலில் நியாயப்பிரமாணத்தைக் கற்கவேண்டும்",
+     "பார்வோன் அவர்களைப் போகவிடமாட்டான்",
+     "தேசம் மிகச் சிறியது"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k077",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 16,
+   "verse": 9,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "well",
+   "en": {
+    "q": "What did the angel of the LORD tell Hagar?",
+    "options": [
+     "Never go back",
+     "Name your son Isaac",
+     "Go down to Egypt",
+     "Return to thy mistress, and submit thyself under her hands"
+    ]
+   },
+   "ta": {
+    "q": "கர்த்தருடைய தூதன் ஆகாரிடம் என்ன சொன்னார்?",
+    "options": [
+     "ஒருபோதும் திரும்பிப்போகாதே",
+     "உன் மகனுக்கு ஈசாக்கு என்று பெயரிடு",
+     "எகிப்துக்குப் போ",
+     "உன் நாச்சியாரிடத்துக்குத் திரும்பிப்போய், அவள் கைக்குள் அடங்கியிரு"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k078",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 16,
+   "verse": 16,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "star",
+   "en": {
+    "q": "How old was Abram when Ishmael was born?",
+    "options": [
+     "100",
+     "86",
+     "75",
+     "99"
+    ]
+   },
+   "ta": {
+    "q": "இஸ்மவேல் பிறந்தபோது ஆபிராமுக்கு எத்தனை வயது?",
+    "options": [
+     "100",
+     "86",
+     "75",
+     "99"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k079",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 17,
+   "verse": 5,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "star",
+   "en": {
+    "q": "How old was Abram when God changed his name to Abraham?",
+    "options": [
+     "100",
+     "86",
+     "99",
+     "75"
+    ]
+   },
+   "ta": {
+    "q": "தேவன் ஆபிராமின் பெயரை ஆபிரகாம் என்று மாற்றியபோது அவனுக்கு எத்தனை வயது?",
+    "options": [
+     "100",
+     "86",
+     "99",
+     "75"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k080",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 17,
+   "verse": 25,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "star",
+   "en": {
+    "q": "When Abraham was circumcised at 99, how old was Ishmael?",
+    "options": [
+     "12",
+     "8",
+     "13",
+     "17"
+    ]
+   },
+   "ta": {
+    "q": "ஆபிரகாம் 99 வயதில் விருத்தசேதனம் பண்ணப்பட்டபோது இஸ்மவேலுக்கு எத்தனை வயது?",
+    "options": [
+     "12",
+     "8",
+     "13",
+     "17"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k081",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 18,
+   "verse": 32,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "star",
+   "en": {
+    "q": "Pleading for Sodom, Abraham asked down from 50 righteous. What was the last number he asked about?",
+    "options": [
+     "30",
+     "10",
+     "5",
+     "20"
+    ],
+    "explain": "50, 45, 40, 30, 20 and then 10."
+   },
+   "ta": {
+    "q": "சோதோமுக்காகப் பரிந்துபேசியபோது ஆபிரகாம் 50 நீதிமான்களிலிருந்து குறைத்துக் கேட்டான். கடைசியாகக் கேட்ட எண்ணிக்கை என்ன?",
+    "options": [
+     "30",
+     "10",
+     "5",
+     "20"
+    ],
+    "explain": "50, 45, 40, 30, 20, பிறகு 10."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k082",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 23,
+   "verse": 16,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "star",
+   "en": {
+    "q": "How much did Abraham pay the sons of Heth for the field and the cave?",
+    "options": [
+     "400 shekels of silver",
+     "20 pieces of silver",
+     "100 pieces of money",
+     "30 pieces of silver"
+    ]
+   },
+   "ta": {
+    "q": "நிலத்தையும் குகையையும் வாங்க ஆபிரகாம் ஏத்தின் புத்திரருக்கு எவ்வளவு கொடுத்தான்?",
+    "options": [
+     "400 சேக்கல் வெள்ளி",
+     "20 வெள்ளிக்காசு",
+     "100 வெள்ளிக்காசு",
+     "30 வெள்ளிக்காசு"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k083",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 23,
+   "verse": 19,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "star",
+   "en": {
+    "q": "What was the name of the cave where Abraham buried Sarah?",
+    "options": [
+     "Adullam",
+     "Bethel",
+     "Makkedah",
+     "Machpelah"
+    ]
+   },
+   "ta": {
+    "q": "ஆபிரகாம் சாராளை அடக்கம்பண்ணின குகையின் பெயர் என்ன?",
+    "options": [
+     "அதுல்லாம்",
+     "பெத்தேல்",
+     "மக்கேதா",
+     "மக்பேலா"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k084",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 23,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "star",
+   "en": {
+    "q": "How old was Sarah when she died?",
+    "options": [
+     "175",
+     "127",
+     "90",
+     "100"
+    ]
+   },
+   "ta": {
+    "q": "சாராள் மரித்தபோது அவளுக்கு எத்தனை வயது?",
+    "options": [
+     "175",
+     "127",
+     "90",
+     "100"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k085",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 23,
+   "verse": 2,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "star",
+   "en": {
+    "q": "Where did Sarah die?",
+    "options": [
+     "Egypt",
+     "Kirjath-arba, that is Hebron",
+     "Beer-sheba",
+     "Bethel"
+    ]
+   },
+   "ta": {
+    "q": "சாராள் எங்கே மரித்தாள்?",
+    "options": [
+     "எகிப்து",
+     "எபிரோன் எனப்பட்ட கீரியாத்அர்பா",
+     "பெயெர்செபா",
+     "பெத்தேல்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k086",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 22,
+   "verse": 4,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "star",
+   "en": {
+    "q": "On which day of the journey did Abraham see the place where he would offer Isaac?",
+    "options": [
+     "The third day",
+     "The fortieth day",
+     "The seventh day",
+     "The first day"
+    ]
+   },
+   "ta": {
+    "q": "ஈசாக்கைப் பலியிடப் போனபோது ஆபிரகாம் எத்தனையாம் நாளில் அந்த இடத்தைக் கண்டான்?",
+    "options": [
+     "மூன்றாம் நாள்",
+     "நாற்பதாம் நாள்",
+     "ஏழாம் நாள்",
+     "முதலாம் நாள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k087",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 22,
+   "verse": 3,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "star",
+   "en": {
+    "q": "How many young men did Abraham take with him and Isaac?",
+    "options": [
+     "3",
+     "2",
+     "318",
+     "12"
+    ]
+   },
+   "ta": {
+    "q": "ஆபிரகாம் ஈசாக்கோடு எத்தனை வேலைக்காரரை அழைத்துக்கொண்டு போனான்?",
+    "options": [
+     "3",
+     "2",
+     "318",
+     "12"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k090",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 25,
+   "verse": 26,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "well",
+   "en": {
+    "q": "How many years after his marriage did Isaac have children?",
+    "options": [
+     "20 years",
+     "40 years",
+     "7 years",
+     "14 years"
+    ],
+    "explain": "Isaac married Rebekah at 40 (25:20); Esau and Jacob were born when he was 60."
+   },
+   "ta": {
+    "q": "ஈசாக்கு விவாகம்பண்ணி எத்தனை வருஷம் கழித்துப் பிள்ளைகளைப் பெற்றான்?",
+    "options": [
+     "20 வருஷம்",
+     "40 வருஷம்",
+     "7 வருஷம்",
+     "14 வருஷம்"
+    ],
+    "explain": "ஈசாக்கு 40 வயதில் ரெபெக்காளை விவாகம்பண்ணினான் (25:20); ஏசாவும் யாக்கோபும் பிறந்தபோது அவனுக்கு 60 வயது."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k091",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 27,
+   "verse": 16,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "coat",
+   "en": {
+    "q": "What did Jacob wear so that Isaac would think he was Esau?",
+    "options": [
+     "A cloak of camel's hair",
+     "A red robe",
+     "Esau's clothes and the skins of kids of the goats",
+     "A coat of many colours"
+    ]
+   },
+   "ta": {
+    "q": "தான் ஏசா என்று ஈசாக்கு நம்பும்படி யாக்கோபு எதைப் போட்டுக்கொண்டான்?",
+    "options": [
+     "ஒட்டகமயிர் போர்வை",
+     "சிவப்பு அங்கி",
+     "ஏசாவின் வஸ்திரங்களையும் வெள்ளாட்டுக்குட்டிகளின் தோலையும்",
+     "பலவர்ண அங்கி"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k092",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 27,
+   "verse": 41,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "coat",
+   "en": {
+    "q": "What did Esau say he would do after his father's death?",
+    "options": [
+     "Leave Canaan for ever",
+     "Marry Rachel",
+     "Slay his brother Jacob",
+     "Slay his father Isaac"
+    ]
+   },
+   "ta": {
+    "q": "தன் தகப்பன் மரித்தபின் என்ன செய்வேன் என்று ஏசா சொன்னான்?",
+    "options": [
+     "கானானை விட்டு என்றைக்கும் போவேன்",
+     "ராகேலை விவாகம்பண்ணுவேன்",
+     "தன் சகோதரனாகிய யாக்கோபைக் கொன்றுபோடுவேன்",
+     "தன் தகப்பனாகிய ஈசாக்கைக் கொன்றுபோடுவேன்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k093",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 28,
+   "verse": 19,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "ladder",
+   "en": {
+    "q": "Jacob called the place of his dream Bethel. What was its name at first?",
+    "options": [
+     "Jebus",
+     "Kirjath-arba",
+     "Salem",
+     "Luz"
+    ]
+   },
+   "ta": {
+    "q": "யாக்கோபு சொப்பனம் கண்ட இடத்திற்குப் பெத்தேல் என்று பெயரிட்டான். அதன் முந்தின பெயர் என்ன?",
+    "options": [
+     "எபூஸ்",
+     "கீரியாத்அர்பா",
+     "சாலேம்",
+     "லூஸ்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k094",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 28,
+   "verse": 22,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "ladder",
+   "en": {
+    "q": "At Bethel, what did Jacob vow to give to God?",
+    "options": [
+     "Half of his flocks",
+     "His firstborn son",
+     "The tenth of all",
+     "A golden altar"
+    ]
+   },
+   "ta": {
+    "q": "பெத்தேலில் தேவனுக்கு எதைச் செலுத்துவேன் என்று யாக்கோபு பொருத்தனை பண்ணினான்?",
+    "options": [
+     "தன் ஆடுகளில் பாதியை",
+     "தன் மூத்த மகனை",
+     "எல்லாவற்றிலும் தசமபாகம்",
+     "பொன் பலிபீடத்தை"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k095",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 29,
+   "verse": 14,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "well",
+   "en": {
+    "q": "Who said to Jacob, \"Surely thou art my bone and my flesh\"?",
+    "options": [
+     "Isaac",
+     "Esau",
+     "Laban",
+     "Rebekah"
+    ]
+   },
+   "ta": {
+    "q": "\"நிச்சயமாய் நீ என் எலும்பும் என் மாம்சமுமானவன்\" என்று யாக்கோபிடம் சொன்னது யார்?",
+    "options": [
+     "ஈசாக்கு",
+     "ஏசா",
+     "லாபான்",
+     "ரெபெக்காள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k096",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 29,
+   "verse": 2,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "well",
+   "en": {
+    "q": "How many flocks of sheep did Jacob see lying by the well in the field?",
+    "options": [
+     "7",
+     "3",
+     "12",
+     "2"
+    ]
+   },
+   "ta": {
+    "q": "வெளியிலிருந்த கிணற்றண்டையில் எத்தனை ஆட்டு மந்தைகள் படுத்திருப்பதை யாக்கோபு கண்டான்?",
+    "options": [
+     "7",
+     "3",
+     "12",
+     "2"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k097",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 29,
+   "verse": 30,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "sheep",
+   "en": {
+    "q": "In all, how many years did Jacob serve Laban for his two wives?",
+    "options": [
+     "14 years",
+     "20 years",
+     "7 years",
+     "21 years"
+    ],
+    "explain": "Seven years for Leah and seven more for Rachel."
+   },
+   "ta": {
+    "q": "தன் இரண்டு மனைவிகளுக்காக யாக்கோபு லாபானிடம் மொத்தம் எத்தனை வருஷம் வேலைசெய்தான்?",
+    "options": [
+     "14 வருஷம்",
+     "20 வருஷம்",
+     "7 வருஷம்",
+     "21 வருஷம்"
+    ],
+    "explain": "லேயாளுக்காக ஏழு வருஷம், ராகேலுக்காக இன்னும் ஏழு வருஷம்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k098",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 31,
+   "verse": 7,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "sheep",
+   "en": {
+    "q": "How many times did Laban change Jacob's wages?",
+    "options": [
+     "10 times",
+     "7 times",
+     "3 times",
+     "20 times"
+    ]
+   },
+   "ta": {
+    "q": "லாபான் யாக்கோபின் சம்பளத்தை எத்தனை முறை மாற்றினான்?",
+    "options": [
+     "10 முறை",
+     "7 முறை",
+     "3 முறை",
+     "20 முறை"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k099",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 30,
+   "verse": 14,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sheaves",
+   "en": {
+    "q": "What did Reuben find in the field in the days of wheat harvest?",
+    "options": [
+     "Figs",
+     "Manna",
+     "Wild honey",
+     "Mandrakes"
+    ]
+   },
+   "ta": {
+    "q": "கோதுமை அறுப்புக் காலத்தில் ரூபன் வயலில் கண்டெடுத்தது என்ன?",
+    "options": [
+     "அத்திப்பழங்கள்",
+     "மன்னா",
+     "காட்டுத்தேன்",
+     "தூதாயீம் கனிகள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k100",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 29,
+   "verse": 29,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "well",
+   "en": {
+    "q": "Who was Rachel's handmaid?",
+    "options": [
+     "Deborah",
+     "Zilpah",
+     "Bilhah",
+     "Hagar"
+    ]
+   },
+   "ta": {
+    "q": "ராகேலின் வேலைக்காரி யார்?",
+    "options": [
+     "தெபொராள்",
+     "சில்பாள்",
+     "பில்காள்",
+     "ஆகார்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k101",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 29,
+   "verse": 24,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "well",
+   "en": {
+    "q": "Who was Leah's handmaid?",
+    "options": [
+     "Zilpah",
+     "Keturah",
+     "Milcah",
+     "Bilhah"
+    ]
+   },
+   "ta": {
+    "q": "லேயாளின் வேலைக்காரி யார்?",
+    "options": [
+     "சில்பாள்",
+     "கேத்தூராள்",
+     "மில்காள்",
+     "பில்காள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k102",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 30,
+   "verse": 6,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "well",
+   "en": {
+    "q": "Which sons were born to Bilhah?",
+    "options": [
+     "Simeon and Levi",
+     "Dan and Naphtali",
+     "Issachar and Zebulun",
+     "Gad and Asher"
+    ]
+   },
+   "ta": {
+    "q": "பில்காளுக்குப் பிறந்த குமாரர் யார்?",
+    "options": [
+     "சிமியோன், லேவி",
+     "தாண், நப்தலி",
+     "இசக்கார், செபுலோன்",
+     "காத், ஆசேர்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k103",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 30,
+   "verse": 11,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "well",
+   "en": {
+    "q": "Which sons were born to Zilpah?",
+    "options": [
+     "Dan and Naphtali",
+     "Joseph and Benjamin",
+     "Gad and Asher",
+     "Reuben and Judah"
+    ]
+   },
+   "ta": {
+    "q": "சில்பாளுக்குப் பிறந்த குமாரர் யார்?",
+    "options": [
+     "தாண், நப்தலி",
+     "யோசேப்பு, பென்யமீன்",
+     "காத், ஆசேர்",
+     "ரூபன், யூதா"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k104",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 30,
+   "verse": 18,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "well",
+   "en": {
+    "q": "What was the name of Leah's fifth son?",
+    "options": [
+     "Zebulun",
+     "Judah",
+     "Levi",
+     "Issachar"
+    ]
+   },
+   "ta": {
+    "q": "லேயாளின் ஐந்தாம் குமாரனின் பெயர் என்ன?",
+    "options": [
+     "செபுலோன்",
+     "யூதா",
+     "லேவி",
+     "இசக்கார்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k105",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 29,
+   "verse": 35,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "well",
+   "en": {
+    "q": "What were Leah's first four sons, in order?",
+    "options": [
+     "Judah, Levi, Simeon, Reuben",
+     "Simeon, Reuben, Judah, Levi",
+     "Reuben, Levi, Simeon, Judah",
+     "Reuben, Simeon, Levi, Judah"
+    ]
+   },
+   "ta": {
+    "q": "லேயாளின் முதல் நான்கு குமாரர் வரிசைப்படி யார்?",
+    "options": [
+     "யூதா, லேவி, சிமியோன், ரூபன்",
+     "சிமியோன், ரூபன், யூதா, லேவி",
+     "ரூபன், லேவி, சிமியோன், யூதா",
+     "ரூபன், சிமியோன், லேவி, யூதா"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k106",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 30,
+   "verse": 21,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "well",
+   "en": {
+    "q": "What was the name of the daughter of Jacob and Leah?",
+    "options": [
+     "Deborah",
+     "Milcah",
+     "Tamar",
+     "Dinah"
+    ]
+   },
+   "ta": {
+    "q": "யாக்கோபுக்கும் லேயாளுக்கும் பிறந்த மகளின் பெயர் என்ன?",
+    "options": [
+     "தெபொராள்",
+     "மில்காள்",
+     "தாமார்",
+     "தீனாள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k107",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 35,
+   "verse": 24,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "well",
+   "en": {
+    "q": "Which were the sons of Rachel?",
+    "options": [
+     "Judah and Levi",
+     "Joseph and Benjamin",
+     "Gad and Asher",
+     "Dan and Naphtali"
+    ]
+   },
+   "ta": {
+    "q": "ராகேலின் குமாரர் யார்?",
+    "options": [
+     "யூதா, லேவி",
+     "யோசேப்பு, பென்யமீன்",
+     "காத், ஆசேர்",
+     "தாண், நப்தலி"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k108",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 31,
+   "verse": 22,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "sheep",
+   "en": {
+    "q": "On which day was it told Laban that Jacob had fled?",
+    "options": [
+     "The third day",
+     "The seventh day",
+     "The first day",
+     "The tenth day"
+    ]
+   },
+   "ta": {
+    "q": "யாக்கோபு ஓடிப்போனான் என்று எத்தனையாம் நாளில் லாபானுக்கு அறிவிக்கப்பட்டது?",
+    "options": [
+     "மூன்றாம் நாள்",
+     "ஏழாம் நாள்",
+     "முதலாம் நாள்",
+     "பத்தாம் நாள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k109",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 31,
+   "verse": 23,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sheep",
+   "en": {
+    "q": "After how many days' journey, and where, did Laban overtake Jacob?",
+    "options": [
+     "Three days, at Bethel",
+     "Seven days, in the mount Gilead",
+     "Forty days, at Haran",
+     "Ten days, at Shechem"
+    ]
+   },
+   "ta": {
+    "q": "லாபான் எத்தனை நாள் பிரயாணம்பண்ணி, எங்கே யாக்கோபைப் பிடித்தான்?",
+    "options": [
+     "மூன்று நாள், பெத்தேலில்",
+     "ஏழு நாள், கீலேயாத் மலையில்",
+     "நாற்பது நாள், ஆரானில்",
+     "பத்து நாள், சீகேமில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k110",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 31,
+   "verse": 34,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "sheep",
+   "en": {
+    "q": "Who stole Laban's images, and where were they hidden?",
+    "options": [
+     "Rachel, in the camel's furniture",
+     "Dinah, under an oak",
+     "Leah, in her tent",
+     "Rachel, in a well"
+    ]
+   },
+   "ta": {
+    "q": "லாபானின் சுரூபங்களைத் திருடியது யார், எங்கே ஒளித்துவைத்தாள்?",
+    "options": [
+     "ராகேல், ஒட்டகச் சேணத்தின் கீழ்",
+     "தீனாள், கர்வாலிமரத்தின் கீழ்",
+     "லேயாள், தன் கூடாரத்தில்",
+     "ராகேல், ஒரு கிணற்றில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k111",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 31,
+   "verse": 47,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sheep",
+   "en": {
+    "q": "What did Jacob call the heap of stones?",
+    "options": [
+     "Jegar-sahadutha",
+     "Bethel",
+     "Peniel",
+     "Galeed"
+    ],
+    "explain": "Laban called it Jegar-sahadutha; the place was also called Mizpah."
+   },
+   "ta": {
+    "q": "கற்குவியலுக்கு யாக்கோபு இட்ட பெயர் என்ன?",
+    "options": [
+     "ஜெகர்சகதுதா",
+     "பெத்தேல்",
+     "பெனியேல்",
+     "கலயெத்"
+    ],
+    "explain": "லாபான் அதற்கு ஜெகர்சகதுதா என்று பெயரிட்டான்; அந்த இடம் மிஸ்பா என்றும் அழைக்கப்பட்டது."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k112",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 31,
+   "verse": 47,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sheep",
+   "en": {
+    "q": "What did Laban call the heap of stones?",
+    "options": [
+     "Mizpah",
+     "Jegar-sahadutha",
+     "Mahanaim",
+     "Galeed"
+    ]
+   },
+   "ta": {
+    "q": "கற்குவியலுக்கு லாபான் இட்ட பெயர் என்ன?",
+    "options": [
+     "மிஸ்பா",
+     "ஜெகர்சகதுதா",
+     "மகனாயீம்",
+     "கலயெத்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k113",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 31,
+   "verse": 49,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sheep",
+   "en": {
+    "q": "What did Laban say when the place was called Mizpah?",
+    "options": [
+     "The LORD hath heard",
+     "I have seen God face to face",
+     "This is the house of God",
+     "The LORD watch between me and thee"
+    ]
+   },
+   "ta": {
+    "q": "அந்த இடத்திற்கு மிஸ்பா என்று பெயரிட்டபோது லாபான் சொன்னது என்ன?",
+    "options": [
+     "கர்த்தர் கேட்டார்",
+     "தேவனை முகமுகமாய்க் கண்டேன்",
+     "இது தேவனுடைய வீடு",
+     "நாம் ஒருவரையொருவர் விட்டுப் பிரிந்திருக்கும்போது கர்த்தர் எனக்கும் உனக்கும் நடுவாக இருந்து காவல்பண்ணுவாராக"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k114",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 32,
+   "verse": 2,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "ladder",
+   "en": {
+    "q": "Where did the angels of God meet Jacob, and what does the name mean?",
+    "options": [
+     "Mizpah: watchtower",
+     "Mahanaim: God's host",
+     "Peniel: the face of God",
+     "Bethel: the house of God"
+    ]
+   },
+   "ta": {
+    "q": "தேவதூதர்கள் யாக்கோபைச் சந்தித்த இடம் எது, அதன் அர்த்தம் என்ன?",
+    "options": [
+     "மிஸ்பா: காவற்கோபுரம்",
+     "மகனாயீம்: தேவனுடைய சேனை",
+     "பெனியேல்: தேவனுடைய முகம்",
+     "பெத்தேல்: தேவனுடைய வீடு"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k115",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 32,
+   "verse": 6,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sheep",
+   "en": {
+    "q": "With how many men did Esau come to meet Jacob?",
+    "options": [
+     "1000",
+     "318",
+     "40",
+     "400"
+    ]
+   },
+   "ta": {
+    "q": "யாக்கோபைச் சந்திக்க ஏசா எத்தனை பேரோடு வந்தான்?",
+    "options": [
+     "1000",
+     "318",
+     "40",
+     "400"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k116",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 32,
+   "verse": 14,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "sheep",
+   "en": {
+    "q": "In Jacob's present to Esau, how many she goats were there?",
+    "options": [
+     "20",
+     "40",
+     "200",
+     "30"
+    ],
+    "explain": "200 she goats, 20 he goats, 200 ewes, 20 rams, 30 milch camels with their colts, 40 kine, 10 bulls, 20 she asses and 10 foals."
+   },
+   "ta": {
+    "q": "யாக்கோபு ஏசாவுக்கு அனுப்பின வெகுமதியில் எத்தனை வெள்ளாடுகள் இருந்தன?",
+    "options": [
+     "20",
+     "40",
+     "200",
+     "30"
+    ],
+    "explain": "200 வெள்ளாடு, 20 வெள்ளாட்டுக்கடா, 200 செம்மறியாடு, 20 ஆட்டுக்கடா, குட்டிகளுடன் 30 கறவை ஒட்டகம், 40 பசு, 10 காளை, 20 கோளிகைக்கழுதை, 10 கழுதைக்குட்டி."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k117",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 32,
+   "verse": 30,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "ladder",
+   "en": {
+    "q": "Where did Jacob wrestle with the man until the breaking of the day?",
+    "options": [
+     "Bethel",
+     "Mahanaim",
+     "Peniel",
+     "Succoth"
+    ]
+   },
+   "ta": {
+    "q": "பொழுது விடியுமட்டும் யாக்கோபு போராடின இடம் எது?",
+    "options": [
+     "பெத்தேல்",
+     "மகனாயீம்",
+     "பெனியேல்",
+     "சுக்கோத்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k118",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 33,
+   "verse": 3,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "sheep",
+   "en": {
+    "q": "How many times did Jacob bow himself to the ground before Esau?",
+    "options": [
+     "3 times",
+     "12 times",
+     "7 times",
+     "10 times"
+    ]
+   },
+   "ta": {
+    "q": "யாக்கோபு ஏசாவுக்கு முன் எத்தனை முறை தரைமட்டும் குனிந்து வணங்கினான்?",
+    "options": [
+     "3 முறை",
+     "12 முறை",
+     "7 முறை",
+     "10 முறை"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k119",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 33,
+   "verse": 10,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "sheep",
+   "en": {
+    "q": "Who said, \"I have seen thy face, as though I had seen the face of God\"?",
+    "options": [
+     "Jacob, to Laban",
+     "Joseph, to Jacob",
+     "Jacob, to Esau",
+     "Esau, to Jacob"
+    ]
+   },
+   "ta": {
+    "q": "\"தேவனுடைய முகத்தைக் கண்டதுபோல உம்முடைய முகத்தைக் கண்டேன்\" என்று சொன்னது யார்?",
+    "options": [
+     "யாக்கோபு, லாபானிடம்",
+     "யோசேப்பு, யாக்கோபிடம்",
+     "யாக்கோபு, ஏசாவிடம்",
+     "ஏசா, யாக்கோபிடம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k120",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 33,
+   "verse": 17,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "sheep",
+   "en": {
+    "q": "After saying he would come to Seir, where did Jacob go and build a house?",
+    "options": [
+     "Succoth",
+     "Hebron",
+     "Bethel",
+     "Beer-sheba"
+    ]
+   },
+   "ta": {
+    "q": "சேயீருக்கு வருவேன் என்று சொன்னபின் யாக்கோபு எங்கே போய் வீடு கட்டினான்?",
+    "options": [
+     "சுக்கோத்",
+     "எபிரோன்",
+     "பெத்தேல்",
+     "பெயெர்செபா"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k121",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 33,
+   "verse": 20,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "ladder",
+   "en": {
+    "q": "What did Jacob call the altar he built near Shechem?",
+    "options": [
+     "Ebenezer",
+     "Jehovah-jireh",
+     "El-elohe-Israel",
+     "El-bethel"
+    ]
+   },
+   "ta": {
+    "q": "சீகேமுக்கு அருகே யாக்கோபு கட்டின பலிபீடத்திற்கு என்ன பெயரிட்டான்?",
+    "options": [
+     "எபெனேசர்",
+     "யேகோவாயீரே",
+     "ஏல்எல்லோகே இஸ்ரவேல்",
+     "ஏல்பெத்தேல்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k122",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 33,
+   "verse": 19,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "sheep",
+   "en": {
+    "q": "For how many pieces of money did Jacob buy a field from the children of Hamor?",
+    "options": [
+     "100",
+     "400",
+     "20",
+     "30"
+    ]
+   },
+   "ta": {
+    "q": "ஏமோரின் புத்திரரிடமிருந்து யாக்கோபு எத்தனை வெள்ளிக்காசுக்கு நிலம் வாங்கினான்?",
+    "options": [
+     "100",
+     "400",
+     "20",
+     "30"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k123",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 34,
+   "verse": 2,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sheep",
+   "en": {
+    "q": "Who defiled Dinah?",
+    "options": [
+     "A son of Laban",
+     "A son of Esau",
+     "Hamor the Hivite himself",
+     "Shechem, the son of Hamor the Hivite"
+    ]
+   },
+   "ta": {
+    "q": "தீனாளைத் தீட்டுப்படுத்தினவன் யார்?",
+    "options": [
+     "லாபானின் குமாரன் ஒருவன்",
+     "ஏசாவின் குமாரன் ஒருவன்",
+     "ஏவியனாகிய ஏமோர்",
+     "ஏவியனாகிய ஏமோரின் குமாரன் சீகேம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k124",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 34,
+   "verse": 25,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sheep",
+   "en": {
+    "q": "Which two brothers avenged their sister Dinah?",
+    "options": [
+     "Judah and Joseph",
+     "Dan and Gad",
+     "Reuben and Judah",
+     "Simeon and Levi"
+    ]
+   },
+   "ta": {
+    "q": "தங்கள் சகோதரியாகிய தீனாளுக்காகப் பழிவாங்கிய இரண்டு சகோதரர் யார்?",
+    "options": [
+     "யூதா, யோசேப்பு",
+     "தாண், காத்",
+     "ரூபன், யூதா",
+     "சிமியோன், லேவி"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k125",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 35,
+   "verse": 4,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "tree",
+   "en": {
+    "q": "Where did Jacob hide the strange gods of his household?",
+    "options": [
+     "On mount Gilead",
+     "Under the oak which was by Shechem",
+     "In the river Jabbok",
+     "At Bethel, under the altar"
+    ]
+   },
+   "ta": {
+    "q": "தன் வீட்டாரிடமிருந்த அந்நிய தேவர்களை யாக்கோபு எங்கே புதைத்தான்?",
+    "options": [
+     "கீலேயாத் மலையில்",
+     "சீகேமுக்கு அருகேயுள்ள கர்வாலிமரத்தின் கீழ்",
+     "யாபோக்கு ஆற்றில்",
+     "பெத்தேலில் பலிபீடத்தின் கீழ்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k126",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 35,
+   "verse": 8,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "tree",
+   "en": {
+    "q": "Who was Rebekah's nurse?",
+    "options": [
+     "Bilhah",
+     "Zilpah",
+     "Keturah",
+     "Deborah"
+    ]
+   },
+   "ta": {
+    "q": "ரெபெக்காளின் தாதி யார்?",
+    "options": [
+     "பில்காள்",
+     "சில்பாள்",
+     "கேத்தூராள்",
+     "தெபொராள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k127",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 35,
+   "verse": 8,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "tree",
+   "en": {
+    "q": "Where was Deborah, Rebekah's nurse, buried?",
+    "options": [
+     "In Hebron",
+     "Under an oak below Bethel, called Allon-bachuth",
+     "In the cave of Machpelah",
+     "On the way to Ephrath"
+    ]
+   },
+   "ta": {
+    "q": "ரெபெக்காளின் தாதியாகிய தெபொராள் எங்கே அடக்கம்பண்ணப்பட்டாள்?",
+    "options": [
+     "எபிரோனில்",
+     "பெத்தேலுக்குக் கீழே அல்லோன்பாகூத் என்னும் கர்வாலிமரத்தின் கீழ்",
+     "மக்பேலா குகையில்",
+     "எப்பிராத்தாவுக்குப் போகிற வழியில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k128",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 36,
+   "verse": 7,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sheep",
+   "en": {
+    "q": "Whose riches were more than that they might dwell together, so the land could not bear them (Genesis 36:7)?",
+    "options": [
+     "Isaac and Ishmael",
+     "Esau and Jacob",
+     "Jacob and Laban",
+     "Joseph and his brothers"
+    ]
+   },
+   "ta": {
+    "q": "\"அவர்களுடைய சம்பத்து மிகுதியாயிருந்தபடியினால் அவர்கள் ஒருமித்துக் குடியிருக்கக்கூடாமற்போயிற்று\" (ஆதி. 36:7) — யார்?",
+    "options": [
+     "ஈசாக்கு, இஸ்மவேல்",
+     "ஏசா, யாக்கோபு",
+     "யாக்கோபு, லாபான்",
+     "யோசேப்பும் அவன் சகோதரரும்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k130",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 37,
+   "verse": 9,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "sheaves",
+   "en": {
+    "q": "What were Joseph's two dreams?",
+    "options": [
+     "Sheaves bowing to his sheaf; the sun, moon and eleven stars bowing to him",
+     "A vine with three branches",
+     "A ladder reaching to heaven",
+     "Seven fat and seven lean cows"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பு கண்ட இரண்டு சொப்பனங்கள் என்ன?",
+    "options": [
+     "அரிக்கட்டுகள் அவனுடைய அரிக்கட்டை வணங்கின; சூரியனும் சந்திரனும் பதினொரு நட்சத்திரங்களும் அவனை வணங்கின",
+     "மூன்று கொடிகளுள்ள திராட்சச்செடி",
+     "வானத்தை எட்டின ஏணி",
+     "ஏழு கொழுத்த பசுக்களும் ஏழு கேவலமான பசுக்களும்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k131",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 37,
+   "verse": 21,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "coat",
+   "en": {
+    "q": "Who saved Joseph from being killed by his brothers?",
+    "options": [
+     "Benjamin",
+     "Judah",
+     "Reuben",
+     "Levi"
+    ]
+   },
+   "ta": {
+    "q": "சகோதரர் யோசேப்பைக் கொல்லாதபடி தப்புவித்தவன் யார்?",
+    "options": [
+     "பென்யமீன்",
+     "யூதா",
+     "ரூபன்",
+     "லேவி"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k132",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 37,
+   "verse": 27,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "coat",
+   "en": {
+    "q": "Who said, \"Come, and let us sell him to the Ishmeelites\"?",
+    "options": [
+     "Dan",
+     "Simeon",
+     "Judah",
+     "Reuben"
+    ]
+   },
+   "ta": {
+    "q": "\"அவனை இஸ்மவேலருக்கு விற்றுப்போடுவோம் வாருங்கள்\" என்று சொன்னவன் யார்?",
+    "options": [
+     "தாண்",
+     "சிமியோன்",
+     "யூதா",
+     "ரூபன்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k133",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 37,
+   "verse": 28,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "coat",
+   "en": {
+    "q": "For how many pieces of silver was Joseph sold?",
+    "options": [
+     "10",
+     "30",
+     "400",
+     "20"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பு எத்தனை வெள்ளிக்காசுக்கு விற்கப்பட்டான்?",
+    "options": [
+     "10",
+     "30",
+     "400",
+     "20"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k134",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 37,
+   "verse": 2,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "coat",
+   "en": {
+    "q": "How old was Joseph when he was feeding the flock and was sold?",
+    "options": [
+     "20",
+     "17",
+     "12",
+     "30"
+    ]
+   },
+   "ta": {
+    "q": "மந்தையை மேய்த்துக்கொண்டிருந்து விற்கப்பட்டபோது யோசேப்புக்கு எத்தனை வயது?",
+    "options": [
+     "20",
+     "17",
+     "12",
+     "30"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k135",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 37,
+   "verse": 31,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "coat",
+   "en": {
+    "q": "In whose blood did the brothers dip Joseph's coat?",
+    "options": [
+     "A lamb",
+     "A kid of the goats",
+     "A bullock",
+     "A dove"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பின் அங்கியைச் சகோதரர் எதின் இரத்தத்தில் தோய்த்தார்கள்?",
+    "options": [
+     "ஆட்டுக்குட்டியின் இரத்தம்",
+     "வெள்ளாட்டுக்குட்டியின் இரத்தம்",
+     "காளையின் இரத்தம்",
+     "புறாவின் இரத்தம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k136",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 38,
+   "verse": 25,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "coat",
+   "en": {
+    "q": "\"Discern, whose are these?\" What did Tamar send to Judah?",
+    "options": [
+     "Joseph's coat",
+     "A ring and a robe",
+     "A silver cup",
+     "The signet, the bracelets and the staff"
+    ],
+    "explain": "These words come twice: with Joseph's coat (37:32) and with Judah's pledge (38:25)."
+   },
+   "ta": {
+    "q": "\"இவைகள் யாருடையவைகள் என்று பாரும்\" — தாமார் யூதாவுக்கு அனுப்பினது என்ன?",
+    "options": [
+     "யோசேப்பின் அங்கி",
+     "மோதிரமும் அங்கியும்",
+     "வெள்ளிப் பாத்திரம்",
+     "முத்திரை மோதிரம், ஆரம், கோல்"
+    ],
+    "explain": "இந்த வார்த்தைகள் இருமுறை வருகின்றன: யோசேப்பின் அங்கியோடு (37:32), யூதாவின் அடைமானத்தோடு (38:25)."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k137",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 40,
+   "verse": 2,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "coat",
+   "en": {
+    "q": "Who were in prison with Joseph?",
+    "options": [
+     "Pharaoh's chief butler and chief baker",
+     "Potiphar and his wife",
+     "Two priests of On",
+     "Two of his brothers"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்போடு காவலில் இருந்தவர்கள் யார்?",
+    "options": [
+     "பார்வோனின் பானபாத்திரக்காரரின் தலைவனும் சுயம்பாகிகளின் தலைவனும்",
+     "போத்திபாரும் அவன் மனைவியும்",
+     "ஓன் பட்டணத்து இரண்டு ஆசாரியர்",
+     "அவனுடைய இரண்டு சகோதரர்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k138",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 41,
+   "verse": 3,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "sheaves",
+   "en": {
+    "q": "In Pharaoh's first dream, what came up out of the river?",
+    "options": [
+     "Seven fat kine and seven lean kine",
+     "Seven ears of corn",
+     "Seven great fish",
+     "Seven serpents"
+    ],
+    "explain": "In the second dream, seven thin ears devoured seven good ears on one stalk."
+   },
+   "ta": {
+    "q": "பார்வோனின் முதல் சொப்பனத்தில் நதியிலிருந்து ஏறிவந்தவை எவை?",
+    "options": [
+     "ஏழு கொழுத்த பசுக்களும் ஏழு கேவலமான பசுக்களும்",
+     "ஏழு கதிர்கள்",
+     "ஏழு பெரிய மீன்கள்",
+     "ஏழு சர்ப்பங்கள்"
+    ],
+    "explain": "இரண்டாம் சொப்பனத்தில், ஒரே தாளில் வந்த ஏழு நல்ல கதிர்களை ஏழு சாவியான கதிர்கள் விழுங்கின."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k139",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 41,
+   "verse": 34,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "sheaves",
+   "en": {
+    "q": "What part of the land's produce was gathered in the seven plenteous years?",
+    "options": [
+     "The third part",
+     "The tenth part",
+     "The fifth part",
+     "Half"
+    ]
+   },
+   "ta": {
+    "q": "பரிபூரணமான ஏழு வருஷங்களில் தேசத்தின் விளைச்சலில் எந்தப் பங்கு சேர்க்கப்பட்டது?",
+    "options": [
+     "மூன்றில் ஒரு பங்கு",
+     "பத்தில் ஒரு பங்கு",
+     "ஐந்தில் ஒரு பங்கு",
+     "பாதி"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k140",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 41,
+   "verse": 46,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "crown",
+   "en": {
+    "q": "How old was Joseph when he stood before Pharaoh?",
+    "options": [
+     "20",
+     "30",
+     "40",
+     "17"
+    ]
+   },
+   "ta": {
+    "q": "பார்வோனுக்கு முன்பாக நின்றபோது யோசேப்புக்கு எத்தனை வயது?",
+    "options": [
+     "20",
+     "30",
+     "40",
+     "17"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k141",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 41,
+   "verse": 42,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "crown",
+   "en": {
+    "q": "How did Pharaoh honour Joseph?",
+    "options": [
+     "Land in Goshen only",
+     "A palace and an army",
+     "His ring, fine linen, a gold chain and his second chariot",
+     "A crown and his own throne"
+    ],
+    "explain": "And they cried before him, Bow the knee (41:43)."
+   },
+   "ta": {
+    "q": "பார்வோன் யோசேப்பை எப்படிக் கனப்படுத்தினான்?",
+    "options": [
+     "கோசேனில் நிலம் மட்டும்",
+     "அரண்மனையும் சேனையும்",
+     "தன் முத்திரை மோதிரம், மெல்லிய வஸ்திரம், பொன் சரப்பணி, தன் இரண்டாம் இரதம்",
+     "கிரீடமும் தன் சிங்காசனமும்"
+    ],
+    "explain": "முழங்காற்படியிடுங்கள் என்று அவனுக்கு முன்பாகக் கூப்பிட்டார்கள் (41:43)."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k142",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 41,
+   "verse": 45,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "crown",
+   "en": {
+    "q": "Who was Joseph's wife?",
+    "options": [
+     "Dinah",
+     "Asenath, the daughter of the priest of On",
+     "Tamar",
+     "Zipporah"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பின் மனைவி யார்?",
+    "options": [
+     "தீனாள்",
+     "ஓன் பட்டணத்து ஆசாரியனின் மகள் ஆஸ்நாத்",
+     "தாமார்",
+     "சிப்போராள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k143",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 41,
+   "verse": 50,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sheaves",
+   "en": {
+    "q": "When were Joseph's sons Manasseh and Ephraim born?",
+    "options": [
+     "After Jacob came to Egypt",
+     "Before the years of famine came",
+     "During the famine",
+     "In the land of Canaan"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பின் குமாரராகிய மனாசேயும் எப்பிராயீமும் எப்போது பிறந்தார்கள்?",
+    "options": [
+     "யாக்கோபு எகிப்துக்கு வந்தபின்",
+     "பஞ்ச வருஷங்கள் வருவதற்கு முன்",
+     "பஞ்ச காலத்தில்",
+     "கானான் தேசத்தில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k144",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 41,
+   "verse": 51,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "crown",
+   "en": {
+    "q": "What does the name Manasseh mean?",
+    "options": [
+     "God hath caused me to be fruitful",
+     "God hath made me forget all my toil and all my father's house",
+     "The LORD hath heard",
+     "God's host"
+    ]
+   },
+   "ta": {
+    "q": "மனாசே என்ற பெயரின் அர்த்தம் என்ன?",
+    "options": [
+     "தேவன் என்னைப் பலுகப்பண்ணினார்",
+     "என் எல்லா வருத்தத்தையும் என் தகப்பன் வீட்டையும் தேவன் மறக்கப்பண்ணினார்",
+     "கர்த்தர் கேட்டார்",
+     "தேவனுடைய சேனை"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k145",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 41,
+   "verse": 52,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "crown",
+   "en": {
+    "q": "What does the name Ephraim mean?",
+    "options": [
+     "God hath caused me to be fruitful in the land of my affliction",
+     "Son of my right hand",
+     "God hath made me forget all my toil",
+     "Laughter"
+    ]
+   },
+   "ta": {
+    "q": "எப்பிராயீம் என்ற பெயரின் அர்த்தம் என்ன?",
+    "options": [
+     "நான் சிறுமைப்பட்ட தேசத்தில் தேவன் என்னைப் பலுகப்பண்ணினார்",
+     "என் வலதுகையின் குமாரன்",
+     "என் எல்லா வருத்தத்தையும் தேவன் மறக்கப்பண்ணினார்",
+     "நகைப்பு"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k146",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 42,
+   "verse": 17,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "sheaves",
+   "en": {
+    "q": "For how many days did Joseph put his brothers in ward?",
+    "options": [
+     "1 day",
+     "7 days",
+     "3 days",
+     "10 days"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பு தன் சகோதரரை எத்தனை நாள் காவலில் வைத்தான்?",
+    "options": [
+     "1 நாள்",
+     "7 நாள்",
+     "3 நாள்",
+     "10 நாள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k147",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 42,
+   "verse": 24,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sheaves",
+   "en": {
+    "q": "Which brother did Joseph bind and keep in Egypt?",
+    "options": [
+     "Reuben",
+     "Simeon",
+     "Benjamin",
+     "Judah"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பு எந்தச் சகோதரனைக் கட்டி எகிப்தில் வைத்தான்?",
+    "options": [
+     "ரூபன்",
+     "சிமியோன்",
+     "பென்யமீன்",
+     "யூதா"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k148",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 42,
+   "verse": 37,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sheaves",
+   "en": {
+    "q": "What did Reuben offer to his father as surety for Benjamin?",
+    "options": [
+     "His own life",
+     "All his flocks",
+     "20 pieces of silver",
+     "His two sons"
+    ]
+   },
+   "ta": {
+    "q": "பென்யமீனுக்காக ரூபன் தன் தகப்பனிடம் எதை உத்தரவாதமாகக் கொடுத்தான்?",
+    "options": [
+     "தன் உயிரை",
+     "தன் மந்தைகள் எல்லாவற்றையும்",
+     "20 வெள்ளிக்காசை",
+     "தன் இரண்டு குமாரரை"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k149",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 43,
+   "verse": 9,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sheaves",
+   "en": {
+    "q": "Who became surety for Benjamin the second time?",
+    "options": [
+     "Levi",
+     "Judah",
+     "Reuben",
+     "Simeon"
+    ]
+   },
+   "ta": {
+    "q": "பென்யமீனுக்காக இரண்டாம் முறை உத்தரவாதம் கொடுத்தவன் யார்?",
+    "options": [
+     "லேவி",
+     "யூதா",
+     "ரூபன்",
+     "சிமியோன்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k150",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 43,
+   "verse": 11,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "sheaves",
+   "en": {
+    "q": "What present did Jacob send down to the ruler of Egypt?",
+    "options": [
+     "Lambs and goats",
+     "Wine and bread",
+     "Balm, honey, spices, myrrh, nuts and almonds",
+     "Gold and silver"
+    ]
+   },
+   "ta": {
+    "q": "எகிப்தின் அதிபதிக்கு யாக்கோபு அனுப்பின வெகுமதி என்ன?",
+    "options": [
+     "ஆட்டுக்குட்டிகளும் வெள்ளாடுகளும்",
+     "திராட்சரசமும் அப்பமும்",
+     "பிசின் தைலம், தேன், கந்தவர்க்கம், வெள்ளைப்போளம், தெரபிந்துக் கொட்டை, வாதுமைக் கொட்டை",
+     "பொன்னும் வெள்ளியும்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k151",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 43,
+   "verse": 33,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "sheaves",
+   "en": {
+    "q": "Why did the brothers marvel one at another in Joseph's house?",
+    "options": [
+     "They were served Hebrew food",
+     "Joseph spoke to them in Hebrew",
+     "They were seated by age, from the firstborn to the youngest",
+     "Their money was in their sacks"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பின் வீட்டில் சகோதரர் ஏன் ஒருவரையொருவர் பார்த்து ஆச்சரியப்பட்டார்கள்?",
+    "options": [
+     "எபிரெய உணவு பரிமாறப்பட்டது",
+     "யோசேப்பு அவர்களோடு எபிரெய பாஷையில் பேசினான்",
+     "மூத்தவன் முதல் இளையவன் வரை வயதின்படி உட்காரவைக்கப்பட்டார்கள்",
+     "அவர்கள் பணம் சாக்குகளில் இருந்தது"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k152",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 43,
+   "verse": 34,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sheaves",
+   "en": {
+    "q": "How many times more food was Benjamin given than his brothers?",
+    "options": [
+     "2 times",
+     "5 times",
+     "10 times",
+     "7 times"
+    ]
+   },
+   "ta": {
+    "q": "சகோதரரைவிட பென்யமீனுக்கு எத்தனை மடங்கு அதிகமாக உணவு கொடுக்கப்பட்டது?",
+    "options": [
+     "2 மடங்கு",
+     "5 மடங்கு",
+     "10 மடங்கு",
+     "7 மடங்கு"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k153",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 45,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "coat",
+   "en": {
+    "q": "When did Joseph make himself known to his brothers?",
+    "options": [
+     "After Jacob died",
+     "On their very first visit",
+     "When Pharaoh told them",
+     "After the cup was found in Benjamin's sack and Judah offered himself in Benjamin's place"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பு எப்போது தன்னைத் தன் சகோதரருக்கு வெளிப்படுத்தினான்?",
+    "options": [
+     "யாக்கோபு மரித்தபின்",
+     "அவர்கள் முதல்முறை வந்தபோதே",
+     "பார்வோன் அவர்களுக்குச் சொன்னபோது",
+     "பென்யமீனின் சாக்கில் பாத்திரம் கண்டுபிடிக்கப்பட்டு, பென்யமீனுக்குப் பதிலாக யூதா தன்னை ஒப்புக்கொடுத்தபின்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k154",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 45,
+   "verse": 10,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "sheep",
+   "en": {
+    "q": "In which land of Egypt did Jacob's family dwell?",
+    "options": [
+     "Goshen",
+     "On",
+     "Zoan",
+     "Memphis"
+    ]
+   },
+   "ta": {
+    "q": "யாக்கோபின் குடும்பம் எகிப்தில் எந்தத் தேசத்தில் குடியிருந்தது?",
+    "options": [
+     "கோசேன்",
+     "ஓன்",
+     "சோவான்",
+     "நோப்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k155",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 45,
+   "verse": 6,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "sheaves",
+   "en": {
+    "q": "How many years of famine were still to come when Joseph revealed himself?",
+    "options": [
+     "5 years",
+     "3 years",
+     "7 years",
+     "2 years"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பு தன்னை வெளிப்படுத்தியபோது இன்னும் எத்தனை வருஷம் பஞ்சம் இருக்கவேண்டியிருந்தது?",
+    "options": [
+     "5 வருஷம்",
+     "3 வருஷம்",
+     "7 வருஷம்",
+     "2 வருஷம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k156",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 45,
+   "verse": 19,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sheaves",
+   "en": {
+    "q": "What did Joseph send to bring his father's household down to Egypt?",
+    "options": [
+     "Ships",
+     "Wagons",
+     "Chariots of war",
+     "Camels"
+    ],
+    "explain": "The brothers had gone to buy food on their asses (42:26)."
+   },
+   "ta": {
+    "q": "தன் தகப்பனின் குடும்பத்தை எகிப்துக்குக் கொண்டுவர யோசேப்பு எதை அனுப்பினான்?",
+    "options": [
+     "கப்பல்கள்",
+     "வண்டிகள்",
+     "யுத்த இரதங்கள்",
+     "ஒட்டகங்கள்"
+    ],
+    "explain": "சகோதரர் தானியம் வாங்கக் கழுதைகளின்மேல் போனார்கள் (42:26)."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k157",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 45,
+   "verse": 22,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "coat",
+   "en": {
+    "q": "What did Joseph give to Benjamin?",
+    "options": [
+     "A silver cup",
+     "300 pieces of silver and five changes of raiment",
+     "A coat of many colours",
+     "His signet ring"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பு பென்யமீனுக்குக் கொடுத்தது என்ன?",
+    "options": [
+     "வெள்ளிப் பாத்திரம்",
+     "300 வெள்ளிக்காசும் ஐந்து மாற்று வஸ்திரமும்",
+     "பலவர்ண அங்கி",
+     "தன் முத்திரை மோதிரம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k158",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 45,
+   "verse": 23,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "sheaves",
+   "en": {
+    "q": "What did Joseph send to his father?",
+    "options": [
+     "A chariot and horses",
+     "Seven wagons of wine",
+     "Ten asses with the good things of Egypt and ten she asses with corn, bread and meat",
+     "Twenty camels laden with gold"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பு தன் தகப்பனுக்கு அனுப்பினது என்ன?",
+    "options": [
+     "ஒரு இரதமும் குதிரைகளும்",
+     "திராட்சரசம் ஏற்றிய ஏழு வண்டிகள்",
+     "எகிப்தின் உச்சிதமான பதார்த்தங்களுடன் பத்துக் கழுதைகளும், தானியம், அப்பம், தின்பண்டங்களுடன் பத்துக் கோளிகைக் கழுதைகளும்",
+     "பொன் ஏற்றிய இருபது ஒட்டகங்கள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k159",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 46,
+   "verse": 4,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "ladder",
+   "en": {
+    "q": "Where did God say to Jacob, \"I will go down with thee into Egypt\"?",
+    "options": [
+     "Hebron",
+     "Bethel",
+     "Goshen",
+     "Beer-sheba"
+    ]
+   },
+   "ta": {
+    "q": "\"நான் உன்னோடேகூட எகிப்துக்கு வருவேன்\" என்று தேவன் யாக்கோபிடம் எங்கே சொன்னார்?",
+    "options": [
+     "எபிரோன்",
+     "பெத்தேல்",
+     "கோசேன்",
+     "பெயெர்செபா"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k160",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 46,
+   "verse": 27,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sheep",
+   "en": {
+    "q": "In all, how many souls of the house of Jacob came into Egypt?",
+    "options": [
+     "75",
+     "70",
+     "66",
+     "12"
+    ],
+    "explain": "66 came with Jacob, besides his sons' wives; with Joseph and his two sons, 70."
+   },
+   "ta": {
+    "q": "யாக்கோபின் குடும்பத்தில் எகிப்துக்கு வந்தவர்கள் மொத்தம் எத்தனை பேர்?",
+    "options": [
+     "75",
+     "70",
+     "66",
+     "12"
+    ],
+    "explain": "குமாரரின் மனைவிகளைத் தவிர யாக்கோபோடு வந்தவர்கள் 66 பேர்; யோசேப்பையும் அவன் இரண்டு குமாரரையும் சேர்த்து 70 பேர்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k161",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 47,
+   "verse": 11,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sheep",
+   "en": {
+    "q": "Which land did Joseph give his father and brothers as a possession?",
+    "options": [
+     "The land of Midian",
+     "The land of On",
+     "The land of Canaan",
+     "The land of Rameses"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பு தன் தகப்பனுக்கும் சகோதரருக்கும் காணியாட்சியாகக் கொடுத்த நாடு எது?",
+    "options": [
+     "மீதியான் தேசம்",
+     "ஓன் நாடு",
+     "கானான் தேசம்",
+     "ராமசேஸ் நாடு"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k162",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 47,
+   "verse": 28,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sheep",
+   "en": {
+    "q": "For how many years did Jacob live in Egypt?",
+    "options": [
+     "20 years",
+     "7 years",
+     "40 years",
+     "17 years"
+    ]
+   },
+   "ta": {
+    "q": "யாக்கோபு எகிப்தில் எத்தனை வருஷம் உயிரோடிருந்தான்?",
+    "options": [
+     "20 வருஷம்",
+     "7 வருஷம்",
+     "40 வருஷம்",
+     "17 வருஷம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k163",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 48,
+   "verse": 7,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "well",
+   "en": {
+    "q": "Where was Rachel buried?",
+    "options": [
+     "At Hebron",
+     "On the way to Ephrath, that is Bethlehem",
+     "In the cave of Machpelah",
+     "At Bethel"
+    ]
+   },
+   "ta": {
+    "q": "ராகேல் எங்கே அடக்கம்பண்ணப்பட்டாள்?",
+    "options": [
+     "எபிரோனில்",
+     "பெத்லெகேம் என்னும் எப்பிராத்தாவுக்குப் போகிற வழியில்",
+     "மக்பேலா குகையில்",
+     "பெத்தேலில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k164",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 48,
+   "verse": 14,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "ladder",
+   "en": {
+    "q": "On whose head did Jacob lay his right hand to bless him?",
+    "options": [
+     "Manasseh",
+     "Joseph",
+     "Ephraim",
+     "Benjamin"
+    ]
+   },
+   "ta": {
+    "q": "யாக்கோபு யாருடைய தலையின்மேல் தன் வலதுகையை வைத்து ஆசீர்வதித்தான்?",
+    "options": [
+     "மனாசே",
+     "யோசேப்பு",
+     "எப்பிராயீம்",
+     "பென்யமீன்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k165",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 50,
+   "verse": 3,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "sheaves",
+   "en": {
+    "q": "For how many days did the Egyptians mourn for Jacob?",
+    "options": [
+     "70 days",
+     "7 days",
+     "40 days",
+     "30 days"
+    ]
+   },
+   "ta": {
+    "q": "எகிப்தியர் யாக்கோபுக்காக எத்தனை நாள் துக்கங்கொண்டாடினார்கள்?",
+    "options": [
+     "70 நாள்",
+     "7 நாள்",
+     "40 நாள்",
+     "30 நாள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k166",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 50,
+   "verse": 11,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "sheaves",
+   "en": {
+    "q": "They mourned seven days at the threshingfloor of Atad. What was the place called?",
+    "options": [
+     "Peniel",
+     "Machpelah",
+     "Mahanaim",
+     "Abel-mizraim"
+    ]
+   },
+   "ta": {
+    "q": "ஆத்தாத்தின் களத்தில் ஏழு நாள் துக்கங்கொண்டாடினார்கள். அந்த இடத்திற்கு என்ன பெயர் உண்டாயிற்று?",
+    "options": [
+     "பெனியேல்",
+     "மக்பேலா",
+     "மகனாயீம்",
+     "ஆபேல்மிஸ்ராயீம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k167",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 50,
+   "verse": 26,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "coat",
+   "en": {
+    "q": "How old was Joseph when he died?",
+    "options": [
+     "110",
+     "100",
+     "120",
+     "147"
+    ]
+   },
+   "ta": {
+    "q": "யோசேப்பு மரித்தபோது அவனுக்கு எத்தனை வயது?",
+    "options": [
+     "110",
+     "100",
+     "120",
+     "147"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k170",
+   "type": "mcq",
+   "book": "1SA",
+   "chapter": 1,
+   "verse": 2,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "crown",
+   "en": {
+    "q": "What was the name of Hannah's husband?",
+    "options": [
+     "Elkanah",
+     "Boaz",
+     "Eli",
+     "Jesse"
+    ]
+   },
+   "ta": {
+    "q": "அன்னாளின் கணவன் பெயர் என்ன?",
+    "options": [
+     "எல்க்கானா",
+     "போவாஸ்",
+     "ஏலி",
+     "ஈசாய்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k171",
+   "type": "mcq",
+   "book": "2KI",
+   "chapter": 11,
+   "verse": 3,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "crown",
+   "en": {
+    "q": "Which two children grew up in the house of the LORD?",
+    "options": [
+     "Samuel and Joash",
+     "Eli and Samuel",
+     "David and Solomon",
+     "Moses and Aaron"
+    ],
+    "explain": "Samuel grew before the LORD (1 Samuel 2:21); Joash was hid in the house of the LORD six years."
+   },
+   "ta": {
+    "q": "கர்த்தருடைய ஆலயத்தில் வளர்ந்த இரண்டு பிள்ளைகள் யார்?",
+    "options": [
+     "சாமுவேல், யோவாஸ்",
+     "ஏலி, சாமுவேல்",
+     "தாவீது, சாலொமோன்",
+     "மோசே, ஆரோன்"
+    ],
+    "explain": "சாமுவேல் கர்த்தருடைய சந்நிதியில் வளர்ந்தான் (1 சாமு. 2:21); யோவாஸ் ஆறு வருஷம் கர்த்தருடைய ஆலயத்தில் ஒளித்துவைக்கப்பட்டான்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k172",
+   "type": "mcq",
+   "book": "JDG",
+   "chapter": 3,
+   "verse": 15,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "crown",
+   "en": {
+    "q": "Which judge of Israel was left-handed?",
+    "options": [
+     "Jehu",
+     "Ehud",
+     "Samson",
+     "Gideon"
+    ]
+   },
+   "ta": {
+    "q": "இடதுகைப் பழக்கமுள்ள இஸ்ரவேலின் நியாயாதிபதி யார்?",
+    "options": [
+     "யெகூ",
+     "ஏகூத்",
+     "சிம்சோன்",
+     "கிதியோன்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k173",
+   "type": "mcq",
+   "book": "JDG",
+   "chapter": 4,
+   "verse": 4,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "crown",
+   "en": {
+    "q": "Who was the woman who judged Israel?",
+    "options": [
+     "Hannah",
+     "Miriam",
+     "Deborah",
+     "Jael"
+    ]
+   },
+   "ta": {
+    "q": "இஸ்ரவேலை நியாயம் விசாரித்த ஸ்திரீ யார்?",
+    "options": [
+     "அன்னாள்",
+     "மிரியாம்",
+     "தெபொராள்",
+     "யாகேல்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k174",
+   "type": "mcq",
+   "book": "1KI",
+   "chapter": 1,
+   "verse": 39,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "crown",
+   "en": {
+    "q": "Who was the third king of Israel?",
+    "options": [
+     "Rehoboam",
+     "Saul",
+     "David",
+     "Solomon"
+    ],
+    "explain": "Saul, then David, then Solomon."
+   },
+   "ta": {
+    "q": "இஸ்ரவேலின் மூன்றாம் ராஜா யார்?",
+    "options": [
+     "ரெகொபெயாம்",
+     "சவுல்",
+     "தாவீது",
+     "சாலொமோன்"
+    ],
+    "explain": "சவுல், தாவீது, பிறகு சாலொமோன்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k175",
+   "type": "mcq",
+   "book": "MAT",
+   "chapter": 1,
+   "verse": 17,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "star",
+   "en": {
+    "q": "How many generations were there from Abraham to David?",
+    "options": [
+     "40",
+     "14",
+     "7",
+     "12"
+    ]
+   },
+   "ta": {
+    "q": "ஆபிரகாம் முதல் தாவீது வரை எத்தனை தலைமுறைகள்?",
+    "options": [
+     "40",
+     "14",
+     "7",
+     "12"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k176",
+   "type": "mcq",
+   "book": "MAT",
+   "chapter": 1,
+   "verse": 17,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "star",
+   "en": {
+    "q": "How many generations were there from David to Christ?",
+    "options": [
+     "28 (14 + 14)",
+     "42",
+     "14",
+     "40"
+    ],
+    "explain": "From David to the carrying away into Babylon 14, and from Babylon to Christ 14."
+   },
+   "ta": {
+    "q": "தாவீது முதல் கிறிஸ்து வரை எத்தனை தலைமுறைகள்?",
+    "options": [
+     "28 (14 + 14)",
+     "42",
+     "14",
+     "40"
+    ],
+    "explain": "தாவீது முதல் பாபிலோனுக்குச் சிறைப்பட்டுப்போனது வரை 14, பாபிலோன் முதல் கிறிஸ்து வரை 14."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k177",
+   "type": "mcq",
+   "book": "EXO",
+   "chapter": 2,
+   "verse": 21,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "bush",
+   "en": {
+    "q": "What was the name of Moses' wife?",
+    "options": [
+     "Deborah",
+     "Zipporah",
+     "Jochebed",
+     "Miriam"
+    ]
+   },
+   "ta": {
+    "q": "மோசேயின் மனைவியின் பெயர் என்ன?",
+    "options": [
+     "தெபொராள்",
+     "சிப்போராள்",
+     "யோகெபேத்",
+     "மிரியாம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k178",
+   "type": "mcq",
+   "book": "EXO",
+   "chapter": 18,
+   "verse": 3,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "bush",
+   "en": {
+    "q": "What were the names of Moses' two sons?",
+    "options": [
+     "Nadab and Abihu",
+     "Ephraim and Manasseh",
+     "Gershom and Eliezer",
+     "Joshua and Caleb"
+    ]
+   },
+   "ta": {
+    "q": "மோசேயின் இரண்டு குமாரரின் பெயர்கள் என்ன?",
+    "options": [
+     "நாதாப், அபியூ",
+     "எப்பிராயீம், மனாசே",
+     "கெர்சோம், எலியேசர்",
+     "யோசுவா, காலேப்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k179",
+   "type": "mcq",
+   "book": "2SA",
+   "chapter": 13,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "crown",
+   "en": {
+    "q": "What was the name of David's daughter?",
+    "options": [
+     "Tamar",
+     "Michal",
+     "Dinah",
+     "Abigail"
+    ]
+   },
+   "ta": {
+    "q": "தாவீதின் மகளின் பெயர் என்ன?",
+    "options": [
+     "தாமார்",
+     "மீகாள்",
+     "தீனாள்",
+     "அபிகாயில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k180",
+   "type": "mcq",
+   "book": "GEN",
+   "chapter": 38,
+   "verse": 6,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "coat",
+   "en": {
+    "q": "Who was Judah's daughter-in-law?",
+    "options": [
+     "Dinah",
+     "Ruth",
+     "Orpah",
+     "Tamar"
+    ]
+   },
+   "ta": {
+    "q": "யூதாவின் மருமகள் யார்?",
+    "options": [
+     "தீனாள்",
+     "ரூத்",
+     "ஒர்பாள்",
+     "தாமார்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-ch-GEN",
+   "type": "book",
+   "book": "GEN",
+   "chapter": 50,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 50 chapters?",
+    "options": [
+     "Exodus",
+     "Job",
+     "Numbers",
+     "Genesis"
+    ],
+    "explain": "Genesis has 50 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 50 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "யாத்திராகமம்",
+     "யோபு",
+     "எண்ணாகமம்",
+     "ஆதியாகமம்"
+    ],
+    "explain": "ஆதியாகமம் புஸ்தகத்தில் 50 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-EXO",
+   "type": "book",
+   "book": "EXO",
+   "chapter": 40,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 40 chapters?",
+    "options": [
+     "Exodus",
+     "2 Chronicles",
+     "Genesis",
+     "Job"
+    ],
+    "explain": "Exodus has 40 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 40 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "யாத்திராகமம்",
+     "2 நாளாகமம்",
+     "ஆதியாகமம்",
+     "யோபு"
+    ],
+    "explain": "யாத்திராகமம் புஸ்தகத்தில் 40 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-LEV",
+   "type": "book",
+   "book": "LEV",
+   "chapter": 27,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 27 chapters?",
+    "options": [
+     "Leviticus",
+     "Acts",
+     "1 Kings",
+     "1 Samuel"
+    ],
+    "explain": "Leviticus has 27 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 27 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "லேவியராகமம்",
+     "அப்போஸ்தலருடைய நடபடிகள்",
+     "1 இராஜாக்கள்",
+     "1 சாமுவேல்"
+    ],
+    "explain": "லேவியராகமம் புஸ்தகத்தில் 27 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-NUM",
+   "type": "book",
+   "book": "NUM",
+   "chapter": 36,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 36 chapters?",
+    "options": [
+     "1 Samuel",
+     "Numbers",
+     "Leviticus",
+     "1 Chronicles"
+    ],
+    "explain": "Numbers has 36 chapters. 2 Chronicles also has 36."
+   },
+   "ta": {
+    "q": "இவற்றில் 36 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "1 சாமுவேல்",
+     "எண்ணாகமம்",
+     "லேவியராகமம்",
+     "1 நாளாகமம்"
+    ],
+    "explain": "எண்ணாகமம் புஸ்தகத்தில் 36 அதிகாரங்கள் உள்ளன. 2 நாளாகமம் புஸ்தகத்திலும் 36 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-DEU",
+   "type": "book",
+   "book": "DEU",
+   "chapter": 34,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 34 chapters?",
+    "options": [
+     "Leviticus",
+     "1 Samuel",
+     "Acts",
+     "Deuteronomy"
+    ],
+    "explain": "Deuteronomy has 34 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 34 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "லேவியராகமம்",
+     "1 சாமுவேல்",
+     "அப்போஸ்தலருடைய நடபடிகள்",
+     "உபாகமம்"
+    ],
+    "explain": "உபாகமம் புஸ்தகத்தில் 34 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-JOS",
+   "type": "book",
+   "book": "JOS",
+   "chapter": 24,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 24 chapters?",
+    "options": [
+     "John",
+     "Joshua",
+     "Revelation",
+     "Leviticus"
+    ],
+    "explain": "Joshua has 24 chapters. 2 Samuel, Luke also have 24."
+   },
+   "ta": {
+    "q": "இவற்றில் 24 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "யோவான்",
+     "யோசுவா",
+     "வெளிப்படுத்தின விசேஷம்",
+     "லேவியராகமம்"
+    ],
+    "explain": "யோசுவா புஸ்தகத்தில் 24 அதிகாரங்கள் உள்ளன. 2 சாமுவேல், லூக்கா புஸ்தகத்திலும் 24 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-JDG",
+   "type": "book",
+   "book": "JDG",
+   "chapter": 21,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 21 chapters?",
+    "options": [
+     "1 Corinthians",
+     "Joshua",
+     "2 Kings",
+     "Judges"
+    ],
+    "explain": "Judges has 21 chapters. John also has 21."
+   },
+   "ta": {
+    "q": "இவற்றில் 21 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "1 கொரிந்தியர்",
+     "யோசுவா",
+     "2 இராஜாக்கள்",
+     "நியாயாதிபதிகள்"
+    ],
+    "explain": "நியாயாதிபதிகள் புஸ்தகத்தில் 21 அதிகாரங்கள் உள்ளன. யோவான் புஸ்தகத்திலும் 21 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-RUT",
+   "type": "book",
+   "book": "RUT",
+   "chapter": 4,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 4 chapters?",
+    "options": [
+     "1 Thessalonians",
+     "Nahum",
+     "Ruth",
+     "Joel"
+    ],
+    "explain": "Ruth has 4 chapters. Jonah, Malachi, Philippians, Colossians, 2 Timothy also have 4."
+   },
+   "ta": {
+    "q": "இவற்றில் 4 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "1 தெசலோனிக்கேயர்",
+     "நாகூம்",
+     "ரூத்",
+     "யோவேல்"
+    ],
+    "explain": "ரூத் புஸ்தகத்தில் 4 அதிகாரங்கள் உள்ளன. யோனா, மல்கியா, பிலிப்பியர், கொலோசெயர், 2 தீமோத்தேயு புஸ்தகத்திலும் 4 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-1SA",
+   "type": "book",
+   "book": "1SA",
+   "chapter": 31,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 31 chapters?",
+    "options": [
+     "Acts",
+     "1 Samuel",
+     "Deuteronomy",
+     "Joshua"
+    ],
+    "explain": "1 Samuel has 31 chapters. Proverbs also has 31."
+   },
+   "ta": {
+    "q": "இவற்றில் 31 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "அப்போஸ்தலருடைய நடபடிகள்",
+     "1 சாமுவேல்",
+     "உபாகமம்",
+     "யோசுவா"
+    ],
+    "explain": "1 சாமுவேல் புஸ்தகத்தில் 31 அதிகாரங்கள் உள்ளன. நீதிமொழிகள் புஸ்தகத்திலும் 31 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-2SA",
+   "type": "book",
+   "book": "2SA",
+   "chapter": 24,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 24 chapters?",
+    "options": [
+     "2 Samuel",
+     "1 Samuel",
+     "1 Chronicles",
+     "Revelation"
+    ],
+    "explain": "2 Samuel has 24 chapters. Joshua, Luke also have 24."
+   },
+   "ta": {
+    "q": "இவற்றில் 24 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "2 சாமுவேல்",
+     "1 சாமுவேல்",
+     "1 நாளாகமம்",
+     "வெளிப்படுத்தின விசேஷம்"
+    ],
+    "explain": "2 சாமுவேல் புஸ்தகத்தில் 24 அதிகாரங்கள் உள்ளன. யோசுவா, லூக்கா புஸ்தகத்திலும் 24 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-1KI",
+   "type": "book",
+   "book": "1KI",
+   "chapter": 22,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 22 chapters?",
+    "options": [
+     "John",
+     "Mark",
+     "1 Kings",
+     "Joshua"
+    ],
+    "explain": "1 Kings has 22 chapters. Revelation also has 22."
+   },
+   "ta": {
+    "q": "இவற்றில் 22 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "யோவான்",
+     "மாற்கு",
+     "1 இராஜாக்கள்",
+     "யோசுவா"
+    ],
+    "explain": "1 இராஜாக்கள் புஸ்தகத்தில் 22 அதிகாரங்கள் உள்ளன. வெளிப்படுத்தின விசேஷம் புஸ்தகத்திலும் 22 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-2KI",
+   "type": "book",
+   "book": "2KI",
+   "chapter": 25,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 25 chapters?",
+    "options": [
+     "1 Chronicles",
+     "2 Kings",
+     "Joshua",
+     "Luke"
+    ],
+    "explain": "2 Kings has 25 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 25 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "1 நாளாகமம்",
+     "2 இராஜாக்கள்",
+     "யோசுவா",
+     "லூக்கா"
+    ],
+    "explain": "2 இராஜாக்கள் புஸ்தகத்தில் 25 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-1CH",
+   "type": "book",
+   "book": "1CH",
+   "chapter": 29,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 29 chapters?",
+    "options": [
+     "Joshua",
+     "Luke",
+     "1 Chronicles",
+     "2 Samuel"
+    ],
+    "explain": "1 Chronicles has 29 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 29 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "யோசுவா",
+     "லூக்கா",
+     "1 நாளாகமம்",
+     "2 சாமுவேல்"
+    ],
+    "explain": "1 நாளாகமம் புஸ்தகத்தில் 29 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-2CH",
+   "type": "book",
+   "book": "2CH",
+   "chapter": 36,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 36 chapters?",
+    "options": [
+     "Leviticus",
+     "1 Samuel",
+     "Deuteronomy",
+     "2 Chronicles"
+    ],
+    "explain": "2 Chronicles has 36 chapters. Numbers also has 36."
+   },
+   "ta": {
+    "q": "இவற்றில் 36 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "லேவியராகமம்",
+     "1 சாமுவேல்",
+     "உபாகமம்",
+     "2 நாளாகமம்"
+    ],
+    "explain": "2 நாளாகமம் புஸ்தகத்தில் 36 அதிகாரங்கள் உள்ளன. எண்ணாகமம் புஸ்தகத்திலும் 36 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-EZR",
+   "type": "book",
+   "book": "EZR",
+   "chapter": 10,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 10 chapters?",
+    "options": [
+     "Ezra",
+     "2 Corinthians",
+     "Hebrews",
+     "Zechariah"
+    ],
+    "explain": "Ezra has 10 chapters. Esther also has 10."
+   },
+   "ta": {
+    "q": "இவற்றில் 10 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "எஸ்றா",
+     "2 கொரிந்தியர்",
+     "எபிரெயர்",
+     "சகரியா"
+    ],
+    "explain": "எஸ்றா புஸ்தகத்தில் 10 அதிகாரங்கள் உள்ளன. எஸ்தர் புஸ்தகத்திலும் 10 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-NEH",
+   "type": "book",
+   "book": "NEH",
+   "chapter": 13,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 13 chapters?",
+    "options": [
+     "Ecclesiastes",
+     "Nehemiah",
+     "Hosea",
+     "Romans"
+    ],
+    "explain": "Nehemiah has 13 chapters. 2 Corinthians, Hebrews also have 13."
+   },
+   "ta": {
+    "q": "இவற்றில் 13 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "பிரசங்கி",
+     "நெகேமியா",
+     "ஓசியா",
+     "ரோமர்"
+    ],
+    "explain": "நெகேமியா புஸ்தகத்தில் 13 அதிகாரங்கள் உள்ளன. 2 கொரிந்தியர், எபிரெயர் புஸ்தகத்திலும் 13 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-EST",
+   "type": "book",
+   "book": "EST",
+   "chapter": 10,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 10 chapters?",
+    "options": [
+     "Esther",
+     "Zechariah",
+     "Song of Solomon",
+     "Daniel"
+    ],
+    "explain": "Esther has 10 chapters. Ezra also has 10."
+   },
+   "ta": {
+    "q": "இவற்றில் 10 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "எஸ்தர்",
+     "சகரியா",
+     "உன்னதப்பாட்டு",
+     "தானியேல்"
+    ],
+    "explain": "எஸ்தர் புஸ்தகத்தில் 10 அதிகாரங்கள் உள்ளன. எஸ்றா புஸ்தகத்திலும் 10 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-JOB",
+   "type": "book",
+   "book": "JOB",
+   "chapter": 42,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 42 chapters?",
+    "options": [
+     "1 Chronicles",
+     "Ezekiel",
+     "Job",
+     "1 Samuel"
+    ],
+    "explain": "Job has 42 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 42 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "1 நாளாகமம்",
+     "எசேக்கியேல்",
+     "யோபு",
+     "1 சாமுவேல்"
+    ],
+    "explain": "யோபு புஸ்தகத்தில் 42 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-PSA",
+   "type": "book",
+   "book": "PSA",
+   "chapter": 150,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 150 chapters?",
+    "options": [
+     "Numbers",
+     "Exodus",
+     "Psalms",
+     "1 Samuel"
+    ],
+    "explain": "Psalms has 150 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 150 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "எண்ணாகமம்",
+     "யாத்திராகமம்",
+     "சங்கீதம்",
+     "1 சாமுவேல்"
+    ],
+    "explain": "சங்கீதம் புஸ்தகத்தில் 150 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-PRO",
+   "type": "book",
+   "book": "PRO",
+   "chapter": 31,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 31 chapters?",
+    "options": [
+     "Matthew",
+     "Acts",
+     "Proverbs",
+     "Leviticus"
+    ],
+    "explain": "Proverbs has 31 chapters. 1 Samuel also has 31."
+   },
+   "ta": {
+    "q": "இவற்றில் 31 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "மத்தேயு",
+     "அப்போஸ்தலருடைய நடபடிகள்",
+     "நீதிமொழிகள்",
+     "லேவியராகமம்"
+    ],
+    "explain": "நீதிமொழிகள் புஸ்தகத்தில் 31 அதிகாரங்கள் உள்ளன. 1 சாமுவேல் புஸ்தகத்திலும் 31 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-ECC",
+   "type": "book",
+   "book": "ECC",
+   "chapter": 12,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 12 chapters?",
+    "options": [
+     "Ecclesiastes",
+     "Mark",
+     "Song of Solomon",
+     "Ezra"
+    ],
+    "explain": "Ecclesiastes has 12 chapters. Daniel also has 12."
+   },
+   "ta": {
+    "q": "இவற்றில் 12 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "பிரசங்கி",
+     "மாற்கு",
+     "உன்னதப்பாட்டு",
+     "எஸ்றா"
+    ],
+    "explain": "பிரசங்கி புஸ்தகத்தில் 12 அதிகாரங்கள் உள்ளன. தானியேல் புஸ்தகத்திலும் 12 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-SNG",
+   "type": "book",
+   "book": "SNG",
+   "chapter": 8,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 8 chapters?",
+    "options": [
+     "Ephesians",
+     "Song of Solomon",
+     "James",
+     "Micah"
+    ],
+    "explain": "Song of Solomon has 8 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 8 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "எபேசியர்",
+     "உன்னதப்பாட்டு",
+     "யாக்கோபு",
+     "மீகா"
+    ],
+    "explain": "உன்னதப்பாட்டு புஸ்தகத்தில் 8 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-ISA",
+   "type": "book",
+   "book": "ISA",
+   "chapter": 66,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 66 chapters?",
+    "options": [
+     "Proverbs",
+     "2 Chronicles",
+     "Ezekiel",
+     "Isaiah"
+    ],
+    "explain": "Isaiah has 66 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 66 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "நீதிமொழிகள்",
+     "2 நாளாகமம்",
+     "எசேக்கியேல்",
+     "ஏசாயா"
+    ],
+    "explain": "ஏசாயா புஸ்தகத்தில் 66 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-JER",
+   "type": "book",
+   "book": "JER",
+   "chapter": 52,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 52 chapters?",
+    "options": [
+     "2 Chronicles",
+     "Jeremiah",
+     "Genesis",
+     "Deuteronomy"
+    ],
+    "explain": "Jeremiah has 52 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 52 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "2 நாளாகமம்",
+     "எரேமியா",
+     "ஆதியாகமம்",
+     "உபாகமம்"
+    ],
+    "explain": "எரேமியா புஸ்தகத்தில் 52 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-LAM",
+   "type": "book",
+   "book": "LAM",
+   "chapter": 5,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 5 chapters?",
+    "options": [
+     "Joel",
+     "Jonah",
+     "Ephesians",
+     "Lamentations"
+    ],
+    "explain": "Lamentations has 5 chapters. 1 Thessalonians, James, 1 Peter, 1 John also have 5."
+   },
+   "ta": {
+    "q": "இவற்றில் 5 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "யோவேல்",
+     "யோனா",
+     "எபேசியர்",
+     "புலம்பல்"
+    ],
+    "explain": "புலம்பல் புஸ்தகத்தில் 5 அதிகாரங்கள் உள்ளன. 1 தெசலோனிக்கேயர், யாக்கோபு, 1 பேதுரு, 1 யோவான் புஸ்தகத்திலும் 5 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-EZK",
+   "type": "book",
+   "book": "EZK",
+   "chapter": 48,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 48 chapters?",
+    "options": [
+     "Isaiah",
+     "Exodus",
+     "Ezekiel",
+     "Deuteronomy"
+    ],
+    "explain": "Ezekiel has 48 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 48 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "ஏசாயா",
+     "யாத்திராகமம்",
+     "எசேக்கியேல்",
+     "உபாகமம்"
+    ],
+    "explain": "எசேக்கியேல் புஸ்தகத்தில் 48 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-DAN",
+   "type": "book",
+   "book": "DAN",
+   "chapter": 12,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 12 chapters?",
+    "options": [
+     "Nehemiah",
+     "Daniel",
+     "Hosea",
+     "Song of Solomon"
+    ],
+    "explain": "Daniel has 12 chapters. Ecclesiastes also has 12."
+   },
+   "ta": {
+    "q": "இவற்றில் 12 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "நெகேமியா",
+     "தானியேல்",
+     "ஓசியா",
+     "உன்னதப்பாட்டு"
+    ],
+    "explain": "தானியேல் புஸ்தகத்தில் 12 அதிகாரங்கள் உள்ளன. பிரசங்கி புஸ்தகத்திலும் 12 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-HOS",
+   "type": "book",
+   "book": "HOS",
+   "chapter": 14,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 14 chapters?",
+    "options": [
+     "Hosea",
+     "Hebrews",
+     "Romans",
+     "Ecclesiastes"
+    ],
+    "explain": "Hosea has 14 chapters. Zechariah also has 14."
+   },
+   "ta": {
+    "q": "இவற்றில் 14 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "ஓசியா",
+     "எபிரெயர்",
+     "ரோமர்",
+     "பிரசங்கி"
+    ],
+    "explain": "ஓசியா புஸ்தகத்தில் 14 அதிகாரங்கள் உள்ளன. சகரியா புஸ்தகத்திலும் 14 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-JOL",
+   "type": "book",
+   "book": "JOL",
+   "chapter": 3,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 3 chapters?",
+    "options": [
+     "Haggai",
+     "Obadiah",
+     "Joel",
+     "2 Timothy"
+    ],
+    "explain": "Joel has 3 chapters. Nahum, Habakkuk, Zephaniah, 2 Thessalonians, Titus, 2 Peter also have 3."
+   },
+   "ta": {
+    "q": "இவற்றில் 3 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "ஆகாய்",
+     "ஒபதியா",
+     "யோவேல்",
+     "2 தீமோத்தேயு"
+    ],
+    "explain": "யோவேல் புஸ்தகத்தில் 3 அதிகாரங்கள் உள்ளன. நாகூம், ஆபகூக், செப்பனியா, 2 தெசலோனிக்கேயர், தீத்து, 2 பேதுரு புஸ்தகத்திலும் 3 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-AMO",
+   "type": "book",
+   "book": "AMO",
+   "chapter": 9,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 9 chapters?",
+    "options": [
+     "Ephesians",
+     "1 Timothy",
+     "Amos",
+     "Galatians"
+    ],
+    "explain": "Amos has 9 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 9 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "எபேசியர்",
+     "1 தீமோத்தேயு",
+     "ஆமோஸ்",
+     "கலாத்தியர்"
+    ],
+    "explain": "ஆமோஸ் புஸ்தகத்தில் 9 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-OBA",
+   "type": "book",
+   "book": "OBA",
+   "chapter": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has only one chapter?",
+    "options": [
+     "2 Thessalonians",
+     "Habakkuk",
+     "Nahum",
+     "Obadiah"
+    ],
+    "explain": "Obadiah has 1 chapter. Philemon, 2 John, 3 John, Jude also have 1."
+   },
+   "ta": {
+    "q": "இவற்றில் ஒரே ஒரு அதிகாரம் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "2 தெசலோனிக்கேயர்",
+     "ஆபகூக்",
+     "நாகூம்",
+     "ஒபதியா"
+    ],
+    "explain": "ஒபதியா புஸ்தகத்தில் ஒரே ஒரு அதிகாரம் உள்ளது. பிலேமோன், 2 யோவான், 3 யோவான், யூதா புஸ்தகத்திலும் 1 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-JON",
+   "type": "book",
+   "book": "JON",
+   "chapter": 4,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 4 chapters?",
+    "options": [
+     "Nahum",
+     "Jonah",
+     "Zephaniah",
+     "Lamentations"
+    ],
+    "explain": "Jonah has 4 chapters. Ruth, Malachi, Philippians, Colossians, 2 Timothy also have 4."
+   },
+   "ta": {
+    "q": "இவற்றில் 4 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "நாகூம்",
+     "யோனா",
+     "செப்பனியா",
+     "புலம்பல்"
+    ],
+    "explain": "யோனா புஸ்தகத்தில் 4 அதிகாரங்கள் உள்ளன. ரூத், மல்கியா, பிலிப்பியர், கொலோசெயர், 2 தீமோத்தேயு புஸ்தகத்திலும் 4 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-MIC",
+   "type": "book",
+   "book": "MIC",
+   "chapter": 7,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 7 chapters?",
+    "options": [
+     "Micah",
+     "1 Peter",
+     "Amos",
+     "1 Thessalonians"
+    ],
+    "explain": "Micah has 7 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 7 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "மீகா",
+     "1 பேதுரு",
+     "ஆமோஸ்",
+     "1 தெசலோனிக்கேயர்"
+    ],
+    "explain": "மீகா புஸ்தகத்தில் 7 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-NAM",
+   "type": "book",
+   "book": "NAM",
+   "chapter": 3,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 3 chapters?",
+    "options": [
+     "1 Thessalonians",
+     "Ruth",
+     "Lamentations",
+     "Nahum"
+    ],
+    "explain": "Nahum has 3 chapters. Joel, Habakkuk, Zephaniah, 2 Thessalonians, Titus, 2 Peter also have 3."
+   },
+   "ta": {
+    "q": "இவற்றில் 3 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "1 தெசலோனிக்கேயர்",
+     "ரூத்",
+     "புலம்பல்",
+     "நாகூம்"
+    ],
+    "explain": "நாகூம் புஸ்தகத்தில் 3 அதிகாரங்கள் உள்ளன. யோவேல், ஆபகூக், செப்பனியா, 2 தெசலோனிக்கேயர், தீத்து, 2 பேதுரு புஸ்தகத்திலும் 3 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-HAB",
+   "type": "book",
+   "book": "HAB",
+   "chapter": 3,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 3 chapters?",
+    "options": [
+     "Haggai",
+     "Habakkuk",
+     "1 Thessalonians",
+     "Philippians"
+    ],
+    "explain": "Habakkuk has 3 chapters. Joel, Nahum, Zephaniah, 2 Thessalonians, Titus, 2 Peter also have 3."
+   },
+   "ta": {
+    "q": "இவற்றில் 3 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "ஆகாய்",
+     "ஆபகூக்",
+     "1 தெசலோனிக்கேயர்",
+     "பிலிப்பியர்"
+    ],
+    "explain": "ஆபகூக் புஸ்தகத்தில் 3 அதிகாரங்கள் உள்ளன. யோவேல், நாகூம், செப்பனியா, 2 தெசலோனிக்கேயர், தீத்து, 2 பேதுரு புஸ்தகத்திலும் 3 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-ZEP",
+   "type": "book",
+   "book": "ZEP",
+   "chapter": 3,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 3 chapters?",
+    "options": [
+     "1 Thessalonians",
+     "Lamentations",
+     "Philippians",
+     "Zephaniah"
+    ],
+    "explain": "Zephaniah has 3 chapters. Joel, Nahum, Habakkuk, 2 Thessalonians, Titus, 2 Peter also have 3."
+   },
+   "ta": {
+    "q": "இவற்றில் 3 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "1 தெசலோனிக்கேயர்",
+     "புலம்பல்",
+     "பிலிப்பியர்",
+     "செப்பனியா"
+    ],
+    "explain": "செப்பனியா புஸ்தகத்தில் 3 அதிகாரங்கள் உள்ளன. யோவேல், நாகூம், ஆபகூக், 2 தெசலோனிக்கேயர், தீத்து, 2 பேதுரு புஸ்தகத்திலும் 3 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-HAG",
+   "type": "book",
+   "book": "HAG",
+   "chapter": 2,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 2 chapters?",
+    "options": [
+     "Obadiah",
+     "Philemon",
+     "2 Thessalonians",
+     "Haggai"
+    ],
+    "explain": "Haggai has 2 chapters."
+   },
+   "ta": {
+    "q": "இவற்றில் 2 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "ஒபதியா",
+     "பிலேமோன்",
+     "2 தெசலோனிக்கேயர்",
+     "ஆகாய்"
+    ],
+    "explain": "ஆகாய் புஸ்தகத்தில் 2 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-ZEC",
+   "type": "book",
+   "book": "ZEC",
+   "chapter": 14,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 14 chapters?",
+    "options": [
+     "Esther",
+     "1 Corinthians",
+     "Romans",
+     "Zechariah"
+    ],
+    "explain": "Zechariah has 14 chapters. Hosea also has 14."
+   },
+   "ta": {
+    "q": "இவற்றில் 14 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "எஸ்தர்",
+     "1 கொரிந்தியர்",
+     "ரோமர்",
+     "சகரியா"
+    ],
+    "explain": "சகரியா புஸ்தகத்தில் 14 அதிகாரங்கள் உள்ளன. ஓசியா புஸ்தகத்திலும் 14 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-MAL",
+   "type": "book",
+   "book": "MAL",
+   "chapter": 4,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 4 chapters?",
+    "options": [
+     "1 Thessalonians",
+     "Malachi",
+     "Lamentations",
+     "Nahum"
+    ],
+    "explain": "Malachi has 4 chapters. Ruth, Jonah, Philippians, Colossians, 2 Timothy also have 4."
+   },
+   "ta": {
+    "q": "இவற்றில் 4 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "1 தெசலோனிக்கேயர்",
+     "மல்கியா",
+     "புலம்பல்",
+     "நாகூம்"
+    ],
+    "explain": "மல்கியா புஸ்தகத்தில் 4 அதிகாரங்கள் உள்ளன. ரூத், யோனா, பிலிப்பியர், கொலோசெயர், 2 தீமோத்தேயு புஸ்தகத்திலும் 4 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-MAT",
+   "type": "book",
+   "book": "MAT",
+   "chapter": 28,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 28 chapters?",
+    "options": [
+     "2 Samuel",
+     "Matthew",
+     "1 Chronicles",
+     "Proverbs"
+    ],
+    "explain": "Matthew has 28 chapters. Acts also has 28."
+   },
+   "ta": {
+    "q": "இவற்றில் 28 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "2 சாமுவேல்",
+     "மத்தேயு",
+     "1 நாளாகமம்",
+     "நீதிமொழிகள்"
+    ],
+    "explain": "மத்தேயு புஸ்தகத்தில் 28 அதிகாரங்கள் உள்ளன. அப்போஸ்தலருடைய நடபடிகள் புஸ்தகத்திலும் 28 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-MRK",
+   "type": "book",
+   "book": "MRK",
+   "chapter": 16,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 16 chapters?",
+    "options": [
+     "Judges",
+     "Nehemiah",
+     "Zechariah",
+     "Mark"
+    ],
+    "explain": "Mark has 16 chapters. Romans, 1 Corinthians also have 16."
+   },
+   "ta": {
+    "q": "இவற்றில் 16 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "நியாயாதிபதிகள்",
+     "நெகேமியா",
+     "சகரியா",
+     "மாற்கு"
+    ],
+    "explain": "மாற்கு புஸ்தகத்தில் 16 அதிகாரங்கள் உள்ளன. ரோமர், 1 கொரிந்தியர் புஸ்தகத்திலும் 16 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-LUK",
+   "type": "book",
+   "book": "LUK",
+   "chapter": 24,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 24 chapters?",
+    "options": [
+     "Luke",
+     "1 Samuel",
+     "Revelation",
+     "2 Kings"
+    ],
+    "explain": "Luke has 24 chapters. Joshua, 2 Samuel also have 24."
+   },
+   "ta": {
+    "q": "இவற்றில் 24 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "லூக்கா",
+     "1 சாமுவேல்",
+     "வெளிப்படுத்தின விசேஷம்",
+     "2 இராஜாக்கள்"
+    ],
+    "explain": "லூக்கா புஸ்தகத்தில் 24 அதிகாரங்கள் உள்ளன. யோசுவா, 2 சாமுவேல் புஸ்தகத்திலும் 24 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-JHN",
+   "type": "book",
+   "book": "JHN",
+   "chapter": 21,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 21 chapters?",
+    "options": [
+     "Romans",
+     "Revelation",
+     "Mark",
+     "John"
+    ],
+    "explain": "John has 21 chapters. Judges also has 21."
+   },
+   "ta": {
+    "q": "இவற்றில் 21 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "ரோமர்",
+     "வெளிப்படுத்தின விசேஷம்",
+     "மாற்கு",
+     "யோவான்"
+    ],
+    "explain": "யோவான் புஸ்தகத்தில் 21 அதிகாரங்கள் உள்ளன. நியாயாதிபதிகள் புஸ்தகத்திலும் 21 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-ACT",
+   "type": "book",
+   "book": "ACT",
+   "chapter": 28,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 28 chapters?",
+    "options": [
+     "Leviticus",
+     "2 Kings",
+     "1 Chronicles",
+     "Acts"
+    ],
+    "explain": "Acts has 28 chapters. Matthew also has 28."
+   },
+   "ta": {
+    "q": "இவற்றில் 28 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "லேவியராகமம்",
+     "2 இராஜாக்கள்",
+     "1 நாளாகமம்",
+     "அப்போஸ்தலருடைய நடபடிகள்"
+    ],
+    "explain": "அப்போஸ்தலருடைய நடபடிகள் புஸ்தகத்தில் 28 அதிகாரங்கள் உள்ளன. மத்தேயு புஸ்தகத்திலும் 28 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-ROM",
+   "type": "book",
+   "book": "ROM",
+   "chapter": 16,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 16 chapters?",
+    "options": [
+     "John",
+     "Zechariah",
+     "Romans",
+     "Hebrews"
+    ],
+    "explain": "Romans has 16 chapters. Mark, 1 Corinthians also have 16."
+   },
+   "ta": {
+    "q": "இவற்றில் 16 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "யோவான்",
+     "சகரியா",
+     "ரோமர்",
+     "எபிரெயர்"
+    ],
+    "explain": "ரோமர் புஸ்தகத்தில் 16 அதிகாரங்கள் உள்ளன. மாற்கு, 1 கொரிந்தியர் புஸ்தகத்திலும் 16 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-1CO",
+   "type": "book",
+   "book": "1CO",
+   "chapter": 16,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 16 chapters?",
+    "options": [
+     "2 Corinthians",
+     "Zechariah",
+     "Judges",
+     "1 Corinthians"
+    ],
+    "explain": "1 Corinthians has 16 chapters. Mark, Romans also have 16."
+   },
+   "ta": {
+    "q": "இவற்றில் 16 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "2 கொரிந்தியர்",
+     "சகரியா",
+     "நியாயாதிபதிகள்",
+     "1 கொரிந்தியர்"
+    ],
+    "explain": "1 கொரிந்தியர் புஸ்தகத்தில் 16 அதிகாரங்கள் உள்ளன. மாற்கு, ரோமர் புஸ்தகத்திலும் 16 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-2CO",
+   "type": "book",
+   "book": "2CO",
+   "chapter": 13,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 13 chapters?",
+    "options": [
+     "2 Corinthians",
+     "Ezra",
+     "Zechariah",
+     "Mark"
+    ],
+    "explain": "2 Corinthians has 13 chapters. Nehemiah, Hebrews also have 13."
+   },
+   "ta": {
+    "q": "இவற்றில் 13 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "2 கொரிந்தியர்",
+     "எஸ்றா",
+     "சகரியா",
+     "மாற்கு"
+    ],
+    "explain": "2 கொரிந்தியர் புஸ்தகத்தில் 13 அதிகாரங்கள் உள்ளன. நெகேமியா, எபிரெயர் புஸ்தகத்திலும் 13 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-GAL",
+   "type": "book",
+   "book": "GAL",
+   "chapter": 6,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 6 chapters?",
+    "options": [
+     "Galatians",
+     "1 John",
+     "1 Thessalonians",
+     "Ruth"
+    ],
+    "explain": "Galatians has 6 chapters. Ephesians, 1 Timothy also have 6."
+   },
+   "ta": {
+    "q": "இவற்றில் 6 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "கலாத்தியர்",
+     "1 யோவான்",
+     "1 தெசலோனிக்கேயர்",
+     "ரூத்"
+    ],
+    "explain": "கலாத்தியர் புஸ்தகத்தில் 6 அதிகாரங்கள் உள்ளன. எபேசியர், 1 தீமோத்தேயு புஸ்தகத்திலும் 6 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-EPH",
+   "type": "book",
+   "book": "EPH",
+   "chapter": 6,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 6 chapters?",
+    "options": [
+     "Song of Solomon",
+     "Ephesians",
+     "Malachi",
+     "1 Peter"
+    ],
+    "explain": "Ephesians has 6 chapters. Galatians, 1 Timothy also have 6."
+   },
+   "ta": {
+    "q": "இவற்றில் 6 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "உன்னதப்பாட்டு",
+     "எபேசியர்",
+     "மல்கியா",
+     "1 பேதுரு"
+    ],
+    "explain": "எபேசியர் புஸ்தகத்தில் 6 அதிகாரங்கள் உள்ளன. கலாத்தியர், 1 தீமோத்தேயு புஸ்தகத்திலும் 6 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-PHP",
+   "type": "book",
+   "book": "PHP",
+   "chapter": 4,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 4 chapters?",
+    "options": [
+     "James",
+     "Lamentations",
+     "Philippians",
+     "2 Thessalonians"
+    ],
+    "explain": "Philippians has 4 chapters. Ruth, Jonah, Malachi, Colossians, 2 Timothy also have 4."
+   },
+   "ta": {
+    "q": "இவற்றில் 4 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "யாக்கோபு",
+     "புலம்பல்",
+     "பிலிப்பியர்",
+     "2 தெசலோனிக்கேயர்"
+    ],
+    "explain": "பிலிப்பியர் புஸ்தகத்தில் 4 அதிகாரங்கள் உள்ளன. ரூத், யோனா, மல்கியா, கொலோசெயர், 2 தீமோத்தேயு புஸ்தகத்திலும் 4 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-COL",
+   "type": "book",
+   "book": "COL",
+   "chapter": 4,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 4 chapters?",
+    "options": [
+     "Nahum",
+     "Colossians",
+     "Zephaniah",
+     "2 Thessalonians"
+    ],
+    "explain": "Colossians has 4 chapters. Ruth, Jonah, Malachi, Philippians, 2 Timothy also have 4."
+   },
+   "ta": {
+    "q": "இவற்றில் 4 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "நாகூம்",
+     "கொலோசெயர்",
+     "செப்பனியா",
+     "2 தெசலோனிக்கேயர்"
+    ],
+    "explain": "கொலோசெயர் புஸ்தகத்தில் 4 அதிகாரங்கள் உள்ளன. ரூத், யோனா, மல்கியா, பிலிப்பியர், 2 தீமோத்தேயு புஸ்தகத்திலும் 4 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-1TH",
+   "type": "book",
+   "book": "1TH",
+   "chapter": 5,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 5 chapters?",
+    "options": [
+     "Philippians",
+     "2 Timothy",
+     "Galatians",
+     "1 Thessalonians"
+    ],
+    "explain": "1 Thessalonians has 5 chapters. Lamentations, James, 1 Peter, 1 John also have 5."
+   },
+   "ta": {
+    "q": "இவற்றில் 5 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "பிலிப்பியர்",
+     "2 தீமோத்தேயு",
+     "கலாத்தியர்",
+     "1 தெசலோனிக்கேயர்"
+    ],
+    "explain": "1 தெசலோனிக்கேயர் புஸ்தகத்தில் 5 அதிகாரங்கள் உள்ளன. புலம்பல், யாக்கோபு, 1 பேதுரு, 1 யோவான் புஸ்தகத்திலும் 5 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-2TH",
+   "type": "book",
+   "book": "2TH",
+   "chapter": 3,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 3 chapters?",
+    "options": [
+     "Malachi",
+     "Colossians",
+     "Jonah",
+     "2 Thessalonians"
+    ],
+    "explain": "2 Thessalonians has 3 chapters. Joel, Nahum, Habakkuk, Zephaniah, Titus, 2 Peter also have 3."
+   },
+   "ta": {
+    "q": "இவற்றில் 3 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "மல்கியா",
+     "கொலோசெயர்",
+     "யோனா",
+     "2 தெசலோனிக்கேயர்"
+    ],
+    "explain": "2 தெசலோனிக்கேயர் புஸ்தகத்தில் 3 அதிகாரங்கள் உள்ளன. யோவேல், நாகூம், ஆபகூக், செப்பனியா, தீத்து, 2 பேதுரு புஸ்தகத்திலும் 3 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-1TI",
+   "type": "book",
+   "book": "1TI",
+   "chapter": 6,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 6 chapters?",
+    "options": [
+     "1 Timothy",
+     "Jonah",
+     "1 John",
+     "Malachi"
+    ],
+    "explain": "1 Timothy has 6 chapters. Galatians, Ephesians also have 6."
+   },
+   "ta": {
+    "q": "இவற்றில் 6 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "1 தீமோத்தேயு",
+     "யோனா",
+     "1 யோவான்",
+     "மல்கியா"
+    ],
+    "explain": "1 தீமோத்தேயு புஸ்தகத்தில் 6 அதிகாரங்கள் உள்ளன. கலாத்தியர், எபேசியர் புஸ்தகத்திலும் 6 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-2TI",
+   "type": "book",
+   "book": "2TI",
+   "chapter": 4,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 4 chapters?",
+    "options": [
+     "1 Peter",
+     "2 Thessalonians",
+     "2 Timothy",
+     "Habakkuk"
+    ],
+    "explain": "2 Timothy has 4 chapters. Ruth, Jonah, Malachi, Philippians, Colossians also have 4."
+   },
+   "ta": {
+    "q": "இவற்றில் 4 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "1 பேதுரு",
+     "2 தெசலோனிக்கேயர்",
+     "2 தீமோத்தேயு",
+     "ஆபகூக்"
+    ],
+    "explain": "2 தீமோத்தேயு புஸ்தகத்தில் 4 அதிகாரங்கள் உள்ளன. ரூத், யோனா, மல்கியா, பிலிப்பியர், கொலோசெயர் புஸ்தகத்திலும் 4 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-TIT",
+   "type": "book",
+   "book": "TIT",
+   "chapter": 3,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 3 chapters?",
+    "options": [
+     "Jonah",
+     "Malachi",
+     "Titus",
+     "Colossians"
+    ],
+    "explain": "Titus has 3 chapters. Joel, Nahum, Habakkuk, Zephaniah, 2 Thessalonians, 2 Peter also have 3."
+   },
+   "ta": {
+    "q": "இவற்றில் 3 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "யோனா",
+     "மல்கியா",
+     "தீத்து",
+     "கொலோசெயர்"
+    ],
+    "explain": "தீத்து புஸ்தகத்தில் 3 அதிகாரங்கள் உள்ளன. யோவேல், நாகூம், ஆபகூக், செப்பனியா, 2 தெசலோனிக்கேயர், 2 பேதுரு புஸ்தகத்திலும் 3 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-PHM",
+   "type": "book",
+   "book": "PHM",
+   "chapter": 1,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has only one chapter?",
+    "options": [
+     "Jonah",
+     "Haggai",
+     "Philemon",
+     "Titus"
+    ],
+    "explain": "Philemon has 1 chapter. Obadiah, 2 John, 3 John, Jude also have 1."
+   },
+   "ta": {
+    "q": "இவற்றில் ஒரே ஒரு அதிகாரம் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "யோனா",
+     "ஆகாய்",
+     "பிலேமோன்",
+     "தீத்து"
+    ],
+    "explain": "பிலேமோன் புஸ்தகத்தில் ஒரே ஒரு அதிகாரம் உள்ளது. ஒபதியா, 2 யோவான், 3 யோவான், யூதா புஸ்தகத்திலும் 1 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-HEB",
+   "type": "book",
+   "book": "HEB",
+   "chapter": 13,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 13 chapters?",
+    "options": [
+     "Hebrews",
+     "Hosea",
+     "Amos",
+     "Mark"
+    ],
+    "explain": "Hebrews has 13 chapters. Nehemiah, 2 Corinthians also have 13."
+   },
+   "ta": {
+    "q": "இவற்றில் 13 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "எபிரெயர்",
+     "ஓசியா",
+     "ஆமோஸ்",
+     "மாற்கு"
+    ],
+    "explain": "எபிரெயர் புஸ்தகத்தில் 13 அதிகாரங்கள் உள்ளன. நெகேமியா, 2 கொரிந்தியர் புஸ்தகத்திலும் 13 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-JAS",
+   "type": "book",
+   "book": "JAS",
+   "chapter": 5,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 5 chapters?",
+    "options": [
+     "Joel",
+     "James",
+     "Ephesians",
+     "Colossians"
+    ],
+    "explain": "James has 5 chapters. Lamentations, 1 Thessalonians, 1 Peter, 1 John also have 5."
+   },
+   "ta": {
+    "q": "இவற்றில் 5 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "யோவேல்",
+     "யாக்கோபு",
+     "எபேசியர்",
+     "கொலோசெயர்"
+    ],
+    "explain": "யாக்கோபு புஸ்தகத்தில் 5 அதிகாரங்கள் உள்ளன. புலம்பல், 1 தெசலோனிக்கேயர், 1 பேதுரு, 1 யோவான் புஸ்தகத்திலும் 5 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-1PE",
+   "type": "book",
+   "book": "1PE",
+   "chapter": 5,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 5 chapters?",
+    "options": [
+     "1 Peter",
+     "Galatians",
+     "Jonah",
+     "1 Timothy"
+    ],
+    "explain": "1 Peter has 5 chapters. Lamentations, 1 Thessalonians, James, 1 John also have 5."
+   },
+   "ta": {
+    "q": "இவற்றில் 5 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "1 பேதுரு",
+     "கலாத்தியர்",
+     "யோனா",
+     "1 தீமோத்தேயு"
+    ],
+    "explain": "1 பேதுரு புஸ்தகத்தில் 5 அதிகாரங்கள் உள்ளன. புலம்பல், 1 தெசலோனிக்கேயர், யாக்கோபு, 1 யோவான் புஸ்தகத்திலும் 5 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-2PE",
+   "type": "book",
+   "book": "2PE",
+   "chapter": 3,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 3 chapters?",
+    "options": [
+     "Obadiah",
+     "2 Peter",
+     "Haggai",
+     "Lamentations"
+    ],
+    "explain": "2 Peter has 3 chapters. Joel, Nahum, Habakkuk, Zephaniah, 2 Thessalonians, Titus also have 3."
+   },
+   "ta": {
+    "q": "இவற்றில் 3 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "ஒபதியா",
+     "2 பேதுரு",
+     "ஆகாய்",
+     "புலம்பல்"
+    ],
+    "explain": "2 பேதுரு புஸ்தகத்தில் 3 அதிகாரங்கள் உள்ளன. யோவேல், நாகூம், ஆபகூக், செப்பனியா, 2 தெசலோனிக்கேயர், தீத்து புஸ்தகத்திலும் 3 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-1JN",
+   "type": "book",
+   "book": "1JN",
+   "chapter": 5,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 5 chapters?",
+    "options": [
+     "2 Timothy",
+     "Colossians",
+     "1 John",
+     "Malachi"
+    ],
+    "explain": "1 John has 5 chapters. Lamentations, 1 Thessalonians, James, 1 Peter also have 5."
+   },
+   "ta": {
+    "q": "இவற்றில் 5 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "2 தீமோத்தேயு",
+     "கொலோசெயர்",
+     "1 யோவான்",
+     "மல்கியா"
+    ],
+    "explain": "1 யோவான் புஸ்தகத்தில் 5 அதிகாரங்கள் உள்ளன. புலம்பல், 1 தெசலோனிக்கேயர், யாக்கோபு, 1 பேதுரு புஸ்தகத்திலும் 5 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-2JN",
+   "type": "book",
+   "book": "2JN",
+   "chapter": 1,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has only one chapter?",
+    "options": [
+     "Titus",
+     "Zephaniah",
+     "2 John",
+     "2 Peter"
+    ],
+    "explain": "2 John has 1 chapter. Obadiah, Philemon, 3 John, Jude also have 1."
+   },
+   "ta": {
+    "q": "இவற்றில் ஒரே ஒரு அதிகாரம் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "தீத்து",
+     "செப்பனியா",
+     "2 யோவான்",
+     "2 பேதுரு"
+    ],
+    "explain": "2 யோவான் புஸ்தகத்தில் ஒரே ஒரு அதிகாரம் உள்ளது. ஒபதியா, பிலேமோன், 3 யோவான், யூதா புஸ்தகத்திலும் 1 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-3JN",
+   "type": "book",
+   "book": "3JN",
+   "chapter": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has only one chapter?",
+    "options": [
+     "Ruth",
+     "3 John",
+     "2 Thessalonians",
+     "2 Peter"
+    ],
+    "explain": "3 John has 1 chapter. Obadiah, Philemon, 2 John, Jude also have 1."
+   },
+   "ta": {
+    "q": "இவற்றில் ஒரே ஒரு அதிகாரம் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "ரூத்",
+     "3 யோவான்",
+     "2 தெசலோனிக்கேயர்",
+     "2 பேதுரு"
+    ],
+    "explain": "3 யோவான் புஸ்தகத்தில் ஒரே ஒரு அதிகாரம் உள்ளது. ஒபதியா, பிலேமோன், 2 யோவான், யூதா புஸ்தகத்திலும் 1 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-JUD",
+   "type": "book",
+   "book": "JUD",
+   "chapter": 1,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has only one chapter?",
+    "options": [
+     "Haggai",
+     "Joel",
+     "Jude",
+     "2 Peter"
+    ],
+    "explain": "Jude has 1 chapter. Obadiah, Philemon, 2 John, 3 John also have 1."
+   },
+   "ta": {
+    "q": "இவற்றில் ஒரே ஒரு அதிகாரம் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "ஆகாய்",
+     "யோவேல்",
+     "யூதா",
+     "2 பேதுரு"
+    ],
+    "explain": "யூதா புஸ்தகத்தில் ஒரே ஒரு அதிகாரம் உள்ளது. ஒபதியா, பிலேமோன், 2 யோவான், 3 யோவான் புஸ்தகத்திலும் 1 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  },
+  {
+   "id": "kn-ch-REV",
+   "type": "book",
+   "book": "REV",
+   "chapter": 22,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "scroll",
+   "en": {
+    "q": "Which of these books has 22 chapters?",
+    "options": [
+     "Matthew",
+     "Revelation",
+     "Joshua",
+     "2 Kings"
+    ],
+    "explain": "Revelation has 22 chapters. 1 Kings also has 22."
+   },
+   "ta": {
+    "q": "இவற்றில் 22 அதிகாரங்கள் உள்ள புஸ்தகம் எது?",
+    "options": [
+     "மத்தேயு",
+     "வெளிப்படுத்தின விசேஷம்",
+     "யோசுவா",
+     "2 இராஜாக்கள்"
+    ],
+    "explain": "வெளிப்படுத்தின விசேஷம் புஸ்தகத்தில் 22 அதிகாரங்கள் உள்ளன. 1 இராஜாக்கள் புஸ்தகத்திலும் 22 அதிகாரங்கள் உள்ளன."
+   },
+   "tags": [
+    "knowledge",
+    "chapters"
+   ]
+  }
+ ]
+}

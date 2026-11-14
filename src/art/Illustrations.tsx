@@ -247,6 +247,202 @@ const Tree = () => (
   </>
 );
 
+/** A happy scroll: books, writers and chapters. */
+const Scroll = () => (
+  <>
+    <ellipse cx={80} cy={110} rx={50} ry={5} fill={INK} opacity={0.12} />
+    <rect x={38} y={26} width={84} height={72} rx={4} fill={C.sand} {...line} />
+    <rect x={28} y={18} width={104} height={14} rx={7} fill={C.woodSoft} {...line} />
+    <rect x={28} y={92} width={104} height={14} rx={7} fill={C.woodSoft} {...line} />
+    <circle cx={28} cy={25} r={5} fill={C.wood} {...line} strokeWidth={2.2} />
+    <circle cx={132} cy={25} r={5} fill={C.wood} {...line} strokeWidth={2.2} />
+    <circle cx={28} cy={99} r={5} fill={C.wood} {...line} strokeWidth={2.2} />
+    <circle cx={132} cy={99} r={5} fill={C.wood} {...line} strokeWidth={2.2} />
+    <path d="M50 44 H110 M50 80 H96" {...line} strokeWidth={2} opacity={0.45} />
+    <Eye x={68} y={60} r={4} />
+    <Eye x={92} y={60} r={4} />
+    <path d="M72 70 q8 6 16 0" fill="none" {...line} strokeWidth={2.4} />
+    <circle cx={60} cy={68} r={4} fill={C.redSoft} opacity={0.5} />
+    <circle cx={100} cy={68} r={4} fill={C.redSoft} opacity={0.5} />
+    {/* A quill */}
+    <path d="M136 52 q-16 22 -26 46" fill="none" {...line} strokeWidth={2.2} />
+    <path d="M136 52 q10 10 -8 30 q-6 -18 8 -30 Z" fill={C.white} {...line} strokeWidth={2.2} />
+  </>
+);
+
+/** Joseph's coat of many colours. */
+const Coat = () => (
+  <>
+    <ellipse cx={80} cy={112} rx={46} ry={5} fill={INK} opacity={0.12} />
+    <path d="M60 18 L40 24 L18 58 L34 66 L44 50 L42 106 H118 L116 50 L126 66 L142 58 L120 24 L100 18 Q80 30 60 18 Z" fill={C.red} {...line} />
+    <path d="M43 40 L117 40 L117 58 L43 58 Z" fill={C.steel} />
+    <path d="M43 58 H117 V76 H43 Z" fill={C.pale} />
+    <path d="M43 76 H117 V92 H43 Z" fill={C.bread} />
+    <path d="M60 18 L40 24 L18 58 L34 66 L44 50 L42 106 H118 L116 50 L126 66 L142 58 L120 24 L100 18 Q80 30 60 18 Z" fill="none" {...line} />
+    <path d="M43 40 H117 M43 58 H117 M43 76 H117 M43 92 H117" {...line} strokeWidth={2} opacity={0.5} />
+    <path d="M80 26 V106" {...line} strokeWidth={2} opacity={0.5} />
+    <circle cx={80} cy={48} r={3} fill={C.white} {...line} strokeWidth={1.6} />
+    <circle cx={80} cy={66} r={3} fill={C.white} {...line} strokeWidth={1.6} />
+  </>
+);
+
+/** Jacob's ladder reaching up to heaven, with a little angel. */
+const Ladder = () => (
+  <>
+    <rect x={6} y={6} width={148} height={108} rx={20} fill={C.night} />
+    <circle cx={26} cy={22} r={2} fill={C.white} />
+    <circle cx={136} cy={40} r={1.6} fill={C.white} />
+    <circle cx={30} cy={70} r={1.6} fill={C.white} />
+    <path d="M14 16 q40 -6 54 10" fill="none" stroke={C.steelSoft} strokeWidth={6} strokeLinecap="round" opacity={0.6} />
+    <path d="M58 114 L76 14 M86 114 L100 14" {...line} stroke={C.bread} strokeWidth={6} />
+    <path d="M58 114 L76 14 M86 114 L100 14" fill="none" {...line} strokeWidth={1.6} />
+    {[100, 84, 68, 52, 36, 20].map((y, i) => (
+      <path key={i} d={`M${60 + i * 3.2} ${y} H${88 + i * 2.6}`} stroke={C.bread} strokeWidth={4} strokeLinecap="round" />
+    ))}
+    {/* Angel */}
+    <path d="M112 64 q-10 -10 -2 -18 q6 8 8 14 Z M124 64 q10 -10 2 -18 q-6 8 -8 14 Z" fill={C.white} {...line} strokeWidth={2} />
+    <path d="M110 84 L118 60 L126 84 Z" fill={C.white} {...line} strokeWidth={2.2} />
+    <circle cx={118} cy={54} r={7} fill={C.skin} {...line} strokeWidth={2.2} />
+    <ellipse cx={118} cy={44} rx={8} ry={2.6} fill="none" stroke={C.bread} strokeWidth={2.4} />
+    <circle cx={115.5} cy={54} r={1.4} fill={INK} />
+    <circle cx={120.5} cy={54} r={1.4} fill={INK} />
+    {/* Stone pillow */}
+    <ellipse cx={40} cy={104} rx={16} ry={8} fill={C.steelSoft} {...line} />
+  </>
+);
+
+/** The dove coming back with an olive leaf. */
+const Dove = () => (
+  <>
+    <path d="M24 74a56 56 0 0 1 112 0" fill="none" stroke={C.pale} strokeWidth={7} strokeLinecap="round" opacity={0.7} />
+    <path d="M10 104 q20 -14 44 -6 q24 -16 50 -2 q22 -10 46 4 V120 H10 Z" fill={C.paleDeep} {...line} />
+    <path d="M58 60 q-26 -30 -6 -40 q14 10 22 32 Z" fill={C.white} {...line} />
+    <ellipse cx={82} cy={64} rx={30} ry={18} fill={C.white} {...line} />
+    <path d="M52 66 L30 58 L36 72 L30 84 L56 74 Z" fill={C.white} {...line} />
+    <path d="M96 52 q-6 -26 22 -20 q-2 16 -14 26 Z" fill={C.white} {...line} />
+    <circle cx={108} cy={46} r={12} fill={C.white} {...line} />
+    <Eye x={111} y={44} r={3.2} />
+    <path d="M119 48 l9 3 l-9 3 Z" fill={C.bread} {...line} strokeWidth={2} />
+    {/* Olive leaf */}
+    <path d="M127 52 q14 -2 18 10 q-14 4 -18 -10 Z" fill={C.pale} {...line} strokeWidth={2.2} />
+    <circle cx={98} cy={52} r={3} fill={C.redSoft} opacity={0.5} />
+  </>
+);
+
+/** Joseph's dream: the sheaves bowing to his sheaf. */
+const Sheaves = () => {
+  const sheaf = (x: number, tilt: number, key: number) => (
+    <g key={key} transform={`rotate(${tilt} ${x} 104)`}>
+      <path d={`M${x - 10} 104 L${x - 4} 62 M${x} 104 V58 M${x + 10} 104 L${x + 4} 62`} {...line} stroke={C.bread} strokeWidth={5} />
+      <path d={`M${x - 10} 104 L${x - 4} 62 M${x} 104 V58 M${x + 10} 104 L${x + 4} 62`} fill="none" {...line} strokeWidth={1.4} />
+      <ellipse cx={x} cy={56} rx={9} ry={14} fill={C.bread} {...line} />
+      <path d={`M${x - 9} 84 H${x + 9}`} stroke={C.red} strokeWidth={4} strokeLinecap="round" />
+    </g>
+  );
+  return (
+    <>
+      <path d="M8 104 H152" {...line} />
+      <circle cx={130} cy={26} r={12} fill={C.bread} {...line} />
+      {sheaf(30, 18, 1)}
+      {sheaf(130, -18, 2)}
+      <g>
+        <path d="M70 104 L76 46 M80 104 V40 M90 104 L84 46" {...line} stroke={C.bread} strokeWidth={6} />
+        <path d="M70 104 L76 46 M80 104 V40 M90 104 L84 46" fill="none" {...line} strokeWidth={1.4} />
+        <ellipse cx={80} cy={40} rx={12} ry={18} fill={C.bread} {...line} />
+        <path d="M70 80 H90" stroke={C.red} strokeWidth={5} strokeLinecap="round" />
+        <circle cx={76} cy={40} r={1.8} fill={INK} />
+        <circle cx={84} cy={40} r={1.8} fill={INK} />
+        <path d="M76 46 q4 3 8 0" fill="none" {...line} strokeWidth={1.8} />
+      </g>
+    </>
+  );
+};
+
+/** A fluffy sheep: Jacob, Laban and the flocks. */
+const Sheep = () => {
+  const puffs = [
+    [52, 58], [66, 48], [82, 46], [98, 50], [110, 60], [106, 74], [90, 80], [72, 80], [56, 74],
+  ];
+  return (
+    <>
+      <path d="M8 106 H152" {...line} />
+      <path d="M20 106 q4 -10 8 0 M132 106 q4 -12 8 0" fill="none" {...line} stroke={C.paleDeep} strokeWidth={2.4} />
+      <path d="M64 84 V104 M76 86 V106 M94 86 V106 M104 84 V104" {...line} strokeWidth={5} />
+      {puffs.map(([x, y], i) => (
+        <circle key={i} cx={x} cy={y} r={13} fill={C.white} {...line} />
+      ))}
+      <ellipse cx={82} cy={64} rx={28} ry={16} fill={C.white} />
+      <ellipse cx={42} cy={60} rx={14} ry={16} fill={C.black} {...line} />
+      <path d="M30 52 q-8 -2 -10 6 q6 4 12 0" fill={C.black} {...line} strokeWidth={2.2} />
+      <circle cx={38} cy={58} r={3.2} fill={C.white} />
+      <circle cx={38.6} cy={58} r={1.8} fill={INK} />
+      <circle cx={47} cy={58} r={3.2} fill={C.white} />
+      <circle cx={47.6} cy={58} r={1.8} fill={INK} />
+      <path d="M38 68 q4 3 8 0" fill="none" stroke={C.white} strokeWidth={2} strokeLinecap="round" />
+      <circle cx={40} cy={44} r={7} fill={C.white} {...line} strokeWidth={2.2} />
+    </>
+  );
+};
+
+/** Creation: a smiling sun with the moon and stars. */
+const Sun = () => (
+  <>
+    <rect x={84} y={6} width={70} height={108} rx={20} fill={C.night} />
+    <rect x={6} y={6} width={78} height={108} rx={20} fill={C.steelSoft} />
+    <rect x={64} y={6} width={30} height={108} fill={C.steelSoft} />
+    <rect x={84} y={6} width={20} height={108} fill={C.night} />
+    <g stroke={C.bread} strokeWidth={5} strokeLinecap="round">
+      <path d="M44 16 V24 M44 96 V104 M10 60 H18 M70 60 H78 M20 36 L26 42 M62 78 L68 84 M20 84 L26 78 M62 42 L68 36" />
+    </g>
+    <circle cx={44} cy={60} r={24} fill={C.bread} {...line} />
+    <Eye x={36} y={56} r={3.4} />
+    <Eye x={52} y={56} r={3.4} />
+    <path d="M37 66 q7 6 14 0" fill="none" {...line} strokeWidth={2.4} />
+    <path d="M128 40 a18 18 0 1 1 -14 -22 a14 14 0 1 0 14 22 Z" fill={C.sand} {...line} />
+    <circle cx={110} cy={84} r={2.4} fill={C.white} />
+    <circle cx={138} cy={92} r={2} fill={C.white} />
+    <circle cx={124} cy={70} r={1.6} fill={C.white} />
+    <circle cx={142} cy={60} r={1.6} fill={C.white} />
+  </>
+);
+
+/** A crown: kings, judges and rulers. */
+const Crown = () => (
+  <>
+    <ellipse cx={80} cy={106} rx={52} ry={6} fill={INK} opacity={0.12} />
+    <path d="M28 92 L22 38 L52 62 L80 26 L108 62 L138 38 L132 92 Z" fill={C.bread} {...line} />
+    <rect x={26} y={88} width={108} height={14} rx={4} fill={C.woodSoft} {...line} />
+    <circle cx={22} cy={36} r={6} fill={C.red} {...line} strokeWidth={2.2} />
+    <circle cx={80} cy={22} r={7} fill={C.steel} {...line} strokeWidth={2.2} />
+    <circle cx={138} cy={36} r={6} fill={C.pale} {...line} strokeWidth={2.2} />
+    <circle cx={54} cy={95} r={3.5} fill={C.red} />
+    <circle cx={80} cy={95} r={3.5} fill={C.steel} />
+    <circle cx={106} cy={95} r={3.5} fill={C.pale} />
+    <Eye x={68} y={66} r={3.6} />
+    <Eye x={92} y={66} r={3.6} />
+    <path d="M72 76 q8 6 16 0" fill="none" {...line} strokeWidth={2.4} />
+  </>
+);
+
+/** A stone well in the field, where Jacob met Rachel. */
+const Well = () => (
+  <>
+    <path d="M8 104 H152" {...line} />
+    <path d="M44 22 V60 M116 22 V60" {...line} stroke={C.wood} strokeWidth={6} />
+    <path d="M44 22 V60 M116 22 V60" fill="none" {...line} strokeWidth={1.4} />
+    <path d="M34 26 L80 8 L126 26 Z" fill={C.red} {...line} />
+    <path d="M44 36 H116" {...line} strokeWidth={3} />
+    <path d="M80 36 V54" {...line} strokeWidth={2} />
+    <path d="M72 54 h16 l-2 12 h-12 Z" fill={C.wood} {...line} strokeWidth={2.4} />
+    <rect x={34} y={64} width={92} height={40} rx={6} fill={C.steelSoft} {...line} />
+    <path d="M34 78 H126 M34 92 H126 M58 64 V78 M90 64 V78 M74 78 V92 M106 78 V92 M50 92 V104 M88 92 V104" {...line} strokeWidth={2} opacity={0.5} />
+    <ellipse cx={80} cy={64} rx={46} ry={6} fill={C.water} {...line} />
+    <Eye x={66} y={88} r={3} />
+    <Eye x={94} y={88} r={3} />
+    <path d="M74 96 q6 4 12 0" fill="none" {...line} strokeWidth={2} />
+  </>
+);
+
 const ART: Record<ArtKey, () => ReactElement> = {
   ark: Ark,
   fish: Fish,
@@ -257,6 +453,15 @@ const ART: Record<ArtKey, () => ReactElement> = {
   loaves: Loaves,
   horse: Horse,
   tree: Tree,
+  scroll: Scroll,
+  coat: Coat,
+  ladder: Ladder,
+  dove: Dove,
+  sheaves: Sheaves,
+  sheep: Sheep,
+  sun: Sun,
+  crown: Crown,
+  well: Well,
 };
 
 export const ART_KEYS = Object.keys(ART) as ArtKey[];

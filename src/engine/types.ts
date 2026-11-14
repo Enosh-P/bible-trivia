@@ -1,6 +1,8 @@
 export type Lang = 'en' | 'ta';
 
-export type ArtKey = 'ark' | 'fish' | 'lion' | 'sling' | 'bush' | 'star' | 'loaves' | 'horse' | 'tree';
+export type ArtKey =
+  | 'ark' | 'fish' | 'lion' | 'sling' | 'bush' | 'star' | 'loaves' | 'horse' | 'tree'
+  | 'scroll' | 'coat' | 'ladder' | 'dove' | 'sheaves' | 'sheep' | 'sun' | 'crown' | 'well';
 
 /** How a question is asked. Every type renders as multiple choice except `tf`. */
 export type QuestionType =

@@ -107,7 +107,9 @@ export function Game({
                 ? { kind: 'truefalse' }
                 : modeId === 'book'
                   ? { kind: 'whichbook' }
-                  : { kind: 'mix' },
+                  : modeId === 'knowledge'
+                    ? { kind: 'knowledge' }
+                    : { kind: 'mix' },
       );
       const byId = new Map(pool.map((x) => [x.id, x]));
       const qs = ids

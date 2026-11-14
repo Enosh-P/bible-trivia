@@ -15,7 +15,8 @@ export type ModeId =
   | 'recall'
   | 'quiz'
   | 'practice'
-  | 'drill';
+  | 'drill'
+  | 'knowledge';
 
 export interface ModeDef {
   id: ModeId;
@@ -58,8 +59,9 @@ export const MODES: Record<ModeId, ModeDef> = {
   // Practice tab: your mistakes, reviews and saved questions; no timer, explanation after each.
   practice: { id: 'practice', horse: 'pale', types: [...MC, 'tf'], length: 20, perQuestion: 0, study: true },
   // Books of the Bible drill (questions made in src/engine/drill.ts).
+  knowledge: { id: 'knowledge', horse: 'pale', types: ['mcq', 'book'], length: 10, perQuestion: 25 },
   drill: { id: 'drill', horse: 'black', types: ['mcq'], length: 10, perQuestion: 15 },
   recall: { id: 'recall', horse: 'pale', types: [], length: 15, perQuestion: 0, study: true },
 };
 
-export const MODE_ORDER: ModeId[] = ['quiz', 'classic', 'drill', 'recall', 'truefalse', 'who', 'book', 'blank', 'speed', 'survival', 'study'];
+export const MODE_ORDER: ModeId[] = ['quiz', 'knowledge', 'classic', 'drill', 'recall', 'truefalse', 'who', 'book', 'blank', 'speed', 'survival', 'study'];

@@ -265,7 +265,7 @@ function MainApp() {
       mode === 'drill'
         ? drillRound(10)
         : pickQuestions(
-            await roundPool(mode === 'who' ? { kind: 'who' } : mode === 'truefalse' ? { kind: 'truefalse' } : mode === 'book' ? { kind: 'whichbook' } : { kind: 'mix' }),
+            await roundPool(mode === 'who' ? { kind: 'who' } : mode === 'truefalse' ? { kind: 'truefalse' } : mode === 'book' ? { kind: 'whichbook' } : mode === 'knowledge' ? { kind: 'knowledge' } : { kind: 'mix' }),
             MODES[mode],
           ).map((q) => q.id);
     try {
