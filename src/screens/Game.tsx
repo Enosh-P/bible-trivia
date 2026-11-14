@@ -1,6 +1,7 @@
+import { createPortal } from 'react-dom';
 import { AnimatePresence, animate, motion, useMotionValue, useReducedMotion, useTransform, type PanInfo } from 'motion/react';
 import { useCallback, useEffect, useRef, useState, type PointerEvent as RPointerEvent } from 'react';
-import { Check, Heart, X } from 'lucide-react';
+import { Check, Heart, X, BookOpenText, ChevronRight, EyeOff } from 'lucide-react';
 import { roundPool } from '../engine/content';
 import { MODES, type ModeId } from '../engine/modes';
 import { pickDaily, pickQuestions } from '../engine/picker';
@@ -505,6 +506,12 @@ function Feedback({ q, answered, primary, secondary, last, onNext, lives }: { q:
   const heading = answered.choice === null ? t.timeUp : answered.correct ? t.correct : t.wrong;
   const out = last || lives === 0;
   const verse = verseForQuestion(q);
+  const hasVerse = Boolean(q.verse) || Boolean(verse);
+  // Verses can be turned off (remembered); "Show verse" still shows one when wanted.
+  const showVerses = useApp((s) => s.showVerses ?? true);
+  const setApp = useApp((s) => s.set);
+  const [once, setOnce] = useState(false);
+  const showVerse = showVerses || once;
   return (
     <motion.div
       className={`feedback glass ${answered.correct ? 'is-correct' : 'is-wrong'}`}
@@ -528,14 +535,41 @@ function Feedback({ q, answered, primary, secondary, last, onNext, lives }: { q:
           {explain}
         </p>
       )}
-      {q.verse ? (
-        <RefVerse book={q.book} chapter={q.chapter} verse={q.verse} verseEnd={q.verseEnd} primary={primary} secondary={secondary} />
-      ) : (
-        verse && <VerseText verse={verse} size="sm" />
+      {hasVerse &&
+        (showVerse ? (
+          <>
+            {q.verse ? (
+              <RefVerse book={q.book} chapter={q.chapter} verse={q.verse} verseEnd={q.verseEnd} primary={primary} secondary={secondary} />
+            ) : (
+              verse && <VerseText verse={verse} size="sm" />
+            )}
+            {showVerses && (
+              <button className="link verse-toggle" onClick={() => setApp({ showVerses: false })}>
+                <EyeOff size={14} strokeWidth={STROKE} /> {t.hideVerses}
+              </button>
+            )}
+          </>
+        ) : (
+          <div className="verse-toggle-row">
+            <button className="reveal-btn" onClick={() => setOnce(true)}>
+              <BookOpenText size={15} strokeWidth={STROKE} /> {t.showVerse}
+            </button>
+            <button className="link verse-toggle" onClick={() => setApp({ showVerses: true })}>
+              {t.alwaysShowVerses}
+            </button>
+          </div>
+        ))}
+      {/* Next stays at the bottom of the screen, so there's never a need to scroll to it.
+          Drawn at the top of the page: the moving game screen would otherwise carry it along. */}
+      {createPortal(
+        <motion.div className="next-bar" initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 80, opacity: 0 }} transition={spring.sheet}>
+          <Pressable className="btn btn-primary" onClick={onNext} autoFocus>
+            {out ? t.finish : t.next}
+            <ChevronRight size={18} strokeWidth={STROKE} />
+          </Pressable>
+        </motion.div>,
+        document.body,
       )}
-      <Pressable className="btn btn-primary" onClick={onNext} autoFocus>
-        {out ? t.finish : t.next}
-      </Pressable>
     </motion.div>
   );
 }

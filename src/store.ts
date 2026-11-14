@@ -15,6 +15,8 @@ interface Settings {
   sound: boolean;
   haptics: boolean;
   textScale: number;
+  /** Show the verse on the answer card after each question (on by default). */
+  showVerses?: boolean;
   /** Quiz by Book: seconds per question (20, 40 or 60). */
   quizSeconds?: 20 | 40 | 60;
 }
