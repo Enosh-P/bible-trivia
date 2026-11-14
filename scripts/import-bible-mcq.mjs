@@ -39,6 +39,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { join } from 'node:path';
 import { parquetReadObjects } from 'hyparquet';
 import { buildWhoSaid, WHO_ATTRIBUTION } from './lib/who-said.mjs';
+import { looksBroken } from './lib/tamil-check.mjs';
 
 const DATASET = 'MushroomGecko/BIBLE';
 const OUT = new URL('../public/packs/mcq/', import.meta.url);
@@ -221,6 +222,10 @@ export function tamilOption(en, ta) {
 }
 
 /** Adds Tamil from content/translations/ta/mcq/ to the existing pack files. */
+const REDO_FILE = new URL('redo.json', TA_DIR);
+/** Questions whose translation went wrong: shown in English, listed for translating again. */
+const redo = [];
+
 function addTamil(book, rows) {
   const taFile = new URL(`${book}.json`, TA_DIR);
   const ta = existsSync(taFile) ? JSON.parse(readFileSync(taFile, 'utf8')) : {};
@@ -229,11 +234,22 @@ function addTamil(book, rows) {
     row.length = 7;
     const t = ta[row[0]];
     if (t?.q && Array.isArray(t.o) && t.o.length === row[5].length && t.o.every(Boolean)) {
-      row.push(t.q, t.o.map((o, i) => tamilOption(row[5][i], o)));
+      const options = t.o.map((o, i) => tamilOption(row[5][i], o));
+      if (looksBroken(row[4], t.q) || options.some((o, i) => looksBroken(row[5][i], o))) {
+        redo.push({ book, id: row[0] });
+        continue;
+      }
+      row.push(t.q, options);
       tamil++;
     }
   }
   return tamil;
+}
+
+function writeRedo() {
+  if (!existsSync(TA_DIR)) return;
+  writeFileSync(REDO_FILE, JSON.stringify(redo, null, 1) + '\n');
+  if (redo.length) console.log(`${redo.length} translations went wrong and show in English for now. Translate them again with:\n  python scripts/indictrans2/translate.py --set mcq --redo`);
 }
 
 function mergeOnly() {
@@ -249,6 +265,7 @@ function mergeOnly() {
   }
   writeFileSync(new URL('who.json', OUT), JSON.stringify({ rows: whoRows }) + '\n');
   writeFileSync(new URL('index.json', OUT), JSON.stringify(index, null, 1) + '\n');
+  writeRedo();
   console.log(`Tamil added: ${index.tamil} of ${index.total} questions now have Tamil.`);
 }
 
@@ -300,6 +317,7 @@ async function main() {
   index.who = whoRows.length;
   index.whoAttribution = WHO_ATTRIBUTION;
   writeFileSync(new URL('index.json', OUT), JSON.stringify(index, null, 1) + '\n');
+  writeRedo();
   console.log(`Wrote ${index.total} questions in ${Object.keys(index.books).length} books (${index.tamil} with Tamil, ${whoRows.length} Who Said It). Left out ${skipped} long or unsuitable ones.`);
 }
 

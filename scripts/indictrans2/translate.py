@@ -49,7 +49,7 @@ def tidy(s: str) -> str:
     return re.sub(r"\s{2,}", " ", s).strip()
 
 # ---------- Model ----------
-def load(model_name: str, beams: int = 4):
+def load(model_name: str, beams: int = 4, no_repeat: int = 0):
     import torch
     from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
     from IndicTransToolkit.processor import IndicProcessor
@@ -63,6 +63,8 @@ def load(model_name: str, beams: int = 4):
     ).to(device).eval()
     ip = IndicProcessor(inference=True)
     state = {"cache": True}
+    # --redo: stop the model from repeating itself ("யார் யார் யார் …").
+    extra = {"no_repeat_ngram_size": no_repeat, "repetition_penalty": 1.3} if no_repeat else {}
 
     def translate(lines):
         # Out of GPU memory: free it, then translate each half separately.
@@ -82,14 +84,14 @@ def load(model_name: str, beams: int = 4):
         enc = tok(batch, truncation=True, padding="longest", return_tensors="pt").to(device)
         with torch.inference_mode():
             try:
-                out = model.generate(**enc, use_cache=state["cache"], min_length=0, max_length=256, num_beams=beams, num_return_sequences=1)
+                out = model.generate(**enc, use_cache=state["cache"], min_length=0, max_length=256, num_beams=beams, num_return_sequences=1, **extra)
             except AttributeError:
                 # Newer transformers versions don't match the model's cache code: run without the cache (slower, same result).
                 if not state["cache"]:
                     raise
                 print("Note: running without the generation cache (slower). Install transformers==4.46.3 for full speed.", file=sys.stderr)
                 state["cache"] = False
-                out = model.generate(**enc, use_cache=False, min_length=0, max_length=256, num_beams=beams, num_return_sequences=1)
+                out = model.generate(**enc, use_cache=False, min_length=0, max_length=256, num_beams=beams, num_return_sequences=1, **extra)
         dec = tok.batch_decode(out, skip_special_tokens=True, clean_up_tokenization_spaces=True)
         return [tidy(t) for t in ip.postprocess_batch(dec, lang="tam_Taml")]
 
@@ -105,6 +107,7 @@ def main():
     ap.add_argument("--sample", action="store_true", help="translate 20 sample lines both ways and print them")
     ap.add_argument("--no-glossary", action="store_true")
     ap.add_argument("--set", choices=["recall", "mcq"], default="recall", help="which questions to translate")
+    ap.add_argument("--redo", action="store_true", help="with --set mcq: translate again the ones listed in content/translations/ta/mcq/redo.json")
     a = ap.parse_args()
 
     if a.set == "mcq":
@@ -167,15 +170,24 @@ def translate_mcq(a):
     """Multiple-choice packs: the question and every option. Repeated strings
     (names like "David" appear thousands of times) are translated once."""
     all_books = sorted(p.stem for p in MCQ_PACKS.glob("*.json") if re.fullmatch(r"[0-9A-Z]{3}", p.stem))
-    if a.books:
+    redo = {}
+    if a.redo:
+        for item in json.loads((MCQ_OUT / "redo.json").read_text(encoding="utf-8")):
+            redo.setdefault(item["book"], set()).add(item["id"])
+        books = sorted(redo)
+        print(f"Translating {sum(len(v) for v in redo.values())} questions again.")
+    elif a.books:
         books = [b.strip().upper() for b in a.books.split(",")]
     else:
         books = POPULAR + [b for b in all_books if b not in POPULAR]
         if a.top:
             books = books[: a.top]
 
-    translate = load(a.model, a.beams)
-    prep = (lambda s: s) if a.no_glossary else protect_names
+    translate = load(a.model, a.beams, no_repeat=3 if a.redo else 0)
+    names = (lambda s: s) if a.no_glossary else protect_names
+    # Words in capitals ("EXCEPT", "NOT") can send the model into a loop: write them in lower case.
+    caps = lambda s: re.sub(r"\b[A-Z]{3,}\b", lambda m: m.group(0).lower(), s)
+    prep = (lambda s: names(caps(s))) if a.redo else names
     memo = {}
     BLANK = "____"
 
@@ -200,7 +212,12 @@ def translate_mcq(a):
         rows = json.loads(pack.read_text(encoding="utf-8"))["rows"]
         out_path = MCQ_OUT / f"{book}.json"
         done = json.loads(out_path.read_text(encoding="utf-8")) if out_path.exists() else {}
-        todo = [r for r in rows if r[0] not in done]
+        if a.redo:
+            for rid in redo.get(book, ()):
+                done.pop(rid, None)
+            todo = [r for r in rows if r[0] in redo.get(book, ())]
+        else:
+            todo = [r for r in rows if r[0] not in done]
         if not todo:
             print(f"{book}: already translated ({len(rows)})")
             continue
