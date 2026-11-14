@@ -21,6 +21,7 @@ import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { MyQRSheet, ScanSheet } from '../components/FriendQR';
 import { NameForm } from '../components/EditName';
+import { levelFromXp } from '../engine/scoring';
 import { AvatarPicker } from '../components/AvatarPicker';
 import { CartoonAvatar, isCartoonAvatar } from '../art/Avatars';
 import { Pressable } from '../components/Pressable';
@@ -229,6 +230,7 @@ export function Friends({
 
 function MyCode({ code, name, avatar }: { code: string; name: string; avatar: Friend['avatar'] }) {
   const t = useT();
+  const xp = useApp((s) => s.xp);
   const [copied, setCopied] = useState(false);
   const [showQr, setShowQr] = useState(false);
   const [editing, setEditing] = useState(false);
@@ -258,7 +260,9 @@ function MyCode({ code, name, avatar }: { code: string; name: string; avatar: Fr
         </button>
         <div className="grow">
           <strong>{name}</strong>
-          <span className="caption">{t.yourCode}</span>
+          <span className="caption">
+            {xp} XP · {t.level} {levelFromXp(xp).level}
+          </span>
         </div>
         <Pressable className="chip glass" onClick={() => setEditing(true)} aria-label={t.editName} title={t.editName}>
           <Pencil size={16} strokeWidth={STROKE} />

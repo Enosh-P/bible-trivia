@@ -24,6 +24,7 @@ export function Home({ onPlay, onResume, onShowSaved }: { onPlay: (m: ModeId) =>
   const hearts = useApp((s) => s.hearts ?? 0);
   const healed = useApp((s) => (s.healedNote?.day === dayKey() ? s.healedNote.count : 0));
   const [heartsOpen, setHeartsOpen] = useState(false);
+  const [levelOpen, setLevelOpen] = useState(false);
   const { level, into, need } = levelFromXp(xp);
   const [intro, setIntro] = useState<ModeId | null>(null);
   const dailyDone = useApp((s) => s.dailyDoneOn === dayKey());
@@ -43,12 +44,12 @@ export function Home({ onPlay, onResume, onShowSaved }: { onPlay: (m: ModeId) =>
               <span className="badge-sep" aria-hidden />
               <Heart size={14} strokeWidth={STROKE} className="badge-heart" fill={hearts ? 'currentColor' : 'none'} /> {hearts}
             </button>
-            <span className="badge" title={t.level} aria-label={`${t.level} ${level}`}>
+            <button className="badge" onClick={() => setLevelOpen(true)} aria-label={`${t.level} ${level}, ${xp} XP`}>
               <Trophy size={15} strokeWidth={STROKE} className="badge-trophy" /> {level}
               <span className="badge-bar" aria-hidden>
                 <span style={{ width: `${(into / need) * 100}%` }} />
               </span>
-            </span>
+            </button>
           </div>
         </div>
       </header>
@@ -91,6 +92,26 @@ export function Home({ onPlay, onResume, onShowSaved }: { onPlay: (m: ModeId) =>
           </motion.div>
         ))}
       </div>
+
+      <Sheet open={levelOpen} onClose={() => setLevelOpen(false)} label={t.level}>
+        <div className="mode-intro level-sheet" lang={uiLang}>
+          <div className="level-big">
+            <IconTile horse="pale" icon={Trophy} size={44} />
+            <div>
+              <span className="eyebrow">{t.level}</span>
+              <strong>{level}</strong>
+            </div>
+          </div>
+          <p className="level-xp">
+            <strong>{xp.toLocaleString()}</strong> XP
+          </p>
+          <div className="bar">
+            <motion.div className="bar-fill horse-pale" initial={{ width: 0 }} animate={{ width: `${(into / need) * 100}%` }} transition={spring.calm} />
+          </div>
+          <p className="caption">{t.xpToNext(need - into, level + 1)}</p>
+          <p className="caption">{t.xpHow}</p>
+        </div>
+      </Sheet>
 
       <Sheet open={heartsOpen} onClose={() => setHeartsOpen(false)} label={t.heartsTitle}>
         <div className="mode-intro" lang={uiLang}>

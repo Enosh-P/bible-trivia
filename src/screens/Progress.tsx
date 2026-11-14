@@ -28,7 +28,16 @@ export function Progress({ embedded = false }: { embedded?: boolean }) {
 
   return (
     <div className={embedded ? 'progress-embedded' : 'screen'} lang={uiLang}>
-      {embedded ? <h2 className="eyebrow section-title">{t.progressTitle}</h2> : <h1 className="display">{t.progressTitle}</h1>}
+      {embedded ? (
+        <div className="progress-head">
+          <h2 className="eyebrow section-title">{t.progressTitle}</h2>
+          <span className="caption">
+            {t.level} {level} · {xp.toLocaleString()} XP
+          </span>
+        </div>
+      ) : (
+        <h1 className="display">{t.progressTitle}</h1>
+      )}
       <WeekStrip compact={embedded} />
       <div className="stat-grid">
         <div className="stat glass col">
