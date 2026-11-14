@@ -50,6 +50,7 @@ export function Game({
   scope,
   challengeId,
   resume,
+  runId,
   onExit,
   onDone,
 }: {
@@ -62,6 +63,8 @@ export function Game({
   challengeId?: string;
   /** Pick up a game that was closed partway. */
   resume?: GameSnapshot;
+  /** This game's id for saving (a resumed game keeps its own). */
+  runId: string;
   onExit: () => void;
   onDone: (r: RoundResult) => void;
 }) {
@@ -132,6 +135,7 @@ export function Game({
   useEffect(() => {
     if (!ready.current || !questions || answered || finished.current || mode.roundSeconds !== undefined) return;
     saveSnapshot({
+      id: runId,
       mode: modeId,
       // Endless modes have very long lists: keep what's needed for a while.
       ids: questions.slice(0, index + 150).map((x) => x.id),
@@ -155,7 +159,7 @@ export function Game({
     (finalLog: AnswerLog[], finalScore: number, finalBest: number) => {
       if (finished.current) return;
       finished.current = true;
-      clearSnapshot();
+      clearSnapshot(runId);
       cue('complete');
       onDone({
         mode: modeId,

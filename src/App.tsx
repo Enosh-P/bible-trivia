@@ -11,6 +11,7 @@ import { Friends } from './screens/Friends';
 import { Practice, type PracticeAction } from './screens/Practice';
 import { MemoryVerses } from './screens/MemoryVerses';
 import { Notebook } from './screens/Notebook';
+import { SavedGames } from './screens/SavedGames';
 import { drillRound } from './engine/drill';
 import type { GameSnapshot } from './engine/resume';
 import { Gospel } from './screens/Gospel';
@@ -42,6 +43,7 @@ type Route =
   | { kind: 'recall' }
   | { kind: 'quizpick' }
   | { kind: 'memory' }
+  | { kind: 'saved' }
   | { kind: 'notebook' }
   | { kind: 'game'; mode: ModeId; run: number; challenge?: { id: string; questionIds: string[] }; scope?: { book: string; chapter: number | null }; ids?: string[]; resume?: GameSnapshot } | { kind: 'result'; result: RoundResult; xp: number };
 
@@ -309,17 +311,18 @@ function MainApp() {
             exit={pushed ? { x: '30%', opacity: 0 } : { opacity: 0, scale: 0.985 }}
             transition={spring.calm}
           >
-            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onResume={resumeGame} />}
+            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} />}
             {route.kind === 'tab' && route.tab === 'friends' && <Friends onStartChallenge={startChallenge} onPlayChallenge={playChallenge} />}
             {route.kind === 'tab' && route.tab === 'gospel' && <Gospel />}
             {route.kind === 'tab' && route.tab === 'progress' && <Practice onAction={practice} />}
+            {route.kind === 'saved' && <SavedGames onBack={() => goTab('play')} onResume={resumeGame} />}
             {route.kind === 'memory' && <MemoryVerses onExit={() => goTab('progress')} />}
             {route.kind === 'notebook' && <Notebook onExit={() => goTab('progress')} />}
             {route.kind === 'tab' && route.tab === 'settings' && <Settings />}
             {route.kind === 'recall' && <Recall onExit={() => goTab(lastTab)} />}
             {route.kind === 'quizpick' && <QuizPick onExit={() => goTab(lastTab)} onStart={startQuiz} />}
             {route.kind === 'game' && (
-              <Game modeId={route.mode} questionIds={route.challenge?.questionIds ?? route.ids} scope={route.scope} challengeId={route.challenge?.id} resume={route.resume} onExit={() => goTab(lastTab)} onDone={onDone} />
+              <Game modeId={route.mode} questionIds={route.challenge?.questionIds ?? route.ids} scope={route.scope} challengeId={route.challenge?.id} resume={route.resume} runId={route.resume?.id ?? `g${route.run}`} onExit={() => goTab(lastTab)} onDone={onDone} />
             )}
             {route.kind === 'result' && (
               <Results

@@ -1120,3 +1120,7 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .result-secondary .btn { min-height: 46px; }
 .reveal-btn { padding: 5px 10px; gap: 5px; font-size: 0.78rem; }
 .quiz-time { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+
+.resume-wrap { display: flex; flex-direction: column; gap: 6px; }
+.resume-all { align-self: flex-end; font-size: 0.85rem; font-weight: 650; color: var(--accent-ink); }
+.saved-games { display: flex; flex-direction: column; gap: 10px; }

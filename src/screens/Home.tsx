@@ -13,9 +13,10 @@ import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 import { Sheet } from '../components/Sheet';
 import { ModeArt } from '../art/ModeArt';
 import { InstallBanner } from '../components/Install';
-import { clearSnapshot, loadSnapshot, type GameSnapshot } from '../engine/resume';
+import { clearSnapshot, loadSnapshots, type GameSnapshot } from '../engine/resume';
+import { BOOK_BY_CODE } from '../i18n/books';
 
-export function Home({ onPlay, onResume }: { onPlay: (m: ModeId) => void; onResume: (s: GameSnapshot) => void }) {
+export function Home({ onPlay, onResume, onShowSaved }: { onPlay: (m: ModeId) => void; onResume: (s: GameSnapshot) => void; onShowSaved: () => void }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   const xp = useApp((s) => s.xp);
@@ -52,7 +53,7 @@ export function Home({ onPlay, onResume }: { onPlay: (m: ModeId) => void; onResu
         </div>
       </header>
 
-      <ResumeCard onResume={onResume} />
+      <ResumeCard onResume={onResume} onShowAll={onShowSaved} />
 
       <InstallBanner />
 
@@ -199,23 +200,44 @@ export function DailyCard({ onPlay, big }: { onPlay: () => void; big?: boolean }
   );
 }
 
-/** "Continue Classic · 4/10": a game that was closed partway. */
-function ResumeCard({ onResume }: { onResume: (s: GameSnapshot) => void }) {
+/** Home shows only the newest unfinished game; "Show all" opens the full list. */
+function ResumeCard({ onResume, onShowAll }: { onResume: (s: GameSnapshot) => void; onShowAll: () => void }) {
   const t = useT();
-  const [snap, setSnap] = useState(() => loadSnapshot());
-  if (!snap) return null;
-  const total = Number.isFinite(MODES[snap.mode].length) ? Math.min(MODES[snap.mode].length, snap.ids.length) : null;
+  const [games, setGames] = useState(() => loadSnapshots());
+  if (!games.length) return null;
   return (
-    <motion.div className="resume-card glass" initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={spring.calm}>
-      <ModeArt mode={snap.mode} className="resume-art" />
+    <div className="resume-wrap">
+      <SavedGameRow game={games[0]} onResume={onResume} onDiscard={() => setGames(loadSnapshots())} />
+      {games.length > 1 && (
+        <button className="link resume-all" onClick={onShowAll}>
+          {t.showAllGames(games.length)}
+        </button>
+      )}
+    </div>
+  );
+}
+
+/** One unfinished game: "Continue Classic · 4/10 · 30 points" with Resume and discard. */
+export function SavedGameRow({ game, onResume, onDiscard }: { game: GameSnapshot; onResume: (s: GameSnapshot) => void; onDiscard: () => void }) {
+  const t = useT();
+  const uiLang = useApp((s) => s.uiLang);
+  const def = MODES[game.mode];
+  const total = Number.isFinite(def.length) ? Math.min(def.length, game.ids.length) : null;
+  const where = game.scope ? ` · ${BOOK_BY_CODE[game.scope.book]?.[uiLang] ?? game.scope.book}${game.scope.chapter ? ` ${game.scope.chapter}` : ''}` : '';
+  return (
+    <motion.div className="resume-card glass" layout initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, height: 0 }} transition={spring.calm}>
+      <ModeArt mode={game.mode} className="resume-art" />
       <div className="grow">
         <span className="eyebrow">{t.continueGame}</span>
-        <strong>{t.modeName[snap.mode]}</strong>
+        <strong>
+          {t.modeName[game.mode]}
+          {where}
+        </strong>
         <span className="caption">
-          {total ? `${snap.index + 1}/${total}` : `#${snap.index + 1}`} · {snap.score} {t.points}
+          {total ? `${game.index + 1}/${total}` : `#${game.index + 1}`} · {game.score} {t.points}
         </span>
       </div>
-      <Pressable className="btn btn-primary small" onClick={() => onResume(snap)}>
+      <Pressable className="btn btn-primary small" onClick={() => onResume(game)}>
         <Play size={16} strokeWidth={STROKE} /> {t.resume}
       </Pressable>
       <button
@@ -223,8 +245,8 @@ function ResumeCard({ onResume }: { onResume: (s: GameSnapshot) => void }) {
         aria-label={t.discardGame}
         title={t.discardGame}
         onClick={() => {
-          clearSnapshot();
-          setSnap(null);
+          clearSnapshot(game.id);
+          onDiscard();
         }}
       >
         <X size={16} strokeWidth={STROKE} />
