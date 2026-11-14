@@ -202,6 +202,24 @@ function curatedQuotes(speakerPool) {
   return out;
 }
 
+// Short options ("Pilate", "Seven", "The wicked") lose their way in machine
+// translation without a sentence around them: these lists give the Tamil Bible wording.
+const GLOSSARY = {
+  ...JSON.parse(readFileSync(new URL('../content/glossary/names-ta.json', import.meta.url), 'utf8')).terms,
+  ...JSON.parse(readFileSync(new URL('../content/glossary/options-ta.json', import.meta.url), 'utf8')).terms,
+};
+
+/** Tamil for one answer option: the glossary for a known name or word, otherwise the translation tidied. */
+export function tamilOption(en, ta) {
+  const key = en.trim().replace(/[.!]$/, '');
+  const bare = key.replace(/^the\s+/i, '');
+  for (const k of [key, bare, bare[0]?.toUpperCase() + bare.slice(1)]) if (GLOSSARY[k]) return GLOSSARY[k];
+  let out = ta.trim();
+  // The translator likes to add a full stop: keep it only when the English has one.
+  if (!/[.!?]$/.test(en.trim())) out = out.replace(/[.।]+$/, '');
+  return out;
+}
+
 /** Adds Tamil from content/translations/ta/mcq/ to the existing pack files. */
 function addTamil(book, rows) {
   const taFile = new URL(`${book}.json`, TA_DIR);
@@ -211,7 +229,7 @@ function addTamil(book, rows) {
     row.length = 7;
     const t = ta[row[0]];
     if (t?.q && Array.isArray(t.o) && t.o.length === row[5].length && t.o.every(Boolean)) {
-      row.push(t.q, t.o);
+      row.push(t.q, t.o.map((o, i) => tamilOption(row[5][i], o)));
       tamil++;
     }
   }
