@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { Camera, CameraOff, Check, QrCode, ScanLine } from 'lucide-react';
 import QRCode from 'qrcode';
-import { acceptInvite, createInvite, inviteFromText, type InviteResult } from '../online/account';
+import { acceptInvite, createInvite, inviteFromText, useAccount, type InviteResult } from '../online/account';
 import { useT } from '../store';
 import { spring } from '../motion/springs';
 import { Sheet } from './Sheet';
@@ -15,6 +15,30 @@ export function MyQRSheet({ open, onClose, name }: { open: boolean; onClose: () 
   const [svg, setSvg] = useState<string | null>(null);
   const [error, setError] = useState(false);
   const [left, setLeft] = useState(0);
+  const [added, setAdded] = useState<string | null>(null);
+
+  // Someone scanned the code: show who, then close. Checks the friends list every few seconds.
+  useEffect(() => {
+    if (!open) return;
+    setAdded(null);
+    const before = new Set(useAccount.getState().friends.map((f) => f.user_id));
+    let closing: ReturnType<typeof setTimeout>;
+    const poll = setInterval(() => void useAccount.getState().refresh().catch(() => {}), 3000);
+    const unsub = useAccount.subscribe((s) => {
+      const fresh = s.friends.find((f) => !before.has(f.user_id));
+      if (!fresh) return;
+      unsub();
+      clearInterval(poll);
+      cue('correct');
+      setAdded(fresh.display_name);
+      closing = setTimeout(onClose, 1800);
+    });
+    return () => {
+      unsub();
+      clearInterval(poll);
+      clearTimeout(closing);
+    };
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -49,10 +73,24 @@ export function MyQRSheet({ open, onClose, name }: { open: boolean; onClose: () 
       <div className="qr-sheet">
         <h2 className="title">{name}</h2>
         <p className="caption">{t.myQrHelp}</p>
-        <motion.div className="qr-box" initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={spring.flick}>
-          {svg ? <div className="qr-svg" dangerouslySetInnerHTML={{ __html: svg }} /> : <QrCode size={64} strokeWidth={1.2} opacity={0.3} />}
+        <motion.div className={`qr-box ${added ? 'is-done' : ''}`} initial={{ scale: 0.92, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={spring.flick}>
+          {added ? (
+            <motion.div initial={{ scale: 0.5 }} animate={{ scale: 1 }} transition={spring.flick} className="scan-ok">
+              <Check size={56} strokeWidth={2.4} />
+            </motion.div>
+          ) : svg ? (
+            <div className="qr-svg" dangerouslySetInnerHTML={{ __html: svg }} />
+          ) : (
+            <QrCode size={64} strokeWidth={1.2} opacity={0.3} />
+          )}
         </motion.div>
-        {error ? <p className="caption form-msg is-error">{t.qrError}</p> : svg && <p className="caption">{t.qrRefresh(Math.ceil(left / 60))}</p>}
+        {added ? (
+          <p className="caption form-msg is-info">{t.qrFriendAdded(added)}</p>
+        ) : error ? (
+          <p className="caption form-msg is-error">{t.qrError}</p>
+        ) : (
+          svg && <p className="caption">{t.qrRefresh(Math.ceil(left / 60))}</p>
+        )}
       </div>
     </Sheet>
   );
@@ -119,6 +157,8 @@ export function ScanSheet({ open, onClose }: { open: boolean; onClose: () => voi
             cue(result === 'accepted' ? 'correct' : 'wrong');
             setState(result);
             stream?.getTracks().forEach((tr) => tr.stop());
+            // Friends now: show the tick for a moment, then back to the friends list.
+            if (result === 'accepted' || result === 'already_friends') timer = setTimeout(onClose, 1500);
             return;
           }
         }
