@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { summarize } from '../src/engine/practice';
 import { drillQuestion, drillRound } from '../src/engine/drill';
+import * as drillMeta from '../src/engine/drill';
 
 const DAY = 86_400_000;
 const now = 100 * DAY;
@@ -44,6 +45,23 @@ describe('books drill', () => {
     expect(f.en.options![f.answer as number]).toBe('Genesis');
     expect(new Set(q.en.options).size).toBe(4);
   });
+  it('knows chapter counts, groups, positions and names', () => {
+    const { CHAPTERS, GROUPS } = drillMeta;
+    expect(Object.values(CHAPTERS).reduce((a, b) => a + b, 0)).toBe(1189);
+    expect(Object.keys(CHAPTERS)).toHaveLength(66);
+    expect(GROUPS.flatMap((g) => g.books)).toHaveLength(66);
+    const chap = drillQuestion('gen-chap-PSA')!;
+    expect(chap.en.options![chap.answer as number]).toBe('150');
+    expect(new Set(chap.en.options).size).toBe(4);
+    const group = drillQuestion('gen-group-HAB')!;
+    expect(group.en.options![group.answer as number]).toBe('Minor prophets');
+    const pos = drillQuestion('gen-pos-MAT')!;
+    expect(pos.en.options![pos.answer as number]).toBe('40');
+    const nm = drillQuestion('gen-name-RUT')!;
+    expect(nm.en.options![nm.answer as number]).toBe('ரூத்');
+    expect(nm.ta.options![nm.answer as number]).toBe('Ruth');
+  });
+
   it('has no next book after Revelation', () => {
     expect(drillQuestion('gen-next-REV')).toBeNull();
     expect(drillQuestion('gen-prev-GEN')).toBeNull();

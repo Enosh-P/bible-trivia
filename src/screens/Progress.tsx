@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { BookOpen, CheckCircle2, Target } from 'lucide-react';
 import { BOOKS } from '../i18n/books';
 import { correctByBook } from '../storage/db';
 import { levelFromXp } from '../engine/scoring';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
-import { IconTile } from '../components/icons';
+import { StatArt } from '../art/StatArt';
 import { WeekStrip } from './Daily';
 
 /** Correct answers needed to fully light up a book. */
@@ -30,20 +29,20 @@ export function Progress({ embedded = false }: { embedded?: boolean }) {
   return (
     <div className={embedded ? 'progress-embedded' : 'screen'} lang={uiLang}>
       {embedded ? <h2 className="eyebrow section-title">{t.progressTitle}</h2> : <h1 className="display">{t.progressTitle}</h1>}
-      <WeekStrip />
+      <WeekStrip compact={embedded} />
       <div className="stat-grid">
         <div className="stat glass col">
-          <IconTile horse="white" icon={CheckCircle2} size={30} />
+          <StatArt kind="answered" />
           <strong>{totalAnswered}</strong>
           <span className="caption">{t.answered}</span>
         </div>
         <div className="stat glass col">
-          <IconTile horse="pale" icon={Target} size={30} />
+          <StatArt kind="accuracy" />
           <strong>{acc}%</strong>
           <span className="caption">{t.accuracy}</span>
         </div>
         <div className="stat glass col">
-          <IconTile horse="black" icon={BookOpen} size={30} />
+          <StatArt kind="books" />
           <strong>
             {touched}/66
           </strong>

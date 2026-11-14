@@ -270,7 +270,7 @@ export function Game({
                     <AnswerButton
                       key={i}
                       label={opt}
-                      sub={sec ? q[sec].options![i] : undefined}
+                      sub={sec && q[sec].options![i] !== opt ? q[sec].options![i] : undefined}
                       lang={primary}
                       subLang={sec}
                       state={

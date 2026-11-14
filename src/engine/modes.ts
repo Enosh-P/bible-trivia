@@ -62,4 +62,4 @@ export const MODES: Record<ModeId, ModeDef> = {
   recall: { id: 'recall', horse: 'pale', types: [], length: 15, perQuestion: 0, study: true },
 };
 
-export const MODE_ORDER: ModeId[] = ['quiz', 'classic', 'recall', 'truefalse', 'who', 'book', 'blank', 'speed', 'survival', 'study'];
+export const MODE_ORDER: ModeId[] = ['quiz', 'classic', 'drill', 'recall', 'truefalse', 'who', 'book', 'blank', 'speed', 'survival', 'study'];

@@ -27,7 +27,7 @@ import { HorseHead, IconTile, MODE_ICON, STROKE } from '../components/icons';
 import { FriendPage } from './FriendPage';
 
 /** Modes that make a fair, fixed-length challenge. */
-export const CHALLENGE_MODES: ModeId[] = ['classic', 'truefalse', 'who', 'book', 'blank'];
+export const CHALLENGE_MODES: ModeId[] = ['classic', 'drill', 'truefalse', 'who', 'book', 'blank'];
 
 export function Avatar({ horse, size = 36 }: { horse: Friend['avatar']; size?: number }) {
   return <IconTile horse={horse} icon={HorseHead} size={size} />;

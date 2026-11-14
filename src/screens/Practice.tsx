@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { BookMarked, Dumbbell, History, Library, NotebookPen, PenLine, Star, type LucideIcon } from 'lucide-react';
+import { BookMarked, Dumbbell, History, NotebookPen, PenLine, Star, type LucideIcon } from 'lucide-react';
 import { db } from '../storage/db';
 import { summarize, type PracticeSummary } from '../engine/practice';
 import { VERSES } from '../engine/verses';
@@ -77,7 +77,6 @@ export function Practice({ onAction }: { onAction: (a: PracticeAction) => void }
       onClick: saved.length ? () => onAction({ kind: 'ids', ids: saved.slice(0, PRACTICE_ROUND) }) : undefined,
     },
     { key: 'memory', icon: PenLine, horse: 'pale', title: t.memoryTitle, sub: t.memoryLearned(learned, VERSES.length + myVerses), onClick: () => onAction({ kind: 'memory' }) },
-    { key: 'drill', icon: Library, horse: 'black', title: t.modeName.drill, sub: t.modeSub.drill, onClick: () => onAction({ kind: 'drill' }) },
     { key: 'notebook', icon: NotebookPen, horse: 'white', title: t.notebook, sub: t.nNotebook(wrongEver, saved.length), onClick: () => onAction({ kind: 'notebook' }) },
   ];
 

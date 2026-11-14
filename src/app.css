@@ -1071,3 +1071,12 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .add-verse-ref { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 .add-verse textarea.field { height: auto; padding: 10px 12px; resize: vertical; font: inherit; line-height: 1.5; }
 .memory-remove { align-self: center; margin-top: 8px; }
+
+/* Practice: slim streak line and cartoon stats */
+.week.is-compact { flex-direction: row; align-items: center; justify-content: space-between; padding: 10px 14px; gap: 10px; border-radius: var(--radius-md); }
+.week.is-compact .week-head { gap: 6px; font-size: 0.92rem; white-space: nowrap; }
+.week.is-compact .week-days { display: flex; gap: 6px; }
+.week.is-compact .week-day .caption { display: none; }
+.week.is-compact .week-dot { width: 14px; height: 14px; }
+.stat.col .stat-art { margin-bottom: 2px; }
+.week.is-compact .week-dot.is-today { outline-width: 1.5px; outline-offset: 1px; }

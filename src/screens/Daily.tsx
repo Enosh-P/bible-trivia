@@ -9,7 +9,8 @@ import { spring } from '../motion/springs';
 import { IconTile } from '../components/icons';
 
 /** Streak count plus the last 7 days of Daily Challenges (shown on Progress). */
-export function WeekStrip() {
+/** `compact`: one slim line (Practice tab). */
+export function WeekStrip({ compact = false }: { compact?: boolean }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   const streak = useApp((s) => liveStreak(s, dayKey()));
@@ -31,9 +32,9 @@ export function WeekStrip() {
   });
 
   return (
-    <div className="glass week">
+    <div className={`glass week ${compact ? 'is-compact' : ''}`}>
       <div className="week-head">
-        <IconTile horse="red" icon={Flame} size={30} />
+        {compact ? <Flame size={18} strokeWidth={1.8} className="badge-flame" /> : <IconTile horse="red" icon={Flame} size={30} />}
         <strong>
           {streak} {t.streak}
         </strong>

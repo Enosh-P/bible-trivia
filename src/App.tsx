@@ -205,7 +205,9 @@ function MainApp() {
     setRoute(
       mode === 'recall'
         ? { kind: 'recall' }
-        : mode === 'quiz'
+        : mode === 'drill'
+          ? { kind: 'game', mode, run: Date.now(), ids: drillRound(10) }
+          : mode === 'quiz'
           ? again && lastScope
             ? { kind: 'game', mode, run: Date.now(), scope: lastScope }
             : { kind: 'quizpick' }
@@ -225,8 +227,9 @@ function MainApp() {
 
   /** Friend challenge: same questions for everyone; the starter plays first. */
   async function startChallenge(mode: ModeId, friendIds: string[]) {
-    const pool = await roundPool(mode === 'who' ? { kind: 'who' } : { kind: 'mix' });
-    const questionIds = pickQuestions(pool, MODES[mode]).map((q) => q.id);
+    // The Books of the Bible questions are made from their ids, so the friend gets exactly these.
+    const questionIds =
+      mode === 'drill' ? drillRound(10) : pickQuestions(await roundPool(mode === 'who' ? { kind: 'who' } : { kind: 'mix' }), MODES[mode]).map((q) => q.id);
     try {
       const id = await createChallenge(mode, questionIds, friendIds);
       setRoute({ kind: 'game', mode, run: Date.now(), challenge: { id, questionIds } });

@@ -211,6 +211,26 @@ const Daily = () => (
   </>
 );
 
+/** Books of the Bible: a shelf of books, one of them smiling. */
+const Shelf = () => (
+  <>
+    <Shadow rx={56} />
+    <rect x={18} y={96} width={124} height={10} rx={3} fill={C.wood} {...line} />
+    <rect x={26} y={40} width={18} height={56} rx={3} fill={C.red} {...line} />
+    <path d="M30 50 H40 M30 86 H40" {...line} strokeWidth={2} />
+    <rect x={46} y={30} width={22} height={66} rx={3} fill={C.steel} {...line} />
+    <path d="M50 42 H64 M50 84 H64" {...line} strokeWidth={2} />
+    <rect x={70} y={22} width={30} height={74} rx={4} fill={C.green} {...line} />
+    <path d="M85 30 V44 M79 36 H91" stroke={C.white} strokeWidth={3.5} strokeLinecap="round" />
+    <Face x={85} y={66} gap={14} smile={8} />
+    <rect x={102} y={44} width={16} height={52} rx={3} fill={C.flame} {...line} />
+    <path d="M106 54 H114" {...line} strokeWidth={2} />
+    <g transform="rotate(14 128 96)">
+      <rect x={120} y={46} width={16} height={50} rx={3} fill={C.steelSoft} {...line} />
+    </g>
+  </>
+);
+
 const ART: Record<ModeId, () => ReactElement> = {
   quiz: Quiz,
   classic: Classic,
@@ -224,7 +244,7 @@ const ART: Record<ModeId, () => ReactElement> = {
   survival: Survival,
   daily: Daily,
   practice: Study,
-  drill: Book,
+  drill: Shelf,
 };
 
 export function ModeArt({ mode, className }: { mode: ModeId; className?: string }) {

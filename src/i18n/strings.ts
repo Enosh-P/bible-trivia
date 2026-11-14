@@ -286,7 +286,7 @@ const en = {
     speed: ['Answer as many questions as you can in 60 seconds.', 'A wrong answer just moves on. Keep going!'],
     survival: ['You have 3 lives. A wrong answer or running out of time costs one.', 'How many can you answer before they run out?'],
     practice: ['Questions you got wrong, or that are due for review.', 'No timer. After each answer, see the right one and the verse.', 'Get a mistake right twice in a row to clear it.'],
-    drill: ['Which book comes next, or just before?', 'Old or New Testament?', 'Which of these comes first in the Bible?'],
+    drill: ['10 quick questions about the 66 books: their order, testament, group and chapters.', 'Which book comes next? How many chapters? Its name in Tamil or English?', 'Challenge friends to see who knows the Bible library best.'],
     daily: ['7 questions, the same for everyone today.', 'You can play it once a day. Compare scores with your friends.'],
   } satisfies Record<ModeId, string[]>,
   modeName: {
@@ -608,7 +608,7 @@ const ta: Strings = {
     speed: ['60 வினாடிகளில் முடிந்த அளவு கேள்விகளுக்குப் பதிலளியுங்கள்.', 'தவறான பதில் வந்தாலும் அடுத்த கேள்விக்குப் போகலாம். தொடருங்கள்!'],
     survival: ['உங்களுக்கு 3 உயிர்கள். தவறான பதிலுக்கோ நேரம் முடிந்தாலோ ஒரு உயிர் போகும்.', 'உயிர்கள் முடியும் முன் எத்தனை கேள்விகளுக்குப் பதிலளிப்பீர்கள்?'],
     practice: ['நீங்கள் தவறவிட்ட அல்லது மீண்டும் பார்க்க வேண்டிய கேள்விகள்.', 'நேரக் கட்டுப்பாடு இல்லை. ஒவ்வொரு பதிலுக்குப் பின்பும் சரியான பதிலும் வசனமும்.', 'ஒரு தவறைத் தொடர்ந்து இரண்டு முறை சரியாகச் சொன்னால் அது நீங்கும்.'],
-    drill: ['அடுத்து அல்லது முன்பு வரும் புஸ்தகம் எது?', 'பழைய ஏற்பாடா, புதிய ஏற்பாடா?', 'இவற்றில் வேதாகமத்தில் முதலில் வருவது எது?'],
+    drill: ['66 புஸ்தகங்களைப் பற்றிய 10 விரைவுக் கேள்விகள்: வரிசை, ஏற்பாடு, பிரிவு, அதிகாரங்கள்.', 'அடுத்த புஸ்தகம் எது? எத்தனை அதிகாரங்கள்? தமிழில் அல்லது ஆங்கிலத்தில் அதன் பெயர்?', 'வேதாகம நூலகத்தை யார் நன்றாக அறிவார்கள் என்று நண்பர்களுக்குச் சவால் விடுங்கள்.'],
     daily: ['7 கேள்விகள், இன்று எல்லாருக்கும் ஒரே கேள்விகள்.', 'நாளுக்கு ஒரு முறை விளையாடலாம். நண்பர்களோடு மதிப்பெண்களை ஒப்பிடுங்கள்.'],
   },
   modeName: {
