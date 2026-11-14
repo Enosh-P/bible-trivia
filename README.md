@@ -5,6 +5,10 @@ Cold-grey "liquid glass" design with the Four Horsemen of Revelation 6 as accent
 
 See **[PLAN.md](PLAN.md)** for the research, feature roadmap and design decisions.
 
+## Put it online
+
+Free hosting on Cloudflare Pages, with a custom domain if you want one: **[docs/DEPLOY.md](docs/DEPLOY.md)**.
+
 ## Run it
 
 ```bash
