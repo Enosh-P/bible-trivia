@@ -265,7 +265,8 @@ const CORRECTIONS = (() => {
   return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')).questions : {};
 })();
 
-function applyCorrections(rows) {
+function applyCorrections(rows, book) {
+  const bookOf = () => book;
   let dropped = 0;
   for (let i = rows.length - 1; i >= 0; i--) {
     const row = rows[i];
@@ -274,6 +275,14 @@ function applyCorrections(rows) {
     if (c.drop) {
       rows.splice(i, 1);
       dropped++;
+      continue;
+    }
+    if (c.badTa) {
+      // A known wrong Tamil translation: English for now, and listed for --redo.
+      if (row.length > 7 && row[7] === c.badTa) {
+        row.length = 7;
+        redo.push({ book: bookOf(row), id: row[0] });
+      }
       continue;
     }
     if (c.q) {
@@ -299,7 +308,7 @@ function applyCorrections(rows) {
 function writeRedo() {
   if (!existsSync(TA_DIR)) return;
   writeFileSync(REDO_FILE, JSON.stringify(redo, null, 1) + '\n');
-  if (redo.length) console.log(`${redo.length} translations went wrong and show in English for now. Translate them again with:\n  python scripts/indictrans2/translate.py --set mcq --redo`);
+  if (redo.length) console.log(`${redo.length} translations went wrong and show in English for now. Translate them again with:\n  npm run translate:claude -- --claude-code --redo   (then npm run content:mcq -- --merge-only)`);
 }
 
 function mergeOnly() {
@@ -310,7 +319,7 @@ function mergeOnly() {
     const file = new URL(`${book}.json`, OUT);
     const pack = JSON.parse(readFileSync(file, 'utf8'));
     addTamil(book, pack.rows);
-    index.total -= applyCorrections(pack.rows);
+    index.total -= applyCorrections(pack.rows, book);
     index.tamil += pack.rows.filter((r) => r.length > 7).length;
     index.books[book] = pack.rows.length;
     for (const row of pack.rows) if (row[3] & 4) whoRows.push([book, ...row]);
@@ -354,7 +363,7 @@ async function main() {
     rows.sort((a, b) => a[1] - b[1] || a[2] - b[2]);
 
     addTamil(book, rows);
-    applyCorrections(rows);
+    applyCorrections(rows, book);
     const tamil = rows.filter((r) => r.length > 7).length;
 
     if (!rows.length) continue;

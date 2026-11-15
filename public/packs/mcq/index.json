@@ -1,8 +1,8 @@
 {
  "attribution": "Multiple-choice questions by Dr. Ted Hildebrandt (biblicalelearning.org), via the BIBLE dataset (MushroomGecko), CC BY 4.0",
  "license": "CC BY 4.0",
- "total": 33149,
- "tamil": 33127,
+ "total": 33148,
+ "tamil": 33103,
  "books": {
   "GEN": 1079,
   "EXO": 816,
@@ -21,7 +21,7 @@
   "EZR": 302,
   "NEH": 462,
   "EST": 249,
-  "JOB": 1691,
+  "JOB": 1690,
   "PSA": 5152,
   "PRO": 1601,
   "ECC": 509,

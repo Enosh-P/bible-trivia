@@ -1,5 +1,5 @@
 {
- "about": "Corrections to the imported multiple-choice questions so they agree with the KJV (and BSI Tamil) text the app shows. Applied by scripts/import-bible-mcq.mjs on every build/merge. 'answer' = new index of the right option; 'set' = replace option text [en, ta]; 'q' = replace question [en, ta or null to keep]; 'drop' = remove a question that can't be made fair.",
+ "about": "Corrections to the imported multiple-choice questions so they agree with the KJV (and BSI Tamil) text the app shows. Applied by scripts/import-bible-mcq.mjs on every build/merge. 'answer' = new index of the right option; 'set' = replace option text [en, ta]; 'q' = replace question [en, ta or null to keep]; 'drop' = remove a question that can't be made fair. 'badTa' = this exact Tamil question is wrong (shows English and goes on the --redo list until a new translation replaces it).",
  "questions": {
   "h36uGz": {
    "why": "1 Cor 1:27 KJV: to confound the wise",
@@ -962,6 +962,102 @@
      "நியாயப்பிரமாணத்தின் சாபம்"
     ]
    }
+  },
+  "MOHBmQ": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "கீலேயாத்திலுள்ள ராமோத்துக்கு என்னோடே வருகீறீரா?"
+  },
+  "wPeBBYf": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "கர்த்தருடைய வார்த்தையை இன்றைக்கு விசாரித்து அறியும்"
+  },
+  "w7Eb6uW": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "நாங்கள் கீலேயாத்திலுள்ள ராமோத்தின்மேல் யுத்தம்பண்ணப் போகலாமா, போகலாகாதா?"
+  },
+  "wh4WSuf": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "தீர்க்கதரிசிகள் யுத்தத்திற்குப் போங்கள் என்று சொன்னபின்பு, யோசபாத் இஸ்ரவேலின் ராஜாவிடம் என்ன கேட்டான்?"
+  },
+  "mB8wDN": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "நாம் விசாரித்து அறிகிறதற்கு இவர்களையல்லாமல் கர்த்தருடைய தீர்க்கதரிசி வேறே யாராகிலும் இங்கே இல்லையா?"
+  },
+  "w78et1h": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "கர்த்தரிடத்தில் விசாரித்து அறிகிறதற்கு இம்லாவின் குமாரனாகிய மிகாயா என்னும் மற்றொருவன் இருக்கிறான்"
+  },
+  "wVjJrPD": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "இம்லாவின் குமாரனாகிய மிகாயாவைச் சீக்கிரமாய் அழைத்துவா"
+  },
+  "wl2Apyo": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "இவைகளால் நீர் சீரியரை முட்டி நிர்மூலமாக்கிப்போடுவீர்"
+  },
+  "wgAWQMC": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "கீலேயாத்திலுள்ள ராமோத்திற்குப்போம், உமக்கு வாய்க்கும், கர்த்தர் அதை ராஜாவின் கையில் ஒப்புக்கொடுப்பார்"
+  },
+  "wRiPiMQ": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "இதோ, தீர்க்கதரிசிகளின் வார்த்தைகள் ஏகவாக்காய் ராஜாவுக்கு நன்மையாயிருக்கிறது"
+  },
+  "weYHY4J": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "கர்த்தருடைய ஜீவனைக்கொண்டு, என் தேவன் சொல்வதையே சொல்வேன்"
+  },
+  "w4cVsb1": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "ராஜா யுத்தத்திற்குப் போகலாமா என்று கேட்டபோது, மிகாயா என்ன சொன்னான்?"
+  },
+  "aalaUR": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "மிகாயாவே, நாங்கள் கீலேயாத்திலுள்ள ரமோத்தின்மேல் யுத்தம்பண்ணப் போகலாமா, போகலாகாதா?"
+  },
+  "wirgA1G": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "நீ கர்த்தருடைய நாமத்திலே உண்மையை அல்லாமல் வேறொன்றையும் என்னிடத்தில் சொல்லாதபடிக்கு, நான் எத்தனை தரம் உன்னை ஆணையிடுவிக்கவேண்டும்?"
+  },
+  "wXK6nXc": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "இஸ்ரவேலர் எல்லாரும் மேய்ப்பனில்லாத ஆடுகளைப்போல மலைகளில் சிதறப்பட்டதைக் கண்டேன்; இவர்களுக்கு எஜமான் இல்லை"
+  },
+  "wlkxMxW": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "மிகாயாவின் தீர்க்கதரிசனங்களைக்குறித்து இஸ்ரவேலின் ராஜா என்ன சொன்னான்?"
+  },
+  "6OPUGR": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "இவன் என்னைக்குறித்து நன்மையாக அல்ல, தீமையாகவே தீர்க்கதரிசனஞ்சொல்லுகிறவன் என்று நான் உம்மோடே சொல்லவில்லையா?"
+  },
+  "wcVhZXC": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "கர்த்தருடைய ஆவி எந்த வழியாய் என்னைவிட்டு உன்னோடே பேசும்படி வந்தது?"
+  },
+  "0Mj8qB": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "நடந்த செய்தி என்ன? சொல்."
+  },
+  "oyBxt0": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "தாவீது தனக்கு விருப்பமானபடி செய்வதற்கு பர்சிலா யாரை அவனுக்குக் கொடுத்தான்?"
+  },
+  "fAXORq": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "அவர்கள் என் சகோதரரும் என் தாயின் பிள்ளைகளுமாயிருந்தார்கள்; அவர்களை உயிரோடே வைத்திருந்தீர்களானால், உங்களைக் கொல்லாதிருப்பேன் என்று கர்த்தரின் ஜீவனைக்கொண்டு சொல்லுகிறேன்."
+  },
+  "j5hXAH": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "“இவர்கள் சொல்லுகிறதைக் கேட்கிறீரோ?” என்று சொன்னது யார்?"
+  },
+  "yO5Zh1": {
+   "why": "Haiku put a neighbouring question's Tamil here; show English until translated again",
+   "badTa": "பிலேயாம் தீர்க்கதரிசனம் உரைத்து தாழ விழுந்தபோது, எந்த உறுப்பு திறக்கப்பட்டிருந்தது?"
+  },
+  "0G5Myu": {
+   "drop": true,
+   "why": "the English 'question' is a heading from the source file"
   }
  }
 }
