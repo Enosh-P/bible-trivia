@@ -73,9 +73,9 @@ function linkLanguages(patch: Partial<Settings>): Partial<Settings> {
 export const useApp = create<AppState>()(
   persist(
     (set) => ({
+      // New players start in their phone's language; the switch on Home changes it in one tap.
       uiLang: defaultLang(),
-      // Questions in both English and Tamil to start with; the app's own words follow the phone.
-      qLang: 'both',
+      qLang: defaultLang(),
       theme: 'light',
       sound: true,
       haptics: true,

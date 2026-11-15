@@ -33,7 +33,7 @@ function HourPicker({ value, onChange, label }: { value: number; onChange: (h: n
 }
 
 /** Settings → Notifications: on/off for this device, what to get, and when. */
-export function NotificationsCard() {
+export function NotificationSettings() {
   const t = useT();
   const session = useAccount((s) => s.session);
   const [on, setOn] = useState(false);
@@ -77,63 +77,66 @@ export function NotificationsCard() {
     }
   }
 
-  const row = (horse: Horse, icon: LucideIcon, label: string, key: keyof NotificationPrefs, hourKey?: 'verse_hour' | 'reminder_hour') => (
-    <div className="row">
-      <IconTile horse={horse} icon={icon} size={30} />
-      <span className="row-label">{label}</span>
-      <div className="row-control notif-control">
-        {hourKey && prefs[key] && <HourPicker value={prefs[hourKey]} onChange={(h) => update({ [hourKey]: h })} label={label} />}
+  /** One notification: its name and switch on the first line, its time(s) underneath. */
+  const item = (horse: Horse, icon: LucideIcon, label: string, sub: string, key: keyof NotificationPrefs, times: { key: 'verse_hour' | 'morning_hour' | 'afternoon_hour' | 'reminder_hour'; label: string }[] = []) => (
+    <section className="glass setting-card">
+      <div className="setting-head">
+        <IconTile horse={horse} icon={icon} size={36} />
+        <span className="menu-text">
+          <strong>{label}</strong>
+          <span className="caption">{sub}</span>
+        </span>
         <Switch on={Boolean(prefs[key])} onChange={(v) => update({ [key]: v })} label={label} />
       </div>
-    </div>
+      {times.length > 0 && prefs[key] && (
+        <div className={`notif-times ${times.length > 1 ? 'is-many' : ''}`}>
+          {times.map((tm) => (
+            <label key={tm.key}>
+              <span className="caption">{tm.label}</span>
+              <HourPicker value={prefs[tm.key]} onChange={(h) => update({ [tm.key]: h })} label={`${label}: ${tm.label}`} />
+            </label>
+          ))}
+        </div>
+      )}
+    </section>
   );
 
+  const note = !session ? t.notifSignIn : support === 'ios-install' ? t.notifIosInstall : support === 'unsupported' ? t.notifUnsupported : support === 'denied' ? t.notifDenied : null;
+
   return (
-    <section className="glass group">
-      <div className="row">
-        <IconTile horse="pale" icon={on ? Bell : BellOff} size={30} />
-        <span className="row-label">{t.notifications}</span>
-        <div className="row-control">
+    <>
+      <section className="glass setting-card">
+        <div className="setting-head">
+          <IconTile horse="pale" icon={on ? Bell : BellOff} size={36} />
+          <span className="menu-text">
+            <strong>{t.notifMaster}</strong>
+            <span className="caption">{on ? t.on : t.off}</span>
+          </span>
           {session && support === 'ok' && <Switch on={on} onChange={(v) => !busy && toggle(v)} label={t.notifications} />}
         </div>
-      </div>
-      {!session && <p className="caption notif-note">{t.notifSignIn}</p>}
-      {session && support === 'ios-install' && <p className="caption notif-note">{t.notifIosInstall}</p>}
-      {session && support === 'unsupported' && <p className="caption notif-note">{t.notifUnsupported}</p>}
-      {session && support === 'denied' && <p className="caption notif-note">{t.notifDenied}</p>}
+        {note && <p className="caption setting-note">{note}</p>}
+      </section>
       {session && support === 'ok' && on && (
         <>
-          {row('pale', ScrollText, t.notifVerse, 'daily_verse', 'verse_hour')}
-          {row('white', Feather, t.notifThought, 'daily_thought')}
-          <div className="row">
-            <IconTile horse="red" icon={Flame} size={30} />
-            <span className="row-label">
-              {t.notifReminder}
-              <span className="caption notif-sub">{t.notifReminderSub}</span>
-            </span>
-            <div className="row-control notif-control">
-              {prefs.daily_reminder && (
-                <span className="notif-hours">
-                  <HourPicker value={prefs.morning_hour} onChange={(h) => update({ morning_hour: h })} label={t.notifMorning} />
-                  <HourPicker value={prefs.afternoon_hour} onChange={(h) => update({ afternoon_hour: h })} label={t.notifAfternoon} />
-                  <HourPicker value={prefs.reminder_hour} onChange={(h) => update({ reminder_hour: h })} label={t.notifEvening} />
-                </span>
-              )}
-              <Switch on={prefs.daily_reminder} onChange={(v) => update({ daily_reminder: v })} label={t.notifReminder} />
-            </div>
-          </div>
-          {row('black', Users, t.notifFriends, 'friends')}
+          {item('pale', ScrollText, t.notifVerse, t.notifVerseSub, 'daily_verse', [{ key: 'verse_hour', label: t.notifTime }])}
+          {item('white', Feather, t.notifThoughtShort, t.notifThoughtSub, 'daily_thought')}
+          {item('red', Flame, t.notifReminder, t.notifReminderSub, 'daily_reminder', [
+            { key: 'morning_hour', label: t.morning },
+            { key: 'afternoon_hour', label: t.afternoon },
+            { key: 'reminder_hour', label: t.evening },
+          ])}
+          {item('black', Users, t.notifFriends, t.notifFriendsSub, 'friends')}
           <Pressable
-            className="btn glass small notif-test"
+            className="btn glass notif-test"
             onClick={async () => {
               const reg = await navigator.serviceWorker.ready;
               await reg.showNotification(t.notifTestTitle, { body: t.notifTestBody, icon: '/pwa-192.png', tag: 'test' });
             }}
           >
-            <Bell size={16} strokeWidth={STROKE} /> {t.notifTest}
+            <Bell size={18} strokeWidth={STROKE} /> {t.notifTest}
           </Pressable>
         </>
       )}
-    </section>
+    </>
   );
 }

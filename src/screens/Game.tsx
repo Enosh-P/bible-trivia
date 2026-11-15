@@ -1,7 +1,8 @@
 import { createPortal } from 'react-dom';
 import { AnimatePresence, animate, motion, useMotionValue, useReducedMotion, useTransform, type PanInfo } from 'motion/react';
 import { useCallback, useEffect, useRef, useState, type PointerEvent as RPointerEvent } from 'react';
-import { Check, Heart, X, BookOpenText, ChevronRight, EyeOff } from 'lucide-react';
+import { Check, Heart, X, BookOpenText, ChevronRight, EyeOff, Languages } from 'lucide-react';
+import { Sheet } from '../components/Sheet';
 import { roundPool } from '../engine/content';
 import { MODES, type ModeId } from '../engine/modes';
 import { pickDaily, pickQuestions } from '../engine/picker';
@@ -90,6 +91,8 @@ export function Game({
   const [log, setLog] = useState<AnswerLog[]>([]);
   const [qLeft, setQLeft] = useState(perQuestion);
   const [roundLeft, setRoundLeft] = useState(mode.roundSeconds ?? 0);
+  // Changing the language opens a sheet; the timers wait while it is open.
+  const [langOpen, setLangOpen] = useState(false);
   const finished = useRef(false);
   /** Set once the round (and any resumed progress) is in place, so saving can start. */
   const ready = useRef(false);
@@ -233,7 +236,7 @@ export function Game({
 
   // Per-question timer.
   useEffect(() => {
-    if (!q || answered || !perQuestion) return;
+    if (!q || answered || !perQuestion || langOpen) return;
     if (qLeft <= 0) {
       answer(null);
       return;
@@ -243,18 +246,18 @@ export function Game({
       setQLeft((s) => s - 1);
     }, 1000);
     return () => clearTimeout(id);
-  }, [q, answered, qLeft, perQuestion, answer]);
+  }, [q, answered, qLeft, perQuestion, answer, langOpen]);
 
   // Whole-round timer (Speed).
   useEffect(() => {
-    if (!questions || !mode.roundSeconds) return;
+    if (!questions || !mode.roundSeconds || langOpen) return;
     if (roundLeft <= 0) {
       finish(log, score, bestCombo);
       return;
     }
     const id = setTimeout(() => setRoundLeft((s) => s - 1), 1000);
     return () => clearTimeout(id);
-  }, [questions, roundLeft, mode.roundSeconds, finish, log, score, bestCombo]);
+  }, [questions, roundLeft, mode.roundSeconds, finish, log, score, bestCombo, langOpen]);
 
   const total = Number.isFinite(mode.length) ? Math.min(mode.length, questions?.length ?? 0) : null;
   const typeLabel = q ? { mcq: '', tf: t.trueOrFalse, who: t.whoSaid, book: t.whichBook, blank: t.fillBlank }[q.type] : '';
@@ -267,7 +270,7 @@ export function Game({
         </Pressable>
         <div className="game-progress">
           {total ? (
-            <div className="bar">
+            <div className="bar" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={index + (answered ? 1 : 0)}>
               <motion.div
                 className={`bar-fill horse-${mode.horse}`}
                 animate={{ width: `${((index + (answered ? 1 : 0)) / total) * 100}%` }}
@@ -275,26 +278,28 @@ export function Game({
               />
             </div>
           ) : (
-            <div className="caption">
-              {mode.lives !== undefined && (
-                <span className="lives" aria-label={`${t.lives}: ${lives}`}>
-                  {Array.from({ length: mode.lives }, (_, i) => (
-                    <motion.span key={i} animate={{ scale: i < lives ? 1 : 0.7, opacity: i < lives ? 1 : 0.25 }} transition={spring.flick}>
-                      <Heart size={16} strokeWidth={STROKE} fill={i < lives ? 'currentColor' : 'none'} />
-                    </motion.span>
-                  ))}
-                </span>
-              )}
-            </div>
+            mode.lives !== undefined && (
+              <span className="lives" aria-label={`${t.lives}: ${lives}`}>
+                {Array.from({ length: mode.lives }, (_, i) => (
+                  <motion.span key={i} animate={{ scale: i < lives ? 1 : 0.7, opacity: i < lives ? 1 : 0.25 }} transition={spring.flick}>
+                    <Heart size={22} strokeWidth={STROKE} fill={i < lives ? 'currentColor' : 'none'} />
+                  </motion.span>
+                ))}
+              </span>
+            )
           )}
         </div>
-        <LangToggle compact />
-        <motion.div className="score-chip glass" key={score} initial={{ scale: 1.15 }} animate={{ scale: 1 }} transition={spring.flick}>
-          {score}
-        </motion.div>
         {perQuestion > 0 && <TimerRing progress={qLeft / perQuestion} seconds={qLeft} horse={mode.horse} />}
         {mode.roundSeconds && <TimerRing progress={roundLeft / mode.roundSeconds} seconds={roundLeft} horse={mode.horse} />}
       </header>
+
+      {/* How far along you are, in words, and the score so far. */}
+      <div className="game-status">
+        <span className="game-count">{total ? t.questionNofM(Math.min(index + 1, total), total) : t.questionN(index + 1)}</span>
+        <motion.span className="score-chip glass" key={score} initial={{ scale: 1.15 }} animate={{ scale: 1 }} transition={spring.flick}>
+          {score} {t.points}
+        </motion.span>
+      </div>
 
       <AnimatePresence mode="popLayout" initial={false}>
         {q && (
@@ -318,12 +323,15 @@ export function Game({
                   {mode.types.length > 1 && typeLabel && <span>{typeLabel}</span>}
                 </span>
               </span>
-              <span className="q-count">{total ? `${index + 1}/${total}` : `#${index + 1}`}</span>
               {combo >= 2 && (
                 <motion.span className="combo" initial={{ scale: 0.6, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={spring.flick}>
                   ×{combo}
                 </motion.span>
               )}
+              <button className="lang-chip" onClick={() => setLangOpen(true)} aria-label={t.language} lang={qLang === 'ta' ? 'ta' : undefined}>
+                <Languages size={16} strokeWidth={STROKE} />
+                {qLang === 'en' ? 'EN' : qLang === 'ta' ? 'த' : t.langBothShort}
+              </button>
               <ReportButton target={questionTarget(q)} />
             </div>
 
@@ -368,6 +376,18 @@ export function Game({
           </motion.section>
         )}
       </AnimatePresence>
+
+      <Sheet open={langOpen} onClose={() => setLangOpen(false)} label={t.language}>
+        <div className="lang-sheet" lang={uiLang}>
+          <h2 className="title">{t.language}</h2>
+          <p className="caption">{t.langQuestion}</p>
+          <LangToggle />
+          <p className="caption">{t.langBothHelp}</p>
+          <Pressable className="btn btn-primary" onClick={() => setLangOpen(false)}>
+            {t.close}
+          </Pressable>
+        </div>
+      </Sheet>
     </div>
   );
 }
@@ -455,7 +475,7 @@ function TrueFalseCard({ q, primary, secondary, answered, onAnswer }: { q: Quest
       if (answered) return;
       onAnswer(v);
       // Slide off in the swipe direction, inheriting the finger's speed, then settle back for feedback.
-      animate(x, v ? 70 : -70, { ...spring.flick, velocity });
+      void animate(x, v ? 70 : -70, { ...spring.flick, velocity }).then(() => animate(x, 0, spring.calm));
     },
     [answered, onAnswer, x],
   );

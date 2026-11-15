@@ -246,6 +246,17 @@ const Knowledge = () => (
   </>
 );
 
+/** Memory verses: a happy heart holding a verse. */
+const Memory = () => (
+  <>
+    <Shadow />
+    <path d="M80 104 C40 78 26 58 26 42 C26 28 37 18 50 18 C62 18 74 25 80 36 C86 25 98 18 110 18 C123 18 134 28 134 42 C134 58 120 78 80 104 Z" fill={C.red} {...line} />
+    <rect x={50} y={52} width={60} height={34} rx={6} fill={C.white} {...line} />
+    <path d="M60 63 H100 M60 72 H92" {...line} strokeWidth={2.4} opacity={0.45} />
+    <Face x={80} y={36} gap={24} smile={10} />
+  </>
+);
+
 const ART: Record<ModeId, () => ReactElement> = {
   knowledge: Knowledge,
   quiz: Quiz,
@@ -262,6 +273,14 @@ const ART: Record<ModeId, () => ReactElement> = {
   practice: Study,
   drill: Shelf,
 };
+
+export function MemoryArt({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 160 120" className={className} aria-hidden>
+      <Memory />
+    </svg>
+  );
+}
 
 export function ModeArt({ mode, className }: { mode: ModeId; className?: string }) {
   const Art = ART[mode];

@@ -350,12 +350,12 @@ function MainApp() {
             exit={pushed ? { x: '30%', opacity: 0 } : { opacity: 0, scale: 0.985 }}
             transition={spring.calm}
           >
-            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'home' })} onShowPosts={showThoughts} />}
+            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onMemory={() => setRoute({ kind: 'memory' })} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'home' })} onShowPosts={showThoughts} />}
             {route.kind === 'tab' && route.tab === 'friends' && <Friends onStartChallenge={startChallenge} onPlayChallenge={playChallenge} />}
             {route.kind === 'tab' && route.tab === 'gospel' && <Gospel section={gospelSection} onSection={setGospelSection} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'gospel' })} />}
             {route.kind === 'tab' && route.tab === 'progress' && <Practice onAction={practice} />}
             {route.kind === 'saved' && <SavedGames onBack={() => goTab('play')} onResume={resumeGame} />}
-            {route.kind === 'memory' && <MemoryVerses onExit={() => goTab('progress')} />}
+            {route.kind === 'memory' && <MemoryVerses onExit={() => goTab(lastTab)} />}
             {route.kind === 'notebook' && <Notebook onExit={() => goTab('progress')} />}
             {route.kind === 'tab' && route.tab === 'settings' && <Settings onAdmin={() => setRoute({ kind: 'admin' })} />}
             {route.kind === 'post' && <Thought post={route.post} onExit={() => (route.from === 'list' ? setRoute({ kind: 'posts' }) : route.from === 'gospel' ? goTab('gospel') : goTab('play'))} onShowAll={route.from === 'gospel' ? undefined : showThoughts} />}

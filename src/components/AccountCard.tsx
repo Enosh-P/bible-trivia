@@ -14,8 +14,7 @@ import { IconTile, STROKE } from './icons';
 /** Settings: sign in, or edit your name and avatar colour and sign out. */
 export function AccountCard() {
   const t = useT();
-  const { session, profile } = useAccount();
-  const uiLang = useApp((s) => s.uiLang);
+  const { session } = useAccount();
   const [open, setOpen] = useState(false);
 
   if (!supabase) return null;
@@ -39,21 +38,40 @@ export function AccountCard() {
     );
   }
 
+  return <ProfileDetails />;
+}
+
+/** Settings → Profile: your name, your picture, and signing out, each in its own card. */
+export function ProfileDetails() {
+  const t = useT();
+  const { session, profile } = useAccount();
+  const uiLang = useApp((s) => s.uiLang);
+  if (!session) return null;
   return (
-    <section className="glass card-pad">
-      <h2 className="eyebrow">{t.profile}</h2>
-      <NameForm />
-      <span className="caption">{t.chooseAvatar}</span>
-      <AvatarGrid current={profile?.avatar} lang={uiLang} onPick={(id) => void updateProfile({ avatar: id }).catch(() => {})} />
-      <div className="person">
-        <span className="caption grow">
-          {session.user.email}
-          {profile && ` · ${t.yourCode}: ${profile.friend_code}`}
-        </span>
-        <Pressable className="btn glass small" onClick={() => signOut()}>
-          <LogOut size={16} strokeWidth={STROKE} /> {t.signOut}
+    <>
+      <section className="glass setting-card">
+        <NameForm />
+      </section>
+      <section className="glass setting-card">
+        <div className="menu-text">
+          <strong>{t.chooseAvatar}</strong>
+          <span className="caption">{t.chooseAvatarHelp}</span>
+        </div>
+        <AvatarGrid current={profile?.avatar} lang={uiLang} onPick={(id) => void updateProfile({ avatar: id }).catch(() => {})} />
+      </section>
+      <section className="glass setting-card">
+        <div className="menu-text">
+          <strong>{session.user.email}</strong>
+          {profile && (
+            <span className="caption">
+              {t.yourCode}: {profile.friend_code}
+            </span>
+          )}
+        </div>
+        <Pressable className="btn glass" onClick={() => signOut()}>
+          <LogOut size={18} strokeWidth={STROKE} /> {t.signOut}
         </Pressable>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

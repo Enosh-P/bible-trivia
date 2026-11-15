@@ -1313,3 +1313,149 @@ textarea.field.post-body-input:lang(ta) { line-height: 1.85; }
 .comment-send { display: flex; align-items: center; justify-content: space-between; }
 .post-stats { display: inline-flex; align-items: center; gap: 4px; }
 .post-social-off { text-align: center; }
+
+/* =====================================================================
+   Mobile redesign: roomier phones.
+   Same colours, glass and shapes; fewer things per screen, more air
+   between them, bigger text and touch targets, and Tamil that fits.
+   ===================================================================== */
+
+/* ---------- Foundation ---------- */
+.caption { font-size: 0.86rem; letter-spacing: 0.01em; line-height: 1.45; }
+.eyebrow { font-size: 0.76rem; letter-spacing: 0.06em; }
+.eyebrow:lang(ta) { font-size: 0.8rem; }
+.menu-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; text-align: left; }
+.menu-text strong { font-weight: 650; line-height: 1.35; overflow-wrap: anywhere; }
+.menu-text .caption { margin: 0; }
+
+@media (max-width: 959px) {
+  :root { --tabbar-h: 62px; }
+  .screen { padding: calc(var(--safe-top) + 18px) 16px calc(var(--tabbar-h) + var(--safe-bottom) + 40px); gap: 18px; }
+  .display { font-size: clamp(1.6rem, 6.6vw, 1.95rem); }
+  .section-title { margin: 8px 4px -6px; }
+
+  /* Touch targets: 44px or more */
+  .chip { width: 44px; height: 44px; }
+  .btn { min-height: 48px; }
+  .btn.small { min-height: 42px; padding: 0 16px; }
+  .icon-btn { width: 40px; height: 40px; }
+  .report-btn, .report-btn.is-compact { width: 40px; height: 40px; }
+  .verse-share { width: 40px; height: 40px; }
+  .segmented { padding: 4px; border-radius: 14px; }
+  .segmented button { min-height: 42px; border-radius: 10px; font-size: 0.95rem; padding: 0 8px; }
+  .segmented.small button { min-height: 38px; font-size: 0.88rem; }
+  .toggle { position: relative; flex: none; }
+  .toggle::after { content: ''; position: absolute; inset: -8px -4px; }
+  .link { min-height: 40px; font-size: 0.95rem; }
+  .reveal-btn { min-height: 40px; padding: 0 14px; font-size: 0.9rem; }
+
+  .tabbar { padding: 5px; }
+  .tab-label { font-size: 0.72rem; }
+  .tab-label:lang(ta) { font-size: 0.7rem; letter-spacing: 0; }
+  .tab-icon { width: 22px; height: 22px; }
+
+  .card-pad { padding: 18px; gap: 12px; }
+}
+.segmented button > span:not(.segmented-thumb) { display: inline-flex; align-items: center; justify-content: center; gap: 6px; line-height: 1.2; }
+
+/* Avatars: columns share the width, long Tamil names wrap inside their column */
+.avatar-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.avatar-grid:lang(ta), :lang(ta) .avatar-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (min-width: 480px) { .avatar-grid, .avatar-grid:lang(ta), :lang(ta) .avatar-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.avatar-choice { min-width: 0; padding: 10px 4px; gap: 6px; }
+.avatar-name { font-size: 0.82rem; overflow-wrap: anywhere; max-width: 100%; }
+
+/* Language switch: the same three short labels in both languages, so it always fits */
+.lang-switch { flex-shrink: 0; max-width: 100%; }
+.lang-switch button { padding: 0 14px; min-height: 38px; font-size: 0.9rem; white-space: nowrap; }
+.lang-switch.is-compact button { padding: 0 10px; min-height: 34px; font-size: 0.82rem; }
+@media (max-width: 380px) { .lang-switch button { padding: 0 11px; } }
+
+/* ---------- Settings ---------- */
+.settings-page { display: flex; flex-direction: column; gap: 18px; }
+.profile-row { display: flex; align-items: center; gap: 14px; width: 100%; padding: 16px 18px; border-radius: var(--radius-lg); text-align: left; }
+.profile-row strong { font-size: 1.1rem; }
+.menu { border-radius: var(--radius-lg); padding: 4px 18px; display: flex; flex-direction: column; }
+.menu-row { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 68px; padding: 12px 0; text-align: left; }
+.menu-row + .menu-row { border-top: 1px solid var(--line); }
+.menu-row:disabled { cursor: default; }
+.menu-value { flex: none; font-size: 0.92rem; font-weight: 600; color: var(--text-2); }
+.menu-chevron { flex: none; color: var(--text-3); }
+.setting-card { border-radius: var(--radius-lg); padding: 18px; display: flex; flex-direction: column; gap: 14px; }
+.setting-head { display: flex; align-items: center; gap: 14px; }
+.setting-note { margin: 0; }
+.setting-sub { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
+.setting-sub-label { font-weight: 600; }
+.size-pick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.size-pick button { min-height: 60px; border-radius: var(--radius-md); background: var(--line); display: grid; place-items: center; font-weight: 700; color: var(--text-2); border: 2px solid transparent; line-height: 1; }
+.size-pick button.is-on { background: var(--accent-wash); color: var(--accent-ink); border-color: var(--accent); }
+.notif-times { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
+.notif-times label { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.notif-times .caption { font-size: 0.95rem; color: var(--text); }
+.hour-pick { width: auto; min-width: 112px; min-height: 44px; padding: 6px 12px; font-size: 16px; }
+.notif-test { align-self: stretch; margin: 0; }
+.about-sheet { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 4px 4px 10px; }
+.about-sheet p { margin: 0; color: var(--text-2); }
+.about-sheet .btn { align-self: stretch; }
+.name-form { gap: 10px; }
+.name-form label.caption { font-size: 0.95rem; font-weight: 650; color: var(--text); }
+
+/* ---------- Home ---------- */
+.home-head { gap: 8px; }
+.home-badges { gap: 8px; }
+.badge, button.badge { min-height: 40px; padding: 0 14px; font-size: 0.95rem; gap: 6px; }
+.daily-card { padding: 20px; gap: 16px; border-radius: var(--radius-lg); }
+.daily-card .title { font-size: 1.25rem; margin: 2px 0; }
+.daily-go { margin-top: 12px; min-height: 42px; padding: 0 12px 0 18px; font-size: 0.98rem; }
+.verse-card { padding: 18px; gap: 12px; border-radius: var(--radius-lg); }
+.verse-card.is-clamped .verse { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+.verse-card.is-clamped .verse-secondary { -webkit-line-clamp: 2; line-clamp: 2; }
+.verse-more { align-self: flex-start; margin: -6px 0 -8px; }
+.thought-card { padding: 18px; gap: 12px; }
+/* Verse and thought side by side: the next card peeks in, so it is clear there is more to swipe to */
+@media (max-width: 959px) {
+  .home-swipe { display: flex; gap: 12px; margin: 0 -16px; padding: 0 16px 6px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; align-items: stretch; }
+  .home-swipe::-webkit-scrollbar { display: none; }
+  .home-swipe > * { flex: 0 0 88%; scroll-snap-align: center; min-width: 0; }
+  .home-swipe .thought-card { height: 100%; }
+}
+@media (min-width: 960px) { .home-swipe { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; } }
+
+.mode-group { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+.group-head { padding: 0 4px; }
+.group-title { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.01em; }
+.group-head .caption { margin: 2px 0 0; }
+.mode-list { display: flex; flex-direction: column; gap: 10px; }
+.mode-row { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 84px; padding: 12px 14px 12px 12px; border-radius: var(--radius-lg); text-align: left; }
+.mode-row-art { width: 76px; height: 57px; flex: none; }
+.mode-row strong { font-size: 1.05rem; }
+@media (min-width: 960px) { .mode-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+
+/* ---------- Game ---------- */
+.game { gap: 14px; padding-left: 16px; padding-right: 16px; }
+.game-top { gap: 12px; }
+.game-progress { min-width: 0; display: flex; align-items: center; }
+/* A thick bar that fills as you answer: the thing that pulls you to the end of the round */
+.game-progress .bar { flex: 1; height: 14px; background: var(--card); border: 1px solid var(--glass-edge); box-shadow: inset 0 1px 2px rgb(17 24 28 / 0.12); }
+.game-progress .bar-fill, .game-progress .bar-fill.horse-black { background: var(--accent); min-width: 14px; }
+.game-progress .lives { gap: 6px; }
+.game-status { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: -4px; }
+.game-count { font-weight: 700; font-size: 1rem; color: var(--text); }
+.game-status .score-chip { height: 34px; min-width: 0; padding: 0 14px; font-size: 0.92rem; white-space: nowrap; }
+.question-wrap { gap: 16px; }
+.q-meta { gap: 8px; }
+.q-meta .mode-pill { margin-right: auto; }
+.q-meta .combo { margin-left: 0; }
+.q-meta .report-btn { margin-left: 0; }
+.lang-chip { display: inline-flex; align-items: center; gap: 6px; flex: none; min-height: 40px; padding: 0 12px; border-radius: 999px; font-weight: 700; font-size: 0.85rem; color: var(--text-2); background: var(--card); border: 1px solid var(--glass-edge); }
+.lang-sheet { display: flex; flex-direction: column; align-items: stretch; gap: 12px; padding: 4px 4px 8px; }
+.lang-sheet .title, .lang-sheet p { margin: 0; }
+.lang-sheet .lang-switch { align-self: center; }
+.lang-sheet .lang-switch button { min-height: 46px; padding: 0 20px; font-size: 1rem; }
+@media (max-width: 959px) {
+  .answer { min-height: 58px; padding: 12px 16px; }
+  .options { gap: 10px; }
+  .tf-btn { min-height: 56px; }
+}
+.feedback { padding: 18px; gap: 10px; }
+.ref-verse-more { align-self: flex-start; min-height: 36px; }

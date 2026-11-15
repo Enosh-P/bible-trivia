@@ -11,9 +11,10 @@ export function LangToggle({ compact = false }: { compact?: boolean }) {
   const set = useApp((s) => s.set);
   const id = useId(); // several switches can be on screen at once (Home and the sidebar)
   const options: { v: QuestionLang; label: string; lang?: string }[] = [
-    { v: 'en', label: compact ? 'EN' : 'English' },
+    { v: 'en', label: compact ? 'EN' : 'English', lang: 'en' },
     { v: 'ta', label: compact ? 'த' : 'தமிழ்', lang: 'ta' },
-    { v: 'both', label: compact ? 'EN+த' : t.both },
+    // The same short label in both languages, so the switch never outgrows the screen.
+    { v: 'both', label: t.langBothShort },
   ];
   return (
     <div className={`lang-switch ${compact ? 'is-compact' : ''}`} role="radiogroup" aria-label={t.language}>

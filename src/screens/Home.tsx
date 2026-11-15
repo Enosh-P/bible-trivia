@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ChevronRight, Clock, Flame, Heart, ListOrdered, Play, Trophy, X } from 'lucide-react';
-import { MODES, MODE_ORDER, type ModeId } from '../engine/modes';
+import { MODES, type ModeId } from '../engine/modes';
 import { HEART_EVERY, MAX_HEARTS, levelFromXp, liveStreak } from '../engine/scoring';
 import { dayKey } from '../engine/picker';
 import { useApp, useT } from '../store';
@@ -11,14 +11,23 @@ import { VerseOfTheDay } from '../components/VerseCard';
 import { LangToggle } from '../components/LangToggle';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 import { Sheet } from '../components/Sheet';
-import { ModeArt } from '../art/ModeArt';
+import { MemoryArt, ModeArt } from '../art/ModeArt';
+import { usePosts } from '../online/posts';
 import { InstallBanner } from '../components/Install';
 import { clearSnapshot, loadSnapshots, type GameSnapshot } from '../engine/resume';
 import { BOOK_BY_CODE } from '../i18n/books';
 import { ThoughtCard } from '../components/ThoughtCard';
 import type { Post } from '../engine/posts';
 
-export function Home({ onPlay, onResume, onShowSaved, onOpenPost, onShowPosts }: { onPlay: (m: ModeId) => void; onResume: (s: GameSnapshot) => void; onShowSaved: () => void; onOpenPost: (p: Post) => void; onShowPosts: () => void }) {
+/** The games in three plain groups, so a new player knows where to start. */
+const GROUPS: { id: 'quick' | 'learn' | 'challenge'; modes: ModeId[] }[] = [
+  { id: 'quick', modes: ['classic', 'truefalse', 'who', 'book', 'blank'] },
+  { id: 'learn', modes: ['quiz', 'knowledge', 'drill', 'recall', 'study'] },
+  { id: 'challenge', modes: ['speed', 'survival'] },
+];
+const NO_POSTS: string[] = [];
+
+export function Home({ onPlay, onMemory, onResume, onShowSaved, onOpenPost, onShowPosts }: { onPlay: (m: ModeId) => void; onMemory: () => void; onResume: (s: GameSnapshot) => void; onShowSaved: () => void; onOpenPost: (p: Post) => void; onShowPosts: () => void }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   const xp = useApp((s) => s.xp);
@@ -30,6 +39,15 @@ export function Home({ onPlay, onResume, onShowSaved, onOpenPost, onShowPosts }:
   const { level, into, need } = levelFromXp(xp);
   const [intro, setIntro] = useState<ModeId | null>(null);
   const dailyDone = useApp((s) => s.dailyDoneOn === dayKey());
+  // An unread Daily Thought sits beside the verse: swipe between the two.
+  const latestPost = usePosts((s) => s.posts[0]);
+  const readPosts = useApp((s) => s.readPosts ?? NO_POSTS);
+  const hasThought = Boolean(latestPost && !readPosts.includes(latestPost.id));
+  const groupText = {
+    quick: [t.groupQuick, t.groupQuickSub],
+    learn: [t.groupLearn, t.groupLearnSub],
+    challenge: [t.groupChallenge, t.groupChallengeSub],
+  } as const;
 
   return (
     <div className="screen" lang={uiLang}>
@@ -70,31 +88,52 @@ export function Home({ onPlay, onResume, onShowSaved, onOpenPost, onShowPosts }:
         </motion.div>
       )}
 
-      {!dailyDone && (
-        <div className="home-top">
-          <DailyCard onPlay={() => onPlay('daily')} />
-          <VerseOfTheDay />
-        </div>
-      )}
-      {dailyDone && <VerseOfTheDay />}
-      <ThoughtCard onOpen={onOpenPost} onShowAll={onShowPosts} />
+      {!dailyDone && <DailyCard onPlay={() => onPlay('daily')} />}
 
-      <h2 className="eyebrow section-title">{t.modes}</h2>
-      <div className="mode-grid">
-        {MODE_ORDER.map((id, i) => (
-          <motion.div
-            key={id}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ ...spring.calm, delay: 0.03 * i }}
-          >
-            <Pressable className={`mode-card glass horse-${MODES[id].horse}`} onClick={() => setIntro(id)}>
-              <ModeArt mode={id} className="mode-art" />
-              <span className="mode-name">{t.modeName[id]}</span>
-            </Pressable>
-          </motion.div>
-        ))}
-      </div>
+      {hasThought ? (
+        <div className="home-swipe">
+          <VerseOfTheDay />
+          <ThoughtCard onOpen={onOpenPost} onShowAll={onShowPosts} />
+        </div>
+      ) : (
+        <>
+          <VerseOfTheDay />
+          <ThoughtCard onOpen={onOpenPost} onShowAll={onShowPosts} />
+        </>
+      )}
+
+      {GROUPS.map((g, gi) => (
+        <section key={g.id} className="mode-group">
+          <div className="group-head">
+            <h2 className="group-title">{groupText[g.id][0]}</h2>
+            <p className="caption">{groupText[g.id][1]}</p>
+          </div>
+          <div className="mode-list">
+            {g.modes.map((id, i) => (
+              <motion.div key={id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring.calm, delay: 0.03 * (gi * 3 + i) }}>
+                <Pressable className={`mode-row glass horse-${MODES[id].horse}`} onClick={() => setIntro(id)}>
+                  <ModeArt mode={id} className="mode-row-art" />
+                  <span className="menu-text">
+                    <strong>{t.modeName[id]}</strong>
+                    <span className="caption">{t.modeDesc[id]}</span>
+                  </span>
+                  <ChevronRight size={18} strokeWidth={STROKE} className="menu-chevron" />
+                </Pressable>
+              </motion.div>
+            ))}
+            {g.id === 'learn' && (
+              <Pressable className="mode-row glass horse-pale" onClick={onMemory}>
+                <MemoryArt className="mode-row-art" />
+                <span className="menu-text">
+                  <strong>{t.memoryTitle}</strong>
+                  <span className="caption">{t.memoryDesc}</span>
+                </span>
+                <ChevronRight size={18} strokeWidth={STROKE} className="menu-chevron" />
+              </Pressable>
+            )}
+          </div>
+        </section>
+      ))}
 
       <Sheet open={levelOpen} onClose={() => setLevelOpen(false)} label={t.level}>
         <div className="mode-intro level-sheet" lang={uiLang}>
