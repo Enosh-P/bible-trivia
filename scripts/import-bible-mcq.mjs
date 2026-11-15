@@ -41,7 +41,7 @@ import { pathToFileURL } from 'node:url';
 import { parquetReadObjects } from 'hyparquet';
 import { buildWhoSaid, WHO_ATTRIBUTION } from './lib/who-said.mjs';
 import { looksBroken } from './lib/tamil-check.mjs';
-import { fixTamil } from './lib/tamil-fix.mjs';
+import { fixEnglish, fixTamil } from './lib/tamil-fix.mjs';
 
 const DATASET = 'MushroomGecko/BIBLE';
 const OUT = new URL('../public/packs/mcq/', import.meta.url);
@@ -231,6 +231,11 @@ const redo = [];
 const CLAUDE_DIR = new URL('../content/translations/ta/mcq-claude/', import.meta.url);
 
 function addTamil(book, rows) {
+  // English first ("Yahweh" -> "Jehovah"), so the Tamil fixes see the final English.
+  for (const row of rows) {
+    row[4] = fixEnglish(row[4]);
+    row[5] = row[5].map(fixEnglish);
+  }
   const read = (dir) => {
     const f = new URL(`${book}.json`, dir);
     return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : {};

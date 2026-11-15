@@ -142,10 +142,28 @@ function fixSmall(en, ta) {
   return ta;
 }
 
+/**
+ * The divine name (English "Yahweh", shown as "Jehovah"): கர்த்தர் -> யெகோவா in that
+ * Tamil, keeping the ending (கர்த்தருக்கு -> யெகோவாவுக்கு, கர்த்தாவே -> யெகோவாவே).
+ * Left alone when the English also says "Lord", so the two aren't mixed up.
+ */
+function fixDivineName(en, ta) {
+  if (!/\b(Yahweh|Jehovah)/.test(en) || /\b(Lord|LORD)\b/.test(en)) return ta;
+  return ta
+    .replace(word('கர்த்தா'), (m, r) => 'யெகோவா' + r) // vocative: கர்த்தாவே -> யெகோவாவே
+    .replace(word('கர்த்தர'), (m, r) => (r === '\u0BCD' ? 'யெகோவா' : SIGN.test(r) ? 'யெகோவாவ' + r : m))
+    .replace(word('யேகோவா'), (m, r) => 'யெகோவா' + r);
+}
+
 /** The Tamil with the known wrong words replaced. `en` is the English it was translated from. */
 export function fixTamil(en, ta) {
   if (!ta || !en) return ta;
-  return fixSmall(en, fixGod(en, fixTemple(en, fixProphet(en, fixLord(en, ta)))));
+  return fixDivineName(en, fixSmall(en, fixGod(en, fixTemple(en, fixProphet(en, fixLord(en, ta))))));
+}
+
+/** English: the modern translation's "Yahweh" becomes "Jehovah" (the KJV's form of the name). */
+export function fixEnglish(en) {
+  return typeof en === 'string' ? en.replace(/\bYahweh/g, 'Jehovah') : en;
 }
 
 /** Words that should never be left in Bible Tamil (a check for tests and reports). */
