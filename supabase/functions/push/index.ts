@@ -80,6 +80,21 @@ export function message(row: QueueRow, lang: Lang, verses: Verse[], books: Recor
       const ref = `${books[v.book_code]?.[lang] ?? v.book_code} ${v.chapter}:${v.verse}`;
       return { title: ta ? `இன்றைய வசனம் · ${ref}` : `Verse of the Day · ${ref}`, body: clip(ta ? v.ta : v.en), url: '/?open=home', tag: 'daily-verse' };
     }
+    case 'daily_thought': {
+      // Each language falls back to the other if the post was written in one only.
+      const title = String((ta ? p.title_ta || p.title_en : p.title_en || p.title_ta) ?? '');
+      const body = String((ta ? p.body_ta || p.body_en : p.body_en || p.body_ta) ?? '')
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+        .replace(/[*_#>`-]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+      return {
+        title: ta ? `இன்றைய சிந்தனை: ${title}` : `Today's Thought: ${title}`,
+        body: clip(body),
+        url: `/?open=thought&id=${p.post}`,
+        tag: 'daily-thought',
+      };
+    }
     case 'daily_reminder':
       if (p.slot === 'am') {
         return {

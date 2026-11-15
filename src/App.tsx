@@ -22,7 +22,7 @@ import { keepPushAlive, syncPushLanguage } from './online/push';
 import { Settings } from './screens/Settings';
 import { Thought, Thoughts } from './screens/Thoughts';
 import { Admin, AdminThoughts } from './screens/AdminThoughts';
-import { loadCachedPosts, syncPosts } from './online/posts';
+import { loadCachedPosts, syncPosts, getPost } from './online/posts';
 import type { Post } from './engine/posts';
 import { Game, type RoundResult } from './screens/Game';
 import { Results } from './screens/Results';
@@ -190,6 +190,12 @@ function MainApp() {
     history.replaceState(null, '', location.pathname);
     if (open === 'friends') goTab('friends');
     else if (open === 'daily') setRoute({ kind: 'game', mode: 'daily', run: Date.now() });
+    else if (open === 'thought') {
+      // A new Daily Thought: open it, or the list of thoughts if it can't be found.
+      const id = params.get('id');
+      showThoughts();
+      if (id) void getPost(id).then((post) => post && setRoute({ kind: 'post', post, from: 'gospel' }));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

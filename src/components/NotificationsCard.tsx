@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Bell, BellOff, Flame, ScrollText, Users } from 'lucide-react';
+import { Bell, BellOff, Feather, Flame, ScrollText, Users } from 'lucide-react';
 import { DEFAULT_PREFS, disablePush, enablePush, isSubscribed, keepPushAlive, loadPrefs, pushSupport, pushWanted, savePrefs, type NotificationPrefs } from '../online/push';
 import { useAccount } from '../online/account';
 import { spring } from '../motion/springs';
@@ -104,6 +104,7 @@ export function NotificationsCard() {
       {session && support === 'ok' && on && (
         <>
           {row('pale', ScrollText, t.notifVerse, 'daily_verse', 'verse_hour')}
+          {row('white', Feather, t.notifThought, 'daily_thought')}
           <div className="row">
             <IconTile horse="red" icon={Flame} size={30} />
             <span className="row-label">

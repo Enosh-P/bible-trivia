@@ -12,6 +12,7 @@ const VAPID_PUBLIC_KEY = (import.meta.env.VITE_VAPID_PUBLIC_KEY as string | unde
 
 export interface NotificationPrefs {
   daily_verse: boolean;
+  daily_thought: boolean;
   verse_hour: number;
   daily_reminder: boolean;
   morning_hour: number;
@@ -23,6 +24,7 @@ export interface NotificationPrefs {
 
 export const DEFAULT_PREFS: NotificationPrefs = {
   daily_verse: true,
+  daily_thought: true,
   verse_hour: 7,
   daily_reminder: true,
   morning_hour: 9,

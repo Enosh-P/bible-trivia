@@ -89,3 +89,12 @@ export async function findPosts(query: string, limit = 100): Promise<{ posts: Po
   if (error || !data) return local();
   return { posts: visiblePosts(data as unknown as Post[], dayKey()), offline: false };
 }
+
+/** One post by id (from the phone first, then the server), e.g. when a notification is tapped. */
+export async function getPost(id: string): Promise<Post | null> {
+  const local = await db.posts.get(id).catch(() => undefined);
+  if (local) return local;
+  if (!supabase || !navigator.onLine) return null;
+  const { data } = await supabase.from('posts').select(POST_COLUMNS).eq('id', id).maybeSingle();
+  return (data as unknown as Post | null) ?? null;
+}
