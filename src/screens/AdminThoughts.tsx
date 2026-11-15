@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { Bold, BookOpen, CircleHelp, CalendarDays, ChevronLeft, ChevronRight, Eye, Feather, Image as ImageIcon, ImagePlus, Italic, List, ListOrdered, Plus, Send, Trash2, Undo2 } from 'lucide-react';
+import { Bold, BookOpen, CircleHelp, Heart, MessageCircle, CalendarDays, ChevronLeft, ChevronRight, Eye, Feather, Image as ImageIcon, ImagePlus, Italic, List, ListOrdered, Plus, Send, Trash2, Undo2 } from 'lucide-react';
 import { dayKey } from '../engine/picker';
 import { emptyDraft, hasLang, postState, publishProblem, type Post, type PostDraft, type PostState } from '../engine/posts';
 import { formatVerseRef, parseVerseRef } from '../engine/verseRef';
 import type { Lang } from '../engine/types';
 import { deletePost, listAllPosts, savePost, uploadPostImage } from '../online/adminPosts';
+import { postStats } from '../online/postSocial';
 import { useAccount } from '../online/account';
 import { supabase } from '../online/supabase';
 import { useApp, useT } from '../store';
@@ -70,6 +71,7 @@ export function AdminThoughts({ onExit }: { onExit: () => void }) {
   const uiLang = useApp((s) => s.uiLang);
   const signedIn = useAccount((s) => Boolean(s.session));
   const [posts, setPosts] = useState<Post[] | null>(null);
+  const [stats, setStats] = useState<Record<string, { likes: number; comments: number }>>({});
   const [failed, setFailed] = useState(false);
   const [editing, setEditing] = useState<{ saved: PostDraft; start: PostDraft; restored: boolean } | null>(null);
   const [stored, setStored] = useState(() => readAllStored());
@@ -81,6 +83,7 @@ export function AdminThoughts({ onExit }: { onExit: () => void }) {
     setFailed(false);
     try {
       setPosts(await listAllPosts());
+      void postStats().then(setStats).catch(() => {});
     } catch {
       setFailed(true);
     }
@@ -178,6 +181,11 @@ export function AdminThoughts({ onExit }: { onExit: () => void }) {
                       ))}
                     </span>
                     <strong lang={p[`title_${uiLang}`] ? uiLang : uiLang === 'en' ? 'ta' : 'en'}>{p[`title_${uiLang}`] || p.title_en || p.title_ta || t.postUntitled}</strong>
+                    {stats[p.id] && (
+                      <span className="caption post-stats">
+                        <Heart size={13} strokeWidth={STROKE} /> {stats[p.id].likes} · <MessageCircle size={13} strokeWidth={STROKE} /> {stats[p.id].comments}
+                      </span>
+                    )}
                   </div>
                   <span className={`state-chip horse-${STATE_HORSE[state]}`}>{t.postStateName[state]}</span>
                 </Pressable>

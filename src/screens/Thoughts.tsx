@@ -11,6 +11,7 @@ import { LangToggle } from '../components/LangToggle';
 import { PostImage } from '../components/Markdown';
 import { PostView, postDate } from '../components/PostView';
 import { ReportButton } from '../components/Report';
+import { PostSocial } from '../components/PostSocial';
 
 const NONE: string[] = [];
 
@@ -33,6 +34,7 @@ export function Thought({ post, onExit, onShowAll }: { post: Post; onExit: () =>
         <ReportButton target={postTarget(fresh)} />
       </header>
       <PostView post={fresh} />
+      <PostSocial postId={fresh.id} />
       {onShowAll && (
         <Pressable className="btn glass" onClick={onShowAll}>
           {t.thoughtsEarlier}

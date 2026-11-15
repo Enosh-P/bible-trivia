@@ -1298,3 +1298,18 @@ textarea.field.post-body-input:lang(ta) { line-height: 1.85; }
 .faq-topic-pick, .faq-fields, .faq-verses { display: flex; flex-direction: column; gap: 10px; }
 .faq-verse-row { display: flex; align-items: flex-start; gap: 6px; }
 .faq-preview { display: flex; flex-direction: column; gap: 6px; }
+.post-social { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+.post-social-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.like-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; font-weight: 650; color: var(--text-2); }
+.like-btn.is-on { color: #e0493e; }
+.comment-count { display: inline-flex; align-items: center; gap: 6px; }
+.comments { display: flex; flex-direction: column; gap: 8px; }
+.comment { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: var(--radius-md); }
+.comment-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.comment-body { margin: 2px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.comment-actions { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.comment-new { display: flex; flex-direction: column; gap: 8px; padding: 10px; border-radius: var(--radius-md); }
+.comment-new textarea { resize: vertical; min-height: 64px; height: auto; padding: 10px 12px; line-height: 1.5; font: inherit; }
+.comment-send { display: flex; align-items: center; justify-content: space-between; }
+.post-stats { display: inline-flex; align-items: center; gap: 4px; }
+.post-social-off { text-align: center; }

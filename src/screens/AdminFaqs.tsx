@@ -178,10 +178,11 @@ function FaqEditor({ initial, onClose }: { initial: FaqDraft; onClose: (changed:
           <ChevronLeft size={20} strokeWidth={STROKE} />
         </Pressable>
         <div className="grow">
-          <p className="eyebrow">{t.adminFaqs}</p>
+          <p className="eyebrow">
+            {t.adminFaqs} · {draft.status === 'draft' ? t.faqDraft : t.faqPublished}
+          </p>
           <h1 className="title">{draft.id ? t.faqEdit : t.faqNew}</h1>
         </div>
-        <span className="chip glass caption">{draft.status === 'draft' ? t.faqDraft : t.faqPublished}</span>
       </header>
 
       <label className="glass card-pad faq-topic-pick">
