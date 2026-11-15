@@ -81,6 +81,29 @@ function useDocumentSettings() {
   }, [textScale, uiLang]);
 }
 
+/**
+ * Put in each screen: when the screen appears, scroll to where that tab was (or the top
+ * for other screens), and track scrolling for it from then on.
+ */
+function ScrollPlace({ screenKey, positions, current }: { screenKey: string; positions: { current: Record<string, number> }; current: { current: string } }) {
+  useLayoutEffect(() => {
+    current.current = screenKey;
+    const target = screenKey.startsWith('tab-') ? (positions.current[screenKey] ?? 0) : 0;
+    window.scrollTo(0, target);
+    if (!target) return;
+    // The tab's content may still be drawing: try again once it has grown tall enough.
+    let tries = 0;
+    const again = () => {
+      if (current.current !== screenKey || Math.abs(window.scrollY - target) < 2 || tries++ > 20) return;
+      window.scrollTo(0, target);
+      requestAnimationFrame(again);
+    };
+    requestAnimationFrame(again);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return null;
+}
+
 export default function App() {
   useDocumentSettings();
   if (import.meta.env.DEV && new URLSearchParams(location.search).has('art')) return <ArtGallery />;
@@ -164,22 +187,8 @@ function MainApp() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
-  // Layout effect: switch which screen is being tracked before the browser reacts to the
-  // shorter page, so leaving Home doesn't overwrite where Home was.
-  useLayoutEffect(() => {
-    currentScreen.current = screenKey;
-    const target = screenKey.startsWith('tab-') ? (scrollPos.current[screenKey] ?? 0) : 0;
-    window.scrollTo(0, target);
-    if (!target) return;
-    // The tab's content may still be drawing: try again once it has grown tall enough.
-    let tries = 0;
-    const again = () => {
-      if (currentScreen.current !== screenKey || Math.abs(window.scrollY - target) < 2 || tries++ > 20) return;
-      window.scrollTo(0, target);
-      requestAnimationFrame(again);
-    };
-    requestAnimationFrame(again);
-  }, [screenKey]);
+  // The new screen sets its scroll place itself when it appears (see ScrollPlace), after the
+  // old one has faded out, so nothing visible ever jumps.
 
   const [lastTab, setLastTab] = useState<Tab>(() => tabFromHash());
 
@@ -384,17 +393,17 @@ function MainApp() {
     <MotionConfig reducedMotion="user">
       <Atmosphere />
       <main className={`app ${pushed ? 'is-pushed' : ''}`}>
-        <AnimatePresence mode="popLayout" initial={false}>
+        {/* Fade out, then fade in: the old screen fades where it is, then the new one appears
+            already at its scroll place (ScrollPlace), so nothing jumps while visible. */}
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={key}
             className="route"
-            initial={pushed ? { x: '100%', opacity: 1 } : { opacity: 0, scale: 0.985 }}
-            animate={{ x: 0, opacity: 1, scale: 1 }}
-            // The old screen leaves at once: the page scrolls to the new screen's place in the same
-            // moment, and a fading old screen would visibly jump (a flicker). Only the new one animates.
-            exit={{ opacity: 0, transition: { duration: 0 } }}
-            transition={spring.calm}
+            initial={pushed ? { x: 40, opacity: 0 } : { opacity: 0, scale: 0.99 }}
+            animate={{ x: 0, opacity: 1, scale: 1, transition: { duration: 0.2, ease: 'easeOut' } }}
+            exit={{ opacity: 0, transition: { duration: 0.12, ease: 'easeIn' } }}
           >
+            <ScrollPlace screenKey={screenKey} positions={scrollPos} current={currentScreen} />
             {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onMemory={() => setRoute({ kind: 'memory' })} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'home' })} onShowPosts={showThoughts} />}
             {route.kind === 'tab' && route.tab === 'friends' && <Friends onStartChallenge={startChallenge} onPlayChallenge={playChallenge} />}
             {route.kind === 'tab' && route.tab === 'gospel' && <Gospel section={gospelSection} onSection={setGospelSection} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'gospel' })} />}
