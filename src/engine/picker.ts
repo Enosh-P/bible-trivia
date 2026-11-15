@@ -72,7 +72,21 @@ export function pickQuestions(pool: Question[], mode: ModeDef, opts: PickOptions
 export function pickDaily(pool: Question[], mode: ModeDef, day = dayKey()): Question[] {
   const random = rng(hashString(`daily:${day}`));
   const eligible = pool.filter((q) => mode.types.includes(q.type));
-  // Ramp difficulty: easy first, harder at the end.
-  const picked = shuffle(eligible, random).slice(0, mode.length);
-  return picked.sort((a, b) => a.difficulty - b.difficulty);
+  // 3 Bible Knowledge, 2 True or False, the rest well-known starter questions.
+  const isTf = (q: Question) => q.type === 'tf';
+  const isKnowledge = (q: Question) => !isTf(q) && q.id.startsWith('kn-');
+  const groups: [Question[], number][] = [
+    [eligible.filter(isKnowledge), 3],
+    [eligible.filter(isTf), 2],
+    [eligible.filter((q) => !isTf(q) && !isKnowledge(q)), mode.length - 5],
+  ];
+  const picked: Question[] = [];
+  for (const [group, n] of groups) picked.push(...shuffle(group, random).slice(0, n));
+  // Top up from anything left if a group was short.
+  if (picked.length < mode.length) {
+    const used = new Set(picked.map((q) => q.id));
+    picked.push(...shuffle(eligible.filter((q) => !used.has(q.id)), random).slice(0, mode.length - picked.length));
+  }
+  // Easy first, then mix the rest so True or False isn't all at the end.
+  return shuffle(picked, random).sort((a, b) => a.difficulty - b.difficulty);
 }

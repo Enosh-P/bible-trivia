@@ -335,6 +335,7 @@ export async function addFriend(code: string): Promise<FriendRequestResult> {
   if (!supabase) return 'signed_out';
   const { data, error } = await supabase.rpc('send_friend_request', { p_code: code });
   if (error) throw error;
+  sendPendingPushes();
   await useAccount.getState().refresh();
   return data as FriendRequestResult;
 }
@@ -343,6 +344,7 @@ export async function respondToFriend(from: string, accept: boolean) {
   if (!supabase) return;
   const { error } = await supabase.rpc('respond_friend_request', { p_from: from, p_accept: accept });
   if (error) throw error;
+  sendPendingPushes();
   await useAccount.getState().refresh();
 }
 
@@ -375,6 +377,7 @@ export async function createChallenge(mode: ModeId, questionIds: string[], frien
   if (!supabase) throw new Error('offline');
   const { data, error } = await supabase.rpc('create_challenge', { p_mode: mode, p_question_ids: questionIds, p_friends: friendIds });
   if (error) throw error;
+  sendPendingPushes();
   await useAccount.getState().refresh();
   return data as string;
 }
@@ -383,6 +386,7 @@ export async function submitChallenge(challengeId: string, score: number, correc
   if (!supabase) return;
   const { error } = await supabase.rpc('submit_challenge_result', { p_challenge: challengeId, p_score: score, p_correct: correct, p_total: total });
   if (error && !/already played/.test(error.message)) throw error;
+  sendPendingPushes();
   void useAccount.getState().refresh().catch(() => {});
 }
 
@@ -430,6 +434,7 @@ export async function acceptInvite(token: string): Promise<InviteResult> {
   if (!supabase || !useAccount.getState().session) return 'signed_out';
   const { data, error } = await supabase.rpc('accept_friend_invite', { p_token: token });
   if (error) throw error;
+  sendPendingPushes();
   await useAccount.getState().refresh();
   return data as InviteResult;
 }
@@ -443,4 +448,13 @@ export function inviteFromText(text: string): string | null {
   } catch {
     return null;
   }
+}
+
+/**
+ * Ask the server to send waiting notifications now (a challenge or friend request just
+ * happened), so they arrive at once even if the Supabase webhook isn't set up. Never throws.
+ */
+export function sendPendingPushes() {
+  if (!supabase || !useAccount.getState().session) return;
+  void supabase.functions.invoke('push', { body: { task: 'drain' } }).catch(() => {});
 }

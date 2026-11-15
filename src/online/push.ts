@@ -147,3 +147,4 @@ export async function syncPushLanguage(lang: 'en' | 'ta') {
   if (!supabase || !uid) return;
   await supabase.from('notification_prefs').update({ lang }).eq('user_id', uid);
 }
+

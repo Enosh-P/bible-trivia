@@ -65,3 +65,13 @@ export const MODES: Record<ModeId, ModeDef> = {
 };
 
 export const MODE_ORDER: ModeId[] = ['quiz', 'knowledge', 'classic', 'drill', 'recall', 'truefalse', 'who', 'book', 'blank', 'speed', 'survival', 'study'];
+
+/**
+ * Games you can challenge friends in: every fixed-length game with a timer, so new
+ * categories join automatically. Quiz by Book needs a book, so it is challenged from
+ * its results (with exactly the questions you played) instead of from the list.
+ */
+export const RESULT_CHALLENGE_MODES: ModeId[] = MODE_ORDER.filter(
+  (id) => Number.isFinite(MODES[id].length) && !MODES[id].study && id !== 'daily',
+);
+export const CHALLENGE_MODES: ModeId[] = RESULT_CHALLENGE_MODES.filter((id) => id !== 'quiz');
