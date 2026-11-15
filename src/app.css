@@ -1224,7 +1224,7 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .post-title.is-second:lang(ta) { font-size: 1.05rem; }
 .post .is-ta-both { color: var(--ta-ink); }
 .post-verse { padding: 14px 16px 14px 18px; border-radius: var(--radius-lg); border-left: 3px solid var(--pale-ink); }
-.post-verse .verse.is-ta-both { font-weight: 650; }
+.post-verse .verse.is-ta-both { font-weight: 650; color: var(--ta-ink); }
 .post-verse .verse-secondary:not(.is-ta-both) { color: var(--text-2); }
 .post-rule { width: 100%; border: 0; border-top: 1px solid var(--line-strong); margin: 2px 0; }
 .post-body.is-ta-both { font-weight: 550; }
@@ -1241,7 +1241,8 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .admin-group { display: flex; flex-direction: column; gap: 10px; }
 .restored-note { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; font-size: 0.92rem; }
 .restored-note .link { flex: none; }
-.post-tabs .tab-dot { display: inline-block; width: 6px; height: 6px; margin-left: 6px; border-radius: 50%; background: var(--accent); vertical-align: middle; }
+.post-tabs button > span:not(.segmented-thumb) { display: inline-flex; align-items: center; gap: 6px; }
+.post-tabs .tab-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .post-panes { display: flex; flex-direction: column; gap: 12px; }
 .post-pane { display: none; }
 .post-pane.is-active { display: flex; }
