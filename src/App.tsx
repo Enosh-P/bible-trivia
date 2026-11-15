@@ -154,6 +154,11 @@ function MainApp() {
   const [route, setRoute] = useState<Route>(() => ({ kind: 'tab', tab: tabFromHash() }));
   // Which part of the Gospel tab is open (kept when coming back from a thought).
   const [gospelSection, setGospelSection] = useState<GospelSection>('way');
+  // A new screen (or tab) starts at the top, not where the last one was scrolled to.
+  const screenKey = route.kind === 'tab' ? `tab-${route.tab}` : route.kind;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [screenKey]);
 
   const [lastTab, setLastTab] = useState<Tab>(() => tabFromHash());
 

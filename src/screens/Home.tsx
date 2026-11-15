@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ChevronRight, Clock, Flame, Heart, ListOrdered, Play, Trophy, X } from 'lucide-react';
+import { ChevronRight, Clock, Flame, Heart, LayoutGrid, List, ListOrdered, Play, Trophy, X } from 'lucide-react';
 import { MODES, type ModeId } from '../engine/modes';
 import { HEART_EVERY, MAX_HEARTS, levelFromXp, liveStreak } from '../engine/scoring';
 import { dayKey } from '../engine/picker';
@@ -35,6 +35,9 @@ export function Home({ onPlay, onMemory, onResume, onShowSaved, onOpenPost, onSh
   const hearts = useApp((s) => s.hearts ?? 0);
   const healed = useApp((s) => (s.healedNote?.day === dayKey() ? s.healedNote.count : 0));
   const [heartsOpen, setHeartsOpen] = useState(false);
+  // List (long rows with a description) or grid (square tiles); remembered on this phone.
+  const view = useApp((st) => st.homeView ?? 'list');
+  const setApp = useApp((st) => st.set);
   const [levelOpen, setLevelOpen] = useState(false);
   const { level, into, need } = levelFromXp(xp);
   const [intro, setIntro] = useState<ModeId | null>(null);
@@ -105,10 +108,21 @@ export function Home({ onPlay, onMemory, onResume, onShowSaved, onOpenPost, onSh
       {GROUPS.map((g, gi) => (
         <section key={g.id} className="mode-group">
           <div className="group-head">
-            <h2 className="group-title">{groupText[g.id][0]}</h2>
+            <div className="group-title-row">
+              <h2 className="group-title">{groupText[g.id][0]}</h2>
+              {gi === 0 && (
+                <div className="view-toggle glass" role="radiogroup" aria-label={t.gamesView}>
+                  {(['list', 'grid'] as const).map((v) => (
+                    <button key={v} role="radio" aria-checked={view === v} aria-label={v === 'list' ? t.viewList : t.viewGrid} title={v === 'list' ? t.viewList : t.viewGrid} className={view === v ? 'is-on' : ''} onClick={() => setApp({ homeView: v })}>
+                      {v === 'list' ? <List size={17} strokeWidth={STROKE} /> : <LayoutGrid size={17} strokeWidth={STROKE} />}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <p className="caption">{groupText[g.id][1]}</p>
           </div>
-          <div className="mode-list">
+          <div className={`mode-list is-${view}`}>
             {/* Memory verses leads the Learn group. */}
             {g.id === 'learn' && (
               <Pressable className="mode-row glass horse-pale" onClick={onMemory}>

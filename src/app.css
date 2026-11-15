@@ -1543,3 +1543,17 @@ textarea.field.post-body-input:lang(ta) { line-height: 1.85; }
 .home-badges .badge-heart { color: var(--red); }
 .home-badges .badge-heart.is-off { color: #f3b7b2; }
 .home-badges .badge-trophy { color: var(--accent); }
+
+/* Home: list / grid switch for the games */
+.group-title-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.view-toggle { display: inline-flex; padding: 3px; gap: 2px; border-radius: 999px; }
+.view-toggle button { display: grid; place-items: center; width: 34px; height: 30px; border-radius: 999px; color: var(--text-2); }
+.view-toggle button.is-on { background: var(--accent); color: var(--on-accent); }
+.mode-list.is-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.mode-list.is-grid .mode-row { flex-direction: column; justify-content: center; text-align: center; gap: 8px; aspect-ratio: 1; min-height: 0; padding: 14px 10px; }
+.mode-list.is-grid .mode-row-art { width: 88%; height: auto; aspect-ratio: 4 / 3; max-height: 62%; }
+.mode-list.is-grid .menu-text { align-items: center; }
+.mode-list.is-grid .menu-text .caption, .mode-list.is-grid .menu-chevron { display: none; }
+.mode-list.is-grid .mode-row strong { font-size: 0.98rem; line-height: 1.25; }
+@media (min-width: 960px) { .mode-list.is-grid { grid-template-columns: repeat(4, 1fr); } }
+.mode-list.is-grid .menu-text, .mode-list.is-grid .menu-text strong { text-align: center; width: 100%; }
