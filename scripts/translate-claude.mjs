@@ -238,7 +238,11 @@ async function collect(state, done) {
 
 function redoKeys() {
   const f = new URL('content/translations/ta/mcq/redo.json', ROOT);
-  const list = existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : [];
+  if (!existsSync(f)) {
+    console.log('No redo list on this computer yet: run  npm run content:mcq -- --merge-only  first (it writes the list), then this again.');
+    process.exit(0);
+  }
+  const list = JSON.parse(readFileSync(f, 'utf8'));
   return new Set(list.map(({ book, id }) => keyOf(book, id)));
 }
 
