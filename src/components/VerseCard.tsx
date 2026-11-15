@@ -37,7 +37,7 @@ export function VerseText({ verse, size = 'md' }: { verse: Verse; size?: 'md' | 
 
 export function VerseOfTheDay() {
   const t = useT();
-  const uiLang = useApp((s) => s.uiLang);
+  const qLang = useApp((s) => s.qLang);
   const verse = verseOfTheDay();
   const both = useApp((s) => s.qLang === 'both');
   // Home stays short: a long verse shows its first lines until "Read more".
@@ -45,7 +45,11 @@ export function VerseOfTheDay() {
   const [open, setOpen] = useState(false);
 
   async function share() {
-    const text = `${verse[uiLang]}\n— ${formatRef(uiLang, verse.book, verse.chapter, verse.verse)}`;
+    // Tamil always; English too unless the questions are in Tamil only. Just the words, no link.
+    const langs: Lang[] = qLang === 'ta' ? ['ta'] : ['ta', 'en'];
+    const text = langs
+      .map((l) => `${verse[l]}\n— ${formatRef(l, verse.book, verse.chapter, verse.verse)} (${l === 'ta' ? 'BSI O.V.' : 'KJV'})`)
+      .join('\n\n');
     try {
       if (navigator.share) await navigator.share({ text });
       else await navigator.clipboard.writeText(text);
