@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { Bell, ChevronLeft, ChevronRight, Download, Info, Languages, Monitor, Moon, Palette, ShieldCheck, Smartphone, Sun, Type, Vibrate, Volume2 } from 'lucide-react';
+import { Bell, ChevronLeft, ChevronRight, Download, Info, Languages, Monitor, Moon, Palette, ShieldCheck, Smartphone, Sun, Type, Vibrate, Volume2, Share2 } from 'lucide-react';
 import { useApp, useT, type QuestionLang, type ThemePref } from '../store';
 import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
@@ -101,6 +101,22 @@ const TEXT_SIZES = [0.9, 1, 1.15, 1.3];
 
 export function Settings({ onAdmin }: { onAdmin: () => void }) {
   const t = useT();
+  const [shared, setShared] = useState(false);
+  /** Share the website link: the phone's share sheet, or copy it. */
+  async function shareApp() {
+    const url = location.origin + '/';
+    const text = t.shareAppText;
+    try {
+      if (typeof navigator.share === 'function') await navigator.share({ title: t.appName, text, url });
+      else {
+        await navigator.clipboard.writeText(`${text}\n${url}`);
+        setShared(true);
+        setTimeout(() => setShared(false), 2500);
+      }
+    } catch {
+      /* cancelled */
+    }
+  }
   // Shown to admins only; the database checks again on every change they make.
   const isAdmin = useAccount((a) => Boolean(a.session && a.profile?.is_admin));
   const session = useAccount((a) => a.session);
@@ -204,6 +220,7 @@ export function Settings({ onAdmin }: { onAdmin: () => void }) {
                 onClick={doInstall}
                 disabled={install === 'installed'}
               />
+              <MenuRow horse="red" icon={Share2} label={t.shareApp} sub={shared ? t.shareAppCopied : t.shareAppSub} onClick={() => void shareApp()} />
               {isAdmin && <MenuRow horse="black" icon={ShieldCheck} label={t.admin} sub={t.adminSub} onClick={onAdmin} />}
               <MenuRow horse="white" icon={Info} label={t.about} sub={t.aboutSub} onClick={() => setAboutOpen(true)} />
             </section>
