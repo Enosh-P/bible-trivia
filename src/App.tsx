@@ -33,7 +33,7 @@ import { dayKey } from './engine/picker';
 import { db } from './storage/db';
 import { supabase, syncQuestions } from './online/supabase';
 import { flushReports } from './online/reports';
-import { acceptInvite, createChallenge, initAccount, inviteFromText, useAccount, pushProgress, type Challenge } from './online/account';
+import { acceptInvite, createChallenge, initAccount, inviteFromText, myTurn, useAccount, pushProgress, type Challenge } from './online/account';
 import { flushOutbox, send } from './online/outbox';
 import { syncPractice, syncSoon } from './online/practiceSync';
 import { stockUp } from './online/stock';
@@ -218,7 +218,24 @@ function MainApp() {
     history.replaceState(null, '', location.pathname);
     if (open === 'friends') goTab('friends');
     else if (open === 'daily') setRoute({ kind: 'game', mode: 'daily', run: Date.now() });
-    else if (open === 'thought') {
+    else if (open === 'challenge') {
+      // "X challenged you": open that challenge (once the challenges have loaded) if it's still your turn.
+      goTab('friends');
+      const id = params.get('id');
+      if (id) {
+        const tryOpen = () => {
+          const c = useAccount.getState().challenges.find((x) => x.id === id);
+          if (!c) return false;
+          if (myTurn(c)) playChallenge(c);
+          return true;
+        };
+        if (!tryOpen()) {
+          void useAccount.getState().refresh().catch(() => {});
+          const unsub = useAccount.subscribe(() => tryOpen() && unsub());
+          setTimeout(unsub, 15000);
+        }
+      }
+    } else if (open === 'thought') {
       // A new Daily Thought: open it, or the list of thoughts if it can't be found.
       const id = params.get('id');
       showThoughts();
