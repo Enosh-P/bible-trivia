@@ -9,6 +9,7 @@ import { Pressable } from '../components/Pressable';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
 import type { RoundResult } from './Game';
 import { dayKey } from '../engine/picker';
+import { SaveButton } from '../components/SaveButton';
 import { ReportButton } from '../components/Report';
 import { ChallengeFromResult } from '../components/ChallengeFromResult';
 import { Reveal } from '../components/Reveal';
@@ -117,7 +118,10 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
               </span>
               <Reveal q={l.q} primary={lang} secondary={second} choice={l.choice} />
             </div>
-            <ReportButton target={questionTarget(l.q)} compact />
+            <div className="review-actions">
+              {!l.q.id.startsWith('gen-') && <SaveButton id={l.q.id} />}
+              <ReportButton target={questionTarget(l.q)} compact />
+            </div>
           </motion.li>
         ))}
       </ul>

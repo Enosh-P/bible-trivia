@@ -18,7 +18,7 @@ export function QuizPick({ onExit, onStart }: { onExit: () => void; onStart: (bo
   const [index, setIndex] = useState<McqIndex | null>(null);
   const [error, setError] = useState(false);
   const [book, setBook] = useState<string | null>(null);
-  const seconds = useApp((s) => s.quizSeconds ?? 20);
+  const seconds = useApp((s) => s.quizSeconds ?? (s.qLang === 'en' ? 20 : 40));
   const setApp = useApp((s) => s.set);
 
   // Offline, only the books already on the phone can be played.

@@ -71,7 +71,8 @@ export function Game({
 }) {
   const mode = MODES[modeId];
   // Quiz by Book lets players choose the time per question.
-  const quizSeconds = useApp((s) => s.quizSeconds ?? 20);
+  // Reading Tamil takes longer: 40 seconds unless chosen otherwise (20 in English only).
+  const quizSeconds = useApp((s) => s.quizSeconds ?? (s.qLang === 'en' ? 20 : 40));
   const perQuestion: number = modeId === 'quiz' ? quizSeconds : mode.perQuestion;
   const t = useT();
   const qLang = useApp((s) => s.qLang);
@@ -323,7 +324,6 @@ export function Game({
                   ×{combo}
                 </motion.span>
               )}
-              {!q.id.startsWith('gen-') && <SaveButton id={q.id} />}
               <ReportButton target={questionTarget(q)} />
             </div>
 
@@ -573,10 +573,13 @@ function Feedback({ q, answered, primary, secondary, last, onNext, lives }: { q:
           Drawn at the top of the page: the moving game screen would otherwise carry it along. */}
       {createPortal(
         <motion.div className="next-bar" initial={{ y: 80, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 80, opacity: 0 }} transition={spring.sheet}>
-          <Pressable className="btn btn-primary" onClick={onNext} autoFocus>
-            {out ? t.finish : t.next}
-            <ChevronRight size={18} strokeWidth={STROKE} />
-          </Pressable>
+          <div className="next-row">
+            {!q.id.startsWith('gen-') && <SaveButton id={q.id} big />}
+            <Pressable className="btn btn-primary" onClick={onNext} autoFocus>
+              {out ? t.finish : t.next}
+              <ChevronRight size={18} strokeWidth={STROKE} />
+            </Pressable>
+          </div>
         </motion.div>,
         document.body,
       )}

@@ -9,7 +9,8 @@ import { STROKE } from './icons';
 import { cue } from '../feedback';
 
 /** ☆ Keep this question for the Practice tab. */
-export function SaveButton({ id }: { id: string }) {
+/** `big`: the round button beside Next. */
+export function SaveButton({ id, big = false }: { id: string; big?: boolean }) {
   const t = useT();
   const [saved, setSaved] = useState(false);
   useEffect(() => {
@@ -36,9 +37,9 @@ export function SaveButton({ id }: { id: string }) {
     }
   }
   return (
-    <button className={`report-btn save-btn ${saved ? 'is-on' : ''}`} onClick={toggle} aria-pressed={saved} aria-label={saved ? t.unsaveQuestion : t.saveQuestion} title={saved ? t.unsaveQuestion : t.saveQuestion}>
+    <button className={`${big ? 'save-big glass' : 'report-btn'} save-btn ${saved ? 'is-on' : ''}`} onClick={toggle} aria-pressed={saved} aria-label={saved ? t.unsaveQuestion : t.saveQuestion} title={saved ? t.unsaveQuestion : t.saveQuestion}>
       <motion.span key={String(saved)} initial={{ scale: saved ? 0.4 : 1 }} animate={{ scale: 1 }} transition={spring.flick} style={{ display: 'inline-flex' }}>
-        <Star size={16} strokeWidth={STROKE} fill={saved ? 'currentColor' : 'none'} />
+        <Star size={big ? 22 : 16} strokeWidth={STROKE} fill={saved ? 'currentColor' : 'none'} />
       </motion.span>
     </button>
   );
