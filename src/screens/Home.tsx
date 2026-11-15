@@ -60,12 +60,12 @@ export function Home({ onPlay, onMemory, onResume, onShowSaved, onOpenPost, onSh
           <h1 className="display">{t.appName}</h1>
           <div className="home-badges">
             <button className="badge" onClick={() => setHeartsOpen(true)} aria-label={`${streak} ${t.streak}, ${hearts} ${t.heartsTitle}`}>
-              <Flame size={15} strokeWidth={STROKE} className="badge-flame" /> {streak}
+              <Flame size={17} strokeWidth={2} className={`badge-flame ${streak ? '' : 'is-off'}`} fill="currentColor" /> {streak}
               <span className="badge-sep" aria-hidden />
-              <Heart size={14} strokeWidth={STROKE} className="badge-heart" fill={hearts ? 'currentColor' : 'none'} /> {hearts}
+              <Heart size={16} strokeWidth={2} className={`badge-heart ${hearts ? '' : 'is-off'}`} fill="currentColor" /> {hearts}
             </button>
             <button className="badge" onClick={() => setLevelOpen(true)} aria-label={`${t.level} ${level}, ${xp} XP`}>
-              <Trophy size={15} strokeWidth={STROKE} className="badge-trophy" /> {level}
+              <Trophy size={17} strokeWidth={2} className="badge-trophy" fill="currentColor" /> {level}
               <span className="badge-bar" aria-hidden>
                 <span style={{ width: `${(into / need) * 100}%` }} />
               </span>

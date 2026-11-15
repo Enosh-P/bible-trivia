@@ -1536,3 +1536,10 @@ textarea.field.post-body-input:lang(ta) { line-height: 1.85; }
 /* Tamil tab names stay whole words: smaller text instead of breaking mid-word */
 .segmented button > span:not(.segmented-thumb) { overflow-wrap: normal; }
 :lang(ta) .segmented button { font-size: 0.84rem; padding: 0 4px; }
+
+/* Home badges: solid icons so streak, hearts and level stand out */
+.home-badges .badge-flame { color: #f0592b; }
+.home-badges .badge-flame.is-off { color: var(--text-3, #9aa3ad); }
+.home-badges .badge-heart { color: var(--red); }
+.home-badges .badge-heart.is-off { color: #f3b7b2; }
+.home-badges .badge-trophy { color: var(--accent); }
