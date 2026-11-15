@@ -390,7 +390,9 @@ function MainApp() {
             className="route"
             initial={pushed ? { x: '100%', opacity: 1 } : { opacity: 0, scale: 0.985 }}
             animate={{ x: 0, opacity: 1, scale: 1 }}
-            exit={pushed ? { x: '30%', opacity: 0 } : { opacity: 0, scale: 0.985 }}
+            // The old screen leaves at once: the page scrolls to the new screen's place in the same
+            // moment, and a fading old screen would visibly jump (a flicker). Only the new one animates.
+            exit={{ opacity: 0, transition: { duration: 0 } }}
             transition={spring.calm}
           >
             {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onMemory={() => setRoute({ kind: 'memory' })} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'home' })} onShowPosts={showThoughts} />}
