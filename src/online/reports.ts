@@ -2,7 +2,7 @@ import { db } from '../storage/db';
 import { supabase } from './supabase';
 
 export type ReportCategory = 'wrong_answer' | 'typo' | 'tamil' | 'confusing' | 'other';
-export type ReportKind = 'question' | 'recall' | 'verse' | 'faq' | 'gospel';
+export type ReportKind = 'question' | 'recall' | 'verse' | 'faq' | 'gospel' | 'post';
 
 export interface ReportTarget {
   kind: ReportKind;
@@ -84,6 +84,8 @@ import type { RecallCard } from '../engine/recall';
 import type { Faq } from '../engine/gospel';
 import type { Verse } from '../engine/verses';
 import { formatRef } from '../i18n/books';
+import type { Post } from '../engine/posts';
+import { excerpt } from '../engine/markdown';
 
 export function questionTarget(q: Question): ReportTarget {
   const answer = (lang: 'en' | 'ta') =>
@@ -123,4 +125,20 @@ export function faqTarget(f: Faq): ReportTarget {
 
 export function verseTarget(v: Verse): ReportTarget {
   return { kind: 'verse', id: `verse-${v.id}`, snapshot: { reference: v.id, kjv: v.en, tamil_ov: v.ta } };
+}
+
+/** A Daily Thought (titles and the first words; the whole text is in the posts table). */
+export function postTarget(p: Post): ReportTarget {
+  return {
+    kind: 'post',
+    id: `post-${p.id}`,
+    snapshot: {
+      date: p.publish_on,
+      ...(p.verse_ref ? { reference: p.verse_ref } : {}),
+      ...(p.title_en ? { title_en: p.title_en } : {}),
+      ...(p.body_en ? { text_en: excerpt(p.body_en, 400) } : {}),
+      ...(p.title_ta ? { title_ta: p.title_ta } : {}),
+      ...(p.body_ta ? { text_ta: excerpt(p.body_ta, 400) } : {}),
+    },
+  };
 }

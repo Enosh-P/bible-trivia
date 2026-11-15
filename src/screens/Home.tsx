@@ -15,8 +15,10 @@ import { ModeArt } from '../art/ModeArt';
 import { InstallBanner } from '../components/Install';
 import { clearSnapshot, loadSnapshots, type GameSnapshot } from '../engine/resume';
 import { BOOK_BY_CODE } from '../i18n/books';
+import { ThoughtCard } from '../components/ThoughtCard';
+import type { Post } from '../engine/posts';
 
-export function Home({ onPlay, onResume, onShowSaved }: { onPlay: (m: ModeId) => void; onResume: (s: GameSnapshot) => void; onShowSaved: () => void }) {
+export function Home({ onPlay, onResume, onShowSaved, onOpenPost, onShowPosts }: { onPlay: (m: ModeId) => void; onResume: (s: GameSnapshot) => void; onShowSaved: () => void; onOpenPost: (p: Post) => void; onShowPosts: () => void }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   const xp = useApp((s) => s.xp);
@@ -75,6 +77,7 @@ export function Home({ onPlay, onResume, onShowSaved }: { onPlay: (m: ModeId) =>
         </div>
       )}
       {dailyDone && <VerseOfTheDay />}
+      <ThoughtCard onOpen={onOpenPost} onShowAll={onShowPosts} />
 
       <h2 className="eyebrow section-title">{t.modes}</h2>
       <div className="mode-grid">

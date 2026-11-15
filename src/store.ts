@@ -42,6 +42,8 @@ interface Progress {
   /** When memory verses or your own verses last changed here (for syncing). */
   practiceUpdatedAt?: number;
   /** Verses the player added to Memory verses (typed or pasted). */
+  /** Daily Thoughts already opened (newest last), so Home stops offering them. */
+  readPosts?: string[];
   myVerses?: { id: string; book: string; chapter: number; verse: number; verseEnd?: number; en: string; ta: string }[];
 }
 
@@ -115,6 +117,11 @@ export const useApp = create<AppState>()(
     },
   ),
 );
+
+/** Remember that a Daily Thought was opened (keeps the last 200). */
+export function markPostRead(id: string) {
+  useApp.setState((s) => (s.readPosts?.includes(id) ? s : { readPosts: [...(s.readPosts ?? []), id].slice(-200) }));
+}
 
 /** UI strings in the chosen app language. */
 export function useT() {

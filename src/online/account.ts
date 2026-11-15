@@ -23,6 +23,8 @@ export interface Profile {
   last_day: string | null;
   /** Added by migration 11; missing until it has been run. */
   hearts?: number;
+  /** May write Daily Thoughts (set by hand in Supabase; the database enforces it). Missing until migration 17 has been run. */
+  is_admin?: boolean;
 }
 
 export interface Friend {
@@ -207,10 +209,12 @@ export const useAccount = create<AccountState>((set, get) => ({
 
 const PROFILE_COLUMNS = 'id, display_name, avatar, friend_code, xp, streak, last_day';
 
-/** The profile, with hearts when the database has them (migration 11). */
+/** The profile, with the newer columns when the database has them (hearts: migration 11, is_admin: 17). */
 async function loadProfile(uid: string) {
-  const withHearts = await supabase!.from('profiles').select(`${PROFILE_COLUMNS}, hearts`).eq('id', uid).maybeSingle();
-  if (!withHearts.error) return withHearts;
+  for (const extra of [', hearts, is_admin', ', hearts']) {
+    const r = await supabase!.from('profiles').select(`${PROFILE_COLUMNS}${extra}`).eq('id', uid).maybeSingle();
+    if (!r.error) return r;
+  }
   return supabase!.from('profiles').select(PROFILE_COLUMNS).eq('id', uid).maybeSingle();
 }
 

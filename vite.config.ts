@@ -45,6 +45,13 @@ export default defineConfig({
             handler: 'StaleWhileRevalidate',
             options: { cacheName: 'question-packs', expiration: { maxEntries: 250 } },
           },
+          // Pictures in Daily Thoughts (Supabase Storage, bucket post-images):
+          // kept after the first view so saved posts show their pictures offline.
+          {
+            urlPattern: ({ url }) => url.pathname.includes('/storage/v1/object/public/post-images/'),
+            handler: 'CacheFirst',
+            options: { cacheName: 'post-images', expiration: { maxEntries: 80 }, cacheableResponse: { statuses: [0, 200] } },
+          },
         ],
       },
     }),

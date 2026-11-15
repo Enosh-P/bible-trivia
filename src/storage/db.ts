@@ -1,5 +1,6 @@
 import Dexie, { type EntityTable } from 'dexie';
 import type { Question } from '../engine/types';
+import type { Post } from '../engine/posts';
 
 /** One answer the player gave. Drives mastery, review queue and stats. */
 export interface AnswerRecord {
@@ -65,6 +66,8 @@ export const db = new Dexie('bible-trivia') as Dexie & {
   outbox: EntityTable<{ id?: number; job: unknown; at: number }, 'id'>;
   /** Questions starred during a game, to practise later. */
   saved: EntityTable<SavedRow, 'id'>;
+  /** The newest Daily Thoughts, as last downloaded (offline copy). */
+  posts: EntityTable<Post, 'id'>;
 };
 
 db.version(1).stores({
@@ -112,6 +115,11 @@ db.version(8)
         r.updatedAt ??= r.at;
       });
   });
+
+// v9: Daily Thoughts kept for offline reading.
+db.version(9).stores({
+  posts: 'id, publish_on',
+});
 
 /** Records one answer (it's sent to the account by src/online/practiceSync.ts). */
 export function recordAnswer(a: Omit<AnswerRecord, 'id' | 'clientKey' | 'synced'>) {
