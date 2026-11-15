@@ -157,7 +157,12 @@ async function drain(): Promise<{ sent: number; failed: number }> {
     if (msg) {
       for (const s of targets) {
         try {
-          await webpush.sendNotification({ endpoint: s.endpoint, keys: { p256dh: s.p256dh, auth: s.auth } }, JSON.stringify(msg), { TTL: 12 * 3600 });
+          // 'high' so Android delivers at once even when the phone is idle (Doze);
+          // 'normal' notifications wait until the phone wakes up or the browser is opened.
+          await webpush.sendNotification({ endpoint: s.endpoint, keys: { p256dh: s.p256dh, auth: s.auth } }, JSON.stringify(msg), {
+            TTL: 12 * 3600,
+            urgency: 'high',
+          });
           delivered = true;
           await db.from('push_subscriptions').update({ last_ok_at: new Date().toISOString() }).eq('id', s.id);
         } catch (e) {
