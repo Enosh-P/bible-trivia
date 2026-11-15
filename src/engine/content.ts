@@ -4,7 +4,7 @@ import knowledge from '../../content/packs/knowledge.json';
 import type { Question, QuestionPack } from './types';
 import { db } from '../storage/db';
 import { bookOfId, loadMcqBook, loadMcqBooks, loadWhoSaid, pickBooks } from './mcq';
-import { dayKey, shuffle } from './picker';
+import { shuffle } from './picker';
 import { cachedBooks } from '../online/stock';
 import { drillQuestion } from './drill';
 import { baseIdOf, trueFalseFrom, whichBookFromSaying, whichBookFromVerse } from './derived';
@@ -56,9 +56,14 @@ export async function roundPool(source: RoundSource): Promise<Question[]> {
       return source.chapter === null ? qs : qs.filter((q) => q.chapter === source.chapter);
     }
     case 'daily': {
-      // Only the book questions, sorted, so every phone builds the same round.
-      const qs = await loadMcqBooks(pickBooks(`daily:${source.day ?? dayKey()}`, 4));
-      return qs.length ? qs.sort((a, b) => (a.id < b.id ? -1 : 1)) : questionPool();
+      // Easy, well-known questions bundled with the app (works offline, the same for everyone):
+      // the starter questions, Bible Knowledge (no chapter counts), and True or False made from them.
+      // Psalms are left out: they are hard to remember.
+      const easy = ALL_QUESTIONS.filter(
+        (q) => q.book !== 'PSA' && q.difficulty <= 2 && !q.tags?.includes('chapters'),
+      );
+      const tf = easy.filter((q) => q.type !== 'tf').map(trueFalseFrom).filter((q): q is Question => Boolean(q));
+      return [...easy, ...tf].sort((a, b) => (a.id < b.id ? -1 : 1));
     }
     case 'ids': {
       // Made-from questions ("tf~…", "wb~…") need the question they're made from.

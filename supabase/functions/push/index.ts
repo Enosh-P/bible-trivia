@@ -116,8 +116,18 @@ export function message(row: QueueRow, lang: Lang, verses: Verse[], books: Recor
       return { title: ta ? `${name} இப்போது உங்கள் நண்பர்` : `${name} is now your friend`, body: ta ? 'இப்போது ஒரு சவால் அனுப்புங்கள்!' : 'Send them a challenge!', url: '/?open=friends', tag: `friend-${name}` };
     case 'challenge_received':
       return { title: ta ? `${name} உங்களுக்குச் சவால் விட்டார்` : `${name} challenged you`, body: ta ? `${mode} · அதே கேள்விகள், எப்போது வேண்டுமானாலும் விளையாடலாம்.` : `${mode} · same questions, play any time.`, url: '/?open=friends', tag: `challenge-${p.challenge_id}` };
-    case 'challenge_finished':
-      return { title: ta ? `சவால் முடிந்தது: ${p.winner} வென்றார்` : `Challenge finished: ${p.winner} won`, body: `${mode} · ${p.scores}`, url: '/?open=friends', tag: `challenge-${p.challenge_id}` };
+    case 'challenge_finished': {
+      const won = p.result === 'won', tie = p.result === 'tie', lost = p.result === 'lost';
+      const title = won
+        ? (ta ? 'ஆஹா! நீங்கள் வென்றீர்கள் 🏆' : 'Woohoo! You won 🏆')
+        : tie
+          ? (ta ? 'சமநிலை! இருவரும் சமம்' : "It's a tie!")
+          : lost
+            ? (ta ? `இந்த முறை ${p.winner} வென்றார்` : `You lost this one: ${p.winner} won`)
+            : (ta ? `சவால் முடிந்தது: ${p.winner} வென்றார்` : `Challenge finished: ${p.winner} won`);
+      const again = lost ? (ta ? ' · மீண்டும் சவால் விடுங்கள்!' : ' · Ask for a rematch!') : '';
+      return { title, body: `${mode} · ${p.scores}${again}`, url: '/?open=friends', tag: `challenge-${p.challenge_id}` };
+    }
     default:
       return null;
   }
@@ -169,20 +179,34 @@ async function drain(): Promise<{ sent: number; failed: number }> {
   return { sent, failed };
 }
 
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+};
+
 if (import.meta.main) Deno.serve(async (req) => {
+  if (req.method === 'OPTIONS') return new Response('ok', { headers: CORS });
+  // Called by the cron job / database webhook (secret header), or by the app right after a
+  // challenge or friend request (the signed-in person's token): then it only sends what's waiting.
   const secret = Deno.env.get('WEBHOOK_SECRET');
-  if (!secret || req.headers.get('x-webhook-secret') !== secret) return new Response('unauthorized', { status: 401 });
+  const fromHook = Boolean(secret) && req.headers.get('x-webhook-secret') === secret;
+  if (!fromHook) {
+    const token = (req.headers.get('authorization') ?? '').replace(/^Bearer\s+/i, '');
+    const { data } = token ? await db.auth.getUser(token) : { data: { user: null } };
+    if (!data.user) return new Response('unauthorized', { status: 401, headers: CORS });
+  }
   const pub = Deno.env.get('VAPID_PUBLIC_KEY'), priv = Deno.env.get('VAPID_PRIVATE_KEY');
   if (!pub || !priv) return new Response('VAPID keys not set', { status: 500 });
   webpush.setVapidDetails(Deno.env.get('VAPID_SUBJECT') ?? 'mailto:admin@example.com', pub, priv);
 
   const body = await req.json().catch(() => ({}));
   let queued = 0;
-  if (body?.task === 'scheduled') {
+  if (fromHook && body?.task === 'scheduled') {
     const { data, error } = await db.rpc('queue_scheduled_notifications');
     if (error) return new Response(`schedule failed: ${error.message}`, { status: 500 });
     queued = data ?? 0;
   }
   const result = await drain();
-  return Response.json({ queued, ...result });
+  return Response.json({ queued, ...result }, { headers: CORS });
 });
