@@ -1282,3 +1282,5 @@ textarea.field.post-body-input:lang(ta) { line-height: 1.85; }
   .post-actions { grid-template-columns: repeat(3, 1fr); }
   .post-actions .btn-primary { grid-column: auto; }
 }
+
+.thoughts-embedded { display: flex; flex-direction: column; gap: 12px; }

@@ -24,6 +24,8 @@ import { VerseText } from '../components/VerseCard';
 import type { Lang } from '../engine/types';
 import { ReportButton } from '../components/Report';
 import { faqTarget } from '../online/reports';
+import { Thoughts } from './Thoughts';
+import type { Post } from '../engine/posts';
 
 const ICONS: Record<string, LucideIcon> = {
   compass: Compass,
@@ -38,13 +40,23 @@ const ICONS: Record<string, LucideIcon> = {
 
 const VERSE_BY_ID = Object.fromEntries(VERSES.map((v) => [v.id, v]));
 
-type Section = 'way' | 'faq';
+export type GospelSection = 'way' | 'faq' | 'thoughts';
 
 /** Gospel tab: "The Way of Life" step by step, and answers to common questions. */
-export function Gospel() {
+export function Gospel({
+  section = 'way',
+  onSection,
+  onOpenPost,
+}: {
+  section?: GospelSection;
+  onSection?: (s: GospelSection) => void;
+  onOpenPost?: (p: Post) => void;
+}) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
-  const [section, setSection] = useState<Section>('way');
+  const [own, setOwn] = useState<GospelSection>(section);
+  const current = onSection ? section : own;
+  const setSection = onSection ?? setOwn;
 
   return (
     <div className="screen" lang={uiLang}>
@@ -52,30 +64,32 @@ export function Gospel() {
       <p className="caption">{t.gospelIntro}</p>
 
       <div className="segmented" role="tablist">
-        {(['way', 'faq'] as const).map((s) => (
-          <button key={s} role="tab" aria-selected={section === s} className={section === s ? 'is-on' : ''} onClick={() => setSection(s)}>
-            {section === s && <motion.span layoutId="seg-gospel" className="segmented-thumb" transition={spring.calm} />}
-            <span>{s === 'way' ? t.wayOfLife : t.faqTitle}</span>
+        {(onOpenPost ? (['way', 'faq', 'thoughts'] as const) : (['way', 'faq'] as const)).map((s) => (
+          <button key={s} role="tab" aria-selected={current === s} className={current === s ? 'is-on' : ''} onClick={() => setSection(s)}>
+            {current === s && <motion.span layoutId="seg-gospel" className="segmented-thumb" transition={spring.calm} />}
+            <span>{s === 'way' ? t.wayOfLife : s === 'faq' ? t.faqTitle : t.thoughtsTab}</span>
           </button>
         ))}
       </div>
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
-          key={section}
-          initial={{ opacity: 0, x: section === 'way' ? -16 : 16 }}
+          key={current}
+          initial={{ opacity: 0, x: current === 'way' ? -16 : 16 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: section === 'way' ? -16 : 16 }}
+          exit={{ opacity: 0, x: current === 'way' ? -16 : 16 }}
           transition={spring.calm}
           className="gospel-list"
         >
-          {section === 'way' ? <Way lang={uiLang} /> : <Questions lang={uiLang} />}
+          {current === 'way' ? <Way lang={uiLang} /> : current === 'faq' ? <Questions lang={uiLang} /> : <Thoughts embedded onOpen={(p) => onOpenPost?.(p)} />}
         </motion.div>
       </AnimatePresence>
 
-      <p className="caption credit">
-        <BookMarked size={14} strokeWidth={STROKE} /> {t.gospelCredit}
-      </p>
+      {current !== 'thoughts' && (
+        <p className="caption credit">
+          <BookMarked size={14} strokeWidth={STROKE} /> {t.gospelCredit}
+        </p>
+      )}
     </div>
   );
 }

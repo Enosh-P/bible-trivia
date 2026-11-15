@@ -44,7 +44,8 @@ export function Thought({ post, onExit, onShowAll }: { post: Post; onExit: () =>
 }
 
 /** Earlier thoughts: newest first, with a word search. */
-export function Thoughts({ onExit, onOpen }: { onExit: () => void; onOpen: (p: Post) => void }) {
+/** `embedded`: shown inside the Gospel tab (no back button or title of its own). */
+export function Thoughts({ onExit, onOpen, embedded = false }: { onExit?: () => void; onOpen: (p: Post) => void; embedded?: boolean }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   const qLang = useApp((s) => s.qLang);
@@ -72,7 +73,8 @@ export function Thoughts({ onExit, onOpen }: { onExit: () => void; onOpen: (p: P
   const posts = found && found.query === query ? found.posts : query ? null : cached;
 
   return (
-    <div className="screen recall" lang={uiLang}>
+    <div className={embedded ? 'thoughts-embedded' : 'screen recall'} lang={uiLang}>
+      {!embedded && (
       <header className="recall-head">
         <Pressable className="chip glass" onClick={onExit} aria-label={t.back}>
           <ChevronLeft size={20} strokeWidth={STROKE} />
@@ -83,6 +85,7 @@ export function Thoughts({ onExit, onOpen }: { onExit: () => void; onOpen: (p: P
         </div>
         <LangToggle compact />
       </header>
+      )}
 
       <label className="search-field">
         <Search size={18} strokeWidth={STROKE} aria-hidden />

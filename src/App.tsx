@@ -14,7 +14,7 @@ import { Notebook } from './screens/Notebook';
 import { SavedGames } from './screens/SavedGames';
 import { drillRound } from './engine/drill';
 import type { GameSnapshot } from './engine/resume';
-import { Gospel } from './screens/Gospel';
+import { Gospel, type GospelSection } from './screens/Gospel';
 import { Recall } from './screens/Recall';
 import { QuizPick } from './screens/QuizPick';
 import { NewPasswordSheet } from './components/NewPasswordSheet';
@@ -49,7 +49,7 @@ type Route =
   | { kind: 'memory' }
   | { kind: 'saved' }
   | { kind: 'notebook' }
-  | { kind: 'post'; post: Post; from: 'home' | 'list' }
+  | { kind: 'post'; post: Post; from: 'home' | 'list' | 'gospel' }
   | { kind: 'posts' }
   | { kind: 'admin' }
   | { kind: 'adminThoughts' }
@@ -150,6 +150,9 @@ function MainApp() {
   const finishRound = useApp((s) => s.finishRound);
   // The tab is kept in the address (#practice), so a reload opens the same tab.
   const [route, setRoute] = useState<Route>(() => ({ kind: 'tab', tab: tabFromHash() }));
+  // Which part of the Gospel tab is open (kept when coming back from a thought).
+  const [gospelSection, setGospelSection] = useState<GospelSection>('way');
+
   const [lastTab, setLastTab] = useState<Tab>(() => tabFromHash());
 
   const {
@@ -316,6 +319,11 @@ function MainApp() {
     const hash = tab === 'play' ? '' : `#${TAB_HASH[tab]}`;
     if (location.hash !== hash) history.replaceState(null, '', location.pathname + location.search + hash);
   };
+  /** All Daily Thoughts live in one place: Gospel → Thoughts. */
+  const showThoughts = () => {
+    setGospelSection('thoughts');
+    goTab('gospel');
+  };
 
   // Spatial consistency: the game slides in from the right and leaves the same way.
   const key = route.kind === 'tab' ? `tab-${route.tab}` : route.kind === 'game' ? `game-${route.run}` : route.kind === 'post' ? `post-${route.post.id}` : route.kind;
@@ -334,15 +342,15 @@ function MainApp() {
             exit={pushed ? { x: '30%', opacity: 0 } : { opacity: 0, scale: 0.985 }}
             transition={spring.calm}
           >
-            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'home' })} onShowPosts={() => setRoute({ kind: 'posts' })} />}
+            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'home' })} onShowPosts={showThoughts} />}
             {route.kind === 'tab' && route.tab === 'friends' && <Friends onStartChallenge={startChallenge} onPlayChallenge={playChallenge} />}
-            {route.kind === 'tab' && route.tab === 'gospel' && <Gospel />}
+            {route.kind === 'tab' && route.tab === 'gospel' && <Gospel section={gospelSection} onSection={setGospelSection} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'gospel' })} />}
             {route.kind === 'tab' && route.tab === 'progress' && <Practice onAction={practice} />}
             {route.kind === 'saved' && <SavedGames onBack={() => goTab('play')} onResume={resumeGame} />}
             {route.kind === 'memory' && <MemoryVerses onExit={() => goTab('progress')} />}
             {route.kind === 'notebook' && <Notebook onExit={() => goTab('progress')} />}
             {route.kind === 'tab' && route.tab === 'settings' && <Settings onAdmin={() => setRoute({ kind: 'admin' })} />}
-            {route.kind === 'post' && <Thought post={route.post} onExit={() => (route.from === 'list' ? setRoute({ kind: 'posts' }) : goTab('play'))} onShowAll={route.from === 'home' ? () => setRoute({ kind: 'posts' }) : undefined} />}
+            {route.kind === 'post' && <Thought post={route.post} onExit={() => (route.from === 'list' ? setRoute({ kind: 'posts' }) : route.from === 'gospel' ? goTab('gospel') : goTab('play'))} onShowAll={route.from === 'gospel' ? undefined : showThoughts} />}
             {route.kind === 'posts' && <Thoughts onExit={() => goTab('play')} onOpen={(post) => setRoute({ kind: 'post', post, from: 'list' })} />}
             {route.kind === 'admin' && isAdmin && <Admin onExit={() => goTab('settings')} onThoughts={() => setRoute({ kind: 'adminThoughts' })} />}
             {route.kind === 'adminThoughts' && isAdmin && <AdminThoughts onExit={() => setRoute({ kind: 'admin' })} />}
