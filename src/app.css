@@ -1533,3 +1533,6 @@ textarea.field.post-body-input:lang(ta) { line-height: 1.85; }
 .stat.col .caption { overflow-wrap: anywhere; font-size: 0.8rem; }
 .segmented button { min-width: 0; flex: 1 1 0; }
 .segmented button > span:not(.segmented-thumb) { overflow-wrap: anywhere; text-align: center; }
+/* Tamil tab names stay whole words: smaller text instead of breaking mid-word */
+.segmented button > span:not(.segmented-thumb) { overflow-wrap: normal; }
+:lang(ta) .segmented button { font-size: 0.84rem; padding: 0 4px; }
