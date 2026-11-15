@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Check, Swords } from 'lucide-react';
 import { createChallenge, submitChallenge, useAccount } from '../online/account';
-import { CHALLENGE_MODES, Avatar } from '../screens/Friends';
+import { Avatar } from '../screens/Friends';
+import { RESULT_CHALLENGE_MODES } from '../engine/modes';
 import type { RoundResult } from '../screens/Game';
 import { useT } from '../store';
 import { Pressable } from './Pressable';
@@ -17,7 +18,7 @@ export function ChallengeFromResult({ result }: { result: RoundResult }) {
   const [picked, setPicked] = useState<string[]>([]);
   const [state, setState] = useState<'idle' | 'sending' | 'sent'>('idle');
 
-  if (!session || result.challengeId || !CHALLENGE_MODES.includes(result.mode) || !accepted.length) return null;
+  if (!session || result.challengeId || !RESULT_CHALLENGE_MODES.includes(result.mode) || !accepted.length) return null;
 
   async function send() {
     setState('sending');

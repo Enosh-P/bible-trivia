@@ -389,6 +389,8 @@
 .week-head { display: flex; align-items: center; gap: 10px; }
 .week-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
 .week-day { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.week-label { display: flex; flex-direction: column; align-items: center; line-height: 1.15; font-size: 0.72rem; font-weight: 700; color: var(--text-2); }
+.week-label .caption { font-weight: 500; font-size: 0.68rem; }
 .week-dot {
   width: 30px;
   height: 30px;
@@ -1082,7 +1084,9 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .week.is-compact { flex-direction: row; align-items: center; justify-content: space-between; padding: 10px 14px; gap: 10px; border-radius: var(--radius-md); }
 .week.is-compact .week-head { gap: 6px; font-size: 0.92rem; white-space: nowrap; }
 .week.is-compact .week-days { display: flex; gap: 6px; }
-.week.is-compact .week-day .caption { display: none; }
+.week.is-compact .week-day { gap: 3px; }
+.week.is-compact .week-label { font-size: 0.62rem; }
+.week.is-compact .week-label .caption { display: none; }
 .week.is-compact .week-dot { width: 14px; height: 14px; }
 .stat.col .stat-art { margin-bottom: 2px; }
 .week.is-compact .week-dot.is-today { outline-width: 1.5px; outline-offset: 1px; }

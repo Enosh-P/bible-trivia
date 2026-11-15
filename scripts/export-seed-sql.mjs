@@ -19,8 +19,9 @@ sql += rows
 sql += '\non conflict (code) do update set name_en = excluded.name_en, name_ta = excluded.name_ta;\n\n';
 
 const packDir = new URL('content/packs/', root);
+// Bible Knowledge stays in the app only (its pictures carry labels the database doesn't store).
 let count = 0;
-for (const file of readdirSync(packDir).filter((f) => f.endsWith('.json'))) {
+for (const file of readdirSync(packDir).filter((f) => f.endsWith('.json') && f !== 'knowledge.json')) {
   const pack = JSON.parse(readFileSync(new URL(file, packDir), 'utf8'));
   sql += `-- ${file}\n`;
   for (const q of pack.questions) {
