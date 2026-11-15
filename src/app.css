@@ -1196,6 +1196,8 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .thought-card-body { display: flex; align-items: flex-start; gap: 14px; }
 .thought-card-body .grow { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
 .thought-card .title { margin: 0; line-height: 1.3; }
+.thought-card .title.is-second { font-size: 0.98rem; font-weight: 600; color: var(--text-2); }
+.thought-card .title.is-ta-both { color: var(--ta-ink); }
 .thought-card .daily-go { margin-top: 8px; }
 .thought-excerpt { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
 .thought-thumb { width: 76px; height: 76px; flex: none; border-radius: var(--radius-md); object-fit: cover; background: var(--line); }
@@ -1246,7 +1248,7 @@ button.badge { cursor: pointer; font: inherit; font-size: 0.85rem; font-weight: 
 .restored-note { flex-direction: row; align-items: center; justify-content: space-between; gap: 12px; font-size: 0.92rem; }
 .restored-note .link { flex: none; }
 .post-tabs button > span:not(.segmented-thumb) { display: inline-flex; align-items: center; gap: 6px; }
-.post-tabs .tab-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.post-tabs .lang-dot { flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .post-panes { display: flex; flex-direction: column; gap: 12px; }
 .post-pane { display: none; }
 .post-pane.is-active { display: flex; }

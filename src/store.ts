@@ -41,9 +41,9 @@ interface Progress {
   memory?: Record<string, number>;
   /** When memory verses or your own verses last changed here (for syncing). */
   practiceUpdatedAt?: number;
-  /** Verses the player added to Memory verses (typed or pasted). */
   /** Daily Thoughts already opened (newest last), so Home stops offering them. */
   readPosts?: string[];
+  /** Verses the player added to Memory verses (typed or pasted). */
   myVerses?: { id: string; book: string; chapter: number; verse: number; verseEnd?: number; en: string; ta: string }[];
 }
 

@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { ChevronRight, Feather } from 'lucide-react';
 import { dayKey } from '../engine/picker';
 import { excerpt } from '../engine/markdown';
-import { postSummary, type Post } from '../engine/posts';
+import { postSections, type Post } from '../engine/posts';
 import { usePosts } from '../online/posts';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
@@ -34,7 +34,11 @@ export function ThoughtCard({ onOpen, onShowAll }: { onOpen: (p: Post) => void; 
     );
   }
 
-  const s = postSummary(latest, qLang, uiLang);
+  // In "both": the Tamil title (purple), then the English one; the first lines in the first language.
+  const sections = postSections(latest, qLang);
+  const titles = sections.filter((x) => x.title);
+  const lead = sections.find((x) => x.body);
+  const both = sections.length > 1;
   const today = latest.publish_on === dayKey();
   return (
     <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={spring.calm}>
@@ -44,9 +48,17 @@ export function ThoughtCard({ onOpen, onShowAll }: { onOpen: (p: Post) => void; 
           <span className="eyebrow">{today ? t.thoughtToday : `${t.thoughtDaily} · ${postDate(latest.publish_on, uiLang, 'short')}`}</span>
         </div>
         <div className="thought-card-body">
-          <div className="grow" lang={s.lang}>
-            <h2 className="title">{s.title}</h2>
-            {s.body && <p className="caption thought-excerpt">{excerpt(s.body, 160)}</p>}
+          <div className="grow">
+            {titles.map((x, i) => (
+              <h2 key={x.lang} className={`title ${i ? 'is-second' : ''} ${both && x.lang === 'ta' ? 'is-ta-both' : ''}`} lang={x.lang}>
+                {x.title}
+              </h2>
+            ))}
+            {lead && (
+              <p className="caption thought-excerpt" lang={lead.lang}>
+                {excerpt(lead.body, 160)}
+              </p>
+            )}
             <span className="daily-go" lang={uiLang}>
               {t.thoughtRead}
               <ChevronRight size={18} strokeWidth={STROKE} />

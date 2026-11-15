@@ -1351,11 +1351,12 @@ alter table posts enable row level security;
 
 -- Readers: published posts whose day has come. The server's date is UTC, and
 -- readers east of it (India is 5½ hours ahead) reach the new day first, so the
--- database allows one day ahead and the app shows a post only from the
--- reader's own date onwards.
+-- database lets a post through once its day has begun anywhere on Earth (the
+-- earliest time zone, UTC+14), and the app shows it only from the reader's own
+-- date onwards.
 drop policy if exists "read published posts" on posts;
 create policy "read published posts" on posts for select to authenticated
-  using (status = 'published' and publish_on <= (now() at time zone 'utc')::date + 1);
+  using (status = 'published' and publish_on <= (now() at time zone 'Pacific/Kiritimati')::date);
 
 -- Admins: everything (drafts and scheduled posts too).
 drop policy if exists "admins manage posts" on posts;

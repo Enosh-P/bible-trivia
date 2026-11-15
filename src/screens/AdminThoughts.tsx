@@ -406,7 +406,7 @@ function Editor({ saved: savedAtOpen, start, restored, onBack }: { saved: PostDr
             {tab === l && <span className="segmented-thumb" />}
             <span>
               {l === 'en' ? 'English' : 'தமிழ்'}
-              {hasLang(draft, l) && <i className="tab-dot" aria-hidden />}
+              {hasLang(draft, l) && <i className="lang-dot" aria-hidden />}
             </span>
           </button>
         ))}
