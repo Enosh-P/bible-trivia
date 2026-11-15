@@ -372,4 +372,12 @@ Each step ships on its own; after each migration: run `supabase/setup.sql` again
 | 5 | Push "Daily Thought" | migration (notification kind + switch) |
 | 6 | `gospel_faqs`, current FAQs moved in, Gospel tab reads from it | migration |
 | 7 | Admin → Gospel Q&A editor | none |
-| 8 | Ask a question + Admin inbox + private answers | migration |
+| 8 | ~~Ask a question + Admin inbox + private answers~~ | dropped (owner's decision) |
+
+### 10.8 Status
+- ✅ Steps 1–3: admin role, Daily Thought posts (pictures, verse, schedule), Home card, reading page, Admin → Thoughts editor.
+- ✅ Step 5: push notification for a new Daily Thought (Verse of the Day time, once a day, switch in Settings).
+- ✅ Steps 6–7: Gospel Q&A in the database (`gospel_faqs`, the 10 original FAQs copied in), topics + search in Gospel → Questions, Admin → Gospel Q&A editor (EN/TA, verses, reorder, draft/publish, preview, delete).
+- ✅ Gospel → Thoughts: the one place for all Daily Thoughts.
+- ⏳ Step 4: comments on thoughts (not started).
+- ✖ Step 8: Ask a question: dropped.

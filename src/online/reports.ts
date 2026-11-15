@@ -81,7 +81,7 @@ export async function flushReports(): Promise<void> {
 // ---------- What the admin sees in the email ----------
 import type { Question } from '../engine/types';
 import type { RecallCard } from '../engine/recall';
-import type { Faq } from '../engine/gospel';
+import type { GospelFaq } from '../engine/faqs';
 import type { Verse } from '../engine/verses';
 import { formatRef } from '../i18n/books';
 import type { Post } from '../engine/posts';
@@ -119,8 +119,8 @@ export function recallTarget(c: RecallCard): ReportTarget {
   };
 }
 
-export function faqTarget(f: Faq): ReportTarget {
-  return { kind: 'faq', id: `faq-${f.id}`, snapshot: { question_en: f.q.en, answer_en: f.a.en, question_ta: f.q.ta, answer_ta: f.a.ta } };
+export function faqTarget(f: Pick<GospelFaq, 'id' | 'question_en' | 'question_ta' | 'answer_en' | 'answer_ta'>): ReportTarget {
+  return { kind: 'faq', id: `faq-${f.id}`, snapshot: { question_en: f.question_en, answer_en: f.answer_en, question_ta: f.question_ta, answer_ta: f.answer_ta } };
 }
 
 export function verseTarget(v: Verse): ReportTarget {

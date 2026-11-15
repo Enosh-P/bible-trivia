@@ -1284,3 +1284,17 @@ textarea.field.post-body-input:lang(ta) { line-height: 1.85; }
 }
 
 .thoughts-embedded { display: flex; flex-direction: column; gap: 12px; }
+.topic-chips { display: flex; gap: 8px; overflow-x: auto; padding: 2px 0 4px; scrollbar-width: none; }
+.topic-chips::-webkit-scrollbar { display: none; }
+.topic-chip { flex: none; padding: 7px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; color: var(--text-2); background: var(--surface, rgb(255 255 255 / 0.6)); border: 1px solid var(--line, rgb(0 0 0 / 0.08)); }
+.topic-chip.is-on { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.faqs .search-field { margin-bottom: 2px; }
+.empty-note { text-align: center; padding: 16px 0; }
+.faq-admin-group { display: flex; flex-direction: column; gap: 8px; }
+.faq-admin-row { display: flex; align-items: center; gap: 8px; padding: 10px 10px 10px 14px; border-radius: var(--radius-md); }
+.faq-admin-open { display: flex; flex-direction: column; gap: 2px; text-align: left; min-width: 0; }
+.faq-admin-move { display: flex; flex-direction: column; gap: 2px; }
+.faq-admin-move .icon-btn:disabled { opacity: 0.3; }
+.faq-topic-pick, .faq-fields, .faq-verses { display: flex; flex-direction: column; gap: 10px; }
+.faq-verse-row { display: flex; align-items: flex-start; gap: 6px; }
+.faq-preview { display: flex; flex-direction: column; gap: 6px; }

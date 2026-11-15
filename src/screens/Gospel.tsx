@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import {
   Baby,
@@ -12,10 +12,16 @@ import {
   Globe,
   Hand,
   HeartHandshake,
+  Search,
   Unlink,
   type LucideIcon,
 } from 'lucide-react';
-import { FAQS, GOSPEL_STEPS, SOURCE_BY_ID, type Faq } from '../engine/gospel';
+import { GOSPEL_STEPS, SOURCE_BY_ID } from '../engine/gospel';
+import { FAQ_TOPICS, faqMatches, faqText, type FaqTopic, type GospelFaq } from '../engine/faqs';
+import { syncFaqs, useFaqs } from '../online/faqs';
+import { Markdown } from '../components/Markdown';
+import { PostVerse } from '../components/PostView';
+import { parseVerseRef } from '../engine/verseRef';
 import { VERSES } from '../engine/verses';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
@@ -138,24 +144,51 @@ function Way({ lang }: { lang: Lang }) {
 }
 
 function Questions({ lang }: { lang: Lang }) {
-  const [open, setOpen] = useState<string | null>(FAQS[0]?.id ?? null);
+  const t = useT();
+  const faqs = useFaqs((st) => st.faqs);
+  const [topic, setTopic] = useState<FaqTopic | 'all'>('all');
+  const [query, setQuery] = useState('');
+  const [open, setOpen] = useState<string | null>(null);
+  useEffect(() => {
+    void syncFaqs();
+  }, []);
+  const topics = FAQ_TOPICS.filter((tp) => faqs.some((f) => f.topic === tp));
+  const shown = faqs.filter((f) => (topic === 'all' || f.topic === topic) && faqMatches(f, query));
+  const first = shown[0]?.id ?? null;
   return (
     <div className="faqs">
-      {FAQS.map((f) => (
-        <FaqItem key={f.id} faq={f} lang={lang} open={open === f.id} onToggle={() => setOpen(open === f.id ? null : f.id)} />
-      ))}
+      <label className="search-field">
+        <Search size={18} strokeWidth={STROKE} aria-hidden />
+        <input className="field" type="search" enterKeyHint="search" placeholder={t.faqSearch} aria-label={t.faqSearch} value={query} onChange={(e) => setQuery(e.target.value)} />
+      </label>
+      {topics.length > 1 && (
+        <div className="topic-chips" role="tablist" aria-label={t.faqTopicLabel}>
+          {(['all', ...topics] as const).map((tp) => (
+            <button key={tp} role="tab" aria-selected={topic === tp} className={`topic-chip ${topic === tp ? 'is-on' : ''}`} onClick={() => setTopic(tp)}>
+              {tp === 'all' ? t.faqAll : t.faqTopic[tp]}
+            </button>
+          ))}
+        </div>
+      )}
+      {shown.map((f) => {
+        const isOpen = open === f.id || (open === null && f.id === first && !query);
+        return <FaqItem key={f.id} faq={f} lang={lang} open={isOpen} onToggle={() => setOpen(isOpen ? '' : f.id)} />;
+      })}
+      {!shown.length && <p className="caption empty-note">{t.faqNone}</p>}
     </div>
   );
 }
 
-function FaqItem({ faq, lang, open, onToggle }: { faq: Faq; lang: Lang; open: boolean; onToggle: () => void }) {
+/** One question with its answer, verses and further reading (also the admin's preview). */
+export function FaqItem({ faq, lang, open, onToggle, preview = false }: { faq: GospelFaq; lang: Lang; open: boolean; onToggle: () => void; preview?: boolean }) {
   const t = useT();
+  const text = faqText(faq, lang);
   return (
     <motion.div layout transition={spring.calm} className={`faq glass ${open ? 'is-open' : ''}`}>
       <button className="faq-q" onClick={onToggle} aria-expanded={open}>
         <IconTile horse={open ? 'pale' : 'white'} icon={CircleHelp} size={34} />
-        <span className="grow" lang={lang}>
-          {faq.q[lang]}
+        <span className="grow" lang={text.qLang}>
+          {text.q}
         </span>
         <motion.span animate={{ rotate: open ? 180 : 0 }} transition={spring.snappy} className="faq-chevron">
           <ChevronDown size={20} strokeWidth={STROKE} />
@@ -172,10 +205,15 @@ function FaqItem({ faq, lang, open, onToggle }: { faq: Faq; lang: Lang; open: bo
           >
             <div className="faq-a-inner">
               <div className="faq-a-head">
-                <p lang={lang}>{faq.a[lang]}</p>
-                <ReportButton target={faqTarget(faq)} compact />
+                <div className="grow">
+                  <Markdown text={text.a} lang={text.aLang} />
+                </div>
+                {!preview && <ReportButton target={faqTarget(faq)} compact />}
               </div>
-              {faq.verses.map((id) => VERSE_BY_ID[id] && <VerseText key={id} verse={VERSE_BY_ID[id]} size="sm" />)}
+              {faq.verse_refs.map((ref) => {
+                const v = parseVerseRef(ref);
+                return v ? <PostVerse key={ref} verse={v} /> : null;
+              })}
               {faq.reading.length > 0 && (
                 <div className="reading">
                   <span className="eyebrow">{t.furtherReading}</span>

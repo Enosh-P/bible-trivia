@@ -15,6 +15,7 @@ import { SavedGames } from './screens/SavedGames';
 import { drillRound } from './engine/drill';
 import type { GameSnapshot } from './engine/resume';
 import { Gospel, type GospelSection } from './screens/Gospel';
+import { AdminFaqs } from './screens/AdminFaqs';
 import { Recall } from './screens/Recall';
 import { QuizPick } from './screens/QuizPick';
 import { NewPasswordSheet } from './components/NewPasswordSheet';
@@ -53,6 +54,7 @@ type Route =
   | { kind: 'posts' }
   | { kind: 'admin' }
   | { kind: 'adminThoughts' }
+  | { kind: 'adminFaqs' }
   | { kind: 'game'; mode: ModeId; run: number; challenge?: { id: string; questionIds: string[] }; scope?: { book: string; chapter: number | null }; ids?: string[]; resume?: GameSnapshot } | { kind: 'result'; result: RoundResult; xp: number };
 
 /** Applies theme and text size to <html>. */
@@ -358,8 +360,9 @@ function MainApp() {
             {route.kind === 'tab' && route.tab === 'settings' && <Settings onAdmin={() => setRoute({ kind: 'admin' })} />}
             {route.kind === 'post' && <Thought post={route.post} onExit={() => (route.from === 'list' ? setRoute({ kind: 'posts' }) : route.from === 'gospel' ? goTab('gospel') : goTab('play'))} onShowAll={route.from === 'gospel' ? undefined : showThoughts} />}
             {route.kind === 'posts' && <Thoughts onExit={() => goTab('play')} onOpen={(post) => setRoute({ kind: 'post', post, from: 'list' })} />}
-            {route.kind === 'admin' && isAdmin && <Admin onExit={() => goTab('settings')} onThoughts={() => setRoute({ kind: 'adminThoughts' })} />}
+            {route.kind === 'admin' && isAdmin && <Admin onExit={() => goTab('settings')} onThoughts={() => setRoute({ kind: 'adminThoughts' })} onFaqs={() => setRoute({ kind: 'adminFaqs' })} />}
             {route.kind === 'adminThoughts' && isAdmin && <AdminThoughts onExit={() => setRoute({ kind: 'admin' })} />}
+            {route.kind === 'adminFaqs' && isAdmin && <AdminFaqs onExit={() => setRoute({ kind: 'admin' })} />}
             {route.kind === 'recall' && <Recall onExit={() => goTab(lastTab)} />}
             {route.kind === 'quizpick' && <QuizPick onExit={() => goTab(lastTab)} onStart={startQuiz} />}
             {route.kind === 'game' && (

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Bold, BookOpen, CalendarDays, ChevronLeft, ChevronRight, Eye, Feather, Image as ImageIcon, ImagePlus, Italic, List, ListOrdered, Plus, Send, Trash2, Undo2 } from 'lucide-react';
+import { Bold, BookOpen, CircleHelp, CalendarDays, ChevronLeft, ChevronRight, Eye, Feather, Image as ImageIcon, ImagePlus, Italic, List, ListOrdered, Plus, Send, Trash2, Undo2 } from 'lucide-react';
 import { dayKey } from '../engine/picker';
 import { emptyDraft, hasLang, postState, publishProblem, type Post, type PostDraft, type PostState } from '../engine/posts';
 import { formatVerseRef, parseVerseRef } from '../engine/verseRef';
@@ -628,7 +628,7 @@ function ImageSheet({ open, onClose, onInsert }: { open: boolean; onClose: () =>
 }
 
 /** Settings → Admin: what an admin can manage (more sections come later). */
-export function Admin({ onExit, onThoughts }: { onExit: () => void; onThoughts: () => void }) {
+export function Admin({ onExit, onThoughts, onFaqs }: { onExit: () => void; onThoughts: () => void; onFaqs: () => void }) {
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   return (
@@ -644,6 +644,14 @@ export function Admin({ onExit, onThoughts }: { onExit: () => void; onThoughts: 
         <div className="grow">
           <strong>{t.adminThoughts}</strong>
           <span className="caption">{t.adminThoughtsSub}</span>
+        </div>
+        <ChevronRight size={18} strokeWidth={STROKE} />
+      </Pressable>
+      <Pressable className="install-card glass" onClick={onFaqs}>
+        <IconTile horse="white" icon={CircleHelp} size={38} />
+        <div className="grow">
+          <strong>{t.adminFaqs}</strong>
+          <span className="caption">{t.adminFaqsSub}</span>
         </div>
         <ChevronRight size={18} strokeWidth={STROKE} />
       </Pressable>
