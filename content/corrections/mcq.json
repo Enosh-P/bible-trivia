@@ -1058,6 +1058,79 @@
   "0G5Myu": {
    "drop": true,
    "why": "the English 'question' is a heading from the source file"
+  },
+  "dH5I3P": {
+   "why": "Ps 119:26 KJV: teach me thy statutes",
+   "answer": 2,
+   "set": {
+    "0": [
+     "God's secrets",
+     "தேவனுடைய இரகசியங்கள்"
+    ]
+   }
+  },
+  "2CdrxI": {
+   "why": "Ps 119:36 KJV: incline my heart unto thy testimonies, and not to covetousness",
+   "answer": 1,
+   "set": {
+    "1": [
+     "To his testimonies",
+     "அவருடைய சாட்சிகள்"
+    ],
+    "2": [
+     "To covetousness",
+     "பொருளாசை"
+    ]
+   }
+  },
+  "KYIFtR": {
+   "why": "Ps 119:119 KJV: I love thy testimonies",
+   "answer": 0,
+   "set": {
+    "0": [
+     "God's testimonies",
+     "தேவனுடைய சாட்சிகள்"
+    ]
+   }
+  },
+  "prPGr9": {
+   "why": "Ps 144:2: 'he in whom I trust' is also in the verse",
+   "answer": 0,
+   "set": {
+    "0": [
+     "High tower and refuge",
+     "உயர்ந்த அடைக்கலம்"
+    ],
+    "2": [
+     "Riches",
+     "ஐசுவரியம்"
+    ]
+   }
+  },
+  "kox83RI": {
+   "why": "'The Jews' and 'Jews' were both options",
+   "set": {
+    "3": [
+     "Peter",
+     "பேதுரு"
+    ]
+   }
+  },
+  "wdF7qB6": {
+   "why": "'The Jews' and 'Jews' were both options",
+   "set": {
+    "3": [
+     "The Pharisees",
+     "பரிசேயர்"
+    ]
+   }
+  },
+  "f1QqCf": {
+   "why": "Ps 99:4 KJV: thou dost establish equity",
+   "q": [
+    "What does the LORD establish?",
+    "கர்த்தர் எதை நிலைநிறுத்துகிறார்?"
+   ]
   }
  }
 }

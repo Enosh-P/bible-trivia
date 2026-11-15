@@ -242,7 +242,10 @@ function addTamil(book, rows) {
     row.length = 7;
     const t = ta[row[0]];
     if (t?.q && Array.isArray(t.o) && t.o.length === row[5].length && t.o.every(Boolean)) {
-      const options = t.o.map((o, i) => tamilOption(row[5][i], fixTamil(row[5][i], o)));
+      let options = t.o.map((o, i) => tamilOption(row[5][i], fixTamil(row[5][i], o)));
+      // The word list can turn two different English words into the same Tamil
+      // ("Trust" and "Hope" -> நம்பிக்கை): then keep the translator's own words.
+      if (new Set(options).size !== options.length) options = t.o.map((o, i) => fixTamil(row[5][i], o).trim());
       // Broken, or two choices that came out the same in Tamil: show English until translated again.
       if (looksBroken(row[4], t.q) || options.some((o, i) => looksBroken(row[5][i], o)) || new Set(options).size !== options.length) {
         redo.push({ book, id: row[0] });
