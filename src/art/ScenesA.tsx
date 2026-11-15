@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { C, Ground, INK, Person as P, Waves, line } from './kit';
 import type { PersonProps } from './kit';
-import { AltarSm, Animal, Bird, Camel, Coins, Earth, Hills, Light, Night, Oak, Palm, Sack, StarPt, Stick, SwordSm, TentSm, Town, WellSm } from './sceneKit';
+import { AltarSm, Animal, Bird, Camel, Coins, Earth, Hills, Light, Night, Palm, Sack, StarPt, Stick, SwordSm, TentSm, Town, WellSm } from './sceneKit';
 import type { AnimalKind } from './sceneKit';
 
 /*

@@ -52,7 +52,7 @@
   [
    "k003",
    "PSA 72:20",
-   "harp",
+   "davidHarp",
    [
     "By the psalm titles, about how many psalms are of David?",
     "73",
@@ -77,7 +77,7 @@
   [
    "k004",
    "PSA 73:1",
-   "harp",
+   "templeSingers",
    [
     "How many psalms are of Asaph?",
     "12",
@@ -417,7 +417,7 @@
   [
    "k018",
    "MAT 10:2",
-   "boat",
+   "callFishers",
    [
     "Which of these was NOT one of the twelve disciples of Jesus?",
     "Barnabas",
@@ -442,7 +442,7 @@
   [
    "k019",
    "ACT 1:26",
-   "boat",
+   "callFishers",
    [
     "Who was chosen to take the place of Judas among the twelve apostles?",
     "Matthias",
@@ -793,7 +793,7 @@
   [
    "k041",
    "GEN 4:8",
-   "altar",
+   "cainAbel",
    [
     "Who was the first murderer on the earth?",
     "Cain",
@@ -839,7 +839,7 @@
   [
    "k043",
    "GEN 4:26",
-   "path",
+   "prayCall",
    [
     "In whose days did men begin to call upon the name of the LORD?",
     "Enos",
@@ -862,7 +862,7 @@
   [
    "k044",
    "GEN 5:24",
-   "path",
+   "walkWithGod",
    [
     "Who walked with God, and was not, for God took him?",
     "Enoch",
@@ -885,7 +885,7 @@
   [
    "k045",
    "GEN 6:9",
-   "path",
+   "walkWithGod",
    [
     "After Enoch, who was the next man said to walk with God?",
     "Noah",
@@ -1117,7 +1117,7 @@
   [
    "k057",
    "GEN 8:7",
-   "raven",
+   "noahRaven",
    [
     "Which bird did Noah send out first?",
     "A raven",
@@ -1140,7 +1140,7 @@
   [
    "k058",
    "GEN 8:11",
-   "dove",
+   "noahDove",
    [
     "What did the dove bring back to Noah?",
     "An olive leaf",
@@ -1188,7 +1188,7 @@
   [
    "k060",
    "GEN 8:20",
-   "altar",
+   "noahAltar",
    [
     "What did Noah do first after coming out of the ark?",
     "He built an altar and offered burnt offerings",
@@ -1282,7 +1282,7 @@
   [
    "k070",
    "GEN 12:1",
-   "tent",
+   "abramJourney",
    [
     "What did God tell Abram to leave?",
     "His country, his kindred and his father's house",
@@ -1305,7 +1305,7 @@
   [
    "k071",
    "GEN 12:7",
-   "tent",
+   "abramJourney",
    [
     "Where did the LORD first say to Abram, \"Unto thy seed will I give this land\"?",
     "Sichem, at the plain of Moreh",
@@ -1328,7 +1328,7 @@
   [
    "k072",
    "GEN 13:8",
-   "sheep",
+   "abramLot",
    [
     "What did Abram say to Lot when their herdmen strove?",
     "Let there be no strife between me and thee, for we be brethren",
@@ -1351,7 +1351,7 @@
   [
    "k073",
    "GEN 14:14",
-   "sword",
+   "abram318",
    [
     "With how many trained servants did Abram go to rescue Lot?",
     "318",
@@ -1374,7 +1374,7 @@
   [
    "k074",
    "GEN 15:2",
-   "tent",
+   "countStars",
    [
     "Whom did Abram first think would be his heir?",
     "Eliezer of Damascus",
@@ -1397,7 +1397,7 @@
   [
    "k075",
    "GEN 15:13",
-   "stars",
+   "countStars",
    [
     "God told Abram his seed would be afflicted in a strange land for how many years?",
     "400 years",
@@ -1420,7 +1420,7 @@
   [
    "k076",
    "GEN 15:16",
-   "stars",
+   "countStars",
    [
     "Why would Abram's seed come back only in the fourth generation?",
     "The iniquity of the Amorites was not yet full",
@@ -1443,7 +1443,7 @@
   [
    "k077",
    "GEN 16:9",
-   "well",
+   "hagarAngel",
    [
     "What did the angel of the LORD tell Hagar?",
     "Return to thy mistress, and submit thyself under her hands",
@@ -1489,7 +1489,7 @@
   [
    "k079",
    "GEN 17:5",
-   "stars",
+   "countStars",
    [
     "How old was Abram when God changed his name to Abraham?",
     "99",
@@ -1535,7 +1535,7 @@
   [
    "k081",
    "GEN 18:32",
-   "tent",
+   "abrahamPleads",
    [
     "Pleading for Sodom, Abraham asked down from 50 righteous. What was the last number he asked about?",
     "10",
@@ -1560,7 +1560,7 @@
   [
    "k082",
    "GEN 23:16",
-   "coins",
+   "buyCave",
    [
     "How much did Abraham pay the sons of Heth for the field and the cave?",
     "400 shekels of silver",
@@ -1583,7 +1583,7 @@
   [
    "k083",
    "GEN 23:19",
-   "cave",
+   "buyCave",
    [
     "What was the name of the cave where Abraham buried Sarah?",
     "Machpelah",
@@ -1652,7 +1652,7 @@
   [
    "k086",
    "GEN 22:4",
-   "altar",
+   "moriahJourney",
    [
     "On which day of the journey did Abraham see the place where he would offer Isaac?",
     "The third day",
@@ -1675,7 +1675,7 @@
   [
    "k087",
    "GEN 22:3",
-   "altar",
+   "moriahJourney",
    [
     "How many young men did Abraham take with him and Isaac?",
     "2",
@@ -1698,7 +1698,7 @@
   [
    "k090",
    "GEN 25:26",
-   "tent",
+   "motherSons",
    [
     "How many years after his marriage did Isaac have children?",
     "20 years",
@@ -1723,7 +1723,7 @@
   [
    "k091",
    "GEN 27:16",
-   "coat",
+   "jacobIsaac",
    [
     "What did Jacob wear so that Isaac would think he was Esau?",
     "Esau's clothes and the skins of kids of the goats",
@@ -1746,7 +1746,7 @@
   [
    "k092",
    "GEN 27:41",
-   "bow",
+   "esauAngry",
    [
     "What did Esau say he would do after his father's death?",
     "Slay his brother Jacob",
@@ -1769,7 +1769,7 @@
   [
    "k093",
    "GEN 28:19",
-   "ladder",
+   "jacobDream",
    [
     "Jacob called the place of his dream Bethel. What was its name at first?",
     "Luz",
@@ -1792,7 +1792,7 @@
   [
    "k094",
    "GEN 28:22",
-   "stones",
+   "jacobPillar",
    [
     "At Bethel, what did Jacob vow to give to God?",
     "The tenth of all",
@@ -1815,7 +1815,7 @@
   [
    "k095",
    "GEN 29:14",
-   "well",
+   "labanWelcome",
    [
     "Who said to Jacob, \"Surely thou art my bone and my flesh\"?",
     "Laban",
@@ -1838,7 +1838,7 @@
   [
    "k096",
    "GEN 29:2",
-   "well",
+   "jacobRachel",
    [
     "How many flocks of sheep did Jacob see lying by the well in the field?",
     "3",
@@ -1861,7 +1861,7 @@
   [
    "k097",
    "GEN 29:30",
-   "sheep",
+   "jacobShepherd",
    [
     "In all, how many years did Jacob serve Laban for his two wives?",
     "14 years",
@@ -1886,7 +1886,7 @@
   [
    "k098",
    "GEN 31:7",
-   "sheep",
+   "jacobShepherd",
    [
     "How many times did Laban change Jacob's wages?",
     "10 times",
@@ -1909,7 +1909,7 @@
   [
    "k099",
    "GEN 30:14",
-   "sheaves",
+   "reubenMandrakes",
    [
     "What did Reuben find in the field in the days of wheat harvest?",
     "Mandrakes",
@@ -1932,7 +1932,7 @@
   [
    "k100",
    "GEN 29:29",
-   "tent",
+   "handmaid",
    [
     "Who was Rachel's handmaid?",
     "Bilhah",
@@ -1955,7 +1955,7 @@
   [
    "k101",
    "GEN 29:24",
-   "tent",
+   "handmaid",
    [
     "Who was Leah's handmaid?",
     "Zilpah",
@@ -1978,7 +1978,7 @@
   [
    "k102",
    "GEN 30:6",
-   "tent",
+   "motherSons",
    [
     "Which sons were born to Bilhah?",
     "Dan and Naphtali",
@@ -2001,7 +2001,7 @@
   [
    "k103",
    "GEN 30:11",
-   "tent",
+   "motherSons",
    [
     "Which sons were born to Zilpah?",
     "Gad and Asher",
@@ -2024,7 +2024,7 @@
   [
    "k104",
    "GEN 30:18",
-   "tent",
+   "motherSons",
    [
     "What was the name of Leah's fifth son?",
     "Issachar",
@@ -2047,7 +2047,7 @@
   [
    "k105",
    "GEN 29:35",
-   "tent",
+   "motherSons",
    [
     "What were Leah's first four sons, in order?",
     "Reuben, Simeon, Levi, Judah",
@@ -2070,7 +2070,7 @@
   [
    "k106",
    "GEN 30:21",
-   "tent",
+   "motherSons",
    [
     "What was the name of the daughter of Jacob and Leah?",
     "Dinah",
@@ -2093,7 +2093,7 @@
   [
    "k107",
    "GEN 35:24",
-   "tent",
+   "motherSons",
    [
     "Which were the sons of Rachel?",
     "Joseph and Benjamin",
@@ -2116,7 +2116,7 @@
   [
    "k108",
    "GEN 31:22",
-   "camel",
+   "labanChase",
    [
     "On which day was it told Laban that Jacob had fled?",
     "The third day",
@@ -2139,7 +2139,7 @@
   [
    "k109",
    "GEN 31:23",
-   "camel",
+   "labanChase",
    [
     "After how many days' journey, and where, did Laban overtake Jacob?",
     "Seven days, in the mount Gilead",
@@ -2162,7 +2162,7 @@
   [
    "k110",
    "GEN 31:34",
-   "camel",
+   "rachelCamel",
    [
     "Who stole Laban's images, and where were they hidden?",
     "Rachel, in the camel's furniture",
@@ -2185,7 +2185,7 @@
   [
    "k111",
    "GEN 31:47",
-   "stones",
+   "heapStones",
    [
     "What did Jacob call the heap of stones?",
     "Galeed",
@@ -2210,7 +2210,7 @@
   [
    "k112",
    "GEN 31:47",
-   "stones",
+   "heapStones",
    [
     "What did Laban call the heap of stones?",
     "Jegar-sahadutha",
@@ -2233,7 +2233,7 @@
   [
    "k113",
    "GEN 31:49",
-   "stones",
+   "heapStones",
    [
     "What did Laban say when the place was called Mizpah?",
     "The LORD watch between me and thee",
@@ -2256,7 +2256,7 @@
   [
    "k114",
    "GEN 32:2",
-   "ladder",
+   "angelsMeet",
    [
     "Where did the angels of God meet Jacob, and what does the name mean?",
     "Mahanaim: God's host",
@@ -2279,7 +2279,7 @@
   [
    "k115",
    "GEN 32:6",
-   "bow",
+   "esau400",
    [
     "With how many men did Esau come to meet Jacob?",
     "400",
@@ -2302,7 +2302,7 @@
   [
    "k116",
    "GEN 32:14",
-   "sheep",
+   "goatDrove",
    [
     "In Jacob's present to Esau, how many she goats were there?",
     "200",
@@ -2327,7 +2327,7 @@
   [
    "k117",
    "GEN 32:30",
-   "ladder",
+   "wrestle",
    [
     "Where did Jacob wrestle with the man until the breaking of the day?",
     "Peniel",
@@ -2350,7 +2350,7 @@
   [
    "k118",
    "GEN 33:3",
-   "tent",
+   "jacobBows",
    [
     "How many times did Jacob bow himself to the ground before Esau?",
     "7 times",
@@ -2373,7 +2373,7 @@
   [
    "k119",
    "GEN 33:10",
-   "tent",
+   "esauEmbrace",
    [
     "Who said, \"I have seen thy face, as though I had seen the face of God\"?",
     "Jacob, to Esau",
@@ -2419,7 +2419,7 @@
   [
    "k121",
    "GEN 33:20",
-   "altar",
+   "jacobAltar",
    [
     "What did Jacob call the altar he built near Shechem?",
     "El-elohe-Israel",
@@ -2488,7 +2488,7 @@
   [
    "k124",
    "GEN 34:25",
-   "sword",
+   "simeonLevi",
    [
     "Which two brothers avenged their sister Dinah?",
     "Simeon and Levi",
@@ -2511,7 +2511,7 @@
   [
    "k125",
    "GEN 35:4",
-   "tree",
+   "buryIdols",
    [
     "Where did Jacob hide the strange gods of his household?",
     "Under the oak which was by Shechem",
@@ -2534,7 +2534,7 @@
   [
    "k126",
    "GEN 35:8",
-   "tree",
+   "mournOak",
    [
     "Who was Rebekah's nurse?",
     "Deborah",
@@ -2557,7 +2557,7 @@
   [
    "k127",
    "GEN 35:8",
-   "tree",
+   "mournOak",
    [
     "Where was Deborah, Rebekah's nurse, buried?",
     "Under an oak below Bethel, called Allon-bachuth",
@@ -2580,7 +2580,7 @@
   [
    "k128",
    "GEN 36:7",
-   "sheep",
+   "abramLot",
    [
     "Whose riches were more than that they might dwell together, so the land could not bear them (Genesis 36:7)?",
     "Esau and Jacob",
@@ -2603,7 +2603,7 @@
   [
    "k130",
    "GEN 37:9",
-   "sheaves",
+   "josephDreams",
    [
     "What were Joseph's two dreams?",
     "Sheaves bowing to his sheaf; the sun, moon and eleven stars bowing to him",
@@ -2626,7 +2626,7 @@
   [
    "k131",
    "GEN 37:21",
-   "coat",
+   "reubenPit",
    [
     "Who saved Joseph from being killed by his brothers?",
     "Reuben",
@@ -2649,7 +2649,7 @@
   [
    "k132",
    "GEN 37:27",
-   "coat",
+   "josephSold",
    [
     "Who said, \"Come, and let us sell him to the Ishmeelites\"?",
     "Judah",
@@ -2672,7 +2672,7 @@
   [
    "k133",
    "GEN 37:28",
-   "coins",
+   "josephSold",
    [
     "For how many pieces of silver was Joseph sold?",
     "20",
@@ -2695,7 +2695,7 @@
   [
    "k134",
    "GEN 37:2",
-   "coat",
+   "josephShepherd",
    [
     "How old was Joseph when he was feeding the flock and was sold?",
     "17",
@@ -2718,7 +2718,7 @@
   [
    "k135",
    "GEN 37:31",
-   "coat",
+   "coatBlood",
    [
     "In whose blood did the brothers dip Joseph's coat?",
     "A kid of the goats",
@@ -2741,7 +2741,7 @@
   [
    "k136",
    "GEN 38:25",
-   "ring",
+   "tamarSignet",
    [
     "\"Discern, whose are these?\" What did Tamar send to Judah?",
     "The signet, the bracelets and the staff",
@@ -2766,7 +2766,7 @@
   [
    "k137",
    "GEN 40:2",
-   "cup",
+   "prison",
    [
     "Who were in prison with Joseph?",
     "Pharaoh's chief butler and chief baker",
@@ -2789,7 +2789,7 @@
   [
    "k138",
    "GEN 41:3",
-   "cows",
+   "pharaohDream",
    [
     "In Pharaoh's first dream, what came up out of the river?",
     "Seven fat kine and seven lean kine",
@@ -2814,7 +2814,7 @@
   [
    "k139",
    "GEN 41:34",
-   "sheaves",
+   "granary",
    [
     "What part of the land's produce was gathered in the seven plenteous years?",
     "The fifth part",
@@ -2837,7 +2837,7 @@
   [
    "k140",
    "GEN 41:46",
-   "crown",
+   "josephChariot",
    [
     "How old was Joseph when he stood before Pharaoh?",
     "30",
@@ -2860,7 +2860,7 @@
   [
    "k141",
    "GEN 41:42",
-   "ring",
+   "josephChariot",
    [
     "How did Pharaoh honour Joseph?",
     "His ring, fine linen, a gold chain and his second chariot",
@@ -2885,7 +2885,7 @@
   [
    "k142",
    "GEN 41:45",
-   "crown",
+   "josephFamily",
    [
     "Who was Joseph's wife?",
     "Asenath, the daughter of the priest of On",
@@ -2908,7 +2908,7 @@
   [
    "k143",
    "GEN 41:50",
-   "sheaves",
+   "josephFamily",
    [
     "When were Joseph's sons Manasseh and Ephraim born?",
     "Before the years of famine came",
@@ -2931,7 +2931,7 @@
   [
    "k144",
    "GEN 41:51",
-   "crown",
+   "josephFamily",
    [
     "What does the name Manasseh mean?",
     "God hath made me forget all my toil and all my father's house",
@@ -2954,7 +2954,7 @@
   [
    "k145",
    "GEN 41:52",
-   "crown",
+   "josephFamily",
    [
     "What does the name Ephraim mean?",
     "God hath caused me to be fruitful in the land of my affliction",
@@ -2977,7 +2977,7 @@
   [
    "k146",
    "GEN 42:17",
-   "sacks",
+   "simeonBound",
    [
     "For how many days did Joseph put his brothers in ward?",
     "3 days",
@@ -3000,7 +3000,7 @@
   [
    "k147",
    "GEN 42:24",
-   "sacks",
+   "simeonBound",
    [
     "Which brother did Joseph bind and keep in Egypt?",
     "Simeon",
@@ -3023,7 +3023,7 @@
   [
    "k148",
    "GEN 42:37",
-   "sacks",
+   "pleadJacob",
    [
     "What did Reuben offer to his father as surety for Benjamin?",
     "His two sons",
@@ -3046,7 +3046,7 @@
   [
    "k149",
    "GEN 43:9",
-   "sacks",
+   "pleadJacob",
    [
     "Who became surety for Benjamin the second time?",
     "Judah",
@@ -3069,7 +3069,7 @@
   [
    "k150",
    "GEN 43:11",
-   "donkey",
+   "donkeyGifts",
    [
     "What present did Jacob send down to the ruler of Egypt?",
     "Balm, honey, spices, myrrh, nuts and almonds",
@@ -3092,7 +3092,7 @@
   [
    "k151",
    "GEN 43:33",
-   "loaves",
+   "feastByAge",
    [
     "Why did the brothers marvel one at another in Joseph's house?",
     "They were seated by age, from the firstborn to the youngest",
@@ -3115,7 +3115,7 @@
   [
    "k152",
    "GEN 43:34",
-   "loaves",
+   "feastByAge",
    [
     "How many times more food was Benjamin given than his brothers?",
     "5 times",
@@ -3138,7 +3138,7 @@
   [
    "k153",
    "GEN 45:1",
-   "cup",
+   "cupSack",
    [
     "When did Joseph make himself known to his brothers?",
     "After the cup was found in Benjamin's sack and Judah offered himself in Benjamin's place",
@@ -3207,7 +3207,7 @@
   [
    "k156",
    "GEN 45:19",
-   "wagon",
+   "wagons",
    [
     "What did Joseph send to bring his father's household down to Egypt?",
     "Wagons",
@@ -3255,7 +3255,7 @@
   [
    "k158",
    "GEN 45:23",
-   "donkey",
+   "donkeyGifts",
    [
     "What did Joseph send to his father?",
     "Ten asses with the good things of Egypt and ten she asses with corn, bread and meat",
@@ -3278,7 +3278,7 @@
   [
    "k159",
    "GEN 46:4",
-   "ladder",
+   "nightAltar",
    [
     "Where did God say to Jacob, \"I will go down with thee into Egypt\"?",
     "Beer-sheba",
@@ -3301,7 +3301,7 @@
   [
    "k160",
    "GEN 46:27",
-   "wagon",
+   "wagons",
    [
     "In all, how many souls of the house of Jacob came into Egypt?",
     "70",
@@ -3395,7 +3395,7 @@
   [
    "k164",
    "GEN 48:14",
-   "elder",
+   "crossedHands",
    [
     "On whose head did Jacob lay his right hand to bless him?",
     "Ephraim",
@@ -3418,7 +3418,7 @@
   [
    "k165",
    "GEN 50:3",
-   "elder",
+   "mournAtad",
    [
     "For how many days did the Egyptians mourn for Jacob?",
     "70 days",
@@ -3441,7 +3441,7 @@
   [
    "k166",
    "GEN 50:11",
-   "sheaves",
+   "mournAtad",
    [
     "They mourned seven days at the threshingfloor of Atad. What was the place called?",
     "Abel-mizraim",
@@ -3487,7 +3487,7 @@
   [
    "k170",
    "1SA 1:2",
-   "lamp",
+   "hannahElkanah",
    [
     "What was the name of Hannah's husband?",
     "Elkanah",
@@ -3510,7 +3510,7 @@
   [
    "k171",
    "2KI 11:3",
-   "lamp",
+   "samuelLamp",
    [
     "Which two children grew up in the house of the LORD?",
     "Samuel and Joash",
@@ -3535,7 +3535,7 @@
   [
    "k172",
    "JDG 3:15",
-   "sword",
+   "ehud",
    [
     "Which judge of Israel was left-handed?",
     "Ehud",
@@ -3558,7 +3558,7 @@
   [
    "k173",
    "JDG 4:4",
-   "tree",
+   "deborahPalm",
    [
     "Who was the woman who judged Israel?",
     "Deborah",
@@ -3581,7 +3581,7 @@
   [
    "k174",
    "1KI 1:39",
-   "crown",
+   "solomonCrowned",
    [
     "Who was the third king of Israel?",
     "Solomon",
@@ -3654,7 +3654,7 @@
   [
    "k177",
    "EXO 2:21",
-   "well",
+   "mosesWell",
    [
     "What was the name of Moses' wife?",
     "Zipporah",
@@ -3677,7 +3677,7 @@
   [
    "k178",
    "EXO 18:3",
-   "bush",
+   "mosesSons",
    [
     "What were the names of Moses' two sons?",
     "Gershom and Eliezer",
@@ -3723,7 +3723,7 @@
   [
    "k180",
    "GEN 38:6",
-   "ring",
+   "tamarSignet",
    [
     "Who was Judah's daughter-in-law?",
     "Tamar",
@@ -3746,7 +3746,7 @@
   [
    "k201",
    "PSA 42:1",
-   "harp",
+   "templeSingers",
    [
     "How many psalms are of the sons of Korah?",
     "11",
@@ -3769,7 +3769,7 @@
   [
    "k202",
    "PSA 1:1",
-   "harp",
+   "davidHarp",
    [
     "About how many psalms have no writer's name in their title?",
     "50",
@@ -3863,7 +3863,7 @@
   [
    "k206",
    "PSA 137:1",
-   "harp",
+   "babylonRivers",
    [
     "Which psalm was written after the people were carried away to Babylon?",
     "Psalm 137",
@@ -3888,7 +3888,7 @@
   [
    "k207",
    "PSA 3:1",
-   "harp",
+   "davidFlees",
    [
     "When did David write Psalm 3?",
     "When he fled from his son Absalom",
@@ -3911,7 +3911,7 @@
   [
    "k208",
    "PSA 51:1",
-   "harp",
+   "nathanDavid",
    [
     "When did David write Psalm 51?",
     "When Nathan the prophet came to him after his sin with Bathsheba",
@@ -3934,7 +3934,7 @@
   [
    "k209",
    "PSA 34:1",
-   "harp",
+   "davidMad",
    [
     "Psalm 34 was sung when David changed his behaviour before whom?",
     "Abimelech",
@@ -3959,7 +3959,7 @@
   [
    "k210",
    "PSA 52:1",
-   "harp",
+   "tellSaul",
    [
     "Psalm 52 was written after who told Saul that David came to the house of Ahimelech?",
     "Doeg the Edomite",
@@ -3982,7 +3982,7 @@
   [
    "k211",
    "PSA 54:1",
-   "harp",
+   "tellSaul",
    [
     "Who came and told Saul, \"Doth not David hide himself with us?\" (Psalm 54)",
     "The Ziphites",
@@ -4005,7 +4005,7 @@
   [
    "k212",
    "PSA 56:1",
-   "harp",
+   "davidMad",
    [
     "Psalm 56 was written when the Philistines took David in which city?",
     "Gath",
@@ -4028,7 +4028,7 @@
   [
    "k213",
    "PSA 57:1",
-   "cave",
+   "davidCave",
    [
     "Where was David hiding from Saul when he wrote Psalm 57?",
     "In the cave",
@@ -4051,7 +4051,7 @@
   [
    "k214",
    "PSA 142:1",
-   "cave",
+   "davidCave",
    [
     "Which psalm is David's prayer \"when he was in the cave\", a Maschil?",
     "Psalm 142",
@@ -4074,7 +4074,7 @@
   [
    "k215",
    "PSA 59:1",
-   "harp",
+   "davidWindow",
    [
     "Psalm 59 was sung when Saul sent men to do what?",
     "Watch David's house to kill him",
@@ -4120,7 +4120,7 @@
   [
    "k217",
    "PSA 63:1",
-   "harp",
+   "davidPray",
    [
     "Where was David when he wrote Psalm 63?",
     "In the wilderness of Judah",
@@ -4143,7 +4143,7 @@
   [
    "k218",
    "PSA 30:1",
-   "harp",
+   "davidHarp",
    [
     "Psalm 30 is a song for what occasion?",
     "The dedication of the house",
@@ -4166,7 +4166,7 @@
   [
    "k219",
    "PSA 92:1",
-   "harp",
+   "davidHarp",
    [
     "Psalm 92 is a song for which day?",
     "The sabbath day",
@@ -4189,7 +4189,7 @@
   [
    "k220",
    "PSA 7:1",
-   "harp",
+   "tellSaul",
    [
     "Psalm 7 (a Shiggaion) was sung because of the words of whom?",
     "Cush the Benjamite",
@@ -4212,7 +4212,7 @@
   [
    "k221",
    "PSA 18:1",
-   "harp",
+   "davidPray",
    [
     "Psalm 18 was sung on the day the LORD delivered David from whom?",
     "All his enemies and from the hand of Saul",
@@ -4235,7 +4235,7 @@
   [
    "k222",
    "PSA 42:1",
-   "harp",
+   "templeSingers",
    [
     "Psalm 42, a Maschil, was given to the chief Musician for whom?",
     "The sons of Korah",
@@ -4258,7 +4258,7 @@
   [
    "k223",
    "PSA 39:1",
-   "harp",
+   "templeSingers",
    [
     "To which chief Musician were Psalms 39, 62 and 77 given?",
     "Jeduthun",
@@ -4281,7 +4281,7 @@
   [
    "k224",
    "PSA 16:1",
-   "harp",
+   "davidHarp",
    [
     "Psalms 16 and 56 to 60 are called what in their titles?",
     "Michtam",
@@ -4304,7 +4304,7 @@
   [
    "k225",
    "PSA 32:1",
-   "harp",
+   "davidHarp",
    [
     "What is a psalm called \"Maschil\"?",
     "A psalm of instruction (teaching)",
@@ -4327,7 +4327,7 @@
   [
    "k226",
    "PSA 4:1",
-   "harp",
+   "davidHarp",
    [
     "On what were Psalms 4, 6, 54, 55, 61 and 67 to be played?",
     "Neginoth (stringed instruments)",
@@ -4375,7 +4375,7 @@
   [
    "k228",
    "PSA 120:1",
-   "harp",
+   "pilgrims",
    [
     "How many psalms are called \"A Song of degrees\"?",
     "15",
@@ -4400,7 +4400,7 @@
   [
    "k229",
    "PSA 122:1",
-   "harp",
+   "pilgrims",
    [
     "When were the Songs of degrees sung?",
     "Going up to Jerusalem for the feasts",
@@ -4448,7 +4448,7 @@
   [
    "k231",
    "PSA 14:1",
-   "harp",
+   "davidHarp",
    [
     "Which psalm is almost the same as Psalm 14?",
     "Psalm 53",
@@ -4473,7 +4473,7 @@
   [
    "k232",
    "PSA 102:1",
-   "harp",
+   "davidPray",
    [
     "Psalm 102 is the prayer of whom?",
     "The afflicted, when he is overwhelmed",
@@ -4496,7 +4496,7 @@
   [
    "k233",
    "PSA 72:1",
-   "crown",
+   "solomonCrowned",
    [
     "Psalm 72 is a psalm for whom?",
     "Solomon",
@@ -4519,7 +4519,7 @@
   [
    "k234",
    "PSA 45:1",
-   "harp",
+   "davidHarp",
    [
     "Psalm 45, for the sons of Korah, is called what kind of song?",
     "A Song of loves",
@@ -4542,7 +4542,7 @@
   [
    "k235",
    "PSA 145:1",
-   "harp",
+   "davidHarp",
    [
     "Which psalm of David is called \"David's Psalm of praise\"?",
     "Psalm 145",
@@ -4565,7 +4565,7 @@
   [
    "k236",
    "PSA 72:20",
-   "crown",
+   "davidHarp",
    [
     "David reigned as king from about when to when?",
     "1010 to 970 BC",

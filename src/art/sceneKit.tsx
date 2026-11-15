@@ -275,3 +275,70 @@ export function Town(at: At) {
     </g>
   );
 }
+
+/** A small harp, standing on (x, y). */
+export function HarpSm(at: At) {
+  const frame = 'M0 0 V-28 Q8 -33 16 -20 L4 0 Z';
+  return (
+    <g transform={tf(at)}>
+      <path d="M4 -29.5 V0 M8 -29 V-6.7 M12 -26.5 V-13.3" {...line} strokeWidth={1.2} />
+      <path d={frame} fill="none" {...line} strokeWidth={6} />
+      <path d={frame} fill="none" stroke={C.wood} strokeWidth={3} strokeLinejoin="round" />
+    </g>
+  );
+}
+
+/** A ram's horn (of oil, or blown as a trumpet), its mouthpiece at (x, y), turned `r` degrees. */
+export function Horn({ x, y, r = 0, s = 1 }: { x: number; y: number; r?: number; s?: number }) {
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`}>
+      <path d="M-3 2 Q2 -10 16 -12 L18 -5 Q8 -4 4 5 Z" fill={C.bread} {...line} strokeWidth={2} />
+    </g>
+  );
+}
+
+/** A big cart wheel. */
+export const Wheel = ({ x, y, r = 12 }: { x: number; y: number; r?: number }) => (
+  <g>
+    <circle cx={x} cy={y} r={r} fill={C.woodSoft} {...line} />
+    <path d={`M${x - r} ${y} H${x + r} M${x} ${y - r} V${y + r}`} {...line} strokeWidth={2} />
+    <circle cx={x} cy={y} r={3} fill={C.wood} {...line} strokeWidth={2} />
+  </g>
+);
+
+/** A long table seen from the front, top edge at y, legs to the ground at 104. */
+export const Table = ({ x1, x2, y, fill = C.woodSoft }: { x1: number; x2: number; y: number; fill?: string }) => (
+  <g>
+    <path d={`M${x1 + 6} ${y + 6} V104 M${x2 - 6} ${y + 6} V104`} {...line} strokeWidth={4} />
+    <rect x={x1} y={y} width={x2 - x1} height={9} rx={3} fill={fill} {...line} />
+  </g>
+);
+
+/** Joseph's coat of many colours, laid flat and centred at (x, y); `blood` stains it. */
+export function CoatSm({ blood, ...at }: At & { blood?: boolean }) {
+  const d = 'M-6 -14 L-16 -9 L-13 -2 L-8 -5 V12 H8 V-5 L13 -2 L16 -9 L6 -14 Q0 -10 -6 -14 Z';
+  return (
+    <g transform={tf(at)}>
+      <path d={d} fill={C.red} />
+      <path d="M-8 -3 H8 V2 H-8 Z" fill={C.steel} />
+      <path d="M-8 6 H8 V10 H-8 Z" fill={C.bread} />
+      <path d={d} fill="none" {...line} strokeWidth={2.4} />
+      {blood && <path d="M-5 3 q2 5 5 1 q3 3 4 -2 q-3 -4 -9 1 Z M4 -9 q3 3 5 -1 q-2 -3 -5 1 Z" fill="#9b2c25" />}
+    </g>
+  );
+}
+
+/** A silver cup standing at (x, y). */
+export const CupSm = (at: At) => (
+  <g transform={tf(at)}>
+    <path d="M-6 -14 H6 Q6 -6 0 -5 Q-6 -6 -6 -14 Z M0 -5 V-1 M-4 0 H4" fill={C.steelSoft} {...line} strokeWidth={2} />
+  </g>
+);
+
+/** A throne: a high-backed seat whose front edge is at (x, y) on the ground; the person sits at x. */
+export const Throne = (at: At) => (
+  <g transform={tf(at)}>
+    <rect x={-18} y={-50} width={8} height={50} rx={3} fill={C.red} {...line} strokeWidth={2.6} />
+    <rect x={-16} y={-16} width={24} height={16} rx={3} fill={C.wood} {...line} strokeWidth={2.6} />
+  </g>
+);
