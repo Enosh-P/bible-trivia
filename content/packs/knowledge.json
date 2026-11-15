@@ -5028,6 +5028,1138 @@
    ]
   },
   {
+   "id": "kn-k201",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 42,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "harp",
+   "en": {
+    "q": "How many psalms are of the sons of Korah?",
+    "options": [
+     "24",
+     "3",
+     "11",
+     "7"
+    ]
+   },
+   "ta": {
+    "q": "கோராகின் புத்திரருடைய சங்கீதங்கள் எத்தனை?",
+    "options": [
+     "24",
+     "3",
+     "11",
+     "7"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k202",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 1,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "harp",
+   "en": {
+    "q": "About how many psalms have no writer's name in their title?",
+    "options": [
+     "100",
+     "10",
+     "50",
+     "25"
+    ]
+   },
+   "ta": {
+    "q": "தலைப்பில் எழுதியவரின் பெயர் இல்லாத சங்கீதங்கள் ஏறக்குறைய எத்தனை?",
+    "options": [
+     "100",
+     "10",
+     "50",
+     "25"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k203",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 89,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "writer",
+   "en": {
+    "q": "Who wrote Psalm 89, a Maschil?",
+    "options": [
+     "Heman the Ezrahite",
+     "Jeduthun",
+     "Asaph",
+     "Ethan the Ezrahite"
+    ]
+   },
+   "ta": {
+    "q": "மஸ்கீல் என்னும் 89 ஆம் சங்கீதத்தை எழுதியவர் யார்?",
+    "options": [
+     "எஸ்ராகியனாகிய ஏமான்",
+     "எதுத்தூன்",
+     "ஆசாப்",
+     "எஸ்ராகியனாகிய ஏத்தான்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k204",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 88,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "writer",
+   "en": {
+    "q": "Psalm 88 is the Maschil of whom?",
+    "options": [
+     "Heman the Ezrahite",
+     "Ethan the Ezrahite",
+     "Moses",
+     "Solomon"
+    ]
+   },
+   "ta": {
+    "q": "88 ஆம் சங்கீதம் யாருடைய போதக சங்கீதம்?",
+    "options": [
+     "எஸ்ராகியனாகிய ஏமான்",
+     "எஸ்ராகியனாகிய ஏத்தான்",
+     "மோசே",
+     "சாலொமோன்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k205",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 90,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "writer",
+   "en": {
+    "q": "Moses probably wrote Psalm 90 during which time?",
+    "options": [
+     "The reign of David",
+     "The days of the judges",
+     "The exile in Babylon",
+     "The forty years in the wilderness"
+    ],
+    "explain": "About 1446 to 1406 BC."
+   },
+   "ta": {
+    "q": "மோசே 90 ஆம் சங்கீதத்தை எந்தக் காலத்தில் எழுதியிருக்கலாம்?",
+    "options": [
+     "தாவீதின் ஆட்சிக்காலத்தில்",
+     "நியாயாதிபதிகளின் நாட்களில்",
+     "பாபிலோன் சிறையிருப்பில்",
+     "வனாந்தரத்தில் நாற்பது வருஷ யாத்திரையில்"
+    ],
+    "explain": "ஏறக்குறைய கி.மு. 1446 முதல் 1406 வரை."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k206",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 137,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "harp",
+   "en": {
+    "q": "Which psalm was written after the people were carried away to Babylon?",
+    "options": [
+     "Psalm 100",
+     "Psalm 23",
+     "Psalm 90",
+     "Psalm 137"
+    ],
+    "explain": "By the rivers of Babylon, there we sat down, yea, we wept."
+   },
+   "ta": {
+    "q": "ஜனங்கள் பாபிலோனுக்குச் சிறைப்பட்டுப் போனபின் எழுதப்பட்ட சங்கீதம் எது?",
+    "options": [
+     "100 ஆம் சங்கீதம்",
+     "23 ஆம் சங்கீதம்",
+     "90 ஆம் சங்கீதம்",
+     "137 ஆம் சங்கீதம்"
+    ],
+    "explain": "பாபிலோன் ஆறுகளின் அருகே உட்கார்ந்து அழுதோம்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k207",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 3,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "harp",
+   "en": {
+    "q": "When did David write Psalm 3?",
+    "options": [
+     "When Nathan came to him",
+     "When he was in the cave",
+     "When he became king",
+     "When he fled from his son Absalom"
+    ]
+   },
+   "ta": {
+    "q": "தாவீது 3 ஆம் சங்கீதத்தை எப்போது பாடினான்?",
+    "options": [
+     "நாத்தான் அவனிடத்தில் வந்தபோது",
+     "கெபியில் இருக்கையில்",
+     "ராஜாவானபோது",
+     "தன் குமாரனாகிய அப்சலோமுக்குத் தப்பி ஓடிப்போகையில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k208",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 51,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "harp",
+   "en": {
+    "q": "When did David write Psalm 51?",
+    "options": [
+     "When Saul sent men to kill him",
+     "When Nathan the prophet came to him after his sin with Bathsheba",
+     "When he brought the ark to Jerusalem",
+     "When he fled from Absalom"
+    ]
+   },
+   "ta": {
+    "q": "தாவீது 51 ஆம் சங்கீதத்தை எப்போது பாடினான்?",
+    "options": [
+     "சவுல் அவனைக் கொல்ல ஆட்களை அனுப்பினபோது",
+     "பத்சேபாளிடத்தில் பாவம் செய்தபின் நாத்தான் தீர்க்கதரிசி அவனிடத்தில் வந்தபோது",
+     "பெட்டியை எருசலேமுக்குக் கொண்டுவந்தபோது",
+     "அப்சலோமுக்குத் தப்பி ஓடுகையில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k209",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 34,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "harp",
+   "en": {
+    "q": "Psalm 34 was sung when David changed his behaviour before whom?",
+    "options": [
+     "Ahimelech",
+     "Saul",
+     "Goliath",
+     "Abimelech"
+    ],
+    "explain": "Abimelech (Achish, king of Gath) drove him away."
+   },
+   "ta": {
+    "q": "தாவீது யாருக்கு முன்பாக வேஷமாறினபோது 34 ஆம் சங்கீதத்தைப் பாடினான்?",
+    "options": [
+     "அகிமெலேக்கு",
+     "சவுல்",
+     "கோலியாத்",
+     "அபிமெலேக்கு"
+    ],
+    "explain": "அபிமெலேக்கு (காத்தின் ராஜாவாகிய ஆகீஸ்) அவனைத் துரத்திவிட்டான்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k210",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 52,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "harp",
+   "en": {
+    "q": "Psalm 52 was written after who told Saul that David came to the house of Ahimelech?",
+    "options": [
+     "The Ziphites",
+     "Nabal",
+     "Doeg the Edomite",
+     "Shimei"
+    ]
+   },
+   "ta": {
+    "q": "தாவீது அகிமெலேக்கின் வீட்டுக்கு வந்தான் என்று சவுலுக்கு அறிவித்தவன் யார் (52 ஆம் சங்கீதம்)?",
+    "options": [
+     "சீப்பூரார்",
+     "நாபால்",
+     "ஏதோமியனாகிய தோவேக்கு",
+     "சீமேயி"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k211",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 54,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "harp",
+   "en": {
+    "q": "Who came and told Saul, \"Doth not David hide himself with us?\" (Psalm 54)",
+    "options": [
+     "Doeg the Edomite",
+     "The men of Keilah",
+     "The Ziphites",
+     "The Philistines"
+    ]
+   },
+   "ta": {
+    "q": "\"தாவீது எங்களிடத்தில் ஒளித்துக்கொண்டிருக்கிறான் அல்லவா?\" என்று சவுலிடம் வந்து சொன்னவர்கள் யார் (54 ஆம் சங்கீதம்)?",
+    "options": [
+     "ஏதோமியனாகிய தோவேக்கு",
+     "கேகிலா ஊரார்",
+     "சீப்பூரார்",
+     "பெலிஸ்தர்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k212",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 56,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "harp",
+   "en": {
+    "q": "Psalm 56 was written when the Philistines took David in which city?",
+    "options": [
+     "Ashdod",
+     "Gath",
+     "Gaza",
+     "Ekron"
+    ]
+   },
+   "ta": {
+    "q": "பெலிஸ்தர் தாவீதை எந்தப் பட்டணத்தில் பிடித்தபோது 56 ஆம் சங்கீதம் பாடப்பட்டது?",
+    "options": [
+     "அஸ்தோத்",
+     "காத்",
+     "காசா",
+     "எக்ரோன்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k213",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 57,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "cave",
+   "en": {
+    "q": "Where was David hiding from Saul when he wrote Psalm 57?",
+    "options": [
+     "In the house of Ahimelech",
+     "In Gath",
+     "In the wilderness of Ziph",
+     "In the cave"
+    ]
+   },
+   "ta": {
+    "q": "தாவீது சவுலுக்குத் தப்பி எங்கே ஒதுங்கியிருந்தபோது 57 ஆம் சங்கீதத்தைப் பாடினான்?",
+    "options": [
+     "அகிமெலேக்கின் வீட்டில்",
+     "காத்தில்",
+     "சீப் வனாந்தரத்தில்",
+     "கெபியில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k214",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 142,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "cave",
+   "en": {
+    "q": "Which psalm is David's prayer \"when he was in the cave\", a Maschil?",
+    "options": [
+     "Psalm 51",
+     "Psalm 100",
+     "Psalm 23",
+     "Psalm 142"
+    ]
+   },
+   "ta": {
+    "q": "\"தாவீது கெபியிலிருக்கும்போது பண்ணின விண்ணப்பம்\" எந்தச் சங்கீதம்?",
+    "options": [
+     "51 ஆம் சங்கீதம்",
+     "100 ஆம் சங்கீதம்",
+     "23 ஆம் சங்கீதம்",
+     "142 ஆம் சங்கீதம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k215",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 59,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "harp",
+   "en": {
+    "q": "Psalm 59 was sung when Saul sent men to do what?",
+    "options": [
+     "Watch David's house to kill him",
+     "Fight the Philistines",
+     "Bring the ark back",
+     "Find his father's asses"
+    ]
+   },
+   "ta": {
+    "q": "சவுல் எதற்காக ஆட்களை அனுப்பினபோது 59 ஆம் சங்கீதம் பாடப்பட்டது?",
+    "options": [
+     "தாவீதைக் கொல்லும்படி அவன் வீட்டைக் காக்க",
+     "பெலிஸ்தரோடு யுத்தம்பண்ண",
+     "பெட்டியைத் திரும்பக் கொண்டுவர",
+     "தன் தகப்பனுடைய கழுதைகளைத் தேட"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k216",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 60,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "sword",
+   "en": {
+    "q": "In the title of Psalm 60, how many Edomites did Joab smite in the valley of salt?",
+    "options": [
+     "7,000",
+     "12,000",
+     "18,000",
+     "1,000"
+    ]
+   },
+   "ta": {
+    "q": "60 ஆம் சங்கீதத்தின் தலைப்பில், யோவாப் உப்புப் பள்ளத்தாக்கிலே எத்தனை ஏதோமியரை வெட்டினான்?",
+    "options": [
+     "7,000",
+     "12,000",
+     "18,000",
+     "1,000"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k217",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 63,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "harp",
+   "en": {
+    "q": "Where was David when he wrote Psalm 63?",
+    "options": [
+     "In Gath",
+     "In Jerusalem",
+     "In the wilderness of Judah",
+     "In the cave"
+    ]
+   },
+   "ta": {
+    "q": "தாவீது 63 ஆம் சங்கீதத்தைப் பாடினபோது எங்கே இருந்தான்?",
+    "options": [
+     "காத்தில்",
+     "எருசலேமில்",
+     "யூதாவின் வனாந்தரத்தில்",
+     "கெபியில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k218",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 30,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "harp",
+   "en": {
+    "q": "Psalm 30 is a song for what occasion?",
+    "options": [
+     "The dedication of the house",
+     "The Passover",
+     "A victory in battle",
+     "A wedding"
+    ]
+   },
+   "ta": {
+    "q": "30 ஆம் சங்கீதம் எந்தச் சந்தர்ப்பத்தின் பாட்டு?",
+    "options": [
+     "ஆலயப் பிரதிஷ்டை",
+     "பஸ்கா",
+     "யுத்த ஜெயம்",
+     "கலியாணம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k219",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 92,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "harp",
+   "en": {
+    "q": "Psalm 92 is a song for which day?",
+    "options": [
+     "The new moon",
+     "The sabbath day",
+     "The first day of the year",
+     "The day of atonement"
+    ]
+   },
+   "ta": {
+    "q": "92 ஆம் சங்கீதம் எந்த நாளின் பாட்டு?",
+    "options": [
+     "அமாவாசை",
+     "ஓய்வுநாள்",
+     "வருஷத்தின் முதல் நாள்",
+     "பாவநிவிர்த்தி நாள்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k220",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 7,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "harp",
+   "en": {
+    "q": "Psalm 7 (a Shiggaion) was sung because of the words of whom?",
+    "options": [
+     "Shimei",
+     "Doeg the Edomite",
+     "Ahithophel",
+     "Cush the Benjamite"
+    ]
+   },
+   "ta": {
+    "q": "சிகாயோன் என்னும் 7 ஆம் சங்கீதம் யாருடைய வார்த்தைகளினிமித்தம் பாடப்பட்டது?",
+    "options": [
+     "சீமேயி",
+     "ஏதோமியனாகிய தோவேக்கு",
+     "அகித்தோப்பேல்",
+     "பென்யமீனியனாகிய கூஷ்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k221",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 18,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "harp",
+   "en": {
+    "q": "Psalm 18 was sung on the day the LORD delivered David from whom?",
+    "options": [
+     "Goliath the Philistine",
+     "The Amalekites at Ziklag",
+     "His son Absalom",
+     "All his enemies and from the hand of Saul"
+    ]
+   },
+   "ta": {
+    "q": "கர்த்தர் தாவீதை யாருடைய கைக்கு நீங்கலாக்கின நாளில் 18 ஆம் சங்கீதத்தைப் பாடினான்?",
+    "options": [
+     "பெலிஸ்தனாகிய கோலியாத்தின் கைக்கு",
+     "சிக்லாகிலிருந்த அமலேக்கியரின் கைக்கு",
+     "தன் குமாரனாகிய அப்சலோமின் கைக்கு",
+     "எல்லாச் சத்துருக்களின் கைக்கும் சவுலின் கைக்கும்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k222",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 42,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "harp",
+   "en": {
+    "q": "Psalm 42, a Maschil, was given to the chief Musician for whom?",
+    "options": [
+     "David",
+     "Solomon",
+     "Asaph",
+     "The sons of Korah"
+    ]
+   },
+   "ta": {
+    "q": "மஸ்கீல் என்னும் 42 ஆம் சங்கீதம் யாருக்காக இராகத்தலைவனுக்கு ஒப்புவிக்கப்பட்டது?",
+    "options": [
+     "தாவீது",
+     "சாலொமோன்",
+     "ஆசாப்",
+     "கோராகின் புத்திரர்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k223",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 39,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 2,
+   "art": "harp",
+   "en": {
+    "q": "To which chief Musician were Psalms 39, 62 and 77 given?",
+    "options": [
+     "Heman",
+     "Korah",
+     "Jeduthun",
+     "Asaph"
+    ]
+   },
+   "ta": {
+    "q": "39, 62, 77 ஆம் சங்கீதங்கள் எந்த இராகத்தலைவனுக்கு ஒப்புவிக்கப்பட்டன?",
+    "options": [
+     "ஏமான்",
+     "கோராகு",
+     "எதுத்தூன்",
+     "ஆசாப்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k224",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 16,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "harp",
+   "en": {
+    "q": "Psalms 16 and 56 to 60 are called what in their titles?",
+    "options": [
+     "Selah",
+     "Michtam",
+     "Maschil",
+     "Shiggaion"
+    ]
+   },
+   "ta": {
+    "q": "16, 56 முதல் 60 வரையிலான சங்கீதங்களின் தலைப்பில் அவை என்னவென்று சொல்லப்படுகின்றன?",
+    "options": [
+     "சேலா",
+     "மிக்தாம்",
+     "மஸ்கீல்",
+     "சிகாயோன்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k225",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 32,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "harp",
+   "en": {
+    "q": "What is a psalm called \"Maschil\"?",
+    "options": [
+     "A prayer in the cave",
+     "A song of the harvest",
+     "A song of the sabbath",
+     "A psalm of instruction (teaching)"
+    ]
+   },
+   "ta": {
+    "q": "\"மஸ்கீல்\" என்னும் சங்கீதம் என்ன?",
+    "options": [
+     "கெபியிலே செய்த விண்ணப்பம்",
+     "அறுப்பின் பாட்டு",
+     "ஓய்வுநாளின் பாட்டு",
+     "போதக சங்கீதம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k226",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 4,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "harp",
+   "en": {
+    "q": "On what were Psalms 4, 6, 54, 55, 61 and 67 to be played?",
+    "options": [
+     "Gittith",
+     "Neginoth (stringed instruments)",
+     "Trumpets",
+     "Alamoth"
+    ]
+   },
+   "ta": {
+    "q": "4, 6, 54, 55, 61, 67 ஆம் சங்கீதங்கள் எதில் வாசிக்கப்படவேண்டும்?",
+    "options": [
+     "கித்தீத்",
+     "நெகினோத் (நரம்பு வாத்தியம்)",
+     "எக்காளம்",
+     "அலாமோத்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k227",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 119,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "scroll",
+   "en": {
+    "q": "How is Psalm 119 arranged?",
+    "options": [
+     "By the 22 letters of the Hebrew alphabet",
+     "By the ten commandments",
+     "By the days of the week",
+     "By the twelve tribes of Israel"
+    ],
+    "explain": "Each group of eight verses begins with the next Hebrew letter (Aleph, Beth, ...)."
+   },
+   "ta": {
+    "q": "119 ஆம் சங்கீதம் எப்படி அமைக்கப்பட்டிருக்கிறது?",
+    "options": [
+     "எபிரெய அகர வரிசையின் 22 எழுத்துகளின்படி",
+     "பத்துக் கற்பனைகளின்படி",
+     "வாரத்தின் நாட்களின்படி",
+     "இஸ்ரவேலின் பன்னிரண்டு கோத்திரங்களின்படி"
+    ],
+    "explain": "ஒவ்வொரு எட்டு வசனங்களும் அடுத்த எபிரெய எழுத்தில் தொடங்குகின்றன (ஆலெப், பேத், ...)."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k228",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 120,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "harp",
+   "en": {
+    "q": "How many psalms are called \"A Song of degrees\"?",
+    "options": [
+     "15",
+     "12",
+     "7",
+     "22"
+    ],
+    "explain": "Psalms 120 to 134."
+   },
+   "ta": {
+    "q": "\"ஆரோகண சங்கீதம்\" என்று அழைக்கப்படும் சங்கீதங்கள் எத்தனை?",
+    "options": [
+     "15",
+     "12",
+     "7",
+     "22"
+    ],
+    "explain": "120 முதல் 134 வரை."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k229",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 122,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "harp",
+   "en": {
+    "q": "When were the Songs of degrees sung?",
+    "options": [
+     "Before going to war",
+     "At funerals",
+     "At the crowning of a king",
+     "Going up to Jerusalem for the feasts"
+    ]
+   },
+   "ta": {
+    "q": "ஆரோகண சங்கீதங்கள் எப்போது பாடப்பட்டன?",
+    "options": [
+     "யுத்தத்திற்குப் போகுமுன்",
+     "அடக்கம்பண்ணும்போது",
+     "ராஜாவுக்கு முடிசூட்டும்போது",
+     "பண்டிகைகளுக்காக எருசலேமுக்குப் போகையில்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k230",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 127,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "writer",
+   "en": {
+    "q": "Which Song of degrees is of Solomon?",
+    "options": [
+     "Psalm 127",
+     "Psalm 122",
+     "Psalm 133",
+     "Psalm 130"
+    ],
+    "explain": "David wrote four of them: 122, 124, 131 and 133."
+   },
+   "ta": {
+    "q": "ஆரோகண சங்கீதங்களில் சாலொமோன் பாடினது எது?",
+    "options": [
+     "127 ஆம் சங்கீதம்",
+     "122 ஆம் சங்கீதம்",
+     "133 ஆம் சங்கீதம்",
+     "130 ஆம் சங்கீதம்"
+    ],
+    "explain": "தாவீது நான்கு பாடினான்: 122, 124, 131, 133."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k231",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 14,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "harp",
+   "en": {
+    "q": "Which psalm is almost the same as Psalm 14?",
+    "options": [
+     "Psalm 53",
+     "Psalm 41",
+     "Psalm 23",
+     "Psalm 90"
+    ],
+    "explain": "\"The fool hath said in his heart, There is no God.\""
+   },
+   "ta": {
+    "q": "14 ஆம் சங்கீதத்தைப் போலவே ஏறக்குறைய இருக்கும் சங்கீதம் எது?",
+    "options": [
+     "53 ஆம் சங்கீதம்",
+     "41 ஆம் சங்கீதம்",
+     "23 ஆம் சங்கீதம்",
+     "90 ஆம் சங்கீதம்"
+    ],
+    "explain": "\"தேவன் இல்லை என்று மதிகேடன் தன் இருதயத்தில் சொல்லுகிறான்.\""
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k232",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 102,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "harp",
+   "en": {
+    "q": "Psalm 102 is the prayer of whom?",
+    "options": [
+     "Hezekiah when he was sick",
+     "The afflicted, when he is overwhelmed",
+     "Moses the man of God",
+     "Solomon at the dedication"
+    ]
+   },
+   "ta": {
+    "q": "102 ஆம் சங்கீதம் யாருடைய விண்ணப்பம்?",
+    "options": [
+     "வியாதிப்பட்டபோது எசேக்கியாவின் ஜெபம்",
+     "துயரப்படுகிறவன் துக்கத்தில் மூழ்கி கர்த்தரிடத்தில் செய்த விண்ணப்பம்",
+     "தேவனுடைய மனுஷனாகிய மோசேயின் ஜெபம்",
+     "ஆலயப் பிரதிஷ்டையில் சாலொமோனின் ஜெபம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k233",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 72,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "crown",
+   "en": {
+    "q": "Psalm 72 is a psalm for whom?",
+    "options": [
+     "David",
+     "Hezekiah",
+     "Josiah",
+     "Solomon"
+    ]
+   },
+   "ta": {
+    "q": "72 ஆம் சங்கீதம் யாரைப் பற்றியது?",
+    "options": [
+     "தாவீது",
+     "எசேக்கியா",
+     "யோசியா",
+     "சாலொமோன்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k234",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 45,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 1,
+   "art": "harp",
+   "en": {
+    "q": "Psalm 45, for the sons of Korah, is called what kind of song?",
+    "options": [
+     "A Song for the sabbath",
+     "A Song of loves",
+     "A Psalm of praise",
+     "A Song of degrees"
+    ]
+   },
+   "ta": {
+    "q": "கோராகின் புத்திரருக்கான 45 ஆம் சங்கீதம் எப்படிப்பட்ட பாட்டு?",
+    "options": [
+     "ஓய்வுநாளின் பாட்டு",
+     "நேசப்பாட்டு",
+     "ஸ்தோத்திர சங்கீதம்",
+     "ஆரோகண சங்கீதம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k235",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 145,
+   "verse": 1,
+   "difficulty": 2,
+   "answer": 0,
+   "art": "harp",
+   "en": {
+    "q": "Which psalm of David is called \"David's Psalm of praise\"?",
+    "options": [
+     "Psalm 145",
+     "Psalm 1",
+     "Psalm 51",
+     "Psalm 23"
+    ]
+   },
+   "ta": {
+    "q": "\"தாவீது பாடின ஸ்தோத்திர சங்கீதம்\" எது?",
+    "options": [
+     "145 ஆம் சங்கீதம்",
+     "1 ஆம் சங்கீதம்",
+     "51 ஆம் சங்கீதம்",
+     "23 ஆம் சங்கீதம்"
+    ]
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
+   "id": "kn-k236",
+   "type": "mcq",
+   "book": "PSA",
+   "chapter": 72,
+   "verse": 20,
+   "difficulty": 2,
+   "answer": 3,
+   "art": "crown",
+   "en": {
+    "q": "David reigned as king from about when to when?",
+    "options": [
+     "586 to 539 BC",
+     "931 to 913 BC",
+     "1446 to 1406 BC",
+     "1010 to 970 BC"
+    ],
+    "explain": "He wrote some psalms before he became king and some after."
+   },
+   "ta": {
+    "q": "தாவீது ஏறக்குறைய எப்போது முதல் எப்போது வரை ராஜாவாயிருந்தான்?",
+    "options": [
+     "கி.மு. 586 முதல் 539 வரை",
+     "கி.மு. 931 முதல் 913 வரை",
+     "கி.மு. 1446 முதல் 1406 வரை",
+     "கி.மு. 1010 முதல் 970 வரை"
+    ],
+    "explain": "ராஜாவாகுமுன் சில சங்கீதங்களையும், ராஜாவானபின் சிலவற்றையும் எழுதினான்."
+   },
+   "tags": [
+    "knowledge"
+   ]
+  },
+  {
    "id": "kn-ch-GEN",
    "type": "book",
    "book": "GEN",

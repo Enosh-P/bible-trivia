@@ -1,491 +1,4591 @@
 {
  "about": "Bible Knowledge: questions from a family elder (Tamil), checked against the Bible (KJV + BSI Tamil O.V.) and translated. Each: [id, ref, art, [en q, en answer, [3 wrong], en note?], [ta q, ta answer, [3 wrong], ta note?]]. The right answer is written first; scripts/build-knowledge.mjs shuffles the options and adds the chapter-count questions.",
  "questions": [
-  ["k001", "ISA 1:1", "writer",
-   ["How many prophets of the Old Testament wrote a book that bears their name?", "16", ["12", "17", "22"], "4 major prophets (Isaiah, Jeremiah, Ezekiel, Daniel) and 12 minor prophets (Hosea to Malachi)."],
-   ["பழைய ஏற்பாட்டில் தங்கள் பெயரில் புஸ்தகம் எழுதிய தீர்க்கதரிசிகள் எத்தனை பேர்?", "16", ["12", "17", "22"], "4 பெரிய தீர்க்கதரிசிகள் (ஏசாயா, எரேமியா, எசேக்கியேல், தானியேல்), 12 சிறிய தீர்க்கதரிசிகள் (ஓசியா முதல் மல்கியா வரை)."]],
-  ["k002", "1KI 17:1", "altar",
-   ["Which of these prophets did NOT write a book of the Bible?", "Elijah", ["Isaiah", "Jonah", "Malachi"]],
-   ["இவர்களில் வேதாகமப் புஸ்தகம் எழுதாத தீர்க்கதரிசி யார்?", "எலியா", ["ஏசாயா", "யோனா", "மல்கியா"]]],
-  ["k003", "PSA 72:20", "harp",
-   ["By the psalm titles, about how many psalms are of David?", "73", ["12", "50", "150"], "73 psalms carry David's name in their titles; counting Psalms 2 and 95 (Acts 4:25, Hebrews 4:7) some say 75."],
-   ["சங்கீதங்களின் தலைப்புகளின்படி தாவீதின் சங்கீதங்கள் ஏறக்குறைய எத்தனை?", "73", ["12", "50", "150"], "73 சங்கீதங்களின் தலைப்பில் தாவீதின் பெயர் உள்ளது; 2, 95 ஆம் சங்கீதங்களையும் சேர்த்து (அப். 4:25, எபி. 4:7) சிலர் 75 என்பர்."]],
-  ["k004", "PSA 73:1", "harp",
-   ["How many psalms are of Asaph?", "12", ["3", "7", "24"], "Psalm 50 and Psalms 73 to 83."],
-   ["ஆசாபின் சங்கீதங்கள் எத்தனை?", "12", ["3", "7", "24"], "50 ஆம் சங்கீதமும், 73 முதல் 83 வரையிலான சங்கீதங்களும்."]],
-  ["k005", "PSA 127:1", "harp",
-   ["How many psalms are of Solomon?", "2", ["1", "5", "10"], "Psalm 72 and Psalm 127."],
-   ["சாலொமோனின் சங்கீதங்கள் எத்தனை?", "2", ["1", "5", "10"], "72 ஆம் சங்கீதமும் 127 ஆம் சங்கீதமும்."]],
-  ["k006", "ECC 1:1", "writer",
-   ["Which of these books did Solomon write?", "Ecclesiastes", ["Lamentations", "Job", "Ruth"], "Solomon wrote Proverbs, Ecclesiastes, the Song of Solomon and two psalms."],
-   ["இவற்றில் சாலொமோன் எழுதிய புஸ்தகம் எது?", "பிரசங்கி", ["புலம்பல்", "யோபு", "ரூத்"], "நீதிமொழிகள், பிரசங்கி, உன்னதப்பாட்டு, இரண்டு சங்கீதங்கள் ஆகியவற்றைச் சாலொமோன் எழுதினார்."]],
-  ["k007", "PRO 1:1", "writer",
-   ["Who wrote most of the book of Proverbs?", "Solomon", ["David", "Moses", "Asaph"]],
-   ["நீதிமொழிகள் புஸ்தகத்தின் பெரும்பகுதியை எழுதியவர் யார்?", "சாலொமோன்", ["தாவீது", "மோசே", "ஆசாப்"]]],
-  ["k008", "JER 36:4", "writer",
-   ["Who was Jeremiah's helper who wrote down his words?", "Baruch", ["Barak", "Gehazi", "Elisha"], "Baruch the son of Neriah wrote from the mouth of Jeremiah. (Barak was a judge with Deborah.)"],
-   ["எரேமியாவின் வார்த்தைகளை எழுதிய அவருடைய உதவியாளர் யார்?", "பாருக்கு", ["பாராக்", "கேயாசி", "எலிசா"], "நேரியாவின் குமாரனாகிய பாருக்கு எரேமியாவின் வாய்மொழியின்படி எழுதினான். (பாராக் தெபொராளுடன் இருந்த நியாயாதிபதி.)"]],
-  ["k009", "LEV 1:1", "writer",
-   ["Which of these books was written by Moses?", "Leviticus", ["Joshua", "Judges", "Ruth"], "Moses wrote Genesis, Exodus, Leviticus, Numbers and Deuteronomy."],
-   ["இவற்றில் மோசே எழுதிய புஸ்தகம் எது?", "லேவியராகமம்", ["யோசுவா", "நியாயாதிபதிகள்", "ரூத்"], "ஆதியாகமம், யாத்திராகமம், லேவியராகமம், எண்ணாகமம், உபாகமம் ஆகியவற்றை மோசே எழுதினார்."]],
-  ["k010", "PSA 90:1", "writer",
-   ["Which psalm is \"A Prayer of Moses the man of God\"?", "Psalm 90", ["Psalm 23", "Psalm 51", "Psalm 119"]],
-   ["\"தேவனுடைய மனுஷனாகிய மோசேயின் ஜெபம்\" எந்தச் சங்கீதம்?", "90 ஆம் சங்கீதம்", ["23 ஆம் சங்கீதம்", "51 ஆம் சங்கீதம்", "119 ஆம் சங்கீதம்"]]],
-  ["k011", "JOB 1:1", "writer",
-   ["Besides the five books of the Law, which book is traditionally said to be written by Moses?", "Job", ["Joshua", "Judges", "Esther"]],
-   ["நியாயப்பிரமாணத்தின் ஐந்து புஸ்தகங்களைத் தவிர, மோசே எழுதியதாகப் பாரம்பரியமாகச் சொல்லப்படும் புஸ்தகம் எது?", "யோபு", ["யோசுவா", "நியாயாதிபதிகள்", "எஸ்தர்"]]],
-  ["k012", "1CH 29:29", "writer",
-   ["Which books are traditionally said to be written by Samuel?", "Judges, Ruth and part of 1 Samuel", ["Ezra and Nehemiah", "1 and 2 Kings", "Esther and Job"], "The rest of the acts of David were written by Samuel the seer, Nathan the prophet and Gad the seer."],
-   ["சாமுவேல் எழுதியதாகப் பாரம்பரியமாகச் சொல்லப்படும் புஸ்தகங்கள் எவை?", "நியாயாதிபதிகள், ரூத், 1 சாமுவேலின் ஒரு பகுதி", ["எஸ்றா, நெகேமியா", "1, 2 இராஜாக்கள்", "எஸ்தர், யோபு"], "தாவீதின் மற்ற வர்த்தமானங்களை ஞானதிருஷ்டிக்காரனாகிய சாமுவேலும், தீர்க்கதரிசியாகிய நாத்தானும், ஞானதிருஷ்டிக்காரனாகிய காத்தும் எழுதினார்கள்."]],
-  ["k013", "1CH 29:29", "writer",
-   ["Together with Samuel, which two prophets wrote down the acts of David?", "Nathan and Gad", ["Elijah and Elisha", "Isaiah and Jeremiah", "Haggai and Zechariah"]],
-   ["சாமுவேலுடன் சேர்ந்து தாவீதின் வர்த்தமானங்களை எழுதிய இரண்டு தீர்க்கதரிசிகள் யார்?", "நாத்தான், காத்", ["எலியா, எலிசா", "ஏசாயா, எரேமியா", "ஆகாய், சகரியா"]]],
-  ["k014", "ROM 1:1", "writer",
-   ["Counting Hebrews, how many letters are traditionally said to be written by Paul?", "14", ["7", "12", "21"], "Romans to Philemon are 13 letters; with Hebrews, 14."],
-   ["எபிரெயரையும் சேர்த்து, பவுல் எழுதியதாகச் சொல்லப்படும் நிருபங்கள் எத்தனை?", "14", ["7", "12", "21"], "ரோமர் முதல் பிலேமோன் வரை 13 நிருபங்கள்; எபிரெயரையும் சேர்த்து 14."]],
-  ["k015", "ROM 1:7", "writer",
-   ["To churches in how many different places did Paul write (Romans to 2 Thessalonians)?", "7", ["3", "9", "12"], "Rome, Corinth, Galatia, Ephesus, Philippi, Colosse and Thessalonica."],
-   ["பவுல் எத்தனை வெவ்வேறு இடங்களிலுள்ள சபைகளுக்கு நிருபம் எழுதினார் (ரோமர் முதல் 2 தெசலோனிக்கேயர் வரை)?", "7", ["3", "9", "12"], "ரோமா, கொரிந்து, கலாத்தியா, எபேசு, பிலிப்பி, கொலோசெ, தெசலோனிக்கே."]],
-  ["k016", "PHM 1:1", "writer",
-   ["Which of these New Testament letters was written to one person?", "Philemon", ["Galatians", "Hebrews", "Ephesians"], "1 and 2 Timothy, Titus and Philemon were written to one person; so were 2 John (the elect lady) and 3 John (Gaius)."],
-   ["இவற்றில் ஒரு தனி நபருக்கு எழுதப்பட்ட புதிய ஏற்பாட்டு நிருபம் எது?", "பிலேமோன்", ["கலாத்தியர்", "எபிரெயர்", "எபேசியர்"], "1, 2 தீமோத்தேயு, தீத்து, பிலேமோன் ஆகியவை தனி நபருக்கு எழுதப்பட்டவை; 2 யோவான் (அம்மாள்), 3 யோவான் (காயு) கூட."]],
-  ["k017", "2JN 1:1", "writer",
-   ["To whom was the second letter of John written?", "The elect lady and her children", ["The church at Rome", "Gaius", "Timothy"]],
-   ["யோவான் எழுதிய இரண்டாம் நிருபம் யாருக்கு எழுதப்பட்டது?", "தெரிந்துகொள்ளப்பட்ட அம்மாளுக்கும் அவள் பிள்ளைகளுக்கும்", ["ரோமாவிலுள்ள சபைக்கு", "காயுவுக்கு", "தீமோத்தேயுவுக்கு"]]],
-  ["k018", "MAT 10:2", "boat",
-   ["Which of these was NOT one of the twelve disciples of Jesus?", "Barnabas", ["Thaddaeus", "Bartholomew", "Simon the Canaanite"], "Peter, Andrew, James, John, Philip, Bartholomew, Thomas, Matthew, James son of Alphaeus, Thaddaeus, Simon the Canaanite and Judas Iscariot."],
-   ["இவர்களில் இயேசுவின் பன்னிரண்டு சீஷரில் ஒருவர் அல்லாதவர் யார்?", "பர்னபா", ["ததேயு", "பற்தொலொமேயு", "கானானியனாகிய சீமோன்"], "பேதுரு, அந்திரேயா, யாக்கோபு, யோவான், பிலிப்பு, பற்தொலொமேயு, தோமா, மத்தேயு, அல்பேயுவின் குமாரனாகிய யாக்கோபு, ததேயு, கானானியனாகிய சீமோன், யூதாஸ்காரியோத்து."]],
-  ["k019", "ACT 1:26", "boat",
-   ["Who was chosen to take the place of Judas among the twelve apostles?", "Matthias", ["Paul", "Barnabas", "Stephen"]],
-   ["பன்னிரண்டு அப்போஸ்தலரில் யூதாஸின் இடத்திற்குத் தெரிந்துகொள்ளப்பட்டவர் யார்?", "மத்தியா", ["பவுல்", "பர்னபா", "ஸ்தேவான்"]]],
-  ["k020", "REV 1:1", "writer",
-   ["Who wrote the book of Revelation?", "John", ["Paul", "Peter", "Daniel"]],
-   ["வெளிப்படுத்தின விசேஷத்தை எழுதியவர் யார்?", "யோவான்", ["பவுல்", "பேதுரு", "தானியேல்"]]],
-  ["k021", "LAM 3:22", "scroll",
-   ["How many verses are in the book of Lamentations?", "154", ["66", "88", "120"], "Five chapters: 22 + 22 + 66 + 22 + 22 verses."],
-   ["புலம்பல் புஸ்தகத்தில் எத்தனை வசனங்கள் உள்ளன?", "154", ["66", "88", "120"], "ஐந்து அதிகாரங்கள்: 22 + 22 + 66 + 22 + 22 வசனங்கள்."]],
-  ["k022", "2TI 3:16", "scroll",
-   ["How many books are in the Bible?", "66", ["39", "27", "73"], "39 in the Old Testament and 27 in the New Testament."],
-   ["வேதாகமத்தில் எத்தனை புஸ்தகங்கள் உள்ளன?", "66", ["39", "27", "73"], "பழைய ஏற்பாட்டில் 39, புதிய ஏற்பாட்டில் 27."]],
-
-  ["k030", "GEN 1:26", "sun",
-   ["For what purpose did God make man in His image and give him dominion?", "To express God and to represent Him", ["Only to keep the garden", "Only to name the animals", "To rest every day"]],
-   ["தேவன் மனுஷனைத் தம்முடைய சாயலாக உண்டாக்கி ஆளுகை கொடுத்ததின் நோக்கம் என்ன?", "தேவனை வெளிப்படுத்தவும் அவரைப் பிரதிநிதித்துவப்படுத்தவும்", ["தோட்டத்தைக் காக்க மட்டும்", "மிருகங்களுக்குப் பெயரிட மட்டும்", "தினமும் ஓய்வெடுக்க"]]],
-  ["k031", "GEN 1:16", "sun",
-   ["What did God make on the fourth day?", "The sun, the moon and the stars", ["Grass and trees", "Fish and birds", "Man and woman"]],
-   ["நான்காம் நாளில் தேவன் எதை உண்டாக்கினார்?", "சூரியன், சந்திரன், நட்சத்திரங்கள்", ["புல்லும் மரங்களும்", "மீன்களும் பறவைகளும்", "ஆணும் பெண்ணும்"]]],
-  ["k032", "GEN 1:14", "sun",
-   ["Why did God set lights in the firmament on the fourth day?", "For signs, seasons, days and years, and to give light", ["To warm the sea", "To guide Noah's ark", "Only for the angels"]],
-   ["நான்காம் நாளில் தேவன் ஆகாயவிரிவிலே சுடர்களை எதற்காக வைத்தார்?", "அடையாளங்களுக்கும், காலங்களுக்கும், நாட்களுக்கும், வருஷங்களுக்கும், வெளிச்சம் கொடுக்கவும்", ["கடலைச் சூடாக்க", "நோவாவின் பேழைக்கு வழிகாட்ட", "தேவதூதர்களுக்காக மட்டும்"]]],
-  ["k033", "GEN 1:24", "sun",
-   ["What did God make on the sixth day?", "Cattle, creeping things, beasts of the earth, and man", ["The sun, moon and stars", "Fish and birds", "Grass, herbs and trees"]],
-   ["ஆறாம் நாளில் தேவன் எவைகளை உண்டாக்கினார்?", "நாட்டுமிருகங்கள், ஊரும் பிராணிகள், காட்டுமிருகங்கள், மனுஷன்", ["சூரியன், சந்திரன், நட்சத்திரங்கள்", "மீன்களும் பறவைகளும்", "புல், பூண்டு, மரங்கள்"]]],
-  ["k034", "GEN 2:10", "river",
-   ["Into how many rivers did the river from Eden part?", "4", ["2", "3", "7"]],
-   ["ஏதேனிலிருந்து புறப்பட்ட நதி எத்தனை ஆறுகளாகப் பிரிந்தது?", "4", ["2", "3", "7"]]],
-  ["k035", "GEN 2:14", "river",
-   ["Which of these was one of the rivers of Eden?", "Hiddekel", ["Jordan", "Nile", "Kishon"], "The four rivers: Pison, Gihon, Hiddekel and Euphrates."],
-   ["இவற்றில் ஏதேனின் ஆறுகளில் ஒன்று எது?", "இதெக்கேல்", ["யோர்தான்", "நைல்", "கீசோன்"], "நான்கு ஆறுகள்: பைசோன், கீகோன், இதெக்கேல், ஐபிராத்து."]],
-  ["k036", "GEN 2:11", "river",
-   ["In which land, compassed by the river Pison, was there gold?", "Havilah", ["Ethiopia", "Assyria", "Egypt"]],
-   ["பைசோன் நதி சுற்றிப் பாய்ந்த, பொன் விளைந்த தேசம் எது?", "ஆவிலா", ["எத்தியோப்பியா", "அசீரியா", "எகிப்து"]]],
-  ["k037", "GEN 2:13", "river",
-   ["Which river of Eden compassed the land of Ethiopia?", "Gihon", ["Pison", "Hiddekel", "Euphrates"]],
-   ["எத்தியோப்பியா தேசத்தைச் சுற்றிப் பாய்ந்த ஏதேனின் நதி எது?", "கீகோன்", ["பைசோன்", "இதெக்கேல்", "ஐபிராத்து"]]],
-  ["k038", "GEN 1:8", "sun",
-   ["On which day of creation is it not said that \"it was good\"?", "The second day", ["The first day", "The third day", "The fifth day"]],
-   ["சிருஷ்டிப்பின் எந்த நாளில் \"நல்லது\" என்று சொல்லப்படவில்லை?", "இரண்டாம் நாள்", ["முதலாம் நாள்", "மூன்றாம் நாள்", "ஐந்தாம் நாள்"]]],
-  ["k039", "GEN 2:18", "tree",
-   ["What did God say was \"not good\"?", "That the man should be alone", ["The darkness", "The deep waters", "The serpent"]],
-   ["\"நல்லதல்ல\" என்று தேவன் சொன்னது எது?", "மனுஷன் தனிமையாயிருப்பது", ["இருள்", "ஆழமான தண்ணீர்", "சர்ப்பம்"]]],
-  ["k040", "GEN 3:20", "tree",
-   ["What does the name Eve mean?", "The mother of all living", ["Taken out of man", "Bone of my bones", "God has heard"]],
-   ["ஏவாள் என்ற பெயரின் அர்த்தம் என்ன?", "ஜீவனுள்ளோருக்கெல்லாம் தாய்", ["மனுஷனிலிருந்து எடுக்கப்பட்டவள்", "என் எலும்பின் எலும்பு", "தேவன் கேட்டார்"]]],
-  ["k041", "GEN 4:8", "altar",
-   ["Who was the first murderer on the earth?", "Cain", ["Lamech", "Esau", "Nimrod"]],
-   ["பூமியில் முதல் கொலைகாரன் யார்?", "காயீன்", ["லாமேக்கு", "ஏசா", "நிம்ரோத்"]]],
-  ["k042", "GEN 4:23", "sword",
-   ["After Cain, who was the next man in Genesis to say he had slain a man?", "Lamech", ["Seth", "Enos", "Ham"]],
-   ["காயீனுக்குப் பின், ஒரு மனுஷனைக் கொன்றேன் என்று சொன்ன அடுத்த நபர் யார்?", "லாமேக்கு", ["சேத்", "ஏனோஸ்", "காம்"]]],
-  ["k043", "GEN 4:26", "path",
-   ["In whose days did men begin to call upon the name of the LORD?", "Enos", ["Adam", "Enoch", "Noah"]],
-   ["யாருடைய நாட்களில் மனுஷர் கர்த்தருடைய நாமத்தைத் தொழுதுகொள்ள ஆரம்பித்தார்கள்?", "ஏனோஸ்", ["ஆதாம்", "ஏனோக்கு", "நோவா"]]],
-  ["k044", "GEN 5:24", "path",
-   ["Who walked with God, and was not, for God took him?", "Enoch", ["Methuselah", "Noah", "Lamech"]],
-   ["தேவனோடே சஞ்சரித்து, தேவன் அவனை எடுத்துக்கொண்டதினால் காணப்படாமற்போனவன் யார்?", "ஏனோக்கு", ["மெத்தூசலா", "நோவா", "லாமேக்கு"]]],
-  ["k045", "GEN 6:9", "path",
-   ["After Enoch, who was the next man said to walk with God?", "Noah", ["Shem", "Abraham", "Lamech"]],
-   ["ஏனோக்குக்குப் பின், தேவனோடே சஞ்சரித்தவன் என்று சொல்லப்பட்ட அடுத்த நபர் யார்?", "நோவா", ["சேம்", "ஆபிரகாம்", "லாமேக்கு"]]],
-  ["k046", "GEN 5:27", "elder",
-   ["Who lived the longest of all, and for how many years?", "Methuselah, 969 years", ["Adam, 930 years", "Noah, 950 years", "Jared, 962 years"]],
-   ["எல்லாரிலும் அதிக வருஷம் உயிரோடிருந்தவர் யார், எத்தனை வருஷம்?", "மெத்தூசலா, 969 வருஷம்", ["ஆதாம், 930 வருஷம்", "நோவா, 950 வருஷம்", "யாரேத், 962 வருஷம்"]]],
-  ["k047", "GEN 7:4", "ark",
-   ["When do we first read of rain falling on the earth?", "In the days of Noah", ["In the days of Adam", "In the days of Abraham", "In the days of Moses"], "Before that, a mist went up from the earth and watered the ground (Genesis 2:5-6)."],
-   ["பூமியின்மேல் மழை பெய்ததைப்பற்றி முதன்முதலில் எப்போது வாசிக்கிறோம்?", "நோவாவின் நாட்களில்", ["ஆதாமின் நாட்களில்", "ஆபிரகாமின் நாட்களில்", "மோசேயின் நாட்களில்"], "அதற்கு முன் பூமியிலிருந்து மூடுபனி எழும்பி, பூமியை நனைத்தது (ஆதி. 2:5-6)."]],
-
-  ["k050", "GEN 5:32", "elder",
-   ["How old was Noah when he began to have sons?", "500 years", ["120 years", "600 years", "950 years"]],
-   ["நோவா எத்தனை வயதில் குமாரரைப் பெற்றான்?", "500 வயதில்", ["120 வயதில்", "600 வயதில்", "950 வயதில்"]]],
-  ["k051", "GEN 6:3", "ark",
-   ["To how many years did God limit man's days?", "120 years", ["70 years", "40 years", "969 years"]],
-   ["மனுஷனுடைய நாட்களை தேவன் எத்தனை வருஷமாகக் குறைத்தார்?", "120 வருஷம்", ["70 வருஷம்", "40 வருஷம்", "969 வருஷம்"]]],
-  ["k052", "GEN 7:10", "ark",
-   ["How many days after Noah entered the ark did the flood come?", "7 days", ["3 days", "40 days", "150 days"]],
-   ["நோவா பேழைக்குள் பிரவேசித்து எத்தனை நாள் கழித்து ஜலப்பிரளயம் வந்தது?", "7 நாள்", ["3 நாள்", "40 நாள்", "150 நாள்"]]],
-  ["k053", "GEN 7:12", "ark",
-   ["For how long did the rain fall in the days of Noah?", "40 days and 40 nights", ["7 days", "150 days", "A whole year"]],
-   ["நோவாவின் நாட்களில் எவ்வளவு காலம் மழை பெய்தது?", "40 நாள் இரவும் பகலும்", ["7 நாள்", "150 நாள்", "ஒரு வருஷம் முழுவதும்"]]],
-  ["k054", "GEN 7:20", "ark",
-   ["How high did the waters rise above the mountains?", "15 cubits (about 22 feet)", ["7 cubits", "40 cubits", "100 cubits"]],
-   ["தண்ணீர் மலைகளுக்கு மேல் எவ்வளவு உயரம் எழும்பியது?", "15 முழம் (ஏறக்குறைய 22 அடி)", ["7 முழம்", "40 முழம்", "100 முழம்"]]],
-  ["k055", "GEN 7:24", "ark",
-   ["For how many days did the waters prevail upon the earth?", "150 days", ["40 days", "7 days", "300 days"]],
-   ["ஜலம் பூமியின்மேல் எத்தனை நாள் பிரவாகித்தது?", "150 நாள்", ["40 நாள்", "7 நாள்", "300 நாள்"]]],
-  ["k056", "GEN 8:4", "ark",
-   ["On which mountains did the ark rest?", "The mountains of Ararat", ["Mount Sinai", "Mount Carmel", "Mount Moriah"]],
-   ["பேழை எந்த மலைகளின்மேல் தங்கிற்று?", "அரராத் மலைகள்", ["சீனாய் மலை", "கர்மேல் மலை", "மோரியா மலை"]]],
-  ["k057", "GEN 8:7", "raven",
-   ["Which bird did Noah send out first?", "A raven", ["A dove", "An eagle", "A sparrow"]],
-   ["நோவா முதலில் வெளியே அனுப்பின பறவை எது?", "காகம்", ["புறா", "கழுகு", "அடைக்கலான் குருவி"]]],
-  ["k058", "GEN 8:11", "dove",
-   ["What did the dove bring back to Noah?", "An olive leaf", ["A fig leaf", "A cedar twig", "A small stone"]],
-   ["புறா நோவாவிடம் என்ன கொண்டுவந்தது?", "ஒலிவ இலை", ["அத்தி இலை", "கேதுரு கிளை", "ஒரு சிறு கல்"]]],
-  ["k059", "GEN 8:14", "ark",
-   ["About how long were Noah and his family in the ark?", "About a year", ["40 days", "7 days", "Three years"], "They went in during the 600th year, 2nd month, 17th day (7:11) and the earth was dry in the 601st year, 2nd month, 27th day."],
-   ["நோவாவும் அவன் குடும்பமும் ஏறக்குறைய எவ்வளவு காலம் பேழைக்குள் இருந்தார்கள்?", "ஏறக்குறைய ஒரு வருஷம்", ["40 நாள்", "7 நாள்", "மூன்று வருஷம்"], "600 ஆம் வருஷம் 2 ஆம் மாதம் 17 ஆம் தேதி உள்ளே சென்றார்கள் (7:11); 601 ஆம் வருஷம் 2 ஆம் மாதம் 27 ஆம் தேதி பூமி காய்ந்தது."]],
-  ["k060", "GEN 8:20", "altar",
-   ["What did Noah do first after coming out of the ark?", "He built an altar and offered burnt offerings", ["He planted a vineyard", "He built a city", "He sent out the dove"]],
-   ["பேழையிலிருந்து வெளியே வந்தபின் நோவா முதலில் செய்தது என்ன?", "பலிபீடம் கட்டி சர்வாங்க தகனபலிகளைச் செலுத்தினான்", ["திராட்சத்தோட்டம் நாட்டினான்", "ஒரு பட்டணம் கட்டினான்", "புறாவை வெளியே விட்டான்"]]],
-  ["k061", "GEN 10:10", "tower",
-   ["Who was the mighty one whose kingdom began at Babel?", "Nimrod", ["Cush", "Asshur", "Ham"]],
-   ["பாபேலில் ராஜ்யம் ஆரம்பமான பலவான் யார்?", "நிம்ரோத்", ["கூஷ்", "அசூர்", "காம்"]]],
-  ["k062", "GEN 10:10", "tower",
-   ["Which of these cities was in the beginning of Nimrod's kingdom?", "Erech", ["Sodom", "Damascus", "Hebron"], "Babel, Erech, Accad and Calneh, in the land of Shinar."],
-   ["இவற்றில் நிம்ரோதின் ராஜ்யத்தின் ஆரம்ப பட்டணம் எது?", "ஏரேக்", ["சோதோம்", "தமஸ்கு", "எபிரோன்"], "சிநேயார் தேசத்திலுள்ள பாபேல், ஏரேக், அக்காத், கல்னே."]],
-  ["k063", "GEN 10:15", "tent",
-   ["Who was Canaan's firstborn son?", "Sidon", ["Heth", "Cush", "Mizraim"]],
-   ["கானானின் மூத்த குமாரன் யார்?", "சீதோன்", ["கேத்", "கூஷ்", "மிஸ்ராயீம்"]]],
-
-  ["k070", "GEN 12:1", "tent",
-   ["What did God tell Abram to leave?", "His country, his kindred and his father's house", ["Only his idols", "His wife and his nephew", "His flocks and herds"]],
-   ["ஆபிராமை எவைகளை விட்டுப் புறப்படும்படி தேவன் சொன்னார்?", "தன் தேசத்தையும், தன் இனத்தையும், தன் தகப்பன் வீட்டையும்", ["தன் விக்கிரகங்களை மட்டும்", "தன் மனைவியையும் சகோதரன் மகனையும்", "தன் ஆடுமாடுகளை"]]],
-  ["k071", "GEN 12:7", "tent",
-   ["Where did the LORD first say to Abram, \"Unto thy seed will I give this land\"?", "Sichem, at the plain of Moreh", ["Bethel", "Hebron", "Ur of the Chaldees"]],
-   ["\"உன் சந்ததிக்கு இந்தத் தேசத்தைக் கொடுப்பேன்\" என்று கர்த்தர் ஆபிராமிடம் முதலில் சொன்ன இடம் எது?", "சீகேம், மோரே என்னும் சமபூமி", ["பெத்தேல்", "எபிரோன்", "கல்தேயரின் ஊர்"]]],
-  ["k072", "GEN 13:8", "sheep",
-   ["What did Abram say to Lot when their herdmen strove?", "Let there be no strife between me and thee, for we be brethren", ["Go back to Haran", "Take all the cattle", "Let us never meet again"]],
-   ["மேய்ப்பர்கள் வாக்குவாதம் செய்தபோது ஆபிராம் லோத்திடம் என்ன சொன்னான்?", "எனக்கும் உனக்கும் வாக்குவாதம் வேண்டாம்; நாம் சகோதரர்", ["ஆரானுக்குத் திரும்பிப்போ", "எல்லா மிருகஜீவன்களையும் எடுத்துக்கொள்", "இனி ஒருபோதும் சந்திக்கவேண்டாம்"]]],
-  ["k073", "GEN 14:14", "sword",
-   ["With how many trained servants did Abram go to rescue Lot?", "318", ["300", "400", "1000"]],
-   ["லோத்தை மீட்க ஆபிராம் எத்தனை பேரோடு யுத்தத்துக்குப் போனான்?", "318", ["300", "400", "1000"]]],
-  ["k074", "GEN 15:2", "tent",
-   ["Whom did Abram first think would be his heir?", "Eliezer of Damascus", ["Lot", "Ishmael", "Nahor"]],
-   ["தன் சுதந்தரவாளியாக ஆபிராம் முதலில் நினைத்தது யாரை?", "தமஸ்கு ஊரானாகிய எலியேசர்", ["லோத்து", "இஸ்மவேல்", "நாகோர்"]]],
-  ["k075", "GEN 15:13", "stars",
-   ["God told Abram his seed would be afflicted in a strange land for how many years?", "400 years", ["40 years", "70 years", "100 years"]],
-   ["ஆபிராமின் சந்ததி அந்நிய தேசத்தில் எத்தனை வருஷம் உபத்திரவப்படுவார்கள் என்று தேவன் சொன்னார்?", "400 வருஷம்", ["40 வருஷம்", "70 வருஷம்", "100 வருஷம்"]]],
-  ["k076", "GEN 15:16", "stars",
-   ["Why would Abram's seed come back only in the fourth generation?", "The iniquity of the Amorites was not yet full", ["Pharaoh would not let them go", "The land was too small", "They first had to learn the law"]],
-   ["ஆபிராமின் சந்ததி நான்காம் தலைமுறையில்தான் திரும்பி வருவார்கள்; ஏன்?", "எமோரியருடைய அக்கிரமம் இன்னும் நிறைவாகவில்லை", ["பார்வோன் அவர்களைப் போகவிடமாட்டான்", "தேசம் மிகச் சிறியது", "முதலில் நியாயப்பிரமாணத்தைக் கற்கவேண்டும்"]]],
-  ["k077", "GEN 16:9", "well",
-   ["What did the angel of the LORD tell Hagar?", "Return to thy mistress, and submit thyself under her hands", ["Go down to Egypt", "Name your son Isaac", "Never go back"]],
-   ["கர்த்தருடைய தூதன் ஆகாரிடம் என்ன சொன்னார்?", "உன் நாச்சியாரிடத்துக்குத் திரும்பிப்போய், அவள் கைக்குள் அடங்கியிரு", ["எகிப்துக்குப் போ", "உன் மகனுக்கு ஈசாக்கு என்று பெயரிடு", "ஒருபோதும் திரும்பிப்போகாதே"]]],
-  ["k078", "GEN 16:16", "elder",
-   ["How old was Abram when Ishmael was born?", "86", ["75", "99", "100"]],
-   ["இஸ்மவேல் பிறந்தபோது ஆபிராமுக்கு எத்தனை வயது?", "86", ["75", "99", "100"]]],
-  ["k079", "GEN 17:5", "stars",
-   ["How old was Abram when God changed his name to Abraham?", "99", ["75", "86", "100"]],
-   ["தேவன் ஆபிராமின் பெயரை ஆபிரகாம் என்று மாற்றியபோது அவனுக்கு எத்தனை வயது?", "99", ["75", "86", "100"]]],
-  ["k080", "GEN 17:25", "elder",
-   ["When Abraham was circumcised at 99, how old was Ishmael?", "13", ["8", "12", "17"]],
-   ["ஆபிரகாம் 99 வயதில் விருத்தசேதனம் பண்ணப்பட்டபோது இஸ்மவேலுக்கு எத்தனை வயது?", "13", ["8", "12", "17"]]],
-  ["k081", "GEN 18:32", "tent",
-   ["Pleading for Sodom, Abraham asked down from 50 righteous. What was the last number he asked about?", "10", ["20", "30", "5"], "50, 45, 40, 30, 20 and then 10."],
-   ["சோதோமுக்காகப் பரிந்துபேசியபோது ஆபிரகாம் 50 நீதிமான்களிலிருந்து குறைத்துக் கேட்டான். கடைசியாகக் கேட்ட எண்ணிக்கை என்ன?", "10", ["20", "30", "5"], "50, 45, 40, 30, 20, பிறகு 10."]],
-  ["k082", "GEN 23:16", "coins",
-   ["How much did Abraham pay the sons of Heth for the field and the cave?", "400 shekels of silver", ["20 pieces of silver", "100 pieces of money", "30 pieces of silver"]],
-   ["நிலத்தையும் குகையையும் வாங்க ஆபிரகாம் ஏத்தின் புத்திரருக்கு எவ்வளவு கொடுத்தான்?", "400 சேக்கல் வெள்ளி", ["20 வெள்ளிக்காசு", "100 வெள்ளிக்காசு", "30 வெள்ளிக்காசு"]]],
-  ["k083", "GEN 23:19", "cave",
-   ["What was the name of the cave where Abraham buried Sarah?", "Machpelah", ["Adullam", "Makkedah", "Bethel"]],
-   ["ஆபிரகாம் சாராளை அடக்கம்பண்ணின குகையின் பெயர் என்ன?", "மக்பேலா", ["அதுல்லாம்", "மக்கேதா", "பெத்தேல்"]]],
-  ["k084", "GEN 23:1", "elder",
-   ["How old was Sarah when she died?", "127", ["90", "100", "175"]],
-   ["சாராள் மரித்தபோது அவளுக்கு எத்தனை வயது?", "127", ["90", "100", "175"]]],
-  ["k085", "GEN 23:2", "cave",
-   ["Where did Sarah die?", "Kirjath-arba, that is Hebron", ["Beer-sheba", "Bethel", "Egypt"]],
-   ["சாராள் எங்கே மரித்தாள்?", "எபிரோன் எனப்பட்ட கீரியாத்அர்பா", ["பெயெர்செபா", "பெத்தேல்", "எகிப்து"]]],
-  ["k086", "GEN 22:4", "altar",
-   ["On which day of the journey did Abraham see the place where he would offer Isaac?", "The third day", ["The first day", "The seventh day", "The fortieth day"]],
-   ["ஈசாக்கைப் பலியிடப் போனபோது ஆபிரகாம் எத்தனையாம் நாளில் அந்த இடத்தைக் கண்டான்?", "மூன்றாம் நாள்", ["முதலாம் நாள்", "ஏழாம் நாள்", "நாற்பதாம் நாள்"]]],
-  ["k087", "GEN 22:3", "altar",
-   ["How many young men did Abraham take with him and Isaac?", "2", ["3", "12", "318"]],
-   ["ஆபிரகாம் ஈசாக்கோடு எத்தனை வேலைக்காரரை அழைத்துக்கொண்டு போனான்?", "2", ["3", "12", "318"]]],
-
-  ["k090", "GEN 25:26", "tent",
-   ["How many years after his marriage did Isaac have children?", "20 years", ["7 years", "14 years", "40 years"], "Isaac married Rebekah at 40 (25:20); Esau and Jacob were born when he was 60."],
-   ["ஈசாக்கு விவாகம்பண்ணி எத்தனை வருஷம் கழித்துப் பிள்ளைகளைப் பெற்றான்?", "20 வருஷம்", ["7 வருஷம்", "14 வருஷம்", "40 வருஷம்"], "ஈசாக்கு 40 வயதில் ரெபெக்காளை விவாகம்பண்ணினான் (25:20); ஏசாவும் யாக்கோபும் பிறந்தபோது அவனுக்கு 60 வயது."]],
-  ["k091", "GEN 27:16", "coat",
-   ["What did Jacob wear so that Isaac would think he was Esau?", "Esau's clothes and the skins of kids of the goats", ["A red robe", "A coat of many colours", "A cloak of camel's hair"]],
-   ["தான் ஏசா என்று ஈசாக்கு நம்பும்படி யாக்கோபு எதைப் போட்டுக்கொண்டான்?", "ஏசாவின் வஸ்திரங்களையும் வெள்ளாட்டுக்குட்டிகளின் தோலையும்", ["சிவப்பு அங்கி", "பலவர்ண அங்கி", "ஒட்டகமயிர் போர்வை"]]],
-  ["k092", "GEN 27:41", "bow",
-   ["What did Esau say he would do after his father's death?", "Slay his brother Jacob", ["Slay his father Isaac", "Leave Canaan for ever", "Marry Rachel"]],
-   ["தன் தகப்பன் மரித்தபின் என்ன செய்வேன் என்று ஏசா சொன்னான்?", "தன் சகோதரனாகிய யாக்கோபைக் கொன்றுபோடுவேன்", ["தன் தகப்பனாகிய ஈசாக்கைக் கொன்றுபோடுவேன்", "கானானை விட்டு என்றைக்கும் போவேன்", "ராகேலை விவாகம்பண்ணுவேன்"]]],
-  ["k093", "GEN 28:19", "ladder",
-   ["Jacob called the place of his dream Bethel. What was its name at first?", "Luz", ["Salem", "Jebus", "Kirjath-arba"]],
-   ["யாக்கோபு சொப்பனம் கண்ட இடத்திற்குப் பெத்தேல் என்று பெயரிட்டான். அதன் முந்தின பெயர் என்ன?", "லூஸ்", ["சாலேம்", "எபூஸ்", "கீரியாத்அர்பா"]]],
-  ["k094", "GEN 28:22", "stones",
-   ["At Bethel, what did Jacob vow to give to God?", "The tenth of all", ["His firstborn son", "Half of his flocks", "A golden altar"]],
-   ["பெத்தேலில் தேவனுக்கு எதைச் செலுத்துவேன் என்று யாக்கோபு பொருத்தனை பண்ணினான்?", "எல்லாவற்றிலும் தசமபாகம்", ["தன் மூத்த மகனை", "தன் ஆடுகளில் பாதியை", "பொன் பலிபீடத்தை"]]],
-  ["k095", "GEN 29:14", "well",
-   ["Who said to Jacob, \"Surely thou art my bone and my flesh\"?", "Laban", ["Isaac", "Esau", "Rebekah"]],
-   ["\"நிச்சயமாய் நீ என் எலும்பும் என் மாம்சமுமானவன்\" என்று யாக்கோபிடம் சொன்னது யார்?", "லாபான்", ["ஈசாக்கு", "ஏசா", "ரெபெக்காள்"]]],
-  ["k096", "GEN 29:2", "well",
-   ["How many flocks of sheep did Jacob see lying by the well in the field?", "3", ["2", "7", "12"]],
-   ["வெளியிலிருந்த கிணற்றண்டையில் எத்தனை ஆட்டு மந்தைகள் படுத்திருப்பதை யாக்கோபு கண்டான்?", "3", ["2", "7", "12"]]],
-  ["k097", "GEN 29:30", "sheep",
-   ["In all, how many years did Jacob serve Laban for his two wives?", "14 years", ["7 years", "20 years", "21 years"], "Seven years for Leah and seven more for Rachel."],
-   ["தன் இரண்டு மனைவிகளுக்காக யாக்கோபு லாபானிடம் மொத்தம் எத்தனை வருஷம் வேலைசெய்தான்?", "14 வருஷம்", ["7 வருஷம்", "20 வருஷம்", "21 வருஷம்"], "லேயாளுக்காக ஏழு வருஷம், ராகேலுக்காக இன்னும் ஏழு வருஷம்."]],
-  ["k098", "GEN 31:7", "sheep",
-   ["How many times did Laban change Jacob's wages?", "10 times", ["3 times", "7 times", "20 times"]],
-   ["லாபான் யாக்கோபின் சம்பளத்தை எத்தனை முறை மாற்றினான்?", "10 முறை", ["3 முறை", "7 முறை", "20 முறை"]]],
-  ["k099", "GEN 30:14", "sheaves",
-   ["What did Reuben find in the field in the days of wheat harvest?", "Mandrakes", ["Figs", "Manna", "Wild honey"]],
-   ["கோதுமை அறுப்புக் காலத்தில் ரூபன் வயலில் கண்டெடுத்தது என்ன?", "தூதாயீம் கனிகள்", ["அத்திப்பழங்கள்", "மன்னா", "காட்டுத்தேன்"]]],
-  ["k100", "GEN 29:29", "tent",
-   ["Who was Rachel's handmaid?", "Bilhah", ["Zilpah", "Deborah", "Hagar"]],
-   ["ராகேலின் வேலைக்காரி யார்?", "பில்காள்", ["சில்பாள்", "தெபொராள்", "ஆகார்"]]],
-  ["k101", "GEN 29:24", "tent",
-   ["Who was Leah's handmaid?", "Zilpah", ["Bilhah", "Keturah", "Milcah"]],
-   ["லேயாளின் வேலைக்காரி யார்?", "சில்பாள்", ["பில்காள்", "கேத்தூராள்", "மில்காள்"]]],
-  ["k102", "GEN 30:6", "tent",
-   ["Which sons were born to Bilhah?", "Dan and Naphtali", ["Gad and Asher", "Issachar and Zebulun", "Simeon and Levi"]],
-   ["பில்காளுக்குப் பிறந்த குமாரர் யார்?", "தாண், நப்தலி", ["காத், ஆசேர்", "இசக்கார், செபுலோன்", "சிமியோன், லேவி"]]],
-  ["k103", "GEN 30:11", "tent",
-   ["Which sons were born to Zilpah?", "Gad and Asher", ["Dan and Naphtali", "Joseph and Benjamin", "Reuben and Judah"]],
-   ["சில்பாளுக்குப் பிறந்த குமாரர் யார்?", "காத், ஆசேர்", ["தாண், நப்தலி", "யோசேப்பு, பென்யமீன்", "ரூபன், யூதா"]]],
-  ["k104", "GEN 30:18", "tent",
-   ["What was the name of Leah's fifth son?", "Issachar", ["Zebulun", "Judah", "Levi"]],
-   ["லேயாளின் ஐந்தாம் குமாரனின் பெயர் என்ன?", "இசக்கார்", ["செபுலோன்", "யூதா", "லேவி"]]],
-  ["k105", "GEN 29:35", "tent",
-   ["What were Leah's first four sons, in order?", "Reuben, Simeon, Levi, Judah", ["Judah, Levi, Simeon, Reuben", "Reuben, Levi, Simeon, Judah", "Simeon, Reuben, Judah, Levi"]],
-   ["லேயாளின் முதல் நான்கு குமாரர் வரிசைப்படி யார்?", "ரூபன், சிமியோன், லேவி, யூதா", ["யூதா, லேவி, சிமியோன், ரூபன்", "ரூபன், லேவி, சிமியோன், யூதா", "சிமியோன், ரூபன், யூதா, லேவி"]]],
-  ["k106", "GEN 30:21", "tent",
-   ["What was the name of the daughter of Jacob and Leah?", "Dinah", ["Tamar", "Milcah", "Deborah"]],
-   ["யாக்கோபுக்கும் லேயாளுக்கும் பிறந்த மகளின் பெயர் என்ன?", "தீனாள்", ["தாமார்", "மில்காள்", "தெபொராள்"]]],
-  ["k107", "GEN 35:24", "tent",
-   ["Which were the sons of Rachel?", "Joseph and Benjamin", ["Dan and Naphtali", "Judah and Levi", "Gad and Asher"]],
-   ["ராகேலின் குமாரர் யார்?", "யோசேப்பு, பென்யமீன்", ["தாண், நப்தலி", "யூதா, லேவி", "காத், ஆசேர்"]]],
-  ["k108", "GEN 31:22", "camel",
-   ["On which day was it told Laban that Jacob had fled?", "The third day", ["The first day", "The seventh day", "The tenth day"]],
-   ["யாக்கோபு ஓடிப்போனான் என்று எத்தனையாம் நாளில் லாபானுக்கு அறிவிக்கப்பட்டது?", "மூன்றாம் நாள்", ["முதலாம் நாள்", "ஏழாம் நாள்", "பத்தாம் நாள்"]]],
-  ["k109", "GEN 31:23", "camel",
-   ["After how many days' journey, and where, did Laban overtake Jacob?", "Seven days, in the mount Gilead", ["Three days, at Bethel", "Ten days, at Shechem", "Forty days, at Haran"]],
-   ["லாபான் எத்தனை நாள் பிரயாணம்பண்ணி, எங்கே யாக்கோபைப் பிடித்தான்?", "ஏழு நாள், கீலேயாத் மலையில்", ["மூன்று நாள், பெத்தேலில்", "பத்து நாள், சீகேமில்", "நாற்பது நாள், ஆரானில்"]]],
-  ["k110", "GEN 31:34", "camel",
-   ["Who stole Laban's images, and where were they hidden?", "Rachel, in the camel's furniture", ["Leah, in her tent", "Dinah, under an oak", "Rachel, in a well"]],
-   ["லாபானின் சுரூபங்களைத் திருடியது யார், எங்கே ஒளித்துவைத்தாள்?", "ராகேல், ஒட்டகச் சேணத்தின் கீழ்", ["லேயாள், தன் கூடாரத்தில்", "தீனாள், கர்வாலிமரத்தின் கீழ்", "ராகேல், ஒரு கிணற்றில்"]]],
-  ["k111", "GEN 31:47", "stones",
-   ["What did Jacob call the heap of stones?", "Galeed", ["Jegar-sahadutha", "Bethel", "Peniel"], "Laban called it Jegar-sahadutha; the place was also called Mizpah."],
-   ["கற்குவியலுக்கு யாக்கோபு இட்ட பெயர் என்ன?", "கலயெத்", ["ஜெகர்சகதுதா", "பெத்தேல்", "பெனியேல்"], "லாபான் அதற்கு ஜெகர்சகதுதா என்று பெயரிட்டான்; அந்த இடம் மிஸ்பா என்றும் அழைக்கப்பட்டது."]],
-  ["k112", "GEN 31:47", "stones",
-   ["What did Laban call the heap of stones?", "Jegar-sahadutha", ["Galeed", "Mizpah", "Mahanaim"]],
-   ["கற்குவியலுக்கு லாபான் இட்ட பெயர் என்ன?", "ஜெகர்சகதுதா", ["கலயெத்", "மிஸ்பா", "மகனாயீம்"]]],
-  ["k113", "GEN 31:49", "stones",
-   ["What did Laban say when the place was called Mizpah?", "The LORD watch between me and thee", ["This is the house of God", "I have seen God face to face", "The LORD hath heard"]],
-   ["அந்த இடத்திற்கு மிஸ்பா என்று பெயரிட்டபோது லாபான் சொன்னது என்ன?", "நாம் ஒருவரையொருவர் விட்டுப் பிரிந்திருக்கும்போது கர்த்தர் எனக்கும் உனக்கும் நடுவாக இருந்து காவல்பண்ணுவாராக", ["இது தேவனுடைய வீடு", "தேவனை முகமுகமாய்க் கண்டேன்", "கர்த்தர் கேட்டார்"]]],
-  ["k114", "GEN 32:2", "ladder",
-   ["Where did the angels of God meet Jacob, and what does the name mean?", "Mahanaim: God's host", ["Peniel: the face of God", "Bethel: the house of God", "Mizpah: watchtower"]],
-   ["தேவதூதர்கள் யாக்கோபைச் சந்தித்த இடம் எது, அதன் அர்த்தம் என்ன?", "மகனாயீம்: தேவனுடைய சேனை", ["பெனியேல்: தேவனுடைய முகம்", "பெத்தேல்: தேவனுடைய வீடு", "மிஸ்பா: காவற்கோபுரம்"]]],
-  ["k115", "GEN 32:6", "bow",
-   ["With how many men did Esau come to meet Jacob?", "400", ["40", "318", "1000"]],
-   ["யாக்கோபைச் சந்திக்க ஏசா எத்தனை பேரோடு வந்தான்?", "400", ["40", "318", "1000"]]],
-  ["k116", "GEN 32:14", "sheep",
-   ["In Jacob's present to Esau, how many she goats were there?", "200", ["20", "30", "40"], "200 she goats, 20 he goats, 200 ewes, 20 rams, 30 milch camels with their colts, 40 kine, 10 bulls, 20 she asses and 10 foals."],
-   ["யாக்கோபு ஏசாவுக்கு அனுப்பின வெகுமதியில் எத்தனை வெள்ளாடுகள் இருந்தன?", "200", ["20", "30", "40"], "200 வெள்ளாடு, 20 வெள்ளாட்டுக்கடா, 200 செம்மறியாடு, 20 ஆட்டுக்கடா, குட்டிகளுடன் 30 கறவை ஒட்டகம், 40 பசு, 10 காளை, 20 கோளிகைக்கழுதை, 10 கழுதைக்குட்டி."]],
-  ["k117", "GEN 32:30", "ladder",
-   ["Where did Jacob wrestle with the man until the breaking of the day?", "Peniel", ["Bethel", "Mahanaim", "Succoth"]],
-   ["பொழுது விடியுமட்டும் யாக்கோபு போராடின இடம் எது?", "பெனியேல்", ["பெத்தேல்", "மகனாயீம்", "சுக்கோத்"]]],
-  ["k118", "GEN 33:3", "tent",
-   ["How many times did Jacob bow himself to the ground before Esau?", "7 times", ["3 times", "10 times", "12 times"]],
-   ["யாக்கோபு ஏசாவுக்கு முன் எத்தனை முறை தரைமட்டும் குனிந்து வணங்கினான்?", "7 முறை", ["3 முறை", "10 முறை", "12 முறை"]]],
-  ["k119", "GEN 33:10", "tent",
-   ["Who said, \"I have seen thy face, as though I had seen the face of God\"?", "Jacob, to Esau", ["Esau, to Jacob", "Jacob, to Laban", "Joseph, to Jacob"]],
-   ["\"தேவனுடைய முகத்தைக் கண்டதுபோல உம்முடைய முகத்தைக் கண்டேன்\" என்று சொன்னது யார்?", "யாக்கோபு, ஏசாவிடம்", ["ஏசா, யாக்கோபிடம்", "யாக்கோபு, லாபானிடம்", "யோசேப்பு, யாக்கோபிடம்"]]],
-  ["k120", "GEN 33:17", "tent",
-   ["After saying he would come to Seir, where did Jacob go and build a house?", "Succoth", ["Bethel", "Hebron", "Beer-sheba"]],
-   ["சேயீருக்கு வருவேன் என்று சொன்னபின் யாக்கோபு எங்கே போய் வீடு கட்டினான்?", "சுக்கோத்", ["பெத்தேல்", "எபிரோன்", "பெயெர்செபா"]]],
-  ["k121", "GEN 33:20", "altar",
-   ["What did Jacob call the altar he built near Shechem?", "El-elohe-Israel", ["Jehovah-jireh", "El-bethel", "Ebenezer"]],
-   ["சீகேமுக்கு அருகே யாக்கோபு கட்டின பலிபீடத்திற்கு என்ன பெயரிட்டான்?", "ஏல்எல்லோகே இஸ்ரவேல்", ["யேகோவாயீரே", "ஏல்பெத்தேல்", "எபெனேசர்"]]],
-  ["k122", "GEN 33:19", "coins",
-   ["For how many pieces of money did Jacob buy a field from the children of Hamor?", "100", ["20", "30", "400"]],
-   ["ஏமோரின் புத்திரரிடமிருந்து யாக்கோபு எத்தனை வெள்ளிக்காசுக்கு நிலம் வாங்கினான்?", "100", ["20", "30", "400"]]],
-  ["k123", "GEN 34:2", "tent",
-   ["Who defiled Dinah?", "Shechem, the son of Hamor the Hivite", ["Hamor the Hivite himself", "A son of Esau", "A son of Laban"]],
-   ["தீனாளைத் தீட்டுப்படுத்தினவன் யார்?", "ஏவியனாகிய ஏமோரின் குமாரன் சீகேம்", ["ஏவியனாகிய ஏமோர்", "ஏசாவின் குமாரன் ஒருவன்", "லாபானின் குமாரன் ஒருவன்"]]],
-  ["k124", "GEN 34:25", "sword",
-   ["Which two brothers avenged their sister Dinah?", "Simeon and Levi", ["Reuben and Judah", "Dan and Gad", "Judah and Joseph"]],
-   ["தங்கள் சகோதரியாகிய தீனாளுக்காகப் பழிவாங்கிய இரண்டு சகோதரர் யார்?", "சிமியோன், லேவி", ["ரூபன், யூதா", "தாண், காத்", "யூதா, யோசேப்பு"]]],
-  ["k125", "GEN 35:4", "tree",
-   ["Where did Jacob hide the strange gods of his household?", "Under the oak which was by Shechem", ["At Bethel, under the altar", "In the river Jabbok", "On mount Gilead"]],
-   ["தன் வீட்டாரிடமிருந்த அந்நிய தேவர்களை யாக்கோபு எங்கே புதைத்தான்?", "சீகேமுக்கு அருகேயுள்ள கர்வாலிமரத்தின் கீழ்", ["பெத்தேலில் பலிபீடத்தின் கீழ்", "யாபோக்கு ஆற்றில்", "கீலேயாத் மலையில்"]]],
-  ["k126", "GEN 35:8", "tree",
-   ["Who was Rebekah's nurse?", "Deborah", ["Bilhah", "Zilpah", "Keturah"]],
-   ["ரெபெக்காளின் தாதி யார்?", "தெபொராள்", ["பில்காள்", "சில்பாள்", "கேத்தூராள்"]]],
-  ["k127", "GEN 35:8", "tree",
-   ["Where was Deborah, Rebekah's nurse, buried?", "Under an oak below Bethel, called Allon-bachuth", ["In the cave of Machpelah", "On the way to Ephrath", "In Hebron"]],
-   ["ரெபெக்காளின் தாதியாகிய தெபொராள் எங்கே அடக்கம்பண்ணப்பட்டாள்?", "பெத்தேலுக்குக் கீழே அல்லோன்பாகூத் என்னும் கர்வாலிமரத்தின் கீழ்", ["மக்பேலா குகையில்", "எப்பிராத்தாவுக்குப் போகிற வழியில்", "எபிரோனில்"]]],
-  ["k128", "GEN 36:7", "sheep",
-   ["Whose riches were more than that they might dwell together, so the land could not bear them (Genesis 36:7)?", "Esau and Jacob", ["Joseph and his brothers", "Jacob and Laban", "Isaac and Ishmael"]],
-   ["\"அவர்களுடைய சம்பத்து மிகுதியாயிருந்தபடியினால் அவர்கள் ஒருமித்துக் குடியிருக்கக்கூடாமற்போயிற்று\" (ஆதி. 36:7) — யார்?", "ஏசா, யாக்கோபு", ["யோசேப்பும் அவன் சகோதரரும்", "யாக்கோபு, லாபான்", "ஈசாக்கு, இஸ்மவேல்"]]],
-
-  ["k130", "GEN 37:9", "sheaves",
-   ["What were Joseph's two dreams?", "Sheaves bowing to his sheaf; the sun, moon and eleven stars bowing to him", ["Seven fat and seven lean cows", "A ladder reaching to heaven", "A vine with three branches"]],
-   ["யோசேப்பு கண்ட இரண்டு சொப்பனங்கள் என்ன?", "அரிக்கட்டுகள் அவனுடைய அரிக்கட்டை வணங்கின; சூரியனும் சந்திரனும் பதினொரு நட்சத்திரங்களும் அவனை வணங்கின", ["ஏழு கொழுத்த பசுக்களும் ஏழு கேவலமான பசுக்களும்", "வானத்தை எட்டின ஏணி", "மூன்று கொடிகளுள்ள திராட்சச்செடி"]]],
-  ["k131", "GEN 37:21", "coat",
-   ["Who saved Joseph from being killed by his brothers?", "Reuben", ["Judah", "Benjamin", "Levi"]],
-   ["சகோதரர் யோசேப்பைக் கொல்லாதபடி தப்புவித்தவன் யார்?", "ரூபன்", ["யூதா", "பென்யமீன்", "லேவி"]]],
-  ["k132", "GEN 37:27", "coat",
-   ["Who said, \"Come, and let us sell him to the Ishmeelites\"?", "Judah", ["Reuben", "Simeon", "Dan"]],
-   ["\"அவனை இஸ்மவேலருக்கு விற்றுப்போடுவோம் வாருங்கள்\" என்று சொன்னவன் யார்?", "யூதா", ["ரூபன்", "சிமியோன்", "தாண்"]]],
-  ["k133", "GEN 37:28", "coins",
-   ["For how many pieces of silver was Joseph sold?", "20", ["30", "10", "400"]],
-   ["யோசேப்பு எத்தனை வெள்ளிக்காசுக்கு விற்கப்பட்டான்?", "20", ["30", "10", "400"]]],
-  ["k134", "GEN 37:2", "coat",
-   ["How old was Joseph when he was feeding the flock and was sold?", "17", ["12", "20", "30"]],
-   ["மந்தையை மேய்த்துக்கொண்டிருந்து விற்கப்பட்டபோது யோசேப்புக்கு எத்தனை வயது?", "17", ["12", "20", "30"]]],
-  ["k135", "GEN 37:31", "coat",
-   ["In whose blood did the brothers dip Joseph's coat?", "A kid of the goats", ["A lamb", "A bullock", "A dove"]],
-   ["யோசேப்பின் அங்கியைச் சகோதரர் எதின் இரத்தத்தில் தோய்த்தார்கள்?", "வெள்ளாட்டுக்குட்டியின் இரத்தம்", ["ஆட்டுக்குட்டியின் இரத்தம்", "காளையின் இரத்தம்", "புறாவின் இரத்தம்"]]],
-  ["k136", "GEN 38:25", "ring",
-   ["\"Discern, whose are these?\" What did Tamar send to Judah?", "The signet, the bracelets and the staff", ["Joseph's coat", "A silver cup", "A ring and a robe"], "These words come twice: with Joseph's coat (37:32) and with Judah's pledge (38:25)."],
-   ["\"இவைகள் யாருடையவைகள் என்று பாரும்\" — தாமார் யூதாவுக்கு அனுப்பினது என்ன?", "முத்திரை மோதிரம், ஆரம், கோல்", ["யோசேப்பின் அங்கி", "வெள்ளிப் பாத்திரம்", "மோதிரமும் அங்கியும்"], "இந்த வார்த்தைகள் இருமுறை வருகின்றன: யோசேப்பின் அங்கியோடு (37:32), யூதாவின் அடைமானத்தோடு (38:25)."]],
-  ["k137", "GEN 40:2", "cup",
-   ["Who were in prison with Joseph?", "Pharaoh's chief butler and chief baker", ["Potiphar and his wife", "Two of his brothers", "Two priests of On"]],
-   ["யோசேப்போடு காவலில் இருந்தவர்கள் யார்?", "பார்வோனின் பானபாத்திரக்காரரின் தலைவனும் சுயம்பாகிகளின் தலைவனும்", ["போத்திபாரும் அவன் மனைவியும்", "அவனுடைய இரண்டு சகோதரர்", "ஓன் பட்டணத்து இரண்டு ஆசாரியர்"]]],
-  ["k138", "GEN 41:3", "cows",
-   ["In Pharaoh's first dream, what came up out of the river?", "Seven fat kine and seven lean kine", ["Seven great fish", "Seven ears of corn", "Seven serpents"], "In the second dream, seven thin ears devoured seven good ears on one stalk."],
-   ["பார்வோனின் முதல் சொப்பனத்தில் நதியிலிருந்து ஏறிவந்தவை எவை?", "ஏழு கொழுத்த பசுக்களும் ஏழு கேவலமான பசுக்களும்", ["ஏழு பெரிய மீன்கள்", "ஏழு கதிர்கள்", "ஏழு சர்ப்பங்கள்"], "இரண்டாம் சொப்பனத்தில், ஒரே தாளில் வந்த ஏழு நல்ல கதிர்களை ஏழு சாவியான கதிர்கள் விழுங்கின."]],
-  ["k139", "GEN 41:34", "sheaves",
-   ["What part of the land's produce was gathered in the seven plenteous years?", "The fifth part", ["The tenth part", "Half", "The third part"]],
-   ["பரிபூரணமான ஏழு வருஷங்களில் தேசத்தின் விளைச்சலில் எந்தப் பங்கு சேர்க்கப்பட்டது?", "ஐந்தில் ஒரு பங்கு", ["பத்தில் ஒரு பங்கு", "பாதி", "மூன்றில் ஒரு பங்கு"]]],
-  ["k140", "GEN 41:46", "crown",
-   ["How old was Joseph when he stood before Pharaoh?", "30", ["17", "20", "40"]],
-   ["பார்வோனுக்கு முன்பாக நின்றபோது யோசேப்புக்கு எத்தனை வயது?", "30", ["17", "20", "40"]]],
-  ["k141", "GEN 41:42", "ring",
-   ["How did Pharaoh honour Joseph?", "His ring, fine linen, a gold chain and his second chariot", ["A crown and his own throne", "Land in Goshen only", "A palace and an army"], "And they cried before him, Bow the knee (41:43)."],
-   ["பார்வோன் யோசேப்பை எப்படிக் கனப்படுத்தினான்?", "தன் முத்திரை மோதிரம், மெல்லிய வஸ்திரம், பொன் சரப்பணி, தன் இரண்டாம் இரதம்", ["கிரீடமும் தன் சிங்காசனமும்", "கோசேனில் நிலம் மட்டும்", "அரண்மனையும் சேனையும்"], "முழங்காற்படியிடுங்கள் என்று அவனுக்கு முன்பாகக் கூப்பிட்டார்கள் (41:43)."]],
-  ["k142", "GEN 41:45", "crown",
-   ["Who was Joseph's wife?", "Asenath, the daughter of the priest of On", ["Tamar", "Zipporah", "Dinah"]],
-   ["யோசேப்பின் மனைவி யார்?", "ஓன் பட்டணத்து ஆசாரியனின் மகள் ஆஸ்நாத்", ["தாமார்", "சிப்போராள்", "தீனாள்"]]],
-  ["k143", "GEN 41:50", "sheaves",
-   ["When were Joseph's sons Manasseh and Ephraim born?", "Before the years of famine came", ["During the famine", "After Jacob came to Egypt", "In the land of Canaan"]],
-   ["யோசேப்பின் குமாரராகிய மனாசேயும் எப்பிராயீமும் எப்போது பிறந்தார்கள்?", "பஞ்ச வருஷங்கள் வருவதற்கு முன்", ["பஞ்ச காலத்தில்", "யாக்கோபு எகிப்துக்கு வந்தபின்", "கானான் தேசத்தில்"]]],
-  ["k144", "GEN 41:51", "crown",
-   ["What does the name Manasseh mean?", "God hath made me forget all my toil and all my father's house", ["God hath caused me to be fruitful", "God's host", "The LORD hath heard"]],
-   ["மனாசே என்ற பெயரின் அர்த்தம் என்ன?", "என் எல்லா வருத்தத்தையும் என் தகப்பன் வீட்டையும் தேவன் மறக்கப்பண்ணினார்", ["தேவன் என்னைப் பலுகப்பண்ணினார்", "தேவனுடைய சேனை", "கர்த்தர் கேட்டார்"]]],
-  ["k145", "GEN 41:52", "crown",
-   ["What does the name Ephraim mean?", "God hath caused me to be fruitful in the land of my affliction", ["God hath made me forget all my toil", "Son of my right hand", "Laughter"]],
-   ["எப்பிராயீம் என்ற பெயரின் அர்த்தம் என்ன?", "நான் சிறுமைப்பட்ட தேசத்தில் தேவன் என்னைப் பலுகப்பண்ணினார்", ["என் எல்லா வருத்தத்தையும் தேவன் மறக்கப்பண்ணினார்", "என் வலதுகையின் குமாரன்", "நகைப்பு"]]],
-  ["k146", "GEN 42:17", "sacks",
-   ["For how many days did Joseph put his brothers in ward?", "3 days", ["1 day", "7 days", "10 days"]],
-   ["யோசேப்பு தன் சகோதரரை எத்தனை நாள் காவலில் வைத்தான்?", "3 நாள்", ["1 நாள்", "7 நாள்", "10 நாள்"]]],
-  ["k147", "GEN 42:24", "sacks",
-   ["Which brother did Joseph bind and keep in Egypt?", "Simeon", ["Reuben", "Benjamin", "Judah"]],
-   ["யோசேப்பு எந்தச் சகோதரனைக் கட்டி எகிப்தில் வைத்தான்?", "சிமியோன்", ["ரூபன்", "பென்யமீன்", "யூதா"]]],
-  ["k148", "GEN 42:37", "sacks",
-   ["What did Reuben offer to his father as surety for Benjamin?", "His two sons", ["His own life", "All his flocks", "20 pieces of silver"]],
-   ["பென்யமீனுக்காக ரூபன் தன் தகப்பனிடம் எதை உத்தரவாதமாகக் கொடுத்தான்?", "தன் இரண்டு குமாரரை", ["தன் உயிரை", "தன் மந்தைகள் எல்லாவற்றையும்", "20 வெள்ளிக்காசை"]]],
-  ["k149", "GEN 43:9", "sacks",
-   ["Who became surety for Benjamin the second time?", "Judah", ["Reuben", "Levi", "Simeon"]],
-   ["பென்யமீனுக்காக இரண்டாம் முறை உத்தரவாதம் கொடுத்தவன் யார்?", "யூதா", ["ரூபன்", "லேவி", "சிமியோன்"]]],
-  ["k150", "GEN 43:11", "donkey",
-   ["What present did Jacob send down to the ruler of Egypt?", "Balm, honey, spices, myrrh, nuts and almonds", ["Gold and silver", "Lambs and goats", "Wine and bread"]],
-   ["எகிப்தின் அதிபதிக்கு யாக்கோபு அனுப்பின வெகுமதி என்ன?", "பிசின் தைலம், தேன், கந்தவர்க்கம், வெள்ளைப்போளம், தெரபிந்துக் கொட்டை, வாதுமைக் கொட்டை", ["பொன்னும் வெள்ளியும்", "ஆட்டுக்குட்டிகளும் வெள்ளாடுகளும்", "திராட்சரசமும் அப்பமும்"]]],
-  ["k151", "GEN 43:33", "loaves",
-   ["Why did the brothers marvel one at another in Joseph's house?", "They were seated by age, from the firstborn to the youngest", ["They were served Hebrew food", "Joseph spoke to them in Hebrew", "Their money was in their sacks"]],
-   ["யோசேப்பின் வீட்டில் சகோதரர் ஏன் ஒருவரையொருவர் பார்த்து ஆச்சரியப்பட்டார்கள்?", "மூத்தவன் முதல் இளையவன் வரை வயதின்படி உட்காரவைக்கப்பட்டார்கள்", ["எபிரெய உணவு பரிமாறப்பட்டது", "யோசேப்பு அவர்களோடு எபிரெய பாஷையில் பேசினான்", "அவர்கள் பணம் சாக்குகளில் இருந்தது"]]],
-  ["k152", "GEN 43:34", "loaves",
-   ["How many times more food was Benjamin given than his brothers?", "5 times", ["2 times", "7 times", "10 times"]],
-   ["சகோதரரைவிட பென்யமீனுக்கு எத்தனை மடங்கு அதிகமாக உணவு கொடுக்கப்பட்டது?", "5 மடங்கு", ["2 மடங்கு", "7 மடங்கு", "10 மடங்கு"]]],
-  ["k153", "GEN 45:1", "cup",
-   ["When did Joseph make himself known to his brothers?", "After the cup was found in Benjamin's sack and Judah offered himself in Benjamin's place", ["On their very first visit", "After Jacob died", "When Pharaoh told them"]],
-   ["யோசேப்பு எப்போது தன்னைத் தன் சகோதரருக்கு வெளிப்படுத்தினான்?", "பென்யமீனின் சாக்கில் பாத்திரம் கண்டுபிடிக்கப்பட்டு, பென்யமீனுக்குப் பதிலாக யூதா தன்னை ஒப்புக்கொடுத்தபின்", ["அவர்கள் முதல்முறை வந்தபோதே", "யாக்கோபு மரித்தபின்", "பார்வோன் அவர்களுக்குச் சொன்னபோது"]]],
-  ["k154", "GEN 45:10", "sheep",
-   ["In which land of Egypt did Jacob's family dwell?", "Goshen", ["On", "Zoan", "Memphis"]],
-   ["யாக்கோபின் குடும்பம் எகிப்தில் எந்தத் தேசத்தில் குடியிருந்தது?", "கோசேன்", ["ஓன்", "சோவான்", "நோப்"]]],
-  ["k155", "GEN 45:6", "sacks",
-   ["How many years of famine were still to come when Joseph revealed himself?", "5 years", ["2 years", "3 years", "7 years"]],
-   ["யோசேப்பு தன்னை வெளிப்படுத்தியபோது இன்னும் எத்தனை வருஷம் பஞ்சம் இருக்கவேண்டியிருந்தது?", "5 வருஷம்", ["2 வருஷம்", "3 வருஷம்", "7 வருஷம்"]]],
-  ["k156", "GEN 45:19", "wagon",
-   ["What did Joseph send to bring his father's household down to Egypt?", "Wagons", ["Camels", "Ships", "Chariots of war"], "The brothers had gone to buy food on their asses (42:26)."],
-   ["தன் தகப்பனின் குடும்பத்தை எகிப்துக்குக் கொண்டுவர யோசேப்பு எதை அனுப்பினான்?", "வண்டிகள்", ["ஒட்டகங்கள்", "கப்பல்கள்", "யுத்த இரதங்கள்"], "சகோதரர் தானியம் வாங்கக் கழுதைகளின்மேல் போனார்கள் (42:26)."]],
-  ["k157", "GEN 45:22", "coins",
-   ["What did Joseph give to Benjamin?", "300 pieces of silver and five changes of raiment", ["A coat of many colours", "His signet ring", "A silver cup"]],
-   ["யோசேப்பு பென்யமீனுக்குக் கொடுத்தது என்ன?", "300 வெள்ளிக்காசும் ஐந்து மாற்று வஸ்திரமும்", ["பலவர்ண அங்கி", "தன் முத்திரை மோதிரம்", "வெள்ளிப் பாத்திரம்"]]],
-  ["k158", "GEN 45:23", "donkey",
-   ["What did Joseph send to his father?", "Ten asses with the good things of Egypt and ten she asses with corn, bread and meat", ["Twenty camels laden with gold", "Seven wagons of wine", "A chariot and horses"]],
-   ["யோசேப்பு தன் தகப்பனுக்கு அனுப்பினது என்ன?", "எகிப்தின் உச்சிதமான பதார்த்தங்களுடன் பத்துக் கழுதைகளும், தானியம், அப்பம், தின்பண்டங்களுடன் பத்துக் கோளிகைக் கழுதைகளும்", ["பொன் ஏற்றிய இருபது ஒட்டகங்கள்", "திராட்சரசம் ஏற்றிய ஏழு வண்டிகள்", "ஒரு இரதமும் குதிரைகளும்"]]],
-  ["k159", "GEN 46:4", "ladder",
-   ["Where did God say to Jacob, \"I will go down with thee into Egypt\"?", "Beer-sheba", ["Bethel", "Hebron", "Goshen"]],
-   ["\"நான் உன்னோடேகூட எகிப்துக்கு வருவேன்\" என்று தேவன் யாக்கோபிடம் எங்கே சொன்னார்?", "பெயெர்செபா", ["பெத்தேல்", "எபிரோன்", "கோசேன்"]]],
-  ["k160", "GEN 46:27", "wagon",
-   ["In all, how many souls of the house of Jacob came into Egypt?", "70", ["66", "75", "12"], "66 came with Jacob, besides his sons' wives; with Joseph and his two sons, 70."],
-   ["யாக்கோபின் குடும்பத்தில் எகிப்துக்கு வந்தவர்கள் மொத்தம் எத்தனை பேர்?", "70", ["66", "75", "12"], "குமாரரின் மனைவிகளைத் தவிர யாக்கோபோடு வந்தவர்கள் 66 பேர்; யோசேப்பையும் அவன் இரண்டு குமாரரையும் சேர்த்து 70 பேர்."]],
-  ["k161", "GEN 47:11", "sheep",
-   ["Which land did Joseph give his father and brothers as a possession?", "The land of Rameses", ["The land of Canaan", "The land of On", "The land of Midian"]],
-   ["யோசேப்பு தன் தகப்பனுக்கும் சகோதரருக்கும் காணியாட்சியாகக் கொடுத்த நாடு எது?", "ராமசேஸ் நாடு", ["கானான் தேசம்", "ஓன் நாடு", "மீதியான் தேசம்"]]],
-  ["k162", "GEN 47:28", "elder",
-   ["For how many years did Jacob live in Egypt?", "17 years", ["7 years", "20 years", "40 years"]],
-   ["யாக்கோபு எகிப்தில் எத்தனை வருஷம் உயிரோடிருந்தான்?", "17 வருஷம்", ["7 வருஷம்", "20 வருஷம்", "40 வருஷம்"]]],
-  ["k163", "GEN 48:7", "stones",
-   ["Where was Rachel buried?", "On the way to Ephrath, that is Bethlehem", ["In the cave of Machpelah", "At Bethel", "At Hebron"]],
-   ["ராகேல் எங்கே அடக்கம்பண்ணப்பட்டாள்?", "பெத்லெகேம் என்னும் எப்பிராத்தாவுக்குப் போகிற வழியில்", ["மக்பேலா குகையில்", "பெத்தேலில்", "எபிரோனில்"]]],
-  ["k164", "GEN 48:14", "elder",
-   ["On whose head did Jacob lay his right hand to bless him?", "Ephraim", ["Manasseh", "Joseph", "Benjamin"]],
-   ["யாக்கோபு யாருடைய தலையின்மேல் தன் வலதுகையை வைத்து ஆசீர்வதித்தான்?", "எப்பிராயீம்", ["மனாசே", "யோசேப்பு", "பென்யமீன்"]]],
-  ["k165", "GEN 50:3", "elder",
-   ["For how many days did the Egyptians mourn for Jacob?", "70 days", ["7 days", "30 days", "40 days"]],
-   ["எகிப்தியர் யாக்கோபுக்காக எத்தனை நாள் துக்கங்கொண்டாடினார்கள்?", "70 நாள்", ["7 நாள்", "30 நாள்", "40 நாள்"]]],
-  ["k166", "GEN 50:11", "sheaves",
-   ["They mourned seven days at the threshingfloor of Atad. What was the place called?", "Abel-mizraim", ["Machpelah", "Mahanaim", "Peniel"]],
-   ["ஆத்தாத்தின் களத்தில் ஏழு நாள் துக்கங்கொண்டாடினார்கள். அந்த இடத்திற்கு என்ன பெயர் உண்டாயிற்று?", "ஆபேல்மிஸ்ராயீம்", ["மக்பேலா", "மகனாயீம்", "பெனியேல்"]]],
-  ["k167", "GEN 50:26", "elder",
-   ["How old was Joseph when he died?", "110", ["100", "120", "147"]],
-   ["யோசேப்பு மரித்தபோது அவனுக்கு எத்தனை வயது?", "110", ["100", "120", "147"]]],
-
-  ["k170", "1SA 1:2", "lamp",
-   ["What was the name of Hannah's husband?", "Elkanah", ["Eli", "Boaz", "Jesse"]],
-   ["அன்னாளின் கணவன் பெயர் என்ன?", "எல்க்கானா", ["ஏலி", "போவாஸ்", "ஈசாய்"]]],
-  ["k171", "2KI 11:3", "lamp",
-   ["Which two children grew up in the house of the LORD?", "Samuel and Joash", ["David and Solomon", "Moses and Aaron", "Eli and Samuel"], "Samuel grew before the LORD (1 Samuel 2:21); Joash was hid in the house of the LORD six years."],
-   ["கர்த்தருடைய ஆலயத்தில் வளர்ந்த இரண்டு பிள்ளைகள் யார்?", "சாமுவேல், யோவாஸ்", ["தாவீது, சாலொமோன்", "மோசே, ஆரோன்", "ஏலி, சாமுவேல்"], "சாமுவேல் கர்த்தருடைய சந்நிதியில் வளர்ந்தான் (1 சாமு. 2:21); யோவாஸ் ஆறு வருஷம் கர்த்தருடைய ஆலயத்தில் ஒளித்துவைக்கப்பட்டான்."]],
-  ["k172", "JDG 3:15", "sword",
-   ["Which judge of Israel was left-handed?", "Ehud", ["Jehu", "Gideon", "Samson"]],
-   ["இடதுகைப் பழக்கமுள்ள இஸ்ரவேலின் நியாயாதிபதி யார்?", "ஏகூத்", ["யெகூ", "கிதியோன்", "சிம்சோன்"]]],
-  ["k173", "JDG 4:4", "tree",
-   ["Who was the woman who judged Israel?", "Deborah", ["Jael", "Hannah", "Miriam"]],
-   ["இஸ்ரவேலை நியாயம் விசாரித்த ஸ்திரீ யார்?", "தெபொராள்", ["யாகேல்", "அன்னாள்", "மிரியாம்"]]],
-  ["k174", "1KI 1:39", "crown",
-   ["Who was the third king of Israel?", "Solomon", ["David", "Saul", "Rehoboam"], "Saul, then David, then Solomon."],
-   ["இஸ்ரவேலின் மூன்றாம் ராஜா யார்?", "சாலொமோன்", ["தாவீது", "சவுல்", "ரெகொபெயாம்"], "சவுல், தாவீது, பிறகு சாலொமோன்."]],
-  ["k175", "MAT 1:17", "star",
-   ["How many generations were there from Abraham to David?", "14", ["7", "12", "40"]],
-   ["ஆபிரகாம் முதல் தாவீது வரை எத்தனை தலைமுறைகள்?", "14", ["7", "12", "40"]]],
-  ["k176", "MAT 1:17", "star",
-   ["How many generations were there from David to Christ?", "28 (14 + 14)", ["14", "40", "42"], "From David to the carrying away into Babylon 14, and from Babylon to Christ 14."],
-   ["தாவீது முதல் கிறிஸ்து வரை எத்தனை தலைமுறைகள்?", "28 (14 + 14)", ["14", "40", "42"], "தாவீது முதல் பாபிலோனுக்குச் சிறைப்பட்டுப்போனது வரை 14, பாபிலோன் முதல் கிறிஸ்து வரை 14."]],
-  ["k177", "EXO 2:21", "well",
-   ["What was the name of Moses' wife?", "Zipporah", ["Miriam", "Jochebed", "Deborah"]],
-   ["மோசேயின் மனைவியின் பெயர் என்ன?", "சிப்போராள்", ["மிரியாம்", "யோகெபேத்", "தெபொராள்"]]],
-  ["k178", "EXO 18:3", "bush",
-   ["What were the names of Moses' two sons?", "Gershom and Eliezer", ["Nadab and Abihu", "Ephraim and Manasseh", "Joshua and Caleb"]],
-   ["மோசேயின் இரண்டு குமாரரின் பெயர்கள் என்ன?", "கெர்சோம், எலியேசர்", ["நாதாப், அபியூ", "எப்பிராயீம், மனாசே", "யோசுவா, காலேப்"]]],
-  ["k179", "2SA 13:1", "harp",
-   ["What was the name of David's daughter?", "Tamar", ["Dinah", "Michal", "Abigail"]],
-   ["தாவீதின் மகளின் பெயர் என்ன?", "தாமார்", ["தீனாள்", "மீகாள்", "அபிகாயில்"]]],
-  ["k180", "GEN 38:6", "ring",
-   ["Who was Judah's daughter-in-law?", "Tamar", ["Ruth", "Dinah", "Orpah"]],
-   ["யூதாவின் மருமகள் யார்?", "தாமார்", ["ரூத்", "தீனாள்", "ஒர்பாள்"]]]
+  [
+   "k001",
+   "ISA 1:1",
+   "writer",
+   [
+    "How many prophets of the Old Testament wrote a book that bears their name?",
+    "16",
+    [
+     "12",
+     "17",
+     "22"
+    ],
+    "4 major prophets (Isaiah, Jeremiah, Ezekiel, Daniel) and 12 minor prophets (Hosea to Malachi)."
+   ],
+   [
+    "பழைய ஏற்பாட்டில் தங்கள் பெயரில் புஸ்தகம் எழுதிய தீர்க்கதரிசிகள் எத்தனை பேர்?",
+    "16",
+    [
+     "12",
+     "17",
+     "22"
+    ],
+    "4 பெரிய தீர்க்கதரிசிகள் (ஏசாயா, எரேமியா, எசேக்கியேல், தானியேல்), 12 சிறிய தீர்க்கதரிசிகள் (ஓசியா முதல் மல்கியா வரை)."
+   ]
+  ],
+  [
+   "k002",
+   "1KI 17:1",
+   "altar",
+   [
+    "Which of these prophets did NOT write a book of the Bible?",
+    "Elijah",
+    [
+     "Isaiah",
+     "Jonah",
+     "Malachi"
+    ]
+   ],
+   [
+    "இவர்களில் வேதாகமப் புஸ்தகம் எழுதாத தீர்க்கதரிசி யார்?",
+    "எலியா",
+    [
+     "ஏசாயா",
+     "யோனா",
+     "மல்கியா"
+    ]
+   ]
+  ],
+  [
+   "k003",
+   "PSA 72:20",
+   "harp",
+   [
+    "By the psalm titles, about how many psalms are of David?",
+    "73",
+    [
+     "12",
+     "50",
+     "150"
+    ],
+    "73 psalms carry David's name in their titles; counting Psalms 2 and 95 (Acts 4:25, Hebrews 4:7) some say 75."
+   ],
+   [
+    "சங்கீதங்களின் தலைப்புகளின்படி தாவீதின் சங்கீதங்கள் ஏறக்குறைய எத்தனை?",
+    "73",
+    [
+     "12",
+     "50",
+     "150"
+    ],
+    "73 சங்கீதங்களின் தலைப்பில் தாவீதின் பெயர் உள்ளது; 2, 95 ஆம் சங்கீதங்களையும் சேர்த்து (அப். 4:25, எபி. 4:7) சிலர் 75 என்பர்."
+   ]
+  ],
+  [
+   "k004",
+   "PSA 73:1",
+   "harp",
+   [
+    "How many psalms are of Asaph?",
+    "12",
+    [
+     "3",
+     "7",
+     "24"
+    ],
+    "Psalm 50 and Psalms 73 to 83."
+   ],
+   [
+    "ஆசாபின் சங்கீதங்கள் எத்தனை?",
+    "12",
+    [
+     "3",
+     "7",
+     "24"
+    ],
+    "50 ஆம் சங்கீதமும், 73 முதல் 83 வரையிலான சங்கீதங்களும்."
+   ]
+  ],
+  [
+   "k005",
+   "PSA 127:1",
+   "harp",
+   [
+    "How many psalms are of Solomon?",
+    "2",
+    [
+     "1",
+     "5",
+     "10"
+    ],
+    "Psalm 72 and Psalm 127."
+   ],
+   [
+    "சாலொமோனின் சங்கீதங்கள் எத்தனை?",
+    "2",
+    [
+     "1",
+     "5",
+     "10"
+    ],
+    "72 ஆம் சங்கீதமும் 127 ஆம் சங்கீதமும்."
+   ]
+  ],
+  [
+   "k006",
+   "ECC 1:1",
+   "writer",
+   [
+    "Which of these books did Solomon write?",
+    "Ecclesiastes",
+    [
+     "Lamentations",
+     "Job",
+     "Ruth"
+    ],
+    "Solomon wrote Proverbs, Ecclesiastes, the Song of Solomon and two psalms."
+   ],
+   [
+    "இவற்றில் சாலொமோன் எழுதிய புஸ்தகம் எது?",
+    "பிரசங்கி",
+    [
+     "புலம்பல்",
+     "யோபு",
+     "ரூத்"
+    ],
+    "நீதிமொழிகள், பிரசங்கி, உன்னதப்பாட்டு, இரண்டு சங்கீதங்கள் ஆகியவற்றைச் சாலொமோன் எழுதினார்."
+   ]
+  ],
+  [
+   "k007",
+   "PRO 1:1",
+   "writer",
+   [
+    "Who wrote most of the book of Proverbs?",
+    "Solomon",
+    [
+     "David",
+     "Moses",
+     "Asaph"
+    ]
+   ],
+   [
+    "நீதிமொழிகள் புஸ்தகத்தின் பெரும்பகுதியை எழுதியவர் யார்?",
+    "சாலொமோன்",
+    [
+     "தாவீது",
+     "மோசே",
+     "ஆசாப்"
+    ]
+   ]
+  ],
+  [
+   "k008",
+   "JER 36:4",
+   "writer",
+   [
+    "Who was Jeremiah's helper who wrote down his words?",
+    "Baruch",
+    [
+     "Barak",
+     "Gehazi",
+     "Elisha"
+    ],
+    "Baruch the son of Neriah wrote from the mouth of Jeremiah. (Barak was a judge with Deborah.)"
+   ],
+   [
+    "எரேமியாவின் வார்த்தைகளை எழுதிய அவருடைய உதவியாளர் யார்?",
+    "பாருக்கு",
+    [
+     "பாராக்",
+     "கேயாசி",
+     "எலிசா"
+    ],
+    "நேரியாவின் குமாரனாகிய பாருக்கு எரேமியாவின் வாய்மொழியின்படி எழுதினான். (பாராக் தெபொராளுடன் இருந்த நியாயாதிபதி.)"
+   ]
+  ],
+  [
+   "k009",
+   "LEV 1:1",
+   "writer",
+   [
+    "Which of these books was written by Moses?",
+    "Leviticus",
+    [
+     "Joshua",
+     "Judges",
+     "Ruth"
+    ],
+    "Moses wrote Genesis, Exodus, Leviticus, Numbers and Deuteronomy."
+   ],
+   [
+    "இவற்றில் மோசே எழுதிய புஸ்தகம் எது?",
+    "லேவியராகமம்",
+    [
+     "யோசுவா",
+     "நியாயாதிபதிகள்",
+     "ரூத்"
+    ],
+    "ஆதியாகமம், யாத்திராகமம், லேவியராகமம், எண்ணாகமம், உபாகமம் ஆகியவற்றை மோசே எழுதினார்."
+   ]
+  ],
+  [
+   "k010",
+   "PSA 90:1",
+   "writer",
+   [
+    "Which psalm is \"A Prayer of Moses the man of God\"?",
+    "Psalm 90",
+    [
+     "Psalm 23",
+     "Psalm 51",
+     "Psalm 119"
+    ]
+   ],
+   [
+    "\"தேவனுடைய மனுஷனாகிய மோசேயின் ஜெபம்\" எந்தச் சங்கீதம்?",
+    "90 ஆம் சங்கீதம்",
+    [
+     "23 ஆம் சங்கீதம்",
+     "51 ஆம் சங்கீதம்",
+     "119 ஆம் சங்கீதம்"
+    ]
+   ]
+  ],
+  [
+   "k011",
+   "JOB 1:1",
+   "writer",
+   [
+    "Besides the five books of the Law, which book is traditionally said to be written by Moses?",
+    "Job",
+    [
+     "Joshua",
+     "Judges",
+     "Esther"
+    ]
+   ],
+   [
+    "நியாயப்பிரமாணத்தின் ஐந்து புஸ்தகங்களைத் தவிர, மோசே எழுதியதாகப் பாரம்பரியமாகச் சொல்லப்படும் புஸ்தகம் எது?",
+    "யோபு",
+    [
+     "யோசுவா",
+     "நியாயாதிபதிகள்",
+     "எஸ்தர்"
+    ]
+   ]
+  ],
+  [
+   "k012",
+   "1CH 29:29",
+   "writer",
+   [
+    "Which books are traditionally said to be written by Samuel?",
+    "Judges, Ruth and part of 1 Samuel",
+    [
+     "Ezra and Nehemiah",
+     "1 and 2 Kings",
+     "Esther and Job"
+    ],
+    "The rest of the acts of David were written by Samuel the seer, Nathan the prophet and Gad the seer."
+   ],
+   [
+    "சாமுவேல் எழுதியதாகப் பாரம்பரியமாகச் சொல்லப்படும் புஸ்தகங்கள் எவை?",
+    "நியாயாதிபதிகள், ரூத், 1 சாமுவேலின் ஒரு பகுதி",
+    [
+     "எஸ்றா, நெகேமியா",
+     "1, 2 இராஜாக்கள்",
+     "எஸ்தர், யோபு"
+    ],
+    "தாவீதின் மற்ற வர்த்தமானங்களை ஞானதிருஷ்டிக்காரனாகிய சாமுவேலும், தீர்க்கதரிசியாகிய நாத்தானும், ஞானதிருஷ்டிக்காரனாகிய காத்தும் எழுதினார்கள்."
+   ]
+  ],
+  [
+   "k013",
+   "1CH 29:29",
+   "writer",
+   [
+    "Together with Samuel, which two prophets wrote down the acts of David?",
+    "Nathan and Gad",
+    [
+     "Elijah and Elisha",
+     "Isaiah and Jeremiah",
+     "Haggai and Zechariah"
+    ]
+   ],
+   [
+    "சாமுவேலுடன் சேர்ந்து தாவீதின் வர்த்தமானங்களை எழுதிய இரண்டு தீர்க்கதரிசிகள் யார்?",
+    "நாத்தான், காத்",
+    [
+     "எலியா, எலிசா",
+     "ஏசாயா, எரேமியா",
+     "ஆகாய், சகரியா"
+    ]
+   ]
+  ],
+  [
+   "k014",
+   "ROM 1:1",
+   "writer",
+   [
+    "Counting Hebrews, how many letters are traditionally said to be written by Paul?",
+    "14",
+    [
+     "7",
+     "12",
+     "21"
+    ],
+    "Romans to Philemon are 13 letters; with Hebrews, 14."
+   ],
+   [
+    "எபிரெயரையும் சேர்த்து, பவுல் எழுதியதாகச் சொல்லப்படும் நிருபங்கள் எத்தனை?",
+    "14",
+    [
+     "7",
+     "12",
+     "21"
+    ],
+    "ரோமர் முதல் பிலேமோன் வரை 13 நிருபங்கள்; எபிரெயரையும் சேர்த்து 14."
+   ]
+  ],
+  [
+   "k015",
+   "ROM 1:7",
+   "writer",
+   [
+    "To churches in how many different places did Paul write (Romans to 2 Thessalonians)?",
+    "7",
+    [
+     "3",
+     "9",
+     "12"
+    ],
+    "Rome, Corinth, Galatia, Ephesus, Philippi, Colosse and Thessalonica."
+   ],
+   [
+    "பவுல் எத்தனை வெவ்வேறு இடங்களிலுள்ள சபைகளுக்கு நிருபம் எழுதினார் (ரோமர் முதல் 2 தெசலோனிக்கேயர் வரை)?",
+    "7",
+    [
+     "3",
+     "9",
+     "12"
+    ],
+    "ரோமா, கொரிந்து, கலாத்தியா, எபேசு, பிலிப்பி, கொலோசெ, தெசலோனிக்கே."
+   ]
+  ],
+  [
+   "k016",
+   "PHM 1:1",
+   "writer",
+   [
+    "Which of these New Testament letters was written to one person?",
+    "Philemon",
+    [
+     "Galatians",
+     "Hebrews",
+     "Ephesians"
+    ],
+    "1 and 2 Timothy, Titus and Philemon were written to one person; so were 2 John (the elect lady) and 3 John (Gaius)."
+   ],
+   [
+    "இவற்றில் ஒரு தனி நபருக்கு எழுதப்பட்ட புதிய ஏற்பாட்டு நிருபம் எது?",
+    "பிலேமோன்",
+    [
+     "கலாத்தியர்",
+     "எபிரெயர்",
+     "எபேசியர்"
+    ],
+    "1, 2 தீமோத்தேயு, தீத்து, பிலேமோன் ஆகியவை தனி நபருக்கு எழுதப்பட்டவை; 2 யோவான் (அம்மாள்), 3 யோவான் (காயு) கூட."
+   ]
+  ],
+  [
+   "k017",
+   "2JN 1:1",
+   "writer",
+   [
+    "To whom was the second letter of John written?",
+    "The elect lady and her children",
+    [
+     "The church at Rome",
+     "Gaius",
+     "Timothy"
+    ]
+   ],
+   [
+    "யோவான் எழுதிய இரண்டாம் நிருபம் யாருக்கு எழுதப்பட்டது?",
+    "தெரிந்துகொள்ளப்பட்ட அம்மாளுக்கும் அவள் பிள்ளைகளுக்கும்",
+    [
+     "ரோமாவிலுள்ள சபைக்கு",
+     "காயுவுக்கு",
+     "தீமோத்தேயுவுக்கு"
+    ]
+   ]
+  ],
+  [
+   "k018",
+   "MAT 10:2",
+   "boat",
+   [
+    "Which of these was NOT one of the twelve disciples of Jesus?",
+    "Barnabas",
+    [
+     "Thaddaeus",
+     "Bartholomew",
+     "Simon the Canaanite"
+    ],
+    "Peter, Andrew, James, John, Philip, Bartholomew, Thomas, Matthew, James son of Alphaeus, Thaddaeus, Simon the Canaanite and Judas Iscariot."
+   ],
+   [
+    "இவர்களில் இயேசுவின் பன்னிரண்டு சீஷரில் ஒருவர் அல்லாதவர் யார்?",
+    "பர்னபா",
+    [
+     "ததேயு",
+     "பற்தொலொமேயு",
+     "கானானியனாகிய சீமோன்"
+    ],
+    "பேதுரு, அந்திரேயா, யாக்கோபு, யோவான், பிலிப்பு, பற்தொலொமேயு, தோமா, மத்தேயு, அல்பேயுவின் குமாரனாகிய யாக்கோபு, ததேயு, கானானியனாகிய சீமோன், யூதாஸ்காரியோத்து."
+   ]
+  ],
+  [
+   "k019",
+   "ACT 1:26",
+   "boat",
+   [
+    "Who was chosen to take the place of Judas among the twelve apostles?",
+    "Matthias",
+    [
+     "Paul",
+     "Barnabas",
+     "Stephen"
+    ]
+   ],
+   [
+    "பன்னிரண்டு அப்போஸ்தலரில் யூதாஸின் இடத்திற்குத் தெரிந்துகொள்ளப்பட்டவர் யார்?",
+    "மத்தியா",
+    [
+     "பவுல்",
+     "பர்னபா",
+     "ஸ்தேவான்"
+    ]
+   ]
+  ],
+  [
+   "k020",
+   "REV 1:1",
+   "writer",
+   [
+    "Who wrote the book of Revelation?",
+    "John",
+    [
+     "Paul",
+     "Peter",
+     "Daniel"
+    ]
+   ],
+   [
+    "வெளிப்படுத்தின விசேஷத்தை எழுதியவர் யார்?",
+    "யோவான்",
+    [
+     "பவுல்",
+     "பேதுரு",
+     "தானியேல்"
+    ]
+   ]
+  ],
+  [
+   "k021",
+   "LAM 3:22",
+   "scroll",
+   [
+    "How many verses are in the book of Lamentations?",
+    "154",
+    [
+     "66",
+     "88",
+     "120"
+    ],
+    "Five chapters: 22 + 22 + 66 + 22 + 22 verses."
+   ],
+   [
+    "புலம்பல் புஸ்தகத்தில் எத்தனை வசனங்கள் உள்ளன?",
+    "154",
+    [
+     "66",
+     "88",
+     "120"
+    ],
+    "ஐந்து அதிகாரங்கள்: 22 + 22 + 66 + 22 + 22 வசனங்கள்."
+   ]
+  ],
+  [
+   "k022",
+   "2TI 3:16",
+   "scroll",
+   [
+    "How many books are in the Bible?",
+    "66",
+    [
+     "39",
+     "27",
+     "73"
+    ],
+    "39 in the Old Testament and 27 in the New Testament."
+   ],
+   [
+    "வேதாகமத்தில் எத்தனை புஸ்தகங்கள் உள்ளன?",
+    "66",
+    [
+     "39",
+     "27",
+     "73"
+    ],
+    "பழைய ஏற்பாட்டில் 39, புதிய ஏற்பாட்டில் 27."
+   ]
+  ],
+  [
+   "k030",
+   "GEN 1:26",
+   "sun",
+   [
+    "For what purpose did God make man in His image and give him dominion?",
+    "To express God and to represent Him",
+    [
+     "Only to keep the garden",
+     "Only to name the animals",
+     "To rest every day"
+    ]
+   ],
+   [
+    "தேவன் மனுஷனைத் தம்முடைய சாயலாக உண்டாக்கி ஆளுகை கொடுத்ததின் நோக்கம் என்ன?",
+    "தேவனை வெளிப்படுத்தவும் அவரைப் பிரதிநிதித்துவப்படுத்தவும்",
+    [
+     "தோட்டத்தைக் காக்க மட்டும்",
+     "மிருகங்களுக்குப் பெயரிட மட்டும்",
+     "தினமும் ஓய்வெடுக்க"
+    ]
+   ]
+  ],
+  [
+   "k031",
+   "GEN 1:16",
+   "sun",
+   [
+    "What did God make on the fourth day?",
+    "The sun, the moon and the stars",
+    [
+     "Grass and trees",
+     "Fish and birds",
+     "Man and woman"
+    ]
+   ],
+   [
+    "நான்காம் நாளில் தேவன் எதை உண்டாக்கினார்?",
+    "சூரியன், சந்திரன், நட்சத்திரங்கள்",
+    [
+     "புல்லும் மரங்களும்",
+     "மீன்களும் பறவைகளும்",
+     "ஆணும் பெண்ணும்"
+    ]
+   ]
+  ],
+  [
+   "k032",
+   "GEN 1:14",
+   "sun",
+   [
+    "Why did God set lights in the firmament on the fourth day?",
+    "For signs, seasons, days and years, and to give light",
+    [
+     "To warm the sea",
+     "To guide Noah's ark",
+     "Only for the angels"
+    ]
+   ],
+   [
+    "நான்காம் நாளில் தேவன் ஆகாயவிரிவிலே சுடர்களை எதற்காக வைத்தார்?",
+    "அடையாளங்களுக்கும், காலங்களுக்கும், நாட்களுக்கும், வருஷங்களுக்கும், வெளிச்சம் கொடுக்கவும்",
+    [
+     "கடலைச் சூடாக்க",
+     "நோவாவின் பேழைக்கு வழிகாட்ட",
+     "தேவதூதர்களுக்காக மட்டும்"
+    ]
+   ]
+  ],
+  [
+   "k033",
+   "GEN 1:24",
+   "sun",
+   [
+    "What did God make on the sixth day?",
+    "Cattle, creeping things, beasts of the earth, and man",
+    [
+     "The sun, moon and stars",
+     "Fish and birds",
+     "Grass, herbs and trees"
+    ]
+   ],
+   [
+    "ஆறாம் நாளில் தேவன் எவைகளை உண்டாக்கினார்?",
+    "நாட்டுமிருகங்கள், ஊரும் பிராணிகள், காட்டுமிருகங்கள், மனுஷன்",
+    [
+     "சூரியன், சந்திரன், நட்சத்திரங்கள்",
+     "மீன்களும் பறவைகளும்",
+     "புல், பூண்டு, மரங்கள்"
+    ]
+   ]
+  ],
+  [
+   "k034",
+   "GEN 2:10",
+   "river",
+   [
+    "Into how many rivers did the river from Eden part?",
+    "4",
+    [
+     "2",
+     "3",
+     "7"
+    ]
+   ],
+   [
+    "ஏதேனிலிருந்து புறப்பட்ட நதி எத்தனை ஆறுகளாகப் பிரிந்தது?",
+    "4",
+    [
+     "2",
+     "3",
+     "7"
+    ]
+   ]
+  ],
+  [
+   "k035",
+   "GEN 2:14",
+   "river",
+   [
+    "Which of these was one of the rivers of Eden?",
+    "Hiddekel",
+    [
+     "Jordan",
+     "Nile",
+     "Kishon"
+    ],
+    "The four rivers: Pison, Gihon, Hiddekel and Euphrates."
+   ],
+   [
+    "இவற்றில் ஏதேனின் ஆறுகளில் ஒன்று எது?",
+    "இதெக்கேல்",
+    [
+     "யோர்தான்",
+     "நைல்",
+     "கீசோன்"
+    ],
+    "நான்கு ஆறுகள்: பைசோன், கீகோன், இதெக்கேல், ஐபிராத்து."
+   ]
+  ],
+  [
+   "k036",
+   "GEN 2:11",
+   "river",
+   [
+    "In which land, compassed by the river Pison, was there gold?",
+    "Havilah",
+    [
+     "Ethiopia",
+     "Assyria",
+     "Egypt"
+    ]
+   ],
+   [
+    "பைசோன் நதி சுற்றிப் பாய்ந்த, பொன் விளைந்த தேசம் எது?",
+    "ஆவிலா",
+    [
+     "எத்தியோப்பியா",
+     "அசீரியா",
+     "எகிப்து"
+    ]
+   ]
+  ],
+  [
+   "k037",
+   "GEN 2:13",
+   "river",
+   [
+    "Which river of Eden compassed the land of Ethiopia?",
+    "Gihon",
+    [
+     "Pison",
+     "Hiddekel",
+     "Euphrates"
+    ]
+   ],
+   [
+    "எத்தியோப்பியா தேசத்தைச் சுற்றிப் பாய்ந்த ஏதேனின் நதி எது?",
+    "கீகோன்",
+    [
+     "பைசோன்",
+     "இதெக்கேல்",
+     "ஐபிராத்து"
+    ]
+   ]
+  ],
+  [
+   "k038",
+   "GEN 1:8",
+   "sun",
+   [
+    "On which day of creation is it not said that \"it was good\"?",
+    "The second day",
+    [
+     "The first day",
+     "The third day",
+     "The fifth day"
+    ]
+   ],
+   [
+    "சிருஷ்டிப்பின் எந்த நாளில் \"நல்லது\" என்று சொல்லப்படவில்லை?",
+    "இரண்டாம் நாள்",
+    [
+     "முதலாம் நாள்",
+     "மூன்றாம் நாள்",
+     "ஐந்தாம் நாள்"
+    ]
+   ]
+  ],
+  [
+   "k039",
+   "GEN 2:18",
+   "tree",
+   [
+    "What did God say was \"not good\"?",
+    "That the man should be alone",
+    [
+     "The darkness",
+     "The deep waters",
+     "The serpent"
+    ]
+   ],
+   [
+    "\"நல்லதல்ல\" என்று தேவன் சொன்னது எது?",
+    "மனுஷன் தனிமையாயிருப்பது",
+    [
+     "இருள்",
+     "ஆழமான தண்ணீர்",
+     "சர்ப்பம்"
+    ]
+   ]
+  ],
+  [
+   "k040",
+   "GEN 3:20",
+   "tree",
+   [
+    "What does the name Eve mean?",
+    "The mother of all living",
+    [
+     "Taken out of man",
+     "Bone of my bones",
+     "God has heard"
+    ]
+   ],
+   [
+    "ஏவாள் என்ற பெயரின் அர்த்தம் என்ன?",
+    "ஜீவனுள்ளோருக்கெல்லாம் தாய்",
+    [
+     "மனுஷனிலிருந்து எடுக்கப்பட்டவள்",
+     "என் எலும்பின் எலும்பு",
+     "தேவன் கேட்டார்"
+    ]
+   ]
+  ],
+  [
+   "k041",
+   "GEN 4:8",
+   "altar",
+   [
+    "Who was the first murderer on the earth?",
+    "Cain",
+    [
+     "Lamech",
+     "Esau",
+     "Nimrod"
+    ]
+   ],
+   [
+    "பூமியில் முதல் கொலைகாரன் யார்?",
+    "காயீன்",
+    [
+     "லாமேக்கு",
+     "ஏசா",
+     "நிம்ரோத்"
+    ]
+   ]
+  ],
+  [
+   "k042",
+   "GEN 4:23",
+   "sword",
+   [
+    "After Cain, who was the next man in Genesis to say he had slain a man?",
+    "Lamech",
+    [
+     "Seth",
+     "Enos",
+     "Ham"
+    ]
+   ],
+   [
+    "காயீனுக்குப் பின், ஒரு மனுஷனைக் கொன்றேன் என்று சொன்ன அடுத்த நபர் யார்?",
+    "லாமேக்கு",
+    [
+     "சேத்",
+     "ஏனோஸ்",
+     "காம்"
+    ]
+   ]
+  ],
+  [
+   "k043",
+   "GEN 4:26",
+   "path",
+   [
+    "In whose days did men begin to call upon the name of the LORD?",
+    "Enos",
+    [
+     "Adam",
+     "Enoch",
+     "Noah"
+    ]
+   ],
+   [
+    "யாருடைய நாட்களில் மனுஷர் கர்த்தருடைய நாமத்தைத் தொழுதுகொள்ள ஆரம்பித்தார்கள்?",
+    "ஏனோஸ்",
+    [
+     "ஆதாம்",
+     "ஏனோக்கு",
+     "நோவா"
+    ]
+   ]
+  ],
+  [
+   "k044",
+   "GEN 5:24",
+   "path",
+   [
+    "Who walked with God, and was not, for God took him?",
+    "Enoch",
+    [
+     "Methuselah",
+     "Noah",
+     "Lamech"
+    ]
+   ],
+   [
+    "தேவனோடே சஞ்சரித்து, தேவன் அவனை எடுத்துக்கொண்டதினால் காணப்படாமற்போனவன் யார்?",
+    "ஏனோக்கு",
+    [
+     "மெத்தூசலா",
+     "நோவா",
+     "லாமேக்கு"
+    ]
+   ]
+  ],
+  [
+   "k045",
+   "GEN 6:9",
+   "path",
+   [
+    "After Enoch, who was the next man said to walk with God?",
+    "Noah",
+    [
+     "Shem",
+     "Abraham",
+     "Lamech"
+    ]
+   ],
+   [
+    "ஏனோக்குக்குப் பின், தேவனோடே சஞ்சரித்தவன் என்று சொல்லப்பட்ட அடுத்த நபர் யார்?",
+    "நோவா",
+    [
+     "சேம்",
+     "ஆபிரகாம்",
+     "லாமேக்கு"
+    ]
+   ]
+  ],
+  [
+   "k046",
+   "GEN 5:27",
+   "elder",
+   [
+    "Who lived the longest of all, and for how many years?",
+    "Methuselah, 969 years",
+    [
+     "Adam, 930 years",
+     "Noah, 950 years",
+     "Jared, 962 years"
+    ]
+   ],
+   [
+    "எல்லாரிலும் அதிக வருஷம் உயிரோடிருந்தவர் யார், எத்தனை வருஷம்?",
+    "மெத்தூசலா, 969 வருஷம்",
+    [
+     "ஆதாம், 930 வருஷம்",
+     "நோவா, 950 வருஷம்",
+     "யாரேத், 962 வருஷம்"
+    ]
+   ]
+  ],
+  [
+   "k047",
+   "GEN 7:4",
+   "ark",
+   [
+    "When do we first read of rain falling on the earth?",
+    "In the days of Noah",
+    [
+     "In the days of Adam",
+     "In the days of Abraham",
+     "In the days of Moses"
+    ],
+    "Before that, a mist went up from the earth and watered the ground (Genesis 2:5-6)."
+   ],
+   [
+    "பூமியின்மேல் மழை பெய்ததைப்பற்றி முதன்முதலில் எப்போது வாசிக்கிறோம்?",
+    "நோவாவின் நாட்களில்",
+    [
+     "ஆதாமின் நாட்களில்",
+     "ஆபிரகாமின் நாட்களில்",
+     "மோசேயின் நாட்களில்"
+    ],
+    "அதற்கு முன் பூமியிலிருந்து மூடுபனி எழும்பி, பூமியை நனைத்தது (ஆதி. 2:5-6)."
+   ]
+  ],
+  [
+   "k050",
+   "GEN 5:32",
+   "elder",
+   [
+    "How old was Noah when he began to have sons?",
+    "500 years",
+    [
+     "120 years",
+     "600 years",
+     "950 years"
+    ]
+   ],
+   [
+    "நோவா எத்தனை வயதில் குமாரரைப் பெற்றான்?",
+    "500 வயதில்",
+    [
+     "120 வயதில்",
+     "600 வயதில்",
+     "950 வயதில்"
+    ]
+   ]
+  ],
+  [
+   "k051",
+   "GEN 6:3",
+   "ark",
+   [
+    "To how many years did God limit man's days?",
+    "120 years",
+    [
+     "70 years",
+     "40 years",
+     "969 years"
+    ]
+   ],
+   [
+    "மனுஷனுடைய நாட்களை தேவன் எத்தனை வருஷமாகக் குறைத்தார்?",
+    "120 வருஷம்",
+    [
+     "70 வருஷம்",
+     "40 வருஷம்",
+     "969 வருஷம்"
+    ]
+   ]
+  ],
+  [
+   "k052",
+   "GEN 7:10",
+   "ark",
+   [
+    "How many days after Noah entered the ark did the flood come?",
+    "7 days",
+    [
+     "3 days",
+     "40 days",
+     "150 days"
+    ]
+   ],
+   [
+    "நோவா பேழைக்குள் பிரவேசித்து எத்தனை நாள் கழித்து ஜலப்பிரளயம் வந்தது?",
+    "7 நாள்",
+    [
+     "3 நாள்",
+     "40 நாள்",
+     "150 நாள்"
+    ]
+   ]
+  ],
+  [
+   "k053",
+   "GEN 7:12",
+   "ark",
+   [
+    "For how long did the rain fall in the days of Noah?",
+    "40 days and 40 nights",
+    [
+     "7 days",
+     "150 days",
+     "A whole year"
+    ]
+   ],
+   [
+    "நோவாவின் நாட்களில் எவ்வளவு காலம் மழை பெய்தது?",
+    "40 நாள் இரவும் பகலும்",
+    [
+     "7 நாள்",
+     "150 நாள்",
+     "ஒரு வருஷம் முழுவதும்"
+    ]
+   ]
+  ],
+  [
+   "k054",
+   "GEN 7:20",
+   "ark",
+   [
+    "How high did the waters rise above the mountains?",
+    "15 cubits (about 22 feet)",
+    [
+     "7 cubits",
+     "40 cubits",
+     "100 cubits"
+    ]
+   ],
+   [
+    "தண்ணீர் மலைகளுக்கு மேல் எவ்வளவு உயரம் எழும்பியது?",
+    "15 முழம் (ஏறக்குறைய 22 அடி)",
+    [
+     "7 முழம்",
+     "40 முழம்",
+     "100 முழம்"
+    ]
+   ]
+  ],
+  [
+   "k055",
+   "GEN 7:24",
+   "ark",
+   [
+    "For how many days did the waters prevail upon the earth?",
+    "150 days",
+    [
+     "40 days",
+     "7 days",
+     "300 days"
+    ]
+   ],
+   [
+    "ஜலம் பூமியின்மேல் எத்தனை நாள் பிரவாகித்தது?",
+    "150 நாள்",
+    [
+     "40 நாள்",
+     "7 நாள்",
+     "300 நாள்"
+    ]
+   ]
+  ],
+  [
+   "k056",
+   "GEN 8:4",
+   "ark",
+   [
+    "On which mountains did the ark rest?",
+    "The mountains of Ararat",
+    [
+     "Mount Sinai",
+     "Mount Carmel",
+     "Mount Moriah"
+    ]
+   ],
+   [
+    "பேழை எந்த மலைகளின்மேல் தங்கிற்று?",
+    "அரராத் மலைகள்",
+    [
+     "சீனாய் மலை",
+     "கர்மேல் மலை",
+     "மோரியா மலை"
+    ]
+   ]
+  ],
+  [
+   "k057",
+   "GEN 8:7",
+   "raven",
+   [
+    "Which bird did Noah send out first?",
+    "A raven",
+    [
+     "A dove",
+     "An eagle",
+     "A sparrow"
+    ]
+   ],
+   [
+    "நோவா முதலில் வெளியே அனுப்பின பறவை எது?",
+    "காகம்",
+    [
+     "புறா",
+     "கழுகு",
+     "அடைக்கலான் குருவி"
+    ]
+   ]
+  ],
+  [
+   "k058",
+   "GEN 8:11",
+   "dove",
+   [
+    "What did the dove bring back to Noah?",
+    "An olive leaf",
+    [
+     "A fig leaf",
+     "A cedar twig",
+     "A small stone"
+    ]
+   ],
+   [
+    "புறா நோவாவிடம் என்ன கொண்டுவந்தது?",
+    "ஒலிவ இலை",
+    [
+     "அத்தி இலை",
+     "கேதுரு கிளை",
+     "ஒரு சிறு கல்"
+    ]
+   ]
+  ],
+  [
+   "k059",
+   "GEN 8:14",
+   "ark",
+   [
+    "About how long were Noah and his family in the ark?",
+    "About a year",
+    [
+     "40 days",
+     "7 days",
+     "Three years"
+    ],
+    "They went in during the 600th year, 2nd month, 17th day (7:11) and the earth was dry in the 601st year, 2nd month, 27th day."
+   ],
+   [
+    "நோவாவும் அவன் குடும்பமும் ஏறக்குறைய எவ்வளவு காலம் பேழைக்குள் இருந்தார்கள்?",
+    "ஏறக்குறைய ஒரு வருஷம்",
+    [
+     "40 நாள்",
+     "7 நாள்",
+     "மூன்று வருஷம்"
+    ],
+    "600 ஆம் வருஷம் 2 ஆம் மாதம் 17 ஆம் தேதி உள்ளே சென்றார்கள் (7:11); 601 ஆம் வருஷம் 2 ஆம் மாதம் 27 ஆம் தேதி பூமி காய்ந்தது."
+   ]
+  ],
+  [
+   "k060",
+   "GEN 8:20",
+   "altar",
+   [
+    "What did Noah do first after coming out of the ark?",
+    "He built an altar and offered burnt offerings",
+    [
+     "He planted a vineyard",
+     "He built a city",
+     "He sent out the dove"
+    ]
+   ],
+   [
+    "பேழையிலிருந்து வெளியே வந்தபின் நோவா முதலில் செய்தது என்ன?",
+    "பலிபீடம் கட்டி சர்வாங்க தகனபலிகளைச் செலுத்தினான்",
+    [
+     "திராட்சத்தோட்டம் நாட்டினான்",
+     "ஒரு பட்டணம் கட்டினான்",
+     "புறாவை வெளியே விட்டான்"
+    ]
+   ]
+  ],
+  [
+   "k061",
+   "GEN 10:10",
+   "tower",
+   [
+    "Who was the mighty one whose kingdom began at Babel?",
+    "Nimrod",
+    [
+     "Cush",
+     "Asshur",
+     "Ham"
+    ]
+   ],
+   [
+    "பாபேலில் ராஜ்யம் ஆரம்பமான பலவான் யார்?",
+    "நிம்ரோத்",
+    [
+     "கூஷ்",
+     "அசூர்",
+     "காம்"
+    ]
+   ]
+  ],
+  [
+   "k062",
+   "GEN 10:10",
+   "tower",
+   [
+    "Which of these cities was in the beginning of Nimrod's kingdom?",
+    "Erech",
+    [
+     "Sodom",
+     "Damascus",
+     "Hebron"
+    ],
+    "Babel, Erech, Accad and Calneh, in the land of Shinar."
+   ],
+   [
+    "இவற்றில் நிம்ரோதின் ராஜ்யத்தின் ஆரம்ப பட்டணம் எது?",
+    "ஏரேக்",
+    [
+     "சோதோம்",
+     "தமஸ்கு",
+     "எபிரோன்"
+    ],
+    "சிநேயார் தேசத்திலுள்ள பாபேல், ஏரேக், அக்காத், கல்னே."
+   ]
+  ],
+  [
+   "k063",
+   "GEN 10:15",
+   "tent",
+   [
+    "Who was Canaan's firstborn son?",
+    "Sidon",
+    [
+     "Heth",
+     "Cush",
+     "Mizraim"
+    ]
+   ],
+   [
+    "கானானின் மூத்த குமாரன் யார்?",
+    "சீதோன்",
+    [
+     "கேத்",
+     "கூஷ்",
+     "மிஸ்ராயீம்"
+    ]
+   ]
+  ],
+  [
+   "k070",
+   "GEN 12:1",
+   "tent",
+   [
+    "What did God tell Abram to leave?",
+    "His country, his kindred and his father's house",
+    [
+     "Only his idols",
+     "His wife and his nephew",
+     "His flocks and herds"
+    ]
+   ],
+   [
+    "ஆபிராமை எவைகளை விட்டுப் புறப்படும்படி தேவன் சொன்னார்?",
+    "தன் தேசத்தையும், தன் இனத்தையும், தன் தகப்பன் வீட்டையும்",
+    [
+     "தன் விக்கிரகங்களை மட்டும்",
+     "தன் மனைவியையும் சகோதரன் மகனையும்",
+     "தன் ஆடுமாடுகளை"
+    ]
+   ]
+  ],
+  [
+   "k071",
+   "GEN 12:7",
+   "tent",
+   [
+    "Where did the LORD first say to Abram, \"Unto thy seed will I give this land\"?",
+    "Sichem, at the plain of Moreh",
+    [
+     "Bethel",
+     "Hebron",
+     "Ur of the Chaldees"
+    ]
+   ],
+   [
+    "\"உன் சந்ததிக்கு இந்தத் தேசத்தைக் கொடுப்பேன்\" என்று கர்த்தர் ஆபிராமிடம் முதலில் சொன்ன இடம் எது?",
+    "சீகேம், மோரே என்னும் சமபூமி",
+    [
+     "பெத்தேல்",
+     "எபிரோன்",
+     "கல்தேயரின் ஊர்"
+    ]
+   ]
+  ],
+  [
+   "k072",
+   "GEN 13:8",
+   "sheep",
+   [
+    "What did Abram say to Lot when their herdmen strove?",
+    "Let there be no strife between me and thee, for we be brethren",
+    [
+     "Go back to Haran",
+     "Take all the cattle",
+     "Let us never meet again"
+    ]
+   ],
+   [
+    "மேய்ப்பர்கள் வாக்குவாதம் செய்தபோது ஆபிராம் லோத்திடம் என்ன சொன்னான்?",
+    "எனக்கும் உனக்கும் வாக்குவாதம் வேண்டாம்; நாம் சகோதரர்",
+    [
+     "ஆரானுக்குத் திரும்பிப்போ",
+     "எல்லா மிருகஜீவன்களையும் எடுத்துக்கொள்",
+     "இனி ஒருபோதும் சந்திக்கவேண்டாம்"
+    ]
+   ]
+  ],
+  [
+   "k073",
+   "GEN 14:14",
+   "sword",
+   [
+    "With how many trained servants did Abram go to rescue Lot?",
+    "318",
+    [
+     "300",
+     "400",
+     "1000"
+    ]
+   ],
+   [
+    "லோத்தை மீட்க ஆபிராம் எத்தனை பேரோடு யுத்தத்துக்குப் போனான்?",
+    "318",
+    [
+     "300",
+     "400",
+     "1000"
+    ]
+   ]
+  ],
+  [
+   "k074",
+   "GEN 15:2",
+   "tent",
+   [
+    "Whom did Abram first think would be his heir?",
+    "Eliezer of Damascus",
+    [
+     "Lot",
+     "Ishmael",
+     "Nahor"
+    ]
+   ],
+   [
+    "தன் சுதந்தரவாளியாக ஆபிராம் முதலில் நினைத்தது யாரை?",
+    "தமஸ்கு ஊரானாகிய எலியேசர்",
+    [
+     "லோத்து",
+     "இஸ்மவேல்",
+     "நாகோர்"
+    ]
+   ]
+  ],
+  [
+   "k075",
+   "GEN 15:13",
+   "stars",
+   [
+    "God told Abram his seed would be afflicted in a strange land for how many years?",
+    "400 years",
+    [
+     "40 years",
+     "70 years",
+     "100 years"
+    ]
+   ],
+   [
+    "ஆபிராமின் சந்ததி அந்நிய தேசத்தில் எத்தனை வருஷம் உபத்திரவப்படுவார்கள் என்று தேவன் சொன்னார்?",
+    "400 வருஷம்",
+    [
+     "40 வருஷம்",
+     "70 வருஷம்",
+     "100 வருஷம்"
+    ]
+   ]
+  ],
+  [
+   "k076",
+   "GEN 15:16",
+   "stars",
+   [
+    "Why would Abram's seed come back only in the fourth generation?",
+    "The iniquity of the Amorites was not yet full",
+    [
+     "Pharaoh would not let them go",
+     "The land was too small",
+     "They first had to learn the law"
+    ]
+   ],
+   [
+    "ஆபிராமின் சந்ததி நான்காம் தலைமுறையில்தான் திரும்பி வருவார்கள்; ஏன்?",
+    "எமோரியருடைய அக்கிரமம் இன்னும் நிறைவாகவில்லை",
+    [
+     "பார்வோன் அவர்களைப் போகவிடமாட்டான்",
+     "தேசம் மிகச் சிறியது",
+     "முதலில் நியாயப்பிரமாணத்தைக் கற்கவேண்டும்"
+    ]
+   ]
+  ],
+  [
+   "k077",
+   "GEN 16:9",
+   "well",
+   [
+    "What did the angel of the LORD tell Hagar?",
+    "Return to thy mistress, and submit thyself under her hands",
+    [
+     "Go down to Egypt",
+     "Name your son Isaac",
+     "Never go back"
+    ]
+   ],
+   [
+    "கர்த்தருடைய தூதன் ஆகாரிடம் என்ன சொன்னார்?",
+    "உன் நாச்சியாரிடத்துக்குத் திரும்பிப்போய், அவள் கைக்குள் அடங்கியிரு",
+    [
+     "எகிப்துக்குப் போ",
+     "உன் மகனுக்கு ஈசாக்கு என்று பெயரிடு",
+     "ஒருபோதும் திரும்பிப்போகாதே"
+    ]
+   ]
+  ],
+  [
+   "k078",
+   "GEN 16:16",
+   "elder",
+   [
+    "How old was Abram when Ishmael was born?",
+    "86",
+    [
+     "75",
+     "99",
+     "100"
+    ]
+   ],
+   [
+    "இஸ்மவேல் பிறந்தபோது ஆபிராமுக்கு எத்தனை வயது?",
+    "86",
+    [
+     "75",
+     "99",
+     "100"
+    ]
+   ]
+  ],
+  [
+   "k079",
+   "GEN 17:5",
+   "stars",
+   [
+    "How old was Abram when God changed his name to Abraham?",
+    "99",
+    [
+     "75",
+     "86",
+     "100"
+    ]
+   ],
+   [
+    "தேவன் ஆபிராமின் பெயரை ஆபிரகாம் என்று மாற்றியபோது அவனுக்கு எத்தனை வயது?",
+    "99",
+    [
+     "75",
+     "86",
+     "100"
+    ]
+   ]
+  ],
+  [
+   "k080",
+   "GEN 17:25",
+   "elder",
+   [
+    "When Abraham was circumcised at 99, how old was Ishmael?",
+    "13",
+    [
+     "8",
+     "12",
+     "17"
+    ]
+   ],
+   [
+    "ஆபிரகாம் 99 வயதில் விருத்தசேதனம் பண்ணப்பட்டபோது இஸ்மவேலுக்கு எத்தனை வயது?",
+    "13",
+    [
+     "8",
+     "12",
+     "17"
+    ]
+   ]
+  ],
+  [
+   "k081",
+   "GEN 18:32",
+   "tent",
+   [
+    "Pleading for Sodom, Abraham asked down from 50 righteous. What was the last number he asked about?",
+    "10",
+    [
+     "20",
+     "30",
+     "5"
+    ],
+    "50, 45, 40, 30, 20 and then 10."
+   ],
+   [
+    "சோதோமுக்காகப் பரிந்துபேசியபோது ஆபிரகாம் 50 நீதிமான்களிலிருந்து குறைத்துக் கேட்டான். கடைசியாகக் கேட்ட எண்ணிக்கை என்ன?",
+    "10",
+    [
+     "20",
+     "30",
+     "5"
+    ],
+    "50, 45, 40, 30, 20, பிறகு 10."
+   ]
+  ],
+  [
+   "k082",
+   "GEN 23:16",
+   "coins",
+   [
+    "How much did Abraham pay the sons of Heth for the field and the cave?",
+    "400 shekels of silver",
+    [
+     "20 pieces of silver",
+     "100 pieces of money",
+     "30 pieces of silver"
+    ]
+   ],
+   [
+    "நிலத்தையும் குகையையும் வாங்க ஆபிரகாம் ஏத்தின் புத்திரருக்கு எவ்வளவு கொடுத்தான்?",
+    "400 சேக்கல் வெள்ளி",
+    [
+     "20 வெள்ளிக்காசு",
+     "100 வெள்ளிக்காசு",
+     "30 வெள்ளிக்காசு"
+    ]
+   ]
+  ],
+  [
+   "k083",
+   "GEN 23:19",
+   "cave",
+   [
+    "What was the name of the cave where Abraham buried Sarah?",
+    "Machpelah",
+    [
+     "Adullam",
+     "Makkedah",
+     "Bethel"
+    ]
+   ],
+   [
+    "ஆபிரகாம் சாராளை அடக்கம்பண்ணின குகையின் பெயர் என்ன?",
+    "மக்பேலா",
+    [
+     "அதுல்லாம்",
+     "மக்கேதா",
+     "பெத்தேல்"
+    ]
+   ]
+  ],
+  [
+   "k084",
+   "GEN 23:1",
+   "elder",
+   [
+    "How old was Sarah when she died?",
+    "127",
+    [
+     "90",
+     "100",
+     "175"
+    ]
+   ],
+   [
+    "சாராள் மரித்தபோது அவளுக்கு எத்தனை வயது?",
+    "127",
+    [
+     "90",
+     "100",
+     "175"
+    ]
+   ]
+  ],
+  [
+   "k085",
+   "GEN 23:2",
+   "cave",
+   [
+    "Where did Sarah die?",
+    "Kirjath-arba, that is Hebron",
+    [
+     "Beer-sheba",
+     "Bethel",
+     "Egypt"
+    ]
+   ],
+   [
+    "சாராள் எங்கே மரித்தாள்?",
+    "எபிரோன் எனப்பட்ட கீரியாத்அர்பா",
+    [
+     "பெயெர்செபா",
+     "பெத்தேல்",
+     "எகிப்து"
+    ]
+   ]
+  ],
+  [
+   "k086",
+   "GEN 22:4",
+   "altar",
+   [
+    "On which day of the journey did Abraham see the place where he would offer Isaac?",
+    "The third day",
+    [
+     "The first day",
+     "The seventh day",
+     "The fortieth day"
+    ]
+   ],
+   [
+    "ஈசாக்கைப் பலியிடப் போனபோது ஆபிரகாம் எத்தனையாம் நாளில் அந்த இடத்தைக் கண்டான்?",
+    "மூன்றாம் நாள்",
+    [
+     "முதலாம் நாள்",
+     "ஏழாம் நாள்",
+     "நாற்பதாம் நாள்"
+    ]
+   ]
+  ],
+  [
+   "k087",
+   "GEN 22:3",
+   "altar",
+   [
+    "How many young men did Abraham take with him and Isaac?",
+    "2",
+    [
+     "3",
+     "12",
+     "318"
+    ]
+   ],
+   [
+    "ஆபிரகாம் ஈசாக்கோடு எத்தனை வேலைக்காரரை அழைத்துக்கொண்டு போனான்?",
+    "2",
+    [
+     "3",
+     "12",
+     "318"
+    ]
+   ]
+  ],
+  [
+   "k090",
+   "GEN 25:26",
+   "tent",
+   [
+    "How many years after his marriage did Isaac have children?",
+    "20 years",
+    [
+     "7 years",
+     "14 years",
+     "40 years"
+    ],
+    "Isaac married Rebekah at 40 (25:20); Esau and Jacob were born when he was 60."
+   ],
+   [
+    "ஈசாக்கு விவாகம்பண்ணி எத்தனை வருஷம் கழித்துப் பிள்ளைகளைப் பெற்றான்?",
+    "20 வருஷம்",
+    [
+     "7 வருஷம்",
+     "14 வருஷம்",
+     "40 வருஷம்"
+    ],
+    "ஈசாக்கு 40 வயதில் ரெபெக்காளை விவாகம்பண்ணினான் (25:20); ஏசாவும் யாக்கோபும் பிறந்தபோது அவனுக்கு 60 வயது."
+   ]
+  ],
+  [
+   "k091",
+   "GEN 27:16",
+   "coat",
+   [
+    "What did Jacob wear so that Isaac would think he was Esau?",
+    "Esau's clothes and the skins of kids of the goats",
+    [
+     "A red robe",
+     "A coat of many colours",
+     "A cloak of camel's hair"
+    ]
+   ],
+   [
+    "தான் ஏசா என்று ஈசாக்கு நம்பும்படி யாக்கோபு எதைப் போட்டுக்கொண்டான்?",
+    "ஏசாவின் வஸ்திரங்களையும் வெள்ளாட்டுக்குட்டிகளின் தோலையும்",
+    [
+     "சிவப்பு அங்கி",
+     "பலவர்ண அங்கி",
+     "ஒட்டகமயிர் போர்வை"
+    ]
+   ]
+  ],
+  [
+   "k092",
+   "GEN 27:41",
+   "bow",
+   [
+    "What did Esau say he would do after his father's death?",
+    "Slay his brother Jacob",
+    [
+     "Slay his father Isaac",
+     "Leave Canaan for ever",
+     "Marry Rachel"
+    ]
+   ],
+   [
+    "தன் தகப்பன் மரித்தபின் என்ன செய்வேன் என்று ஏசா சொன்னான்?",
+    "தன் சகோதரனாகிய யாக்கோபைக் கொன்றுபோடுவேன்",
+    [
+     "தன் தகப்பனாகிய ஈசாக்கைக் கொன்றுபோடுவேன்",
+     "கானானை விட்டு என்றைக்கும் போவேன்",
+     "ராகேலை விவாகம்பண்ணுவேன்"
+    ]
+   ]
+  ],
+  [
+   "k093",
+   "GEN 28:19",
+   "ladder",
+   [
+    "Jacob called the place of his dream Bethel. What was its name at first?",
+    "Luz",
+    [
+     "Salem",
+     "Jebus",
+     "Kirjath-arba"
+    ]
+   ],
+   [
+    "யாக்கோபு சொப்பனம் கண்ட இடத்திற்குப் பெத்தேல் என்று பெயரிட்டான். அதன் முந்தின பெயர் என்ன?",
+    "லூஸ்",
+    [
+     "சாலேம்",
+     "எபூஸ்",
+     "கீரியாத்அர்பா"
+    ]
+   ]
+  ],
+  [
+   "k094",
+   "GEN 28:22",
+   "stones",
+   [
+    "At Bethel, what did Jacob vow to give to God?",
+    "The tenth of all",
+    [
+     "His firstborn son",
+     "Half of his flocks",
+     "A golden altar"
+    ]
+   ],
+   [
+    "பெத்தேலில் தேவனுக்கு எதைச் செலுத்துவேன் என்று யாக்கோபு பொருத்தனை பண்ணினான்?",
+    "எல்லாவற்றிலும் தசமபாகம்",
+    [
+     "தன் மூத்த மகனை",
+     "தன் ஆடுகளில் பாதியை",
+     "பொன் பலிபீடத்தை"
+    ]
+   ]
+  ],
+  [
+   "k095",
+   "GEN 29:14",
+   "well",
+   [
+    "Who said to Jacob, \"Surely thou art my bone and my flesh\"?",
+    "Laban",
+    [
+     "Isaac",
+     "Esau",
+     "Rebekah"
+    ]
+   ],
+   [
+    "\"நிச்சயமாய் நீ என் எலும்பும் என் மாம்சமுமானவன்\" என்று யாக்கோபிடம் சொன்னது யார்?",
+    "லாபான்",
+    [
+     "ஈசாக்கு",
+     "ஏசா",
+     "ரெபெக்காள்"
+    ]
+   ]
+  ],
+  [
+   "k096",
+   "GEN 29:2",
+   "well",
+   [
+    "How many flocks of sheep did Jacob see lying by the well in the field?",
+    "3",
+    [
+     "2",
+     "7",
+     "12"
+    ]
+   ],
+   [
+    "வெளியிலிருந்த கிணற்றண்டையில் எத்தனை ஆட்டு மந்தைகள் படுத்திருப்பதை யாக்கோபு கண்டான்?",
+    "3",
+    [
+     "2",
+     "7",
+     "12"
+    ]
+   ]
+  ],
+  [
+   "k097",
+   "GEN 29:30",
+   "sheep",
+   [
+    "In all, how many years did Jacob serve Laban for his two wives?",
+    "14 years",
+    [
+     "7 years",
+     "20 years",
+     "21 years"
+    ],
+    "Seven years for Leah and seven more for Rachel."
+   ],
+   [
+    "தன் இரண்டு மனைவிகளுக்காக யாக்கோபு லாபானிடம் மொத்தம் எத்தனை வருஷம் வேலைசெய்தான்?",
+    "14 வருஷம்",
+    [
+     "7 வருஷம்",
+     "20 வருஷம்",
+     "21 வருஷம்"
+    ],
+    "லேயாளுக்காக ஏழு வருஷம், ராகேலுக்காக இன்னும் ஏழு வருஷம்."
+   ]
+  ],
+  [
+   "k098",
+   "GEN 31:7",
+   "sheep",
+   [
+    "How many times did Laban change Jacob's wages?",
+    "10 times",
+    [
+     "3 times",
+     "7 times",
+     "20 times"
+    ]
+   ],
+   [
+    "லாபான் யாக்கோபின் சம்பளத்தை எத்தனை முறை மாற்றினான்?",
+    "10 முறை",
+    [
+     "3 முறை",
+     "7 முறை",
+     "20 முறை"
+    ]
+   ]
+  ],
+  [
+   "k099",
+   "GEN 30:14",
+   "sheaves",
+   [
+    "What did Reuben find in the field in the days of wheat harvest?",
+    "Mandrakes",
+    [
+     "Figs",
+     "Manna",
+     "Wild honey"
+    ]
+   ],
+   [
+    "கோதுமை அறுப்புக் காலத்தில் ரூபன் வயலில் கண்டெடுத்தது என்ன?",
+    "தூதாயீம் கனிகள்",
+    [
+     "அத்திப்பழங்கள்",
+     "மன்னா",
+     "காட்டுத்தேன்"
+    ]
+   ]
+  ],
+  [
+   "k100",
+   "GEN 29:29",
+   "tent",
+   [
+    "Who was Rachel's handmaid?",
+    "Bilhah",
+    [
+     "Zilpah",
+     "Deborah",
+     "Hagar"
+    ]
+   ],
+   [
+    "ராகேலின் வேலைக்காரி யார்?",
+    "பில்காள்",
+    [
+     "சில்பாள்",
+     "தெபொராள்",
+     "ஆகார்"
+    ]
+   ]
+  ],
+  [
+   "k101",
+   "GEN 29:24",
+   "tent",
+   [
+    "Who was Leah's handmaid?",
+    "Zilpah",
+    [
+     "Bilhah",
+     "Keturah",
+     "Milcah"
+    ]
+   ],
+   [
+    "லேயாளின் வேலைக்காரி யார்?",
+    "சில்பாள்",
+    [
+     "பில்காள்",
+     "கேத்தூராள்",
+     "மில்காள்"
+    ]
+   ]
+  ],
+  [
+   "k102",
+   "GEN 30:6",
+   "tent",
+   [
+    "Which sons were born to Bilhah?",
+    "Dan and Naphtali",
+    [
+     "Gad and Asher",
+     "Issachar and Zebulun",
+     "Simeon and Levi"
+    ]
+   ],
+   [
+    "பில்காளுக்குப் பிறந்த குமாரர் யார்?",
+    "தாண், நப்தலி",
+    [
+     "காத், ஆசேர்",
+     "இசக்கார், செபுலோன்",
+     "சிமியோன், லேவி"
+    ]
+   ]
+  ],
+  [
+   "k103",
+   "GEN 30:11",
+   "tent",
+   [
+    "Which sons were born to Zilpah?",
+    "Gad and Asher",
+    [
+     "Dan and Naphtali",
+     "Joseph and Benjamin",
+     "Reuben and Judah"
+    ]
+   ],
+   [
+    "சில்பாளுக்குப் பிறந்த குமாரர் யார்?",
+    "காத், ஆசேர்",
+    [
+     "தாண், நப்தலி",
+     "யோசேப்பு, பென்யமீன்",
+     "ரூபன், யூதா"
+    ]
+   ]
+  ],
+  [
+   "k104",
+   "GEN 30:18",
+   "tent",
+   [
+    "What was the name of Leah's fifth son?",
+    "Issachar",
+    [
+     "Zebulun",
+     "Judah",
+     "Levi"
+    ]
+   ],
+   [
+    "லேயாளின் ஐந்தாம் குமாரனின் பெயர் என்ன?",
+    "இசக்கார்",
+    [
+     "செபுலோன்",
+     "யூதா",
+     "லேவி"
+    ]
+   ]
+  ],
+  [
+   "k105",
+   "GEN 29:35",
+   "tent",
+   [
+    "What were Leah's first four sons, in order?",
+    "Reuben, Simeon, Levi, Judah",
+    [
+     "Judah, Levi, Simeon, Reuben",
+     "Reuben, Levi, Simeon, Judah",
+     "Simeon, Reuben, Judah, Levi"
+    ]
+   ],
+   [
+    "லேயாளின் முதல் நான்கு குமாரர் வரிசைப்படி யார்?",
+    "ரூபன், சிமியோன், லேவி, யூதா",
+    [
+     "யூதா, லேவி, சிமியோன், ரூபன்",
+     "ரூபன், லேவி, சிமியோன், யூதா",
+     "சிமியோன், ரூபன், யூதா, லேவி"
+    ]
+   ]
+  ],
+  [
+   "k106",
+   "GEN 30:21",
+   "tent",
+   [
+    "What was the name of the daughter of Jacob and Leah?",
+    "Dinah",
+    [
+     "Tamar",
+     "Milcah",
+     "Deborah"
+    ]
+   ],
+   [
+    "யாக்கோபுக்கும் லேயாளுக்கும் பிறந்த மகளின் பெயர் என்ன?",
+    "தீனாள்",
+    [
+     "தாமார்",
+     "மில்காள்",
+     "தெபொராள்"
+    ]
+   ]
+  ],
+  [
+   "k107",
+   "GEN 35:24",
+   "tent",
+   [
+    "Which were the sons of Rachel?",
+    "Joseph and Benjamin",
+    [
+     "Dan and Naphtali",
+     "Judah and Levi",
+     "Gad and Asher"
+    ]
+   ],
+   [
+    "ராகேலின் குமாரர் யார்?",
+    "யோசேப்பு, பென்யமீன்",
+    [
+     "தாண், நப்தலி",
+     "யூதா, லேவி",
+     "காத், ஆசேர்"
+    ]
+   ]
+  ],
+  [
+   "k108",
+   "GEN 31:22",
+   "camel",
+   [
+    "On which day was it told Laban that Jacob had fled?",
+    "The third day",
+    [
+     "The first day",
+     "The seventh day",
+     "The tenth day"
+    ]
+   ],
+   [
+    "யாக்கோபு ஓடிப்போனான் என்று எத்தனையாம் நாளில் லாபானுக்கு அறிவிக்கப்பட்டது?",
+    "மூன்றாம் நாள்",
+    [
+     "முதலாம் நாள்",
+     "ஏழாம் நாள்",
+     "பத்தாம் நாள்"
+    ]
+   ]
+  ],
+  [
+   "k109",
+   "GEN 31:23",
+   "camel",
+   [
+    "After how many days' journey, and where, did Laban overtake Jacob?",
+    "Seven days, in the mount Gilead",
+    [
+     "Three days, at Bethel",
+     "Ten days, at Shechem",
+     "Forty days, at Haran"
+    ]
+   ],
+   [
+    "லாபான் எத்தனை நாள் பிரயாணம்பண்ணி, எங்கே யாக்கோபைப் பிடித்தான்?",
+    "ஏழு நாள், கீலேயாத் மலையில்",
+    [
+     "மூன்று நாள், பெத்தேலில்",
+     "பத்து நாள், சீகேமில்",
+     "நாற்பது நாள், ஆரானில்"
+    ]
+   ]
+  ],
+  [
+   "k110",
+   "GEN 31:34",
+   "camel",
+   [
+    "Who stole Laban's images, and where were they hidden?",
+    "Rachel, in the camel's furniture",
+    [
+     "Leah, in her tent",
+     "Dinah, under an oak",
+     "Rachel, in a well"
+    ]
+   ],
+   [
+    "லாபானின் சுரூபங்களைத் திருடியது யார், எங்கே ஒளித்துவைத்தாள்?",
+    "ராகேல், ஒட்டகச் சேணத்தின் கீழ்",
+    [
+     "லேயாள், தன் கூடாரத்தில்",
+     "தீனாள், கர்வாலிமரத்தின் கீழ்",
+     "ராகேல், ஒரு கிணற்றில்"
+    ]
+   ]
+  ],
+  [
+   "k111",
+   "GEN 31:47",
+   "stones",
+   [
+    "What did Jacob call the heap of stones?",
+    "Galeed",
+    [
+     "Jegar-sahadutha",
+     "Bethel",
+     "Peniel"
+    ],
+    "Laban called it Jegar-sahadutha; the place was also called Mizpah."
+   ],
+   [
+    "கற்குவியலுக்கு யாக்கோபு இட்ட பெயர் என்ன?",
+    "கலயெத்",
+    [
+     "ஜெகர்சகதுதா",
+     "பெத்தேல்",
+     "பெனியேல்"
+    ],
+    "லாபான் அதற்கு ஜெகர்சகதுதா என்று பெயரிட்டான்; அந்த இடம் மிஸ்பா என்றும் அழைக்கப்பட்டது."
+   ]
+  ],
+  [
+   "k112",
+   "GEN 31:47",
+   "stones",
+   [
+    "What did Laban call the heap of stones?",
+    "Jegar-sahadutha",
+    [
+     "Galeed",
+     "Mizpah",
+     "Mahanaim"
+    ]
+   ],
+   [
+    "கற்குவியலுக்கு லாபான் இட்ட பெயர் என்ன?",
+    "ஜெகர்சகதுதா",
+    [
+     "கலயெத்",
+     "மிஸ்பா",
+     "மகனாயீம்"
+    ]
+   ]
+  ],
+  [
+   "k113",
+   "GEN 31:49",
+   "stones",
+   [
+    "What did Laban say when the place was called Mizpah?",
+    "The LORD watch between me and thee",
+    [
+     "This is the house of God",
+     "I have seen God face to face",
+     "The LORD hath heard"
+    ]
+   ],
+   [
+    "அந்த இடத்திற்கு மிஸ்பா என்று பெயரிட்டபோது லாபான் சொன்னது என்ன?",
+    "நாம் ஒருவரையொருவர் விட்டுப் பிரிந்திருக்கும்போது கர்த்தர் எனக்கும் உனக்கும் நடுவாக இருந்து காவல்பண்ணுவாராக",
+    [
+     "இது தேவனுடைய வீடு",
+     "தேவனை முகமுகமாய்க் கண்டேன்",
+     "கர்த்தர் கேட்டார்"
+    ]
+   ]
+  ],
+  [
+   "k114",
+   "GEN 32:2",
+   "ladder",
+   [
+    "Where did the angels of God meet Jacob, and what does the name mean?",
+    "Mahanaim: God's host",
+    [
+     "Peniel: the face of God",
+     "Bethel: the house of God",
+     "Mizpah: watchtower"
+    ]
+   ],
+   [
+    "தேவதூதர்கள் யாக்கோபைச் சந்தித்த இடம் எது, அதன் அர்த்தம் என்ன?",
+    "மகனாயீம்: தேவனுடைய சேனை",
+    [
+     "பெனியேல்: தேவனுடைய முகம்",
+     "பெத்தேல்: தேவனுடைய வீடு",
+     "மிஸ்பா: காவற்கோபுரம்"
+    ]
+   ]
+  ],
+  [
+   "k115",
+   "GEN 32:6",
+   "bow",
+   [
+    "With how many men did Esau come to meet Jacob?",
+    "400",
+    [
+     "40",
+     "318",
+     "1000"
+    ]
+   ],
+   [
+    "யாக்கோபைச் சந்திக்க ஏசா எத்தனை பேரோடு வந்தான்?",
+    "400",
+    [
+     "40",
+     "318",
+     "1000"
+    ]
+   ]
+  ],
+  [
+   "k116",
+   "GEN 32:14",
+   "sheep",
+   [
+    "In Jacob's present to Esau, how many she goats were there?",
+    "200",
+    [
+     "20",
+     "30",
+     "40"
+    ],
+    "200 she goats, 20 he goats, 200 ewes, 20 rams, 30 milch camels with their colts, 40 kine, 10 bulls, 20 she asses and 10 foals."
+   ],
+   [
+    "யாக்கோபு ஏசாவுக்கு அனுப்பின வெகுமதியில் எத்தனை வெள்ளாடுகள் இருந்தன?",
+    "200",
+    [
+     "20",
+     "30",
+     "40"
+    ],
+    "200 வெள்ளாடு, 20 வெள்ளாட்டுக்கடா, 200 செம்மறியாடு, 20 ஆட்டுக்கடா, குட்டிகளுடன் 30 கறவை ஒட்டகம், 40 பசு, 10 காளை, 20 கோளிகைக்கழுதை, 10 கழுதைக்குட்டி."
+   ]
+  ],
+  [
+   "k117",
+   "GEN 32:30",
+   "ladder",
+   [
+    "Where did Jacob wrestle with the man until the breaking of the day?",
+    "Peniel",
+    [
+     "Bethel",
+     "Mahanaim",
+     "Succoth"
+    ]
+   ],
+   [
+    "பொழுது விடியுமட்டும் யாக்கோபு போராடின இடம் எது?",
+    "பெனியேல்",
+    [
+     "பெத்தேல்",
+     "மகனாயீம்",
+     "சுக்கோத்"
+    ]
+   ]
+  ],
+  [
+   "k118",
+   "GEN 33:3",
+   "tent",
+   [
+    "How many times did Jacob bow himself to the ground before Esau?",
+    "7 times",
+    [
+     "3 times",
+     "10 times",
+     "12 times"
+    ]
+   ],
+   [
+    "யாக்கோபு ஏசாவுக்கு முன் எத்தனை முறை தரைமட்டும் குனிந்து வணங்கினான்?",
+    "7 முறை",
+    [
+     "3 முறை",
+     "10 முறை",
+     "12 முறை"
+    ]
+   ]
+  ],
+  [
+   "k119",
+   "GEN 33:10",
+   "tent",
+   [
+    "Who said, \"I have seen thy face, as though I had seen the face of God\"?",
+    "Jacob, to Esau",
+    [
+     "Esau, to Jacob",
+     "Jacob, to Laban",
+     "Joseph, to Jacob"
+    ]
+   ],
+   [
+    "\"தேவனுடைய முகத்தைக் கண்டதுபோல உம்முடைய முகத்தைக் கண்டேன்\" என்று சொன்னது யார்?",
+    "யாக்கோபு, ஏசாவிடம்",
+    [
+     "ஏசா, யாக்கோபிடம்",
+     "யாக்கோபு, லாபானிடம்",
+     "யோசேப்பு, யாக்கோபிடம்"
+    ]
+   ]
+  ],
+  [
+   "k120",
+   "GEN 33:17",
+   "tent",
+   [
+    "After saying he would come to Seir, where did Jacob go and build a house?",
+    "Succoth",
+    [
+     "Bethel",
+     "Hebron",
+     "Beer-sheba"
+    ]
+   ],
+   [
+    "சேயீருக்கு வருவேன் என்று சொன்னபின் யாக்கோபு எங்கே போய் வீடு கட்டினான்?",
+    "சுக்கோத்",
+    [
+     "பெத்தேல்",
+     "எபிரோன்",
+     "பெயெர்செபா"
+    ]
+   ]
+  ],
+  [
+   "k121",
+   "GEN 33:20",
+   "altar",
+   [
+    "What did Jacob call the altar he built near Shechem?",
+    "El-elohe-Israel",
+    [
+     "Jehovah-jireh",
+     "El-bethel",
+     "Ebenezer"
+    ]
+   ],
+   [
+    "சீகேமுக்கு அருகே யாக்கோபு கட்டின பலிபீடத்திற்கு என்ன பெயரிட்டான்?",
+    "ஏல்எல்லோகே இஸ்ரவேல்",
+    [
+     "யேகோவாயீரே",
+     "ஏல்பெத்தேல்",
+     "எபெனேசர்"
+    ]
+   ]
+  ],
+  [
+   "k122",
+   "GEN 33:19",
+   "coins",
+   [
+    "For how many pieces of money did Jacob buy a field from the children of Hamor?",
+    "100",
+    [
+     "20",
+     "30",
+     "400"
+    ]
+   ],
+   [
+    "ஏமோரின் புத்திரரிடமிருந்து யாக்கோபு எத்தனை வெள்ளிக்காசுக்கு நிலம் வாங்கினான்?",
+    "100",
+    [
+     "20",
+     "30",
+     "400"
+    ]
+   ]
+  ],
+  [
+   "k123",
+   "GEN 34:2",
+   "tent",
+   [
+    "Who defiled Dinah?",
+    "Shechem, the son of Hamor the Hivite",
+    [
+     "Hamor the Hivite himself",
+     "A son of Esau",
+     "A son of Laban"
+    ]
+   ],
+   [
+    "தீனாளைத் தீட்டுப்படுத்தினவன் யார்?",
+    "ஏவியனாகிய ஏமோரின் குமாரன் சீகேம்",
+    [
+     "ஏவியனாகிய ஏமோர்",
+     "ஏசாவின் குமாரன் ஒருவன்",
+     "லாபானின் குமாரன் ஒருவன்"
+    ]
+   ]
+  ],
+  [
+   "k124",
+   "GEN 34:25",
+   "sword",
+   [
+    "Which two brothers avenged their sister Dinah?",
+    "Simeon and Levi",
+    [
+     "Reuben and Judah",
+     "Dan and Gad",
+     "Judah and Joseph"
+    ]
+   ],
+   [
+    "தங்கள் சகோதரியாகிய தீனாளுக்காகப் பழிவாங்கிய இரண்டு சகோதரர் யார்?",
+    "சிமியோன், லேவி",
+    [
+     "ரூபன், யூதா",
+     "தாண், காத்",
+     "யூதா, யோசேப்பு"
+    ]
+   ]
+  ],
+  [
+   "k125",
+   "GEN 35:4",
+   "tree",
+   [
+    "Where did Jacob hide the strange gods of his household?",
+    "Under the oak which was by Shechem",
+    [
+     "At Bethel, under the altar",
+     "In the river Jabbok",
+     "On mount Gilead"
+    ]
+   ],
+   [
+    "தன் வீட்டாரிடமிருந்த அந்நிய தேவர்களை யாக்கோபு எங்கே புதைத்தான்?",
+    "சீகேமுக்கு அருகேயுள்ள கர்வாலிமரத்தின் கீழ்",
+    [
+     "பெத்தேலில் பலிபீடத்தின் கீழ்",
+     "யாபோக்கு ஆற்றில்",
+     "கீலேயாத் மலையில்"
+    ]
+   ]
+  ],
+  [
+   "k126",
+   "GEN 35:8",
+   "tree",
+   [
+    "Who was Rebekah's nurse?",
+    "Deborah",
+    [
+     "Bilhah",
+     "Zilpah",
+     "Keturah"
+    ]
+   ],
+   [
+    "ரெபெக்காளின் தாதி யார்?",
+    "தெபொராள்",
+    [
+     "பில்காள்",
+     "சில்பாள்",
+     "கேத்தூராள்"
+    ]
+   ]
+  ],
+  [
+   "k127",
+   "GEN 35:8",
+   "tree",
+   [
+    "Where was Deborah, Rebekah's nurse, buried?",
+    "Under an oak below Bethel, called Allon-bachuth",
+    [
+     "In the cave of Machpelah",
+     "On the way to Ephrath",
+     "In Hebron"
+    ]
+   ],
+   [
+    "ரெபெக்காளின் தாதியாகிய தெபொராள் எங்கே அடக்கம்பண்ணப்பட்டாள்?",
+    "பெத்தேலுக்குக் கீழே அல்லோன்பாகூத் என்னும் கர்வாலிமரத்தின் கீழ்",
+    [
+     "மக்பேலா குகையில்",
+     "எப்பிராத்தாவுக்குப் போகிற வழியில்",
+     "எபிரோனில்"
+    ]
+   ]
+  ],
+  [
+   "k128",
+   "GEN 36:7",
+   "sheep",
+   [
+    "Whose riches were more than that they might dwell together, so the land could not bear them (Genesis 36:7)?",
+    "Esau and Jacob",
+    [
+     "Joseph and his brothers",
+     "Jacob and Laban",
+     "Isaac and Ishmael"
+    ]
+   ],
+   [
+    "\"அவர்களுடைய சம்பத்து மிகுதியாயிருந்தபடியினால் அவர்கள் ஒருமித்துக் குடியிருக்கக்கூடாமற்போயிற்று\" (ஆதி. 36:7) — யார்?",
+    "ஏசா, யாக்கோபு",
+    [
+     "யோசேப்பும் அவன் சகோதரரும்",
+     "யாக்கோபு, லாபான்",
+     "ஈசாக்கு, இஸ்மவேல்"
+    ]
+   ]
+  ],
+  [
+   "k130",
+   "GEN 37:9",
+   "sheaves",
+   [
+    "What were Joseph's two dreams?",
+    "Sheaves bowing to his sheaf; the sun, moon and eleven stars bowing to him",
+    [
+     "Seven fat and seven lean cows",
+     "A ladder reaching to heaven",
+     "A vine with three branches"
+    ]
+   ],
+   [
+    "யோசேப்பு கண்ட இரண்டு சொப்பனங்கள் என்ன?",
+    "அரிக்கட்டுகள் அவனுடைய அரிக்கட்டை வணங்கின; சூரியனும் சந்திரனும் பதினொரு நட்சத்திரங்களும் அவனை வணங்கின",
+    [
+     "ஏழு கொழுத்த பசுக்களும் ஏழு கேவலமான பசுக்களும்",
+     "வானத்தை எட்டின ஏணி",
+     "மூன்று கொடிகளுள்ள திராட்சச்செடி"
+    ]
+   ]
+  ],
+  [
+   "k131",
+   "GEN 37:21",
+   "coat",
+   [
+    "Who saved Joseph from being killed by his brothers?",
+    "Reuben",
+    [
+     "Judah",
+     "Benjamin",
+     "Levi"
+    ]
+   ],
+   [
+    "சகோதரர் யோசேப்பைக் கொல்லாதபடி தப்புவித்தவன் யார்?",
+    "ரூபன்",
+    [
+     "யூதா",
+     "பென்யமீன்",
+     "லேவி"
+    ]
+   ]
+  ],
+  [
+   "k132",
+   "GEN 37:27",
+   "coat",
+   [
+    "Who said, \"Come, and let us sell him to the Ishmeelites\"?",
+    "Judah",
+    [
+     "Reuben",
+     "Simeon",
+     "Dan"
+    ]
+   ],
+   [
+    "\"அவனை இஸ்மவேலருக்கு விற்றுப்போடுவோம் வாருங்கள்\" என்று சொன்னவன் யார்?",
+    "யூதா",
+    [
+     "ரூபன்",
+     "சிமியோன்",
+     "தாண்"
+    ]
+   ]
+  ],
+  [
+   "k133",
+   "GEN 37:28",
+   "coins",
+   [
+    "For how many pieces of silver was Joseph sold?",
+    "20",
+    [
+     "30",
+     "10",
+     "400"
+    ]
+   ],
+   [
+    "யோசேப்பு எத்தனை வெள்ளிக்காசுக்கு விற்கப்பட்டான்?",
+    "20",
+    [
+     "30",
+     "10",
+     "400"
+    ]
+   ]
+  ],
+  [
+   "k134",
+   "GEN 37:2",
+   "coat",
+   [
+    "How old was Joseph when he was feeding the flock and was sold?",
+    "17",
+    [
+     "12",
+     "20",
+     "30"
+    ]
+   ],
+   [
+    "மந்தையை மேய்த்துக்கொண்டிருந்து விற்கப்பட்டபோது யோசேப்புக்கு எத்தனை வயது?",
+    "17",
+    [
+     "12",
+     "20",
+     "30"
+    ]
+   ]
+  ],
+  [
+   "k135",
+   "GEN 37:31",
+   "coat",
+   [
+    "In whose blood did the brothers dip Joseph's coat?",
+    "A kid of the goats",
+    [
+     "A lamb",
+     "A bullock",
+     "A dove"
+    ]
+   ],
+   [
+    "யோசேப்பின் அங்கியைச் சகோதரர் எதின் இரத்தத்தில் தோய்த்தார்கள்?",
+    "வெள்ளாட்டுக்குட்டியின் இரத்தம்",
+    [
+     "ஆட்டுக்குட்டியின் இரத்தம்",
+     "காளையின் இரத்தம்",
+     "புறாவின் இரத்தம்"
+    ]
+   ]
+  ],
+  [
+   "k136",
+   "GEN 38:25",
+   "ring",
+   [
+    "\"Discern, whose are these?\" What did Tamar send to Judah?",
+    "The signet, the bracelets and the staff",
+    [
+     "Joseph's coat",
+     "A silver cup",
+     "A ring and a robe"
+    ],
+    "These words come twice: with Joseph's coat (37:32) and with Judah's pledge (38:25)."
+   ],
+   [
+    "\"இவைகள் யாருடையவைகள் என்று பாரும்\" — தாமார் யூதாவுக்கு அனுப்பினது என்ன?",
+    "முத்திரை மோதிரம், ஆரம், கோல்",
+    [
+     "யோசேப்பின் அங்கி",
+     "வெள்ளிப் பாத்திரம்",
+     "மோதிரமும் அங்கியும்"
+    ],
+    "இந்த வார்த்தைகள் இருமுறை வருகின்றன: யோசேப்பின் அங்கியோடு (37:32), யூதாவின் அடைமானத்தோடு (38:25)."
+   ]
+  ],
+  [
+   "k137",
+   "GEN 40:2",
+   "cup",
+   [
+    "Who were in prison with Joseph?",
+    "Pharaoh's chief butler and chief baker",
+    [
+     "Potiphar and his wife",
+     "Two of his brothers",
+     "Two priests of On"
+    ]
+   ],
+   [
+    "யோசேப்போடு காவலில் இருந்தவர்கள் யார்?",
+    "பார்வோனின் பானபாத்திரக்காரரின் தலைவனும் சுயம்பாகிகளின் தலைவனும்",
+    [
+     "போத்திபாரும் அவன் மனைவியும்",
+     "அவனுடைய இரண்டு சகோதரர்",
+     "ஓன் பட்டணத்து இரண்டு ஆசாரியர்"
+    ]
+   ]
+  ],
+  [
+   "k138",
+   "GEN 41:3",
+   "cows",
+   [
+    "In Pharaoh's first dream, what came up out of the river?",
+    "Seven fat kine and seven lean kine",
+    [
+     "Seven great fish",
+     "Seven ears of corn",
+     "Seven serpents"
+    ],
+    "In the second dream, seven thin ears devoured seven good ears on one stalk."
+   ],
+   [
+    "பார்வோனின் முதல் சொப்பனத்தில் நதியிலிருந்து ஏறிவந்தவை எவை?",
+    "ஏழு கொழுத்த பசுக்களும் ஏழு கேவலமான பசுக்களும்",
+    [
+     "ஏழு பெரிய மீன்கள்",
+     "ஏழு கதிர்கள்",
+     "ஏழு சர்ப்பங்கள்"
+    ],
+    "இரண்டாம் சொப்பனத்தில், ஒரே தாளில் வந்த ஏழு நல்ல கதிர்களை ஏழு சாவியான கதிர்கள் விழுங்கின."
+   ]
+  ],
+  [
+   "k139",
+   "GEN 41:34",
+   "sheaves",
+   [
+    "What part of the land's produce was gathered in the seven plenteous years?",
+    "The fifth part",
+    [
+     "The tenth part",
+     "Half",
+     "The third part"
+    ]
+   ],
+   [
+    "பரிபூரணமான ஏழு வருஷங்களில் தேசத்தின் விளைச்சலில் எந்தப் பங்கு சேர்க்கப்பட்டது?",
+    "ஐந்தில் ஒரு பங்கு",
+    [
+     "பத்தில் ஒரு பங்கு",
+     "பாதி",
+     "மூன்றில் ஒரு பங்கு"
+    ]
+   ]
+  ],
+  [
+   "k140",
+   "GEN 41:46",
+   "crown",
+   [
+    "How old was Joseph when he stood before Pharaoh?",
+    "30",
+    [
+     "17",
+     "20",
+     "40"
+    ]
+   ],
+   [
+    "பார்வோனுக்கு முன்பாக நின்றபோது யோசேப்புக்கு எத்தனை வயது?",
+    "30",
+    [
+     "17",
+     "20",
+     "40"
+    ]
+   ]
+  ],
+  [
+   "k141",
+   "GEN 41:42",
+   "ring",
+   [
+    "How did Pharaoh honour Joseph?",
+    "His ring, fine linen, a gold chain and his second chariot",
+    [
+     "A crown and his own throne",
+     "Land in Goshen only",
+     "A palace and an army"
+    ],
+    "And they cried before him, Bow the knee (41:43)."
+   ],
+   [
+    "பார்வோன் யோசேப்பை எப்படிக் கனப்படுத்தினான்?",
+    "தன் முத்திரை மோதிரம், மெல்லிய வஸ்திரம், பொன் சரப்பணி, தன் இரண்டாம் இரதம்",
+    [
+     "கிரீடமும் தன் சிங்காசனமும்",
+     "கோசேனில் நிலம் மட்டும்",
+     "அரண்மனையும் சேனையும்"
+    ],
+    "முழங்காற்படியிடுங்கள் என்று அவனுக்கு முன்பாகக் கூப்பிட்டார்கள் (41:43)."
+   ]
+  ],
+  [
+   "k142",
+   "GEN 41:45",
+   "crown",
+   [
+    "Who was Joseph's wife?",
+    "Asenath, the daughter of the priest of On",
+    [
+     "Tamar",
+     "Zipporah",
+     "Dinah"
+    ]
+   ],
+   [
+    "யோசேப்பின் மனைவி யார்?",
+    "ஓன் பட்டணத்து ஆசாரியனின் மகள் ஆஸ்நாத்",
+    [
+     "தாமார்",
+     "சிப்போராள்",
+     "தீனாள்"
+    ]
+   ]
+  ],
+  [
+   "k143",
+   "GEN 41:50",
+   "sheaves",
+   [
+    "When were Joseph's sons Manasseh and Ephraim born?",
+    "Before the years of famine came",
+    [
+     "During the famine",
+     "After Jacob came to Egypt",
+     "In the land of Canaan"
+    ]
+   ],
+   [
+    "யோசேப்பின் குமாரராகிய மனாசேயும் எப்பிராயீமும் எப்போது பிறந்தார்கள்?",
+    "பஞ்ச வருஷங்கள் வருவதற்கு முன்",
+    [
+     "பஞ்ச காலத்தில்",
+     "யாக்கோபு எகிப்துக்கு வந்தபின்",
+     "கானான் தேசத்தில்"
+    ]
+   ]
+  ],
+  [
+   "k144",
+   "GEN 41:51",
+   "crown",
+   [
+    "What does the name Manasseh mean?",
+    "God hath made me forget all my toil and all my father's house",
+    [
+     "God hath caused me to be fruitful",
+     "God's host",
+     "The LORD hath heard"
+    ]
+   ],
+   [
+    "மனாசே என்ற பெயரின் அர்த்தம் என்ன?",
+    "என் எல்லா வருத்தத்தையும் என் தகப்பன் வீட்டையும் தேவன் மறக்கப்பண்ணினார்",
+    [
+     "தேவன் என்னைப் பலுகப்பண்ணினார்",
+     "தேவனுடைய சேனை",
+     "கர்த்தர் கேட்டார்"
+    ]
+   ]
+  ],
+  [
+   "k145",
+   "GEN 41:52",
+   "crown",
+   [
+    "What does the name Ephraim mean?",
+    "God hath caused me to be fruitful in the land of my affliction",
+    [
+     "God hath made me forget all my toil",
+     "Son of my right hand",
+     "Laughter"
+    ]
+   ],
+   [
+    "எப்பிராயீம் என்ற பெயரின் அர்த்தம் என்ன?",
+    "நான் சிறுமைப்பட்ட தேசத்தில் தேவன் என்னைப் பலுகப்பண்ணினார்",
+    [
+     "என் எல்லா வருத்தத்தையும் தேவன் மறக்கப்பண்ணினார்",
+     "என் வலதுகையின் குமாரன்",
+     "நகைப்பு"
+    ]
+   ]
+  ],
+  [
+   "k146",
+   "GEN 42:17",
+   "sacks",
+   [
+    "For how many days did Joseph put his brothers in ward?",
+    "3 days",
+    [
+     "1 day",
+     "7 days",
+     "10 days"
+    ]
+   ],
+   [
+    "யோசேப்பு தன் சகோதரரை எத்தனை நாள் காவலில் வைத்தான்?",
+    "3 நாள்",
+    [
+     "1 நாள்",
+     "7 நாள்",
+     "10 நாள்"
+    ]
+   ]
+  ],
+  [
+   "k147",
+   "GEN 42:24",
+   "sacks",
+   [
+    "Which brother did Joseph bind and keep in Egypt?",
+    "Simeon",
+    [
+     "Reuben",
+     "Benjamin",
+     "Judah"
+    ]
+   ],
+   [
+    "யோசேப்பு எந்தச் சகோதரனைக் கட்டி எகிப்தில் வைத்தான்?",
+    "சிமியோன்",
+    [
+     "ரூபன்",
+     "பென்யமீன்",
+     "யூதா"
+    ]
+   ]
+  ],
+  [
+   "k148",
+   "GEN 42:37",
+   "sacks",
+   [
+    "What did Reuben offer to his father as surety for Benjamin?",
+    "His two sons",
+    [
+     "His own life",
+     "All his flocks",
+     "20 pieces of silver"
+    ]
+   ],
+   [
+    "பென்யமீனுக்காக ரூபன் தன் தகப்பனிடம் எதை உத்தரவாதமாகக் கொடுத்தான்?",
+    "தன் இரண்டு குமாரரை",
+    [
+     "தன் உயிரை",
+     "தன் மந்தைகள் எல்லாவற்றையும்",
+     "20 வெள்ளிக்காசை"
+    ]
+   ]
+  ],
+  [
+   "k149",
+   "GEN 43:9",
+   "sacks",
+   [
+    "Who became surety for Benjamin the second time?",
+    "Judah",
+    [
+     "Reuben",
+     "Levi",
+     "Simeon"
+    ]
+   ],
+   [
+    "பென்யமீனுக்காக இரண்டாம் முறை உத்தரவாதம் கொடுத்தவன் யார்?",
+    "யூதா",
+    [
+     "ரூபன்",
+     "லேவி",
+     "சிமியோன்"
+    ]
+   ]
+  ],
+  [
+   "k150",
+   "GEN 43:11",
+   "donkey",
+   [
+    "What present did Jacob send down to the ruler of Egypt?",
+    "Balm, honey, spices, myrrh, nuts and almonds",
+    [
+     "Gold and silver",
+     "Lambs and goats",
+     "Wine and bread"
+    ]
+   ],
+   [
+    "எகிப்தின் அதிபதிக்கு யாக்கோபு அனுப்பின வெகுமதி என்ன?",
+    "பிசின் தைலம், தேன், கந்தவர்க்கம், வெள்ளைப்போளம், தெரபிந்துக் கொட்டை, வாதுமைக் கொட்டை",
+    [
+     "பொன்னும் வெள்ளியும்",
+     "ஆட்டுக்குட்டிகளும் வெள்ளாடுகளும்",
+     "திராட்சரசமும் அப்பமும்"
+    ]
+   ]
+  ],
+  [
+   "k151",
+   "GEN 43:33",
+   "loaves",
+   [
+    "Why did the brothers marvel one at another in Joseph's house?",
+    "They were seated by age, from the firstborn to the youngest",
+    [
+     "They were served Hebrew food",
+     "Joseph spoke to them in Hebrew",
+     "Their money was in their sacks"
+    ]
+   ],
+   [
+    "யோசேப்பின் வீட்டில் சகோதரர் ஏன் ஒருவரையொருவர் பார்த்து ஆச்சரியப்பட்டார்கள்?",
+    "மூத்தவன் முதல் இளையவன் வரை வயதின்படி உட்காரவைக்கப்பட்டார்கள்",
+    [
+     "எபிரெய உணவு பரிமாறப்பட்டது",
+     "யோசேப்பு அவர்களோடு எபிரெய பாஷையில் பேசினான்",
+     "அவர்கள் பணம் சாக்குகளில் இருந்தது"
+    ]
+   ]
+  ],
+  [
+   "k152",
+   "GEN 43:34",
+   "loaves",
+   [
+    "How many times more food was Benjamin given than his brothers?",
+    "5 times",
+    [
+     "2 times",
+     "7 times",
+     "10 times"
+    ]
+   ],
+   [
+    "சகோதரரைவிட பென்யமீனுக்கு எத்தனை மடங்கு அதிகமாக உணவு கொடுக்கப்பட்டது?",
+    "5 மடங்கு",
+    [
+     "2 மடங்கு",
+     "7 மடங்கு",
+     "10 மடங்கு"
+    ]
+   ]
+  ],
+  [
+   "k153",
+   "GEN 45:1",
+   "cup",
+   [
+    "When did Joseph make himself known to his brothers?",
+    "After the cup was found in Benjamin's sack and Judah offered himself in Benjamin's place",
+    [
+     "On their very first visit",
+     "After Jacob died",
+     "When Pharaoh told them"
+    ]
+   ],
+   [
+    "யோசேப்பு எப்போது தன்னைத் தன் சகோதரருக்கு வெளிப்படுத்தினான்?",
+    "பென்யமீனின் சாக்கில் பாத்திரம் கண்டுபிடிக்கப்பட்டு, பென்யமீனுக்குப் பதிலாக யூதா தன்னை ஒப்புக்கொடுத்தபின்",
+    [
+     "அவர்கள் முதல்முறை வந்தபோதே",
+     "யாக்கோபு மரித்தபின்",
+     "பார்வோன் அவர்களுக்குச் சொன்னபோது"
+    ]
+   ]
+  ],
+  [
+   "k154",
+   "GEN 45:10",
+   "sheep",
+   [
+    "In which land of Egypt did Jacob's family dwell?",
+    "Goshen",
+    [
+     "On",
+     "Zoan",
+     "Memphis"
+    ]
+   ],
+   [
+    "யாக்கோபின் குடும்பம் எகிப்தில் எந்தத் தேசத்தில் குடியிருந்தது?",
+    "கோசேன்",
+    [
+     "ஓன்",
+     "சோவான்",
+     "நோப்"
+    ]
+   ]
+  ],
+  [
+   "k155",
+   "GEN 45:6",
+   "sacks",
+   [
+    "How many years of famine were still to come when Joseph revealed himself?",
+    "5 years",
+    [
+     "2 years",
+     "3 years",
+     "7 years"
+    ]
+   ],
+   [
+    "யோசேப்பு தன்னை வெளிப்படுத்தியபோது இன்னும் எத்தனை வருஷம் பஞ்சம் இருக்கவேண்டியிருந்தது?",
+    "5 வருஷம்",
+    [
+     "2 வருஷம்",
+     "3 வருஷம்",
+     "7 வருஷம்"
+    ]
+   ]
+  ],
+  [
+   "k156",
+   "GEN 45:19",
+   "wagon",
+   [
+    "What did Joseph send to bring his father's household down to Egypt?",
+    "Wagons",
+    [
+     "Camels",
+     "Ships",
+     "Chariots of war"
+    ],
+    "The brothers had gone to buy food on their asses (42:26)."
+   ],
+   [
+    "தன் தகப்பனின் குடும்பத்தை எகிப்துக்குக் கொண்டுவர யோசேப்பு எதை அனுப்பினான்?",
+    "வண்டிகள்",
+    [
+     "ஒட்டகங்கள்",
+     "கப்பல்கள்",
+     "யுத்த இரதங்கள்"
+    ],
+    "சகோதரர் தானியம் வாங்கக் கழுதைகளின்மேல் போனார்கள் (42:26)."
+   ]
+  ],
+  [
+   "k157",
+   "GEN 45:22",
+   "coins",
+   [
+    "What did Joseph give to Benjamin?",
+    "300 pieces of silver and five changes of raiment",
+    [
+     "A coat of many colours",
+     "His signet ring",
+     "A silver cup"
+    ]
+   ],
+   [
+    "யோசேப்பு பென்யமீனுக்குக் கொடுத்தது என்ன?",
+    "300 வெள்ளிக்காசும் ஐந்து மாற்று வஸ்திரமும்",
+    [
+     "பலவர்ண அங்கி",
+     "தன் முத்திரை மோதிரம்",
+     "வெள்ளிப் பாத்திரம்"
+    ]
+   ]
+  ],
+  [
+   "k158",
+   "GEN 45:23",
+   "donkey",
+   [
+    "What did Joseph send to his father?",
+    "Ten asses with the good things of Egypt and ten she asses with corn, bread and meat",
+    [
+     "Twenty camels laden with gold",
+     "Seven wagons of wine",
+     "A chariot and horses"
+    ]
+   ],
+   [
+    "யோசேப்பு தன் தகப்பனுக்கு அனுப்பினது என்ன?",
+    "எகிப்தின் உச்சிதமான பதார்த்தங்களுடன் பத்துக் கழுதைகளும், தானியம், அப்பம், தின்பண்டங்களுடன் பத்துக் கோளிகைக் கழுதைகளும்",
+    [
+     "பொன் ஏற்றிய இருபது ஒட்டகங்கள்",
+     "திராட்சரசம் ஏற்றிய ஏழு வண்டிகள்",
+     "ஒரு இரதமும் குதிரைகளும்"
+    ]
+   ]
+  ],
+  [
+   "k159",
+   "GEN 46:4",
+   "ladder",
+   [
+    "Where did God say to Jacob, \"I will go down with thee into Egypt\"?",
+    "Beer-sheba",
+    [
+     "Bethel",
+     "Hebron",
+     "Goshen"
+    ]
+   ],
+   [
+    "\"நான் உன்னோடேகூட எகிப்துக்கு வருவேன்\" என்று தேவன் யாக்கோபிடம் எங்கே சொன்னார்?",
+    "பெயெர்செபா",
+    [
+     "பெத்தேல்",
+     "எபிரோன்",
+     "கோசேன்"
+    ]
+   ]
+  ],
+  [
+   "k160",
+   "GEN 46:27",
+   "wagon",
+   [
+    "In all, how many souls of the house of Jacob came into Egypt?",
+    "70",
+    [
+     "66",
+     "75",
+     "12"
+    ],
+    "66 came with Jacob, besides his sons' wives; with Joseph and his two sons, 70."
+   ],
+   [
+    "யாக்கோபின் குடும்பத்தில் எகிப்துக்கு வந்தவர்கள் மொத்தம் எத்தனை பேர்?",
+    "70",
+    [
+     "66",
+     "75",
+     "12"
+    ],
+    "குமாரரின் மனைவிகளைத் தவிர யாக்கோபோடு வந்தவர்கள் 66 பேர்; யோசேப்பையும் அவன் இரண்டு குமாரரையும் சேர்த்து 70 பேர்."
+   ]
+  ],
+  [
+   "k161",
+   "GEN 47:11",
+   "sheep",
+   [
+    "Which land did Joseph give his father and brothers as a possession?",
+    "The land of Rameses",
+    [
+     "The land of Canaan",
+     "The land of On",
+     "The land of Midian"
+    ]
+   ],
+   [
+    "யோசேப்பு தன் தகப்பனுக்கும் சகோதரருக்கும் காணியாட்சியாகக் கொடுத்த நாடு எது?",
+    "ராமசேஸ் நாடு",
+    [
+     "கானான் தேசம்",
+     "ஓன் நாடு",
+     "மீதியான் தேசம்"
+    ]
+   ]
+  ],
+  [
+   "k162",
+   "GEN 47:28",
+   "elder",
+   [
+    "For how many years did Jacob live in Egypt?",
+    "17 years",
+    [
+     "7 years",
+     "20 years",
+     "40 years"
+    ]
+   ],
+   [
+    "யாக்கோபு எகிப்தில் எத்தனை வருஷம் உயிரோடிருந்தான்?",
+    "17 வருஷம்",
+    [
+     "7 வருஷம்",
+     "20 வருஷம்",
+     "40 வருஷம்"
+    ]
+   ]
+  ],
+  [
+   "k163",
+   "GEN 48:7",
+   "stones",
+   [
+    "Where was Rachel buried?",
+    "On the way to Ephrath, that is Bethlehem",
+    [
+     "In the cave of Machpelah",
+     "At Bethel",
+     "At Hebron"
+    ]
+   ],
+   [
+    "ராகேல் எங்கே அடக்கம்பண்ணப்பட்டாள்?",
+    "பெத்லெகேம் என்னும் எப்பிராத்தாவுக்குப் போகிற வழியில்",
+    [
+     "மக்பேலா குகையில்",
+     "பெத்தேலில்",
+     "எபிரோனில்"
+    ]
+   ]
+  ],
+  [
+   "k164",
+   "GEN 48:14",
+   "elder",
+   [
+    "On whose head did Jacob lay his right hand to bless him?",
+    "Ephraim",
+    [
+     "Manasseh",
+     "Joseph",
+     "Benjamin"
+    ]
+   ],
+   [
+    "யாக்கோபு யாருடைய தலையின்மேல் தன் வலதுகையை வைத்து ஆசீர்வதித்தான்?",
+    "எப்பிராயீம்",
+    [
+     "மனாசே",
+     "யோசேப்பு",
+     "பென்யமீன்"
+    ]
+   ]
+  ],
+  [
+   "k165",
+   "GEN 50:3",
+   "elder",
+   [
+    "For how many days did the Egyptians mourn for Jacob?",
+    "70 days",
+    [
+     "7 days",
+     "30 days",
+     "40 days"
+    ]
+   ],
+   [
+    "எகிப்தியர் யாக்கோபுக்காக எத்தனை நாள் துக்கங்கொண்டாடினார்கள்?",
+    "70 நாள்",
+    [
+     "7 நாள்",
+     "30 நாள்",
+     "40 நாள்"
+    ]
+   ]
+  ],
+  [
+   "k166",
+   "GEN 50:11",
+   "sheaves",
+   [
+    "They mourned seven days at the threshingfloor of Atad. What was the place called?",
+    "Abel-mizraim",
+    [
+     "Machpelah",
+     "Mahanaim",
+     "Peniel"
+    ]
+   ],
+   [
+    "ஆத்தாத்தின் களத்தில் ஏழு நாள் துக்கங்கொண்டாடினார்கள். அந்த இடத்திற்கு என்ன பெயர் உண்டாயிற்று?",
+    "ஆபேல்மிஸ்ராயீம்",
+    [
+     "மக்பேலா",
+     "மகனாயீம்",
+     "பெனியேல்"
+    ]
+   ]
+  ],
+  [
+   "k167",
+   "GEN 50:26",
+   "elder",
+   [
+    "How old was Joseph when he died?",
+    "110",
+    [
+     "100",
+     "120",
+     "147"
+    ]
+   ],
+   [
+    "யோசேப்பு மரித்தபோது அவனுக்கு எத்தனை வயது?",
+    "110",
+    [
+     "100",
+     "120",
+     "147"
+    ]
+   ]
+  ],
+  [
+   "k170",
+   "1SA 1:2",
+   "lamp",
+   [
+    "What was the name of Hannah's husband?",
+    "Elkanah",
+    [
+     "Eli",
+     "Boaz",
+     "Jesse"
+    ]
+   ],
+   [
+    "அன்னாளின் கணவன் பெயர் என்ன?",
+    "எல்க்கானா",
+    [
+     "ஏலி",
+     "போவாஸ்",
+     "ஈசாய்"
+    ]
+   ]
+  ],
+  [
+   "k171",
+   "2KI 11:3",
+   "lamp",
+   [
+    "Which two children grew up in the house of the LORD?",
+    "Samuel and Joash",
+    [
+     "David and Solomon",
+     "Moses and Aaron",
+     "Eli and Samuel"
+    ],
+    "Samuel grew before the LORD (1 Samuel 2:21); Joash was hid in the house of the LORD six years."
+   ],
+   [
+    "கர்த்தருடைய ஆலயத்தில் வளர்ந்த இரண்டு பிள்ளைகள் யார்?",
+    "சாமுவேல், யோவாஸ்",
+    [
+     "தாவீது, சாலொமோன்",
+     "மோசே, ஆரோன்",
+     "ஏலி, சாமுவேல்"
+    ],
+    "சாமுவேல் கர்த்தருடைய சந்நிதியில் வளர்ந்தான் (1 சாமு. 2:21); யோவாஸ் ஆறு வருஷம் கர்த்தருடைய ஆலயத்தில் ஒளித்துவைக்கப்பட்டான்."
+   ]
+  ],
+  [
+   "k172",
+   "JDG 3:15",
+   "sword",
+   [
+    "Which judge of Israel was left-handed?",
+    "Ehud",
+    [
+     "Jehu",
+     "Gideon",
+     "Samson"
+    ]
+   ],
+   [
+    "இடதுகைப் பழக்கமுள்ள இஸ்ரவேலின் நியாயாதிபதி யார்?",
+    "ஏகூத்",
+    [
+     "யெகூ",
+     "கிதியோன்",
+     "சிம்சோன்"
+    ]
+   ]
+  ],
+  [
+   "k173",
+   "JDG 4:4",
+   "tree",
+   [
+    "Who was the woman who judged Israel?",
+    "Deborah",
+    [
+     "Jael",
+     "Hannah",
+     "Miriam"
+    ]
+   ],
+   [
+    "இஸ்ரவேலை நியாயம் விசாரித்த ஸ்திரீ யார்?",
+    "தெபொராள்",
+    [
+     "யாகேல்",
+     "அன்னாள்",
+     "மிரியாம்"
+    ]
+   ]
+  ],
+  [
+   "k174",
+   "1KI 1:39",
+   "crown",
+   [
+    "Who was the third king of Israel?",
+    "Solomon",
+    [
+     "David",
+     "Saul",
+     "Rehoboam"
+    ],
+    "Saul, then David, then Solomon."
+   ],
+   [
+    "இஸ்ரவேலின் மூன்றாம் ராஜா யார்?",
+    "சாலொமோன்",
+    [
+     "தாவீது",
+     "சவுல்",
+     "ரெகொபெயாம்"
+    ],
+    "சவுல், தாவீது, பிறகு சாலொமோன்."
+   ]
+  ],
+  [
+   "k175",
+   "MAT 1:17",
+   "star",
+   [
+    "How many generations were there from Abraham to David?",
+    "14",
+    [
+     "7",
+     "12",
+     "40"
+    ]
+   ],
+   [
+    "ஆபிரகாம் முதல் தாவீது வரை எத்தனை தலைமுறைகள்?",
+    "14",
+    [
+     "7",
+     "12",
+     "40"
+    ]
+   ]
+  ],
+  [
+   "k176",
+   "MAT 1:17",
+   "star",
+   [
+    "How many generations were there from David to Christ?",
+    "28 (14 + 14)",
+    [
+     "14",
+     "40",
+     "42"
+    ],
+    "From David to the carrying away into Babylon 14, and from Babylon to Christ 14."
+   ],
+   [
+    "தாவீது முதல் கிறிஸ்து வரை எத்தனை தலைமுறைகள்?",
+    "28 (14 + 14)",
+    [
+     "14",
+     "40",
+     "42"
+    ],
+    "தாவீது முதல் பாபிலோனுக்குச் சிறைப்பட்டுப்போனது வரை 14, பாபிலோன் முதல் கிறிஸ்து வரை 14."
+   ]
+  ],
+  [
+   "k177",
+   "EXO 2:21",
+   "well",
+   [
+    "What was the name of Moses' wife?",
+    "Zipporah",
+    [
+     "Miriam",
+     "Jochebed",
+     "Deborah"
+    ]
+   ],
+   [
+    "மோசேயின் மனைவியின் பெயர் என்ன?",
+    "சிப்போராள்",
+    [
+     "மிரியாம்",
+     "யோகெபேத்",
+     "தெபொராள்"
+    ]
+   ]
+  ],
+  [
+   "k178",
+   "EXO 18:3",
+   "bush",
+   [
+    "What were the names of Moses' two sons?",
+    "Gershom and Eliezer",
+    [
+     "Nadab and Abihu",
+     "Ephraim and Manasseh",
+     "Joshua and Caleb"
+    ]
+   ],
+   [
+    "மோசேயின் இரண்டு குமாரரின் பெயர்கள் என்ன?",
+    "கெர்சோம், எலியேசர்",
+    [
+     "நாதாப், அபியூ",
+     "எப்பிராயீம், மனாசே",
+     "யோசுவா, காலேப்"
+    ]
+   ]
+  ],
+  [
+   "k179",
+   "2SA 13:1",
+   "harp",
+   [
+    "What was the name of David's daughter?",
+    "Tamar",
+    [
+     "Dinah",
+     "Michal",
+     "Abigail"
+    ]
+   ],
+   [
+    "தாவீதின் மகளின் பெயர் என்ன?",
+    "தாமார்",
+    [
+     "தீனாள்",
+     "மீகாள்",
+     "அபிகாயில்"
+    ]
+   ]
+  ],
+  [
+   "k180",
+   "GEN 38:6",
+   "ring",
+   [
+    "Who was Judah's daughter-in-law?",
+    "Tamar",
+    [
+     "Ruth",
+     "Dinah",
+     "Orpah"
+    ]
+   ],
+   [
+    "யூதாவின் மருமகள் யார்?",
+    "தாமார்",
+    [
+     "ரூத்",
+     "தீனாள்",
+     "ஒர்பாள்"
+    ]
+   ]
+  ],
+  [
+   "k201",
+   "PSA 42:1",
+   "harp",
+   [
+    "How many psalms are of the sons of Korah?",
+    "11",
+    [
+     "3",
+     "7",
+     "24"
+    ]
+   ],
+   [
+    "கோராகின் புத்திரருடைய சங்கீதங்கள் எத்தனை?",
+    "11",
+    [
+     "3",
+     "7",
+     "24"
+    ]
+   ]
+  ],
+  [
+   "k202",
+   "PSA 1:1",
+   "harp",
+   [
+    "About how many psalms have no writer's name in their title?",
+    "50",
+    [
+     "10",
+     "25",
+     "100"
+    ]
+   ],
+   [
+    "தலைப்பில் எழுதியவரின் பெயர் இல்லாத சங்கீதங்கள் ஏறக்குறைய எத்தனை?",
+    "50",
+    [
+     "10",
+     "25",
+     "100"
+    ]
+   ]
+  ],
+  [
+   "k203",
+   "PSA 89:1",
+   "writer",
+   [
+    "Who wrote Psalm 89, a Maschil?",
+    "Ethan the Ezrahite",
+    [
+     "Heman the Ezrahite",
+     "Asaph",
+     "Jeduthun"
+    ]
+   ],
+   [
+    "மஸ்கீல் என்னும் 89 ஆம் சங்கீதத்தை எழுதியவர் யார்?",
+    "எஸ்ராகியனாகிய ஏத்தான்",
+    [
+     "எஸ்ராகியனாகிய ஏமான்",
+     "ஆசாப்",
+     "எதுத்தூன்"
+    ]
+   ]
+  ],
+  [
+   "k204",
+   "PSA 88:1",
+   "writer",
+   [
+    "Psalm 88 is the Maschil of whom?",
+    "Heman the Ezrahite",
+    [
+     "Ethan the Ezrahite",
+     "Moses",
+     "Solomon"
+    ]
+   ],
+   [
+    "88 ஆம் சங்கீதம் யாருடைய போதக சங்கீதம்?",
+    "எஸ்ராகியனாகிய ஏமான்",
+    [
+     "எஸ்ராகியனாகிய ஏத்தான்",
+     "மோசே",
+     "சாலொமோன்"
+    ]
+   ]
+  ],
+  [
+   "k205",
+   "PSA 90:1",
+   "writer",
+   [
+    "Moses probably wrote Psalm 90 during which time?",
+    "The forty years in the wilderness",
+    [
+     "The reign of David",
+     "The exile in Babylon",
+     "The days of the judges"
+    ],
+    "About 1446 to 1406 BC."
+   ],
+   [
+    "மோசே 90 ஆம் சங்கீதத்தை எந்தக் காலத்தில் எழுதியிருக்கலாம்?",
+    "வனாந்தரத்தில் நாற்பது வருஷ யாத்திரையில்",
+    [
+     "தாவீதின் ஆட்சிக்காலத்தில்",
+     "பாபிலோன் சிறையிருப்பில்",
+     "நியாயாதிபதிகளின் நாட்களில்"
+    ],
+    "ஏறக்குறைய கி.மு. 1446 முதல் 1406 வரை."
+   ]
+  ],
+  [
+   "k206",
+   "PSA 137:1",
+   "harp",
+   [
+    "Which psalm was written after the people were carried away to Babylon?",
+    "Psalm 137",
+    [
+     "Psalm 23",
+     "Psalm 90",
+     "Psalm 100"
+    ],
+    "By the rivers of Babylon, there we sat down, yea, we wept."
+   ],
+   [
+    "ஜனங்கள் பாபிலோனுக்குச் சிறைப்பட்டுப் போனபின் எழுதப்பட்ட சங்கீதம் எது?",
+    "137 ஆம் சங்கீதம்",
+    [
+     "23 ஆம் சங்கீதம்",
+     "90 ஆம் சங்கீதம்",
+     "100 ஆம் சங்கீதம்"
+    ],
+    "பாபிலோன் ஆறுகளின் அருகே உட்கார்ந்து அழுதோம்."
+   ]
+  ],
+  [
+   "k207",
+   "PSA 3:1",
+   "harp",
+   [
+    "When did David write Psalm 3?",
+    "When he fled from his son Absalom",
+    [
+     "When Nathan came to him",
+     "When he was in the cave",
+     "When he became king"
+    ]
+   ],
+   [
+    "தாவீது 3 ஆம் சங்கீதத்தை எப்போது பாடினான்?",
+    "தன் குமாரனாகிய அப்சலோமுக்குத் தப்பி ஓடிப்போகையில்",
+    [
+     "நாத்தான் அவனிடத்தில் வந்தபோது",
+     "கெபியில் இருக்கையில்",
+     "ராஜாவானபோது"
+    ]
+   ]
+  ],
+  [
+   "k208",
+   "PSA 51:1",
+   "harp",
+   [
+    "When did David write Psalm 51?",
+    "When Nathan the prophet came to him after his sin with Bathsheba",
+    [
+     "When he fled from Absalom",
+     "When Saul sent men to kill him",
+     "When he brought the ark to Jerusalem"
+    ]
+   ],
+   [
+    "தாவீது 51 ஆம் சங்கீதத்தை எப்போது பாடினான்?",
+    "பத்சேபாளிடத்தில் பாவம் செய்தபின் நாத்தான் தீர்க்கதரிசி அவனிடத்தில் வந்தபோது",
+    [
+     "அப்சலோமுக்குத் தப்பி ஓடுகையில்",
+     "சவுல் அவனைக் கொல்ல ஆட்களை அனுப்பினபோது",
+     "பெட்டியை எருசலேமுக்குக் கொண்டுவந்தபோது"
+    ]
+   ]
+  ],
+  [
+   "k209",
+   "PSA 34:1",
+   "harp",
+   [
+    "Psalm 34 was sung when David changed his behaviour before whom?",
+    "Abimelech",
+    [
+     "Ahimelech",
+     "Saul",
+     "Goliath"
+    ],
+    "Abimelech (Achish, king of Gath) drove him away."
+   ],
+   [
+    "தாவீது யாருக்கு முன்பாக வேஷமாறினபோது 34 ஆம் சங்கீதத்தைப் பாடினான்?",
+    "அபிமெலேக்கு",
+    [
+     "அகிமெலேக்கு",
+     "சவுல்",
+     "கோலியாத்"
+    ],
+    "அபிமெலேக்கு (காத்தின் ராஜாவாகிய ஆகீஸ்) அவனைத் துரத்திவிட்டான்."
+   ]
+  ],
+  [
+   "k210",
+   "PSA 52:1",
+   "harp",
+   [
+    "Psalm 52 was written after who told Saul that David came to the house of Ahimelech?",
+    "Doeg the Edomite",
+    [
+     "The Ziphites",
+     "Nabal",
+     "Shimei"
+    ]
+   ],
+   [
+    "தாவீது அகிமெலேக்கின் வீட்டுக்கு வந்தான் என்று சவுலுக்கு அறிவித்தவன் யார் (52 ஆம் சங்கீதம்)?",
+    "ஏதோமியனாகிய தோவேக்கு",
+    [
+     "சீப்பூரார்",
+     "நாபால்",
+     "சீமேயி"
+    ]
+   ]
+  ],
+  [
+   "k211",
+   "PSA 54:1",
+   "harp",
+   [
+    "Who came and told Saul, \"Doth not David hide himself with us?\" (Psalm 54)",
+    "The Ziphites",
+    [
+     "Doeg the Edomite",
+     "The Philistines",
+     "The men of Keilah"
+    ]
+   ],
+   [
+    "\"தாவீது எங்களிடத்தில் ஒளித்துக்கொண்டிருக்கிறான் அல்லவா?\" என்று சவுலிடம் வந்து சொன்னவர்கள் யார் (54 ஆம் சங்கீதம்)?",
+    "சீப்பூரார்",
+    [
+     "ஏதோமியனாகிய தோவேக்கு",
+     "பெலிஸ்தர்",
+     "கேகிலா ஊரார்"
+    ]
+   ]
+  ],
+  [
+   "k212",
+   "PSA 56:1",
+   "harp",
+   [
+    "Psalm 56 was written when the Philistines took David in which city?",
+    "Gath",
+    [
+     "Gaza",
+     "Ashdod",
+     "Ekron"
+    ]
+   ],
+   [
+    "பெலிஸ்தர் தாவீதை எந்தப் பட்டணத்தில் பிடித்தபோது 56 ஆம் சங்கீதம் பாடப்பட்டது?",
+    "காத்",
+    [
+     "காசா",
+     "அஸ்தோத்",
+     "எக்ரோன்"
+    ]
+   ]
+  ],
+  [
+   "k213",
+   "PSA 57:1",
+   "cave",
+   [
+    "Where was David hiding from Saul when he wrote Psalm 57?",
+    "In the cave",
+    [
+     "In the wilderness of Ziph",
+     "In Gath",
+     "In the house of Ahimelech"
+    ]
+   ],
+   [
+    "தாவீது சவுலுக்குத் தப்பி எங்கே ஒதுங்கியிருந்தபோது 57 ஆம் சங்கீதத்தைப் பாடினான்?",
+    "கெபியில்",
+    [
+     "சீப் வனாந்தரத்தில்",
+     "காத்தில்",
+     "அகிமெலேக்கின் வீட்டில்"
+    ]
+   ]
+  ],
+  [
+   "k214",
+   "PSA 142:1",
+   "cave",
+   [
+    "Which psalm is David's prayer \"when he was in the cave\", a Maschil?",
+    "Psalm 142",
+    [
+     "Psalm 23",
+     "Psalm 51",
+     "Psalm 100"
+    ]
+   ],
+   [
+    "\"தாவீது கெபியிலிருக்கும்போது பண்ணின விண்ணப்பம்\" எந்தச் சங்கீதம்?",
+    "142 ஆம் சங்கீதம்",
+    [
+     "23 ஆம் சங்கீதம்",
+     "51 ஆம் சங்கீதம்",
+     "100 ஆம் சங்கீதம்"
+    ]
+   ]
+  ],
+  [
+   "k215",
+   "PSA 59:1",
+   "harp",
+   [
+    "Psalm 59 was sung when Saul sent men to do what?",
+    "Watch David's house to kill him",
+    [
+     "Bring the ark back",
+     "Find his father's asses",
+     "Fight the Philistines"
+    ]
+   ],
+   [
+    "சவுல் எதற்காக ஆட்களை அனுப்பினபோது 59 ஆம் சங்கீதம் பாடப்பட்டது?",
+    "தாவீதைக் கொல்லும்படி அவன் வீட்டைக் காக்க",
+    [
+     "பெட்டியைத் திரும்பக் கொண்டுவர",
+     "தன் தகப்பனுடைய கழுதைகளைத் தேட",
+     "பெலிஸ்தரோடு யுத்தம்பண்ண"
+    ]
+   ]
+  ],
+  [
+   "k216",
+   "PSA 60:1",
+   "sword",
+   [
+    "In the title of Psalm 60, how many Edomites did Joab smite in the valley of salt?",
+    "12,000",
+    [
+     "1,000",
+     "7,000",
+     "18,000"
+    ]
+   ],
+   [
+    "60 ஆம் சங்கீதத்தின் தலைப்பில், யோவாப் உப்புப் பள்ளத்தாக்கிலே எத்தனை ஏதோமியரை வெட்டினான்?",
+    "12,000",
+    [
+     "1,000",
+     "7,000",
+     "18,000"
+    ]
+   ]
+  ],
+  [
+   "k217",
+   "PSA 63:1",
+   "harp",
+   [
+    "Where was David when he wrote Psalm 63?",
+    "In the wilderness of Judah",
+    [
+     "In the cave",
+     "In Jerusalem",
+     "In Gath"
+    ]
+   ],
+   [
+    "தாவீது 63 ஆம் சங்கீதத்தைப் பாடினபோது எங்கே இருந்தான்?",
+    "யூதாவின் வனாந்தரத்தில்",
+    [
+     "கெபியில்",
+     "எருசலேமில்",
+     "காத்தில்"
+    ]
+   ]
+  ],
+  [
+   "k218",
+   "PSA 30:1",
+   "harp",
+   [
+    "Psalm 30 is a song for what occasion?",
+    "The dedication of the house",
+    [
+     "A wedding",
+     "The Passover",
+     "A victory in battle"
+    ]
+   ],
+   [
+    "30 ஆம் சங்கீதம் எந்தச் சந்தர்ப்பத்தின் பாட்டு?",
+    "ஆலயப் பிரதிஷ்டை",
+    [
+     "கலியாணம்",
+     "பஸ்கா",
+     "யுத்த ஜெயம்"
+    ]
+   ]
+  ],
+  [
+   "k219",
+   "PSA 92:1",
+   "harp",
+   [
+    "Psalm 92 is a song for which day?",
+    "The sabbath day",
+    [
+     "The day of atonement",
+     "The new moon",
+     "The first day of the year"
+    ]
+   ],
+   [
+    "92 ஆம் சங்கீதம் எந்த நாளின் பாட்டு?",
+    "ஓய்வுநாள்",
+    [
+     "பாவநிவிர்த்தி நாள்",
+     "அமாவாசை",
+     "வருஷத்தின் முதல் நாள்"
+    ]
+   ]
+  ],
+  [
+   "k220",
+   "PSA 7:1",
+   "harp",
+   [
+    "Psalm 7 (a Shiggaion) was sung because of the words of whom?",
+    "Cush the Benjamite",
+    [
+     "Shimei",
+     "Doeg the Edomite",
+     "Ahithophel"
+    ]
+   ],
+   [
+    "சிகாயோன் என்னும் 7 ஆம் சங்கீதம் யாருடைய வார்த்தைகளினிமித்தம் பாடப்பட்டது?",
+    "பென்யமீனியனாகிய கூஷ்",
+    [
+     "சீமேயி",
+     "ஏதோமியனாகிய தோவேக்கு",
+     "அகித்தோப்பேல்"
+    ]
+   ]
+  ],
+  [
+   "k221",
+   "PSA 18:1",
+   "harp",
+   [
+    "Psalm 18 was sung on the day the LORD delivered David from whom?",
+    "All his enemies and from the hand of Saul",
+    [
+     "Goliath the Philistine",
+     "His son Absalom",
+     "The Amalekites at Ziklag"
+    ]
+   ],
+   [
+    "கர்த்தர் தாவீதை யாருடைய கைக்கு நீங்கலாக்கின நாளில் 18 ஆம் சங்கீதத்தைப் பாடினான்?",
+    "எல்லாச் சத்துருக்களின் கைக்கும் சவுலின் கைக்கும்",
+    [
+     "பெலிஸ்தனாகிய கோலியாத்தின் கைக்கு",
+     "தன் குமாரனாகிய அப்சலோமின் கைக்கு",
+     "சிக்லாகிலிருந்த அமலேக்கியரின் கைக்கு"
+    ]
+   ]
+  ],
+  [
+   "k222",
+   "PSA 42:1",
+   "harp",
+   [
+    "Psalm 42, a Maschil, was given to the chief Musician for whom?",
+    "The sons of Korah",
+    [
+     "David",
+     "Asaph",
+     "Solomon"
+    ]
+   ],
+   [
+    "மஸ்கீல் என்னும் 42 ஆம் சங்கீதம் யாருக்காக இராகத்தலைவனுக்கு ஒப்புவிக்கப்பட்டது?",
+    "கோராகின் புத்திரர்",
+    [
+     "தாவீது",
+     "ஆசாப்",
+     "சாலொமோன்"
+    ]
+   ]
+  ],
+  [
+   "k223",
+   "PSA 39:1",
+   "harp",
+   [
+    "To which chief Musician were Psalms 39, 62 and 77 given?",
+    "Jeduthun",
+    [
+     "Asaph",
+     "Heman",
+     "Korah"
+    ]
+   ],
+   [
+    "39, 62, 77 ஆம் சங்கீதங்கள் எந்த இராகத்தலைவனுக்கு ஒப்புவிக்கப்பட்டன?",
+    "எதுத்தூன்",
+    [
+     "ஆசாப்",
+     "ஏமான்",
+     "கோராகு"
+    ]
+   ]
+  ],
+  [
+   "k224",
+   "PSA 16:1",
+   "harp",
+   [
+    "Psalms 16 and 56 to 60 are called what in their titles?",
+    "Michtam",
+    [
+     "Maschil",
+     "Shiggaion",
+     "Selah"
+    ]
+   ],
+   [
+    "16, 56 முதல் 60 வரையிலான சங்கீதங்களின் தலைப்பில் அவை என்னவென்று சொல்லப்படுகின்றன?",
+    "மிக்தாம்",
+    [
+     "மஸ்கீல்",
+     "சிகாயோன்",
+     "சேலா"
+    ]
+   ]
+  ],
+  [
+   "k225",
+   "PSA 32:1",
+   "harp",
+   [
+    "What is a psalm called \"Maschil\"?",
+    "A psalm of instruction (teaching)",
+    [
+     "A song of the sabbath",
+     "A prayer in the cave",
+     "A song of the harvest"
+    ]
+   ],
+   [
+    "\"மஸ்கீல்\" என்னும் சங்கீதம் என்ன?",
+    "போதக சங்கீதம்",
+    [
+     "ஓய்வுநாளின் பாட்டு",
+     "கெபியிலே செய்த விண்ணப்பம்",
+     "அறுப்பின் பாட்டு"
+    ]
+   ]
+  ],
+  [
+   "k226",
+   "PSA 4:1",
+   "harp",
+   [
+    "On what were Psalms 4, 6, 54, 55, 61 and 67 to be played?",
+    "Neginoth (stringed instruments)",
+    [
+     "Gittith",
+     "Alamoth",
+     "Trumpets"
+    ]
+   ],
+   [
+    "4, 6, 54, 55, 61, 67 ஆம் சங்கீதங்கள் எதில் வாசிக்கப்படவேண்டும்?",
+    "நெகினோத் (நரம்பு வாத்தியம்)",
+    [
+     "கித்தீத்",
+     "அலாமோத்",
+     "எக்காளம்"
+    ]
+   ]
+  ],
+  [
+   "k227",
+   "PSA 119:1",
+   "scroll",
+   [
+    "How is Psalm 119 arranged?",
+    "By the 22 letters of the Hebrew alphabet",
+    [
+     "By the twelve tribes of Israel",
+     "By the days of the week",
+     "By the ten commandments"
+    ],
+    "Each group of eight verses begins with the next Hebrew letter (Aleph, Beth, ...)."
+   ],
+   [
+    "119 ஆம் சங்கீதம் எப்படி அமைக்கப்பட்டிருக்கிறது?",
+    "எபிரெய அகர வரிசையின் 22 எழுத்துகளின்படி",
+    [
+     "இஸ்ரவேலின் பன்னிரண்டு கோத்திரங்களின்படி",
+     "வாரத்தின் நாட்களின்படி",
+     "பத்துக் கற்பனைகளின்படி"
+    ],
+    "ஒவ்வொரு எட்டு வசனங்களும் அடுத்த எபிரெய எழுத்தில் தொடங்குகின்றன (ஆலெப், பேத், ...)."
+   ]
+  ],
+  [
+   "k228",
+   "PSA 120:1",
+   "harp",
+   [
+    "How many psalms are called \"A Song of degrees\"?",
+    "15",
+    [
+     "7",
+     "12",
+     "22"
+    ],
+    "Psalms 120 to 134."
+   ],
+   [
+    "\"ஆரோகண சங்கீதம்\" என்று அழைக்கப்படும் சங்கீதங்கள் எத்தனை?",
+    "15",
+    [
+     "7",
+     "12",
+     "22"
+    ],
+    "120 முதல் 134 வரை."
+   ]
+  ],
+  [
+   "k229",
+   "PSA 122:1",
+   "harp",
+   [
+    "When were the Songs of degrees sung?",
+    "Going up to Jerusalem for the feasts",
+    [
+     "At funerals",
+     "Before going to war",
+     "At the crowning of a king"
+    ]
+   ],
+   [
+    "ஆரோகண சங்கீதங்கள் எப்போது பாடப்பட்டன?",
+    "பண்டிகைகளுக்காக எருசலேமுக்குப் போகையில்",
+    [
+     "அடக்கம்பண்ணும்போது",
+     "யுத்தத்திற்குப் போகுமுன்",
+     "ராஜாவுக்கு முடிசூட்டும்போது"
+    ]
+   ]
+  ],
+  [
+   "k230",
+   "PSA 127:1",
+   "writer",
+   [
+    "Which Song of degrees is of Solomon?",
+    "Psalm 127",
+    [
+     "Psalm 122",
+     "Psalm 130",
+     "Psalm 133"
+    ],
+    "David wrote four of them: 122, 124, 131 and 133."
+   ],
+   [
+    "ஆரோகண சங்கீதங்களில் சாலொமோன் பாடினது எது?",
+    "127 ஆம் சங்கீதம்",
+    [
+     "122 ஆம் சங்கீதம்",
+     "130 ஆம் சங்கீதம்",
+     "133 ஆம் சங்கீதம்"
+    ],
+    "தாவீது நான்கு பாடினான்: 122, 124, 131, 133."
+   ]
+  ],
+  [
+   "k231",
+   "PSA 14:1",
+   "harp",
+   [
+    "Which psalm is almost the same as Psalm 14?",
+    "Psalm 53",
+    [
+     "Psalm 23",
+     "Psalm 41",
+     "Psalm 90"
+    ],
+    "\"The fool hath said in his heart, There is no God.\""
+   ],
+   [
+    "14 ஆம் சங்கீதத்தைப் போலவே ஏறக்குறைய இருக்கும் சங்கீதம் எது?",
+    "53 ஆம் சங்கீதம்",
+    [
+     "23 ஆம் சங்கீதம்",
+     "41 ஆம் சங்கீதம்",
+     "90 ஆம் சங்கீதம்"
+    ],
+    "\"தேவன் இல்லை என்று மதிகேடன் தன் இருதயத்தில் சொல்லுகிறான்.\""
+   ]
+  ],
+  [
+   "k232",
+   "PSA 102:1",
+   "harp",
+   [
+    "Psalm 102 is the prayer of whom?",
+    "The afflicted, when he is overwhelmed",
+    [
+     "Moses the man of God",
+     "Solomon at the dedication",
+     "Hezekiah when he was sick"
+    ]
+   ],
+   [
+    "102 ஆம் சங்கீதம் யாருடைய விண்ணப்பம்?",
+    "துயரப்படுகிறவன் துக்கத்தில் மூழ்கி கர்த்தரிடத்தில் செய்த விண்ணப்பம்",
+    [
+     "தேவனுடைய மனுஷனாகிய மோசேயின் ஜெபம்",
+     "ஆலயப் பிரதிஷ்டையில் சாலொமோனின் ஜெபம்",
+     "வியாதிப்பட்டபோது எசேக்கியாவின் ஜெபம்"
+    ]
+   ]
+  ],
+  [
+   "k233",
+   "PSA 72:1",
+   "crown",
+   [
+    "Psalm 72 is a psalm for whom?",
+    "Solomon",
+    [
+     "David",
+     "Hezekiah",
+     "Josiah"
+    ]
+   ],
+   [
+    "72 ஆம் சங்கீதம் யாரைப் பற்றியது?",
+    "சாலொமோன்",
+    [
+     "தாவீது",
+     "எசேக்கியா",
+     "யோசியா"
+    ]
+   ]
+  ],
+  [
+   "k234",
+   "PSA 45:1",
+   "harp",
+   [
+    "Psalm 45, for the sons of Korah, is called what kind of song?",
+    "A Song of loves",
+    [
+     "A Song of degrees",
+     "A Psalm of praise",
+     "A Song for the sabbath"
+    ]
+   ],
+   [
+    "கோராகின் புத்திரருக்கான 45 ஆம் சங்கீதம் எப்படிப்பட்ட பாட்டு?",
+    "நேசப்பாட்டு",
+    [
+     "ஆரோகண சங்கீதம்",
+     "ஸ்தோத்திர சங்கீதம்",
+     "ஓய்வுநாளின் பாட்டு"
+    ]
+   ]
+  ],
+  [
+   "k235",
+   "PSA 145:1",
+   "harp",
+   [
+    "Which psalm of David is called \"David's Psalm of praise\"?",
+    "Psalm 145",
+    [
+     "Psalm 1",
+     "Psalm 23",
+     "Psalm 51"
+    ]
+   ],
+   [
+    "\"தாவீது பாடின ஸ்தோத்திர சங்கீதம்\" எது?",
+    "145 ஆம் சங்கீதம்",
+    [
+     "1 ஆம் சங்கீதம்",
+     "23 ஆம் சங்கீதம்",
+     "51 ஆம் சங்கீதம்"
+    ]
+   ]
+  ],
+  [
+   "k236",
+   "PSA 72:20",
+   "crown",
+   [
+    "David reigned as king from about when to when?",
+    "1010 to 970 BC",
+    [
+     "1446 to 1406 BC",
+     "586 to 539 BC",
+     "931 to 913 BC"
+    ],
+    "He wrote some psalms before he became king and some after."
+   ],
+   [
+    "தாவீது ஏறக்குறைய எப்போது முதல் எப்போது வரை ராஜாவாயிருந்தான்?",
+    "கி.மு. 1010 முதல் 970 வரை",
+    [
+     "கி.மு. 1446 முதல் 1406 வரை",
+     "கி.மு. 586 முதல் 539 வரை",
+     "கி.மு. 931 முதல் 913 வரை"
+    ],
+    "ராஜாவாகுமுன் சில சங்கீதங்களையும், ராஜாவானபின் சிலவற்றையும் எழுதினான்."
+   ]
+  ]
  ]
 }
