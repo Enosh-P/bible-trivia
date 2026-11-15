@@ -6,7 +6,10 @@ import { fixTamil } from '../scripts/lib/tamil-fix.mjs';
 describe('Tamil Bible word fixes', () => {
   it('turns Krishna for "Lord" into கர்த்தர், keeping the case ending', () => {
     expect(fixTamil('The word of the Lord', 'கிருஷ்ணரின் வார்த்தை')).toBe('கர்த்தரின் வார்த்தை');
-    expect(fixTamil('Thank Yahweh', 'கிருஷ்ணருக்கு நன்றி')).toBe('கர்த்தருக்கு நன்றி');
+    expect(fixTamil('Thank the LORD', 'கிருஷ்ணருக்கு நன்றி')).toBe('கர்த்தருக்கு நன்றி');
+    // The divine name (Yahweh, shown as Jehovah) is யெகோவா, keeping the ending.
+    expect(fixTamil('Thank Jehovah', 'கிருஷ்ணருக்கு நன்றி')).toBe('யெகோவாவுக்கு நன்றி');
+    expect(fixTamil('Jehovah your God', 'உங்கள் தேவனாகிய கர்த்தர்')).toBe('உங்கள் தேவனாகிய யெகோவா');
     expect(fixTamil('Hope in the Lord', 'கிருத்துவத்தில் நம்பிக்கை')).toBe('கர்த்தரில் நம்பிக்கை');
   });
   it('turns Krishna for "Christ" into கிறிஸ்து', () => {
