@@ -64,7 +64,7 @@ export const MODES: Record<ModeId, ModeDef> = {
   recall: { id: 'recall', horse: 'pale', types: [], length: 15, perQuestion: 0, study: true },
 };
 
-export const MODE_ORDER: ModeId[] = ['quiz', 'knowledge', 'classic', 'drill', 'recall', 'truefalse', 'who', 'book', 'blank', 'speed', 'survival', 'study'];
+export const MODE_ORDER: ModeId[] = ['knowledge', 'classic', 'quiz', 'drill', 'recall', 'truefalse', 'who', 'book', 'blank', 'speed', 'survival', 'study'];
 
 /**
  * Games you can challenge friends in: every fixed-length game with a timer, so new

@@ -21,8 +21,8 @@ import type { Post } from '../engine/posts';
 
 /** The games in three plain groups, so a new player knows where to start. */
 const GROUPS: { id: 'quick' | 'learn' | 'challenge'; modes: ModeId[] }[] = [
-  { id: 'quick', modes: ['classic', 'truefalse', 'who', 'book', 'blank'] },
-  { id: 'learn', modes: ['quiz', 'knowledge', 'drill', 'recall', 'study'] },
+  { id: 'quick', modes: ['knowledge', 'classic', 'truefalse', 'who', 'book', 'blank'] },
+  { id: 'learn', modes: ['quiz', 'drill', 'recall', 'study'] },
   { id: 'challenge', modes: ['speed', 'survival'] },
 ];
 const NO_POSTS: string[] = [];
@@ -109,6 +109,17 @@ export function Home({ onPlay, onMemory, onResume, onShowSaved, onOpenPost, onSh
             <p className="caption">{groupText[g.id][1]}</p>
           </div>
           <div className="mode-list">
+            {/* Memory verses leads the Learn group. */}
+            {g.id === 'learn' && (
+              <Pressable className="mode-row glass horse-pale" onClick={onMemory}>
+                <MemoryArt className="mode-row-art" />
+                <span className="menu-text">
+                  <strong>{t.memoryTitle}</strong>
+                  <span className="caption">{t.memoryDesc}</span>
+                </span>
+                <ChevronRight size={18} strokeWidth={STROKE} className="menu-chevron" />
+              </Pressable>
+            )}
             {g.modes.map((id, i) => (
               <motion.div key={id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring.calm, delay: 0.03 * (gi * 3 + i) }}>
                 <Pressable className={`mode-row glass horse-${MODES[id].horse}`} onClick={() => setIntro(id)}>
@@ -121,16 +132,6 @@ export function Home({ onPlay, onMemory, onResume, onShowSaved, onOpenPost, onSh
                 </Pressable>
               </motion.div>
             ))}
-            {g.id === 'learn' && (
-              <Pressable className="mode-row glass horse-pale" onClick={onMemory}>
-                <MemoryArt className="mode-row-art" />
-                <span className="menu-text">
-                  <strong>{t.memoryTitle}</strong>
-                  <span className="caption">{t.memoryDesc}</span>
-                </span>
-                <ChevronRight size={18} strokeWidth={STROKE} className="menu-chevron" />
-              </Pressable>
-            )}
           </div>
         </section>
       ))}

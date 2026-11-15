@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ScrollText, Share2 } from 'lucide-react';
 import { verseOfTheDay, type Verse } from '../engine/verses';
@@ -39,10 +38,6 @@ export function VerseOfTheDay() {
   const t = useT();
   const qLang = useApp((s) => s.qLang);
   const verse = verseOfTheDay();
-  const both = useApp((s) => s.qLang === 'both');
-  // Home stays short: a long verse shows its first lines until "Read more".
-  const long = both || verse[uiLang].length > 120;
-  const [open, setOpen] = useState(false);
 
   async function share() {
     // Tamil always; English too unless the questions are in Tamil only. Just the words, no link.
@@ -59,7 +54,8 @@ export function VerseOfTheDay() {
   }
 
   return (
-    <motion.section className={`verse-card glass ${long && !open ? 'is-clamped' : ''}`} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={spring.calm}>
+    // The whole verse, Tamil and English in Both mode: no "Read more".
+    <motion.section className="verse-card glass" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={spring.calm}>
       <div className="verse-card-head">
         <IconTile horse="pale" icon={ScrollText} size={34} />
         <span className="eyebrow">{t.verseOfDay}</span>
@@ -69,11 +65,6 @@ export function VerseOfTheDay() {
         <ReportButton target={verseTarget(verse)} />
       </div>
       <VerseText verse={verse} />
-      {long && (
-        <button className="link verse-more" onClick={() => setOpen(!open)} aria-expanded={open}>
-          {open ? t.showLess : t.readMore}
-        </button>
-      )}
     </motion.section>
   );
 }
