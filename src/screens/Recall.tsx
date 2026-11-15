@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { BookOpenCheck, Check, ChevronLeft, Eye, RotateCcw, X } from 'lucide-react';
+import { BookOpenCheck, Check, ChevronLeft, Eye, RotateCcw, Search, X } from 'lucide-react';
 import { BOOKS, formatRef } from '../i18n/books';
 import { loadRecallBook, loadRecallIndex, recallRound, type RecallCard, type RecallIndex } from '../engine/recall';
 import { recordAnswer } from '../storage/db';
@@ -140,23 +140,38 @@ export function Recall({ onExit }: { onExit: () => void }) {
 
 export function BookGrid({ counts, lang, onPick, available }: { counts: Record<string, number>; lang: 'en' | 'ta'; onPick: (b: string) => void; available?: Set<string> }) {
   const t = useT();
+  // One testament at a time, with a search box: no long scroll to find a book.
+  const [tm, setTm] = useState<'OT' | 'NT'>('OT');
+  const [query, setQuery] = useState('');
+  const q = query.trim().toLowerCase();
+  const books = BOOKS.filter((b) => (q ? `${b.en} ${b.ta}`.toLowerCase().includes(q) : b.testament === tm));
   return (
     <>
-      {(['OT', 'NT'] as const).map((tm) => (
-        <section key={tm}>
-          <h2 className="eyebrow section-title">{tm === 'OT' ? t.ot : t.nt}</h2>
-          <div className="recall-books">
-            {BOOKS.filter((b) => b.testament === tm).map((b) => (
-              <Pressable key={b.code} className="recall-book glass" onClick={() => onPick(b.code)} disabled={available ? !available.has(b.code) : false}>
-                <span className="recall-book-name" lang={lang}>
-                  {b[lang]}
-                </span>
-                <span className="caption">{counts[b.code] ?? 0}</span>
-              </Pressable>
-            ))}
-          </div>
-        </section>
-      ))}
+      <label className="search-field">
+        <Search size={18} strokeWidth={STROKE} />
+        <input className="field" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.searchBooks} aria-label={t.searchBooks} />
+      </label>
+      {!q && (
+        <div className="segmented" role="tablist">
+          {(['OT', 'NT'] as const).map((v) => (
+            <button key={v} role="tab" aria-selected={tm === v} className={tm === v ? 'is-on' : ''} onClick={() => setTm(v)}>
+              {tm === v && <motion.span layoutId="seg-testament" className="segmented-thumb" transition={spring.calm} />}
+              <span>{v === 'OT' ? t.ot : t.nt}</span>
+            </button>
+          ))}
+        </div>
+      )}
+      {books.length === 0 && <p className="caption empty-note">{t.noMatches}</p>}
+      <div className="recall-books">
+        {books.map((b) => (
+          <Pressable key={b.code} className="recall-book glass" onClick={() => onPick(b.code)} disabled={available ? !available.has(b.code) : false}>
+            <span className="recall-book-name" lang={lang}>
+              {b[lang]}
+            </span>
+            <span className="caption">{t.questionsN(counts[b.code] ?? 0)}</span>
+          </Pressable>
+        ))}
+      </div>
     </>
   );
 }

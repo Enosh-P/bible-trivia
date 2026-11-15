@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LogIn, UserPlus } from 'lucide-react';
+import { LogIn, Mail, UserPlus } from 'lucide-react';
 import { resetPassword, signIn, signInWithGoogle, signUp } from '../online/account';
 import { supabase } from '../online/supabase';
 import { useT } from '../store';
@@ -14,6 +14,8 @@ export function AuthForm({ onDone }: { onDone?: () => void }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
+  // Google first; the email form opens only when asked for.
+  const [emailOpen, setEmailOpen] = useState(false);
   const [message, setMessage] = useState<{ kind: 'error' | 'info'; text: string } | null>(null);
 
   if (!supabase) return <p className="caption">{t.accountOffline}</p>;
@@ -65,6 +67,16 @@ export function AuthForm({ onDone }: { onDone?: () => void }) {
         <GoogleMark />
         {t.continueWithGoogle}
       </Pressable>
+      {!emailOpen && (
+        <>
+          {message && <p className={`caption form-msg is-${message.kind}`}>{message.text}</p>}
+          <Pressable className="btn glass" type="button" onClick={() => setEmailOpen(true)}>
+            <Mail size={18} strokeWidth={STROKE} /> {t.useEmail}
+          </Pressable>
+        </>
+      )}
+      {emailOpen && (
+        <>
       <div className="or-line">
         <span>{t.orEmail}</span>
       </div>
@@ -97,6 +109,8 @@ export function AuthForm({ onDone }: { onDone?: () => void }) {
           </button>
         )}
       </div>
+        </>
+      )}
     </form>
   );
 }

@@ -54,10 +54,14 @@ export function FriendPage({
 
       <motion.section className="glass card-pad record-card" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={spring.calm}>
         <span className="eyebrow">{t.record}</span>
-        <div className="record-big" aria-label={`${t.recordWLT}: ${r.wins}, ${r.losses}, ${r.ties}`}>
-          <span className="w">{r.wins}</span>–<span className="l">{r.losses}</span>–<span className="t">{r.ties}</span>
+        <div className="record-cols">
+          {t.recordWLT.split(' · ').map((name, i) => (
+            <div key={name}>
+              <strong className={['w', 'l', 't'][i]}>{[r.wins, r.losses, r.ties][i]}</strong>
+              <span className="caption">{name}</span>
+            </div>
+          ))}
         </div>
-        <span className="caption">{t.recordWLT}</span>
         <span className={`standing is-${s}`}>{s === 'new' ? t.noRecord : s === 'ahead' ? t.ahead : s === 'behind' ? t.behind : t.even}</span>
         <Pressable className="btn btn-primary" onClick={onChallenge}>
           <Swords size={18} strokeWidth={STROKE} /> {t.challenge}

@@ -52,6 +52,10 @@ export function Friends({
   const { session, profile, friends, challenges, records, refresh } = useAccount();
   const [picking, setPicking] = useState<Friend | null>(null);
   const [viewing, setViewing] = useState<Friend | null>(null);
+  const [tab, setTab] = useState<'friends' | 'challenges' | 'board'>(() => (useAccount.getState().challenges.some(myTurn) ? 'challenges' : 'friends'));
+  const [adding, setAdding] = useState(false);
+  const [showQr, setShowQr] = useState(false);
+  const [scanning, setScanning] = useState(false);
 
   useEffect(() => {
     void refresh();
@@ -130,97 +134,165 @@ export function Friends({
     );
   }
 
+  const dot = <span className="seg-dot" aria-hidden />;
   return (
     <div className="screen" lang={uiLang}>
       <h1 className="display">{t.friendsTitle}</h1>
 
-      {profile && <MyCode code={profile.friend_code} name={profile.display_name} avatar={profile.avatar} />}
-      <AddFriend />
+      {profile && <MyCard name={profile.display_name} avatar={profile.avatar} />}
 
-      {incoming.length > 0 && (
-        <section className="glass card-pad">
-          <h2 className="eyebrow">{t.requests}</h2>
-          {incoming.map((f) => (
-            <div className="person" key={f.user_id}>
-              <Avatar horse={f.avatar} />
-              <strong className="grow">{f.display_name}</strong>
-              <Pressable className="btn btn-primary small" onClick={() => respondToFriend(f.user_id, true)}>
-                <Check size={16} strokeWidth={STROKE} /> {t.accept}
-              </Pressable>
-              <Pressable className="chip glass" aria-label={t.decline} onClick={() => respondToFriend(f.user_id, false)}>
-                <X size={16} strokeWidth={STROKE} />
-              </Pressable>
-            </div>
-          ))}
-        </section>
-      )}
-
-      {outgoing.length > 0 && (
-        <section className="glass card-pad">
-          <h2 className="eyebrow">
-            {t.sentRequests} ({outgoing.length})
-          </h2>
-          {outgoing.map((f) => (
-            <div className="person" key={f.user_id}>
-              <Avatar horse={f.avatar} />
-              <div className="grow">
-                <strong>{f.display_name}</strong>
-                <span className="caption">
-                  {f.since ? `${t.sentOn} ${new Date(f.since).toLocaleDateString(uiLang === 'ta' ? 'ta-IN' : undefined, { day: 'numeric', month: 'short' })} · ` : ''}
-                  {t.pendingSent}
-                </span>
-              </div>
-              <Pressable className="btn glass small" onClick={() => removeFriend(f.user_id)}>
-                <X size={15} strokeWidth={STROKE} /> {t.cancel}
-              </Pressable>
-            </div>
-          ))}
-        </section>
-      )}
-
-      {turn.length > 0 && (
-        <section className="glass card-pad">
-          <h2 className="eyebrow">{t.yourTurn}</h2>
-          {turn.map((c) => (
-            <ChallengeRow key={c.id} c={c} action={() => onPlayChallenge(c)} />
-          ))}
-        </section>
-      )}
-
-      <FamilyBoard />
-
-      <section className="glass card-pad">
-        <h2 className="eyebrow">{t.yourFriends}</h2>
-        {accepted.length === 0 && <p className="caption">{t.noFriends}</p>}
-        {accepted.map((f) => (
-          <div className="person" key={f.user_id}>
-            <button className="person-open" onClick={() => setViewing(f)} aria-label={f.display_name}>
-              <Avatar horse={f.avatar} />
-              <div className="grow">
-                <strong>{f.display_name}</strong>
-                <span className="caption">
-                  {f.xp ?? 0} XP · {f.streak ?? 0} {t.streak}
-                </span>
-              </div>
-              <RecordChip record={records[f.user_id]} />
-            </button>
-            <Pressable className="btn btn-primary small" onClick={() => setPicking(f)} aria-label={`${t.challenge}: ${f.display_name}`}>
-              <Swords size={16} strokeWidth={STROKE} /> <span className="btn-label">{t.challenge}</span>
-            </Pressable>
-          </div>
+      <div className="segmented" role="tablist">
+        {(['friends', 'challenges', 'board'] as const).map((v) => (
+          <button key={v} role="tab" aria-selected={tab === v} className={tab === v ? 'is-on' : ''} onClick={() => setTab(v)}>
+            {tab === v && <motion.span layoutId="seg-friends" className="segmented-thumb" transition={spring.calm} />}
+            <span>
+              {v === 'friends' ? t.tabFriends : v === 'challenges' ? t.challenges : t.leaderboard}
+              {((v === 'friends' && incoming.length > 0) || (v === 'challenges' && turn.length > 0)) && dot}
+            </span>
+          </button>
         ))}
-      </section>
+      </div>
 
-      {(waiting.length > 0 || done.length > 0) && (
-        <section className="glass card-pad">
-          <h2 className="eyebrow">{t.challenges}</h2>
-          {waiting.map((c) => (
-            <ChallengeRow key={c.id} c={c} />
-          ))}
-          {done.map((c) => (
-            <ChallengeRow key={c.id} c={c} />
-          ))}
-        </section>
+      {tab === 'friends' && (
+        <>
+          <Pressable className="btn btn-primary" onClick={() => setAdding(true)}>
+            <UserPlus size={18} strokeWidth={STROKE} /> {t.addFriend}
+          </Pressable>
+
+          {incoming.length > 0 && (
+            <section className="glass card-pad">
+              <h2 className="eyebrow">{t.requests}</h2>
+              {incoming.map((f) => (
+                <div className="person" key={f.user_id}>
+                  <Avatar horse={f.avatar} size={44} />
+                  <strong className="grow">{f.display_name}</strong>
+                  <Pressable className="btn btn-primary small" onClick={() => respondToFriend(f.user_id, true)}>
+                    <Check size={16} strokeWidth={STROKE} /> {t.accept}
+                  </Pressable>
+                  <Pressable className="chip glass" aria-label={t.decline} onClick={() => respondToFriend(f.user_id, false)}>
+                    <X size={16} strokeWidth={STROKE} />
+                  </Pressable>
+                </div>
+              ))}
+            </section>
+          )}
+
+          <section className="glass card-pad">
+            <h2 className="eyebrow">{t.yourFriends}</h2>
+            {accepted.length === 0 && <p className="caption">{t.noFriends}</p>}
+            {accepted.map((f) => {
+              const r = records[f.user_id];
+              return (
+                <div className="person" key={f.user_id}>
+                  <button className="person-open" onClick={() => setViewing(f)} aria-label={f.display_name}>
+                    <Avatar horse={f.avatar} size={44} />
+                    <div className="grow">
+                      <strong>{f.display_name}</strong>
+                      <span className="caption">
+                        {f.xp ?? 0} XP · {f.streak ?? 0} {t.streak}
+                      </span>
+                      {r && r.wins + r.losses + r.ties > 0 && <span className={`caption record-line is-${standing(r)}`}>{t.recordLine(r.wins, r.losses, r.ties)}</span>}
+                    </div>
+                  </button>
+                  <Pressable className="btn btn-primary small" onClick={() => setPicking(f)} aria-label={`${t.challenge}: ${f.display_name}`}>
+                    <Swords size={16} strokeWidth={STROKE} /> {t.challenge}
+                  </Pressable>
+                </div>
+              );
+            })}
+          </section>
+
+          {outgoing.length > 0 && (
+            <section className="glass card-pad">
+              <h2 className="eyebrow">
+                {t.sentRequests} ({outgoing.length})
+              </h2>
+              {outgoing.map((f) => (
+                <div className="person" key={f.user_id}>
+                  <Avatar horse={f.avatar} size={44} />
+                  <div className="grow">
+                    <strong>{f.display_name}</strong>
+                    <span className="caption">{t.pendingSent}</span>
+                  </div>
+                  <Pressable className="btn glass small" onClick={() => removeFriend(f.user_id)}>
+                    {t.cancel}
+                  </Pressable>
+                </div>
+              ))}
+            </section>
+          )}
+        </>
+      )}
+
+      {tab === 'challenges' && (
+        <>
+          {turn.length > 0 && (
+            <section className="glass card-pad">
+              <h2 className="eyebrow">{t.yourTurn}</h2>
+              {turn.map((c) => (
+                <ChallengeRow key={c.id} c={c} action={() => onPlayChallenge(c)} />
+              ))}
+            </section>
+          )}
+          {waiting.length > 0 && (
+            <section className="glass card-pad">
+              <h2 className="eyebrow">{t.waiting}</h2>
+              {waiting.map((c) => (
+                <ChallengeRow key={c.id} c={c} />
+              ))}
+            </section>
+          )}
+          {done.length > 0 && (
+            <section className="glass card-pad">
+              <h2 className="eyebrow">{t.finished}</h2>
+              {done.map((c) => (
+                <ChallengeRow key={c.id} c={c} />
+              ))}
+            </section>
+          )}
+          {turn.length + waiting.length + done.length === 0 && (
+            <section className="glass card-pad">
+              <p className="caption empty-note">{t.noChallenges}</p>
+            </section>
+          )}
+        </>
+      )}
+
+      {tab === 'board' && <FamilyBoard />}
+
+      {profile && (
+        <>
+          <Sheet open={adding} onClose={() => setAdding(false)} label={t.addFriend}>
+            <div className="add-sheet" lang={uiLang}>
+              <h2 className="title">{t.addFriend}</h2>
+              <p className="caption">{t.addFriendLead}</p>
+              <ShareCode code={profile.friend_code} />
+              <div className="qr-actions">
+                <Pressable
+                  className="btn btn-primary"
+                  onClick={() => {
+                    setAdding(false);
+                    setShowQr(true);
+                  }}
+                >
+                  <QrCode size={18} strokeWidth={STROKE} /> {t.showQr}
+                </Pressable>
+                <Pressable
+                  className="btn btn-primary"
+                  onClick={() => {
+                    setAdding(false);
+                    setScanning(true);
+                  }}
+                >
+                  <ScanLine size={18} strokeWidth={STROKE} /> {t.scan}
+                </Pressable>
+              </div>
+              <AddFriend />
+            </div>
+          </Sheet>
+          <MyQRSheet open={showQr} onClose={() => setShowQr(false)} name={profile.display_name} />
+          <ScanSheet open={scanning} onClose={() => setScanning(false)} />
+        </>
       )}
 
       {modeSheet}
@@ -228,32 +300,17 @@ export function Friends({
   );
 }
 
-function MyCode({ code, name, avatar }: { code: string; name: string; avatar: Friend['avatar'] }) {
+/** You: picture, name and level. Tap the picture or the pencil to change them. */
+function MyCard({ name, avatar }: { name: string; avatar: Friend['avatar'] }) {
   const t = useT();
   const xp = useApp((s) => s.xp);
-  const [copied, setCopied] = useState(false);
-  const [showQr, setShowQr] = useState(false);
   const [editing, setEditing] = useState(false);
   const [picking, setPicking] = useState(false);
-  const [scanning, setScanning] = useState(false);
-  async function share() {
-    const text = `${t.shareCodeText} ${code}\n${location.origin}`;
-    try {
-      if (typeof navigator.share === 'function') await navigator.share({ text });
-      else {
-        await navigator.clipboard.writeText(text);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 1500);
-      }
-    } catch {
-      /* cancelled */
-    }
-  }
   return (
     <section className="glass card-pad my-code">
       <div className="person">
         <button className="avatar-edit" onClick={() => setPicking(true)} aria-label={t.chooseAvatar} title={t.chooseAvatar}>
-          <Avatar horse={avatar} size={48} />
+          <Avatar horse={avatar} size={52} />
           <span className="avatar-edit-badge" aria-hidden>
             <Pencil size={11} strokeWidth={2.4} />
           </span>
@@ -273,26 +330,38 @@ function MyCode({ code, name, avatar }: { code: string; name: string; avatar: Fr
         <h2 className="title">{t.editName}</h2>
         <NameForm autoFocus onSaved={() => setTimeout(() => setEditing(false), 700)} />
       </Sheet>
+    </section>
+  );
+}
+
+/** Your friend code in big letters, with a button to send it. */
+function ShareCode({ code }: { code: string }) {
+  const t = useT();
+  const [copied, setCopied] = useState(false);
+  async function share() {
+    const text = `${t.shareCodeText} ${code}\n${location.origin}`;
+    try {
+      if (typeof navigator.share === 'function') await navigator.share({ text });
+      else {
+        await navigator.clipboard.writeText(text);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1500);
+      }
+    } catch {
+      /* cancelled */
+    }
+  }
+  return (
+    <div className="share-code">
+      <span className="caption">{t.yourCode}</span>
       <div className="code-row">
-        <span className="friend-code" aria-label={t.yourCode}>
-          {code}
-        </span>
+        <span className="friend-code">{code}</span>
         <Pressable className="btn glass small" onClick={share}>
           {copied ? <Check size={16} strokeWidth={STROKE} /> : typeof navigator.share === 'function' ? <Share2 size={16} strokeWidth={STROKE} /> : <Copy size={16} strokeWidth={STROKE} />}
           {t.shareCode}
         </Pressable>
       </div>
-      <div className="qr-actions">
-        <Pressable className="btn btn-primary" onClick={() => setShowQr(true)}>
-          <QrCode size={18} strokeWidth={STROKE} /> {t.showQr}
-        </Pressable>
-        <Pressable className="btn btn-primary" onClick={() => setScanning(true)}>
-          <ScanLine size={18} strokeWidth={STROKE} /> {t.scan}
-        </Pressable>
-      </div>
-      <MyQRSheet open={showQr} onClose={() => setShowQr(false)} name={name} />
-      <ScanSheet open={scanning} onClose={() => setScanning(false)} />
-    </section>
+    </div>
   );
 }
 
@@ -316,8 +385,8 @@ function AddFriend() {
     }
   }
   return (
-    <form className="glass card-pad add-friend" onSubmit={submit}>
-      <h2 className="eyebrow">{t.addFriend}</h2>
+    <form className="add-friend" onSubmit={submit}>
+      <span className="caption">{t.orTypeCode}</span>
       <div className="code-row">
         <input
           className="field code-input"
@@ -376,19 +445,6 @@ function ChallengeRow({ c, action }: { c: Challenge; action?: () => void }) {
         </Pressable>
       )}
     </div>
-  );
-}
-
-/** "7–4–1" with a small marker: green when you're ahead, red when they are. */
-function RecordChip({ record }: { record?: { wins: number; losses: number; ties: number } }) {
-  const t = useT();
-  const s = standing(record);
-  if (s === 'new' || !record) return null;
-  const label = s === 'ahead' ? t.ahead : s === 'behind' ? t.behind : t.even;
-  return (
-    <span className={`record-chip is-${s}`} title={`${t.recordWLT} · ${label}`} aria-label={`${record.wins}–${record.losses}–${record.ties}, ${label}`}>
-      {record.wins}–{record.losses}–{record.ties}
-    </span>
   );
 }
 

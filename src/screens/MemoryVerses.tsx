@@ -1,9 +1,9 @@
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { Check, ChevronLeft, Plus, RotateCcw, Trash2 } from 'lucide-react';
+import { Check, ChevronDown, ChevronLeft, Plus, RotateCcw, Search, Trash2 } from 'lucide-react';
 import { VERSES, type Verse } from '../engine/verses';
 import { LEARNED, makeRound, sameWord } from '../engine/memory';
-import { formatRef, BOOKS } from '../i18n/books';
+import { formatRef, BOOKS, BOOK_BY_CODE } from '../i18n/books';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { cue } from '../feedback';
@@ -23,6 +23,13 @@ const NO_VERSES: Verse[] = [];
 const ORDER = BOOKS.map((b) => b.code);
 const byRef = (a: Verse, b: Verse) => ORDER.indexOf(a.book) - ORDER.indexOf(b.book) || a.chapter - b.chapter || a.verse - b.verse;
 const SORTED = [...VERSES].sort(byRef);
+/** The built-in verses, one group per book, in Bible order. */
+const GROUPS: { book: string; verses: Verse[] }[] = [];
+for (const v of SORTED) {
+  const last = GROUPS[GROUPS.length - 1];
+  if (last?.book === v.book) last.verses.push(v);
+  else GROUPS.push({ book: v.book, verses: [v] });
+}
 
 /** A verse's words in the chosen language, or the other one if only that was added. */
 export function verseText(v: Verse, lang: 'en' | 'ta'): { text: string; lang: 'en' | 'ta' } {
@@ -46,6 +53,36 @@ export function MemoryVerses({ onExit }: { onExit: () => void }) {
   const all = [...mine, ...SORTED];
   const learned = all.filter((v) => (memory[v.id] ?? 0) >= LEARNED).length;
   const isMine = (v: Verse) => v.id.startsWith('my-');
+  const groups = GROUPS;
+  const [openBook, setOpenBook] = useState<string | null>(null);
+  const [query, setQuery] = useState('');
+  const q = query.trim().toLowerCase();
+  const found = q ? all.filter((v) => `${ref(v, 'en')} ${ref(v, 'ta')} ${v.en} ${v.ta}`.toLowerCase().includes(q)) : [];
+  const item = (v: Verse) => {
+    const shown = verseText(v, lang);
+    const level = memory[v.id] ?? 0;
+    return (
+      <Pressable key={v.id} className="memory-item glass" onClick={() => setVerse(v)}>
+        <div className="grow">
+          <strong>{ref(v, lang)}</strong>
+          <span className="caption memory-preview" lang={shown.lang}>
+            {shown.text}
+          </span>
+        </div>
+        {level >= LEARNED ? (
+          <span className="memory-done" aria-label={t.memoryDone}>
+            <Check size={16} strokeWidth={2.4} />
+          </span>
+        ) : (
+          <span className="memory-dots" aria-label={`${level}/${LEARNED}`}>
+            {Array.from({ length: LEARNED }, (_, i) => (
+              <i key={i} className={i < level ? 'on' : ''} />
+            ))}
+          </span>
+        )}
+      </Pressable>
+    );
+  };
 
   return (
     <div className="screen recall" lang={uiLang}>
@@ -84,37 +121,48 @@ export function MemoryVerses({ onExit }: { onExit: () => void }) {
               <Pressable className="btn btn-primary" onClick={() => setAdding(true)}>
                 <Plus size={18} strokeWidth={STROKE} /> {t.addVerse}
               </Pressable>
-              {mine.length > 0 && <h2 className="eyebrow section-title">{t.myVerses}</h2>}
-              <div className="memory-list">
-                {all.map((v, i) => {
-                  const shown = verseText(v, lang);
-                  const level = memory[v.id] ?? 0;
-                  return (
-                    <Fragment key={v.id}>
-                    {i === mine.length && mine.length > 0 && <h2 className="eyebrow section-title">{t.versesOfTheDay}</h2>}
-                    <Pressable className="memory-item glass" onClick={() => setVerse(v)}>
-                      <div className="grow">
-                        <strong>{ref(v, lang)}</strong>
-                        <span className="caption memory-preview" lang={shown.lang}>
-                          {shown.text}
-                        </span>
-                      </div>
-                      {level >= LEARNED ? (
-                        <span className="memory-done" aria-label={t.memoryDone}>
-                          <Check size={16} strokeWidth={2.4} />
-                        </span>
-                      ) : (
-                        <span className="memory-dots" aria-label={`${level}/${LEARNED}`}>
-                          {Array.from({ length: LEARNED }, (_, i) => (
-                            <i key={i} className={i < level ? 'on' : ''} />
-                          ))}
-                        </span>
-                      )}
-                    </Pressable>
-                    </Fragment>
-                  );
-                })}
-              </div>
+              <label className="search-field">
+                <Search size={18} strokeWidth={STROKE} />
+                <input className="field" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.searchVerses} aria-label={t.searchVerses} />
+              </label>
+              {q ? (
+                <div className="memory-list">
+                  {found.length === 0 && <p className="caption empty-note">{t.noMatches}</p>}
+                  {found.slice(0, 60).map(item)}
+                </div>
+              ) : (
+                <>
+                  {mine.length > 0 && (
+                    <>
+                      <h2 className="eyebrow section-title">{t.myVerses}</h2>
+                      <div className="memory-list">{mine.map(item)}</div>
+                      <h2 className="eyebrow section-title">{t.versesOfTheDay}</h2>
+                    </>
+                  )}
+                  {/* One row per book; a book opens to show its verses, so the list is short to scroll. */}
+                  <div className="memory-list">
+                    {groups.map((g) => {
+                      const open = openBook === g.book;
+                      const done = g.verses.filter((v) => (memory[v.id] ?? 0) >= LEARNED).length;
+                      return (
+                        <Fragment key={g.book}>
+                          <button className={`memory-book glass ${open ? 'is-open' : ''}`} onClick={() => setOpenBook(open ? null : g.book)} aria-expanded={open}>
+                            <span className="menu-text">
+                              <strong>{BOOK_BY_CODE[g.book]?.[lang] ?? g.book}</strong>
+                              <span className="caption">
+                                {t.nVerses(g.verses.length)}
+                                {done > 0 && ` · ${t.memoryLearned(done, g.verses.length)}`}
+                              </span>
+                            </span>
+                            <ChevronDown size={20} strokeWidth={STROKE} className="menu-chevron" />
+                          </button>
+                          {open && <div className="memory-list memory-sub">{g.verses.map(item)}</div>}
+                        </Fragment>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
             </>
           )}
         </motion.div>

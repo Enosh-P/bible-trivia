@@ -102,43 +102,57 @@ export function Gospel({
 
 function Way({ lang }: { lang: Lang }) {
   const t = useT();
+  // One step open at a time: the titles show the whole path, the open one is read in full.
+  const [open, setOpen] = useState(0);
+  const n = GOSPEL_STEPS.length;
   return (
     <ol className="steps">
-      {GOSPEL_STEPS.map((step, i) => (
-        <motion.li
-          key={step.id}
-          className="step glass"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ...spring.calm, delay: i * 0.04 }}
-        >
-          <div className="step-head">
-            <IconTile horse={step.horse} icon={ICONS[step.icon] ?? Footprints} size={40} />
-            <div className="grow">
-              <span className="eyebrow">
-                {t.step} {i + 1}
-              </span>
-              <h2 className="title" lang={lang}>
-                {step.title[lang]}
-              </h2>
-            </div>
-          </div>
-          <p className="step-body" lang={lang}>
-            {step.body[lang]}
-          </p>
-          {step.prayer && (
-            <p className="prayer verse" lang={lang}>
-              {step.prayer[lang]}
-            </p>
-          )}
-          {step.verses.map((id) => VERSE_BY_ID[id] && <VerseText key={id} verse={VERSE_BY_ID[id]} size="sm" />)}
-          {step.next && (
-            <p className="caption" lang={lang}>
-              {step.next[lang]}
-            </p>
-          )}
-        </motion.li>
-      ))}
+      {GOSPEL_STEPS.map((step, i) => {
+        const isOpen = open === i;
+        return (
+          <motion.li key={step.id} layout transition={spring.calm} className={`step glass ${isOpen ? 'is-open' : ''}`}>
+            <button className="step-head" onClick={() => setOpen(isOpen ? -1 : i)} aria-expanded={isOpen}>
+              <IconTile horse={isOpen ? step.horse : 'white'} icon={ICONS[step.icon] ?? Footprints} size={40} />
+              <div className="grow">
+                <span className="eyebrow">{t.stepNofM(i + 1, n)}</span>
+                <h2 className="title" lang={lang}>
+                  {step.title[lang]}
+                </h2>
+              </div>
+              <motion.span animate={{ rotate: isOpen ? 180 : 0 }} transition={spring.snappy} className="faq-chevron">
+                <ChevronDown size={20} strokeWidth={STROKE} />
+              </motion.span>
+            </button>
+            <AnimatePresence initial={false}>
+              {isOpen && (
+                <motion.div className="faq-a" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={spring.calm}>
+                  <div className="step-inner">
+                    <p className="step-body" lang={lang}>
+                      {step.body[lang]}
+                    </p>
+                    {step.prayer && (
+                      <p className="prayer verse" lang={lang}>
+                        {step.prayer[lang]}
+                      </p>
+                    )}
+                    {step.verses.map((id) => VERSE_BY_ID[id] && <VerseText key={id} verse={VERSE_BY_ID[id]} size="sm" />)}
+                    {step.next && (
+                      <p className="caption" lang={lang}>
+                        {step.next[lang]}
+                      </p>
+                    )}
+                    {i + 1 < n && (
+                      <button className="btn btn-primary step-next" onClick={() => setOpen(i + 1)}>
+                        {t.next}: {t.stepNofM(i + 2, n)}
+                      </button>
+                    )}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.li>
+        );
+      })}
     </ol>
   );
 }

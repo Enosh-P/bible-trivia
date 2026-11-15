@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { BookMarked, Dumbbell, History, NotebookPen, PenLine, Star, type LucideIcon } from 'lucide-react';
+import { BookMarked, ChevronRight, Dumbbell, History, NotebookPen, PenLine, Star, type LucideIcon } from 'lucide-react';
 import { db, savedIds } from '../storage/db';
 import { summarize, type PracticeSummary } from '../engine/practice';
 import { VERSES } from '../engine/verses';
@@ -10,8 +10,7 @@ import type { Horse } from '../engine/modes';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
-import { IconTile } from '../components/icons';
-import { LangToggle } from '../components/LangToggle';
+import { IconTile, STROKE } from '../components/icons';
 import { onPracticeChange, practiceVersion, syncPractice } from '../online/practiceSync';
 import { Progress } from './Progress';
 
@@ -36,6 +35,7 @@ export function Practice({ onAction }: { onAction: (a: PracticeAction) => void }
   const [sum, setSum] = useState<PracticeSummary | null>(null);
   const [saved, setSaved] = useState<string[]>([]);
   const [wrongEver, setWrongEver] = useState(0);
+  const [tab, setTab] = useState<'practise' | 'progress'>('practise');
 
   // Reload when a sync brings in practice from another device.
   const [version, setVersion] = useState(practiceVersion);
@@ -91,23 +91,33 @@ export function Practice({ onAction }: { onAction: (a: PracticeAction) => void }
   return (
     <div className="screen" lang={uiLang}>
       <header className="home-head">
-        <div className="home-head-row">
-          <p className="caption">{t.practiceLead}</p>
-          <LangToggle />
-        </div>
         <h1 className="display">{t.tabProgress}</h1>
+        <p className="caption">{t.practiceLead}</p>
       </header>
 
-      <div className="practice-grid">
+      <div className="segmented" role="tablist">
+        {(['practise', 'progress'] as const).map((v) => (
+          <button key={v} role="tab" aria-selected={tab === v} className={tab === v ? 'is-on' : ''} onClick={() => setTab(v)}>
+            {tab === v && <motion.span layoutId="seg-practice" className="segmented-thumb" transition={spring.calm} />}
+            <span>{v === 'practise' ? t.practiseTab : t.progressTab}</span>
+          </button>
+        ))}
+      </div>
+
+      {tab === 'progress' && <Progress embedded />}
+      {tab === 'practise' && (
+        <>
+      <div className="mode-list">
         {cards.map((c, i) => (
           <motion.div key={c.key} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring.calm, delay: 0.03 * i }}>
-            <Pressable className={`practice-card glass ${c.onClick ? '' : 'is-empty'}`} onClick={c.onClick} disabled={!c.onClick}>
-              <div className="practice-card-top">
-                <IconTile horse={c.horse} icon={c.icon} size={34} />
-                {!!c.count && <span className="practice-count">{c.count > 99 ? '99+' : c.count}</span>}
-              </div>
-              <strong>{c.title}</strong>
-              <span className="caption">{c.sub}</span>
+            <Pressable className={`practice-row glass ${c.onClick ? '' : 'is-empty'}`} onClick={c.onClick} disabled={!c.onClick}>
+              <IconTile horse={c.horse} icon={c.icon} size={44} />
+              <span className="menu-text">
+                <strong>{c.title}</strong>
+                <span className="caption">{c.sub}</span>
+              </span>
+              {!!c.count && <span className="practice-count">{c.count > 99 ? '99+' : c.count}</span>}
+              {c.onClick && <ChevronRight size={18} strokeWidth={STROKE} className="menu-chevron" />}
             </Pressable>
           </motion.div>
         ))}
@@ -131,8 +141,8 @@ export function Practice({ onAction }: { onAction: (a: PracticeAction) => void }
         </div>
         {sum && sum.books.length > 0 && <p className="caption">{t.weakSpotsHint}</p>}
       </section>
-
-      <Progress embedded />
+        </>
+      )}
     </div>
   );
 }

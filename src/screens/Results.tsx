@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { Check, Heart, Home as HomeIcon, RotateCcw, Share2, X } from 'lucide-react';
+import { Check, ChevronDown, Heart, Home as HomeIcon, RotateCcw, Share2, X } from 'lucide-react';
 import { MODES } from '../engine/modes';
 import { formatRef } from '../i18n/books';
 import { useApp, useT } from '../store';
@@ -24,6 +24,7 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
   const mode = MODES[result.mode];
   const pct = result.total ? Math.round((result.correct / result.total) * 100) : 0;
   // A heart earned by this round: shown once, then cleared.
+  const [reviewOpen, setReviewOpen] = useState(false);
   const [earnedHeart] = useState(() => useApp.getState().heartEarnedOn === dayKey());
   useEffect(() => {
     if (earnedHeart) useApp.setState({ heartEarnedOn: undefined });
@@ -100,7 +101,14 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
         <ChallengeFromResult result={result} />
       </div>
 
-      <h2 className="eyebrow section-title">{t.review}</h2>
+      {/* The answers stay folded away until asked for, so the score and the next step come first. */}
+      <button className={`review-toggle glass ${reviewOpen ? 'is-open' : ''}`} onClick={() => setReviewOpen(!reviewOpen)} aria-expanded={reviewOpen}>
+        <span className="menu-text">
+          <strong>{t.reviewN(result.log.length)}</strong>
+        </span>
+        <ChevronDown size={20} strokeWidth={STROKE} className="menu-chevron" />
+      </button>
+      {reviewOpen && (
       <ul className="review">
         {result.log.map((l, i) => (
           <motion.li
@@ -125,6 +133,7 @@ export function Results({ result, xp, onAgain, onHome }: { result: RoundResult; 
           </motion.li>
         ))}
       </ul>
+      )}
     </div>
   );
 }
