@@ -1,5 +1,5 @@
 import { AnimatePresence, MotionConfig, motion } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import { Atmosphere } from './components/Atmosphere';
 import { ArtSticker } from './components/ArtSticker';
@@ -154,10 +154,31 @@ function MainApp() {
   const [route, setRoute] = useState<Route>(() => ({ kind: 'tab', tab: tabFromHash() }));
   // Which part of the Gospel tab is open (kept when coming back from a thought).
   const [gospelSection, setGospelSection] = useState<GospelSection>('way');
-  // A new screen (or tab) starts at the top, not where the last one was scrolled to.
+  // Scroll: each tab remembers where it was (so Back returns there); any other
+  // screen (a game, Memory verses, a post…) opens at the top.
   const screenKey = route.kind === 'tab' ? `tab-${route.tab}` : route.kind;
+  const scrollPos = useRef<Record<string, number>>({});
+  const currentScreen = useRef(screenKey);
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const onScroll = () => (scrollPos.current[currentScreen.current] = window.scrollY);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  // Layout effect: switch which screen is being tracked before the browser reacts to the
+  // shorter page, so leaving Home doesn't overwrite where Home was.
+  useLayoutEffect(() => {
+    currentScreen.current = screenKey;
+    const target = screenKey.startsWith('tab-') ? (scrollPos.current[screenKey] ?? 0) : 0;
+    window.scrollTo(0, target);
+    if (!target) return;
+    // The tab's content may still be drawing: try again once it has grown tall enough.
+    let tries = 0;
+    const again = () => {
+      if (currentScreen.current !== screenKey || Math.abs(window.scrollY - target) < 2 || tries++ > 20) return;
+      window.scrollTo(0, target);
+      requestAnimationFrame(again);
+    };
+    requestAnimationFrame(again);
   }, [screenKey]);
 
   const [lastTab, setLastTab] = useState<Tab>(() => tabFromHash());

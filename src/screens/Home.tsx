@@ -35,8 +35,8 @@ export function Home({ onPlay, onMemory, onResume, onShowSaved, onOpenPost, onSh
   const hearts = useApp((s) => s.hearts ?? 0);
   const healed = useApp((s) => (s.healedNote?.day === dayKey() ? s.healedNote.count : 0));
   const [heartsOpen, setHeartsOpen] = useState(false);
-  // List (long rows with a description) or grid (square tiles); remembered on this phone.
-  const view = useApp((st) => st.homeView ?? 'list');
+  // Grid (small square tiles, the default) or list (long rows with a description); remembered on this phone.
+  const view = useApp((st) => st.homeView ?? 'grid');
   const setApp = useApp((st) => st.set);
   const [levelOpen, setLevelOpen] = useState(false);
   const { level, into, need } = levelFromXp(xp);
@@ -107,41 +107,44 @@ export function Home({ onPlay, onMemory, onResume, onShowSaved, onOpenPost, onSh
 
       {GROUPS.map((g, gi) => (
         <section key={g.id} className="mode-group">
-          <div className="group-head">
+          <motion.div layout="position" transition={spring.calm} className="group-head">
             <div className="group-title-row">
               <h2 className="group-title">{groupText[g.id][0]}</h2>
               {gi === 0 && (
                 <div className="view-toggle glass" role="radiogroup" aria-label={t.gamesView}>
                   {(['list', 'grid'] as const).map((v) => (
                     <button key={v} role="radio" aria-checked={view === v} aria-label={v === 'list' ? t.viewList : t.viewGrid} title={v === 'list' ? t.viewList : t.viewGrid} className={view === v ? 'is-on' : ''} onClick={() => setApp({ homeView: v })}>
-                      {v === 'list' ? <List size={17} strokeWidth={STROKE} /> : <LayoutGrid size={17} strokeWidth={STROKE} />}
+                      {view === v && <motion.span layoutId="view-thumb" className="view-thumb" transition={spring.calm} />}
+                      <span className="view-icon">{v === 'list' ? <List size={17} strokeWidth={STROKE} /> : <LayoutGrid size={17} strokeWidth={STROKE} />}</span>
                     </button>
                   ))}
                 </div>
               )}
             </div>
             <p className="caption">{groupText[g.id][1]}</p>
-          </div>
+          </motion.div>
           <div className={`mode-list is-${view}`}>
             {/* Memory verses leads the Learn group. */}
             {g.id === 'learn' && (
-              <Pressable className="mode-row glass horse-pale" onClick={onMemory}>
-                <MemoryArt className="mode-row-art" />
-                <span className="menu-text">
+              <motion.div layout transition={spring.calm}>
+              <Pressable layout transition={spring.calm} className="mode-row glass horse-pale" onClick={onMemory}>
+                <motion.span layout transition={spring.calm} className="tile-art"><MemoryArt className="mode-row-art" /></motion.span>
+                <motion.span layout="position" transition={spring.calm} className="menu-text">
                   <strong>{t.memoryTitle}</strong>
                   <span className="caption">{t.memoryDesc}</span>
-                </span>
+                </motion.span>
                 <ChevronRight size={18} strokeWidth={STROKE} className="menu-chevron" />
               </Pressable>
+              </motion.div>
             )}
             {g.modes.map((id, i) => (
-              <motion.div key={id} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring.calm, delay: 0.03 * (gi * 3 + i) }}>
-                <Pressable className={`mode-row glass horse-${MODES[id].horse}`} onClick={() => setIntro(id)}>
-                  <ModeArt mode={id} className="mode-row-art" />
-                  <span className="menu-text">
+              <motion.div key={id} layout initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ ...spring.calm, delay: 0.03 * (gi * 3 + i), layout: spring.calm }}>
+                <Pressable layout transition={spring.calm} className={`mode-row glass horse-${MODES[id].horse}`} onClick={() => setIntro(id)}>
+                  <motion.span layout transition={spring.calm} className="tile-art"><ModeArt mode={id} className="mode-row-art" /></motion.span>
+                  <motion.span layout="position" transition={spring.calm} className="menu-text">
                     <strong>{t.modeName[id]}</strong>
                     <span className="caption">{t.modeDesc[id]}</span>
-                  </span>
+                  </motion.span>
                   <ChevronRight size={18} strokeWidth={STROKE} className="menu-chevron" />
                 </Pressable>
               </motion.div>
