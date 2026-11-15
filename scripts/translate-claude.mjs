@@ -13,6 +13,7 @@
 //   npm run translate:claude -- --cancel       stop batches that haven't finished
 //
 // Limit what's sent with --books GEN,JHN, --top 11 (popular books first), or --limit 2000.
+// --redo translates again only the ones the last merge said went wrong (shown in English).
 //
 // Or use your Claude subscription instead of API credits (Claude Code must be
 // installed and signed in on this computer):
@@ -235,9 +236,22 @@ async function collect(state, done) {
   }
 }
 
+function redoKeys() {
+  const f = new URL('content/translations/ta/mcq/redo.json', ROOT);
+  const list = existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : [];
+  return new Set(list.map(({ book, id }) => keyOf(book, id)));
+}
+
 function remaining(state, done) {
   const pending = new Set(state.batches.filter((b) => !b.collected).flatMap((b) => b.keys));
-  let qs = allQuestions().filter(([book, row]) => !done[book]?.[row[0]] && !pending.has(keyOf(book, row[0])) && (state.failed[keyOf(book, row[0])] ?? 0) < 2);
+  // --redo: only the questions the last merge listed as broken (content/translations/ta/mcq/redo.json),
+  // translated again even if they were done before.
+  const redo = flag('redo') ? redoKeys() : null;
+  let qs = allQuestions().filter(([book, row]) => {
+    const key = keyOf(book, row[0]);
+    if (redo) return redo.has(key) && !pending.has(key);
+    return !done[book]?.[row[0]] && !pending.has(key) && (state.failed[key] ?? 0) < 2;
+  });
   const books = opt('books')?.split(',').map((s) => s.trim().toUpperCase());
   if (books) qs = qs.filter(([book]) => books.includes(book));
   const top = Number(opt('top'));

@@ -1,0 +1,967 @@
+{
+ "about": "Corrections to the imported multiple-choice questions so they agree with the KJV (and BSI Tamil) text the app shows. Applied by scripts/import-bible-mcq.mjs on every build/merge. 'answer' = new index of the right option; 'set' = replace option text [en, ta]; 'q' = replace question [en, ta or null to keep]; 'drop' = remove a question that can't be made fair.",
+ "questions": {
+  "h36uGz": {
+   "why": "1 Cor 1:27 KJV: to confound the wise",
+   "answer": 0,
+   "set": {
+    "1": [
+     "To reward the humble",
+     "தாழ்மையுள்ளவர்களுக்குப் பலனளிக்க"
+    ]
+   }
+  },
+  "Y8AIV5": {
+   "why": "1 Cor 13:12: face to face is about seeing",
+   "answer": 0,
+   "set": {
+    "0": [
+     "Even as also he is known",
+     "தான் அறியப்பட்டிருக்கிறபடியே"
+    ],
+    "2": [
+     "In part",
+     "குறைவாக"
+    ]
+   }
+  },
+  "huzPnI": {
+   "drop": true
+  },
+  "CYtojZ": {
+   "why": "2 Sam 2:11: seven years and six months",
+   "answer": 2,
+   "set": {
+    "0": [
+     "Eight years and two months",
+     "எட்டு வருஷமும் இரண்டு மாதமும்"
+    ],
+    "1": [
+     "Six years and ten months",
+     "ஆறு வருஷமும் பத்து மாதமும்"
+    ],
+    "2": [
+     "Seven years and six months",
+     "ஏழு வருஷமும் ஆறு மாதமும்"
+    ]
+   },
+   "q": [
+    "How long was David king in Hebron over the house of Judah?",
+    "தாவீது எப்ரோனில் யூதா வம்சத்தாரின்மேல் எவ்வளவு காலம் ராஜாவாயிருந்தான்?"
+   ]
+  },
+  "pvrlj3": {
+   "why": "2 Sam 6:18 KJV: peace offerings",
+   "answer": 0,
+   "set": {
+    "0": [
+     "Peace offerings",
+     "சமாதானபலிகள்"
+    ],
+    "2": [
+     "Wave offerings",
+     "அசைவாட்டும் பலிகள்"
+    ]
+   }
+  },
+  "u6xKJV": {
+   "why": "Acts 26:18: forgiveness is also in the verse",
+   "answer": 2,
+   "set": {
+    "0": [
+     "Riches and honour",
+     "ஐசுவரியமும் கனமும்"
+    ],
+    "2": [
+     "Inheritance among them which are sanctified",
+     "பரிசுத்தமாக்கப்பட்டவர்களுக்குள்ளே சுதந்தரம்"
+    ]
+   }
+  },
+  "buooTA": {
+   "why": "Amos 6:3 KJV",
+   "answer": 2,
+   "set": {
+    "2": [
+     "The seat of violence",
+     "கொடுமையின் ஆசனம்"
+    ]
+   }
+  },
+  "FySnNG": {
+   "why": "Amos 9:1 KJV",
+   "answer": 0,
+   "set": {
+    "0": [
+     "The lintel of the door",
+     "வாசலின் சட்டம்"
+    ]
+   }
+  },
+  "FfZ3US": {
+   "why": "Dan 4:34 KJV",
+   "answer": 1,
+   "set": {
+    "1": [
+     "His understanding",
+     "அவனுடைய புத்தி"
+    ]
+   }
+  },
+  "zivgUs": {
+   "why": "Dan 9:24: was a hidden EXCEPT question",
+   "q": [
+    "Which of these is NOT among the things determined for the holy city in the seventy weeks?",
+    "எழுபது வாரங்களில் பரிசுத்த நகரத்துக்காகக் குறிக்கப்பட்டவைகளில் இல்லாதது எது?"
+   ]
+  },
+  "XtY4gi": {
+   "why": "Dan 11:8: was a hidden EXCEPT question",
+   "q": [
+    "Which of these is NOT named among what will be carried into Egypt from the king of the North?",
+    "வடதிசை ராஜாவிடமிருந்து எகிப்துக்குக் கொண்டுபோகப்படுபவைகளில் சொல்லப்படாதது எது?"
+   ]
+  },
+  "iydZiC": {
+   "why": "Dan 11:38: was a hidden EXCEPT question",
+   "q": [
+    "Which of these is NOT named as what he will honour the god of forces with?",
+    "அரண்களின் தேவனை அவன் கனம்பண்ணுவதாகச் சொல்லப்படாதது எது?"
+   ]
+  },
+  "iVNFKN": {
+   "why": "Eph 1:23: his body",
+   "answer": 0,
+   "q": [
+    "How is the church described in relation to Christ?",
+    "கிறிஸ்துவைக் குறித்து சபை எப்படிச் சொல்லப்படுகிறது?"
+   ],
+   "set": {
+    "0": [
+     "His body",
+     "அவருடைய சரீரம்"
+    ],
+    "1": [
+     "His crown",
+     "அவருடைய கிரீடம்"
+    ],
+    "2": [
+     "His blessing",
+     "அவருடைய ஆசீர்வாதம்"
+    ],
+    "3": [
+     "His gift",
+     "அவருடைய ஈவு"
+    ]
+   }
+  },
+  "4Okspx": {
+   "why": "Est 2:8 KJV: keeper of the women",
+   "answer": 2,
+   "set": {
+    "2": [
+     "The women",
+     "ஸ்திரீகள்"
+    ]
+   }
+  },
+  "UVMizY": {
+   "why": "Est 8:9 KJV: the king's scribes",
+   "answer": 2,
+   "set": {
+    "1": [
+     "The king's chamberlains",
+     "ராஜாவின் பிரதானிகள்"
+    ]
+   }
+  },
+  "vpqWsY": {
+   "why": "Exod 36:19 KJV",
+   "answer": 3,
+   "set": {
+    "3": [
+     "Badgers' skins",
+     "தகசுத்தோல்கள்"
+    ]
+   }
+  },
+  "meGW1K": {
+   "why": "Gal 1:4 KJV",
+   "answer": 2,
+   "set": {
+    "1": [
+     "The Roman rulers",
+     "ரோம அதிகாரிகள்"
+    ],
+    "2": [
+     "This present evil world",
+     "இந்தப் பொல்லாத பிரபஞ்சம்"
+    ],
+    "3": [
+     "The law of Moses",
+     "மோசேயின் நியாயப்பிரமாணம்"
+    ]
+   }
+  },
+  "QEwAWl": {
+   "why": "Gal 3:2 KJV",
+   "answer": 2,
+   "set": {
+    "2": [
+     "By the hearing of faith",
+     "விசுவாசத்தைக் கேட்டதினால்"
+    ]
+   }
+  },
+  "UU0FDY": {
+   "why": "Gal 3:11 KJV: the just",
+   "answer": 0,
+   "set": {
+    "3": [
+     "The wise",
+     "ஞானிகள்"
+    ]
+   }
+  },
+  "2EBwEE": {
+   "why": "Gal 6:13 KJV",
+   "answer": 3,
+   "set": {
+    "1": [
+     "Their good works",
+     "தங்கள் நற்கிரியைகள்"
+    ],
+    "3": [
+     "In your flesh",
+     "உங்கள் மாம்சத்தில்"
+    ]
+   }
+  },
+  "yZG2Au": {
+   "drop": true
+  },
+  "NmINrF": {
+   "why": "Hos 7:2 KJV",
+   "answer": 2,
+   "set": {
+    "3": [
+     "All their good deeds",
+     "அவர்களுடைய நற்கிரியைகள் எல்லாம்"
+    ]
+   }
+  },
+  "zBv4gy": {
+   "drop": true
+  },
+  "ed6rIH": {
+   "why": "Job 4:7 KJV: the righteous",
+   "answer": 2,
+   "set": {
+    "0": [
+     "The rich",
+     "ஐசுவரியவான்கள்"
+    ],
+    "3": [
+     "The mighty",
+     "பலவான்கள்"
+    ]
+   }
+  },
+  "m1DBGq": {
+   "why": "Job 13:15 KJV: yet will I trust in him",
+   "answer": 2,
+   "set": {
+    "0": [
+     "Believe in him",
+     "அவரை விசுவாசிப்பேன்"
+    ],
+    "1": [
+     "Rest in him",
+     "அவரில் இளைப்பாறுவேன்"
+    ],
+    "2": [
+     "Trust in him",
+     "அவரை நம்புவேன்"
+    ],
+    "3": [
+     "Praise him",
+     "அவரைத் துதிப்பேன்"
+    ]
+   },
+   "q": [
+    "What does Job say he will do even though God slay him?",
+    "தேவன் தன்னைக் கொன்றுபோட்டாலும் தான் என்ன செய்வேன் என்று யோபு சொல்லுகிறான்?"
+   ]
+  },
+  "JZuaeZ": {
+   "why": "Job 19:23 KJV: in a book",
+   "answer": 2,
+   "set": {
+    "3": [
+     "On the sand",
+     "மணலில்"
+    ]
+   }
+  },
+  "JZuaeZx": {
+   "why": "Job 19:24 KJV",
+   "answer": 2,
+   "set": {
+    "0": [
+     "On a tree",
+     "ஒரு மரத்தில்"
+    ],
+    "2": [
+     "In the rock",
+     "கன்மலையில்"
+    ]
+   }
+  },
+  "eB3BkQ": {
+   "why": "Job 23:7 KJV: the righteous",
+   "answer": 0,
+   "set": {
+    "1": [
+     "The rich",
+     "ஐசுவரியவான்கள்"
+    ],
+    "3": [
+     "The elders",
+     "மூப்பர்கள்"
+    ]
+   }
+  },
+  "xHRQ0E": {
+   "why": "Job 33:9 KJV",
+   "answer": 1,
+   "set": {
+    "1": [
+     "I am clean without transgression",
+     "நான் மீறுதல் இல்லாத சுத்தன்"
+    ],
+    "2": [
+     "I am wise",
+     "நான் ஞானி"
+    ]
+   }
+  },
+  "WtsGQH": {
+   "why": "Job 36:31 KJV: the people",
+   "answer": 0,
+   "set": {
+    "2": [
+     "The angels",
+     "தூதர்கள்"
+    ]
+   }
+  },
+  "P7wLd1": {
+   "drop": true
+  },
+  "iVw7u1": {
+   "why": "Lev 4:10 KJV",
+   "answer": 2,
+   "set": {
+    "2": [
+     "The peace offering",
+     "சமாதானபலி"
+    ]
+   }
+  },
+  "ux5iKa": {
+   "why": "Matt 2:13: both were in the verse",
+   "answer": 3,
+   "set": {
+    "1": [
+     "By a star",
+     "ஒரு நட்சத்திரத்தினால்"
+    ],
+    "3": [
+     "An angel appeared to Joseph in a dream",
+     "சொப்பனத்தில் தூதன் யோசேப்புக்குக் காணப்பட்டான்"
+    ]
+   }
+  },
+  "csGb3w": {
+   "why": "Matt 21:22 KJV",
+   "answer": 1,
+   "set": {
+    "0": [
+     "Riches and honour",
+     "ஐசுவரியமும் கனமும்"
+    ],
+    "1": [
+     "All things, whatsoever they ask in prayer",
+     "ஜெபத்திலே விசுவாசத்தோடு கேட்பவைகள் எல்லாம்"
+    ]
+   }
+  },
+  "Z3BFrN": {
+   "why": "Matt 27:38 KJV: two thieves",
+   "answer": 2,
+   "set": {
+    "1": [
+     "Two soldiers",
+     "இரண்டு போர்ச்சேவகர்"
+    ]
+   }
+  },
+  "4GHQ2y": {
+   "why": "Matt 23:10 KJV: masters / Master",
+   "answer": 1,
+   "set": {
+    "1": [
+     "They had one Master, even Christ",
+     "கிறிஸ்து ஒருவரே அவர்களுக்குக் குரு"
+    ]
+   },
+   "q": [
+    "Why did Jesus say they were not to be called masters?",
+    "இயேசு அவர்கள் குருக்கள் என்று அழைக்கப்படக்கூடாது என்று ஏன் சொன்னார்?"
+   ]
+  },
+  "LJjdN2": {
+   "why": "Mark 1:19 KJV: mending their nets",
+   "answer": 1,
+   "set": {
+    "2": [
+     "Counting their fish",
+     "தங்கள் மீன்களை எண்ணிக்கொண்டிருந்தார்கள்"
+    ]
+   }
+  },
+  "kJ0nvT": {
+   "drop": true
+  },
+  "e6zFez": {
+   "why": "Prov 2:7 KJV",
+   "answer": 0,
+   "set": {
+    "2": [
+     "The rich",
+     "ஐசுவரியவான்கள்"
+    ]
+   },
+   "q": [
+    "For whom does the LORD lay up sound wisdom?",
+    "கர்த்தர் யாருக்காக மெய்ஞ்ஞானத்தை வைத்திருக்கிறார்?"
+   ]
+  },
+  "q5Dd87": {
+   "why": "Prov 2:7 KJV",
+   "answer": 0,
+   "set": {
+    "0": [
+     "Them that walk uprightly",
+     "உத்தமமாய் நடக்கிறவர்கள்"
+    ],
+    "1": [
+     "The rich",
+     "ஐசுவரியவான்கள்"
+    ],
+    "3": [
+     "The mighty",
+     "பலவான்கள்"
+    ]
+   },
+   "q": [
+    "To whom is the LORD a buckler?",
+    "கர்த்தர் யாருக்குக் கேடகமாயிருக்கிறார்?"
+   ]
+  },
+  "4QgEKT": {
+   "why": "Prov 2:22 KJV",
+   "answer": 2,
+   "set": {
+    "2": [
+     "The transgressors",
+     "துரோகிகள்"
+    ],
+    "3": [
+     "The meek",
+     "சாந்தகுணமுள்ளவர்கள்"
+    ]
+   },
+   "q": [
+    "Who shall be rooted out of the earth?",
+    "பூமியிலிருந்து நிர்மூலமாக்கப்படுகிறவர்கள் யார்?"
+   ]
+  },
+  "f4ZmfZ": {
+   "why": "Prov 3:32 KJV: his secret is with the righteous",
+   "answer": 0,
+   "set": {
+    "3": [
+     "The mighty",
+     "பலவான்கள்"
+    ]
+   }
+  },
+  "ZD3xry": {
+   "why": "Prov 8:23 KJV",
+   "answer": 0,
+   "set": {
+    "0": [
+     "From everlasting",
+     "அநாதியாக"
+    ],
+    "2": [
+     "From the days of Solomon",
+     "சாலொமோனின் நாட்கள் முதல்"
+    ]
+   }
+  },
+  "gWB7qH": {
+   "why": "Prov 13:16 KJV: his folly",
+   "answer": 0,
+   "set": {
+    "1": [
+     "His riches",
+     "தன் ஐசுவரியம்"
+    ]
+   }
+  },
+  "QcttRR": {
+   "why": "Prov 17:10 KJV: a wise man",
+   "answer": 3,
+   "set": {
+    "2": [
+     "A rich man",
+     "ஐசுவரியவான்"
+    ]
+   }
+  },
+  "1sUuWg": {
+   "why": "Prov 21:14 KJV",
+   "answer": 3,
+   "set": {
+    "0": [
+     "A loud voice",
+     "உரத்த சத்தம்"
+    ],
+    "3": [
+     "A reward in the bosom",
+     "மடியிலுள்ள பரிதானம்"
+    ]
+   }
+  },
+  "2hioi2": {
+   "why": "Prov 21:18 KJV",
+   "answer": 0,
+   "set": {
+    "0": [
+     "The transgressor",
+     "துரோகி"
+    ]
+   }
+  },
+  "AkXU3x": {
+   "why": "Prov 28:10 KJV",
+   "answer": 2,
+   "set": {
+    "2": [
+     "The upright",
+     "உத்தமர்கள்"
+    ]
+   }
+  },
+  "gLEyCw": {
+   "why": "Ps 9:5 KJV",
+   "answer": 1,
+   "set": {
+    "1": [
+     "The heathen",
+     "புறஜாதிகள்"
+    ]
+   }
+  },
+  "7gmG0l": {
+   "why": "Ps 22:16 KJV",
+   "answer": 1,
+   "set": {
+    "1": [
+     "Dogs and the assembly of the wicked",
+     "நாய்களும் பொல்லாதவர்களின் கூட்டமும்"
+    ],
+    "3": [
+     "Lions",
+     "சிங்கங்கள்"
+    ]
+   }
+  },
+  "nTbcgf": {
+   "why": "Ps 27:1 KJV",
+   "answer": 3,
+   "set": {
+    "2": [
+     "Where shall I hide?",
+     "நான் எங்கே ஒளிந்துகொள்வேன்?"
+    ]
+   }
+  },
+  "xTMQt9": {
+   "why": "Ps 27:2 KJV",
+   "answer": 0,
+   "set": {
+    "0": [
+     "The wicked, his enemies and his foes",
+     "பொல்லாதவர்களாகிய சத்துருக்களும் பகைஞரும்"
+    ],
+    "1": [
+     "The strangers",
+     "அந்நியர்"
+    ],
+    "3": [
+     "The proud",
+     "அகந்தையுள்ளவர்கள்"
+    ]
+   }
+  },
+  "4X2JaA": {
+   "why": "Ps 37:18 KJV: the upright",
+   "answer": 2,
+   "set": {
+    "0": [
+     "The proud",
+     "அகந்தையுள்ளவர்கள்"
+    ]
+   }
+  },
+  "kYlv5S": {
+   "why": "Ps 37:37 KJV",
+   "answer": 1,
+   "set": {
+    "0": [
+     "The rich",
+     "ஐசுவரியவான்"
+    ],
+    "1": [
+     "The perfect man",
+     "உத்தமன்"
+    ]
+   }
+  },
+  "FCd0A7": {
+   "why": "Ps 72:1 KJV",
+   "answer": 2,
+   "set": {
+    "0": [
+     "The priests",
+     "ஆசாரியர்கள்"
+    ],
+    "2": [
+     "The king's son",
+     "ராஜாவின் குமாரன்"
+    ]
+   }
+  },
+  "ScgtZA": {
+   "drop": true
+  },
+  "3OzMXY": {
+   "why": "Ps 81:3 KJV: the trumpet",
+   "answer": 0,
+   "set": {
+    "1": [
+     "The cymbal",
+     "கைத்தாளம்"
+    ]
+   }
+  },
+  "XorHI4": {
+   "why": "Ps 82:2 KJV",
+   "answer": 2,
+   "set": {
+    "3": [
+     "The poor",
+     "ஏழைகள்"
+    ]
+   },
+   "q": [
+    "Whose persons does the Psalmist say the judges accept?",
+    "நியாயாதிபதிகள் யாருடைய முகத்தைப் பார்க்கிறார்கள் என்று சங்கீதக்காரன் சொல்லுகிறான்?"
+   ]
+  },
+  "56q8Y9": {
+   "why": "Ps 89:23 KJV: his foes",
+   "answer": 0,
+   "set": {
+    "2": [
+     "The priests",
+     "ஆசாரியர்கள்"
+    ],
+    "3": [
+     "The heathen kings",
+     "புறஜாதி ராஜாக்கள்"
+    ]
+   }
+  },
+  "UEISXF": {
+   "why": "Ps 89:42 KJV",
+   "answer": 1,
+   "set": {
+    "0": [
+     "The proud",
+     "அகந்தையுள்ளவர்கள்"
+    ],
+    "1": [
+     "His adversaries",
+     "அவனுடைய சத்துருக்கள்"
+    ]
+   }
+  },
+  "9NuJqB": {
+   "why": "Ps 92:7 KJV",
+   "answer": 0,
+   "set": {
+    "0": [
+     "All the workers of iniquity",
+     "அக்கிரமக்காரர் எல்லாரும்"
+    ],
+    "3": [
+     "The rich",
+     "ஐசுவரியவான்கள்"
+    ]
+   }
+  },
+  "lKMFmt": {
+   "why": "Ps 98:8 KJV",
+   "answer": 0,
+   "set": {
+    "0": [
+     "Be joyful together",
+     "ஏகமாய்க் கெம்பீரிக்கவேண்டும்"
+    ]
+   },
+   "q": [
+    "What does the Psalmist say the hills should do?",
+    "மலைகள் என்ன செய்யவேண்டும் என்று சங்கீதக்காரன் சொல்லுகிறான்?"
+   ]
+  },
+  "W86UN1": {
+   "why": "Ps 100:5 KJV: his mercy is everlasting",
+   "answer": 1,
+   "set": {
+    "3": [
+     "His wrath",
+     "அவருடைய கோபம்"
+    ]
+   }
+  },
+  "B8x8AP": {
+   "why": "Ps 101:8 KJV",
+   "answer": 3,
+   "set": {
+    "3": [
+     "All wicked doers",
+     "அக்கிரமக்காரர் எல்லாரும்"
+    ]
+   }
+  },
+  "TLdyXC": {
+   "why": "Ps 104:6 KJV",
+   "answer": 2,
+   "set": {
+    "2": [
+     "The deep",
+     "ஆழமான ஜலம்"
+    ]
+   }
+  },
+  "lsaAaV": {
+   "drop": true
+  },
+  "lCOBvX": {
+   "why": "Ps 107:1 KJV: his mercy endureth for ever",
+   "answer": 3,
+   "set": {
+    "2": [
+     "His wrath",
+     "அவருடைய கோபம்"
+    ]
+   }
+  },
+  "sOAUOS": {
+   "why": "Ps 107:4 KJV",
+   "answer": 2,
+   "set": {
+    "1": [
+     "In the city",
+     "பட்டணத்தில்"
+    ]
+   }
+  },
+  "w4emU3": {
+   "why": "Ps 107:6 KJV",
+   "answer": 1,
+   "set": {
+    "1": [
+     "Their distresses",
+     "அவர்களுடைய இக்கட்டுகள்"
+    ],
+    "3": [
+     "Their riches",
+     "அவர்களுடைய ஐசுவரியம்"
+    ]
+   }
+  },
+  "wY76VJ": {
+   "why": "Ps 107:9 KJV",
+   "answer": 1,
+   "set": {
+    "0": [
+     "The proud",
+     "அகந்தையுள்ளவர்கள்"
+    ],
+    "1": [
+     "The longing soul",
+     "வாஞ்சையுள்ள ஆத்துமா"
+    ]
+   }
+  },
+  "6Gnr0k": {
+   "why": "Ps 107:29 KJV",
+   "answer": 0,
+   "set": {
+    "2": [
+     "The trumpets",
+     "எக்காளங்கள்"
+    ]
+   }
+  },
+  "EmZ4iS": {
+   "why": "Ps 107:33 KJV: a wilderness",
+   "answer": 0,
+   "set": {
+    "3": [
+     "A garden",
+     "ஒரு தோட்டம்"
+    ]
+   }
+  },
+  "iIywDr": {
+   "why": "Ps 108:3 KJV: among the nations",
+   "answer": 0,
+   "set": {
+    "3": [
+     "In the wilderness",
+     "வனாந்தரத்தில்"
+    ]
+   },
+   "q": [
+    "Where will the Psalmist sing praises to God?",
+    "சங்கீதக்காரன் எங்கே தேவனைக் கீர்த்தனம்பண்ணுவான்?"
+   ]
+  },
+  "5Yw3Vm": {
+   "why": "Ps 113:7 KJV",
+   "answer": 1,
+   "set": {
+    "1": [
+     "The dunghill",
+     "குப்பைமேடு"
+    ],
+    "2": [
+     "The pit",
+     "குழி"
+    ]
+   }
+  },
+  "KKgF5D": {
+   "why": "Ps 116:8 KJV: from falling",
+   "answer": 0,
+   "set": {
+    "1": [
+     "From wandering",
+     "அலைந்து திரிவதிலிருந்து"
+    ]
+   }
+  },
+  "Ay4tYQ": {
+   "why": "Ps 118:8 KJV",
+   "answer": 2,
+   "set": {
+    "1": [
+     "To trust in riches",
+     "ஐசுவரியத்தை நம்புவது"
+    ]
+   }
+  },
+  "p7a4B8": {
+   "why": "Ps 128:3 KJV",
+   "answer": 3,
+   "set": {
+    "3": [
+     "Olive plants",
+     "ஒலிவமரக் கன்றுகள்"
+    ]
+   }
+  },
+  "CcFIQk": {
+   "why": "Ps 139:19 KJV",
+   "answer": 1,
+   "set": {
+    "0": [
+     "The poor",
+     "ஏழைகள்"
+    ],
+    "1": [
+     "Bloody men",
+     "இரத்தப்பிரியர்"
+    ]
+   }
+  },
+  "U8ajIr": {
+   "why": "Ps 147:19 KJV",
+   "answer": 0,
+   "set": {
+    "0": [
+     "His statutes and his judgments",
+     "அவருடைய பிரமாணங்களும் நியாயங்களும்"
+    ],
+    "2": [
+     "His secrets",
+     "அவருடைய இரகசியங்கள்"
+    ]
+   }
+  },
+  "F36SLl": {
+   "why": "typo",
+   "q": [
+    "When the angel with the censer hurled the fire to earth, all of the following happened EXCEPT?",
+    null
+   ]
+  },
+  "UyXBXp": {
+   "why": "typo",
+   "q": [
+    "The old order that passed away is described by all of the following EXCEPT?",
+    null
+   ]
+  },
+  "vpAkoD": {
+   "why": "Rom 8:3 KJV",
+   "answer": 0,
+   "set": {
+    "0": [
+     "In the likeness of sinful flesh",
+     "பாவமாம்சத்தின் சாயலாக"
+    ],
+    "1": [
+     "In glory",
+     "மகிமையில்"
+    ]
+   }
+  },
+  "pCo55z": {
+   "why": "Rom 8:4 KJV",
+   "answer": 0,
+   "set": {
+    "2": [
+     "The curse of the law",
+     "நியாயப்பிரமாணத்தின் சாபம்"
+    ]
+   }
+  }
+ }
+}

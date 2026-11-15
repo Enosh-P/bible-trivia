@@ -243,7 +243,8 @@ function addTamil(book, rows) {
     const t = ta[row[0]];
     if (t?.q && Array.isArray(t.o) && t.o.length === row[5].length && t.o.every(Boolean)) {
       const options = t.o.map((o, i) => tamilOption(row[5][i], fixTamil(row[5][i], o)));
-      if (looksBroken(row[4], t.q) || options.some((o, i) => looksBroken(row[5][i], o))) {
+      // Broken, or two choices that came out the same in Tamil: show English until translated again.
+      if (looksBroken(row[4], t.q) || options.some((o, i) => looksBroken(row[5][i], o)) || new Set(options).size !== options.length) {
         redo.push({ book, id: row[0] });
         continue;
       }
@@ -252,6 +253,47 @@ function addTamil(book, rows) {
     }
   }
   return tamil;
+}
+
+/**
+ * Corrections so questions agree with the KJV / BSI text the app shows (content/corrections/mcq.json):
+ * a wrong answer key, modern wording (e.g. "two rebels" for the KJV's "two thieves"), or two
+ * options that are both right. Applied after the Tamil is added, on every build and merge.
+ */
+const CORRECTIONS = (() => {
+  const f = new URL('../content/corrections/mcq.json', import.meta.url);
+  return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')).questions : {};
+})();
+
+function applyCorrections(rows) {
+  let dropped = 0;
+  for (let i = rows.length - 1; i >= 0; i--) {
+    const row = rows[i];
+    const c = CORRECTIONS[row[0]];
+    if (!c) continue;
+    if (c.drop) {
+      rows.splice(i, 1);
+      dropped++;
+      continue;
+    }
+    if (c.q) {
+      row[4] = c.q[0];
+      if (c.q[1] && row.length > 7) row[7] = c.q[1];
+    }
+    for (const [k, [en, ta]] of Object.entries(c.set ?? {})) {
+      const n = Number(k);
+      if (n >= row[5].length) throw new Error(`correction ${row[0]}: no option ${n}`);
+      row[5][n] = en;
+      if (row.length > 8) row[8][n] = ta;
+    }
+    if (c.answer != null) {
+      if (c.answer >= row[5].length) throw new Error(`correction ${row[0]}: answer ${c.answer} out of range`);
+      row[6] = c.answer;
+    }
+    if (new Set(row[5]).size !== row[5].length) throw new Error(`correction ${row[0]}: duplicate options`);
+    if (row.length > 8 && new Set(row[8]).size !== row[8].length) throw new Error(`correction ${row[0]}: duplicate Tamil options ${JSON.stringify(row[8])}`);
+  }
+  return dropped;
 }
 
 function writeRedo() {
@@ -267,7 +309,10 @@ function mergeOnly() {
   for (const book of Object.keys(index.books)) {
     const file = new URL(`${book}.json`, OUT);
     const pack = JSON.parse(readFileSync(file, 'utf8'));
-    index.tamil += addTamil(book, pack.rows);
+    addTamil(book, pack.rows);
+    index.total -= applyCorrections(pack.rows);
+    index.tamil += pack.rows.filter((r) => r.length > 7).length;
+    index.books[book] = pack.rows.length;
     for (const row of pack.rows) if (row[3] & 4) whoRows.push([book, ...row]);
     writeFileSync(file, JSON.stringify(pack) + '\n');
   }
@@ -308,7 +353,9 @@ async function main() {
     rows.push(...(curated.get(book) ?? []), ...(whoSaid.get(book) ?? []));
     rows.sort((a, b) => a[1] - b[1] || a[2] - b[2]);
 
-    const tamil = addTamil(book, rows);
+    addTamil(book, rows);
+    applyCorrections(rows);
+    const tamil = rows.filter((r) => r.length > 7).length;
 
     if (!rows.length) continue;
     for (const row of rows) if (row[3] & 4) whoRows.push([book, ...row]);
