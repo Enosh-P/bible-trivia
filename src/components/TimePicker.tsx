@@ -4,9 +4,9 @@ import { spring } from '../motion/springs';
 
 export const TIME_CHOICES = [30, 45, 60] as const;
 
-/** Seconds per question for timed games (not Speed): the player's choice, else 30 in English and 45 in Tamil / Both. */
+/** Seconds per question for timed games (not Speed): the player's choice, else 45. */
 export function useQuestionSeconds(): QuestionSeconds {
-  return useApp((s) => s.questionSeconds ?? (s.qLang === 'en' ? 30 : 45));
+  return useApp((s) => s.questionSeconds ?? 45);
 }
 
 /** "Time per question: 30 s · 45 s · 60 s", shown before a timed game starts. */
