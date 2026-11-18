@@ -7,6 +7,7 @@ import { dayKey } from '../engine/picker';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
+import { TimePicker, useQuestionSeconds } from '../components/TimePicker';
 import { VerseOfTheDay } from '../components/VerseCard';
 import { LangToggle } from '../components/LangToggle';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
@@ -215,13 +216,13 @@ function ModeIntro({ mode, onClose, onStart }: { mode: ModeId | null; onClose: (
   const t = useT();
   const uiLang = useApp((s) => s.uiLang);
   const m = mode ? MODES[mode] : null;
-  const quizSeconds = useApp((s) => s.quizSeconds ?? 20);
+  const seconds = useQuestionSeconds();
   const facts: { icon: typeof Clock; text: string }[] = [];
   if (m && mode !== 'recall') {
     if (Number.isFinite(m.length)) facts.push({ icon: ListOrdered, text: t.questionsN(m.length) });
     else if (!m.lives) facts.push({ icon: ListOrdered, text: t.untilOut });
     if (m.roundSeconds) facts.push({ icon: Clock, text: t.roundSeconds(m.roundSeconds) });
-    else if (m.perQuestion) facts.push({ icon: Clock, text: t.secondsEach(mode === 'quiz' ? quizSeconds : m.perQuestion) });
+    else if (m.perQuestion) facts.push({ icon: Clock, text: t.secondsEach(seconds) });
     else facts.push({ icon: Clock, text: t.noTimer });
     if (m.lives) facts.push({ icon: Heart, text: t.livesN(m.lives) });
   }
@@ -243,6 +244,7 @@ function ModeIntro({ mode, onClose, onStart }: { mode: ModeId | null; onClose: (
               ))}
             </div>
           )}
+          {m.perQuestion > 0 && mode !== 'quiz' && <TimePicker id="intro-time" />}
           <h3 className="eyebrow">{t.howToPlay}</h3>
           <ol className="mode-how">
             {t.modeHow[mode].map((line) => (

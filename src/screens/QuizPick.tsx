@@ -8,6 +8,7 @@ import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
 import { IconTile, STROKE } from '../components/icons';
 import { LangToggle } from '../components/LangToggle';
+import { TimePicker } from '../components/TimePicker';
 import { BookGrid, ChapterPicker } from './Recall';
 import { cachedBooks } from '../online/stock';
 
@@ -18,8 +19,6 @@ export function QuizPick({ onExit, onStart }: { onExit: () => void; onStart: (bo
   const [index, setIndex] = useState<McqIndex | null>(null);
   const [error, setError] = useState(false);
   const [book, setBook] = useState<string | null>(null);
-  const seconds = useApp((s) => s.quizSeconds ?? (s.qLang === 'en' ? 20 : 40));
-  const setApp = useApp((s) => s.set);
 
   // Offline, only the books already on the phone can be played.
   const [available, setAvailable] = useState<Set<string> | undefined>(undefined);
@@ -51,17 +50,7 @@ export function QuizPick({ onExit, onStart }: { onExit: () => void; onStart: (bo
 
       {error && <p className="caption note">{t.offlineNotLoaded}</p>}
 
-      <div className="quiz-time">
-        <span className="caption">{t.timePerQuestion}</span>
-        <div className="lang-switch" role="radiogroup" aria-label={t.timePerQuestion}>
-          {([20, 40, 60] as const).map((s) => (
-            <button key={s} role="radio" aria-checked={seconds === s} className={seconds === s ? 'is-on' : ''} onClick={() => setApp({ quizSeconds: s })}>
-              {seconds === s && <motion.span layoutId="quiz-time-thumb" className="lang-thumb" transition={spring.calm} />}
-              <span className="lang-label">{s} s</span>
-            </button>
-          ))}
-        </div>
-      </div>
+      <TimePicker id="quiz-time" />
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.div

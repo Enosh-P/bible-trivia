@@ -21,9 +21,11 @@ interface Settings {
   homeView?: 'list' | 'grid';
   /** Notifications turned on for this device (kept across app updates; re-subscribed on start). */
   pushWanted?: boolean;
-  /** Quiz by Book: seconds per question (20, 40 or 60). */
-  quizSeconds?: 20 | 40 | 60;
+  /** Seconds per question in timed games (all but Speed). */
+  questionSeconds?: QuestionSeconds;
 }
+
+export type QuestionSeconds = 30 | 45 | 60;
 
 interface Progress {
   xp: number;
@@ -107,13 +109,19 @@ export const useApp = create<AppState>()(
     }),
     {
       name: 'bt-app',
-      version: 3,
+      version: 4,
       migrate: (persisted, version) => {
         const s = persisted as Partial<Settings>;
         // v1 let the UI and question languages differ; v2 links them.
         if (version < 2 && s.qLang && s.qLang !== 'both') s.uiLang = s.qLang;
         // v3: light is the new default look (dark was the old default, not a choice).
         if (version < 3) s.theme = 'light';
+        // v4: one time choice (30/45/60 s) for every timed game replaces Quiz by Book's 20/40/60.
+        if (version < 4) {
+          const old = (s as { quizSeconds?: number }).quizSeconds;
+          if (old) s.questionSeconds = old >= 60 ? 60 : old >= 40 ? 45 : 30;
+          delete (s as { quizSeconds?: number }).quizSeconds;
+        }
         return s as AppState;
       },
     },

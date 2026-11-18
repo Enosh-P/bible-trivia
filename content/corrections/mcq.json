@@ -1131,6 +1131,64 @@
     "What does the LORD establish?",
     "கர்த்தர் எதை நிலைநிறுத்துகிறார்?"
    ]
+  },
+  "wNgGyZi": {
+   "why": "Gen 4:9: the LORD asked Cain where Abel was",
+   "answer": 3,
+   "set": {
+    "3": [
+     "God",
+     "தேவன்"
+    ]
+   }
+  },
+  "wEpOrUY": {
+   "why": "Num 22:30: the donkey spoke to Balaam",
+   "answer": 3,
+   "set": {
+    "3": [
+     "Balaam's donkey",
+     "பிலேயாமின் கழுதை"
+    ]
+   }
+  },
+  "wOBXghW": {
+   "why": "Ruth 2:2: Ruth said it to Naomi",
+   "answer": 3
+  },
+  "w9AbEwH": {
+   "why": "1 Sam 16:11: Samuel asked Jesse",
+   "answer": 1,
+   "set": {
+    "1": [
+     "Samuel",
+     "சாமுவேல்"
+    ]
+   }
+  },
+  "wExXGVs": {
+   "why": "2 Sam 20:21: the wise woman of Abel said it to Joab",
+   "answer": 2,
+   "set": {
+    "2": [
+     "Wise woman of Abel",
+     "ஆபேல் பட்டணத்து ஞானமுள்ள ஸ்திரீ"
+    ]
+   }
+  },
+  "wdbdJaq": {
+   "why": "Jonah 4:9: God asked Jonah",
+   "answer": 2
+  },
+  "w1VSzZA": {
+   "why": "Acts 25:22: Agrippa said it to Festus",
+   "answer": 2,
+   "set": {
+    "2": [
+     "Agrippa",
+     "அகிரிப்பா"
+    ]
+   }
   }
  }
 }

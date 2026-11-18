@@ -16,6 +16,7 @@ import { cue } from '../feedback';
 import { project, spring } from '../motion/springs';
 import { LangToggle } from '../components/LangToggle';
 import { Pressable } from '../components/Pressable';
+import { useQuestionSeconds } from '../components/TimePicker';
 import { TimerRing } from '../components/TimerRing';
 import { ArtSticker } from '../components/ArtSticker';
 import { IconTile, MODE_ICON, STROKE } from '../components/icons';
@@ -73,8 +74,9 @@ export function Game({
   const mode = MODES[modeId];
   // Quiz by Book lets players choose the time per question.
   // Reading Tamil takes longer: 40 seconds unless chosen otherwise (20 in English only).
-  const quizSeconds = useApp((s) => s.quizSeconds ?? (s.qLang === 'en' ? 20 : 40));
-  const perQuestion: number = modeId === 'quiz' ? quizSeconds : mode.perQuestion;
+  // Every game with a per-question timer uses the player's choice (Speed has a round clock instead).
+  const chosenSeconds = useQuestionSeconds();
+  const perQuestion: number = mode.perQuestion > 0 ? chosenSeconds : 0;
   const t = useT();
   const qLang = useApp((s) => s.qLang);
   const uiLang = useApp((s) => s.uiLang);
