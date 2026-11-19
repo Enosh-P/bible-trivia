@@ -293,15 +293,20 @@ function applyCorrections(rows, book) {
       }
       continue;
     }
+    if (c.ref) [row[1], row[2]] = c.ref; // [chapter, verse] the question comes from
     if (c.q) {
-      row[4] = c.q[0];
+      if (c.q[0]) row[4] = c.q[0];
       if (c.q[1] && row.length > 7) row[7] = c.q[1];
     }
     for (const [k, [en, ta]] of Object.entries(c.set ?? {})) {
       const n = Number(k);
       if (n >= row[5].length) throw new Error(`correction ${row[0]}: no option ${n}`);
-      row[5][n] = en;
-      if (row.length > 8) row[8][n] = ta;
+      if (en) row[5][n] = en;
+      if (ta && row.length > 8) row[8][n] = ta;
+    }
+    if (c.optsTa && row.length > 8) {
+      if (c.optsTa.length !== row[5].length) throw new Error(`correction ${row[0]}: optsTa needs ${row[5].length} options`);
+      row[8] = [...c.optsTa];
     }
     if (c.answer != null) {
       if (c.answer >= row[5].length) throw new Error(`correction ${row[0]}: answer ${c.answer} out of range`);

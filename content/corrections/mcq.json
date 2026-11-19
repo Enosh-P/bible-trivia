@@ -1,5 +1,5 @@
 {
- "about": "Corrections to the imported multiple-choice questions so they agree with the KJV (and BSI Tamil) text the app shows. Applied by scripts/import-bible-mcq.mjs on every build/merge. 'answer' = new index of the right option; 'set' = replace option text [en, ta]; 'q' = replace question [en, ta or null to keep]; 'drop' = remove a question that can't be made fair. 'badTa' = this exact Tamil question is wrong (shows English and goes on the --redo list until a new translation replaces it).",
+ "about": "Corrections to the imported multiple-choice questions so they agree with the KJV (and BSI Tamil) text the app shows. Applied by scripts/import-bible-mcq.mjs on every build/merge. 'answer' = new index of the right option; 'set' = replace option text [en, ta]; 'q' = replace question [en, ta or null to keep]; 'drop' = remove a question that can't be made fair. 'badTa' = this exact Tamil question is wrong (shows English and goes on the --redo list until a new translation replaces it). 'ref' = [chapter, verse] the question comes from. 'optsTa' = all Tamil options in order. In 'q' and 'set', null keeps that language as it is.",
  "questions": {
   "h36uGz": {
    "why": "1 Cor 1:27 KJV: to confound the wise",
