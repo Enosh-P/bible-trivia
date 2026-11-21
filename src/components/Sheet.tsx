@@ -1,5 +1,5 @@
 import { useBackStep } from '../hooks/useBackStep';
-import { AnimatePresence, animate, motion, useMotionValue, useTransform, type PanInfo } from 'motion/react';
+import { AnimatePresence, animate, motion, useDragControls, useMotionValue, useTransform, type PanInfo } from 'motion/react';
 import { useEffect, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { project, spring } from '../motion/springs';
@@ -12,6 +12,8 @@ import { project, spring } from '../motion/springs';
 export function Sheet({ open, onClose, children, label }: { open: boolean; onClose: () => void; children: ReactNode; label: string }) {
   useBackStep(open, onClose);
   const y = useMotionValue(0);
+  // Dragged by the handle at the top; the content scrolls on its own (long sheets fit the screen).
+  const drag = useDragControls();
   const scrim = useTransform(y, [0, 400], [1, 0]);
 
   useEffect(() => {
@@ -49,12 +51,16 @@ export function Sheet({ open, onClose, children, label }: { open: boolean; onClo
             exit={{ y: '100%' }}
             transition={spring.sheet}
             drag="y"
+            dragControls={drag}
+            dragListener={false}
             dragConstraints={{ top: 0, bottom: 0 }}
             dragElastic={{ top: 0.08, bottom: 1 }}
             onDragEnd={onDragEnd}
           >
-            <div className="sheet-grabber" />
-            {children}
+            <div className="sheet-handle" onPointerDown={(e) => drag.start(e)}>
+              <div className="sheet-grabber" />
+            </div>
+            <div className="sheet-body">{children}</div>
           </motion.div>
         </div>
       )}

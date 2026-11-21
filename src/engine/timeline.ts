@@ -28,6 +28,9 @@ export interface TCat extends Text {
 export interface TEra extends Text {
   from: number;
   to: number;
+  /** One word for the strip: the moment the era begins (Creation, Flood, Abraham…). */
+  short: Text;
+  color: string;
 }
 export interface TEvent extends Text {
   y: number;

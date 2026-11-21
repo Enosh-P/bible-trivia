@@ -1,7 +1,7 @@
 import { useBackStep } from '../hooks/useBackStep';
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { BookOpen, ChevronLeft, ChevronRight, House, Info, ListChecks, Minus, Pencil, Plus, Search, Users } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight, House, Info, SlidersHorizontal, ListChecks, Minus, Pencil, Plus, Search, Users } from 'lucide-react';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
@@ -10,6 +10,7 @@ import { Sheet } from '../components/Sheet';
 import { LangToggle } from '../components/LangToggle';
 import { chapterText } from '../engine/bible';
 import { ReportButton } from '../components/Report';
+import { EraStrip } from '../components/EraStrip';
 import { timelineTarget } from '../online/reports';
 import { loadApproved, withApproved } from '../online/timeline';
 import { MinePanel, SubmitPanel, correctionDraft, emptyDraft, eventDraft, type Draft } from './TimelineSubmit';
@@ -40,7 +41,11 @@ type Panel =
   | { k: 'alive'; y: number }
   | { k: 'dates' }
   | { k: 'add'; draft: Draft }
-  | { k: 'mine' };
+  | { k: 'mine' }
+  | { k: 'filter' };
+
+/** A year to scroll to from the era strip (`n` makes each request new). */
+type Target = { a: number; done: boolean; n: number } | null;
 
 type View = 'story' | 'chart';
 
@@ -61,6 +66,9 @@ export function Timeline({ onExit }: { onExit: () => void }) {
   // Back inside the sheet: from a verse or another person back to the first panel.
   useBackStep(stack.length > 1, () => setStack((s) => s.slice(0, 1)));
   const [year, setYear] = useState(astro(-4174));
+  const [target, setTarget] = useState<Target>(null);
+  const scrub = (a: number, done: boolean) => setTarget((p) => ({ a, done, n: (p?.n ?? 0) + 1 }));
+  const filters = (cat ? 1 : 0) + (world ? 1 : 0);
   const open = (p: Panel) => setStack((s) => [...s, p]);
   const openFresh = (p: Panel) => setStack([p]);
 
@@ -117,37 +125,30 @@ export function Timeline({ onExit }: { onExit: () => void }) {
           <Search size={17} strokeWidth={STROKE} />
           <input type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={t.tlSearch} aria-label={t.tlSearch} />
         </label>
-        {tl && (
-          <div className="tl-chips" role="group" aria-label={t.tlAllGroups}>
-            <button className={`tl-chip ${!cat ? 'is-on' : ''}`} aria-pressed={!cat} onClick={() => setCat(null)}>
-              {t.tlAllGroups}
-            </button>
-            {tl.cats.map((c) => (
-              <button key={c.id} className={`tl-chip ${cat === c.id ? 'is-on' : ''}`} aria-pressed={cat === c.id} onClick={() => setCat(cat === c.id ? null : c.id)} style={{ ['--cat' as string]: `var(--tl-${c.id})` }}>
-                <i className="tl-dot" /> {pick(c, lang)}
-              </button>
-            ))}
-            <button className={`tl-chip tl-world-chip ${world ? 'is-on' : ''}`} aria-pressed={world} onClick={() => setWorld(!world)}>
-              {t.tlWorld}
-            </button>
-          </div>
-        )}
+        <button className={`tl-filter-btn glass ${filters ? 'is-on' : ''}`} onClick={() => openFresh({ k: 'filter' })} aria-label={t.tlFilter}>
+          <SlidersHorizontal size={17} strokeWidth={STROKE} />
+          <span>{cat && tl ? pick(tl.cats.find((c) => c.id === cat)!, lang) : t.tlFilter}</span>
+          {filters > 0 && <b className="tl-filter-count">{filters}</b>}
+        </button>
       </div>
 
       {failed && <p className="caption note">{t.offlineNotLoaded}</p>}
 
       {tl &&
         (view === 'story' ? (
-          <Story tl={tl} people={people} filtering={Boolean(q || cat)} world={world} lang={lang} sec={sec} onOpen={openFresh} onYear={setYear} />
+          <Story tl={tl} people={people} filtering={Boolean(q || cat)} world={world} lang={lang} sec={sec} onOpen={openFresh} onYear={setYear} target={target} />
         ) : (
-          <Chart tl={tl} people={people} world={world} lang={lang} onOpen={openFresh} />
+          <Chart tl={tl} people={people} world={world} lang={lang} onOpen={openFresh} onYear={setYear} target={target} />
         ))}
 
       {tl && (
-        <div className="tl-fab-wrap">
-          <Pressable className="btn btn-primary tl-fab" onClick={() => openFresh({ k: 'alive', y: year })}>
-            <Users size={18} strokeWidth={STROKE} /> {t.tlWhoAlive}
-          </Pressable>
+        <div className="tl-dock-wrap">
+          <div className="tl-dock glass glass-thick">
+            {!query.trim() && <EraStrip eras={tl.eras} lang={lang} year={year} onScrub={scrub} />}
+            <Pressable className="tl-alive-btn" onClick={() => openFresh({ k: 'alive', y: year })} aria-label={t.tlWhoAlive} title={t.tlWhoAlive}>
+              <Users size={20} strokeWidth={STROKE} />
+            </Pressable>
+          </div>
         </div>
       )}
 
@@ -161,7 +162,33 @@ export function Timeline({ onExit }: { onExit: () => void }) {
             )}
             <AnimatePresence mode="wait" initial={false}>
               <motion.div key={stack.length} initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={spring.calm}>
+                {stack[stack.length - 1].k === 'filter' ? (
+                  <div className="tl-panel">
+                    <h2 className="title">{t.tlFilter}</h2>
+                    <h3 className="eyebrow">{t.tlGroups}</h3>
+                    <div className="tl-pills">
+                      <button className={`tl-chip ${!cat ? 'is-on' : ''}`} aria-pressed={!cat} onClick={() => setCat(null)}>
+                        {t.tlAllGroups}
+                      </button>
+                      {tl.cats.map((c) => (
+                        <button key={c.id} className={`tl-chip ${cat === c.id ? 'is-on' : ''}`} aria-pressed={cat === c.id} onClick={() => setCat(cat === c.id ? null : c.id)} style={{ ['--cat' as string]: `var(--tl-${c.id})` }}>
+                          <i className="tl-dot" /> {pick(c, lang)}
+                        </button>
+                      ))}
+                    </div>
+                    <h3 className="eyebrow">{t.tlAlsoShow}</h3>
+                    <div className="tl-pills">
+                      <button className={`tl-chip tl-world-chip ${world ? 'is-on' : ''}`} aria-pressed={world} onClick={() => setWorld(!world)}>
+                        {t.tlWorld}
+                      </button>
+                    </div>
+                    <Pressable className="btn btn-primary tl-filter-done" onClick={() => setStack([])}>
+                      {t.tlDone}
+                    </Pressable>
+                  </div>
+                ) : (
                 <PanelView panel={stack[stack.length - 1]} tl={tl} lang={lang} sec={sec} open={open} replace={(p) => setStack((s) => [...s.slice(0, -1), p])} />
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -184,6 +211,7 @@ function Story({
   sec,
   onOpen,
   onYear,
+  target,
 }: {
   tl: TL;
   people: TPerson[];
@@ -193,6 +221,7 @@ function Story({
   sec: (x: Text) => string | null;
   onOpen: (p: Panel) => void;
   onYear: (y: number) => void;
+  target: Target;
 }) {
   const t = useT();
   const list = useRef<HTMLDivElement>(null);
@@ -222,7 +251,7 @@ function Story({
         const rows = list.current?.querySelectorAll<HTMLElement>('[data-y]');
         if (!rows) return;
         for (const r of rows) {
-          if (r.getBoundingClientRect().bottom > 120) {
+          if (r.getBoundingClientRect().bottom > 140) {
             const y = Number(r.dataset.y);
             setCurrent(y);
             onYear(y);
@@ -239,24 +268,18 @@ function Story({
     };
   }, [eras, onYear]);
 
-  const jump = (i: number) => {
-    const el = list.current?.querySelector<HTMLElement>(`[data-era="${i}"]`);
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 8, behavior: 'smooth' });
-  };
+  // The era strip: scroll so the first entry at or after that year is at the top.
+  useEffect(() => {
+    if (!target) return;
+    const rows = [...(list.current?.querySelectorAll<HTMLElement>('[data-y]') ?? [])];
+    const row = rows.find((r) => Number(r.dataset.y) >= target.a) ?? rows[rows.length - 1];
+    if (row) window.scrollTo({ top: row.getBoundingClientRect().top + window.scrollY - 130, behavior: 'auto' });
+  }, [target]);
 
   if (!eras.length) return <p className="caption note">{t.tlNoMatch}</p>;
 
   return (
     <>
-      {!filtering && (
-        <div className="tl-eras" aria-label={t.tlJumpTo}>
-          {eras.map((g, i) => (
-            <button key={g.era.en} className="tl-era-chip" onClick={() => jump(i)}>
-              {pick(g.era, lang)}
-            </button>
-          ))}
-        </div>
-      )}
       <p className="caption tl-lead">{t.tlLead}</p>
       <div className="tl-story" ref={list}>
         {eras.map((g, i) => (
@@ -332,7 +355,7 @@ const TMIN = astro(-4200);
 const TMAX = 120;
 const LABEL_W = 116;
 
-function Chart({ tl, people, world, lang, onOpen }: { tl: TL; people: TPerson[]; world: boolean; lang: Lang; onOpen: (p: Panel) => void }) {
+function Chart({ tl, people, world, lang, onOpen, onYear, target }: { tl: TL; people: TPerson[]; world: boolean; lang: Lang; onOpen: (p: Panel) => void; onYear: (y: number) => void; target: Target }) {
   const t = useT();
   const box = useRef<HTMLDivElement>(null);
   const [k, setK] = useState(0.5); // pixels per year
@@ -353,17 +376,28 @@ function Chart({ tl, people, world, lang, onOpen }: { tl: TL; people: TPerson[];
     setK(nk);
     requestAnimationFrame(() => (el.scrollLeft = (mid - TMIN) * nk - (el.clientWidth - LABEL_W) / 2));
   };
-  const jump = (from: number, to: number) => {
+  // The year in the middle of the chart, for the strip's arrow.
+  useEffect(() => {
     const el = box.current;
     if (!el) return;
-    const nk = Math.min(40, (el.clientWidth - LABEL_W - 24) / Math.max(20, to - from));
-    setK(nk);
-    // Also scroll down to the first person living in that era.
-    const first = people.find((p) => span(p)[1] >= from);
-    const row = first ? el.querySelector<HTMLElement>(`[data-pid="${first.id}"]`) : null;
-    const top = row ? row.offsetTop - 44 - (world ? 64 : 32) : 0;
-    requestAnimationFrame(() => el.scrollTo({ left: (from - TMIN) * nk - 8, top: Math.max(0, top), behavior: 'smooth' }));
-  };
+    const onScroll = () => onYear(Math.round((el.scrollLeft + (el.clientWidth - LABEL_W) / 2) / k + TMIN));
+    onScroll();
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, [k, onYear]);
+  // The era strip: centre that year; on letting go, also bring that time's people into view.
+  useEffect(() => {
+    const el = box.current;
+    if (!el || !target) return;
+    const left = (target.a - TMIN) * k - (el.clientWidth - LABEL_W) / 2;
+    let top = el.scrollTop;
+    if (target.done) {
+      const first = people.find((p) => span(p)[1] >= target.a);
+      const row = first ? el.querySelector<HTMLElement>(`[data-pid="${first.id}"]`) : null;
+      if (row) top = Math.max(0, row.offsetTop - 44 - (world ? 64 : 32));
+    }
+    el.scrollTo({ left: Math.max(0, left), top, behavior: target.done ? 'smooth' : 'auto' });
+  }, [target]);
 
   const step = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000].find((s) => s * k >= 64) ?? 1000;
   const ticks: number[] = [];
@@ -384,13 +418,6 @@ function Chart({ tl, people, world, lang, onOpen }: { tl: TL; people: TPerson[];
   return (
     <div className="tl-chart-wrap">
       <div className="tl-chart-tools">
-        <div className="tl-eras">
-          {tl.eras.map((e) => (
-            <button key={e.en} className="tl-era-chip" onClick={() => jump(astro(e.from), astro(e.to))}>
-              {pick(e, lang)}
-            </button>
-          ))}
-        </div>
         <div className="tl-zoom">
           <button className="icon-btn glass" onClick={() => zoom(1 / 1.6)} aria-label={t.tlZoomOut} title={t.tlZoomOut}>
             <Minus size={18} strokeWidth={STROKE} />
