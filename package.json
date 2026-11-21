@@ -26,7 +26,8 @@
     "db:setup-sql": "node scripts/export-seed-sql.mjs && node scripts/build-setup-sql.mjs",
     "translate:recall": "node --env-file-if-exists=.env.local scripts/translate-recall.mjs",
     "emails": "node scripts/build-email-templates.mjs",
-    "push:keys": "web-push generate-vapid-keys"
+    "push:keys": "web-push generate-vapid-keys",
+    "content:timeline": "node scripts/build-timeline.mjs"
   },
   "license": "UNLICENSED",
   "dependencies": {

@@ -10,6 +10,8 @@ import { Home } from './screens/Home';
 import { Friends } from './screens/Friends';
 import { Practice, type PracticeAction } from './screens/Practice';
 import { MemoryVerses } from './screens/MemoryVerses';
+import { Timeline } from './screens/Timeline';
+import { AdminTimeline } from './screens/AdminTimeline';
 import { Notebook } from './screens/Notebook';
 import { SavedGames } from './screens/SavedGames';
 import { drillRound } from './engine/drill';
@@ -48,6 +50,7 @@ type Route =
   | { kind: 'recall' }
   | { kind: 'quizpick' }
   | { kind: 'memory' }
+  | { kind: 'timeline' }
   | { kind: 'saved' }
   | { kind: 'notebook' }
   | { kind: 'post'; post: Post; from: 'home' | 'list' | 'gospel' }
@@ -55,6 +58,7 @@ type Route =
   | { kind: 'admin' }
   | { kind: 'adminThoughts' }
   | { kind: 'adminFaqs' }
+  | { kind: 'adminTimeline' }
   | { kind: 'game'; mode: ModeId; run: number; challenge?: { id: string; questionIds: string[] }; scope?: { book: string; chapter: number | null }; ids?: string[]; resume?: GameSnapshot } | { kind: 'result'; result: RoundResult; xp: number };
 
 /** Applies theme and text size to <html>. */
@@ -226,6 +230,7 @@ function MainApp() {
     if (!open) return;
     history.replaceState(null, '', location.pathname);
     if (open === 'friends') goTab('friends');
+    else if (open === 'timeline') setRoute({ kind: 'timeline' });
     else if (open === 'daily') setRoute({ kind: 'game', mode: 'daily', run: Date.now() });
     else if (open === 'challenge') {
       // "X challenged you": open that challenge (once the challenges have loaded) if it's still your turn.
@@ -404,19 +409,21 @@ function MainApp() {
             exit={{ opacity: 0, transition: { duration: 0.12, ease: 'easeIn' } }}
           >
             <ScrollPlace screenKey={screenKey} positions={scrollPos} current={currentScreen} />
-            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onMemory={() => setRoute({ kind: 'memory' })} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'home' })} onShowPosts={showThoughts} />}
+            {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onMemory={() => setRoute({ kind: 'memory' })} onTimeline={() => setRoute({ kind: 'timeline' })} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'home' })} onShowPosts={showThoughts} />}
             {route.kind === 'tab' && route.tab === 'friends' && <Friends onStartChallenge={startChallenge} onPlayChallenge={playChallenge} />}
             {route.kind === 'tab' && route.tab === 'gospel' && <Gospel section={gospelSection} onSection={setGospelSection} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'gospel' })} />}
             {route.kind === 'tab' && route.tab === 'progress' && <Practice onAction={practice} />}
             {route.kind === 'saved' && <SavedGames onBack={() => goTab('play')} onResume={resumeGame} />}
             {route.kind === 'memory' && <MemoryVerses onExit={() => goTab(lastTab)} />}
+            {route.kind === 'timeline' && <Timeline onExit={() => goTab(lastTab)} />}
             {route.kind === 'notebook' && <Notebook onExit={() => goTab('progress')} />}
             {route.kind === 'tab' && route.tab === 'settings' && <Settings onAdmin={() => setRoute({ kind: 'admin' })} />}
             {route.kind === 'post' && <Thought post={route.post} onExit={() => (route.from === 'list' ? setRoute({ kind: 'posts' }) : route.from === 'gospel' ? goTab('gospel') : goTab('play'))} onShowAll={route.from === 'gospel' ? undefined : showThoughts} />}
             {route.kind === 'posts' && <Thoughts onExit={() => goTab('play')} onOpen={(post) => setRoute({ kind: 'post', post, from: 'list' })} />}
-            {route.kind === 'admin' && isAdmin && <Admin onExit={() => goTab('settings')} onThoughts={() => setRoute({ kind: 'adminThoughts' })} onFaqs={() => setRoute({ kind: 'adminFaqs' })} />}
+            {route.kind === 'admin' && isAdmin && <Admin onExit={() => goTab('settings')} onThoughts={() => setRoute({ kind: 'adminThoughts' })} onFaqs={() => setRoute({ kind: 'adminFaqs' })} onTimeline={() => setRoute({ kind: 'adminTimeline' })} />}
             {route.kind === 'adminThoughts' && isAdmin && <AdminThoughts onExit={() => setRoute({ kind: 'admin' })} />}
             {route.kind === 'adminFaqs' && isAdmin && <AdminFaqs onExit={() => setRoute({ kind: 'admin' })} />}
+            {route.kind === 'adminTimeline' && isAdmin && <AdminTimeline onExit={() => setRoute({ kind: 'admin' })} />}
             {route.kind === 'recall' && <Recall onExit={() => goTab(lastTab)} />}
             {route.kind === 'quizpick' && <QuizPick onExit={() => goTab(lastTab)} onStart={startQuiz} />}
             {route.kind === 'game' && (

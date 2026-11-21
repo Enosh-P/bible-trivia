@@ -274,6 +274,29 @@ const ART: Record<ModeId, () => ReactElement> = {
   drill: Shelf,
 };
 
+/** Bible Timeline: an open scroll with a time line and three moments on it. */
+const TimelineScroll = () => (
+  <>
+    <Shadow />
+    <rect x={30} y={30} width={100} height={64} rx={4} fill={C.white} {...line} />
+    <rect x={18} y={24} width={16} height={76} rx={8} fill={C.woodSoft} {...line} />
+    <rect x={126} y={24} width={16} height={76} rx={8} fill={C.woodSoft} {...line} />
+    <path d="M42 78 H118" {...line} />
+    <circle cx={52} cy={78} r={6} fill={C.red} {...line} strokeWidth={2.4} />
+    <circle cx={80} cy={78} r={6} fill="#2a9fc0" {...line} strokeWidth={2.4} />
+    <circle cx={108} cy={78} r={6} fill={C.steel} {...line} strokeWidth={2.4} />
+    <Face x={80} y={50} gap={22} smile={9} />
+  </>
+);
+
+export function TimelineArt({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 160 120" className={className} aria-hidden>
+      <TimelineScroll />
+    </svg>
+  );
+}
+
 export function MemoryArt({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 160 120" className={className} aria-hidden>

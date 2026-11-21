@@ -44,3 +44,15 @@ export async function chapterSizes(book: string): Promise<number[] | null> {
     return null;
   }
 }
+
+/** One whole chapter in both languages (verse n at index n-1), or null if it can't be loaded. */
+export async function chapterText(book: string, chapter: number): Promise<{ en: string[]; ta: string[]; chapters: number } | null> {
+  try {
+    const text = await loadBook(book);
+    const en = text.en[chapter - 1];
+    if (!en) return null;
+    return { en, ta: text.ta[chapter - 1] ?? [], chapters: text.en.length };
+  } catch {
+    return null;
+  }
+}

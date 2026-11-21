@@ -131,6 +131,15 @@ export function message(row: QueueRow, lang: Lang, verses: Verse[], books: Recor
       return { title: ta ? `${name} இப்போது உங்கள் நண்பர்` : `${name} is now your friend`, body: ta ? 'இப்போது ஒரு சவால் அனுப்புங்கள்!' : 'Send them a challenge!', url: '/?open=friends', tag: `friend-${name}` };
     case 'challenge_received':
       return { title: ta ? `${name} உங்களுக்குச் சவால் விட்டார்` : `${name} challenged you`, body: ta ? `${mode} · அதே கேள்விகள், எப்போது வேண்டுமானாலும் விளையாடலாம்.` : `${mode} · same questions, play any time.`, url: `/?open=challenge&id=${p.challenge_id}`, tag: `challenge-${p.challenge_id}` };
+    case 'timeline_reviewed': {
+      const what = (ta ? p.title_ta || p.title_en : p.title_en || p.title_ta) as string;
+      const ok = p.status === 'approved';
+      const title = ok
+        ? (ta ? 'உங்கள் காலவரிசைப் பதிவு ஏற்கப்பட்டது ✅' : 'Your timeline entry was approved ✅')
+        : (ta ? 'உங்கள் காலவரிசைப் பதிவு ஏற்கப்படவில்லை' : 'Your timeline entry was not added');
+      const note = p.note ? ` · ${p.note}` : '';
+      return { title, body: `${what}${note}`.slice(0, 180), url: '/?open=timeline', tag: 'timeline-reviewed' };
+    }
     case 'challenge_finished': {
       const won = p.result === 'won', tie = p.result === 'tie', lost = p.result === 'lost';
       const title = won
