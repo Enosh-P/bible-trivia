@@ -21,6 +21,8 @@ interface Settings {
   homeView?: 'list' | 'grid';
   /** Notifications turned on for this device (kept across app updates; re-subscribed on start). */
   pushWanted?: boolean;
+  /** Bible Timeline: the era strip folded down to a small pill. */
+  tlDockMin?: boolean;
   /** Seconds per question in timed games (all but Speed). */
   questionSeconds?: QuestionSeconds;
 }

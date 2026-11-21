@@ -1784,3 +1784,11 @@ textarea.field.post-body-input:lang(ta) { line-height: 1.85; }
 .tl-step-btn { display: inline-flex; align-items: center; gap: 2px; max-width: 48%; padding: 4px 2px; border: 0; background: none; font: inherit; font-size: 0.8rem; font-weight: 600; color: var(--accent-ink); cursor: pointer; }
 .tl-step-btn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tl-step-btn:disabled { visibility: hidden; }
+/* era bar: folded to a pill or open */
+.tl-dock.is-min { width: auto; max-width: calc(100% - 24px); }
+.tl-dock-strip { flex: 1; min-width: 0; display: flex; align-items: center; gap: 4px; }
+.tl-dock-fold { flex: none; width: 30px; height: 38px; display: grid; place-items: center; border: 0; border-radius: 10px; background: none; color: var(--text-2); cursor: pointer; }
+.tl-dock-mini { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 10px 0 12px; border: 0; background: none; font: inherit; font-size: 0.88rem; color: var(--text); cursor: pointer; white-space: nowrap; min-width: 0; }
+.tl-dock-mini span { overflow: hidden; text-overflow: ellipsis; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.tl-dock-mini strong { color: var(--text); }
+.tl-dock-dot { flex: none; width: 12px; height: 12px; border-radius: 4px; background: var(--drop); }

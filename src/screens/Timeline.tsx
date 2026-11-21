@@ -1,7 +1,7 @@
 import { useBackStep } from '../hooks/useBackStep';
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { BookOpen, ChevronLeft, ChevronRight, House, Info, SlidersHorizontal, ListChecks, Minus, Pencil, Plus, Search, Users } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, House, Info, SlidersHorizontal, ListChecks, Minus, Pencil, Plus, Search, Users } from 'lucide-react';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
@@ -83,6 +83,8 @@ export function Timeline({ onExit }: { onExit: () => void }) {
   useBackStep(stack.length > 1, () => setStack((s) => s.slice(0, 1)));
   const [year, setYear] = useState(astro(-4174));
   const [target, setTarget] = useState<Target>(null);
+  const dockMin = useApp((s) => Boolean(s.tlDockMin));
+  const setApp = useApp((s) => s.set);
   const scrub = (a: number, done: boolean) => setTarget((p) => ({ a, done, n: (p?.n ?? 0) + 1 }));
   const filters = (cat ? 1 : 0) + (world ? 1 : 0);
   const open = (p: Panel) => setStack((s) => [...s, p]);
@@ -191,12 +193,39 @@ export function Timeline({ onExit }: { onExit: () => void }) {
 
       {tl && (
         <div className="tl-dock-wrap">
-          <div className="tl-dock glass glass-thick">
-            {!query.trim() && <EraStrip eras={tl.eras} lang={lang} year={year} onScrub={scrub} />}
-            <Pressable className="tl-alive-btn" onClick={() => openFresh({ k: 'alive', y: year })} aria-label={t.tlWhoAlive} title={t.tlWhoAlive}>
+          <motion.div layout className={`tl-dock glass glass-thick ${dockMin ? 'is-min' : ''}`} transition={spring.calm} style={{ borderRadius: 22 }}>
+            <AnimatePresence mode="popLayout" initial={false}>
+              {dockMin ? (
+                <motion.button
+                  key="mini"
+                  className="tl-dock-mini"
+                  onClick={() => setApp({ tlDockMin: false })}
+                  aria-label={t.tlShowStrip}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.18 }}
+                  style={{ ['--drop' as string]: eraOf(tl, year).color }}
+                >
+                  <i className="tl-dock-dot" />
+                  <span>
+                    <strong>{pick(eraOf(tl, year).short, lang)}</strong> · {yearLabel(year, lang, true)}
+                  </span>
+                  <ChevronUp size={16} strokeWidth={STROKE} />
+                </motion.button>
+              ) : (
+                <motion.div key="strip" className="tl-dock-strip" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
+                  {!query.trim() && <EraStrip eras={tl.eras} lang={lang} year={year} onScrub={scrub} />}
+                  <button className="tl-dock-fold" onClick={() => setApp({ tlDockMin: true })} aria-label={t.tlHideStrip} title={t.tlHideStrip}>
+                    <ChevronDown size={18} strokeWidth={STROKE} />
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <Pressable layout className="tl-alive-btn" onClick={() => openFresh({ k: 'alive', y: year })} aria-label={t.tlWhoAlive} title={t.tlWhoAlive}>
               <Users size={20} strokeWidth={STROKE} />
             </Pressable>
-          </div>
+          </motion.div>
         </div>
       )}
 
