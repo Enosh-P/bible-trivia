@@ -134,6 +134,14 @@ function tabFromHash(): Tab {
   return (Object.keys(TAB_HASH) as Tab[]).find((t) => TAB_HASH[t] === h) ?? 'play';
 }
 
+/** Identifies a page, so going back can tell pages apart. */
+function routeKey(r: Route): string {
+  if (r.kind === 'tab') return `tab-${r.tab}`;
+  if (r.kind === 'game') return `game-${r.run}`;
+  if (r.kind === 'post') return `post-${r.post.id}`;
+  return r.kind;
+}
+
 /** Everything needs an account: show sign-in until there is one. */
 function Gate() {
   const ready = useAccount((s) => s.ready);
@@ -179,6 +187,67 @@ function MainApp() {
   const finishRound = useApp((s) => s.finishRound);
   // The tab is kept in the address (#practice), so a reload opens the same tab.
   const [route, setRoute] = useState<Route>(() => ({ kind: 'tab', tab: tabFromHash() }));
+
+  // Back (the phone's gesture or the browser button) goes to the previous page in the app:
+  // every page opened gets a history entry, and going back shows the page that was there.
+  // Going to a tab that is already further back (Home, Back buttons) returns to it instead of
+  // adding another entry, and the results screen takes the finished game's place.
+  const nav = useRef({ stack: [route] as Route[], idx: 0, fromPop: false });
+  useEffect(() => {
+    history.replaceState({ bt: 0 }, '', location.href);
+    const onPop = (e: PopStateEvent) => {
+      const n = nav.current;
+      const st = e.state as { bt?: number } | null;
+      const i = Math.min(typeof st?.bt === 'number' ? st.bt : 0, n.stack.length - 1);
+      const r = n.stack[i];
+      const changed = routeKey(r) !== routeKey(n.stack[n.idx]) || i !== n.idx;
+      n.idx = i;
+      if (!changed && !n.fromPop) return;
+      n.fromPop = true;
+      if (r.kind === 'tab') setLastTab(r.tab);
+      setRoute(r);
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+  useEffect(() => {
+    const n = nav.current;
+    const url = (r: Route) => location.pathname + location.search + (r.kind === 'tab' ? (r.tab === 'play' ? '' : `#${TAB_HASH[r.tab]}`) : location.hash);
+    if (n.fromPop) {
+      n.fromPop = false;
+      return;
+    }
+    if (routeKey(n.stack[n.idx]) === routeKey(route)) {
+      n.stack[n.idx] = route;
+      return;
+    }
+    if (route.kind === 'tab') {
+      // Home / Back buttons: return to that tab's earlier entry.
+      let j = -1;
+      for (let k = n.idx - 1; k >= 0; k--)
+        if (routeKey(n.stack[k]) === routeKey(route)) {
+          j = k;
+          break;
+        }
+      if (j >= 0) {
+        const steps = j - n.idx;
+        n.idx = j;
+        n.stack[j] = route;
+        history.go(steps);
+        return;
+      }
+    }
+    if ((route.kind === 'result' && n.stack[n.idx].kind === 'game') || (route.kind === 'game' && n.stack[n.idx].kind === 'result')) {
+      n.stack[n.idx] = route;
+      history.replaceState({ bt: n.idx }, '', url(route));
+      return;
+    }
+    n.stack = [...n.stack.slice(0, n.idx + 1), route];
+    n.idx = n.stack.length - 1;
+    // A sheet or step that was open on the old page leaves an entry: reuse it for the new page.
+    if ((history.state as { sub?: number } | null)?.sub) history.replaceState({ bt: n.idx }, '', url(route));
+    else history.pushState({ bt: n.idx }, '', url(route));
+  }, [route]);
   // Which part of the Gospel tab is open (kept when coming back from a thought).
   const [gospelSection, setGospelSection] = useState<GospelSection>('way');
   // Scroll: each tab remembers where it was (so Back returns there); any other
@@ -381,9 +450,8 @@ function MainApp() {
   const goTab = (tab: Tab) => {
     setLastTab(tab);
     setRoute({ kind: 'tab', tab });
-    const hash = tab === 'play' ? '' : `#${TAB_HASH[tab]}`;
-    if (location.hash !== hash) history.replaceState(null, '', location.pathname + location.search + hash);
   };
+
   /** All Daily Thoughts live in one place: Gospel → Thoughts. */
   const showThoughts = () => {
     setGospelSection('thoughts');

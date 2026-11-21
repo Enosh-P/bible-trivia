@@ -1,6 +1,7 @@
+import { useBackStep } from '../hooks/useBackStep';
 import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { BookOpen, ChevronLeft, ChevronRight, Info, ListChecks, Minus, Pencil, Plus, Search, Users } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight, House, Info, ListChecks, Minus, Pencil, Plus, Search, Users } from 'lucide-react';
 import { useApp, useT } from '../store';
 import { spring } from '../motion/springs';
 import { Pressable } from '../components/Pressable';
@@ -57,6 +58,8 @@ export function Timeline({ onExit }: { onExit: () => void }) {
   const [cat, setCat] = useState<string | null>(null);
   const [world, setWorld] = useState(false);
   const [stack, setStack] = useState<Panel[]>([]);
+  // Back inside the sheet: from a verse or another person back to the first panel.
+  useBackStep(stack.length > 1, () => setStack((s) => s.slice(0, 1)));
   const [year, setYear] = useState(astro(-4174));
   const open = (p: Panel) => setStack((s) => [...s, p]);
   const openFresh = (p: Panel) => setStack([p]);
@@ -84,8 +87,8 @@ export function Timeline({ onExit }: { onExit: () => void }) {
   return (
     <div className={`screen timeline-screen ${view === 'chart' ? 'is-chart' : ''}`} lang={uiLang}>
       <header className="recall-head">
-        <Pressable className="chip glass" onClick={onExit} aria-label={t.back}>
-          <ChevronLeft size={20} strokeWidth={STROKE} />
+        <Pressable className="chip glass" onClick={onExit} aria-label={t.tabPlay} title={t.tabPlay}>
+          <House size={19} strokeWidth={STROKE} />
         </Pressable>
         <div className="grow">
           <p className="eyebrow">{t.groupLearn}</p>
@@ -690,9 +693,15 @@ function Alive({ tl, y0, lang, open }: { tl: TL; y0: number; lang: Lang; open: (
   const t = useT();
   const [y, setY] = useState(Math.min(YMAX, Math.max(YMIN, y0)));
   const set = (v: number) => setY(Math.min(YMAX, Math.max(YMIN, Math.round(v))));
-  const alive = aliveIn(tl, y).sort(byStart);
+  // The year follows the finger; the lists catch up a moment later and fade, so dragging doesn't flicker.
+  const [listY, setListY] = useState(y);
+  useEffect(() => {
+    const id = setTimeout(() => setListY(y), 180);
+    return () => clearTimeout(id);
+  }, [y]);
+  const alive = aliveIn(tl, listY).sort(byStart);
   const near = [...tl.events.map((e) => ({ e, world: false })), ...tl.world.map((e) => ({ e, world: true }))]
-    .filter(({ e }) => Math.abs(astro(e.y) - y) <= 25)
+    .filter(({ e }) => Math.abs(astro(e.y) - listY) <= 25)
     .sort((a, b) => astro(a.e.y) - astro(b.e.y));
   const bc = y <= 0;
   const shown = bc ? 1 - y : y;
@@ -730,27 +739,41 @@ function Alive({ tl, y0, lang, open }: { tl: TL; y0: number; lang: Lang; open: (
       </div>
       <input className="tl-slider" type="range" min={YMIN} max={YMAX} value={y} onChange={(e) => set(Number(e.target.value))} aria-label={t.tlYear} />
       {alive.length ? (
-        <div className="tl-pills">
-          {alive.map((p) => (
-            <button key={p.id} className="tl-pill" style={{ ['--cat' as string]: `var(--tl-${p.cat})` }} onClick={() => open({ k: 'person', p })}>
-              <i className="tl-dot" /> {pick(p.name, lang)}
-            </button>
-          ))}
-        </div>
+        <motion.div layout className="tl-pills" transition={{ duration: 0.35, ease: 'easeOut' }}>
+          <AnimatePresence initial={false} mode="popLayout">
+            {alive.map((p) => (
+              <motion.button
+                layout
+                key={p.id}
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.92 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+                className="tl-pill"
+                style={{ ['--cat' as string]: `var(--tl-${p.cat})` }}
+                onClick={() => open({ k: 'person', p })}
+              >
+                <i className="tl-dot" /> {pick(p.name, lang)}
+              </motion.button>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       ) : (
-        <p className="caption">{t.tlNobody}</p>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="caption">
+          {t.tlNobody}
+        </motion.p>
       )}
       {near.length > 0 && (
         <>
           <h3 className="eyebrow">{t.tlEventsNear}</h3>
           <ol className="tl-ev-list">
             {near.map(({ e, world }) => (
-              <li key={e.en} className={world ? 'is-world' : ''}>
+              <motion.li layout key={e.en} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35, ease: 'easeOut' }} className={world ? 'is-world' : ''}>
                 <button className="tl-ev-year" onClick={() => open({ k: 'event', e, world })}>
                   {yearLabel(astro(e.y), lang)}
                 </button>
                 <span>{pick(e, lang)}</span>
-              </li>
+              </motion.li>
             ))}
           </ol>
         </>

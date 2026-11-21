@@ -1,3 +1,4 @@
+import { useBackStep } from '../hooks/useBackStep';
 import { AnimatePresence, animate, motion, useMotionValue, useTransform, type PanInfo } from 'motion/react';
 import { useEffect, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
@@ -9,6 +10,7 @@ import { project, spring } from '../motion/springs';
  * projection), not just where the finger let go.
  */
 export function Sheet({ open, onClose, children, label }: { open: boolean; onClose: () => void; children: ReactNode; label: string }) {
+  useBackStep(open, onClose);
   const y = useMotionValue(0);
   const scrim = useTransform(y, [0, 400], [1, 0]);
 

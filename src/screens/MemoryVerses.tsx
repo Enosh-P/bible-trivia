@@ -1,3 +1,4 @@
+import { useBackStep } from '../hooks/useBackStep';
 import { Fragment, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Check, ChevronDown, ChevronLeft, Plus, RotateCcw, Search, Trash2 } from 'lucide-react';
@@ -49,6 +50,7 @@ export function MemoryVerses({ onExit }: { onExit: () => void }) {
   const lang = qLang === 'both' ? uiLang : qLang;
   const mine = useApp((s) => (s.myVerses as Verse[] | undefined) ?? NO_VERSES);
   const [verse, setVerse] = useState<Verse | null>(null);
+  useBackStep(verse !== null, () => setVerse(null));
   const [adding, setAdding] = useState(false);
   const all = [...mine, ...SORTED];
   const learned = all.filter((v) => (memory[v.id] ?? 0) >= LEARNED).length;

@@ -1,3 +1,4 @@
+import { useBackStep } from '../hooks/useBackStep';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { BookOpenCheck, Check, ChevronLeft, Eye, RotateCcw, Search, X } from 'lucide-react';
@@ -27,6 +28,7 @@ export function Recall({ onExit }: { onExit: () => void }) {
   const [index, setIndex] = useState<RecallIndex | null>(null);
   const [error, setError] = useState(false);
   const [step, setStep] = useState<Step>({ kind: 'books' });
+  useBackStep(step.kind !== 'books', () => setStep({ kind: 'books' }));
 
   useEffect(() => {
     loadRecallIndex().then(setIndex).catch(() => setError(true));

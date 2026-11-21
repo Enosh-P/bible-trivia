@@ -1,3 +1,4 @@
+import { useBackStep } from '../hooks/useBackStep';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ChevronLeft, ListChecks } from 'lucide-react';
@@ -19,6 +20,7 @@ export function QuizPick({ onExit, onStart }: { onExit: () => void; onStart: (bo
   const [index, setIndex] = useState<McqIndex | null>(null);
   const [error, setError] = useState(false);
   const [book, setBook] = useState<string | null>(null);
+  useBackStep(book !== null, () => setBook(null));
 
   // Offline, only the books already on the phone can be played.
   const [available, setAvailable] = useState<Set<string> | undefined>(undefined);
