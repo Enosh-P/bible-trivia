@@ -508,10 +508,33 @@ function PanelView({
     const p = panel.p;
     const [s, e] = span(p);
     const c = tl.cats.find((x) => x.id === p.cat);
+    // Everyone whose life (or active years) overlapped this person's, with how long.
     const same = tl.people
       .filter((o) => o !== p && span(o)[0] <= e && span(o)[1] >= s)
       .sort(byStart)
-      .slice(0, 16);
+      .slice(0, 30)
+      .map((o) => {
+        const [os, oe] = span(o);
+        const years = Math.min(e, oe) - Math.max(s, os);
+        // With this person's birth known: how old they were when the other was born or died.
+        let when: string | null = null;
+        if (p.born != null) {
+          const name = pick(p.name, lang);
+          if (o.died != null && oe >= s && oe <= e) when = t.tlDiedWhen(name, oe - s);
+          else if (o.born != null && os > s && os <= e) when = t.tlBornWhen(name, os - s);
+        }
+        // …and how their death sits against the next major Bible event in this person's life.
+        if (o.died != null && oe >= s && oe <= e) {
+          const next = tl.events.map((ev) => ({ ev, y: astro(ev.y) })).find(({ y }) => y >= oe && y <= e);
+          if (next) {
+            const name = pick(next.ev, lang).split(/[;:(]/)[0].trim();
+            const gap = next.y - oe;
+            const rel = gap === 0 ? t.tlInYearOf(name) : t.tlBeforeEvent(gap, name);
+            when = when ? `${when} · ${rel}` : rel;
+          }
+        }
+        return { o, years, when, approx: Boolean(p.approx || o.approx) };
+      });
     return (
       <div className="tl-panel" style={{ ['--cat' as string]: `var(--tl-${p.cat})` }}>
         <span className="tl-cat caption">
@@ -595,10 +618,18 @@ function PanelView({
         {same.length > 0 && (
           <>
             <h3 className="eyebrow">{t.tlSameTime}</h3>
-            <div className="tl-pills">
-              {same.map((o) => (
-                <button key={o.id} className="tl-pill" style={{ ['--cat' as string]: `var(--tl-${o.cat})` }} onClick={() => replace({ k: 'person', p: o })}>
-                  <i className="tl-dot" /> {pick(o.name, lang)}
+            <div className="tl-same">
+              {same.map(({ o, years, when, approx }) => (
+                <button key={o.id} className="tl-same-row" style={{ ['--cat' as string]: `var(--tl-${o.cat})` }} onClick={() => replace({ k: 'person', p: o })}>
+                  <i className="tl-dot" />
+                  <span className="grow">
+                    <strong>{pick(o.name, lang)}</strong>
+                    <span className="caption">
+                      {rangeLabel(span(o)[0], span(o)[1], lang, o.approx)}
+                      {when && ` · ${when}`}
+                    </span>
+                  </span>
+                  <span className="tl-same-years">{t.tlTogether(years, approx)}</span>
                 </button>
               ))}
             </div>
