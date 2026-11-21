@@ -1764,3 +1764,5 @@ textarea.field.post-body-input:lang(ta) { line-height: 1.85; }
 .tl-dock .era-strip-wrap { flex: 1; min-width: 0; margin: 0; }
 .tl-alive-btn { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 0; background: var(--accent); color: var(--on-accent); cursor: pointer; }
 .era-now { position: absolute; top: -3px; bottom: -3px; left: -1.5px; width: 3px; border-radius: 2px; background: #fff; box-shadow: 0 0 0 1.5px var(--text); pointer-events: none; z-index: 2; }
+.tl-ev-refs { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 2px; }
+.tl-ev-ref { display: inline-flex; align-items: center; gap: 4px; padding: 0; border: 0; background: none; font: inherit; font-size: 0.78rem; font-weight: 600; color: var(--accent-ink); cursor: pointer; }

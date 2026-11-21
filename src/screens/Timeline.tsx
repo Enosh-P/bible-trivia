@@ -611,6 +611,15 @@ function PanelView({
                   <span>
                     {pick(ev, lang)}
                     <Sec x={ev} />
+                    {ev.refs?.length && !ev.addedBy ? (
+                      <span className="tl-ev-refs">
+                        {ev.refs.map((r, i) => (
+                          <button key={i} className="tl-ev-ref" onClick={() => open({ k: 'verse', r })}>
+                            <BookOpen size={12} strokeWidth={STROKE} /> {refLabel(r, lang)}
+                          </button>
+                        ))}
+                      </span>
+                    ) : null}
                     {ev.addedBy && (
                       <span className="tl-user-ev">
                         {ev.note && <span className="tl-note">{ev.note}</span>}
