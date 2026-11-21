@@ -389,14 +389,23 @@ function Chart({ tl, people, world, lang, onOpen, onYear, target }: { tl: TL; pe
   useEffect(() => {
     const el = box.current;
     if (!el || !target) return;
-    const left = (target.a - TMIN) * k - (el.clientWidth - LABEL_W) / 2;
-    let top = el.scrollTop;
-    if (target.done) {
-      const first = people.find((p) => span(p)[1] >= target.a);
-      const row = first ? el.querySelector<HTMLElement>(`[data-pid="${first.id}"]`) : null;
-      if (row) top = Math.max(0, row.offsetTop - 44 - (world ? 64 : 32));
-    }
-    el.scrollTo({ left: Math.max(0, left), top, behavior: target.done ? 'smooth' : 'auto' });
+    const visible = el.clientWidth - LABEL_W;
+    // Fully zoomed out ("Show all") there is nothing to scroll, so zoom in to about 500 years first.
+    const nk = (TMAX - TMIN) * k <= visible + 8 ? Math.min(40, visible / 500) : k;
+    if (nk !== k) setK(nk);
+    const go = () => {
+      const left = (target.a - TMIN) * nk - visible / 2;
+      let top = el.scrollTop;
+      if (target.done) {
+        const first = people.find((p) => span(p)[1] >= target.a);
+        const row = first ? el.querySelector<HTMLElement>(`[data-pid="${first.id}"]`) : null;
+        if (row) top = Math.max(0, row.offsetTop - 44 - (world ? 64 : 32));
+      }
+      el.scrollTo({ left: Math.max(0, left), top, behavior: target.done ? 'smooth' : 'auto' });
+    };
+    // After a zoom, wait for the wider chart to be drawn before scrolling.
+    if (nk !== k) requestAnimationFrame(() => requestAnimationFrame(go));
+    else go();
   }, [target]);
 
   const step = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000].find((s) => s * k >= 64) ?? 1000;
