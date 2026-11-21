@@ -1779,3 +1779,4 @@ textarea.field.post-body-input:lang(ta) { line-height: 1.85; }
 .has-float-views:not(.is-chart) .tl-era-head { margin-left: 150px; }
 .has-float-views:not(.is-chart) .tl-era-head .caption { display: none; }
 :lang(ta) .has-float-views:not(.is-chart) .tl-era-head, .has-float-views:not(.is-chart):lang(ta) .tl-era-head { margin-left: 178px; }
+.tl-views-slot { min-height: 50px; display: flex; flex-direction: column; } .tl-views-slot > .tl-views { flex: 1; }

@@ -127,32 +127,29 @@ export function Timeline({ onExit }: { onExit: () => void }) {
         <LangToggle compact />
       </header>
 
-      <div className="segmented tl-views" role="tablist" ref={viewsRef}>
-        {(['story', 'chart'] as const).map((v) => (
-          <button key={v} role="tab" aria-selected={view === v} className={view === v ? 'is-on' : ''} onClick={() => switchView(v)}>
-            {view === v && !floatViews && <motion.span layoutId="seg-tl" className="segmented-thumb" transition={spring.calm} />}
-            <span>{v === 'story' ? t.tlStory : t.tlChart}</span>
-          </button>
-        ))}
-      </div>
-      <AnimatePresence>
-        {floatViews && (
-          <motion.div
-            className="tl-float-views glass glass-thick"
-            role="tablist"
-            initial={{ opacity: 0, y: -12, scale: 0.94 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -12, scale: 0.94 }}
-            transition={spring.calm}
-          >
+      {/* The big switch keeps its place in the page; when it scrolls away it morphs into the
+          small floating one (shared layout), and grows back when you scroll up again. */}
+      <div className="tl-views-slot" ref={viewsRef}>
+        {!floatViews && (
+          <motion.div layoutId="tl-views" className="segmented tl-views" role="tablist" transition={spring.calm} style={{ borderRadius: 14 }}>
             {(['story', 'chart'] as const).map((v) => (
-              <button key={v} role="tab" aria-selected={view === v} className={view === v ? 'is-on' : ''} onClick={() => switchView(v)}>
+              <motion.button layout="position" key={v} role="tab" aria-selected={view === v} className={view === v ? 'is-on' : ''} onClick={() => switchView(v)}>
+                {view === v && <motion.span layoutId="seg-tl" className="segmented-thumb" transition={spring.calm} />}
                 <span>{v === 'story' ? t.tlStory : t.tlChart}</span>
-              </button>
+              </motion.button>
             ))}
           </motion.div>
         )}
-      </AnimatePresence>
+      </div>
+      {floatViews && (
+        <motion.div layoutId="tl-views" className="tl-float-views glass glass-thick" role="tablist" transition={spring.calm} style={{ borderRadius: 999 }}>
+          {(['story', 'chart'] as const).map((v) => (
+            <motion.button layout="position" key={v} role="tab" aria-selected={view === v} className={view === v ? 'is-on' : ''} onClick={() => switchView(v)}>
+              <span>{v === 'story' ? t.tlStory : t.tlChart}</span>
+            </motion.button>
+          ))}
+        </motion.div>
+      )}
 
       <div className="tl-tools">
         <label className="tl-search glass">
