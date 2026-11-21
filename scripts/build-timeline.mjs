@@ -3,6 +3,7 @@
 // Bible Lives Timeline: people, events, eras). Checks every entry first.
 //   npm run content:timeline
 import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 const ROOT = new URL('../', import.meta.url);
 const src = JSON.parse(readFileSync(new URL('content/timeline/timeline.json', ROOT), 'utf8'));
@@ -29,6 +30,10 @@ if (errors.length) {
   process.exit(1);
 }
 const { about, ...out } = src;
-writeFileSync(new URL('public/packs/timeline.json', ROOT), JSON.stringify(out));
+const json = JSON.stringify(out);
+writeFileSync(new URL('public/packs/timeline.json', ROOT), json);
+// A version tag for the address, so phones with an older saved copy fetch the new one.
+const version = createHash('sha256').update(json).digest('hex').slice(0, 10);
+writeFileSync(new URL('src/engine/timelineVersion.ts', ROOT), `// Written by scripts/build-timeline.mjs\nexport const TIMELINE_VERSION = '${version}';\n`);
 const missing = [...src.people.flatMap((p) => [p.name, p.title]), ...src.events].filter((t) => !t.ta).length;
 console.log(`timeline: ${src.people.length} people, ${src.events.length} events, ${src.world.length} world events${missing ? ` (${missing} without Tamil)` : ''}`);

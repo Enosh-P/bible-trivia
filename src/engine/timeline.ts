@@ -7,6 +7,7 @@
  * subtracting two years gives the real number of years between them.
  */
 import { formatRef } from '../i18n/books';
+import { TIMELINE_VERSION } from './timelineVersion';
 
 export type Lang = 'en' | 'ta';
 export type Text = { en: string; ta: string };
@@ -103,7 +104,7 @@ export function rangeLabel(a: number, b: number, lang: Lang, approx = false): st
 }
 
 /** Text in a language, falling back to English while a Tamil translation is missing. */
-export const pick = (t: Text, lang: Lang) => (lang === 'ta' && t.ta?.trim() ? t.ta : t.en);
+export const pick = (t: Text | undefined, lang: Lang) => (!t ? '' : lang === 'ta' && t.ta?.trim() ? t.ta : (t.en ?? ''));
 
 /** "Genesis 11–25", "1 Kings 6:1", "Exodus – Deuteronomy" in a language. */
 export function refLabel(r: TRef, lang: Lang): string {
@@ -133,13 +134,27 @@ export const aliveIn = (tl: Timeline, a: number) => tl.people.filter((p) => {
 let loading: Promise<Timeline> | null = null;
 /** The timeline (downloaded once, then kept offline by the service worker). */
 export function loadTimeline(): Promise<Timeline> {
-  loading ??= fetch('/packs/timeline.json').then((r) => {
-    if (!r.ok) throw new Error(`timeline ${r.status}`);
-    return r.json() as Promise<Timeline>;
-  });
+  loading ??= fetch(`/packs/timeline.json?v=${TIMELINE_VERSION}`)
+    .then((r) => {
+      if (!r.ok) throw new Error(`timeline ${r.status}`);
+      return r.json() as Promise<Timeline>;
+    })
+    .then(tidy);
   loading.catch(() => (loading = null));
   return loading;
 }
 
 /** Sort people by when their bar starts. */
 export const byStart = (a: TPerson, b: TPerson) => span(a)[0] - span(b)[0] || span(a)[1] - span(b)[1];
+
+const ERA_COLORS = ['#2a78d6', '#3f9bd0', '#1a9e6f', '#e0662f', '#8a6440', '#6250d6', '#d4588a', '#d63f3e', '#7b8794', '#137c99'];
+/** Fills anything an older copy of the data doesn't have, so the screen never breaks on it. */
+function tidy(tl: Timeline): Timeline {
+  return {
+    ...tl,
+    eras: tl.eras.map((e, i) => ({ ...e, short: e.short ?? { en: e.en, ta: e.ta }, color: e.color ?? ERA_COLORS[i % ERA_COLORS.length] })),
+    people: tl.people.map((p) => ({ ...p, events: p.events ?? [], refs: p.refs ?? [], name: p.name ?? { en: p.id, ta: '' }, title: p.title ?? { en: '', ta: '' } })),
+    events: tl.events ?? [],
+    world: tl.world ?? [],
+  };
+}

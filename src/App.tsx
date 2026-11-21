@@ -11,6 +11,7 @@ import { Friends } from './screens/Friends';
 import { Practice, type PracticeAction } from './screens/Practice';
 import { MemoryVerses } from './screens/MemoryVerses';
 import { Timeline } from './screens/Timeline';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { AdminTimeline } from './screens/AdminTimeline';
 import { Notebook } from './screens/Notebook';
 import { SavedGames } from './screens/SavedGames';
@@ -477,6 +478,7 @@ function MainApp() {
             exit={{ opacity: 0, transition: { duration: 0.12, ease: 'easeIn' } }}
           >
             <ScrollPlace screenKey={screenKey} positions={scrollPos} current={currentScreen} />
+            <ErrorBoundary resetKey={key} title={t.crashTitle} body={t.crashBody} home={t.tabPlay} onHome={() => goTab('play')}>
             {route.kind === 'tab' && route.tab === 'play' && <Home onPlay={play} onMemory={() => setRoute({ kind: 'memory' })} onTimeline={() => setRoute({ kind: 'timeline' })} onResume={resumeGame} onShowSaved={() => setRoute({ kind: 'saved' })} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'home' })} onShowPosts={showThoughts} />}
             {route.kind === 'tab' && route.tab === 'friends' && <Friends onStartChallenge={startChallenge} onPlayChallenge={playChallenge} />}
             {route.kind === 'tab' && route.tab === 'gospel' && <Gospel section={gospelSection} onSection={setGospelSection} onOpenPost={(post) => setRoute({ kind: 'post', post, from: 'gospel' })} />}
@@ -505,6 +507,7 @@ function MainApp() {
                 onHome={() => goTab(route.result.challengeId ? 'friends' : lastTab)}
               />
             )}
+            </ErrorBoundary>
           </motion.div>
         </AnimatePresence>
       </main>
