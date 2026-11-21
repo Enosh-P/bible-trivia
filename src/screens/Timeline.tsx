@@ -106,6 +106,23 @@ export function Timeline({ onExit }: { onExit: () => void }) {
       .sort(byStart);
   }, [tl, cat, q]);
 
+  // Swiping between people in the sheet: which way the new one slides in.
+  const [dir, setDir] = useState(0);
+  const top = stack[stack.length - 1];
+  const order = useMemo(() => (tl ? (people.length ? people : [...tl.people].sort(byStart)) : []), [tl, people]);
+  const neighbour = (d: number) => {
+    if (!top || top.k !== 'person') return null;
+    const list = order.includes(top.p) ? order : order.length ? order : [];
+    const i = list.findIndex((x) => x.id === top.p.id);
+    return i < 0 ? null : list[i + d] ?? null;
+  };
+  const goPerson = (d: number) => {
+    const n = neighbour(d);
+    if (!n) return;
+    setDir(d);
+    setStack((s) => [...s.slice(0, -1), { k: 'person', p: n }]);
+  };
+
   const sec = (x: Text) => (both ? pick(x, lang === 'en' ? 'ta' : 'en') : null);
 
   return (
@@ -191,8 +208,33 @@ export function Timeline({ onExit }: { onExit: () => void }) {
                 <ChevronLeft size={16} strokeWidth={STROKE} /> {t.back}
               </button>
             )}
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.div key={stack.length} initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }} transition={spring.calm}>
+            <AnimatePresence mode="wait" initial={false} custom={dir}>
+              <motion.div
+                key={`${stack.length}-${top?.k === 'person' ? top.p.id : top?.k}`}
+                custom={dir}
+                variants={{
+                  enter: (d: number) => ({ opacity: 0, x: d ? d * 70 : 16 }),
+                  show: { opacity: 1, x: 0 },
+                  leave: (d: number) => ({ opacity: 0, x: d ? -d * 70 : -16 }),
+                }}
+                initial="enter"
+                animate="show"
+                exit="leave"
+                transition={{ ...spring.calm, opacity: { duration: 0.15 } }}
+                onAnimationComplete={() => setDir(0)}
+                // Swipe left / right on a person to go to the next / previous one.
+                drag={top?.k === 'person' ? 'x' : false}
+                dragDirectionLock
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={{ left: neighbour(1) ? 0.6 : 0.1, right: neighbour(-1) ? 0.6 : 0.1 }}
+                dragSnapToOrigin
+                onDragEnd={(_, info) => {
+                  const swipe = info.offset.x + info.velocity.x * 0.2;
+                  if (swipe < -90) goPerson(1);
+                  else if (swipe > 90) goPerson(-1);
+                }}
+                style={{ touchAction: 'pan-y' }}
+              >
                 {stack[stack.length - 1].k === 'filter' ? (
                   <div className="tl-panel">
                     <h2 className="title">{t.tlFilter}</h2>
@@ -218,7 +260,7 @@ export function Timeline({ onExit }: { onExit: () => void }) {
                     </Pressable>
                   </div>
                 ) : (
-                <PanelView panel={stack[stack.length - 1]} tl={tl} lang={lang} sec={sec} open={open} replace={(p) => setStack((s) => [...s.slice(0, -1), p])} />
+                <PanelView panel={stack[stack.length - 1]} tl={tl} lang={lang} sec={sec} open={open} replace={(p) => setStack((s) => [...s.slice(0, -1), p])} prev={neighbour(-1)} next={neighbour(1)} onStep={goPerson} />
                 )}
               </motion.div>
             </AnimatePresence>
@@ -544,6 +586,9 @@ function PanelView({
   sec,
   open,
   replace,
+  prev,
+  next,
+  onStep,
 }: {
   panel: Panel;
   tl: TL;
@@ -551,6 +596,9 @@ function PanelView({
   sec: (x: Text) => string | null;
   open: (p: Panel) => void;
   replace: (p: Panel) => void;
+  prev?: TPerson | null;
+  next?: TPerson | null;
+  onStep?: (d: number) => void;
 }) {
   const t = useT();
   const other: Lang = lang === 'en' ? 'ta' : 'en';
@@ -607,6 +655,16 @@ function PanelView({
       });
     return (
       <div className="tl-panel" style={{ ['--cat' as string]: `var(--tl-${p.cat})` }}>
+        {(prev || next) && (
+          <div className="tl-step">
+            <button className="tl-step-btn" disabled={!prev} onClick={() => onStep?.(-1)} aria-label={prev ? pick(prev.name, lang) : undefined}>
+              <ChevronLeft size={16} strokeWidth={STROKE} /> <span>{prev ? pick(prev.name, lang) : ''}</span>
+            </button>
+            <button className="tl-step-btn is-next" disabled={!next} onClick={() => onStep?.(1)} aria-label={next ? pick(next.name, lang) : undefined}>
+              <span>{next ? pick(next.name, lang) : ''}</span> <ChevronRight size={16} strokeWidth={STROKE} />
+            </button>
+          </div>
+        )}
         <span className="tl-cat caption">
           <i className="tl-dot" /> {c && pick(c, lang)}
         </span>
