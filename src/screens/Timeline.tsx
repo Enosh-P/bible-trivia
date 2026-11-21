@@ -59,6 +59,22 @@ export function Timeline({ onExit }: { onExit: () => void }) {
   const [tl, setTl] = useState<TL | null>(null);
   const [failed, setFailed] = useState(false);
   const [view, setView] = useState<View>(() => (window.innerWidth >= 960 ? 'chart' : 'story'));
+  // Once the Story / Chart switch scrolls away, a small copy floats at the top left.
+  const viewsRef = useRef<HTMLDivElement>(null);
+  const [floatViews, setFloatViews] = useState(false);
+  useEffect(() => {
+    const el = viewsRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setFloatViews(!e.isIntersecting), { rootMargin: '-8px 0px 0px 0px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const switchView = (v: View) => {
+    if (v === view) return;
+    setView(v);
+    // From far down the story, the chart starts at the top of the page.
+    if (floatViews) window.scrollTo({ top: 0 });
+  };
   const [query, setQuery] = useState('');
   const [cat, setCat] = useState<string | null>(null);
   const [world, setWorld] = useState(false);
@@ -93,7 +109,7 @@ export function Timeline({ onExit }: { onExit: () => void }) {
   const sec = (x: Text) => (both ? pick(x, lang === 'en' ? 'ta' : 'en') : null);
 
   return (
-    <div className={`screen timeline-screen ${view === 'chart' ? 'is-chart' : ''}`} lang={uiLang}>
+    <div className={`screen timeline-screen ${view === 'chart' ? 'is-chart' : ''} ${floatViews ? 'has-float-views' : ''}`} lang={uiLang}>
       <header className="recall-head">
         <Pressable className="chip glass" onClick={onExit} aria-label={t.tabPlay} title={t.tabPlay}>
           <House size={19} strokeWidth={STROKE} />
@@ -111,14 +127,32 @@ export function Timeline({ onExit }: { onExit: () => void }) {
         <LangToggle compact />
       </header>
 
-      <div className="segmented tl-views" role="tablist">
+      <div className="segmented tl-views" role="tablist" ref={viewsRef}>
         {(['story', 'chart'] as const).map((v) => (
-          <button key={v} role="tab" aria-selected={view === v} className={view === v ? 'is-on' : ''} onClick={() => setView(v)}>
-            {view === v && <motion.span layoutId="seg-tl" className="segmented-thumb" transition={spring.calm} />}
+          <button key={v} role="tab" aria-selected={view === v} className={view === v ? 'is-on' : ''} onClick={() => switchView(v)}>
+            {view === v && !floatViews && <motion.span layoutId="seg-tl" className="segmented-thumb" transition={spring.calm} />}
             <span>{v === 'story' ? t.tlStory : t.tlChart}</span>
           </button>
         ))}
       </div>
+      <AnimatePresence>
+        {floatViews && (
+          <motion.div
+            className="tl-float-views glass glass-thick"
+            role="tablist"
+            initial={{ opacity: 0, y: -12, scale: 0.94 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -12, scale: 0.94 }}
+            transition={spring.calm}
+          >
+            {(['story', 'chart'] as const).map((v) => (
+              <button key={v} role="tab" aria-selected={view === v} className={view === v ? 'is-on' : ''} onClick={() => switchView(v)}>
+                <span>{v === 'story' ? t.tlStory : t.tlChart}</span>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="tl-tools">
         <label className="tl-search glass">

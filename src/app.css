@@ -1767,3 +1767,15 @@ textarea.field.post-body-input:lang(ta) { line-height: 1.85; }
 .tl-ev-refs { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 2px; }
 .tl-ev-ref { display: inline-flex; align-items: center; gap: 4px; padding: 0; border: 0; background: none; font: inherit; font-size: 0.78rem; font-weight: 600; color: var(--accent-ink); cursor: pointer; }
 .crash-screen { justify-content: center; min-height: 70dvh; } .crash-card { display: flex; flex-direction: column; gap: 12px; padding: 24px; border-radius: var(--radius-xl); text-align: center; max-width: 420px; margin: 0 auto; width: 100%; }
+/* floating Story / Chart switch (after the big one scrolls away) */
+.tl-float-views { position: fixed; top: calc(var(--safe-top) + 10px); left: 12px; z-index: 40; display: flex; padding: 3px; border-radius: 999px; box-shadow: 0 6px 20px rgb(0 0 0 / 0.14); }
+@media (min-width: 960px) { .tl-float-views { left: calc(var(--sidebar-w) + 16px); } }
+.tl-float-views button { position: relative; height: 30px; padding: 0 12px; border: 0; border-radius: 999px; background: none; font: inherit; font-size: 0.8rem; font-weight: 700; color: var(--text-2); cursor: pointer; }
+.tl-float-views button { transition: background-color 0.25s ease, color 0.25s ease; }
+.tl-float-views button.is-on { color: var(--on-accent); background: var(--accent); }
+.tl-float-views button span { position: relative; z-index: 1; }
+.tl-float-thumb { position: absolute; inset: 0; border-radius: 999px; background: var(--accent); }
+/* in Story, the era bar moves aside to make room for it */
+.has-float-views:not(.is-chart) .tl-era-head { margin-left: 150px; }
+.has-float-views:not(.is-chart) .tl-era-head .caption { display: none; }
+:lang(ta) .has-float-views:not(.is-chart) .tl-era-head, .has-float-views:not(.is-chart):lang(ta) .tl-era-head { margin-left: 178px; }
